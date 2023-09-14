@@ -1,15 +1,25 @@
 using UnityEngine;
 using System.Linq;
+using System.Collections.Generic;
 
 public class MouseController : MonoBehaviour
 {
     #region fields
     [SerializeField] private GameObject charaPref;
     private PlayerManager player;
+    [SerializeField] private float speed;
+
+    private PathFinder pathFinder;
+    private List<Hovering> path = new List<Hovering>();
     #endregion
 
     #region methodes
-    private void Update()
+    private void Start()
+    {
+        pathFinder = new PathFinder();
+    }
+
+    private void LateUpdate()
     {
         var focusedTileHit = GetFocusedOnTile();
 
@@ -21,17 +31,38 @@ public class MouseController : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
+                hoveredTile.GetComponent<Hovering>().ShowHover();
+
                 if (player == null)
                 {
                     player = Instantiate(charaPref).GetComponent<PlayerManager>();
                     PositionCharacterOnTile(hoveredTile);
                 }
+                else
+                {
+                    path = pathFinder.FindPath(player.standingOnTile, hoveredTile);
+                }
             }
+        }
 
-            if (Input.GetMouseButtonUp(0))
-            {
-                hoveredTile.GetComponent<Hovering>().ShowHover();
-            }
+        if (path.Count > 0)
+        {
+            FollowPath();
+        }
+    }
+
+    private void FollowPath()
+    {
+        var pas = speed * Time.fixedDeltaTime;
+
+        var z = path[0].transform.position.z;
+        player.transform.position = Vector2.MoveTowards(player.transform.position, path[0].transform.position, pas);
+        player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, z);
+
+        if (Vector2.Distance(player.transform.position, path[0].transform.position) < 0.0001f)
+        {
+            PositionCharacterOnTile(path[0]);
+            path.RemoveAt(0);
         }
     }
 

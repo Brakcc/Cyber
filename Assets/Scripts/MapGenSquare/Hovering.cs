@@ -11,6 +11,9 @@ public class Hovering : MonoBehaviour
     [HideInInspector] public Hovering previous;
 
     public Vector3Int gridLoaction;
+
+    [SerializeField] private Color hoverColor;
+    [SerializeField] private Color baseColor;
     #endregion
 
     #region methodes
@@ -29,11 +32,11 @@ public class Hovering : MonoBehaviour
 
     public void ShowHover()
     {
-        gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 0.12945f, 0, 0.25f);
+        gameObject.GetComponent<SpriteRenderer>().color = hoverColor;
     }
     public void HideHover()
     {
-        gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 0.12945f, 0, 0);
+        gameObject.GetComponent<SpriteRenderer>().color = baseColor;
     }
     #endregion
 }

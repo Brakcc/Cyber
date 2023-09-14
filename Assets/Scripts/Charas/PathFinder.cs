@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 public class PathFinder
 {
-    /*public List<Hovering> FindPath(Hovering start, Hovering end)
+    public List<Hovering> FindPath(Hovering start, Hovering end)
     {
         List<Hovering> openList = new List<Hovering>();
         List<Hovering> closedList = new List<Hovering>();
@@ -22,60 +23,104 @@ public class PathFinder
             if (currentHovering == end)
             {
                 // :)
+                return GetFinishedList(start, end);
             }
 
             var adjTiles = GetAdjTiles(currentHovering);
-        }
-    }*/
 
-    /*private object GetAdjTiles(Hovering current)
+            foreach (var adjTile in adjTiles) 
+            {
+                //1 = need to jump on the height
+                if (adjTile.isBlocked || closedList.Contains(adjTile) || Mathf.Abs(currentHovering.gridLoaction.z - adjTile.gridLoaction.z) > 1)
+                {
+                    continue;
+                }
+
+                adjTile.G = GetManhattenDistance(start, adjTile);
+                adjTile.H = GetManhattenDistance(end, adjTile);
+
+                adjTile.previous = currentHovering;
+
+                if (!openList.Contains(adjTile))
+                {
+                    openList.Add(adjTile);
+                }
+            }
+        }
+
+        return new List<Hovering>();
+    }
+
+    private List<Hovering> GetFinishedList(Hovering start, Hovering end)
+    {
+        List<Hovering> finishedList = new List<Hovering>();
+
+        Hovering current = end;
+
+        while (current != start) 
+        {
+            finishedList.Add(current);
+            current = current.previous;
+        }
+
+        finishedList.Reverse();
+
+        return finishedList;
+    }
+
+    private int GetManhattenDistance(Hovering start, Hovering adj) 
+    {
+        return Mathf.Abs(start.gridLoaction.x -  adj.gridLoaction.x) + Mathf.Abs(start.gridLoaction.y - adj.gridLoaction.y);
+    }
+
+    private List<Hovering> GetAdjTiles(Hovering current)
     {
         var map = MapManager.Map.dict;
 
         List<Hovering> adjs = new List<Hovering>();
 
         //top
-        Vector2 locationToCheck = new Vector2(current.gridLoaction.x, current.gridLoaction.y + 1);
+        Vector2Int locationToCheck = new Vector2Int(current.gridLoaction.x + 1, current.gridLoaction.y);
         if (map.ContainsKey(locationToCheck))
         {
             adjs.Add(map[locationToCheck]);
         }
 
         //bottom
-        locationToCheck = new Vector2(current.gridLoaction.x, current.gridLoaction.y - 1);
+        locationToCheck = new Vector2Int(current.gridLoaction.x - 1, current.gridLoaction.y);
         if (map.ContainsKey(locationToCheck))
         {
             adjs.Add(map[locationToCheck]);
         }
-        
+
         //top left
-        locationToCheck = new Vector2(current.gridLoaction.x - 0.75f, current.gridLoaction.y + 1);
+        locationToCheck = new Vector2Int(current.gridLoaction.x +1, current.gridLoaction.y - 1);
         if (map.ContainsKey(locationToCheck))
         {
             adjs.Add(map[locationToCheck]);
         }
         
         //bottom left
-        locationToCheck = new Vector2(current.gridLoaction.x, current.gridLoaction.y + 1);
+        locationToCheck = new Vector2Int(current.gridLoaction.x, current.gridLoaction.y - 1);
         if (map.ContainsKey(locationToCheck))
         {
             adjs.Add(map[locationToCheck]);
         }
         
         //top right
-        locationToCheck = new Vector2(current.gridLoaction.x, current.gridLoaction.y + 1);
+        locationToCheck = new Vector2Int(current.gridLoaction.x + 1, current.gridLoaction.y + 1);
         if (map.ContainsKey(locationToCheck))
         {
             adjs.Add(map[locationToCheck]);
         }
-        
+
         //bottom right
-        locationToCheck = new Vector2(current.gridLoaction.x, current.gridLoaction.y + 1);
+        locationToCheck = new Vector2Int(current.gridLoaction.x, current.gridLoaction.y + 1);
         if (map.ContainsKey(locationToCheck))
         {
             adjs.Add(map[locationToCheck]);
         }
 
         return adjs;
-    }*/
+    }
 }

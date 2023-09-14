@@ -50,6 +50,7 @@ public class MapManager : MonoBehaviour
 
                         hover.gridLoaction = tileLocation;
 
+                        //Debug.Log("(" + hover.gridLoaction.x + ", " + hover.gridLoaction.y + ")" + " ; " + "(" + hover.transform.position.x + ", " + hover.transform.position.y + ")");
                         dict.Add(tileKey, hover);
                     }
                 }
