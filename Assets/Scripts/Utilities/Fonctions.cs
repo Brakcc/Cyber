@@ -64,10 +64,10 @@ public static class Fonctions
     }
 
     /// <summary>
-    /// Convert a String written in the form (X.xx, X.xx, X.xx) as a Unity Vector3 
+    /// Convert a String written in the form (X.xx, Y.yy, Z.zz) as a Unity Vector3 
     /// </summary>
-    /// <param name="stringVector"></param>
-    /// <returns></returns>
+    /// <param name="stringVector">"(X.xx, Y.yy, Z.zz)"</param>
+    /// <returns>Unity Vector3</returns>
     public static Vector3 StringToVector3(string stringVector)
     {
         if (stringVector.StartsWith("(") && stringVector.EndsWith(")"))

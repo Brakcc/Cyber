@@ -26,7 +26,7 @@ public class PathFinder
                 return GetFinishedList(start, end);
             }
 
-            var adjTiles = GetAdjTiles(currentHovering);
+            var adjTiles = MapManager.Map.GetAdjTiles(currentHovering);
 
             foreach (var adjTile in adjTiles) 
             {
@@ -71,56 +71,5 @@ public class PathFinder
     private int GetManhattenDistance(Hovering start, Hovering adj) 
     {
         return Mathf.Abs(start.gridLoaction.x -  adj.gridLoaction.x) + Mathf.Abs(start.gridLoaction.y - adj.gridLoaction.y);
-    }
-
-    private List<Hovering> GetAdjTiles(Hovering current)
-    {
-        var map = MapManager.Map.dict;
-
-        List<Hovering> adjs = new List<Hovering>();
-
-        //top
-        Vector2Int locationToCheck = new Vector2Int(current.gridLoaction.x + 1, current.gridLoaction.y);
-        if (map.ContainsKey(locationToCheck))
-        {
-            adjs.Add(map[locationToCheck]);
-        }
-
-        //bottom
-        locationToCheck = new Vector2Int(current.gridLoaction.x - 1, current.gridLoaction.y);
-        if (map.ContainsKey(locationToCheck))
-        {
-            adjs.Add(map[locationToCheck]);
-        }
-
-        //top left
-        locationToCheck = new Vector2Int(current.gridLoaction.x +1, current.gridLoaction.y - 1);
-        if (map.ContainsKey(locationToCheck))
-        {
-            adjs.Add(map[locationToCheck]);
-        }
-        
-        //bottom left
-        locationToCheck = new Vector2Int(current.gridLoaction.x, current.gridLoaction.y - 1);
-        if (map.ContainsKey(locationToCheck))
-        {
-            adjs.Add(map[locationToCheck]);
-        }
-        
-        //top right
-        locationToCheck = new Vector2Int(current.gridLoaction.x + 1, current.gridLoaction.y + 1);
-        if (map.ContainsKey(locationToCheck))
-        {
-            adjs.Add(map[locationToCheck]);
-        }
-
-        //bottom right
-        locationToCheck = new Vector2Int(current.gridLoaction.x, current.gridLoaction.y + 1);
-        if (map.ContainsKey(locationToCheck))
-        {
-            adjs.Add(map[locationToCheck]);
-        }
-
-        return adjs;
     }
 }

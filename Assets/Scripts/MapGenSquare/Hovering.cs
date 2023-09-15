@@ -19,16 +19,16 @@ public class Hovering : MonoBehaviour
     #region methodes
     private void Start()
     {
-        HideHover();    
+        HideHover();
     }
 
-    private void Update()
+    /*private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
             HideHover();
         }
-    }
+    }*/
 
     public void ShowHover()
     {
