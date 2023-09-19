@@ -17,7 +17,7 @@ public struct HexCoords : ICoords
     public HexCoords(int q, int r) {
         _q = q;
         _r = r;
-        Pos = _q * new Vector2(Sqrt3, 0) + _r * new Vector2(Sqrt3 / 2, 1.5f);
+        Pos = _q * new Vector2(0, Sqrt3) + _r * new Vector2(1.5f, Sqrt3 / 2);
     }
 
     public float GetDistance(ICoords other) => (this - (HexCoords)other).AxialLength();

@@ -14,8 +14,8 @@ public class GridManager : MonoBehaviour
 
     public Dictionary<Vector2, NodeBase> Tiles { get; private set; }
 
-     private NodeBase _playerNodeBase, _goalNodeBase;
-   private Unit _spawnedPlayer, _spawnedGoal;
+    private NodeBase _playerNodeBase, _goalNodeBase;
+    private Unit _spawnedPlayer, _spawnedGoal;
 
     void Awake() => Instance = this;
 

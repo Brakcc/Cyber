@@ -32,12 +32,10 @@ public static class Pathfinding
                     currentPathTile = currentPathTile.Connection;
                     count--;
                     if (count < 0) throw new Exception();
-                    Debug.Log("sdfsdf");
                 }
                 
                 foreach (var tile in path) tile.SetColor(PathColor);
                 startNode.SetColor(PathColor);
-                Debug.Log(path.Count);
                 return path;
             }
 

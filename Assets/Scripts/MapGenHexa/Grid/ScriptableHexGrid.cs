@@ -18,10 +18,11 @@ public class ScriptableHexGrid : ScriptableGrid
             for (var q = -rOffset; q < _gridWidth - rOffset; q++) {
                 var tile = Instantiate(nodeBasePrefab,grid.transform);
                 tile.Init(DecideIfObstacle(), new HexCoords(q,r));
-                tiles.Add(tile.Coords.Pos,tile);
+                tiles.Add(tile.Coords.Pos, tile);
+                Debug.Log(tile.Coords.Pos);
             }
         }
-
+       
         return tiles;
     }
 }
