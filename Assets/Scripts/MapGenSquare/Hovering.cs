@@ -1,14 +1,18 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Hovering : MonoBehaviour
 {
     #region fields
-    public int G;
-    public int H;
-    public int F { get { return G + H; } }
+    public float G;
+    public float H;
+    public void SetG(float g) => G = g;
+    public void SetH(float h) => H = h;
+    public float F { get { return G + H; } }
 
     [HideInInspector] public bool isBlocked;
     [HideInInspector] public Hovering previous;
+    [HideInInspector] public List<Hovering> Neighbors {  get; private set; }
 
     public Vector3Int gridLoaction;
 
@@ -38,5 +42,7 @@ public class Hovering : MonoBehaviour
     {
         gameObject.GetComponent<SpriteRenderer>().color = baseColor;
     }
+
+    public void  SetConnection(Hovering hovering) => previous = hovering;
     #endregion
 }

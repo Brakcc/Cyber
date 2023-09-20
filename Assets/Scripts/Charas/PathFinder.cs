@@ -4,9 +4,9 @@ using UnityEngine;
 using System.Linq;
 using System;
 
-public class PathFinder
+public static class PathFinder
 {
-    public List<Hovering> FindPath(Hovering start, Hovering end)
+    public static List<Hovering> FindPath(Hovering start, Hovering end)
     {
         List<Hovering> openList = new List<Hovering>();
         List<Hovering> closedList = new List<Hovering>();
@@ -51,7 +51,7 @@ public class PathFinder
         return new List<Hovering>();
     }
 
-    private List<Hovering> GetFinishedList(Hovering start, Hovering end)
+    private static List<Hovering> GetFinishedList(Hovering start, Hovering end)
     {
         List<Hovering> finishedList = new List<Hovering>();
 
@@ -68,7 +68,7 @@ public class PathFinder
         return finishedList;
     }
 
-    private int GetManhattenDistance(Hovering start, Hovering adj) 
+    private static int GetManhattenDistance(Hovering start, Hovering adj) 
     {
         return Mathf.Abs(start.gridLoaction.x -  adj.gridLoaction.x) + Mathf.Abs(start.gridLoaction.y - adj.gridLoaction.y);
     }

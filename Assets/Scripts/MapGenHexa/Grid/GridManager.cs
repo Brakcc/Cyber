@@ -34,7 +34,7 @@ public class GridManager : MonoBehaviour
         _goalNodeBase = nodeBase;
         _spawnedGoal.transform.position = _goalNodeBase.Coords.Pos;
 
-        foreach (var t in Tiles.Values) t.RevertTile();
+        //foreach (var t in Tiles.Values) t.RevertTile();
 
         var path = Pathfinding.FindPath(_playerNodeBase, _goalNodeBase);
     }
@@ -50,12 +50,12 @@ public class GridManager : MonoBehaviour
 
     public NodeBase GetTileAtPosition(Vector2 pos) => Tiles.TryGetValue(pos, out var tile) ? tile : null;
 
-    private void OnDrawGizmos() {
+    /*private void OnDrawGizmos() {
         if (!Application.isPlaying || !_drawConnections) return;
         Gizmos.color = Color.red;
         foreach (var tile in Tiles) {
             if (tile.Value.Connection == null) continue;
             Gizmos.DrawLine((Vector3)tile.Key + new Vector3(0, 0, -1), (Vector3)tile.Value.Connection.Coords.Pos + new Vector3(0, 0, -1));
         }
-    }
+    }*/
 }

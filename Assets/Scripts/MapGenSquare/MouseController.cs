@@ -10,7 +10,6 @@ public class MouseController : MonoBehaviour
     private PlayerManager player;
     [SerializeField] private float speed;
 
-    private PathFinder pathFinder;
     private List<Hovering> path = new List<Hovering>();
 
     private Range range;
@@ -18,16 +17,14 @@ public class MouseController : MonoBehaviour
     #endregion
 
     #region unity
-    private void Start()
+    private void Update()
     {
-        pathFinder = new PathFinder();
+        //PathDef
+        PathDef();
     }
 
     private void LateUpdate()
     {
-        //PathDef
-        PathDef();
-
         //PlayerMove
         if (path.Count > 0)
         {
@@ -66,10 +63,10 @@ public class MouseController : MonoBehaviour
             path.RemoveAt(0);
         }
 
-        if (path.Count == 0)
+        /*if (path.Count == 0)
         {
             ShowRangeTile();
-        }
+        }*/
 
     }
 
@@ -104,7 +101,7 @@ public class MouseController : MonoBehaviour
             transform.position = hoveredTile.transform.position;
             gameObject.GetComponent<SpriteRenderer>().sortingOrder = hoveredTile.GetComponent<SpriteRenderer>().sortingOrder;
 
-            ShowRangeTile();
+            //ShowRangeTile();
             if (Input.GetMouseButtonDown(0))
             {
                 hoveredTile.GetComponent<Hovering>().ShowHover();
@@ -113,11 +110,11 @@ public class MouseController : MonoBehaviour
                 {
                     player = Instantiate(charaPref).GetComponent<PlayerManager>();
                     PositionCharacterOnTile(hoveredTile);
-                    ShowRangeTile();
+                    //ShowRangeTile();
                 }
                 else
                 {
-                    path = pathFinder.FindPath(player.standingOnTile, hoveredTile);
+                    path = PathFinder.FindPath(player.standingOnTile, hoveredTile);
                 }
             }
         }

@@ -54,9 +54,9 @@ public abstract class NodeBase : MonoBehaviour
 
     public void SetH(float h) => H = h;
 
-    public void SetColor(Color color) => _renderer.color = color;
+    //public void SetColor(Color color) => _renderer.color = color;
 
-    public void RevertTile() => _renderer.color = _defaultColor;
+    //public void RevertTile() => _renderer.color = _defaultColor;
     #endregion
 }
 

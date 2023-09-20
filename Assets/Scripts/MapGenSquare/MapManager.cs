@@ -68,48 +68,42 @@ public class MapManager : MonoBehaviour
         Vector2Int locationToCheck = new Vector2Int(current.gridLoaction.x + 1, current.gridLoaction.y);
         if (map.ContainsKey(locationToCheck))
         {
-            if (Mathf.Abs(current.gridLoaction.z - map[locationToCheck].gridLoaction.z) < 1)
-                adjs.Add(map[locationToCheck]);
+            adjs.Add(map[locationToCheck]);
         }
 
         //bottom
         locationToCheck = new Vector2Int(current.gridLoaction.x - 1, current.gridLoaction.y);
         if (map.ContainsKey(locationToCheck))
         {
-            if (Mathf.Abs(current.gridLoaction.z - map[locationToCheck].gridLoaction.z) < 1)
-                adjs.Add(map[locationToCheck]);
+            adjs.Add(map[locationToCheck]);
         }
 
         //top left
         locationToCheck = new Vector2Int(current.gridLoaction.x + 1, current.gridLoaction.y - 1);
         if (map.ContainsKey(locationToCheck))
         {
-            if (Mathf.Abs(current.gridLoaction.z - map[locationToCheck].gridLoaction.z) < 1)
-                adjs.Add(map[locationToCheck]);
+            adjs.Add(map[locationToCheck]);
         }
 
         //bottom left
         locationToCheck = new Vector2Int(current.gridLoaction.x, current.gridLoaction.y - 1);
         if (map.ContainsKey(locationToCheck))
         {
-            if (Mathf.Abs(current.gridLoaction.z - map[locationToCheck].gridLoaction.z) < 1)
-                adjs.Add(map[locationToCheck]);
+            adjs.Add(map[locationToCheck]);
         }
 
         //top right
         locationToCheck = new Vector2Int(current.gridLoaction.x + 1, current.gridLoaction.y + 1);
         if (map.ContainsKey(locationToCheck))
         {
-            if (Mathf.Abs(current.gridLoaction.z - map[locationToCheck].gridLoaction.z) < 1)
-                adjs.Add(map[locationToCheck]);
+            adjs.Add(map[locationToCheck]);
         }
 
         //bottom right
         locationToCheck = new Vector2Int(current.gridLoaction.x, current.gridLoaction.y + 1);
         if (map.ContainsKey(locationToCheck))
         {
-            if (Mathf.Abs(current.gridLoaction.z - map[locationToCheck].gridLoaction.z) < 1)
-                adjs.Add(map[locationToCheck]);
+            adjs.Add(map[locationToCheck]);
         }
 
         return adjs;
