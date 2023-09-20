@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Hex Grid
   m_EditorClassIdentifier: 
   nodeBasePrefab: {fileID: 5803780229281329069, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
-  _obstacleWeight: 6
+  _obstacleWeight: 1
   _gridWidth: 10
   _gridDepth: 10
