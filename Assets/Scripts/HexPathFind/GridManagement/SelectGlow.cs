@@ -31,6 +31,7 @@ public class SelectGlow : MonoBehaviour
                 {
                     mat = new Material(glowMat);
                     mat.color = origins[i].color;
+                    cachedGlowMats[mat.color] = mat;
                 }
                 newMats[i] = mat;
             }

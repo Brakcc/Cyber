@@ -40,7 +40,9 @@ public class Selections : MonoBehaviour
                 hexGrid.GetTile(n).DisableGlow();
             }
 
-            neighbours = hexGrid.GetNeighbourgs(selects.offsetCoords);
+            //neighbours = hexGrid.GetNeighbourgs(selects.hexCoords);
+            PathResult pr = PathFind.PathGetRange(hexGrid, selects.hexCoords, 3);
+            neighbours = new List<Vector3Int>(pr.GetRangePositions());
 
             foreach (Vector3Int n in neighbours)
             {

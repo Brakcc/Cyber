@@ -10,7 +10,7 @@ public class HexGridStore: MonoBehaviour
     {
         foreach (Hex hex in FindObjectsOfType<Hex>())
         {
-            hexTiles[hex.offsetCoords] = hex;
+            hexTiles[hex.hexCoords] = hex;
         }
     }
 
