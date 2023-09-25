@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Scriptable Hex Grid")]
+//[CreateAssetMenu(fileName = "New Scriptable Hex Grid")]
 public class ScriptableHexGrid : ScriptableGrid 
 {
 

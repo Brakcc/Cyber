@@ -1,12 +1,10 @@
-using System.Collections.Generic;
-using UnityEngine;
-
 public interface ISkillsDatas
 {
-    public int damage { get; set; }
-    public List<Vector3Int> affectedTiles { get; set; }
-    //public int duration { get; set; }
-    public SkillEffectType effectType { get; set; }
+    public string SkillName { get; }
+    public int ID { get; }
+    public int Cost { get; }
+    public string Description { get; }
+    public SkillEffectType EffectType { get; }
 }
 
 public enum SkillEffectType
