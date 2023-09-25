@@ -8,8 +8,11 @@ public class Selections : MonoBehaviour
     [SerializeField] private HexGridStore hexGrid;
     private InputsManager inputsMan;
 
-    private RaycastHit2D? input;
-    public LayerMask selectionMask;
+    private RaycastHit2D? tileSelect;
+    private RaycastHit2D? playerSelect;
+
+    public LayerMask tileSelectionMask;
+    public LayerMask playerSelectionMask;
     private List<Vector3Int> neighbours = new List<Vector3Int>();
     #endregion
 
@@ -22,16 +25,17 @@ public class Selections : MonoBehaviour
 
     void Update()
     {
-        input = inputsMan.GetFocusedOnTile(selectionMask);
+        tileSelect = inputsMan.GetFocusedOnTile(tileSelectionMask);
+        playerSelect = inputsMan.GetFocusedOnTile(playerSelectionMask);
         HandleClick();
     }
 
     public void HandleClick()
     {
         GameObject result;
-        if (/*FindTile(pos, out result)*/ input.HasValue && Input.GetMouseButtonDown(0))
+        if (tileSelect.HasValue && Input.GetMouseButtonDown(0))
         {
-            result = input.Value.collider.gameObject;
+            result = tileSelect.Value.collider.gameObject;
             Hex selects = result.GetComponent<Hex>();
             selects.DisableGlow();
 
@@ -40,7 +44,6 @@ public class Selections : MonoBehaviour
                 hexGrid.GetTile(n).DisableGlow();
             }
 
-            //neighbours = hexGrid.GetNeighbourgs(selects.hexCoords);
             PathResult pr = PathFind.PathGetRange(hexGrid, selects.hexCoords, 3);
             neighbours = new List<Vector3Int>(pr.GetRangePositions());
 

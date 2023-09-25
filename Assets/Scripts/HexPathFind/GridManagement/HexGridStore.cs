@@ -3,9 +3,12 @@ using UnityEngine;
 
 public class HexGridStore: MonoBehaviour
 {
+    #region fields
     private Dictionary<Vector3Int, Hex> hexTiles = new Dictionary<Vector3Int, Hex>();
     private Dictionary<Vector3Int, List<Vector3Int>> neighbourgs = new Dictionary<Vector3Int, List<Vector3Int>>();
+    #endregion
 
+    #region methodes
     void Start()
     {
         foreach (Hex hex in FindObjectsOfType<Hex>())
@@ -44,4 +47,5 @@ public class HexGridStore: MonoBehaviour
         int z = Mathf.CeilToInt(worldPos.z);
         return new Vector3Int(x, y, z);
     }
+    #endregion
 }

@@ -1,63 +1,12 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[SelectionBase]
-public class Unit : MonoBehaviour
+public abstract class Unit : MonoBehaviour, IUnit
 {
-    #region fields
-    [SerializeField] private int movePoints = 3;
-    public int MovePoints { get { return movePoints; } }
+    public abstract int MovePoints { get; }
 
-    [SerializeField] private float moveDuration = 1;
-
-    private SelectGlow glow;
-    private Queue<Vector3> pathPos = new Queue<Vector3>();
-
-    public event Action<Unit> moveFinished;
-    #endregion
-
-    #region methodes
-    void Awake()
-    {
-        glow = GetComponent<SelectGlow>();
-    }
-
-    public void Deselect()
-    {
-        glow.ToggleGLow(false);
-    }
-    public void Select()
-    {
-        glow.ToggleGLow(true);
-    }
-
-    public void MoveOnPath(List<Vector3> currentPath)
-    {
-        pathPos = new Queue<Vector3>(currentPath);
-        Vector3 firstTarget = pathPos.Dequeue();
-        StartCoroutine(MoveRoutine(firstTarget));
-    }
-    IEnumerator MoveRoutine(Vector3 endPos)
-    {
-        Vector3 startPos = transform.position;
-        endPos.y = startPos.y;
-        float elapsedTime = 0;
-
-        while (elapsedTime < moveDuration)
-        {
-            elapsedTime += Time.fixedDeltaTime;
-            float lerp = elapsedTime / moveDuration;
-            transform.position = Vector3.Lerp(startPos, endPos, lerp);
-            yield return null;
-        }
-        transform.position = endPos;
-
-        if (pathPos.Count <= 0)
-        {
-            moveFinished?.Invoke(this);
-        }
-    }
-    #endregion
+    public abstract void Select();
+    public abstract void MoveOnPath(List<Vector3> currentPath);
+    public abstract void Deselect();
 }

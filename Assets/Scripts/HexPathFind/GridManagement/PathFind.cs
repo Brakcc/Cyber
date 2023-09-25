@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PathFind
 {
+    #region methodes
     public static PathResult PathGetRange(HexGridStore hexGrid, Vector3Int startHex, int movePoints)
     {
         Dictionary<Vector3Int, Vector3Int?> processedNodes = new Dictionary<Vector3Int, Vector3Int?>();
@@ -56,6 +57,7 @@ public class PathFind
         path.Reverse();
         return path.Skip(1).ToList();
     }
+    #endregion
 }
 
 public struct PathResult
