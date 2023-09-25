@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Unit : MonoBehaviour 
+public class UnitOld : MonoBehaviour 
 {
     [SerializeField] private SpriteRenderer _renderer;
 

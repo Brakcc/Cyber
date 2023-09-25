@@ -8,6 +8,8 @@ public class SelectGlow : MonoBehaviour
     private Dictionary<Renderer, Material[]> originMats = new Dictionary<Renderer, Material[]>();
     private Dictionary<Color, Material> cachedGlowMats = new Dictionary<Color, Material>();
     public Material glowMat;
+    private Color selectedPathColor = Color.green;
+    private Color originColor;
     private bool isGlowing;
     #endregion
 
@@ -15,6 +17,7 @@ public class SelectGlow : MonoBehaviour
     void Awake()
     {
         PrepareMatsDicts();
+        originColor = glowMat.GetColor("_GlowColor");
     }
 
     void PrepareMatsDicts()
@@ -57,6 +60,30 @@ public class SelectGlow : MonoBehaviour
         if (isGlowing == b) return;
         isGlowing = !b;
         Toggle();
+    }
+
+    public void StartGlowPath()
+    {
+        if (!isGlowing) return;
+        foreach (Renderer rend in glowMats.Keys)
+        {
+            foreach (Material m in glowMats[rend])
+            {
+                m.SetColor("_GlowColor", selectedPathColor);
+            }
+        }
+    }
+    public void ResetGlowPath()
+    {
+        if (!isGlowing) return;
+        foreach (Renderer rend in glowMats.Keys)
+        {
+            foreach (Material m in glowMats[rend])
+            {
+                m.SetColor("_GlowColor", originColor);
+            }
+            rend.materials = glowMats[rend];
+        }
     }
     #endregion
 }

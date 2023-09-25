@@ -8,14 +8,14 @@ public class GridManager : MonoBehaviour
     public static GridManager Instance;
 
     [SerializeField] private Sprite _playerSprite, _goalSprite;
-    [SerializeField] private Unit _unitPrefab;
+    [SerializeField] private UnitOld _unitPrefab;
     [SerializeField] private ScriptableGrid _scriptableGrid;
     [SerializeField] private bool _drawConnections;
 
     public Dictionary<Vector2, NodeBase> Tiles { get; private set; }
 
     private NodeBase _playerNodeBase, _goalNodeBase;
-    private Unit _spawnedPlayer, _spawnedGoal;
+    private UnitOld _spawnedPlayer, _spawnedGoal;
 
     void Awake() => Instance = this;
 

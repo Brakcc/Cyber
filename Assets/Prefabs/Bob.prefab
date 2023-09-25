@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5587667834857246865}
   - component: {fileID: 5587667834857246864}
-  - component: {fileID: 6107743522858816217}
+  - component: {fileID: -7667391659366831644}
+  - component: {fileID: 3013032805266673759}
   m_Layer: 0
   m_Name: Bob
   m_TagString: Untagged
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 15
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
   m_Color: {r: 0.02918485, g: 0.0141509175, b: 1, a: 1}
   m_FlipX: 0
@@ -85,7 +86,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6107743522858816217
+--- !u!70 &-7667391659366831644
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5587667834857246867}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.99999994, y: 1.9999999}
+  m_Direction: 0
+--- !u!114 &3013032805266673759
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,6 +111,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5587667834857246867}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1829d5dcd15d334d97cf0a7abb5a254, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a1fe2da2dbed7a4fb8e5be1dc7e7c13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movePoints: 3
+  moveDuration: 1
+  rotation: 0.3

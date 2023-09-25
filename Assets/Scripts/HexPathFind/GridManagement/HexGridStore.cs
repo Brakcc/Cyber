@@ -35,4 +35,13 @@ public class HexGridStore: MonoBehaviour
 
         return neighbourgs[coords];
     }
+
+    public Vector3Int GetClosestHex(Vector3 worldPos)
+    {
+        worldPos.z = 0;
+        int x = Mathf.CeilToInt(worldPos.x);
+        int y = Mathf.CeilToInt(worldPos.y);
+        int z = Mathf.CeilToInt(worldPos.z);
+        return new Vector3Int(x, y, z);
+    }
 }

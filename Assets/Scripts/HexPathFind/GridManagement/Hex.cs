@@ -27,14 +27,11 @@ public class Hex : MonoBehaviour
 
     public bool IsObstacle() => type == HexType.Obstacle;
 
-    public void EnableGlow()
-    {
-        glow.ToggleGLow(true);
-    }
-    public void DisableGlow()
-    {
-        glow.ToggleGLow(false);
-    }
+    public void EnableGlow() => glow.ToggleGLow(true);
+    public void DisableGlow() => glow.ToggleGLow(false);
+
+    public void EnableGlowPath() => glow.StartGlowPath();
+    public void DisableGlowPath() => glow.ResetGlowPath();
     #endregion
 }
 
