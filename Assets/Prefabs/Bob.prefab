@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5587667834857246864}
   - component: {fileID: -7667391659366831644}
   - component: {fileID: 3013032805266673759}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bob
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,4 +116,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movePoints: 3
   moveDuration: 1
-  rotation: 0.3
+  speed: 1

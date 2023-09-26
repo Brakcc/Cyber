@@ -11,6 +11,7 @@ public class Perso1 : Unit
     [SerializeField] private int movePoints = 3;
     public override int MovePoints { get { return movePoints; } }
     [SerializeField] private float moveDuration = 1;
+    [SerializeField] private float speed;
 
     //graph values
     private SelectGlow glow;
@@ -37,8 +38,9 @@ public class Perso1 : Unit
     public override void MoveOnPath(List<Vector3> currentPath)
     {
         pathPos = new Queue<Vector3>(currentPath);
-        Vector3 firstTarget = pathPos.Dequeue();
-        StartCoroutine(MoveRoutine(firstTarget));
+        //Vector3 firstTarget = pathPos.Dequeue();
+        //StartCoroutine(MoveRoutine(firstTarget));
+        FollowPath(currentPath);
     }
     #endregion
 
@@ -62,6 +64,25 @@ public class Perso1 : Unit
         {
             moveFinished?.Invoke(this);
         }
+    }
+
+    public void FollowPath(List<Vector3> path)
+    {
+        var pas = speed * Time.fixedDeltaTime;
+
+        var z = path[0].z;
+        transform.position = Vector2.MoveTowards(transform.position, new Vector2(path[0].x, path[0].y), pas);
+        transform.position = new Vector3(transform.position.x, transform.position.y, z);
+
+        if (Vector2.Distance(transform.position, new Vector2(path[0].x, path[0].y)) < 0.0001f)
+        {
+            PositionCharacterOnTile(path[0]);
+            path.RemoveAt(0);
+        }
+    }
+    void PositionCharacterOnTile(Vector3 pos)
+    {
+        transform.position = new Vector3(pos.x, pos.y + 0.001f, pos.z);
     }
     #endregion
 }

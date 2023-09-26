@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6839896767206874219}
   - component: {fileID: 6839896767206874218}
   - component: {fileID: 6839896767206874220}
+  - component: {fileID: 1283223407700948218}
   m_Layer: 0
   m_Name: MecaManager
   m_TagString: Untagged
@@ -47,6 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainC: {fileID: 0}
   hexGrid: {fileID: 0}
+  unitManager: {fileID: 1283223407700948218}
+  move: {fileID: 6839896767206874220}
   tileSelectionMask:
     serializedVersion: 2
     m_Bits: 8
@@ -65,3 +68,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 003fbe7bdc6d4f64a8400efb7fa634e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1283223407700948218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6839896767206874217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e651d84be0075e4aab368a5501fe43c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hexGrid: {fileID: 0}
+  moveSys: {fileID: 6839896767206874220}
+  selectedUnit: {fileID: 0}

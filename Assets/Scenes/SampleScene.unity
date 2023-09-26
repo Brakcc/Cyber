@@ -1727,6 +1727,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2933498176978962826, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
   m_PrefabInstance: {fileID: 284442563}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &285660402 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
+  m_PrefabInstance: {fileID: 420246888}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a1fe2da2dbed7a4fb8e5be1dc7e7c13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &286738046
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8403,6 +8414,14 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1283223407700948218, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: hexGrid
+      value: 
+      objectReference: {fileID: 737868341}
+    - target: {fileID: 1283223407700948218, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: selectedUnit
+      value: 
+      objectReference: {fileID: 285660402}
     - target: {fileID: 6839896767206874217, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
       propertyPath: m_Name
       value: MecaManager
