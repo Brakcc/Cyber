@@ -1,22 +1,31 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class UnitManager : MonoBehaviour
 {
+    #region fields
     [SerializeField] private HexGridStore hexGrid;
-    [SerializeField] private MoveSystem moveSys;
+    private MoveSystem moveSys;
 
     [SerializeField] private Unit selectedUnit;
     private Hex previousSelectedHex;
 
     public bool PlayerTurn { get; private set; } = true;
+    #endregion
+
+    #region methodes
+    void Awake()
+    {
+        moveSys = GetComponent<MoveSystem>();
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space)) { PlayerTurn = true; }
+    }
 
     public void HandleUnitSelected(GameObject unit)
     {
         if (!PlayerTurn) return;
-        Debug.Log("yes");
         Unit unitReference = unit.GetComponent<Unit>();
 
         if (CheckIfTheSameUnitSelected(unitReference)) return;
@@ -34,15 +43,14 @@ public class UnitManager : MonoBehaviour
         return false;
     }
 
-    public void HandleTerrainSelect(Hex selectedHex)
+    public void HandleTerrainSelect(GameObject selectedHex)
     {
         if (selectedUnit == null || !PlayerTurn) return;
-        Debug.Log("ah");
-        //Hex selectedHex = hex.GetComponent<Hex>();
+        Hex selHex = selectedHex.GetComponent<Hex>();
 
-        if (/*HandleHexOutOfRange(selectedHex.hexCoords) ||*/ HandleSelectedHexIsUnitHex(selectedHex.hexCoords)) return;
+        if (HandleHexOutOfRange(selHex.hexCoords) || HandleSelectedHexIsUnitHex(selHex.hexCoords)) return;
 
-        HandleTargetSelectedHex(selectedHex);
+        HandleTargetSelectedHex(selHex);
     }
 
     void PrepareUnitForMove(Unit unitRef)
@@ -94,6 +102,5 @@ public class UnitManager : MonoBehaviour
         if (!moveSys.IsHexInRange(hexPos)) { return true; }
         return false;
     }
-
-
+    #endregion
 }

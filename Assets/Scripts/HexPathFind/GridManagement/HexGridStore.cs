@@ -4,7 +4,7 @@ using UnityEngine;
 public class HexGridStore: MonoBehaviour
 {
     #region fields
-    private Dictionary<Vector3Int, Hex> hexTiles = new Dictionary<Vector3Int, Hex>();
+    public Dictionary<Vector3Int, Hex> hexTiles = new Dictionary<Vector3Int, Hex>();
     private Dictionary<Vector3Int, List<Vector3Int>> neighbourgs = new Dictionary<Vector3Int, List<Vector3Int>>();
     #endregion
 

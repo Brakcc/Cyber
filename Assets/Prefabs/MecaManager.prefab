@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6839896767206874218}
   - component: {fileID: 6839896767206874220}
   - component: {fileID: 1283223407700948218}
+  - component: {fileID: 2536175099072836728}
   m_Layer: 0
   m_Name: MecaManager
   m_TagString: Untagged
@@ -52,10 +53,37 @@ MonoBehaviour:
   move: {fileID: 6839896767206874220}
   tileSelectionMask:
     serializedVersion: 2
-    m_Bits: 8
-  playerSelectionMask:
-    serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 72
+  Selection:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1283223407700948218}
+        m_TargetAssemblyTypeName: UnitManager, Assembly-CSharp
+        m_MethodName: HandleTerrainSelect
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  Unit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1283223407700948218}
+        m_TargetAssemblyTypeName: UnitManager, Assembly-CSharp
+        m_MethodName: HandleUnitSelected
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6839896767206874220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,3 +111,30 @@ MonoBehaviour:
   hexGrid: {fileID: 0}
   moveSys: {fileID: 6839896767206874220}
   selectedUnit: {fileID: 0}
+--- !u!114 &2536175099072836728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6839896767206874217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebe867bcc13f15b4887c23dbc5419860, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseClic:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6839896767206874218}
+        m_TargetAssemblyTypeName: Selections, Assembly-CSharp
+        m_MethodName: HandleClick
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

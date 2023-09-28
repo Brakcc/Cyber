@@ -1,21 +1,19 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Selections : MonoBehaviour
 {
     #region fields
     [SerializeField] private Camera mainC;
     [SerializeField] private HexGridStore hexGrid;
-    [SerializeField] private UnitManager unitManager;
-    [SerializeField] private MoveSystem move;
     private InputsManager inputsMan;
 
-    private RaycastHit2D? tileSelect;
-    private RaycastHit2D? playerSelect;
-
     public LayerMask tileSelectionMask;
-    public LayerMask playerSelectionMask;
-    private List<Vector3Int> neighbours = new List<Vector3Int>();
+
+    public UnityEvent<GameObject> Selection;
+    public UnityEvent<GameObject> Unit;
     #endregion
 
     #region methodes
@@ -25,59 +23,16 @@ public class Selections : MonoBehaviour
         inputsMan = new InputsManager();
     }
 
-    void Update()
-    {
-        tileSelect = inputsMan.GetFocusedOnTile(tileSelectionMask);
-        playerSelect = inputsMan.GetFocusedOnTile(playerSelectionMask);
-        HandleClick();
-    }
-
-    public void HandleClick()
+    public void HandleClick(Vector3 mousePos)
     {
         GameObject result;
-        if (tileSelect.HasValue && Input.GetMouseButtonDown(0))
+        if (inputsMan.FocV2(tileSelectionMask, mainC, mousePos, out result))
         {
-            Perso1 player = playerSelect.Value.collider.gameObject.GetComponent<Perso1>();
-            result = tileSelect.Value.collider.gameObject;
-            Hex selects = result.GetComponent<Hex>();
-            List<Vector3Int> path = new PathResult().GetPathTo(
-                new Vector3Int (
-                    Mathf.CeilToInt(tileSelect.Value.collider.gameObject.transform.position.x),
-                    Mathf.CeilToInt(tileSelect.Value.collider.gameObject.transform.position.y),
-                    Mathf.CeilToInt(tileSelect.Value.collider.gameObject.transform.position.z)));
-
-            /*selects.DisableGlow();
-
-            foreach (Vector3Int n in neighbours)
-            {
-                hexGrid.GetTile(n).DisableGlow();
-            }
-
-            PathResult pr = PathFind.PathGetRange(hexGrid, selects.hexCoords, 3);
-            neighbours = new List<Vector3Int>(pr.GetRangePositions());
-
-            foreach (Vector3Int n in neighbours)
-            {
-                hexGrid.GetTile(n).EnableGlow();
-            }*/
-            /*unitManager.HandleTerrainSelect(selects);
-            Debug.Log("yes");*/
-
-            //move.MoveUnit(playerSelect.Value.collider.gameObject.GetComponent<Perso1>(), hexGrid);
-            List<Vector3> path2 = new List<Vector3>();
-            foreach (Vector3Int v in path)
-            {
-                path2.Add(new Vector3(v.x, v.y, v.z));
-            }
-
-            player.FollowPath(path2);
-        }
-        else if (playerSelect.HasValue && Input.GetMouseButtonDown(0))
-        {
-            /*result = playerSelect.Value.collider.gameObject;
-            unitManager.HandleUnitSelected(result);
-            Debug.Log("no");*/
+            if (UnitSelected(result)) { Unit?.Invoke(result); }
+            else { Selection?.Invoke(result); }
         }
     }
+
+    bool UnitSelected(GameObject result) => result.GetComponent<Perso1>() != null;
     #endregion
 }

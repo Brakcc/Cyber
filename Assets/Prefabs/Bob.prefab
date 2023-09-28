@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5587667834857246864}
   - component: {fileID: -7667391659366831644}
   - component: {fileID: 3013032805266673759}
+  - component: {fileID: 1526123754989008977}
   m_Layer: 6
   m_Name: Bob
   m_TagString: Untagged
@@ -114,6 +115,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a1fe2da2dbed7a4fb8e5be1dc7e7c13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movePoints: 3
-  moveDuration: 1
-  speed: 1
+  movePoints: 10
+  speed: 15
+--- !u!114 &1526123754989008977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5587667834857246867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 956cfd6181e25a343a49d58d230ec04c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  glowMat: {fileID: 2100000, guid: 2f734e74115f88249833eb08ceae0f16, type: 2}
