@@ -28,11 +28,11 @@ public class Selections : MonoBehaviour
         GameObject result;
         if (inputsMan.FocV2(tileSelectionMask, mainC, mousePos, out result))
         {
-            if (UnitSelected(result)) { Unit?.Invoke(result); }
-            else { Selection?.Invoke(result); }
+            if (UnitSelected(result)) { Unit?.Invoke(result); Debug.Log("u"); }
+            else { Selection?.Invoke(result); Debug.Log("t"); }
         }
     }
 
-    bool UnitSelected(GameObject result) => result.GetComponent<Perso1>() != null;
+    bool UnitSelected(GameObject result) => result.GetComponent<Unit>() != null;
     #endregion
 }

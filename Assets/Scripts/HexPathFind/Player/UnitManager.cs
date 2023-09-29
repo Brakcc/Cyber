@@ -13,14 +13,12 @@ public class UnitManager : MonoBehaviour
     #endregion
 
     #region methodes
-    void Awake()
-    {
-        moveSys = GetComponent<MoveSystem>();
-    }
+    void Awake() => moveSys = GetComponent<MoveSystem>();
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space)) { PlayerTurn = true; }
+        if (Input.GetKeyDown(KeyCode.C)) { ClearOldSelection(); }
     }
 
     public void HandleUnitSelected(GameObject unit)
@@ -82,7 +80,6 @@ public class UnitManager : MonoBehaviour
             moveSys.MoveUnit(selectedUnit, hexGrid);
             PlayerTurn = false;
             ClearOldSelection();
-
         }
     }
 

@@ -11,6 +11,10 @@ public struct HexCoordonnees : IHexCoord
     #endregion
 
     #region constructeur
+    /// <summary>
+    /// Donne les coordonnées en int d'une tuile dans la grid 
+    /// </summary>
+    /// <param name="gameObject"></param>
     public HexCoordonnees (GameObject gameObject)
     {
         int x = Mathf.CeilToInt(gameObject.transform.position.x / xOffset);

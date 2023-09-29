@@ -22,6 +22,7 @@ public class Hex : MonoBehaviour
         HexType.Default => int.MaxValue,
         HexType.Walkable => 1,
         HexType.Obstacle => int.MaxValue,
+        HexType.Hole => int.MaxValue,
         _ => int.MaxValue
     };
 

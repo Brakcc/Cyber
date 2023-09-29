@@ -23,5 +23,10 @@ public static class Direction
         new Vector3Int(-1, 1, 0), //W2
     };
 
+    /// <summary>
+    /// détermine la parité d'une tuile hexagonale dans une grid hexagonale en Flat-Top
+    /// </summary>
+    /// <param name="x"></param>
+    /// <returns></returns>
     public static List<Vector3Int> GetDirectionList(int x) => x % 2 == 0 ? directionOffsetEven : directionOffsetOdd;
 }

@@ -12,7 +12,7 @@ public class MoveSystem : MonoBehaviour
     #region methodes
     public void HideRange(HexGridStore hexGrid)
     {
-        foreach (Vector3Int hexPos in moveRange.GetRangePositions()) { hexGrid.GetTile(hexPos).DisableGlow(); }
+        foreach (Vector3Int hexPos in moveRange.GetRangePositions()) { hexGrid.GetTile(hexPos).DisableGlowPath(); hexGrid.GetTile(hexPos).DisableGlow(); }
         moveRange = new PathResult();
     }
 
