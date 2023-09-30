@@ -1,4 +1,4 @@
-using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,7 +9,8 @@ public class Perso1 : Unit
     //moves values
     [SerializeField] private int movePoints = 3;
     public override int MovePoints { get { return movePoints; } }
-    [SerializeField] private float speed;
+    [SerializeField] private int speed;
+    public override int Speed { get { return speed; } }
 
     //graph values
     private SelectGlow glow;
@@ -30,33 +31,6 @@ public class Perso1 : Unit
         glow.ToggleGLow(true);
     }
 
-    public override void MoveOnPath(List<Vector3> currentPath)
-    {
-        currentPath.Reverse();
-        FollowPath(currentPath);
-    }
-    #endregion
-
-    #region new methodes
-    public void FollowPath(List<Vector3> path)
-    {
-        Debug.Log(path[path.Count - 1]);
-        float pas = speed * Time.fixedDeltaTime;
-        foreach (var i in path)
-        {
-            float z = path[0].z;
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(i.x, i.y), pas);
-            transform.position = new Vector3(transform.position.x, transform.position.y, z);
-
-            if (Vector2.Distance(transform.position, new Vector2(i.x, i.y)) < 0.001f)
-            {
-                PositionCharacterOnTile(path[0]);
-            }
-        }
-    }
-    void PositionCharacterOnTile(Vector3 pos)
-    {
-        transform.position = new Vector3(pos.x, pos.y + 0.001f, pos.z);
-    }
+    public override void MoveOnPath(List<Vector3> currentPath) => StartCoroutine(FollowPath(currentPath, Speed));
     #endregion
 }

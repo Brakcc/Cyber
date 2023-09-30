@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -28,8 +26,8 @@ public class Selections : MonoBehaviour
         GameObject result;
         if (inputsMan.FocV2(tileSelectionMask, mainC, mousePos, out result))
         {
-            if (UnitSelected(result)) { Unit?.Invoke(result); Debug.Log("u"); }
-            else { Selection?.Invoke(result); Debug.Log("t"); }
+            if (UnitSelected(result)) { Unit?.Invoke(result); }
+            else { Selection?.Invoke(result); }
         }
     }
 
