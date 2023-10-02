@@ -4,11 +4,19 @@ using UnityEngine;
 
 public abstract class Unit : MonoBehaviour, IUnit
 {
-    #region a heriter
+    #region fields a heriter
     public abstract int MovePoints { get; }
     public abstract int Speed { get; }
+    public abstract int HealthPoint { get; set; }
+    public abstract bool IsDead { get; set; }
+    public abstract bool CanPlay { get; set; }
+    public abstract bool IsPersoLocked { get; set; }
+    #endregion
+
+    #region methodes a heriter
     public abstract void Select();
     public virtual void MoveOnPath(List<Vector3> currentPath) => StartCoroutine(FollowPath(currentPath, Speed));
+    public abstract void OnKapa();
     public abstract void Deselect();
     #endregion
 
