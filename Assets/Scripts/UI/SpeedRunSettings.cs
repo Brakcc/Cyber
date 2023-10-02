@@ -72,14 +72,14 @@ public class SpeedRunSettings : MonoBehaviour
         {
             nc = true;
             NC.color = Color.red;
-            GameManager.gm.NCStart();
+            //GameManager.gm.NCStart();
             GameManager.gm.NCOn = 1;
         }
         else
         {
             nc = false;
             NC.color = Color.white;
-            GameManager.gm.NCStop();
+            //GameManager.gm.NCStop();
             GameManager.gm.NCOn = 0;
         }
     }

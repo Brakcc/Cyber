@@ -110,7 +110,7 @@ public class GameManager : MonoBehaviour
             //redémarage en mode NC ou non
             if (NCOn == 1)
             {
-                NCStart();
+                //NCStart();
             }
             else if (NCOn == 0)
             {
@@ -157,39 +157,6 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
-    public void NCStart()
-    {
-        player.transform.position = firstApp.transform.position;
-        checkPoint = firstApp.transform.position;
-        dash = 0;
-        musicID = 0;
-        lightPlayer.intensity = 0; 
-        globalLigth.intensity = 0.9f;
-        generalVolume.weight = 0;
-        foreach (var i in allChecks)
-        {
-            //i.GetComponent<CheckPoint>().enabled = false;
-        }
-    }
-    public void NCStop()
-    {
-        foreach (var i in allChecks)
-        {
-            //i.GetComponent<CheckPoint>().enabled = true;
-        }
-    }
-
-    /*IEnumerator GoBackToStart()
-    {
-        PlayerMovement.instance.enabled = false;
-        fade.SetTrigger("FadeIn");
-        yield return new WaitForSeconds(0.5f);
-        GameObject.FindGameObjectWithTag("Player").transform.position = GameObject.Find("FirstApp").transform.position;
-        fade.SetTrigger("FadeOut");
-        yield return new WaitForSeconds(0.2f);
-        PlayerMovement.instance.enabled = true;
-    }*/
     #endregion
 
     #region Saves

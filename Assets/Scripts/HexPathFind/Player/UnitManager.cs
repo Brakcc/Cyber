@@ -12,15 +12,28 @@ public class UnitManager : MonoBehaviour
     public bool PlayerTurn { get; private set; } = true;
     #endregion
 
-    #region methodes
-    void Awake() => moveSys = GetComponent<MoveSystem>();
+    #region Instance et Awake
+    public static UnitManager unitManager;
 
+    void Awake()
+    {
+        unitManager = this;
+        moveSys = GetComponent<MoveSystem>();
+    }  
+    #endregion
+
+    #region methodes
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space)) { PlayerTurn = true; }
-        if (Input.GetKeyDown(KeyCode.C)) { ClearOldSelection(); }
     }
 
+    /// <summary>
+    /// Si l'unit peut jouer son tour : 2 possibilités :
+    /// -> Si elle était déjà sélectionnée : ClearOldSelection
+    /// -> Sinon PreparUnitForMove
+    /// </summary>
+    /// <param name="unit"></param>
     public void HandleUnitSelected(GameObject unit)
     {
         if (!PlayerTurn) return;
@@ -31,16 +44,12 @@ public class UnitManager : MonoBehaviour
         PrepareUnitForMove(unitReference);
     }
 
-    bool CheckIfTheSameUnitSelected(Unit unitRef)
-    {
-        if (selectedUnit == unitRef)
-        {
-            ClearOldSelection();
-            return true;
-        }
-        return false;
-    }
-
+    /// <summary>
+    /// Si une Unit est sélectionnée et le tour de l'Unit en cours : 
+    /// -> Si l'hex est hors de range ou celle du perso (Si celle du perso le perso est unselect et ClearOldSelection) : 
+    /// -> HandleTargetSelected
+    /// </summary>
+    /// <param name="selectedHex"></param>
     public void HandleTerrainSelect(GameObject selectedHex)
     {
         if (selectedUnit == null || !PlayerTurn) return;
@@ -51,6 +60,12 @@ public class UnitManager : MonoBehaviour
         HandleTargetSelectedHex(selHex);
     }
 
+    /// <summary>
+    /// si Unit est selected : 
+    /// -> Select = ShowGlow 
+    /// -> ShowRange
+    /// </summary>
+    /// <param name="unitRef"></param>
     void PrepareUnitForMove(Unit unitRef)
     {
         if (selectedUnit != null) { ClearOldSelection(); }
@@ -60,6 +75,9 @@ public class UnitManager : MonoBehaviour
         moveSys.ShowRange(selectedUnit, hexGrid);
     }
 
+    /// <summary>
+    /// reset le perso selectionné et les sélections graphiques
+    /// </summary>
     void ClearOldSelection()
     {
         previousSelectedHex = null;
@@ -68,6 +86,11 @@ public class UnitManager : MonoBehaviour
         selectedUnit = null;
     }
 
+    /// <summary>
+    /// Si Hex une nouvelle hex dans la range : new path glow
+    /// / Si hex dej a select au bout du path : MovePlayer
+    /// </summary>
+    /// <param name="selects"></param>
     void HandleTargetSelectedHex(Hex selects)
     {
         if (previousSelectedHex == null || previousSelectedHex != selects)
@@ -83,6 +106,27 @@ public class UnitManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Si même Unit sélectionnée 2 fois, elle est désélectionnée 
+    /// </summary>
+    /// <param name="unitRef"></param>
+    /// <returns></returns>
+    bool CheckIfTheSameUnitSelected(Unit unitRef)
+    {
+        if (selectedUnit == unitRef)
+        {
+            ClearOldSelection();
+            return true;
+        }
+        return false;
+    }
+
+    /// <summary>
+    /// Si hex sélectionnée celui de l'Unit, même effet que SameUnitSelected : 
+    /// -> ClearOldSelection
+    /// </summary>
+    /// <param name="hexPos"></param>
+    /// <returns></returns>
     bool HandleSelectedHexIsUnitHex(Vector3Int hexPos)
     {
         if (hexPos == hexGrid.GetClosestHex(selectedUnit.transform.position))
@@ -94,6 +138,11 @@ public class UnitManager : MonoBehaviour
         return false;
     }
 
+    /// <summary>
+    /// L'hex sélectionnée est ou non hors de portée
+    /// </summary>
+    /// <param name="hexPos"></param>
+    /// <returns></returns>
     bool HandleHexOutOfRange(Vector3Int hexPos)
     {
         if (!moveSys.IsHexInRange(hexPos)) { return true; }
