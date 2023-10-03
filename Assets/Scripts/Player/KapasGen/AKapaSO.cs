@@ -13,8 +13,8 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     #endregion
 
     #region methodes to herit
-    public virtual void DeselectTiles() => Debug.Log("Lel");
+    public virtual void SelectTiles() => Debug.Log("KapaGraphSelect");
     public abstract void Execute();
-    public virtual void SelectTiles() => Debug.Log("Lul");
+    public virtual void DeselectTiles() => Debug.Log("KapaGraphDeselect");
     #endregion
 }

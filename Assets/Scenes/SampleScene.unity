@@ -771,12 +771,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6839896766878513041}
         m_TargetAssemblyTypeName: UnitManager, Assembly-CSharp
-        m_MethodName: Skip
-        m_Mode: 1
+        m_MethodName: HandleKapaSelect
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2766,6 +2766,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
   m_PrefabInstance: {fileID: 1698832366}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &477960834 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5587667834857246867, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
+  m_PrefabInstance: {fileID: 65716689}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &485777526 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
@@ -4125,12 +4130,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6839896766878513041}
         m_TargetAssemblyTypeName: UnitManager, Assembly-CSharp
-        m_MethodName: Turret
-        m_Mode: 1
+        m_MethodName: HandleKapaSelect
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4426,12 +4431,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6839896766878513041}
         m_TargetAssemblyTypeName: UnitManager, Assembly-CSharp
-        m_MethodName: Ulti
-        m_Mode: 1
+        m_MethodName: HandleKapaSelect
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4643,8 +4648,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6839896766878513041}
         m_TargetAssemblyTypeName: UnitManager, Assembly-CSharp
-        m_MethodName: Natk
-        m_Mode: 1
+        m_MethodName: HandleKapaSelect
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5683,6 +5688,7 @@ GameObject:
   - component: {fileID: 1045248855}
   - component: {fileID: 1045248857}
   - component: {fileID: 1045248856}
+  - component: {fileID: 1045248858}
   m_Layer: 5
   m_Name: BackGroundKapas
   m_TagString: Untagged
@@ -5753,6 +5759,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1045248854}
   m_CullTransparentMesh: 1
+--- !u!114 &1045248858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045248854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1001 &1053703227
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8173,12 +8194,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6839896766878513041}
         m_TargetAssemblyTypeName: UnitManager, Assembly-CSharp
-        m_MethodName: Comp
-        m_Mode: 1
+        m_MethodName: HandleKapaSelect
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -10398,6 +10419,18 @@ MonoBehaviour:
     IconTexture: {fileID: 0}
     IsIconRecursive: 0
     BackgroundType: 16000
+    BackgroundTexture: {fileID: 0}
+    IsBackgroundRecursive: 0
+    IsHidden: 0
+  - Type: 0
+    Name: 
+    GameObject: {fileID: 477960834}
+    Ordinal: 128
+    Priority: 0
+    IconType: 117450
+    IconTexture: {fileID: 0}
+    IsIconRecursive: 0
+    BackgroundType: 3000
     BackgroundTexture: {fileID: 0}
     IsBackgroundRecursive: 0
     IsHidden: 0

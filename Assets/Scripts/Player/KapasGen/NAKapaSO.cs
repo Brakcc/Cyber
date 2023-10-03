@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Normal Attack Kapa", menuName = "Tactical/Normal Attack Kapa")]
@@ -47,6 +46,7 @@ public class NAKapaSO : AKapaSO
     }
     void EndKapa()
     {
+        DeselectTiles();
         UnitManager.unitManager.SelectedUnit.IsPersoLocked = false;
         UnitManager.unitManager.SelectedUnit.CanPlay = false;
         UnitManager.unitManager.SelectedUnit = null;

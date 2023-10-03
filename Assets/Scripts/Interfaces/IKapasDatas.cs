@@ -22,5 +22,6 @@ public enum KapaType
     Competence,
     Ultimate,
     Turret, 
-    Skip
+    Skip, 
+    Default
 }

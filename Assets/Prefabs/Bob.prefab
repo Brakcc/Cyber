@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a1fe2da2dbed7a4fb8e5be1dc7e7c13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movePoints: 10
+  movePoints: 5
   speed: 15
   healthPoint: 50
   kapasList: []

@@ -17,7 +17,7 @@ MonoBehaviour:
   description: 3
   cost: 10
   effectType: 0
-  kapaType: 0
+  kapaType: 2
   kapaUI: {fileID: 0}
   damage: 0
   evenAffectedTiles: []

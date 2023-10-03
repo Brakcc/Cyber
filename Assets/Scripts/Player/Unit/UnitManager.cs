@@ -1,3 +1,4 @@
+using System.Net;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +16,10 @@ public class UnitManager : MonoBehaviour
     private Hex previousSelectedHex;
     public Hex PreviousSelectedHex { get => previousSelectedHex; }
 
+    //Is a Kapa Currently selected, pas vraiment de possibilité de store directement une Kapa, les methodes de kapas étatn deja stored dans le cache AKapaSO
+    public KapaType CurrentTypeKapaSelected { get; private set; }
+    public bool IsKapaSelected { get; private set; }
+
     //Player Turn à déplacer dans le GameLoopManager
     public bool PlayerTurn { get; private set; } = true;
     #endregion
@@ -28,6 +33,8 @@ public class UnitManager : MonoBehaviour
         moveSys = GetComponent<MoveSystem>();
         selectedUnit = null;
         previousSelectedHex = null;
+        CurrentTypeKapaSelected = KapaType.Default;
+        IsKapaSelected = false;
     }
     #endregion
 
@@ -70,15 +77,6 @@ public class UnitManager : MonoBehaviour
 
         HandleTargetSelectedHex(selHex);
     }
-
-    public void HandleKapaSelected(GameObject unit)
-    {
-        Unit unitRef = unit.GetComponent<Unit>();
-        if (!PlayerTurn || selectedUnit == null || !unitRef.CanPlay || unitRef.IsDead) return;
-
-        //if ()
-
-    }
     #endregion
 
     #region movements methodes
@@ -90,8 +88,12 @@ public class UnitManager : MonoBehaviour
     /// <param name="unitRef"></param>
     void PrepareUnitForMove(Unit unitRef)
     {
-        if (selectedUnit != null) { ClearOldSelection(); }
-
+        foreach (AKapaSO AK in unitRef.KapasList)
+        {
+            if (AK.KapaType == CurrentTypeKapaSelected) { AK.DeselectTiles(); }
+        }
+        if (selectedUnit != null && !IsKapaSelected) { ClearOldSelection(); ResetKapaData(); }
+        
         selectedUnit = unitRef;
         selectedUnit.Select();
         moveSys.ShowRange(selectedUnit, hexGrid);
@@ -128,30 +130,39 @@ public class UnitManager : MonoBehaviour
     #endregion
 
     #region KapasCalls
-    public void Natk()
+    /// <summary>
+    /// Gère la selection des Kapas à la façon des Units, On doit selectionner à 2 fois une compétence avant de pouvoir l'executer.
+    /// PENSER A AJOUTER LA METHODES POUR LA SELECTION DE LA DIRECTION DE LA COMPETENCE
+    /// </summary>
+    /// <param name="i"></param>
+    public void HandleKapaSelect(int i)
     {
         if (selectedUnit == null) return;
-        selectedUnit.KapasList[0].Execute();
+        KapaType type = selectedUnit.KapasList[i].KapaType;
+
+        if (!IsKapaSelected) ClearGraphKeepUnit();
+
+        if (!IsKapaSelected || CurrentTypeKapaSelected != type)
+        {
+            selectedUnit.KapasList[i].SelectTiles();
+            CurrentTypeKapaSelected = type;
+            IsKapaSelected = true;
+            ///Debug.Log(CurrentTypeKapaSelected);
+            return;
+        }
+        selectedUnit.KapasList[i].Execute();
+        ResetKapaData();
     }
-    public void Comp()
+
+    /// <summary>
+    /// Reset les datas stored sur les Kapas : 
+    /// -> Bool isKapaSelected
+    /// -> CurrentKapaType remis en Default
+    /// </summary>
+    void ResetKapaData()
     {
-        if (selectedUnit == null) return;
-        selectedUnit.KapasList[1].Execute();
-    }
-    public void Ulti()
-    {
-        if (selectedUnit == null) return;
-        selectedUnit.KapasList[2].Execute();
-    }
-    public void Turret()
-    {
-        if (selectedUnit == null) return;
-        selectedUnit.KapasList[3].Execute();
-    }
-    public void Skip()
-    {
-        if (selectedUnit == null) return;
-        selectedUnit.KapasList[4].Execute();
+        CurrentTypeKapaSelected = KapaType.Default;
+        IsKapaSelected = false;
     }
     #endregion
 
@@ -171,29 +182,49 @@ public class UnitManager : MonoBehaviour
         //On clique sur UNE AUTRE unit et la SELECTED UNIT n'est PAS LOCK
         else if (selectedUnit != unitRef && !selectedUnit.IsPersoLocked)
         {
-            Debug.Log("Switch selected Unit");
-            ClearOldSelection();
+            ///Debug.Log("Switch selected Unit");
+            if (!IsKapaSelected)
+            {
+                ClearOldSelection();
+                return false;
+            }
+            else
+            {
+                ClearDataSelectionAvoidRange();
+                ResetKapaData();
+                return false;
+            }
             //on inverse la sortie pour pouvoir continuer la methode de sélection des persos
-            return false;
         }
         //On clique sur LA MEME Unit et elle est DEJA LOCK
         else if (selectedUnit == unitRef && selectedUnit.IsPersoLocked)
         {
-            Debug.Log("Meme Unit et Locked");
+            ///Debug.Log("Meme Unit et Locked");
             //feedbacks pour montrer que le perso doit faire une capa (ex : petit son de bip un peu techno des familles)
             return true;
         }
         //On clique sur LA MEME unit mais ELLE n'est PAS LOCK (Old CheckIfSameUnitSelected)
         else if (selectedUnit == unitRef && !selectedUnit.IsPersoLocked)
         {
-            Debug.Log("Same Unit selected");
-            ClearOldSelection();
-            return true;
+            ///Debug.Log("Same Unit selected");
+            if (!IsKapaSelected)
+            {
+                ClearOldSelection();
+                Debug.Log("1");
+                return true;
+            }
+            else
+            {
+                ClearDataSelectionAvoidRange();
+                ResetKapaData();
+                Debug.Log("2");
+                return false;
+            }
         }
         //On clique sur UNE AUTRE Unit mais la SELECTED UNIT est DEJA LOCKED
         else
         {
-            Debug.Log("selectedUnit Locked");
+            ///Debug.Log("selectedUnit Locked");
             //action de refus : mettre des feedbacks
             //on inverse la sortie pour pouvoir continuer la methode de sélection des persos
             return true;
@@ -266,6 +297,13 @@ public class UnitManager : MonoBehaviour
         previousSelectedHex = null;
         selectedUnit.Deselect();
         moveSys.HideRange(hexGrid);
+        selectedUnit = null;
+    }
+
+    void ClearDataSelectionAvoidRange()
+    {
+        previousSelectedHex = null;
+        selectedUnit.Deselect();
         selectedUnit = null;
     }
 
