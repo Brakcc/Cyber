@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class UnitManager : MonoBehaviour
@@ -32,10 +31,10 @@ public class UnitManager : MonoBehaviour
     }
     #endregion
 
-    #region selections methodes
+    #region selections methodes and update
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) { PlayerTurn = true; }
+        if (Input.GetKeyDown(KeyCode.Space)) { PlayerTurn = true; ResetLoop(); }
     }
 
     /// <summary>
@@ -258,7 +257,7 @@ public class UnitManager : MonoBehaviour
     }
     #endregion
 
-    #region Clearing methodes
+    #region Clearing and Reset methodes
     /// <summary>
     /// reset le perso selectionné et les sélections graphiques
     /// </summary>
@@ -278,6 +277,11 @@ public class UnitManager : MonoBehaviour
         previousSelectedHex = null;
         selectedUnit.Deselect();
         moveSys.HideRange(hexGrid);
+    }
+
+    void ResetLoop()
+    {
+        foreach (GameObject u in GameObject.FindGameObjectsWithTag("Player")) { u.GetComponent<Unit>().CanPlay = true; }
     }
     #endregion
 }

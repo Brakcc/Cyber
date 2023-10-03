@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1526123754989008977}
   m_Layer: 6
   m_Name: Bob
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -117,6 +117,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movePoints: 10
   speed: 15
+  healthPoint: 50
+  kapasList: []
 --- !u!114 &1526123754989008977
 MonoBehaviour:
   m_ObjectHideFlags: 0

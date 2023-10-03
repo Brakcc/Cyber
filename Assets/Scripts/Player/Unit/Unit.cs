@@ -11,15 +11,7 @@ public abstract class Unit : MonoBehaviour, IUnit
     public abstract bool IsDead { get; set; }
     public abstract bool CanPlay { get; set; }
     public abstract bool IsPersoLocked { get; set; }
-    #endregion
-
-    #region Kapas
     public abstract List<AKapaSO> KapasList { get; set; }
-    /*public abstract Kapa normalA { get; set; }
-    public abstract Kapa Comp { get; set; }
-    public abstract Kapa Ulti { get; set; }
-    public abstract Kapa Turret { get; set; }
-    public abstract Kapa Skip { get; set; }*/
     #endregion
 
     #region methodes a heriter

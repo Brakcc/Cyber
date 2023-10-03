@@ -24,12 +24,6 @@ public class Perso1 : Unit
     [SerializeField] private List<AKapaSO> kapasList = new List<AKapaSO>();
     public override List<AKapaSO> KapasList { get => kapasList; 
                                            set { kapasList = value; } }
-    
-    /*public override Kapa normalA { get; set; }
-    public override Kapa Comp { get; set; }
-    public override Kapa Ulti { get; set; }
-    public override Kapa Turret { get; set; }
-    public override Kapa Skip { get; set; }*/
     #endregion
 
     #region other fields

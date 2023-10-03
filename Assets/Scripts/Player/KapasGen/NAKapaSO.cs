@@ -43,6 +43,7 @@ public class NAKapaSO : AKapaSO
     void DoKapa()
     {
         //PlaceHolder à rempir avec les anims et considérations de dégâts
+        Debug.Log("Done");
     }
     void EndKapa()
     {
