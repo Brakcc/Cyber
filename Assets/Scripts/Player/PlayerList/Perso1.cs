@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [SelectionBase]
@@ -6,20 +7,29 @@ public class Perso1 : Unit
     #region inherited accessors
     //moves fields
     [SerializeField] private int movePoints = 3;
-    public override int MovePoints { get { return movePoints; } }
+    public override int MovePoints { get => movePoints; }
 
     [SerializeField] private int speed = 15;
-    public override int Speed { get { return speed; } }
-
-    //health
+    public override int Speed { get => speed; }    //health
     [SerializeField] private int healthPoint = 50;
-    public override int HealthPoint { get { return healthPoint; } 
+    public override int HealthPoint { get => healthPoint; 
                                       set { healthPoint = value; } }
 
     //Game Loop Logic
     public override bool CanPlay { get; set; }
     public override bool IsDead { get; set; }
     public override bool IsPersoLocked { get; set; }
+
+    //kapas
+    [SerializeField] private List<AKapaSO> kapasList = new List<AKapaSO>();
+    public override List<AKapaSO> KapasList { get => kapasList; 
+                                           set { kapasList = value; } }
+    
+    /*public override Kapa normalA { get; set; }
+    public override Kapa Comp { get; set; }
+    public override Kapa Ulti { get; set; }
+    public override Kapa Turret { get; set; }
+    public override Kapa Skip { get; set; }*/
     #endregion
 
     #region other fields

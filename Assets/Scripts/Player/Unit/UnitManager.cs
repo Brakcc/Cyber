@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class UnitManager : MonoBehaviour
 {
@@ -6,12 +8,15 @@ public class UnitManager : MonoBehaviour
     [SerializeField] private HexGridStore hexGrid;
     private MoveSystem moveSys;
 
+    //Unit currently stored
     private Unit selectedUnit;
+    public Unit SelectedUnit { get => selectedUnit;
+                               set { selectedUnit = value; } }
+    //Hex Currently processed
     private Hex previousSelectedHex;
+    public Hex PreviousSelectedHex { get => previousSelectedHex; }
 
-    //Kapa fields
-
-
+    //Player Turn à déplacer dans le GameLoopManager
     public bool PlayerTurn { get; private set; } = true;
     #endregion
 
@@ -24,7 +29,7 @@ public class UnitManager : MonoBehaviour
         moveSys = GetComponent<MoveSystem>();
         selectedUnit = null;
         previousSelectedHex = null;
-    }  
+    }
     #endregion
 
     #region selections methodes
@@ -48,6 +53,7 @@ public class UnitManager : MonoBehaviour
         if (CheckIfCanSelectOtherUnitAndIfSameUnit(unitReference)) return;
 
         PrepareUnitForMove(unitReference);
+        ShowKapasUI(unitReference);
     }
 
     /// <summary>
@@ -112,6 +118,41 @@ public class UnitManager : MonoBehaviour
             ClearGraphKeepUnit();
             LockUnitAfterMove();
         }
+    }
+    #endregion
+
+    #region UI and Graph Management
+    void ShowKapasUI(Unit unit)
+    {
+        
+    }
+    #endregion
+
+    #region KapasCalls
+    public void Natk()
+    {
+        if (selectedUnit == null) return;
+        selectedUnit.KapasList[0].Execute();
+    }
+    public void Comp()
+    {
+        if (selectedUnit == null) return;
+        selectedUnit.KapasList[1].Execute();
+    }
+    public void Ulti()
+    {
+        if (selectedUnit == null) return;
+        selectedUnit.KapasList[2].Execute();
+    }
+    public void Turret()
+    {
+        if (selectedUnit == null) return;
+        selectedUnit.KapasList[3].Execute();
+    }
+    public void Skip()
+    {
+        if (selectedUnit == null) return;
+        selectedUnit.KapasList[4].Execute();
     }
     #endregion
 
@@ -221,7 +262,7 @@ public class UnitManager : MonoBehaviour
     /// <summary>
     /// reset le perso selectionné et les sélections graphiques
     /// </summary>
-    void ClearOldSelection()
+    public void ClearOldSelection()
     {
         previousSelectedHex = null;
         selectedUnit.Deselect();

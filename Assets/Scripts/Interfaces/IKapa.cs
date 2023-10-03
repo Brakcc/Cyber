@@ -1,6 +1,6 @@
 public interface IKapa
 {
     public void SelectTiles();
-    public void Execute(ScriptableDataKapa dataKapa);
+    public void Execute();
     public void DeselectTiles();
 }
