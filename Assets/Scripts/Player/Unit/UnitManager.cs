@@ -107,7 +107,7 @@ public class UnitManager : MonoBehaviour
         else
         {
             moveSys.MoveUnit(selectedUnit, hexGrid);
-            PlayerTurn = false;
+            //PlayerTurn = false; trouver une autre methode pour bloquer le joueur en listant l'ensemble des units
             // Ici on utilise pas le ClearOldSelection pour ne pas reset l'Unit Selected, On veut Lock l'Unit pour la phase de Capa
             ClearGraphKeepUnit();
             LockUnitAfterMove();
@@ -131,6 +131,7 @@ public class UnitManager : MonoBehaviour
         //On clique sur UNE AUTRE unit et la SELECTED UNIT n'est PAS LOCK
         else if (selectedUnit != unitRef && !selectedUnit.IsPersoLocked)
         {
+            Debug.Log("Switch selected Unit");
             ClearOldSelection();
             //on inverse la sortie pour pouvoir continuer la methode de sélection des persos
             return false;
@@ -138,18 +139,21 @@ public class UnitManager : MonoBehaviour
         //On clique sur LA MEME Unit et elle est DEJA LOCK
         else if (selectedUnit == unitRef && selectedUnit.IsPersoLocked)
         {
+            Debug.Log("Meme Unit et Locked");
             //feedbacks pour montrer que le perso doit faire une capa (ex : petit son de bip un peu techno des familles)
             return true;
         }
         //On clique sur LA MEME unit mais ELLE n'est PAS LOCK (Old CheckIfSameUnitSelected)
         else if (selectedUnit == unitRef && !selectedUnit.IsPersoLocked)
         {
+            Debug.Log("Same Unit selected");
             ClearOldSelection();
-            return false;
+            return true;
         }
         //On clique sur UNE AUTRE Unit mais la SELECTED UNIT est DEJA LOCKED
         else
         {
+            Debug.Log("selectedUnit Locked");
             //action de refus : mettre des feedbacks
             //on inverse la sortie pour pouvoir continuer la methode de sélection des persos
             return true;
