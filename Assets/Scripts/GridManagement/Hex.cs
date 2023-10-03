@@ -19,7 +19,7 @@ public class Hex : MonoBehaviour
 
     public int GetValue() => type switch
     {
-        HexType.Default => int.MaxValue,
+        HexType.Default => int.MaxValue,    
         HexType.Walkable => 1,
         HexType.Obstacle => int.MaxValue,
         HexType.Hole => int.MaxValue,
