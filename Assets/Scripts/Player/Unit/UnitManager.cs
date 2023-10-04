@@ -172,6 +172,7 @@ public class UnitManager : MonoBehaviour
     /// -> pas d'unit
     /// -> switch la sélection d'unit
     /// -> sinon bloque la sélection
+    /// GERE EGALEMENT LA TRANSITION ENTRE UNIT ET KAPA
     /// </summary>
     /// <param name="unitRef">é_é</param>
     /// <returns></returns>
