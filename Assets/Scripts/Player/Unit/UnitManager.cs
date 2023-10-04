@@ -1,4 +1,3 @@
-using System.Net;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -42,6 +41,10 @@ public class UnitManager : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space)) { PlayerTurn = true; ResetLoop(); }
+        if (Input.GetKeyDown(KeyCode.N)) 
+        {
+            foreach (Vector3Int v in hexGrid.GetNeighbourgs(HexCoordonnees.GetClosestHex(selectedUnit.transform.position))) { Debug.Log(v); }
+        }
     }
 
     /// <summary>
@@ -123,6 +126,14 @@ public class UnitManager : MonoBehaviour
     #endregion
 
     #region UI and Graph Management
+    /*void InitKapaUI()
+    {
+        foreach(RectTransform c in bGAnimator.GetComponentInChildren<RectTransform>())
+        {
+            c.localScale = new Vector3(0, 0, 1);
+        }
+    }*/
+
     void ShowKapasUI(Unit unit)
     {
         
@@ -211,14 +222,14 @@ public class UnitManager : MonoBehaviour
             if (!IsKapaSelected)
             {
                 ClearOldSelection();
-                Debug.Log("1");
+                ///Debug.Log("1");
                 return true;
             }
             else
             {
                 ClearDataSelectionAvoidRange();
                 ResetKapaData();
-                Debug.Log("2");
+                ///Debug.Log("2");
                 return false;
             }
         }
@@ -268,7 +279,7 @@ public class UnitManager : MonoBehaviour
     /// <returns></returns>
     bool HandleSelectedHexIsUnitHex(Vector3Int hexPos)
     {
-        if (hexPos == hexGrid.GetClosestHex(selectedUnit.transform.position))
+        if (hexPos == HexCoordonnees.GetClosestHex(selectedUnit.transform.position))
         {
             selectedUnit.Deselect();
             ClearOldSelection();
