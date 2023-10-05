@@ -151,7 +151,7 @@ public class UnitManager : MonoBehaviour
         if (selectedUnit == null) return;
         KapaType type = selectedUnit.KapasList[i].KapaType;
 
-        if (!IsKapaSelected) ClearGraphKeepUnit();
+        if (!IsKapaSelected && !selectedUnit.IsPersoLocked) ClearGraphKeepUnit();
 
         if (!IsKapaSelected || CurrentTypeKapaSelected != type)
         {
