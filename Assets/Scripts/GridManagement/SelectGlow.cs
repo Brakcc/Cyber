@@ -29,11 +29,9 @@ public class SelectGlow : MonoBehaviour
             Material[] newMats = new Material[rend.materials.Length];
             for (int i = 0; i < origins.Length; i++)
             {
-                Material mat = null;
-                if (!cachedGlowMats.TryGetValue(origins[i].color, out mat))
+                if (!cachedGlowMats.TryGetValue(origins[i].color, out Material mat))
                 {
-                    mat = new Material(glowMat);
-                    mat.color = origins[i].color;
+                    mat = new Material(glowMat) { color = origins[i].color };
                     cachedGlowMats[mat.color] = mat;
                 }
                 newMats[i] = mat;
