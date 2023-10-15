@@ -63,13 +63,13 @@ public struct PathResult
 {
     public Dictionary<Vector3Int, Vector3Int?> calculatedNodes;
 
-    public List<Vector3Int> GetPathTo(Vector3Int dest)
+    public readonly List<Vector3Int> GetPathTo(Vector3Int dest)
     {
         if (!calculatedNodes.ContainsKey(dest)) { return new List<Vector3Int>(); }
         return PathFind.GeneratePath(dest, calculatedNodes);
     }
 
-    public bool IsHexPosInRange(Vector3Int pos) => calculatedNodes.ContainsKey(pos);
+    public readonly bool IsHexPosInRange(Vector3Int pos) => calculatedNodes.ContainsKey(pos);
 
-    public IEnumerable<Vector3Int> GetRangePositions() => calculatedNodes.Keys;
+    public readonly IEnumerable<Vector3Int> GetRangePositions() => calculatedNodes.Keys;
 }
