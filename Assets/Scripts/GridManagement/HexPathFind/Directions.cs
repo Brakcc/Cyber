@@ -29,4 +29,11 @@ public static class Direction
     /// <param name="x">direction de non-alignement des tuiles</param>
     /// <returns></returns>
     public static List<Vector3Int> GetDirectionList(int x) => x % 2 == 0 ? directionOffsetEven : directionOffsetOdd;
+
+    /// <summary>
+    /// revoit un bool sur la parité d'une tuile, celle sur laquelle une Unit est posée
+    /// </summary>
+    /// <param name="x"></param>
+    /// <returns></returns>
+    public static bool IsPariryEven(int x) => x % 2 == 0;
 }

@@ -4,16 +4,17 @@ public interface IKapasDatas
     public int ID { get; }
     public int Cost { get; }
     public string Description { get; }
-    public DamageEffectType EffectType { get; }
+    public EffectType EffectType { get; }
     public  KapaType KapaType { get; }
 }
 
-public enum DamageEffectType
+public enum EffectType
 {
     SingleDamage,
     DOT,
     Hacked,
-    Buff
+    Buff,
+    Rez
 }
 
 public enum KapaType

@@ -21,6 +21,8 @@ public class UnitManager : MonoBehaviour
 
     //Player Turn à déplacer dans le GameLoopManager
     public bool PlayerTurn { get; private set; } = true;
+
+    [SerializeField] private Vector3Int test;
     #endregion
 
     #region Instance et Awake
@@ -45,6 +47,7 @@ public class UnitManager : MonoBehaviour
         {
             foreach (Vector3Int v in hexGrid.GetNeighbourgs(HexCoordonnees.GetClosestHex(selectedUnit.transform.position))) { Debug.Log(v); }
         }
+        if (Input.GetKeyDown(KeyCode.T)) { Debug.Log("Ortho OffSet = " + HexToOrthoCoords.GetOddOrtoCoord(test)); }
     }
 
     /// <summary>

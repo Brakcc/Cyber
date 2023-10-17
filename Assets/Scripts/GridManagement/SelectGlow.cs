@@ -8,7 +8,8 @@ public class SelectGlow : MonoBehaviour
     private Dictionary<Renderer, Material[]> originMats = new Dictionary<Renderer, Material[]>();
     private Dictionary<Color, Material> cachedGlowMats = new Dictionary<Color, Material>();
     public Material glowMat;
-    private Color selectedPathColor = Color.green;
+    [SerializeField] private Color selectedPathColor;
+    [SerializeField] private Color selectedKapaColor;
     private Color originColor;
     private bool isGlowing;
     #endregion
@@ -40,6 +41,7 @@ public class SelectGlow : MonoBehaviour
         }
     }
 
+    #region standard glow
     public void Toggle()
     {
         if (!isGlowing)
@@ -59,16 +61,15 @@ public class SelectGlow : MonoBehaviour
         isGlowing = !b;
         Toggle();
     }
+    #endregion
 
+    #region path glow
     public void StartGlowPath()
     {
         if (!isGlowing) return;
         foreach (Renderer rend in glowMats.Keys)
         {
-            foreach (Material m in glowMats[rend])
-            {
-                m.SetColor("_GlowColor", selectedPathColor);
-            }
+            foreach (Material m in glowMats[rend]) { m.SetColor("_GlowColor", selectedPathColor); }
         }
     }
     public void ResetGlowPath()
@@ -76,12 +77,28 @@ public class SelectGlow : MonoBehaviour
         if (!isGlowing) return;
         foreach (Renderer rend in glowMats.Keys)
         {
-            foreach (Material m in glowMats[rend])
-            {
-                m.SetColor("_GlowColor", originColor);
-            }
+            foreach (Material m in glowMats[rend]) { m.SetColor("_GlowColor", originColor); }
             rend.materials = glowMats[rend];
         }
     }
+    #endregion
+
+    #region kapa glow
+    public void EnableGlowKapa()
+    {
+        foreach (Renderer rend in glowMats.Keys)
+        {
+            foreach (Material m in glowMats[rend]) { m.SetColor("_GlowColor", selectedKapaColor); }
+        }
+    }
+    public void DisableGlowKapa()
+    {
+        foreach (Renderer rend in glowMats.Keys)
+        {
+            foreach (Material m in glowMats[rend]) { m.SetColor("_GlowColor", originColor); }
+            rend.materials = glowMats[rend];
+        }
+    }
+    #endregion
     #endregion
 }
