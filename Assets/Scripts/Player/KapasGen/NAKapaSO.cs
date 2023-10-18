@@ -22,25 +22,42 @@ public class NAKapaSO : AKapaSO
     public Vector3Int[] patern;
     #endregion
 
-    #region inherited paterns
+    #region inherited paterns/accessors
     //North tiles
-    public override Vector2Int[] OddNTiles { get; set; }
-    public override Vector2Int[] EvenNTiles { get; set; }
+    public override Vector2Int[] OddNTiles { get => oddNTiles; set { oddNTiles = value; } }
+    [HideInInspector] public Vector2Int[] oddNTiles;
+    public override Vector2Int[] EvenNTiles { get => evenNTiles; set { evenNTiles = value; } }
+    [HideInInspector] public Vector2Int[] evenNTiles;
+
     //EN tiles
-    public override Vector2Int[] OddENTiles { get; set; }
-    public override Vector2Int[] EvenENTiles { get; set; }
+    public override Vector2Int[] OddENTiles { get => oddENTiles; set { oddENTiles = value; } }
+    [HideInInspector] public Vector2Int[] oddENTiles;
+    public override Vector2Int[] EvenENTiles { get => evenENTiles; set { evenENTiles = value; } }
+    public Vector2Int[] evenENTiles;
+
     //ES tiles
-    public override Vector2Int[] OddESTiles { get; set; }
-    public override Vector2Int[] EvenESTiles { get; set; }
+    public override Vector2Int[] OddESTiles { get => oddESTiles; set { oddESTiles = value; } }
+    [HideInInspector] public Vector2Int[] oddESTiles;
+    public override Vector2Int[] EvenESTiles { get => evenESTiles; set { evenESTiles = value; } }
+    [HideInInspector] public Vector2Int[] evenESTiles;
+
     //S tiles
-    public override Vector2Int[] OddSTiles { get; set; }
-    public override Vector2Int[] EvenSTiles { get; set; }
+    public override Vector2Int[] OddSTiles { get => oddSTiles; set { oddSTiles = value; } }
+    [HideInInspector] public Vector2Int[] oddSTiles;
+    public override Vector2Int[] EvenSTiles { get => evenSTiles; set { evenSTiles = value; } }
+    [HideInInspector] public Vector2Int[] evenSTiles;
+
     //WS tiles
-    public override Vector2Int[] OddWSTiles { get; set; }
-    public override Vector2Int[] EvenWSTiles { get; set; }
+    public override Vector2Int[] OddWSTiles { get => oddWSTiles; set { oddWSTiles = value; } }
+    [HideInInspector] public Vector2Int[] oddWSTiles;
+    public override Vector2Int[] EvenWSTiles { get => evenWSTiles; set { evenWSTiles = value; } }
+    [HideInInspector] public Vector2Int[] evenWSTiles;
+
     //WN tiles
-    public override Vector2Int[] OddWNTiles { get; set; }
-    public override Vector2Int[] EvenWNTiles { get; set; }
+    public override Vector2Int[] OddWNTiles { get => oddWNTiles; set { oddWNTiles = value; } }
+    [HideInInspector] public Vector2Int[] oddWNTiles;
+    public override Vector2Int[] EvenWNTiles { get => evenWNTiles; set { evenWNTiles = value; } }
+    [HideInInspector] public Vector2Int[] evenWNTiles;
     #endregion
 
     #region fields

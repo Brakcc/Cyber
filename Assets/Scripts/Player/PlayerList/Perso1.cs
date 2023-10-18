@@ -44,6 +44,11 @@ public class Perso1 : Unit
         IsDead = false;
         IsPersoLocked = false;
     }
+
+    void Start()
+    {
+        foreach (var kap in kapasList) { kap.Init(kap.Patern); }
+    }
     #endregion
 
     #region inherited methodes

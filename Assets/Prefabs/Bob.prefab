@@ -118,7 +118,12 @@ MonoBehaviour:
   movePoints: 5
   speed: 15
   healthPoint: 50
-  kapasList: []
+  kapasList:
+  - {fileID: 11400000, guid: c491a16f8ecd915468488ba91d2e0181, type: 2}
+  - {fileID: 11400000, guid: 3801c1db07006cc46a5aca5b72f39d3e, type: 2}
+  - {fileID: 11400000, guid: ec87e0f62ad3f06439af0ce08294c425, type: 2}
+  - {fileID: 11400000, guid: d3cf122f54b487f4f841b9c317e4334a, type: 2}
+  - {fileID: 11400000, guid: b7d436bfd64b3a44da2700694def1f03, type: 2}
 --- !u!114 &1526123754989008977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,3 +137,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   glowMat: {fileID: 2100000, guid: 2f734e74115f88249833eb08ceae0f16, type: 2}
+  selectedPathColor: {r: 1, g: 0, b: 0, a: 1}
+  selectedKapaColor: {r: 0.46948206, g: 0.4235294, b: 1, a: 1}

@@ -47,7 +47,7 @@ public class UnitManager : MonoBehaviour
         {
             foreach (Vector3Int v in hexGrid.GetNeighbourgs(HexCoordonnees.GetClosestHex(selectedUnit.transform.position))) { Debug.Log(v); }
         }
-        if (Input.GetKeyDown(KeyCode.T)) { Debug.Log("Ortho OffSet = " + HexToOrthoCoords.GetOddOrtoCoord(test)); }
+        if (Input.GetKeyDown(KeyCode.T)) { Debug.Log("Ortho OffSet = " + HexToOrthoCoords.GetOddOrthoCoord(test)); }
     }
 
     /// <summary>

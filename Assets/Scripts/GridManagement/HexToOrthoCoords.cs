@@ -9,7 +9,7 @@ public static class HexToOrthoCoords
     /// </summary>
     /// <param name="u"></param>
     /// <returns></returns>
-    public static Vector2Int GetOddOrtoCoord(Vector3Int u) => (u.x, u.y, u.z) switch
+    public static Vector2Int GetOddOrthoCoord(Vector3Int u) => (u.x, u.y, u.z) switch
     {
         //couronne 1
         (0, -1, 0) => new(0, 1),
