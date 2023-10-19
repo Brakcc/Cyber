@@ -150,7 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glowMat: {fileID: 2100000, guid: 2f734e74115f88249833eb08ceae0f16, type: 2}
   selectedPathColor: {r: 0.008547783, g: 1, b: 0, a: 1}
-  selectedKapaColor: {r: 0, g: 0.22552013, b: 1, a: 1}
+  selectedKapaColor: {r: 0, g: 0.21117555, b: 0.9150943, a: 1}
 --- !u!1 &3976043299740282238
 GameObject:
   m_ObjectHideFlags: 0

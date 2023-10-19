@@ -24,40 +24,40 @@ public class NAKapaSO : AKapaSO
 
     #region inherited paterns/accessors
     //North tiles
-    public override Vector2Int[] OddNTiles { get => oddNTiles; set { oddNTiles = value; } }
-    [HideInInspector] public Vector2Int[] oddNTiles;
-    public override Vector2Int[] EvenNTiles { get => evenNTiles; set { evenNTiles = value; } }
-    [HideInInspector] public Vector2Int[] evenNTiles;
+    public override Vector3Int[] OddNTiles { get => oddNTiles; set { oddNTiles = value; } }
+    public Vector3Int[] oddNTiles;
+    public override Vector3Int[] EvenNTiles { get => evenNTiles; set { evenNTiles = value; } }
+    [HideInInspector] public Vector3Int[] evenNTiles;
 
     //EN tiles
-    public override Vector2Int[] OddENTiles { get => oddENTiles; set { oddENTiles = value; } }
-    [HideInInspector] public Vector2Int[] oddENTiles;
-    public override Vector2Int[] EvenENTiles { get => evenENTiles; set { evenENTiles = value; } }
-    public Vector2Int[] evenENTiles;
+    public override Vector3Int[] OddENTiles { get => oddENTiles; set { oddENTiles = value; } }
+    [HideInInspector] public Vector3Int[] oddENTiles;
+    public override Vector3Int[] EvenENTiles { get => evenENTiles; set { evenENTiles = value; } }
+    [HideInInspector] public Vector3Int[] evenENTiles;
 
     //ES tiles
-    public override Vector2Int[] OddESTiles { get => oddESTiles; set { oddESTiles = value; } }
-    [HideInInspector] public Vector2Int[] oddESTiles;
-    public override Vector2Int[] EvenESTiles { get => evenESTiles; set { evenESTiles = value; } }
-    [HideInInspector] public Vector2Int[] evenESTiles;
+    public override Vector3Int[] OddESTiles { get => oddESTiles; set { oddESTiles = value; } }
+    [HideInInspector] public Vector3Int[] oddESTiles;
+    public override Vector3Int[] EvenESTiles { get => evenESTiles; set { evenESTiles = value; } }
+    [HideInInspector] public Vector3Int[] evenESTiles;
 
     //S tiles
-    public override Vector2Int[] OddSTiles { get => oddSTiles; set { oddSTiles = value; } }
-    [HideInInspector] public Vector2Int[] oddSTiles;
-    public override Vector2Int[] EvenSTiles { get => evenSTiles; set { evenSTiles = value; } }
-    [HideInInspector] public Vector2Int[] evenSTiles;
+    public override Vector3Int[] OddSTiles { get => oddSTiles; set { oddSTiles = value; } }
+    [HideInInspector] public Vector3Int[] oddSTiles;
+    public override Vector3Int[] EvenSTiles { get => evenSTiles; set { evenSTiles = value; } }
+    [HideInInspector] public Vector3Int[] evenSTiles;
 
     //WS tiles
-    public override Vector2Int[] OddWSTiles { get => oddWSTiles; set { oddWSTiles = value; } }
-    [HideInInspector] public Vector2Int[] oddWSTiles;
-    public override Vector2Int[] EvenWSTiles { get => evenWSTiles; set { evenWSTiles = value; } }
-    [HideInInspector] public Vector2Int[] evenWSTiles;
+    public override Vector3Int[] OddWSTiles { get => oddWSTiles; set { oddWSTiles = value; } }
+    [HideInInspector] public Vector3Int[] oddWSTiles;
+    public override Vector3Int[] EvenWSTiles { get => evenWSTiles; set { evenWSTiles = value; } }
+    [HideInInspector] public Vector3Int[] evenWSTiles;
 
     //WN tiles
-    public override Vector2Int[] OddWNTiles { get => oddWNTiles; set { oddWNTiles = value; } }
-    [HideInInspector] public Vector2Int[] oddWNTiles;
-    public override Vector2Int[] EvenWNTiles { get => evenWNTiles; set { evenWNTiles = value; } }
-    [HideInInspector] public Vector2Int[] evenWNTiles;
+    public override Vector3Int[] OddWNTiles { get => oddWNTiles; set { oddWNTiles = value; } }
+    [HideInInspector] public Vector3Int[] oddWNTiles;
+    public override Vector3Int[] EvenWNTiles { get => evenWNTiles; set { evenWNTiles = value; } }
+    [HideInInspector] public Vector3Int[] evenWNTiles;
     #endregion
 
     #region fields
@@ -83,7 +83,6 @@ public class NAKapaSO : AKapaSO
     }
     void EndKapa()
     {
-        DeselectTiles();
         UnitManager.unitManager.SelectedUnit.IsPersoLocked = false;
         UnitManager.unitManager.SelectedUnit.CanPlay = false;
         UnitManager.unitManager.SelectedUnit = null;

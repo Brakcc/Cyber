@@ -21,7 +21,7 @@ public class Perso1 : Unit
     public override bool IsPersoLocked { get; set; }
 
     //kapas
-    [SerializeField] private List<AKapaSO> kapasList = new List<AKapaSO>();
+    [SerializeField] private List<AKapaSO> kapasList = new();
     public override List<AKapaSO> KapasList { get => kapasList; 
                                            set { kapasList = value; } }
     #endregion
@@ -52,8 +52,8 @@ public class Perso1 : Unit
     #endregion
 
     #region inherited methodes
-    public override void Deselect() => glow.ToggleGLow(false);
-    public override void Select() => glow.ToggleGLow(true);
+    public override void Deselect() => glow.ToggleGlow(false);
+    public override void Select() => glow.ToggleGlow(true);
     public override void OnKapa() => Debug.Log("Omegalul");
     #endregion
 }

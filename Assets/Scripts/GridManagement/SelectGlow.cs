@@ -4,9 +4,9 @@ using UnityEngine;
 public class SelectGlow : MonoBehaviour
 {
     #region fields
-    private Dictionary<Renderer, Material[]> glowMats = new Dictionary<Renderer, Material[]>();
-    private Dictionary<Renderer, Material[]> originMats = new Dictionary<Renderer, Material[]>();
-    private Dictionary<Color, Material> cachedGlowMats = new Dictionary<Color, Material>();
+    private readonly Dictionary<Renderer, Material[]> glowMats = new();
+    private readonly Dictionary<Renderer, Material[]> originMats = new();
+    private readonly Dictionary<Color, Material> cachedGlowMats = new();
     public Material glowMat;
     [SerializeField] private Color selectedPathColor;
     [SerializeField] private Color selectedKapaColor;
@@ -55,7 +55,7 @@ public class SelectGlow : MonoBehaviour
         isGlowing = !isGlowing;
     }
 
-    public void ToggleGLow(bool b)
+    public void ToggleGlow(bool b)
     {
         if (isGlowing == b) return;
         isGlowing = !b;
@@ -84,20 +84,33 @@ public class SelectGlow : MonoBehaviour
     #endregion
 
     #region kapa glow
-    public void EnableGlowKapa()
+    public void ToggleKapa()
     {
-        foreach (Renderer rend in glowMats.Keys)
+        if (!isGlowing)
         {
-            foreach (Material m in glowMats[rend]) { m.SetColor("_GlowColor", selectedKapaColor); }
+            foreach (Renderer rend in originMats.Keys) 
+            {
+                rend.materials = glowMats[rend];
+                foreach (Material m in glowMats[rend]) { m.SetColor("_GlowColor", selectedKapaColor); }
+            }
         }
+        else
+        {
+            foreach (Renderer rend in originMats.Keys) 
+            {
+                rend.materials = originMats[rend]; 
+                foreach (Material m in glowMats[rend]) { m.SetColor("_GlowColor", originColor); }
+                rend.materials = originMats[rend];
+            }
+        }
+        isGlowing = !isGlowing;
     }
-    public void DisableGlowKapa()
+
+    public void ToggleGlowKapa(bool b)
     {
-        foreach (Renderer rend in glowMats.Keys)
-        {
-            foreach (Material m in glowMats[rend]) { m.SetColor("_GlowColor", originColor); }
-            rend.materials = glowMats[rend];
-        }
+        if (isGlowing == b) return;
+        isGlowing = !b;
+        ToggleKapa();
     }
     #endregion
     #endregion

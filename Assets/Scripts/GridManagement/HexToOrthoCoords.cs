@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Threading.Tasks;
+using UnityEngine;
 
 public static class HexToOrthoCoords
 {
@@ -9,30 +10,34 @@ public static class HexToOrthoCoords
     /// </summary>
     /// <param name="u"></param>
     /// <returns></returns>
-    public static Vector2Int GetOddOrthoCoord(Vector3Int u) => (u.x, u.y, u.z) switch
+    public static async Task<Vector3Int> GetOddOrthoCoord(Vector3Int u)
     {
-        //couronne 1
-        (0, -1, 0) => new(0, 1),
-        (0, 0, 1) => new(1, 0),
-        (-1, 0, 0) => new(1, -1),
-        (0, 1, 0) => new(0, -1),
-        (0, 0, -1) => new(-1, -1),
-        (1, 0, 0) => new(-1, 0),
-        //couronne 2
-        (0, -2, 0) => new(0, 2),
-        (0, -1, 1) => new(1, 1),
-        (0, 0, 2) => new(2, 1),
-        (-1, 0, 1) => new(2, 0),
-        (-2, 0, 0) => new(2, -1),
-        (-1, 1, 0) => new(1, -2),
-        (0, 2, 0) => new(0, -2),
-        (0, 1, -1) => new(-1, -2),
-        (0, 0, -2) => new(-2, -1),
-        (1, 0, -1) => new(-2, 0),
-        (2, 0, 0) => new(-2, 1),
-        (1, -1, 0) => new(-1, 1),
-        _ => new(0, 0)
-    };
+        await Task.Delay(0);
+        return (u.x, u.y, u.z) switch
+        {
+            //couronne 1
+            (0, -1, 0) => new(0, 1, 0),
+            (0, 0, 1) => new(1, 0, 0),
+            (-1, 0, 0) => new(1, -1, 0),
+            (0, 1, 0) => new(0, -1, 0),
+            (0, 0, -1) => new(-1, -1, 0),
+            (1, 0, 0) => new(-1, 0, 0),
+            //couronne 2
+            (0, -2, 0) => new(0, 2, 0),
+            (0, -1, 1) => new(1, 1, 0),
+            (0, 0, 2) => new(2, 1, 0),
+            (-1, 0, 1) => new(2, 0, 0),
+            (-2, 0, 0) => new(2, -1, 0),
+            (-1, 1, 0) => new(1, -2, 0),
+            (0, 2, 0) => new(0, -2, 0),
+            (0, 1, -1) => new(-1, -2, 0),
+            (0, 0, -2) => new(-2, -1, 0),
+            (1, 0, -1) => new(-2, 0, 0),
+            (2, 0, 0) => new(-2, 1, 0),
+            (1, -1, 0) => new(-1, 1, 0),
+            _ => new(0, 0, 0)
+        };
+    }
     #endregion
 
     #region conversion Paire
@@ -42,11 +47,15 @@ public static class HexToOrthoCoords
     /// </summary>
     /// <param name="u"></param>
     /// <returns></returns>
-    public static Vector2Int GetEvenOrthoCoord(Vector3Int u) => (u.x, u.y, u.z) switch
+    public static async Task<Vector3Int> GetEvenOrthoCoord(Vector3Int u)
     {
-        (1, 1, 1) => new(0, 1),
-        (2, 2, 2) => new(1, 2),
-        _ => new(0, 0)
-    };
+        await Task.Delay(0);
+        return (u.x, u.y, u.z) switch
+        {
+            (1, 1, 1) => new(0, 1, 0),
+            (2, 2, 2) => new(1, 2, 0),
+            _ => new(0, 0, 0)
+        }; 
+    }
     #endregion
 }

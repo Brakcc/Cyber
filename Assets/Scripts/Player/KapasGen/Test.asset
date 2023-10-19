@@ -21,16 +21,20 @@ MonoBehaviour:
   kapaUI: {fileID: 0}
   patern:
   - {x: 0, y: -1, z: 0}
-  oddntiles:
-  - {x: 0, y: 1}
-  - {x: 0, y: 2}
-  - {x: -1, y: 1}
-  - {x: 0, y: -1}
-  oddnwtiles:
-  - {x: -1, y: 0}
-  - {x: -2, y: 1}
-  - {x: -2, y: 0}
-  - {x: 1, y: -1}
+  - {x: 1, y: -1, z: 0}
+  - {x: 1, y: 0, z: 0}
+  oddNTiles: []
+  evenNTiles: []
+  oddENTiles: []
+  evenENTiles: []
+  oddESTiles: []
+  evenESTiles: []
+  oddSTiles: []
+  evenSTiles: []
+  oddWSTiles: []
+  evenWSTiles: []
+  oddWNTiles: []
+  evenWNTiles: []
   damage: 0
   duration: 0
   animation: {fileID: 0}

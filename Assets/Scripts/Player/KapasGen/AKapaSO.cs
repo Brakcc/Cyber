@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Threading.Tasks;
+using UnityEngine;
 
 public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
 {
@@ -15,23 +16,23 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
 
     #region paterns to herit
     //North tiles
-    public abstract Vector2Int[] OddNTiles { get; set; }
-    public abstract Vector2Int[] EvenNTiles { get; set; }
+    public abstract Vector3Int[] OddNTiles { get; set; }
+    public abstract Vector3Int[] EvenNTiles { get; set; }
     //EN tiles
-    public abstract Vector2Int[] OddENTiles { get; set; }
-    public abstract Vector2Int[] EvenENTiles { get; set; }
+    public abstract Vector3Int[] OddENTiles { get; set; }
+    public abstract Vector3Int[] EvenENTiles { get; set; }
     //ES tiles
-    public abstract Vector2Int[] OddESTiles { get; set; }
-    public abstract Vector2Int[] EvenESTiles { get; set; }
+    public abstract Vector3Int[] OddESTiles { get; set; }
+    public abstract Vector3Int[] EvenESTiles { get; set; }
     //S tiles
-    public abstract Vector2Int[] OddSTiles { get; set; }
-    public abstract Vector2Int[] EvenSTiles { get; set; }
+    public abstract Vector3Int[] OddSTiles { get; set; }
+    public abstract Vector3Int[] EvenSTiles { get; set; }
     //WS tiles
-    public abstract Vector2Int[] OddWSTiles { get; set; }
-    public abstract Vector2Int[] EvenWSTiles { get; set; }
+    public abstract Vector3Int[] OddWSTiles { get; set; }
+    public abstract Vector3Int[] EvenWSTiles { get; set; }
     //WN tiles
-    public abstract Vector2Int[] OddWNTiles { get; set; }
-    public abstract Vector2Int[] EvenWNTiles { get; set; }
+    public abstract Vector3Int[] OddWNTiles { get; set; }
+    public abstract Vector3Int[] EvenWNTiles { get; set; }
     #endregion
 
     #region patern gen (to herit)
@@ -41,13 +42,13 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     /// </summary>
     /// <param name="pat"></param>
     /// <returns></returns>
-    public virtual Vector2Int[] GetOddNtiles(Vector3Int[] pat)
+    public virtual async Task<Vector3Int[]> GetOddNtiles(Vector3Int[] pat)
     {
-        Vector2Int[] w = new Vector2Int[pat.Length];
+        Vector3Int[] w = new Vector3Int[pat.Length];
         for (int i = 0; i < pat.Length; i++)
         {
             Vector3Int j = new(pat[i].x, pat[i].y, pat[i].z);
-            w[i] = HexToOrthoCoords.GetOddOrthoCoord(j);
+            w[i] = await HexToOrthoCoords.GetOddOrthoCoord(j);
         }
         return w;
     }
@@ -56,13 +57,13 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     /// </summary>
     /// <param name="pat"></param>
     /// <returns></returns>
-    public virtual Vector2Int[] GetEvenNtiles(Vector3Int[] pat)
+    public virtual async Task<Vector3Int[]> GetEvenNtiles(Vector3Int[] pat)
     {
-        Vector2Int[] w = new Vector2Int[pat.Length];
+        Vector3Int[] w = new Vector3Int[pat.Length];
         for (int i = 0; i < pat.Length; i++)
         {
             Vector3Int j = new(pat[i].x, pat[i].y, pat[i].z);
-            w[i] = HexToOrthoCoords.GetEvenOrthoCoord(j);
+            w[i] = await HexToOrthoCoords.GetEvenOrthoCoord(j);
         }
         return w;
     }
@@ -73,13 +74,13 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     /// </summary>
     /// <param name="pat"></param>
     /// <returns></returns>
-    public virtual Vector2Int[] GetOddENtiles(Vector3Int[] pat)
+    public virtual async Task<Vector3Int[]> GetOddENtiles(Vector3Int[] pat)
     {
-        Vector2Int[] w = new Vector2Int[pat.Length];
+        Vector3Int[] w = new Vector3Int[pat.Length];
         for (int i = 0; i < pat.Length; i++)
         {
             Vector3Int j = new(-pat[i].z, -pat[i].x, -pat[i].y);
-            w[i] = HexToOrthoCoords.GetOddOrthoCoord(j);
+            w[i] = await HexToOrthoCoords.GetOddOrthoCoord(j);
         }
         return w;
     }
@@ -88,13 +89,13 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     /// </summary>
     /// <param name="pat"></param>
     /// <returns></returns>
-    public virtual Vector2Int[] GetEvenENtiles(Vector3Int[] pat)
+    public virtual async Task<Vector3Int[]> GetEvenENtiles(Vector3Int[] pat)
     {
-        Vector2Int[] w = new Vector2Int[pat.Length];
+        Vector3Int[] w = new Vector3Int[pat.Length];
         for (int i = 0; i < pat.Length; i++)
         {
             Vector3Int j = new(-pat[i].z, -pat[i].x, -pat[i].y);
-            w[i] = HexToOrthoCoords.GetEvenOrthoCoord(j);
+            w[i] = await HexToOrthoCoords.GetEvenOrthoCoord(j);
         }
         return w;
     }
@@ -105,13 +106,13 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     /// </summary>
     /// <param name="pat"></param>
     /// <returns></returns>
-    public virtual Vector2Int[] GetOddWNtiles(Vector3Int[] pat)
+    public virtual async Task<Vector3Int[]> GetOddWNtiles(Vector3Int[] pat)
     {
-        Vector2Int[] w = new Vector2Int[pat.Length];
+        Vector3Int[] w = new Vector3Int[pat.Length];
         for (int i = 0; i < pat.Length; i++)
         {
             Vector3Int j = new(-pat[i].y, -pat[i].z, -pat[i].x);
-            w[i] = HexToOrthoCoords.GetOddOrthoCoord(j);
+            w[i] = await HexToOrthoCoords.GetOddOrthoCoord(j);
         }
         return w;
     }
@@ -120,13 +121,13 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     /// </summary>
     /// <param name="pat"></param>
     /// <returns></returns>
-    public virtual Vector2Int[] GetEvenWNtiles(Vector3Int[] pat)
+    public virtual async Task<Vector3Int[]> GetEvenWNtiles(Vector3Int[] pat)
     {
-        Vector2Int[] w = new Vector2Int[pat.Length];
+        Vector3Int[] w = new Vector3Int[pat.Length];
         for (int i = 0; i < pat.Length; i++)
         {
             Vector3Int j = new(-pat[i].y, -pat[i].z, -pat[i].x);
-            w[i] = HexToOrthoCoords.GetEvenOrthoCoord(j);
+            w[i] = await HexToOrthoCoords.GetEvenOrthoCoord(j);
         }
         return w;
     }
@@ -137,13 +138,13 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     /// </summary>
     /// <param name="pat"></param>
     /// <returns></returns>
-    public virtual Vector2Int[] GetOddStiles(Vector3Int[] pat)
+    public virtual async Task<Vector3Int[]> GetOddStiles(Vector3Int[] pat)
     {
-        Vector2Int[] w = new Vector2Int[pat.Length];
+        Vector3Int[] w = new Vector3Int[pat.Length];
         for (int i = 0; i < pat.Length; i++)
         {
             Vector3Int j = new(-pat[i].x, -pat[i].y, -pat[i].z);
-            w[i] = HexToOrthoCoords.GetOddOrthoCoord(j);
+            w[i] = await HexToOrthoCoords.GetOddOrthoCoord(j);
         }
         return w;
     }
@@ -152,13 +153,13 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     /// </summary>
     /// <param name="pat"></param>
     /// <returns></returns>
-    public virtual Vector2Int[] GetEvenStiles(Vector3Int[] pat)
+    public virtual async Task<Vector3Int[]> GetEvenStiles(Vector3Int[] pat)
     {
-        Vector2Int[] w = new Vector2Int[pat.Length];
+        Vector3Int[] w = new Vector3Int[pat.Length];
         for (int i = 0; i < pat.Length; i++)
         {
             Vector3Int j = new(-pat[i].x, -pat[i].y, -pat[i].z);
-            w[i] = HexToOrthoCoords.GetEvenOrthoCoord(j);
+            w[i] = await HexToOrthoCoords.GetEvenOrthoCoord(j);
         }
         return w;
     }
@@ -169,13 +170,13 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     /// </summary>
     /// <param name="pat"></param>
     /// <returns></returns>
-    public virtual Vector2Int[] GetOddEStiles(Vector3Int[] pat)
+    public virtual async Task<Vector3Int[]> GetOddEStiles(Vector3Int[] pat)
     {
-        Vector2Int[] w = new Vector2Int[pat.Length];
+        Vector3Int[] w = new Vector3Int[pat.Length];
         for (int i = 0; i < pat.Length; i++)
         {
             Vector3Int j = new(pat[i].y, pat[i].z, pat[i].x);
-            w[i] = HexToOrthoCoords.GetOddOrthoCoord(j);
+            w[i] = await HexToOrthoCoords.GetOddOrthoCoord(j);
         }
         return w;
     }
@@ -184,13 +185,13 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     /// </summary>
     /// <param name="pat"></param>
     /// <returns></returns>
-    public virtual Vector2Int[] GetEvenEStiles(Vector3Int[] pat)
+    public virtual async Task<Vector3Int[]> GetEvenEStiles(Vector3Int[] pat)
     {
-        Vector2Int[] w = new Vector2Int[pat.Length];
+        Vector3Int[] w = new Vector3Int[pat.Length];
         for (int i = 0; i < pat.Length; i++)
         {
             Vector3Int j = new(pat[i].y, pat[i].z, pat[i].x);
-            w[i] = HexToOrthoCoords.GetEvenOrthoCoord(j);
+            w[i] = await HexToOrthoCoords.GetEvenOrthoCoord(j);
         }
         return w;
     }
@@ -201,13 +202,13 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     /// </summary>
     /// <param name="pat"></param>
     /// <returns></returns>
-    public virtual Vector2Int[] GetOddWStiles(Vector3Int[] pat)
+    public virtual async Task<Vector3Int[]> GetOddWStiles(Vector3Int[] pat)
     {
-        Vector2Int[] w = new Vector2Int[pat.Length];
+        Vector3Int[] w = new Vector3Int[pat.Length];
         for (int i = 0; i < pat.Length; i++)
         {
             Vector3Int j = new(pat[i].z, pat[i].x, pat[i].y);
-            w[i] = HexToOrthoCoords.GetOddOrthoCoord(j);
+            w[i] = await HexToOrthoCoords.GetOddOrthoCoord(j);
         }
         return w;
     }
@@ -216,13 +217,13 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     /// </summary>
     /// <param name="pat"></param>
     /// <returns></returns>
-    public virtual Vector2Int[] GetEvenWStiles(Vector3Int[] pat)
+    public virtual async Task<Vector3Int[]> GetEvenWStiles(Vector3Int[] pat)
     {
-        Vector2Int[] w = new Vector2Int[pat.Length];
+        Vector3Int[] w = new Vector3Int[pat.Length];
         for (int i = 0; i < pat.Length; i++)
         {
             Vector3Int j = new(pat[i].z, pat[i].x, pat[i].y);
-            w[i] = HexToOrthoCoords.GetEvenOrthoCoord(j);
+            w[i] = await HexToOrthoCoords.GetEvenOrthoCoord(j);
         }
         return w;
     }
@@ -234,31 +235,40 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     /// initialise tous les paternes de Kapas dans toutes les directions
     /// </summary>
     /// <param name="p"></param>
-    public virtual void Init(Vector3Int[] p)
+    public virtual async void Init(Vector3Int[] p)
     {
         //NTiles
-        OddNTiles = GetOddNtiles(p);
-        EvenNTiles = GetEvenNtiles(p);
+        OddNTiles = await GetOddNtiles(p);
+        EvenNTiles = await GetEvenNtiles(p);
         //WNTiles
-        OddWNTiles = GetOddWNtiles(p);
-        EvenWNTiles = GetEvenWNtiles(p);
+        OddWNTiles = await GetOddWNtiles(p);
+        EvenWNTiles = await GetEvenWNtiles(p);
         //ENTiles
-        OddENTiles = GetOddENtiles(p);
-        EvenENTiles = GetEvenENtiles(p);
+        OddENTiles = await GetOddENtiles(p);
+        EvenENTiles = await GetEvenENtiles(p);
         //STiles
-        OddSTiles = GetOddStiles(p);
-        EvenSTiles = GetEvenStiles(p);
+        OddSTiles = await GetOddStiles(p);
+        EvenSTiles = await GetEvenStiles(p);
         //ESTiles
-        OddESTiles = GetOddEStiles(p);
-        EvenESTiles = GetEvenEStiles(p);
+        OddESTiles = await GetOddEStiles(p);
+        EvenESTiles = await GetEvenEStiles(p);
         //WSTiles
-        OddWSTiles = GetOddWStiles(p);
-        EvenWSTiles = GetEvenWStiles(p);
+        OddWSTiles = await GetOddWStiles(p);
+        EvenWSTiles = await GetEvenWStiles(p);
     }
     /// <summary>
     /// Sélectionne les Tuiles utilisées par la compétence, dans une direction donnée
     /// </summary>
-    public virtual void SelectTiles() => Debug.Log("KapaGraphSelect");
+    public virtual void SelectTiles(Unit unit, HexGridStore hexGrid)
+    {
+        foreach (var i in OddNTiles)
+        {
+            if (hexGrid.hexTiles.ContainsKey(HexCoordonnees.GetClosestHex(unit.transform.position) + i))
+            {
+                hexGrid.GetTile(HexCoordonnees.GetClosestHex(unit.transform.position) + i).EnableGlowKapa();
+            }
+        }
+    }
     /// <summary>
     /// Base Logique de l'execution de Kapa
     /// </summary>
@@ -266,6 +276,12 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     /// <summary>
     /// Retire la sélection de Tuiles utilisées par la compétence
     /// </summary>
-    public virtual void DeselectTiles() => Debug.Log("KapaGraphDeselect");
+    public virtual void DeselectTiles(HexGridStore hexGrid)
+    {
+        foreach (var i in hexGrid.hexTiles.Values)
+        {
+            i.DisableGlowKapa();
+        }
+    }
     #endregion
 }

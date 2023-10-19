@@ -28,11 +28,17 @@ public class Hex : MonoBehaviour
 
     public bool IsObstacle() => type == HexType.Obstacle;
 
-    public void EnableGlow() => glow.ToggleGLow(true);
-    public void DisableGlow() => glow.ToggleGLow(false);
+    //General Glow pour la range
+    public void EnableGlow() => glow.ToggleGlow(true);
+    public void DisableGlow() => glow.ToggleGlow(false);
 
+    //Glow pour le path
     public void EnableGlowPath() => glow.StartGlowPath();
     public void DisableGlowPath() => glow.ResetGlowPath();
+
+    //Glow pour les compétences
+    public void EnableGlowKapa() => glow.ToggleGlowKapa(true);
+    public void DisableGlowKapa() => glow.ToggleGlowKapa(false);
     #endregion
 }
 
