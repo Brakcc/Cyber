@@ -547,7 +547,7 @@ PrefabInstance:
     - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: kapasList.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: c491a16f8ecd915468488ba91d2e0181, type: 2}
+      objectReference: {fileID: 11400000, guid: 3801c1db07006cc46a5aca5b72f39d3e, type: 2}
     - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: kapasList.Array.data[1]
       value: 
@@ -3806,7 +3806,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 1
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0

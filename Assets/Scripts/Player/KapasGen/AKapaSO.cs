@@ -42,7 +42,7 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     /// </summary>
     /// <param name="pat"></param>
     /// <returns></returns>
-    public virtual async Task<Vector3Int[]> GetOddNtiles(Vector3Int[] pat)
+    async Task<Vector3Int[]> GetOddNtiles(Vector3Int[] pat)
     {
         Vector3Int[] w = new Vector3Int[pat.Length];
         for (int i = 0; i < pat.Length; i++)
@@ -57,7 +57,7 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     /// </summary>
     /// <param name="pat"></param>
     /// <returns></returns>
-    public virtual async Task<Vector3Int[]> GetEvenNtiles(Vector3Int[] pat)
+    async Task<Vector3Int[]> GetEvenNtiles(Vector3Int[] pat)
     {
         Vector3Int[] w = new Vector3Int[pat.Length];
         for (int i = 0; i < pat.Length; i++)
@@ -74,7 +74,7 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     /// </summary>
     /// <param name="pat"></param>
     /// <returns></returns>
-    public virtual async Task<Vector3Int[]> GetOddENtiles(Vector3Int[] pat)
+    async Task<Vector3Int[]> GetOddENtiles(Vector3Int[] pat)
     {
         Vector3Int[] w = new Vector3Int[pat.Length];
         for (int i = 0; i < pat.Length; i++)
@@ -89,7 +89,7 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     /// </summary>
     /// <param name="pat"></param>
     /// <returns></returns>
-    public virtual async Task<Vector3Int[]> GetEvenENtiles(Vector3Int[] pat)
+    async Task<Vector3Int[]> GetEvenENtiles(Vector3Int[] pat)
     {
         Vector3Int[] w = new Vector3Int[pat.Length];
         for (int i = 0; i < pat.Length; i++)
@@ -106,7 +106,7 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     /// </summary>
     /// <param name="pat"></param>
     /// <returns></returns>
-    public virtual async Task<Vector3Int[]> GetOddWNtiles(Vector3Int[] pat)
+    async Task<Vector3Int[]> GetOddWNtiles(Vector3Int[] pat)
     {
         Vector3Int[] w = new Vector3Int[pat.Length];
         for (int i = 0; i < pat.Length; i++)
@@ -121,7 +121,7 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     /// </summary>
     /// <param name="pat"></param>
     /// <returns></returns>
-    public virtual async Task<Vector3Int[]> GetEvenWNtiles(Vector3Int[] pat)
+    async Task<Vector3Int[]> GetEvenWNtiles(Vector3Int[] pat)
     {
         Vector3Int[] w = new Vector3Int[pat.Length];
         for (int i = 0; i < pat.Length; i++)
@@ -138,7 +138,7 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     /// </summary>
     /// <param name="pat"></param>
     /// <returns></returns>
-    public virtual async Task<Vector3Int[]> GetOddStiles(Vector3Int[] pat)
+    async Task<Vector3Int[]> GetOddStiles(Vector3Int[] pat)
     {
         Vector3Int[] w = new Vector3Int[pat.Length];
         for (int i = 0; i < pat.Length; i++)
@@ -153,7 +153,7 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     /// </summary>
     /// <param name="pat"></param>
     /// <returns></returns>
-    public virtual async Task<Vector3Int[]> GetEvenStiles(Vector3Int[] pat)
+    async Task<Vector3Int[]> GetEvenStiles(Vector3Int[] pat)
     {
         Vector3Int[] w = new Vector3Int[pat.Length];
         for (int i = 0; i < pat.Length; i++)
@@ -170,7 +170,7 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     /// </summary>
     /// <param name="pat"></param>
     /// <returns></returns>
-    public virtual async Task<Vector3Int[]> GetOddEStiles(Vector3Int[] pat)
+    async Task<Vector3Int[]> GetOddEStiles(Vector3Int[] pat)
     {
         Vector3Int[] w = new Vector3Int[pat.Length];
         for (int i = 0; i < pat.Length; i++)
@@ -185,7 +185,7 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     /// </summary>
     /// <param name="pat"></param>
     /// <returns></returns>
-    public virtual async Task<Vector3Int[]> GetEvenEStiles(Vector3Int[] pat)
+    async Task<Vector3Int[]> GetEvenEStiles(Vector3Int[] pat)
     {
         Vector3Int[] w = new Vector3Int[pat.Length];
         for (int i = 0; i < pat.Length; i++)
@@ -202,7 +202,7 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     /// </summary>
     /// <param name="pat"></param>
     /// <returns></returns>
-    public virtual async Task<Vector3Int[]> GetOddWStiles(Vector3Int[] pat)
+    async Task<Vector3Int[]> GetOddWStiles(Vector3Int[] pat)
     {
         Vector3Int[] w = new Vector3Int[pat.Length];
         for (int i = 0; i < pat.Length; i++)
@@ -217,7 +217,7 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     /// </summary>
     /// <param name="pat"></param>
     /// <returns></returns>
-    public virtual async Task<Vector3Int[]> GetEvenWStiles(Vector3Int[] pat)
+    async Task<Vector3Int[]> GetEvenWStiles(Vector3Int[] pat)
     {
         Vector3Int[] w = new Vector3Int[pat.Length];
         for (int i = 0; i < pat.Length; i++)

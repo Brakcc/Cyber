@@ -4,10 +4,12 @@ using UnityEngine;
 public class Hex : MonoBehaviour
 {
     #region fields
-    [SerializeField] private SelectGlow glow;
+    private SelectGlow glow;
     [SerializeField] private HexType type;
 
-    public Vector3Int hexCoords;
+    //la Data importante
+    [HideInInspector] public Vector3Int hexCoords;
+    [HideInInspector] public bool hasPlayerOnIt;
     #endregion
 
     #region methodes
@@ -26,7 +28,7 @@ public class Hex : MonoBehaviour
         _ => int.MaxValue
     };
 
-    public bool IsObstacle() => type == HexType.Obstacle;
+    public bool IsObstacle() => type == HexType.Obstacle || hasPlayerOnIt;
 
     //General Glow pour la range
     public void EnableGlow() => glow.ToggleGlow(true);

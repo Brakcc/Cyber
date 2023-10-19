@@ -10,7 +10,8 @@ public class Perso1 : Unit
     public override int MovePoints { get => movePoints; }
 
     [SerializeField] private int speed = 15;
-    public override int Speed { get => speed; }    //health
+    public override int Speed { get => speed; }    
+    //health
     [SerializeField] private int healthPoint = 50;
     public override int HealthPoint { get => healthPoint; 
                                       set { healthPoint = value; } }

@@ -28,9 +28,9 @@ public abstract class Unit : MonoBehaviour, IUnit
         foreach (var i in path)
         {
             float z = path[0].z;
-            while (Vector2.Distance(transform.position, new Vector2(i.x, i.y)) >= 0.001f)
+            while (Vector2.Distance(transform.position, i) >= 0.001f)
             {
-                transform.position = Vector2.MoveTowards(transform.position, new Vector2(i.x, i.y), pas);
+                transform.position = Vector2.MoveTowards(transform.position, i, pas);
                 transform.position = new Vector3(transform.position.x, transform.position.y, z);
                 yield return null;
             }

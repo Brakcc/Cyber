@@ -21,8 +21,6 @@ public class UnitManager : MonoBehaviour
 
     //Player Turn à déplacer dans le GameLoopManager
     public bool PlayerTurn { get; private set; } = true;
-
-    [SerializeField] private Vector3Int test;
     #endregion
 
     #region Instance et Awake
@@ -119,6 +117,7 @@ public class UnitManager : MonoBehaviour
         else
         {
             moveSys.MoveUnit(selectedUnit, hexGrid);
+            previousSelectedHex.hasPlayerOnIt = true;
             //PlayerTurn = false; trouver une autre methode pour bloquer le joueur en listant l'ensemble des units
             // Ici on utilise pas le ClearOldSelection pour ne pas reset l'Unit Selected, On veut Lock l'Unit pour la phase de Capa
             ClearGraphKeepUnit();
@@ -176,6 +175,9 @@ public class UnitManager : MonoBehaviour
     {
         CurrentTypeKapaSelected = KapaType.Default;
         IsKapaSelected = false;
+        SelectedUnit.IsPersoLocked = false;
+        SelectedUnit.CanPlay = false;
+        SelectedUnit = null;
     }
     #endregion
 

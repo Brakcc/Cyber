@@ -83,9 +83,7 @@ public class NAKapaSO : AKapaSO
     }
     void EndKapa()
     {
-        UnitManager.unitManager.SelectedUnit.IsPersoLocked = false;
-        UnitManager.unitManager.SelectedUnit.CanPlay = false;
-        UnitManager.unitManager.SelectedUnit = null;
+        Debug.Log("pas utile de fou");
     }
     #endregion
 }
