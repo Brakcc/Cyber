@@ -49,8 +49,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainC: {fileID: 0}
   hexGrid: {fileID: 0}
-  unitManager: {fileID: 1283223407700948218}
-  move: {fileID: 6839896767206874220}
   tileSelectionMask:
     serializedVersion: 2
     m_Bits: 72
@@ -109,8 +107,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hexGrid: {fileID: 0}
-  moveSys: {fileID: 6839896767206874220}
   selectedUnit: {fileID: 0}
+  previousSelectedHex: {fileID: 0}
+  natk:
+    m_PersistentCalls:
+      m_Calls: []
+  comp:
+    m_PersistentCalls:
+      m_Calls: []
+  ulti:
+    m_PersistentCalls:
+      m_Calls: []
+  turret:
+    m_PersistentCalls:
+      m_Calls: []
+  skip:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2536175099072836728
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -23,8 +23,7 @@ public class Selections : MonoBehaviour
 
     public void HandleClick(Vector3 mousePos)
     {
-        GameObject result;
-        if (inputsMan.FocV2(tileSelectionMask, mainC, mousePos, out result))
+        if (inputsMan.FocV2(tileSelectionMask, mainC, mousePos, out GameObject result))
         {
             if (UnitSelected(result)) { Unit?.Invoke(result); }
             else { Selection?.Invoke(result); }

@@ -3,10 +3,6 @@ using UnityEngine;
 public struct HexCoordonnees : IHexCoord
 {
     #region fields
-    private static float xOffset = 1;
-    private static float yOffset = 1;
-    private static float zOffset = 1;
-
     public Vector3Int offsetCoordonnees { get; set; }
     #endregion
 
@@ -17,10 +13,18 @@ public struct HexCoordonnees : IHexCoord
     /// <param name="gameObject"></param>
     public HexCoordonnees (GameObject gameObject)
     {
-        int x = Mathf.CeilToInt(gameObject.transform.position.x / xOffset);
-        int y = Mathf.CeilToInt(gameObject.transform.position.y / yOffset);
-        int z = Mathf.CeilToInt(gameObject.transform.position.z / zOffset);
-        offsetCoordonnees = new Vector3Int(x, y, z);
+        offsetCoordonnees = GetClosestHex(gameObject.transform.position);
+    }
+    #endregion
+
+    #region methodes
+    public static Vector3Int GetClosestHex(Vector3 worldPos)
+    {
+        worldPos.z = 0;
+        int x = Mathf.CeilToInt(worldPos.x);
+        int y = Mathf.CeilToInt(worldPos.y);
+        int z = Mathf.CeilToInt(worldPos.z);
+        return new Vector3Int(x, y, z);
     }
     #endregion
 }

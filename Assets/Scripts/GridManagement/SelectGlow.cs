@@ -4,11 +4,12 @@ using UnityEngine;
 public class SelectGlow : MonoBehaviour
 {
     #region fields
-    private Dictionary<Renderer, Material[]> glowMats = new Dictionary<Renderer, Material[]>();
-    private Dictionary<Renderer, Material[]> originMats = new Dictionary<Renderer, Material[]>();
-    private Dictionary<Color, Material> cachedGlowMats = new Dictionary<Color, Material>();
+    private readonly Dictionary<Renderer, Material[]> glowMats = new();
+    private readonly Dictionary<Renderer, Material[]> originMats = new();
+    private readonly Dictionary<Color, Material> cachedGlowMats = new();
     public Material glowMat;
-    private Color selectedPathColor = Color.green;
+    [SerializeField] private Color selectedPathColor;
+    [SerializeField] private Color selectedKapaColor;
     private Color originColor;
     private bool isGlowing;
     #endregion
@@ -29,11 +30,9 @@ public class SelectGlow : MonoBehaviour
             Material[] newMats = new Material[rend.materials.Length];
             for (int i = 0; i < origins.Length; i++)
             {
-                Material mat = null;
-                if (!cachedGlowMats.TryGetValue(origins[i].color, out mat))
+                if (!cachedGlowMats.TryGetValue(origins[i].color, out Material mat))
                 {
-                    mat = new Material(glowMat);
-                    mat.color = origins[i].color;
+                    mat = new Material(glowMat) { color = origins[i].color };
                     cachedGlowMats[mat.color] = mat;
                 }
                 newMats[i] = mat;
@@ -42,6 +41,7 @@ public class SelectGlow : MonoBehaviour
         }
     }
 
+    #region standard glow
     public void Toggle()
     {
         if (!isGlowing)
@@ -55,22 +55,21 @@ public class SelectGlow : MonoBehaviour
         isGlowing = !isGlowing;
     }
 
-    public void ToggleGLow(bool b)
+    public void ToggleGlow(bool b)
     {
         if (isGlowing == b) return;
         isGlowing = !b;
         Toggle();
     }
+    #endregion
 
+    #region path glow
     public void StartGlowPath()
     {
         if (!isGlowing) return;
         foreach (Renderer rend in glowMats.Keys)
         {
-            foreach (Material m in glowMats[rend])
-            {
-                m.SetColor("_GlowColor", selectedPathColor);
-            }
+            foreach (Material m in glowMats[rend]) { m.SetColor("_GlowColor", selectedPathColor); }
         }
     }
     public void ResetGlowPath()
@@ -78,12 +77,41 @@ public class SelectGlow : MonoBehaviour
         if (!isGlowing) return;
         foreach (Renderer rend in glowMats.Keys)
         {
-            foreach (Material m in glowMats[rend])
-            {
-                m.SetColor("_GlowColor", originColor);
-            }
+            foreach (Material m in glowMats[rend]) { m.SetColor("_GlowColor", originColor); }
             rend.materials = glowMats[rend];
         }
     }
+    #endregion
+
+    #region kapa glow
+    public void ToggleKapa()
+    {
+        if (!isGlowing)
+        {
+            foreach (Renderer rend in originMats.Keys) 
+            {
+                rend.materials = glowMats[rend];
+                foreach (Material m in glowMats[rend]) { m.SetColor("_GlowColor", selectedKapaColor); }
+            }
+        }
+        else
+        {
+            foreach (Renderer rend in originMats.Keys) 
+            {
+                rend.materials = originMats[rend]; 
+                foreach (Material m in glowMats[rend]) { m.SetColor("_GlowColor", originColor); }
+                rend.materials = originMats[rend];
+            }
+        }
+        isGlowing = !isGlowing;
+    }
+
+    public void ToggleGlowKapa(bool b)
+    {
+        if (isGlowing == b) return;
+        isGlowing = !b;
+        ToggleKapa();
+    }
+    #endregion
     #endregion
 }

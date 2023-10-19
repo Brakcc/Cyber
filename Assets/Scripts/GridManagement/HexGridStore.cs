@@ -4,23 +4,19 @@ using UnityEngine;
 public class HexGridStore: MonoBehaviour
 {
     #region fields
-    public Dictionary<Vector3Int, Hex> hexTiles = new Dictionary<Vector3Int, Hex>();
-    private Dictionary<Vector3Int, List<Vector3Int>> neighbourgs = new Dictionary<Vector3Int, List<Vector3Int>>();
+    public Dictionary<Vector3Int, Hex> hexTiles = new();
+    private readonly Dictionary<Vector3Int, List<Vector3Int>> neighbourgs = new();
     #endregion
 
     #region methodes
     void Start()
     {
-        foreach (Hex hex in FindObjectsOfType<Hex>())
-        {
-            hexTiles[hex.hexCoords] = hex;
-        }
+        foreach (Hex hex in FindObjectsOfType<Hex>()) { hexTiles[hex.hexCoords] = hex; }
     }
 
     public Hex GetTile(Vector3Int hexCoords)
     {
-        Hex results = null;
-        hexTiles.TryGetValue(hexCoords, out results);
+        hexTiles.TryGetValue(hexCoords, out Hex results);
         return results;
     }
 
@@ -37,15 +33,6 @@ public class HexGridStore: MonoBehaviour
         }
 
         return neighbourgs[coords];
-    }
-
-    public Vector3Int GetClosestHex(Vector3 worldPos)
-    {
-        worldPos.z = 0;
-        int x = Mathf.CeilToInt(worldPos.x);
-        int y = Mathf.CeilToInt(worldPos.y);
-        int z = Mathf.CeilToInt(worldPos.z);
-        return new Vector3Int(x, y, z);
     }
     #endregion
 }

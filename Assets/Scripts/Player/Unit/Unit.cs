@@ -11,6 +11,7 @@ public abstract class Unit : MonoBehaviour, IUnit
     public abstract bool IsDead { get; set; }
     public abstract bool CanPlay { get; set; }
     public abstract bool IsPersoLocked { get; set; }
+    public abstract List<AKapaSO> KapasList { get; set; }
     #endregion
 
     #region methodes a heriter

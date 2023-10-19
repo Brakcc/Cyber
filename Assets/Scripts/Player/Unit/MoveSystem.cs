@@ -5,8 +5,8 @@ using UnityEngine;
 public class MoveSystem : MonoBehaviour
 {
     #region fields
-    private PathResult moveRange = new PathResult();
-    private List<Vector3Int> currentPath = new List<Vector3Int>();
+    private PathResult moveRange = new();
+    private List<Vector3Int> currentPath = new();
     #endregion
 
     #region methodes
@@ -19,7 +19,7 @@ public class MoveSystem : MonoBehaviour
     public void ShowRange(Unit selected, HexGridStore hexGrid)
     {
         CalculateRange(selected, hexGrid);
-        Vector3Int unitPos = hexGrid.GetClosestHex(selected.transform.position);
+        Vector3Int unitPos = HexCoordonnees.GetClosestHex(selected.transform.position);
 
         foreach (Vector3Int hexPos in moveRange.GetRangePositions()) 
         {
@@ -28,7 +28,7 @@ public class MoveSystem : MonoBehaviour
         }
     }
 
-    public void CalculateRange(Unit selects, HexGridStore hexGrid) => moveRange = PathFind.PathGetRange(hexGrid, hexGrid.GetClosestHex(selects.transform.position), selects.MovePoints);
+    public void CalculateRange(Unit selects, HexGridStore hexGrid) => moveRange = PathFind.PathGetRange(hexGrid, HexCoordonnees.GetClosestHex(selects.transform.position), selects.MovePoints);
 
     public void ShowPath(Vector3Int selects,  HexGridStore hexGrid)
     {
