@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Threading.Tasks;
 using UnityEngine.UI;
 
 public class UnitManager : MonoBehaviour
@@ -18,6 +19,7 @@ public class UnitManager : MonoBehaviour
     //Is a Kapa Currently selected, pas vraiment de possibilité de store directement une Kapa, les methodes de kapas étant deja stored dans le cache AKapaSO
     public KapaType CurrentTypeKapaSelected { get; private set; }
     public bool IsKapaSelected { get; private set; }
+    public int CurrentKapaID { get; set; }
 
     //Player Turn à déplacer dans le GameLoopManager
     public bool PlayerTurn { get; private set; } = true;
@@ -33,7 +35,9 @@ public class UnitManager : MonoBehaviour
         selectedUnit = null;
         previousSelectedHex = null;
         CurrentTypeKapaSelected = KapaType.Default;
+        CurrentKapaID = 5;
         IsKapaSelected = false;
+        Init(hexGrid);
     }
     #endregion
 
@@ -45,6 +49,7 @@ public class UnitManager : MonoBehaviour
         {
             foreach (Vector3Int v in hexGrid.GetNeighbourgs(HexCoordonnees.GetClosestHex(selectedUnit.transform.position))) { Debug.Log(v); }
         }
+        if (Input.GetKeyDown(KeyCode.T)) { Debug.Log(selectedUnit.CurrentHexPos); }
     }
 
     /// <summary>
@@ -76,6 +81,7 @@ public class UnitManager : MonoBehaviour
         if (selectedUnit == null || !PlayerTurn) return;
         Hex selHex = selectedHex.GetComponent<Hex>();
 
+        if (IsKapaSelected) return;
         if (HandleHexOutOfRange(selHex.hexCoords) || HandleSelectedHexIsUnitHex(selHex.hexCoords)) return;
 
         HandleTargetSelectedHex(selHex);
@@ -116,8 +122,8 @@ public class UnitManager : MonoBehaviour
         }
         else
         {
+            ChargeNewUnitHexCoord();
             moveSys.MoveUnit(selectedUnit, hexGrid);
-            previousSelectedHex.hasPlayerOnIt = true;
             //PlayerTurn = false; trouver une autre methode pour bloquer le joueur en listant l'ensemble des units
             // Ici on utilise pas le ClearOldSelection pour ne pas reset l'Unit Selected, On veut Lock l'Unit pour la phase de Capa
             ClearGraphKeepUnit();
@@ -151,7 +157,8 @@ public class UnitManager : MonoBehaviour
     {
         if (selectedUnit == null) return;
         KapaType type = selectedUnit.KapasList[i].KapaType;
-        foreach(var v in selectedUnit.KapasList) { if (v.KapaType == CurrentTypeKapaSelected) v.DeselectTiles(hexGrid); }
+        if (CurrentKapaID != 5) selectedUnit.KapasList[CurrentKapaID].DeselectTiles(hexGrid);
+        CurrentKapaID = i;
         if (!IsKapaSelected && !selectedUnit.IsPersoLocked) ClearGraphKeepUnit();
 
         if (!IsKapaSelected || CurrentTypeKapaSelected != type)
@@ -163,7 +170,7 @@ public class UnitManager : MonoBehaviour
             return;
         }
         selectedUnit.KapasList[i].Execute();
-        ResetKapaData();
+        FullResetKapAndPlayer();
     }
 
     /// <summary>
@@ -175,6 +182,18 @@ public class UnitManager : MonoBehaviour
     {
         CurrentTypeKapaSelected = KapaType.Default;
         IsKapaSelected = false;
+        CurrentKapaID = 5;
+    }
+
+    /// <summary>
+    /// reset completement l'ensemble des datas d'une kapa pour switch sur une autre
+    /// et celle du perso selected
+    /// </summary>
+    void FullResetKapAndPlayer()
+    {
+        CurrentTypeKapaSelected = KapaType.Default;
+        IsKapaSelected = false;
+        CurrentKapaID = 5;
         SelectedUnit.IsPersoLocked = false;
         SelectedUnit.CanPlay = false;
         SelectedUnit = null;
@@ -206,7 +225,7 @@ public class UnitManager : MonoBehaviour
             }
             else
             {
-                foreach (var v in selectedUnit.KapasList) { if (v.KapaType == CurrentTypeKapaSelected) v.DeselectTiles(hexGrid); }
+                selectedUnit.KapasList[CurrentKapaID].DeselectTiles(hexGrid);
                 ClearDataSelectionAvoidRange();
                 ResetKapaData();
                 return false;
@@ -232,7 +251,7 @@ public class UnitManager : MonoBehaviour
             }
             else
             {
-                foreach (var v in selectedUnit.KapasList) { if (v.KapaType == CurrentTypeKapaSelected) v.DeselectTiles(hexGrid); }
+                selectedUnit.KapasList[CurrentKapaID].DeselectTiles(hexGrid);
                 ClearDataSelectionAvoidRange();
                 ResetKapaData();
                 ///Debug.Log("2");
@@ -306,6 +325,14 @@ public class UnitManager : MonoBehaviour
     }
     #endregion
 
+    #region Inits
+    async void Init(HexGridStore hex)
+    {
+        await Task.Delay(100);
+        foreach (GameObject u in GameObject.FindGameObjectsWithTag("Player")) { hex.GetTile(u.GetComponent<Unit>().CurrentHexPos).hasPlayerOnIt = true; }
+    }
+    #endregion
+
     #region Clearing and Reset methodes
     /// <summary>
     /// reset le perso selectionné et les sélections graphiques
@@ -318,6 +345,9 @@ public class UnitManager : MonoBehaviour
         selectedUnit = null;
     }
 
+    /// <summary>
+    /// ne clear que la selection de datas unit et hex, pas de deselect graphic pour alleger la methode et eviter les NullRefExcep
+    /// </summary>
     void ClearDataSelectionAvoidRange()
     {
         previousSelectedHex = null;
@@ -335,6 +365,19 @@ public class UnitManager : MonoBehaviour
         moveSys.HideRange(hexGrid);
     }
 
+    /// <summary>
+    /// retire la selectedTile sur laquelle une Unit était et place la nouvelle tile en hasPlayerOnIt
+    /// </summary>
+    void ChargeNewUnitHexCoord()
+    {
+        hexGrid.GetTile(selectedUnit.CurrentHexPos).hasPlayerOnIt = false;
+        previousSelectedHex.hasPlayerOnIt = true;
+        selectedUnit.CurrentHexPos = previousSelectedHex.hexCoords;
+    }
+
+    /// <summary>
+    /// reset manuel de la gameloop temporaire
+    /// </summary>
     void ResetLoop()
     {
         foreach (GameObject u in GameObject.FindGameObjectsWithTag("Player")) { u.GetComponent<Unit>().CanPlay = true; }

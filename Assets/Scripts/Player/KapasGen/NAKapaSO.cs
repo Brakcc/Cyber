@@ -25,7 +25,7 @@ public class NAKapaSO : AKapaSO
     #region inherited paterns/accessors
     //North tiles
     public override Vector3Int[] OddNTiles { get => oddNTiles; set { oddNTiles = value; } }
-    public Vector3Int[] oddNTiles;
+    [HideInInspector] public Vector3Int[] oddNTiles;
     public override Vector3Int[] EvenNTiles { get => evenNTiles; set { evenNTiles = value; } }
     [HideInInspector] public Vector3Int[] evenNTiles;
 
@@ -83,7 +83,7 @@ public class NAKapaSO : AKapaSO
     }
     void EndKapa()
     {
-        Debug.Log("pas utile de fou");
+        //Debug.Log("End Kapa");
     }
     #endregion
 }

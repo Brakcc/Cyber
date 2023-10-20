@@ -35,7 +35,7 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     public abstract Vector3Int[] EvenWNTiles { get; set; }
     #endregion
 
-    #region patern gen (to herit)
+    #region patern gen cache
     #region Ntiles
     /// <summary>
     /// génère l'array de coord Unity des Kapas vers le Nord, tuiles Impaires
@@ -261,11 +261,24 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     /// </summary>
     public virtual void SelectTiles(Unit unit, HexGridStore hexGrid)
     {
-        foreach (var i in OddNTiles)
+        if (Direction.IsPariryEven(unit.CurrentHexPos.x))
         {
-            if (hexGrid.hexTiles.ContainsKey(HexCoordonnees.GetClosestHex(unit.transform.position) + i))
+            foreach (var i in EvenNTiles)
             {
-                hexGrid.GetTile(HexCoordonnees.GetClosestHex(unit.transform.position) + i).EnableGlowKapa();
+                if (hexGrid.hexTiles.ContainsKey(HexCoordonnees.GetClosestHex(unit.transform.position) + i))
+                {
+                   hexGrid.GetTile(HexCoordonnees.GetClosestHex(unit.transform.position) + i).EnableGlowKapa();
+                }
+            }
+        }
+        else
+        {
+            foreach (var i in OddNTiles)
+            {
+                if (hexGrid.hexTiles.ContainsKey(HexCoordonnees.GetClosestHex(unit.transform.position) + i))
+                {
+                    hexGrid.GetTile(HexCoordonnees.GetClosestHex(unit.transform.position) + i).EnableGlowKapa();
+                }
             }
         }
     }
