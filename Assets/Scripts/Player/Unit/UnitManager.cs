@@ -19,7 +19,6 @@ public class UnitManager : MonoBehaviour
     //Is a Kapa Currently selected, pas vraiment de possibilité de store directement une Kapa, les methodes de kapas étant deja stored dans le cache AKapaSO
     public KapaType CurrentTypeKapaSelected { get; private set; }
     public bool IsKapaSelected { get; private set; }
-    public int CurrentKapaID { get; set; }
 
     //Player Turn à déplacer dans le GameLoopManager
     public bool PlayerTurn { get; private set; } = true;
@@ -35,7 +34,6 @@ public class UnitManager : MonoBehaviour
         selectedUnit = null;
         previousSelectedHex = null;
         CurrentTypeKapaSelected = KapaType.Default;
-        CurrentKapaID = 5;
         IsKapaSelected = false;
         Init(hexGrid);
     }
@@ -157,8 +155,7 @@ public class UnitManager : MonoBehaviour
     {
         if (selectedUnit == null) return;
         KapaType type = selectedUnit.KapasList[i].KapaType;
-        if (CurrentKapaID != 5) selectedUnit.KapasList[CurrentKapaID].DeselectTiles(hexGrid);
-        CurrentKapaID = i;
+        if (CurrentTypeKapaSelected != KapaType.Default) selectedUnit.KapasList[(int)CurrentTypeKapaSelected].DeselectTiles(hexGrid);
         if (!IsKapaSelected && !selectedUnit.IsPersoLocked) ClearGraphKeepUnit();
 
         if (!IsKapaSelected || CurrentTypeKapaSelected != type)
@@ -182,7 +179,6 @@ public class UnitManager : MonoBehaviour
     {
         CurrentTypeKapaSelected = KapaType.Default;
         IsKapaSelected = false;
-        CurrentKapaID = 5;
     }
 
     /// <summary>
@@ -193,7 +189,6 @@ public class UnitManager : MonoBehaviour
     {
         CurrentTypeKapaSelected = KapaType.Default;
         IsKapaSelected = false;
-        CurrentKapaID = 5;
         SelectedUnit.IsPersoLocked = false;
         SelectedUnit.CanPlay = false;
         SelectedUnit = null;
@@ -225,7 +220,7 @@ public class UnitManager : MonoBehaviour
             }
             else
             {
-                selectedUnit.KapasList[CurrentKapaID].DeselectTiles(hexGrid);
+                selectedUnit.KapasList[(int)CurrentTypeKapaSelected].DeselectTiles(hexGrid);
                 ClearDataSelectionAvoidRange();
                 ResetKapaData();
                 return false;
@@ -251,7 +246,7 @@ public class UnitManager : MonoBehaviour
             }
             else
             {
-                selectedUnit.KapasList[CurrentKapaID].DeselectTiles(hexGrid);
+                selectedUnit.KapasList[(int)CurrentTypeKapaSelected].DeselectTiles(hexGrid);
                 ClearDataSelectionAvoidRange();
                 ResetKapaData();
                 ///Debug.Log("2");

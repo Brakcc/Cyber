@@ -256,6 +256,7 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
         OddWSTiles = await GetOddWStiles(p);
         EvenWSTiles = await GetEvenWStiles(p);
     }
+
     /// <summary>
     /// Sélectionne les Tuiles utilisées par la compétence, dans une direction donnée
     /// </summary>
@@ -267,7 +268,7 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
             {
                 if (hexGrid.hexTiles.ContainsKey(HexCoordonnees.GetClosestHex(unit.transform.position) + i))
                 {
-                   hexGrid.GetTile(HexCoordonnees.GetClosestHex(unit.transform.position) + i).EnableGlowKapa();
+                    hexGrid.GetTile(HexCoordonnees.GetClosestHex(unit.transform.position) + i).EnableGlowKapa();
                 }
             }
         }
@@ -282,10 +283,12 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
             }
         }
     }
+
     /// <summary>
     /// Base Logique de l'execution de Kapa
     /// </summary>
     public abstract void Execute();
+
     /// <summary>
     /// Retire la sélection de Tuiles utilisées par la compétence
     /// </summary>
