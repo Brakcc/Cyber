@@ -235,7 +235,7 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     /// initialise tous les paternes de Kapas dans toutes les directions
     /// </summary>
     /// <param name="p"></param>
-    public virtual async void Init(Vector3Int[] p)
+    public virtual async void InitPaterns(Vector3Int[] p)
     {
         //NTiles
         OddNTiles = await GetOddNtiles(p);
@@ -258,36 +258,39 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     }
 
     /// <summary>
-    /// Sélectionne les Tuiles utilisées par la compétence, dans une direction donnée
-    /// </summary>
-    public virtual void SelectTiles(Unit unit, HexGridStore hexGrid)
-    {
-        if (Direction.IsPariryEven(unit.CurrentHexPos.x))
-        {
-            foreach (var i in EvenNTiles)
-            {
-                if (hexGrid.hexTiles.ContainsKey(HexCoordonnees.GetClosestHex(unit.transform.position) + i))
-                {
-                    hexGrid.GetTile(HexCoordonnees.GetClosestHex(unit.transform.position) + i).EnableGlowKapa();
-                }
-            }
-        }
-        else
-        {
-            foreach (var i in OddNTiles)
-            {
-                if (hexGrid.hexTiles.ContainsKey(HexCoordonnees.GetClosestHex(unit.transform.position) + i))
-                {
-                    hexGrid.GetTile(HexCoordonnees.GetClosestHex(unit.transform.position) + i).EnableGlowKapa();
-                }
-            }
-        }
-    }
-
-    /// <summary>
     /// Base Logique de l'execution de Kapa
     /// </summary>
     public abstract void Execute();
+    #endregion
+
+    #region graph selection methodes (to herit)
+    /// <summary>
+    /// Sélectionne les Tuiles utilisées par la compétence, dans une direction donnée, tiles PAIRES
+    /// </summary>
+    public virtual void SelectEvenGraphTiles(Unit unit, HexGridStore hexGrid, Vector3Int[] evenTilesArray)
+    {
+        foreach (var i in evenTilesArray)
+        {
+            if (hexGrid.hexTiles.ContainsKey(HexCoordonnees.GetClosestHex(unit.transform.position) + i))
+            {
+                hexGrid.GetTile(HexCoordonnees.GetClosestHex(unit.transform.position) + i).EnableGlowKapa();
+            }
+        }
+    }
+    
+    /// <summary>
+    /// Sélectionne les Tuiles utilisées par la compétence, dans une direction donnée, tiles IMPAIRES
+    /// </summary>
+    public virtual void SelectOddGraphTiles(Unit unit, HexGridStore hexGrid, Vector3Int[] oddTilesArray)
+    {
+        foreach (var i in oddTilesArray)
+        {
+            if (hexGrid.hexTiles.ContainsKey(HexCoordonnees.GetClosestHex(unit.transform.position) + i))
+            {
+                hexGrid.GetTile(HexCoordonnees.GetClosestHex(unit.transform.position) + i).EnableGlowKapa();
+            }
+        }
+    }
 
     /// <summary>
     /// Retire la sélection de Tuiles utilisées par la compétence

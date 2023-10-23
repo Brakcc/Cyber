@@ -28,6 +28,7 @@ public class Hex : MonoBehaviour
         _ => int.MaxValue
     };
 
+    #region glow mats
     public bool IsObstacle() => type == HexType.Obstacle || hasPlayerOnIt;
 
     //General Glow pour la range
@@ -38,9 +39,14 @@ public class Hex : MonoBehaviour
     public void EnableGlowPath() => glow.StartGlowPath();
     public void DisableGlowPath() => glow.ResetGlowPath();
 
-    //Glow pour les compétences
+    //Glow pour les kapas
     public void EnableGlowKapa() => glow.ToggleGlowKapa(true);
     public void DisableGlowKapa() => glow.ToggleGlowKapa(false);
+
+    //Glow pour les boutons de sens de kapas
+    public void EnableGlowButton() => glow.ToggleSelectGlowKapa(true);
+    public void DisableGlowButton() => glow.ToggleSelectGlowKapa(false);
+    #endregion
     #endregion
 }
 

@@ -53,7 +53,7 @@ public class Perso1 : Unit
 
     void Start()
     {
-        foreach (var kap in kapasList) { kap.Init(kap.Patern); }
+        foreach (var kap in kapasList) { kap.InitPaterns(kap.Patern); }
     }
     #endregion
 

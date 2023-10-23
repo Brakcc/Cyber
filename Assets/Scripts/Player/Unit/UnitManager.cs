@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Threading.Tasks;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class UnitManager : MonoBehaviour
 {
@@ -16,9 +17,12 @@ public class UnitManager : MonoBehaviour
     private Hex previousSelectedHex;
     public Hex PreviousSelectedHex { get => previousSelectedHex; }
 
-    //Is a Kapa Currently selected, pas vraiment de possibilité de store directement une Kapa, les methodes de kapas étant deja stored dans le cache AKapaSO
+    //Is a Kapa Currently selected, pas vraiment de possibilité de store directement une Kapa
+    //on store directement une list de patern, les methodes de kapas étant deja stored dans le cache AKapaSO
     public KapaType CurrentTypeKapaSelected { get; private set; }
     public bool IsKapaSelected { get; private set; }
+    public List<Vector3Int> CurrentButtonPos {get; private set; }
+    public List<Vector3Int> CurrentKapaPaternOffset { get; private set; }  
 
     //Player Turn à déplacer dans le GameLoopManager
     public bool PlayerTurn { get; private set; } = true;
@@ -35,6 +39,8 @@ public class UnitManager : MonoBehaviour
         previousSelectedHex = null;
         CurrentTypeKapaSelected = KapaType.Default;
         IsKapaSelected = false;
+        CurrentKapaPaternOffset = new();
+        CurrentButtonPos = new();
         Init(hexGrid);
     }
     #endregion
@@ -146,6 +152,22 @@ public class UnitManager : MonoBehaviour
     #endregion
 
     #region KapasCalls
+    public List<Vector3Int> GenerateButtonPos(Unit unit, HexGridStore hexGrid) => hexGrid.GetNeighbourgs(unit.CurrentHexPos);
+
+    public void HandleKapaSelectNew(int i)
+    {
+        if (selectedUnit == null) return;
+        KapaType type = selectedUnit.KapasList[i].KapaType;
+        if (CurrentTypeKapaSelected != KapaType.Default) selectedUnit.KapasList[(int)CurrentTypeKapaSelected].DeselectTiles(hexGrid);
+        if (!IsKapaSelected && !selectedUnit.IsPersoLocked) ClearGraphKeepUnit();
+
+        //preselec Kapa
+        if (!IsKapaSelected || CurrentTypeKapaSelected != type)
+        {
+            CurrentButtonPos = GenerateButtonPos(SelectedUnit, hexGrid);
+        }
+    }
+
     /// <summary>
     /// Gère la selection des Kapas à la façon des Units, On doit selectionner à 2 fois une compétence avant de pouvoir l'executer.
     /// PENSER A AJOUTER LA METHODES POUR LA SELECTION DE LA DIRECTION DE LA COMPETENCE
@@ -160,7 +182,7 @@ public class UnitManager : MonoBehaviour
 
         if (!IsKapaSelected || CurrentTypeKapaSelected != type)
         {
-            selectedUnit.KapasList[i].SelectTiles(selectedUnit, hexGrid);
+            //selectedUnit.KapasList[i].SelectNTiles(selectedUnit, hexGrid);
             CurrentTypeKapaSelected = type;
             IsKapaSelected = true;
             ///Debug.Log(CurrentTypeKapaSelected);
