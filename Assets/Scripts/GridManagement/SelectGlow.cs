@@ -10,6 +10,7 @@ public class SelectGlow : MonoBehaviour
     public Material glowMat;
     [SerializeField] private Color selectedPathColor;
     [SerializeField] private Color selectedKapaColor;
+    [SerializeField] private Color selectedKapaColorButton;
     private Color originColor;
     private bool isGlowing;
     #endregion
@@ -107,6 +108,37 @@ public class SelectGlow : MonoBehaviour
     }
 
     public void ToggleGlowKapa(bool b)
+    {
+        if (isGlowing == b) return;
+        isGlowing = !b;
+        ToggleKapa();
+    }
+    #endregion
+
+    #region preselect kapa glow
+    public void ToggleSelectKapa()
+    {
+        if (!isGlowing)
+        {
+            foreach (Renderer rend in originMats.Keys)
+            {
+                rend.materials = glowMats[rend];
+                foreach (Material m in glowMats[rend]) { m.SetColor("_GlowColor", selectedKapaColorButton); }
+            }
+        }
+        else
+        {
+            foreach (Renderer rend in originMats.Keys)
+            {
+                rend.materials = originMats[rend];
+                foreach (Material m in glowMats[rend]) { m.SetColor("_GlowColor", originColor); }
+                rend.materials = originMats[rend];
+            }
+        }
+        isGlowing = !isGlowing;
+    }
+
+    public void ToggleSelectGlowKapa(bool b)
     {
         if (isGlowing == b) return;
         isGlowing = !b;

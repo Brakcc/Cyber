@@ -133,9 +133,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d7c7c007f8cd6f4fb5db840d3ecd39e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glow: {fileID: 0}
   type: 1
   hexCoords: {x: 0, y: 0, z: 0}
+  hasPlayerOnIt: 0
 --- !u!114 &2087727905389615736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,6 +151,7 @@ MonoBehaviour:
   glowMat: {fileID: 2100000, guid: 2f734e74115f88249833eb08ceae0f16, type: 2}
   selectedPathColor: {r: 0.008547783, g: 1, b: 0, a: 1}
   selectedKapaColor: {r: 0, g: 0.21117555, b: 0.9150943, a: 1}
+  selectedKapaColorButton: {r: 0, g: 0.74731255, b: 1, a: 1}
 --- !u!1 &3976043299740282238
 GameObject:
   m_ObjectHideFlags: 0
