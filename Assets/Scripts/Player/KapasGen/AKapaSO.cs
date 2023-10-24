@@ -277,7 +277,7 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
             }
         }
     }
-    
+
     /// <summary>
     /// Sélectionne les Tuiles utilisées par la compétence, dans une direction donnée, tiles IMPAIRES
     /// </summary>

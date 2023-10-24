@@ -154,20 +154,6 @@ public class UnitManager : MonoBehaviour
     #region KapasCalls
     public List<Vector3Int> GenerateButtonPos(Unit unit, HexGridStore hexGrid) => hexGrid.GetNeighbourgs(unit.CurrentHexPos);
 
-    public void HandleKapaSelectNew(int i)
-    {
-        if (selectedUnit == null) return;
-        KapaType type = selectedUnit.KapasList[i].KapaType;
-        if (CurrentTypeKapaSelected != KapaType.Default) selectedUnit.KapasList[(int)CurrentTypeKapaSelected].DeselectTiles(hexGrid);
-        if (!IsKapaSelected && !selectedUnit.IsPersoLocked) ClearGraphKeepUnit();
-
-        //preselec Kapa
-        if (!IsKapaSelected || CurrentTypeKapaSelected != type)
-        {
-            CurrentButtonPos = GenerateButtonPos(SelectedUnit, hexGrid);
-        }
-    }
-
     /// <summary>
     /// Gère la selection des Kapas à la façon des Units, On doit selectionner à 2 fois une compétence avant de pouvoir l'executer.
     /// PENSER A AJOUTER LA METHODES POUR LA SELECTION DE LA DIRECTION DE LA COMPETENCE
@@ -180,16 +166,22 @@ public class UnitManager : MonoBehaviour
         if (CurrentTypeKapaSelected != KapaType.Default) selectedUnit.KapasList[(int)CurrentTypeKapaSelected].DeselectTiles(hexGrid);
         if (!IsKapaSelected && !selectedUnit.IsPersoLocked) ClearGraphKeepUnit();
 
+        //preselec Kapa
         if (!IsKapaSelected || CurrentTypeKapaSelected != type)
         {
-            //selectedUnit.KapasList[i].SelectNTiles(selectedUnit, hexGrid);
+            CurrentButtonPos = GenerateButtonPos(SelectedUnit, hexGrid);
             CurrentTypeKapaSelected = type;
             IsKapaSelected = true;
-            ///Debug.Log(CurrentTypeKapaSelected);
+            foreach (var j in CurrentButtonPos) { hexGrid.GetTile(j).EnableGlowButton(); }
             return;
         }
-        selectedUnit.KapasList[i].Execute();
-        FullResetKapAndPlayer();
+
+        //Active Kapa
+        if (CurrentKapaPaternOffset != null)
+        {
+            selectedUnit.KapasList[i].Execute();
+            FullResetKapAndPlayer();
+        }
     }
 
     /// <summary>
