@@ -38,9 +38,9 @@ public class Perso1 : Unit
     #region methodes
     void Awake() 
     {
-        currentHexPos = HexCoordonnees.GetClosestHex(transform.position);
         rend = GetComponent<SpriteRenderer>();
         InitPlayer();
+        currentHexPos = HexCoordonnees.GetClosestHex(transform.position);
     }
 
     void InitPlayer()

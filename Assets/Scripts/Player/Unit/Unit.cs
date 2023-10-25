@@ -39,6 +39,6 @@ public abstract class Unit : MonoBehaviour, IUnit
             PositionCharacterOnTile(i);
         }
     }
-    void PositionCharacterOnTile(Vector3 pos) => transform.position = new Vector3(pos.x, pos.y, pos.z - 0.1f);
+    protected void PositionCharacterOnTile(Vector3 pos) => transform.position = new Vector3(pos.x, pos.y, pos.z - 0.1f);
     #endregion
 }
