@@ -2,7 +2,6 @@ using UnityEngine;
 using System.Threading.Tasks;
 using UnityEngine.UI;
 using System.Collections.Generic;
-using System.Linq;
 
 public class UnitManager : MonoBehaviour
 {
@@ -80,6 +79,7 @@ public class UnitManager : MonoBehaviour
 
     /// <summary>
     /// Si une Unit est sélectionnée et le tour de l'Unit en cours : 
+    /// =>>> Gère la selection de kapaDir !!!!!
     /// -> Si l'hex est hors de range ou celle du perso (Si celle du perso le perso est unselect et ClearOldSelection) : 
     /// -> HandleTargetSelected
     /// </summary>
@@ -156,8 +156,22 @@ public class UnitManager : MonoBehaviour
     #endregion
 
     #region KapasCalls
+    /// <summary>
+    /// Génere une liste de bouton de coordo basé sur la fonction GetNeighbours pour recup les boutons dispo autour du joueur
+    /// </summary>
+    /// <param name="unit"></param>
+    /// <param name="hexGrid"></param>
+    /// <returns></returns>
     List<Vector3Int> GenerateButtonPos(Unit unit, HexGridStore hexGrid) => hexGrid.GetNeighbourgs(unit.CurrentHexPos);
 
+    /// <summary>
+    /// Basé sur la pos du l'unit et celle de la tile cliquée, on trace un VECTEUR entre la tile et la selectedUnit pour connaitre la dir selon la parité
+    /// Reset de la direction deja selectionnée PUIS selection de la nouvelle direction
+    /// -> modif la liste de tiles qui seront affectées par la kapa; la Kapa en elle meme est stocké grace à la kapatype, selectedUnit et kapalist de la selectedUnit
+    /// -> refresh les affichages de boutons
+    /// </summary>
+    /// <param name="buttonPos"></param>
+    /// <param name="unitRef"></param>
     void HandleKapaDirSelect(Vector3Int buttonPos, Unit unitRef)
     {
         var dir = buttonPos - unitRef.CurrentHexPos;
@@ -165,30 +179,39 @@ public class UnitManager : MonoBehaviour
         unitRef.KapasList[(int)CurrentTypeKapaSelected].DeselectTiles(hexGrid);
         if (Direction.IsPariryEven(unitRef.CurrentHexPos.x))
         {
-            /*CurrentKapaPaternOffset = HandleKapaEvenDirPaternGen(dir, unitRef);
-            unitRef.KapasList[(int)CurrentTypeKapaSelected].SelectGraphTiles(unitRef, hexGrid, CurrentKapaPaternOffset);*/
             HandleKapaEvenDirPaternGen(dir, unitRef);
         }
         else
         {
-            /*CurrentKapaPaternOffset = HandleKapaOddDirPaternGen(dir, unitRef);
-            unitRef.KapasList[(int)CurrentTypeKapaSelected].SelectGraphTiles(unitRef, hexGrid, CurrentKapaPaternOffset);*/
             HandleKapaOddDirPaternGen(dir, unitRef);
         }
         ShowButtons(CurrentButtonPos);
         IsKapaDirSelected = true;
     }
 
+    #region Patern Application
+    /// <summary>
+    /// pour l'unit sur une case IMPAIRE, revoit le bon paterne de Kapa qui ser aaffiché sur les bonne tiles ensuite selon la pos de l'unit
+    /// J'ai le seum que le switch passe pas car return rien, en fait si ca peut return mais flemme, bon ok je changerai ca un jour je vais me mettre sur discord
+    /// </summary>
+    /// <param name="dir"></param>
+    /// <param name="unit"></param>
     void HandleKapaOddDirPaternGen(Vector3Int dir, Unit unit)
     {
-        if (dir == new Vector3Int(0, 1, 0)) { CurrentKapaPaternPos = unit.KapasList[(int)CurrentTypeKapaSelected].SelectGraphTiles(unit, hexGrid, unit.KapasList[(int)CurrentTypeKapaSelected].EvenNTiles); }
-        if (dir == new Vector3Int(1, 0, 0)) { CurrentKapaPaternPos = unit.KapasList[(int)CurrentTypeKapaSelected].SelectGraphTiles(unit, hexGrid, unit.KapasList[(int)CurrentTypeKapaSelected].EvenENTiles); }
-        if (dir == new Vector3Int(1, -1, 0)) { CurrentKapaPaternPos = unit.KapasList[(int)CurrentTypeKapaSelected].SelectGraphTiles(unit, hexGrid, unit.KapasList[(int)CurrentTypeKapaSelected].EvenESTiles); }
-        if (dir == new Vector3Int(0, -1, 0)) { CurrentKapaPaternPos = unit.KapasList[(int)CurrentTypeKapaSelected].SelectGraphTiles(unit, hexGrid, unit.KapasList[(int)CurrentTypeKapaSelected].EvenSTiles); }
-        if (dir == new Vector3Int(-1, -1, 0)) { CurrentKapaPaternPos = unit.KapasList[(int)CurrentTypeKapaSelected].SelectGraphTiles(unit, hexGrid, unit.KapasList[(int)CurrentTypeKapaSelected].EvenWSTiles); }
-        if (dir == new Vector3Int(-1, 0, 0)) { CurrentKapaPaternPos = unit.KapasList[(int)CurrentTypeKapaSelected].SelectGraphTiles(unit, hexGrid, unit.KapasList[(int)CurrentTypeKapaSelected].EvenWNTiles); }
+        if (dir == new Vector3Int(0, 1, 0)) { CurrentKapaPaternPos = unit.KapasList[(int)CurrentTypeKapaSelected].SelectGraphTiles(unit, hexGrid, unit.KapasList[(int)CurrentTypeKapaSelected].OddNTiles); }
+        if (dir == new Vector3Int(1, 0, 0)) { CurrentKapaPaternPos = unit.KapasList[(int)CurrentTypeKapaSelected].SelectGraphTiles(unit, hexGrid, unit.KapasList[(int)CurrentTypeKapaSelected].OddENTiles); }
+        if (dir == new Vector3Int(1, -1, 0)) { CurrentKapaPaternPos = unit.KapasList[(int)CurrentTypeKapaSelected].SelectGraphTiles(unit, hexGrid, unit.KapasList[(int)CurrentTypeKapaSelected].OddESTiles); }
+        if (dir == new Vector3Int(0, -1, 0)) { CurrentKapaPaternPos = unit.KapasList[(int)CurrentTypeKapaSelected].SelectGraphTiles(unit, hexGrid, unit.KapasList[(int)CurrentTypeKapaSelected].OddSTiles); }
+        if (dir == new Vector3Int(-1, -1, 0)) { CurrentKapaPaternPos = unit.KapasList[(int)CurrentTypeKapaSelected].SelectGraphTiles(unit, hexGrid, unit.KapasList[(int)CurrentTypeKapaSelected].OddWSTiles); }
+        if (dir == new Vector3Int(-1, 0, 0)) { CurrentKapaPaternPos = unit.KapasList[(int)CurrentTypeKapaSelected].SelectGraphTiles(unit, hexGrid, unit.KapasList[(int)CurrentTypeKapaSelected].OddWNTiles); }
     }
 
+    /// <summary>
+    /// pour l'unit sur une case PAIRE, revoit le bon paterne de Kapa qui ser aaffiché sur les bonne tiles ensuite selon la pos de l'unit
+    /// J'ai le seum que le switch passe pas car return rien, en fait si ca peut return mais flemme, bon ok je changerai ca un jour je vais me mettre sur discord
+    /// </summary>
+    /// <param name="dir"></param>
+    /// <param name="unit"></param>
     void HandleKapaEvenDirPaternGen(Vector3Int dir, Unit unit)
     {
         if (dir == new Vector3Int(0, 1, 0)) { CurrentKapaPaternPos = unit.KapasList[(int)CurrentTypeKapaSelected].SelectGraphTiles(unit, hexGrid, unit.KapasList[(int)CurrentTypeKapaSelected].EvenNTiles); }
@@ -198,31 +221,6 @@ public class UnitManager : MonoBehaviour
         if (dir == new Vector3Int(-1, 0, 0)) { CurrentKapaPaternPos = unit.KapasList[(int)CurrentTypeKapaSelected].SelectGraphTiles(unit, hexGrid, unit.KapasList[(int)CurrentTypeKapaSelected].EvenWSTiles); }
         if (dir == new Vector3Int(-1, 1, 0)) { CurrentKapaPaternPos = unit.KapasList[(int)CurrentTypeKapaSelected].SelectGraphTiles(unit, hexGrid, unit.KapasList[(int)CurrentTypeKapaSelected].EvenWNTiles); }
     }
-    #region Buttons
-    /*//Odd ones
-    void OnNorthOdd(Unit u)
-    {
-        CurrentSelectedKapaDir = KapaDir.North;
-        CurrentKapaPaternPos = u.KapasList[(int)CurrentTypeKapaSelected].OddNTiles;
-    }
-    void OnEastNorthOdd(Unit u) { CurrentSelectedKapaDir = KapaDir.NorthEast; return u.KapasList[(int)CurrentTypeKapaSelected].OddENTiles; }
-    void OnEastSouthOdd(Unit u) { CurrentSelectedKapaDir = KapaDir.SouthEast; return u.KapasList[(int)CurrentTypeKapaSelected].OddESTiles; }
-    void OnSouthOdd(Unit u) { CurrentSelectedKapaDir = KapaDir.South; return u.KapasList[(int)CurrentTypeKapaSelected].OddSTiles; }
-    void OnWestSouthOdd(Unit u) { CurrentSelectedKapaDir = KapaDir.SouthWest; return u.KapasList[(int)CurrentTypeKapaSelected].OddWSTiles; }
-    void OnWestNorthOdd(Unit u) { CurrentSelectedKapaDir = KapaDir.NorthWest; return u.KapasList[(int)CurrentTypeKapaSelected].OddWNTiles; }
-    //Even ones
-    void OnNorthEven(Unit u) { CurrentSelectedKapaDir = KapaDir.North; return u.KapasList[(int)CurrentTypeKapaSelected].OddNTiles; }
-    void OnEastNorthEven(Unit u) { CurrentSelectedKapaDir = KapaDir.NorthEast; return u.KapasList[(int)CurrentTypeKapaSelected].OddENTiles; }
-    void OnEastSouthEven(Unit u) { CurrentSelectedKapaDir = KapaDir.SouthEast; return u.KapasList[(int)CurrentTypeKapaSelected].OddESTiles; }
-    void OnSouthEven(Unit u) { CurrentSelectedKapaDir = KapaDir.South; return u.KapasList[(int)CurrentTypeKapaSelected].OddSTiles; }
-    void OnWestSouthEven(Unit u) { CurrentSelectedKapaDir = KapaDir.SouthWest; return u.KapasList[(int)CurrentTypeKapaSelected].OddWSTiles; }
-    void OnWestNorthEven(Unit u) { CurrentSelectedKapaDir = KapaDir.NorthWest; return u.KapasList[(int)CurrentTypeKapaSelected].OddWNTiles; }*/
-
-    /*Vector3Int[] FromOffsetToCoord(Vector3Int[] offset, Unit unit)
-    {
-        Vector3Int[] v = new Vector3Int[offset.Length];
-        for (int i = 0; i < offset.Length; i++) { }
-    }*/
     #endregion
 
     /// <summary>
@@ -255,9 +253,13 @@ public class UnitManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// simple boucle d'AFFICHAGE GRAPH SEULEMENT des boutons autour d'une Unit
+    /// </summary>
+    /// <param name="butPos"></param>
     void ShowButtons(List<Vector3Int> butPos)
     {
-        foreach (var j in butPos) { hexGrid.GetTile(j).EnableGlowButton(); }
+        foreach (var i in butPos) { var j = hexGrid.GetTile(i); j.EnableGlowButton(); j.GetColorGlowButton(); }
     }
 
     /// <summary>
@@ -312,7 +314,6 @@ public class UnitManager : MonoBehaviour
         //On clique sur UNE AUTRE unit et la SELECTED UNIT n'est PAS LOCK
         else if (selectedUnit != unitRef && !selectedUnit.IsPersoLocked)
         {
-            ///Debug.Log("Switch selected Unit");
             if (!IsKapaSelected)
             {
                 ClearOldSelection();
@@ -330,18 +331,15 @@ public class UnitManager : MonoBehaviour
         //On clique sur LA MEME Unit et elle est DEJA LOCK
         else if (selectedUnit == unitRef && selectedUnit.IsPersoLocked)
         {
-            ///Debug.Log("Meme Unit et Locked");
             //feedbacks pour montrer que le perso doit faire une capa (ex : petit son de bip un peu techno des familles)
             return true;
         }
         //On clique sur LA MEME unit mais ELLE n'est PAS LOCK (Old CheckIfSameUnitSelected)
         else if (selectedUnit == unitRef && !selectedUnit.IsPersoLocked)
         {
-            ///Debug.Log("Same Unit selected");
             if (!IsKapaSelected)
             {
                 ClearOldSelection();
-                ///Debug.Log("1");
                 return true;
             }
             else
@@ -349,16 +347,16 @@ public class UnitManager : MonoBehaviour
                 selectedUnit.KapasList[(int)CurrentTypeKapaSelected].DeselectTiles(hexGrid);
                 ClearDataSelectionAvoidRange();
                 ResetKapaData();
-                ///Debug.Log("2");
                 return false;
             }
         }
         //On clique sur UNE AUTRE Unit mais la SELECTED UNIT est DEJA LOCKED
         else
         {
-            ///Debug.Log("selectedUnit Locked");
             //action de refus : mettre des feedbacks
             //on inverse la sortie pour pouvoir continuer la methode de sélection des persos
+            //ATENTION !!!!! dans le cas particulier ou une Kapa vise unu Unit au contact, on skip la selection de l'Unit mais on la selection de kapaDir à la pos de l'Unit visée
+            if (IsKapaSelected) { HandleKapaDirSelect(unitRef.CurrentHexPos, SelectedUnit); }
             return true;
         }
     }
@@ -419,6 +417,11 @@ public class UnitManager : MonoBehaviour
         return false;
     }
 
+    /// <summary>
+    /// vérifie si la tile selectionnée est un bouton autour du player ou juste une case sans action
+    /// </summary>
+    /// <param name="hexPos"></param>
+    /// <returns></returns>
     bool HandleHexOutOfButton(Vector3Int hexPos)
     {
         if (CurrentButtonPos.Contains(hexPos)) return false;
@@ -426,7 +429,11 @@ public class UnitManager : MonoBehaviour
     }
     #endregion
 
-    #region Inits
+    #region Init
+    /// <summary>
+    /// Initialise la grille pour detecter les pos des joueurs en début de partie pour rendre impossible les dep sur ces tiles
+    /// </summary>
+    /// <param name="hex"></param>
     async void Init(HexGridStore hex)
     {
         await Task.Delay(100);

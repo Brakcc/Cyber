@@ -15,7 +15,7 @@ public class Hex : MonoBehaviour
     #region methodes
     void Awake()
     {
-        hexCoords = new HexCoordonnees(gameObject).offsetCoordonnees;
+        hexCoords = new HexCoordonnees(gameObject).OffsetCoordonnees;
         glow = GetComponent<SelectGlow>();
     }
 
@@ -46,14 +46,8 @@ public class Hex : MonoBehaviour
     //Glow pour les boutons de sens de kapas
     public void EnableGlowButton() => glow.ToggleSelectGlowKapa(true);
     public void DisableGlowButton() => glow.ToggleSelectGlowKapa(false);
+    public void GetColorGlowButton() => glow.StartGlowButton();
+    public void ResetColorGlowButton() => glow.ResetGlowButton();
     #endregion
     #endregion
-}
-
-public enum HexType
-{
-    Default,
-    Walkable,
-    Obstacle,
-    Hole
 }

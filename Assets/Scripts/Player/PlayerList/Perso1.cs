@@ -5,7 +5,10 @@ using UnityEngine;
 public class Perso1 : Unit
 {
     #region inherited accessors
-    //moves fields
+    //moves fields A RENDRE VISIBLE DEPUIS L'INSPECTEUR DONC ON DOUBLE L'ACCESSEUR
+    //
+    //A REMPLACER PAR LES SCRIPTABLE !!!!!!!!!!!
+    //
     [SerializeField] private int movePoints = 3;
     public override int MovePoints { get => movePoints; }
 
@@ -16,17 +19,20 @@ public class Perso1 : Unit
     public override int HealthPoint { get => healthPoint; 
                                       set { healthPoint = value; } }
 
-    //Game Loop Logic
+    //kapas
+    //
+    //A METTRE DANS LE SCRIPTABLE DU PERSO 
+    //
+    [SerializeField] private List<AKapaSO> kapasList = new();
+    public override List<AKapaSO> KapasList { get => kapasList; 
+                                           set { kapasList = value; } }
+
+    //Game Loop Logic BALEK LA VISIBILITE et BALEK LE SCRIPTABLE
     public override bool CanPlay { get; set; }
     public override bool IsDead { get; set; }
     public override bool IsPersoLocked { get; set; }
     public override Vector3Int CurrentHexPos { get => currentHexPos; set { currentHexPos = HexCoordonnees.GetClosestHex(value); } }
     private Vector3Int currentHexPos;
-
-    //kapas
-    [SerializeField] private List<AKapaSO> kapasList = new();
-    public override List<AKapaSO> KapasList { get => kapasList; 
-                                           set { kapasList = value; } }
     #endregion
 
     #region other fields
