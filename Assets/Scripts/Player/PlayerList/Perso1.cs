@@ -5,28 +5,16 @@ using UnityEngine;
 public class Perso1 : Unit
 {
     #region inherited accessors
-    //moves fields
-    [SerializeField] private int movePoints = 3;
-    public override int MovePoints { get => movePoints; }
+    //moves fields 
+    [SerializeField] private AUnitSO m_Unit;
+    public override AUnitSO UnitData { get => m_Unit; set { m_Unit = value; } }
 
-    [SerializeField] private int speed = 15;
-    public override int Speed { get => speed; }    
-    //health
-    [SerializeField] private int healthPoint = 50;
-    public override int HealthPoint { get => healthPoint; 
-                                      set { healthPoint = value; } }
-
-    //Game Loop Logic
+    //Game Loop Logic BALEK LA VISIBILITE et BALEK LE SCRIPTABLE
     public override bool CanPlay { get; set; }
     public override bool IsDead { get; set; }
     public override bool IsPersoLocked { get; set; }
     public override Vector3Int CurrentHexPos { get => currentHexPos; set { currentHexPos = HexCoordonnees.GetClosestHex(value); } }
     private Vector3Int currentHexPos;
-
-    //kapas
-    [SerializeField] private List<AKapaSO> kapasList = new();
-    public override List<AKapaSO> KapasList { get => kapasList; 
-                                           set { kapasList = value; } }
     #endregion
 
     #region other fields
@@ -38,9 +26,9 @@ public class Perso1 : Unit
     #region methodes
     void Awake() 
     {
-        currentHexPos = HexCoordonnees.GetClosestHex(transform.position);
         rend = GetComponent<SpriteRenderer>();
         InitPlayer();
+        currentHexPos = HexCoordonnees.GetClosestHex(transform.position);
     }
 
     void InitPlayer()
@@ -53,7 +41,7 @@ public class Perso1 : Unit
 
     void Start()
     {
-        foreach (var kap in kapasList) { kap.InitPaterns(kap.Patern); }
+        foreach (var kap in m_Unit.KapasList) { kap.InitPaterns(kap.Patern); }
     }
     #endregion
 

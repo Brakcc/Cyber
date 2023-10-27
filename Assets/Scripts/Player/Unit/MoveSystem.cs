@@ -28,7 +28,7 @@ public class MoveSystem : MonoBehaviour
         }
     }
 
-    public void CalculateRange(Unit selects, HexGridStore hexGrid) => moveRange = PathFind.PathGetRange(hexGrid, HexCoordonnees.GetClosestHex(selects.transform.position), selects.MovePoints);
+    public void CalculateRange(Unit selects, HexGridStore hexGrid) => moveRange = PathFind.PathGetRange(hexGrid, HexCoordonnees.GetClosestHex(selects.transform.position), selects.UnitData.MovePoints);
 
     public void ShowPath(Vector3Int selects,  HexGridStore hexGrid)
     {

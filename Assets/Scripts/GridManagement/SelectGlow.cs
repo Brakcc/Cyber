@@ -113,6 +113,15 @@ public class SelectGlow : MonoBehaviour
         isGlowing = !b;
         ToggleKapa();
     }
+
+    public void GlowKapaOnButton()
+    {
+        if (!isGlowing) return;
+        foreach (Renderer rend in glowMats.Keys)
+        {
+            foreach (Material m in glowMats[rend]) { m.SetColor("_GlowColor", selectedKapaColor); }
+        }
+    }
     #endregion
 
     #region preselect kapa glow
@@ -143,6 +152,24 @@ public class SelectGlow : MonoBehaviour
         if (isGlowing == b) return;
         isGlowing = !b;
         ToggleKapa();
+    }
+
+    public void StartGlowButton()
+    {
+        if (!isGlowing) return;
+        foreach (Renderer rend in glowMats.Keys)
+        {
+            foreach (Material m in glowMats[rend]) { m.SetColor("_GlowColor", selectedKapaColorButton); }
+        }
+    }
+    public void ResetGlowButton()
+    {
+        if (!isGlowing) return;
+        foreach (Renderer rend in glowMats.Keys)
+        {
+            foreach (Material m in glowMats[rend]) { m.SetColor("_GlowColor", originColor); }
+            rend.materials = glowMats[rend];
+        }
     }
     #endregion
     #endregion

@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
@@ -261,35 +262,33 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     /// Base Logique de l'execution de Kapa
     /// </summary>
     public abstract void Execute();
+
+    /// <summary>
+    /// Permet d'override les boutons necessaires selon les Kapa, du gerne retrun null sur le skip pour ne pas afficher de bouton
+    /// </summary>
+    /// <param name="hexGrid"></param>
+    /// <param name="unit"></param>
+    /// <returns></returns>
+    public virtual List<Vector3Int> GenerateButton(HexGridStore hexGrid, Unit unit) { return hexGrid.GetNeighbourgs(unit.CurrentHexPos); }
     #endregion
 
     #region graph selection methodes (to herit)
     /// <summary>
-    /// Sélectionne les Tuiles utilisées par la compétence, dans une direction donnée, tiles PAIRES
+    /// Sélectionne les Tuiles utilisées par la compétence, dans une direction donnée
     /// </summary>
-    public virtual void SelectEvenGraphTiles(Unit unit, HexGridStore hexGrid, Vector3Int[] evenTilesArray)
+    public virtual List<Vector3Int> SelectGraphTiles(Unit unit, HexGridStore hexGrid, Vector3Int[] tilesArray)
     {
-        foreach (var i in evenTilesArray)
+        List<Vector3Int> v = new();
+        foreach (var i in tilesArray)
         {
             if (hexGrid.hexTiles.ContainsKey(HexCoordonnees.GetClosestHex(unit.transform.position) + i))
             {
-                hexGrid.GetTile(HexCoordonnees.GetClosestHex(unit.transform.position) + i).EnableGlowKapa();
+                Hex temp = hexGrid.GetTile(HexCoordonnees.GetClosestHex(unit.transform.position) + i);
+                temp.EnableGlowKapa();
+                v.Add(temp.hexCoords);
             }
         }
-    }
-
-    /// <summary>
-    /// Sélectionne les Tuiles utilisées par la compétence, dans une direction donnée, tiles IMPAIRES
-    /// </summary>
-    public virtual void SelectOddGraphTiles(Unit unit, HexGridStore hexGrid, Vector3Int[] oddTilesArray)
-    {
-        foreach (var i in oddTilesArray)
-        {
-            if (hexGrid.hexTiles.ContainsKey(HexCoordonnees.GetClosestHex(unit.transform.position) + i))
-            {
-                hexGrid.GetTile(HexCoordonnees.GetClosestHex(unit.transform.position) + i).EnableGlowKapa();
-            }
-        }
+        return v;
     }
 
     /// <summary>

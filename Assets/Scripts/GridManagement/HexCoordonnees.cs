@@ -3,7 +3,7 @@ using UnityEngine;
 public struct HexCoordonnees : IHexCoord
 {
     #region fields
-    public Vector3Int offsetCoordonnees { get; set; }
+    public Vector3Int OffsetCoordonnees { get; set; }
     #endregion
 
     #region constructeur
@@ -13,7 +13,7 @@ public struct HexCoordonnees : IHexCoord
     /// <param name="gameObject"></param>
     public HexCoordonnees (GameObject gameObject)
     {
-        offsetCoordonnees = GetClosestHex(gameObject.transform.position);
+        OffsetCoordonnees = GetClosestHex(gameObject.transform.position);
     }
     #endregion
 
