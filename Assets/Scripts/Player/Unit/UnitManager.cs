@@ -316,14 +316,14 @@ public class UnitManager : MonoBehaviour
         SelectedUnit.CanPlay = false;
         SelectedUnit = null;
         //GameLoop reset
-        /*if (GameLoopManager.playerPlay == 1)
+        if (GameLoopManager.playerPlay == 1)
         {
-            GameLoopManager.CountPerso1++;
+            GameLoopManager.countPerso1++;
         }
         if (GameLoopManager.playerPlay == 2)
         {
-            GameLoopManager.CountPerso2++;
-        }*/
+            GameLoopManager.countPerso2++;
+        }
     }
     #endregion
 

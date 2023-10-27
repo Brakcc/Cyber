@@ -6,27 +6,15 @@ public class GameLoopManager : MonoBehaviour
 {
     #region fields
     public static int playerPlay = 1;
-    List<GameObject> heroPlayer1 = new List<GameObject>();
-    List<GameObject> heroPlayer2 = new List<GameObject>();
+    public List<GameObject> heroPlayer1 = new List<GameObject>();
+    public List<GameObject> heroPlayer2 = new List<GameObject>();
 
-    public static int countPerso1;
-    public static int countPerso2;
-
-    //liste perso
-    [SerializeField] GameObject perso1_1;
-    [SerializeField] GameObject perso1_2;
-    [SerializeField] GameObject perso1_3;
-    [SerializeField] GameObject perso1_4;
-
-    [SerializeField] GameObject perso2_1;
-    [SerializeField] GameObject perso2_2;
-    [SerializeField] GameObject perso2_3;
-    [SerializeField] GameObject perso2_4;
+    public static int countPerso1=0;
+    public static int countPerso2=0;
 
     #endregion
     private void Update()
     {
-        OnAddToList();
         OnSelectionPlayer();
     }
 
@@ -41,10 +29,10 @@ public class GameLoopManager : MonoBehaviour
             {
                 playerPlay = 2;
                 countPerso1 = 0;
-                
             }
-         }
-         if(playerPlay == 2)
+        }
+
+        if (playerPlay == 2)
          {
             OnPlayer2Play();
             if (heroPlayer2.Count <= countPerso2)
@@ -53,7 +41,10 @@ public class GameLoopManager : MonoBehaviour
                 countPerso2 = 0;
             }
         }
-     }
+
+
+
+    }
 
 
     #endregion
@@ -86,21 +77,5 @@ public class GameLoopManager : MonoBehaviour
 
     #endregion
 
-    #region ListAdd
 
-    void OnAddToList()
-    {
-        heroPlayer1.Add(perso1_1);
-        heroPlayer1.Add(perso1_2);
-        heroPlayer1.Add(perso1_3);
-        heroPlayer1.Add(perso1_4);        
-        
-        heroPlayer2.Add(perso2_1);
-        heroPlayer2.Add(perso2_2);
-        heroPlayer2.Add(perso2_3);
-        heroPlayer2.Add(perso2_4);
-
-    }
-
-    #endregion
 }
