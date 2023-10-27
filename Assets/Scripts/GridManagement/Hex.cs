@@ -42,6 +42,7 @@ public class Hex : MonoBehaviour
     //Glow pour les kapas
     public void EnableGlowKapa() => glow.ToggleGlowKapa(true);
     public void DisableGlowKapa() => glow.ToggleGlowKapa(false);
+    public void GlowOnButton() => glow.GlowKapaOnButton();
 
     //Glow pour les boutons de sens de kapas
     public void EnableGlowButton() => glow.ToggleSelectGlowKapa(true);

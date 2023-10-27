@@ -262,6 +262,14 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     /// Base Logique de l'execution de Kapa
     /// </summary>
     public abstract void Execute();
+
+    /// <summary>
+    /// Permet d'override les boutons necessaires selon les Kapa, du gerne retrun null sur le skip pour ne pas afficher de bouton
+    /// </summary>
+    /// <param name="hexGrid"></param>
+    /// <param name="unit"></param>
+    /// <returns></returns>
+    public virtual List<Vector3Int> GenerateButton(HexGridStore hexGrid, Unit unit) { return hexGrid.GetNeighbourgs(unit.CurrentHexPos); }
     #endregion
 
     #region graph selection methodes (to herit)

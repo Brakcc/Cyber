@@ -5,27 +5,9 @@ using UnityEngine;
 public class Perso1 : Unit
 {
     #region inherited accessors
-    //moves fields A RENDRE VISIBLE DEPUIS L'INSPECTEUR DONC ON DOUBLE L'ACCESSEUR
-    //
-    //A REMPLACER PAR LES SCRIPTABLE !!!!!!!!!!!
-    //
-    [SerializeField] private int movePoints = 3;
-    public override int MovePoints { get => movePoints; }
-
-    [SerializeField] private int speed = 15;
-    public override int Speed { get => speed; }    
-    //health
-    [SerializeField] private int healthPoint = 50;
-    public override int HealthPoint { get => healthPoint; 
-                                      set { healthPoint = value; } }
-
-    //kapas
-    //
-    //A METTRE DANS LE SCRIPTABLE DU PERSO 
-    //
-    [SerializeField] private List<AKapaSO> kapasList = new();
-    public override List<AKapaSO> KapasList { get => kapasList; 
-                                           set { kapasList = value; } }
+    //moves fields 
+    [SerializeField] private AUnitSO m_Unit;
+    public override AUnitSO UnitData { get => m_Unit; set { m_Unit = value; } }
 
     //Game Loop Logic BALEK LA VISIBILITE et BALEK LE SCRIPTABLE
     public override bool CanPlay { get; set; }
@@ -59,7 +41,7 @@ public class Perso1 : Unit
 
     void Start()
     {
-        foreach (var kap in kapasList) { kap.InitPaterns(kap.Patern); }
+        foreach (var kap in m_Unit.KapasList) { kap.InitPaterns(kap.Patern); }
     }
     #endregion
 

@@ -41,8 +41,8 @@ public class UnitManager : MonoBehaviour
         previousSelectedHex = null;
         CurrentTypeKapaSelected = KapaType.Default;
         IsKapaSelected = false;
-        CurrentKapaPaternPos = new();
-        CurrentButtonPos = new();
+        CurrentKapaPaternPos = null;
+        CurrentButtonPos = null;
         Init(hexGrid);
     }
     #endregion
@@ -90,6 +90,7 @@ public class UnitManager : MonoBehaviour
         Hex selHex = selectedHex.GetComponent<Hex>();
 
         if (IsKapaSelected) { HandleKapaDirSelect(selHex.hexCoords, SelectedUnit); return; }
+        if (selectedUnit.IsPersoLocked) return;
         if (HandleHexOutOfRange(selHex.hexCoords) || HandleSelectedHexIsUnitHex(selHex.hexCoords)) return;
 
         HandleTargetSelectedHex(selHex);
@@ -105,7 +106,7 @@ public class UnitManager : MonoBehaviour
     /// <param name="unitRef"></param>
     void PrepareUnitForMove(Unit unitRef)
     {
-        foreach (AKapaSO AK in unitRef.KapasList)
+        foreach (AKapaSO AK in unitRef.UnitData.KapasList)
         {
             if (AK.KapaType == CurrentTypeKapaSelected) { AK.DeselectTiles(hexGrid); }
         }
@@ -162,7 +163,7 @@ public class UnitManager : MonoBehaviour
     /// <param name="unit"></param>
     /// <param name="hexGrid"></param>
     /// <returns></returns>
-    List<Vector3Int> GenerateButtonPos(Unit unit, HexGridStore hexGrid) => hexGrid.GetNeighbourgs(unit.CurrentHexPos);
+    List<Vector3Int> GenerateButtonPos(Unit unit, HexGridStore hexGrid, AKapaSO kapa) => kapa.GenerateButton(hexGrid, unit);
 
     /// <summary>
     /// Basé sur la pos du l'unit et celle de la tile cliquée, on trace un VECTEUR entre la tile et la selectedUnit pour connaitre la dir selon la parité
@@ -176,50 +177,59 @@ public class UnitManager : MonoBehaviour
     {
         var dir = buttonPos - unitRef.CurrentHexPos;
         if (HandleHexOutOfButton(buttonPos)) return;
-        unitRef.KapasList[(int)CurrentTypeKapaSelected].DeselectTiles(hexGrid);
+        unitRef.UnitData.KapasList[(int)CurrentTypeKapaSelected].DeselectTiles(hexGrid);
         if (Direction.IsPariryEven(unitRef.CurrentHexPos.x))
         {
-            HandleKapaEvenDirPaternGen(dir, unitRef);
+            CurrentKapaPaternPos = HandleKapaEvenDirPaternGen(dir, unitRef);
         }
         else
         {
-            HandleKapaOddDirPaternGen(dir, unitRef);
+            CurrentKapaPaternPos = HandleKapaOddDirPaternGen(dir, unitRef);
         }
         ShowButtons(CurrentButtonPos);
+        ShowKapa(CurrentKapaPaternPos);
         IsKapaDirSelected = true;
     }
 
     #region Patern Application
     /// <summary>
-    /// pour l'unit sur une case IMPAIRE, revoit le bon paterne de Kapa qui ser aaffiché sur les bonne tiles ensuite selon la pos de l'unit
-    /// J'ai le seum que le switch passe pas car return rien, en fait si ca peut return mais flemme, bon ok je changerai ca un jour je vais me mettre sur discord
+    /// pour l'unit sur une case IMPAIRE, revoit le bon paterne de Kapa qui sera affiché sur les bonne tiles ensuite selon la pos de l'unit
     /// </summary>
     /// <param name="dir"></param>
     /// <param name="unit"></param>
-    void HandleKapaOddDirPaternGen(Vector3Int dir, Unit unit)
+    List<Vector3Int> HandleKapaOddDirPaternGen(Vector3Int dir, Unit unit)
     {
-        if (dir == new Vector3Int(0, 1, 0)) { CurrentKapaPaternPos = unit.KapasList[(int)CurrentTypeKapaSelected].SelectGraphTiles(unit, hexGrid, unit.KapasList[(int)CurrentTypeKapaSelected].OddNTiles); }
-        if (dir == new Vector3Int(1, 0, 0)) { CurrentKapaPaternPos = unit.KapasList[(int)CurrentTypeKapaSelected].SelectGraphTiles(unit, hexGrid, unit.KapasList[(int)CurrentTypeKapaSelected].OddENTiles); }
-        if (dir == new Vector3Int(1, -1, 0)) { CurrentKapaPaternPos = unit.KapasList[(int)CurrentTypeKapaSelected].SelectGraphTiles(unit, hexGrid, unit.KapasList[(int)CurrentTypeKapaSelected].OddESTiles); }
-        if (dir == new Vector3Int(0, -1, 0)) { CurrentKapaPaternPos = unit.KapasList[(int)CurrentTypeKapaSelected].SelectGraphTiles(unit, hexGrid, unit.KapasList[(int)CurrentTypeKapaSelected].OddSTiles); }
-        if (dir == new Vector3Int(-1, -1, 0)) { CurrentKapaPaternPos = unit.KapasList[(int)CurrentTypeKapaSelected].SelectGraphTiles(unit, hexGrid, unit.KapasList[(int)CurrentTypeKapaSelected].OddWSTiles); }
-        if (dir == new Vector3Int(-1, 0, 0)) { CurrentKapaPaternPos = unit.KapasList[(int)CurrentTypeKapaSelected].SelectGraphTiles(unit, hexGrid, unit.KapasList[(int)CurrentTypeKapaSelected].OddWNTiles); }
+        AKapaSO tempKapa = unit.UnitData.KapasList[(int)CurrentTypeKapaSelected];
+        return (dir.x, dir.y, dir.z) switch
+        {
+            (0, 1, 0) => tempKapa.SelectGraphTiles(unit, hexGrid, tempKapa.OddNTiles),
+            (1, 0, 0) => tempKapa.SelectGraphTiles(unit, hexGrid, tempKapa.OddENTiles),
+            (1, -1, 0) => tempKapa.SelectGraphTiles(unit, hexGrid, tempKapa.OddESTiles),
+            (0, -1, 0) => tempKapa.SelectGraphTiles(unit, hexGrid, tempKapa.OddSTiles),
+            (-1, -1, 0) => tempKapa.SelectGraphTiles(unit, hexGrid, tempKapa.OddWSTiles),
+            (-1, 0, 0) => tempKapa.SelectGraphTiles(unit, hexGrid, tempKapa.OddWNTiles),
+            _ => new()
+        };
     }
 
     /// <summary>
-    /// pour l'unit sur une case PAIRE, revoit le bon paterne de Kapa qui ser aaffiché sur les bonne tiles ensuite selon la pos de l'unit
-    /// J'ai le seum que le switch passe pas car return rien, en fait si ca peut return mais flemme, bon ok je changerai ca un jour je vais me mettre sur discord
+    /// pour l'unit sur une case PAIRE, revoit le bon paterne de Kapa qui sera affiché sur les bonne tiles ensuite selon la pos de l'unit
     /// </summary>
     /// <param name="dir"></param>
     /// <param name="unit"></param>
-    void HandleKapaEvenDirPaternGen(Vector3Int dir, Unit unit)
+    List<Vector3Int> HandleKapaEvenDirPaternGen(Vector3Int dir, Unit unit)
     {
-        if (dir == new Vector3Int(0, 1, 0)) { CurrentKapaPaternPos = unit.KapasList[(int)CurrentTypeKapaSelected].SelectGraphTiles(unit, hexGrid, unit.KapasList[(int)CurrentTypeKapaSelected].EvenNTiles); }
-        if (dir == new Vector3Int(1, 1, 0)) { CurrentKapaPaternPos = unit.KapasList[(int)CurrentTypeKapaSelected].SelectGraphTiles(unit, hexGrid, unit.KapasList[(int)CurrentTypeKapaSelected].EvenENTiles); }
-        if (dir == new Vector3Int(1, 0, 0)) { CurrentKapaPaternPos = unit.KapasList[(int)CurrentTypeKapaSelected].SelectGraphTiles(unit, hexGrid, unit.KapasList[(int)CurrentTypeKapaSelected].EvenESTiles); }
-        if (dir == new Vector3Int(0, -1, 0)) { CurrentKapaPaternPos = unit.KapasList[(int)CurrentTypeKapaSelected].SelectGraphTiles(unit, hexGrid, unit.KapasList[(int)CurrentTypeKapaSelected].EvenSTiles); }
-        if (dir == new Vector3Int(-1, 0, 0)) { CurrentKapaPaternPos = unit.KapasList[(int)CurrentTypeKapaSelected].SelectGraphTiles(unit, hexGrid, unit.KapasList[(int)CurrentTypeKapaSelected].EvenWSTiles); }
-        if (dir == new Vector3Int(-1, 1, 0)) { CurrentKapaPaternPos = unit.KapasList[(int)CurrentTypeKapaSelected].SelectGraphTiles(unit, hexGrid, unit.KapasList[(int)CurrentTypeKapaSelected].EvenWNTiles); }
+        AKapaSO tempKapa = unit.UnitData.KapasList[(int)CurrentTypeKapaSelected];
+        return (dir.x, dir.y, dir.z) switch
+        {
+            (0, 1, 0) => tempKapa.SelectGraphTiles(unit, hexGrid, tempKapa.EvenNTiles),
+            (1, 1, 0) => tempKapa.SelectGraphTiles(unit, hexGrid, tempKapa.EvenENTiles),
+            (1, 0, 0) => tempKapa.SelectGraphTiles(unit, hexGrid, tempKapa.EvenESTiles),
+            (0, -1, 0) => tempKapa.SelectGraphTiles(unit, hexGrid, tempKapa.EvenSTiles),
+            (-1, 0, 0) => tempKapa.SelectGraphTiles(unit, hexGrid, tempKapa.EvenWSTiles),
+            (-1, 1, 0) => tempKapa.SelectGraphTiles(unit, hexGrid, tempKapa.EvenWNTiles),
+            _ => new()
+        };
     }
     #endregion
 
@@ -231,14 +241,17 @@ public class UnitManager : MonoBehaviour
     public void HandleKapaSelect(int i)
     {
         if (selectedUnit == null) return;
-        KapaType type = selectedUnit.KapasList[i].KapaType;
-        if (CurrentTypeKapaSelected != KapaType.Default) selectedUnit.KapasList[(int)CurrentTypeKapaSelected].DeselectTiles(hexGrid);
+
+        KapaType type = selectedUnit.UnitData.KapasList[i].KapaType;
+        AKapaSO kapa = selectedUnit.UnitData.KapasList[i];
+
+        if (CurrentTypeKapaSelected != KapaType.Default) kapa.DeselectTiles(hexGrid);
         if (!IsKapaSelected && !selectedUnit.IsPersoLocked) ClearGraphKeepUnit();
 
         //preselec Kapa
         if (!IsKapaSelected || CurrentTypeKapaSelected != type)
         {
-            CurrentButtonPos = GenerateButtonPos(SelectedUnit, hexGrid);
+            CurrentButtonPos = GenerateButtonPos(SelectedUnit, hexGrid, kapa);
             CurrentTypeKapaSelected = type;
             IsKapaSelected = true;
             ShowButtons(CurrentButtonPos);
@@ -246,9 +259,9 @@ public class UnitManager : MonoBehaviour
         }
 
         //Active Kapa
-        if (CurrentKapaPaternPos != null)
+        if (CurrentKapaPaternPos != null || IsKapaSelected && CurrentTypeKapaSelected == type)
         {
-            selectedUnit.KapasList[i].Execute();
+            selectedUnit.UnitData.KapasList[i].Execute();
             FullResetKapAndPlayer();
         }
     }
@@ -259,7 +272,14 @@ public class UnitManager : MonoBehaviour
     /// <param name="butPos"></param>
     void ShowButtons(List<Vector3Int> butPos)
     {
+        if (butPos != null)
         foreach (var i in butPos) { var j = hexGrid.GetTile(i); j.EnableGlowButton(); j.GetColorGlowButton(); }
+    }
+
+    void ShowKapa(List<Vector3Int> kapaPos)
+    {
+        if (kapaPos != null)
+        foreach (var i in kapaPos) { var j = hexGrid.GetTile(i); j.GlowOnButton(); }
     }
 
     /// <summary>
@@ -291,9 +311,19 @@ public class UnitManager : MonoBehaviour
         CurrentButtonPos = null;
         CurrentKapaPaternPos = null;
         //Unit Reset
+        SelectedUnit.Deselect();
         SelectedUnit.IsPersoLocked = false;
         SelectedUnit.CanPlay = false;
         SelectedUnit = null;
+        //GameLoop reset
+        /*if (GameLoopManager.playerPlay == 1)
+        {
+            GameLoopManager.CountPerso1++;
+        }
+        if (GameLoopManager.playerPlay == 2)
+        {
+            GameLoopManager.CountPerso2++;
+        }*/
     }
     #endregion
 
@@ -321,7 +351,7 @@ public class UnitManager : MonoBehaviour
             }
             else
             {
-                selectedUnit.KapasList[(int)CurrentTypeKapaSelected].DeselectTiles(hexGrid);
+                selectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].DeselectTiles(hexGrid);
                 ClearDataSelectionAvoidRange();
                 ResetKapaData();
                 return false;
@@ -344,7 +374,7 @@ public class UnitManager : MonoBehaviour
             }
             else
             {
-                selectedUnit.KapasList[(int)CurrentTypeKapaSelected].DeselectTiles(hexGrid);
+                selectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].DeselectTiles(hexGrid);
                 ClearDataSelectionAvoidRange();
                 ResetKapaData();
                 return false;
