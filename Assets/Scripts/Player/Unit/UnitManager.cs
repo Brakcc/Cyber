@@ -467,7 +467,7 @@ public class UnitManager : MonoBehaviour
     async void Init(HexGridStore hex)
     {
         await Task.Delay(100);
-        foreach (GameObject u in GameObject.FindGameObjectsWithTag("Player")) { hex.GetTile(u.GetComponent<Unit>().CurrentHexPos).hasPlayerOnIt = true; }
+        foreach (GameObject u in GameObject.FindGameObjectsWithTag("Player")) { hex.GetTile(u.GetComponent<Unit>().CurrentHexPos).HasPlayerOnIt = true; }
     }
     #endregion
 
@@ -507,8 +507,8 @@ public class UnitManager : MonoBehaviour
     /// </summary>
     void ChargeNewUnitHexCoord()
     {
-        hexGrid.GetTile(selectedUnit.CurrentHexPos).hasPlayerOnIt = false;
-        previousSelectedHex.hasPlayerOnIt = true;
+        hexGrid.GetTile(selectedUnit.CurrentHexPos).HasPlayerOnIt = false;
+        previousSelectedHex.HasPlayerOnIt = true;
         selectedUnit.CurrentHexPos = previousSelectedHex.hexCoords;
     }
 
