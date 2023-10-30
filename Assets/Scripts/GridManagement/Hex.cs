@@ -32,7 +32,9 @@ public class Hex : MonoBehaviour
         _ => 1000
     };
 
-    public bool IsObstacle() => type == HexType.Obstacle;
+    public bool IsObstacle() => type == HexType.Obstacle || type == HexType.Hole;
+
+    //Init graph a ajouter pour ajouter les textures en sqrt(2) a 45° pour le passage des Units devant ou derrière les props
 
     #region glow mats
     //General Glow pour la range

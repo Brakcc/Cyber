@@ -14,7 +14,8 @@ public enum EffectType
     DOT,
     Hacked,
     Buff,
-    Rez
+    Rez,
+    None
 }
 
 public enum KapaType

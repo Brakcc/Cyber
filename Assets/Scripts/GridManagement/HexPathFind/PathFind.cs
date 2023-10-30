@@ -103,6 +103,53 @@ public class PathFind
     }
 
     /// <summary>
+    /// pathfind parfait pour comparaison avec les tiles de Kapas
+    /// </summary>
+    /// <param name="hexGrid"></param>
+    /// <param name="startHex"></param>
+    /// <param name="movePoints"></param>
+    /// <returns></returns>
+    public static PathResult PerfectPath(HexGridStore hexGrid, Vector3Int startHex, int movePoints)
+    {
+        Dictionary<Vector3Int, Vector3Int?> processedNodes = new();
+        Dictionary<Vector3Int, int> totalCost = new();
+        Queue<Vector3Int> nextNodes = new();
+
+        nextNodes.Enqueue(startHex);
+        totalCost.Add(startHex, 0);
+        processedNodes.Add(startHex, null);
+
+        while (nextNodes.Count > 0)
+        {
+            Vector3Int currentNode = nextNodes.Dequeue();
+            foreach (Vector3Int adjPos in hexGrid.GetNeighbourgs(currentNode))
+            {
+                //a plus la verif :D
+                //on utilise la valeur d'un walkable pour comparer sans considérer d'obstacle
+                int nodeCost = (int)HexType.Walkable;
+                int currentCost = totalCost[currentNode];
+                int newCost = currentCost + nodeCost;
+
+                if (newCost <= movePoints)
+                {
+                    if (!processedNodes.ContainsKey(adjPos))
+                    {
+                        processedNodes[adjPos] = currentNode;
+                        totalCost[adjPos] = newCost;
+                        nextNodes.Enqueue(adjPos);
+                    }
+                    else if (totalCost[adjPos] > newCost)
+                    {
+                        totalCost[adjPos] = newCost;
+                        processedNodes[adjPos] = currentNode;
+                    }
+                }
+            }
+        }
+        return new PathResult { calculatedNodes = processedNodes };
+    }
+
+    /// <summary>
     /// Generation du chemin le plus court avec le pathFind pour ensuite l'inverser afin de placer la liste dans le bon sens
     /// </summary>
     /// <param name="current"></param>

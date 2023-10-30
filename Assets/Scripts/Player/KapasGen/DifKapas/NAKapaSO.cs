@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Normal Attack Kapa", menuName = "Tactical/Kapas/ Attack Kapa")]
+[CreateAssetMenu(fileName = "Normal Attack Kapa", menuName = "Tactical/Kapas/Normal Attack")]
 public class NAKapaSO : AKapaSO
 {
     #region inherited accessors
