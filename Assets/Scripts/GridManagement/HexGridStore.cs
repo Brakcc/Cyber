@@ -11,7 +11,7 @@ public class HexGridStore: MonoBehaviour
     #region methodes
     void Start()
     {
-        foreach (Hex hex in FindObjectsOfType<Hex>()) { hexTiles[hex.hexCoords] = hex; }
+        foreach (Hex hex in FindObjectsOfType<Hex>()) { hexTiles[hex.HexCoords] = hex; }
     }
 
     public Hex GetTile(Vector3Int hexCoords)

@@ -5,7 +5,6 @@ public class Selections : MonoBehaviour
 {
     #region fields
     [SerializeField] private Camera mainC;
-    [SerializeField] private HexGridStore hexGrid;
     private InputsManager inputsMan;
 
     public LayerMask tileSelectionMask;
@@ -18,7 +17,7 @@ public class Selections : MonoBehaviour
     void Awake()
     {
         if (mainC == null) { mainC = Camera.main; }
-        inputsMan = new InputsManager();
+        inputsMan = new();
     }
 
     public void HandleClick(Vector3 mousePos)

@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 15
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0.02918485, g: 0.0141509175, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.015686274, b: 0.5916474, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -115,9 +115,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Unit: {fileID: 11400000, guid: 1f1d880f0b3c20d4aa1e9a9db169ecd0, type: 2}
-  kapasList:
-  - {fileID: 11400000, guid: c491a16f8ecd915468488ba91d2e0181, type: 2}
-  - {fileID: 11400000, guid: 3801c1db07006cc46a5aca5b72f39d3e, type: 2}
-  - {fileID: 11400000, guid: ec87e0f62ad3f06439af0ce08294c425, type: 2}
-  - {fileID: 11400000, guid: d3cf122f54b487f4f841b9c317e4334a, type: 2}
-  - {fileID: 11400000, guid: b7d436bfd64b3a44da2700694def1f03, type: 2}

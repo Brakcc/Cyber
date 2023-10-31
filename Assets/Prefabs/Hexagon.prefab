@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4410537367057232448}
   - component: {fileID: 1775532470161103984}
   - component: {fileID: 6986528553207353622}
-  - component: {fileID: 2087727905389615736}
   m_Layer: 3
   m_Name: Hexagon
   m_TagString: Untagged
@@ -134,23 +133,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
-  hexCoords: {x: 0, y: 0, z: 0}
---- !u!114 &2087727905389615736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3373666014041072228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 956cfd6181e25a343a49d58d230ec04c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  glowMat: {fileID: 2100000, guid: 2f734e74115f88249833eb08ceae0f16, type: 2}
-  selectedPathColor: {r: 0.008547783, g: 1, b: 0, a: 1}
-  selectedKapaColor: {r: 0.9137255, g: 0, b: 0.30359194, a: 1}
-  selectedKapaColorButton: {r: 0.09510923, g: 0.08962262, b: 1, a: 1}
+  glow:
+    glowMat: {fileID: 2100000, guid: 2f734e74115f88249833eb08ceae0f16, type: 2}
+    selectedPathColor: {r: 0, g: 1, b: 0.0323627, a: 1}
+    selectedKapaColor: {r: 1, g: 0, b: 0.79645824, a: 1}
+    selectedKapaColorButton: {r: 0, g: 0.050397873, b: 1, a: 1}
 --- !u!1 &3976043299740282238
 GameObject:
   m_ObjectHideFlags: 0

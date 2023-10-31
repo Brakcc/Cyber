@@ -1,30 +1,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SelectGlow : MonoBehaviour
+[System.Serializable]
+public class SelectGlow
 {
     #region fields
+    //Dicts de materials
     private readonly Dictionary<Renderer, Material[]> glowMats = new();
     private readonly Dictionary<Renderer, Material[]> originMats = new();
     private readonly Dictionary<Color, Material> cachedGlowMats = new();
-    public Material glowMat;
+
+    //couleurs et materials de base pour le glow
+    [SerializeField] private Material glowMat;
     [SerializeField] private Color selectedPathColor;
     [SerializeField] private Color selectedKapaColor;
     [SerializeField] private Color selectedKapaColorButton;
+    
+    //Simple glow and color logic
     private Color originColor;
     private bool isGlowing;
+    private Hex thisHex;
     #endregion
 
     #region methodes
-    void Awake()
+    public void SetGlow(Hex h) 
     {
+        thisHex = h;
         PrepareMatsDicts();
         originColor = glowMat.GetColor("_GlowColor");
     }
 
     void PrepareMatsDicts()
     {
-        foreach (Renderer rend in GetComponentsInChildren<Renderer>())
+        foreach (Renderer rend in thisHex.GetComponentsInChildren<Renderer>())
         {
             Material[] origins = rend.materials;
             originMats.Add(rend, origins);

@@ -1,8 +1,7 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 [SelectionBase]
-public class Perso1 : Unit
+public class DPSUnit : Unit
 {
     #region inherited accessors
     //moves fields 

@@ -285,10 +285,10 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
             if (hexGrid.hexTiles.ContainsKey(HexCoordonnees.GetClosestHex(unit.transform.position) + i))
             {
                 Hex temp = hexGrid.GetTile(HexCoordonnees.GetClosestHex(unit.transform.position) + i);
-                if (kapaSys.VerifyKapaRange(temp.hexCoords, unit, hexGrid))
+                if (kapaSys.VerifyKapaRange(temp.HexCoords, unit, hexGrid))
                 {
                     temp.EnableGlowKapa();
-                    v.Add(temp.hexCoords);
+                    v.Add(temp.HexCoords);
                 }
             }
         }

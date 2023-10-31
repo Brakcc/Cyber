@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6839896767206874219}
   - component: {fileID: 6839896767206874218}
-  - component: {fileID: 6839896767206874220}
-  - component: {fileID: 1283223407700948218}
   - component: {fileID: 2536175099072836728}
+  - component: {fileID: 1283223407700948218}
+  - component: {fileID: 489815630530185795}
   m_Layer: 0
   m_Name: MecaManager
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6839896767206874218
 MonoBehaviour:
@@ -48,7 +48,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainC: {fileID: 0}
-  hexGrid: {fileID: 0}
   tileSelectionMask:
     serializedVersion: 2
     m_Bits: 72
@@ -82,48 +81,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &6839896767206874220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6839896767206874217}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 003fbe7bdc6d4f64a8400efb7fa634e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1283223407700948218
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6839896767206874217}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e651d84be0075e4aab368a5501fe43c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hexGrid: {fileID: 0}
-  selectedUnit: {fileID: 0}
-  previousSelectedHex: {fileID: 0}
-  natk:
-    m_PersistentCalls:
-      m_Calls: []
-  comp:
-    m_PersistentCalls:
-      m_Calls: []
-  ulti:
-    m_PersistentCalls:
-      m_Calls: []
-  turret:
-    m_PersistentCalls:
-      m_Calls: []
-  skip:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &2536175099072836728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,3 +108,27 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1283223407700948218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6839896767206874217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e651d84be0075e4aab368a5501fe43c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &489815630530185795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6839896767206874217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4c2c1369db70a44b987bc32c2c79cc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -3,20 +3,20 @@ using UnityEngine;
 [SelectionBase]
 public class Hex : MonoBehaviour
 {
-    #region fields
-    private SelectGlow glow;
+    #region 
     [SerializeField] private HexType type;
+    [SerializeField] private SelectGlow glow;
 
     //la Data importante
-    [HideInInspector] public Vector3Int hexCoords;
+    public Vector3Int HexCoords { get; set; }
     public bool HasPlayerOnIt { get; set; }
     #endregion
 
     #region methodes
     void Awake()
     {
-        hexCoords = new HexCoordonnees(gameObject).OffsetCoordonnees;
-        glow = GetComponent<SelectGlow>();
+        HexCoords = new HexCoordonnees(gameObject).OffsetCoordonnees;
+        glow.SetGlow(this);
     }
 
     /// <summary>

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class UnitManager : MonoBehaviour
 {
     #region fields
-    [SerializeField] private HexGridStore hexGrid;
+    private HexGridStore hexGrid;
     private MoveSystem moveSys;
 
     //Unit currently stored
@@ -36,7 +36,8 @@ public class UnitManager : MonoBehaviour
     void Awake()
     {
         unitManager = this;
-        moveSys = GetComponent<MoveSystem>();
+        moveSys = new();
+        hexGrid = GetComponent<HexGridStore>();
         selectedUnit = null;
         previousSelectedHex = null;
         CurrentTypeKapaSelected = KapaType.Default;
@@ -89,9 +90,9 @@ public class UnitManager : MonoBehaviour
         if (selectedUnit == null || !PlayerTurn) return;
         Hex selHex = selectedHex.GetComponent<Hex>();
 
-        if (IsKapaSelected) { HandleKapaDirSelect(selHex.hexCoords, SelectedUnit); return; }
+        if (IsKapaSelected) { HandleKapaDirSelect(selHex.HexCoords, SelectedUnit); return; }
         if (selectedUnit.IsPersoLocked) return;
-        if (HandleHexOutOfRange(selHex.hexCoords) || HandleSelectedHexIsUnitHex(selHex.hexCoords)) return;
+        if (HandleHexOutOfRange(selHex.HexCoords) || HandleSelectedHexIsUnitHex(selHex.HexCoords)) return;
 
         HandleTargetSelectedHex(selHex);
     }
@@ -127,7 +128,7 @@ public class UnitManager : MonoBehaviour
         if (previousSelectedHex == null || previousSelectedHex != selects)
         {
             previousSelectedHex = selects;
-            moveSys.ShowPath(selects.hexCoords, hexGrid);
+            moveSys.ShowPath(selects.HexCoords, hexGrid);
         }
         else
         {
@@ -454,6 +455,7 @@ public class UnitManager : MonoBehaviour
     /// <returns></returns>
     bool HandleHexOutOfButton(Vector3Int hexPos)
     {
+        if (CurrentButtonPos == null) return true;
         if (CurrentButtonPos.Contains(hexPos)) return false;
         return true;
     }
@@ -509,7 +511,7 @@ public class UnitManager : MonoBehaviour
     {
         hexGrid.GetTile(selectedUnit.CurrentHexPos).HasPlayerOnIt = false;
         previousSelectedHex.HasPlayerOnIt = true;
-        selectedUnit.CurrentHexPos = previousSelectedHex.hexCoords;
+        selectedUnit.CurrentHexPos = previousSelectedHex.HexCoords;
     }
 
     /// <summary>
