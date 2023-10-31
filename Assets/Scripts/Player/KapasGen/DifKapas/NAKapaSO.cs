@@ -20,6 +20,8 @@ public class NAKapaSO : AKapaSO
     [SerializeField] private KapaUISO kapaUI;
     public override Vector3Int[] Patern { get => patern; }
     [SerializeField] private Vector3Int[] patern;
+
+    [SerializeField] NAKapaSupFields nAKapaSupFields;
     #endregion
 
     #region inherited paterns/accessors
@@ -61,15 +63,21 @@ public class NAKapaSO : AKapaSO
     #endregion
 
     #region fields
-    public int damage;
-    public int duration;
-    public Animation animation;
+    [System.Serializable]
+    public class NAKapaSupFields
+    {
+        public int compPointsAdded;
+        public int ultPointsAdded;
+        public int damage;
+        public int duration;
+        public Animation animation;
+    }
     #endregion
 
     #region inherited methodes
     public override bool Execute(Unit unit)
     {
-        DoKapa();
+        DoKapa(unit);
         Debug.Log(Description); //PlaceHolder à remplir avec les anims et considération de dégâts
         EndKapa();
         return true;
@@ -77,8 +85,10 @@ public class NAKapaSO : AKapaSO
     #endregion
 
     #region cache
-    void DoKapa()
+    void DoKapa(Unit unit)
     {
+        unit.CompPoints += nAKapaSupFields.compPointsAdded;
+        unit.UltPoints += nAKapaSupFields.ultPointsAdded;
         //PlaceHolder à rempir avec les anims et considérations de dégâts
     }
     void EndKapa()

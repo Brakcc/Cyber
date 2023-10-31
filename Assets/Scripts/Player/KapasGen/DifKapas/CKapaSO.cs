@@ -20,6 +20,8 @@ public class CKapaSO : AKapaSO
     [SerializeField] private KapaUISO kapaUI;
     public override Vector3Int[] Patern { get => patern; }
     [SerializeField] private Vector3Int[] patern;
+
+    [SerializeField] CKapaSupFields cKapaSupFields;
     #endregion
 
     #region inherited paterns/accessors
@@ -61,16 +63,22 @@ public class CKapaSO : AKapaSO
     #endregion
 
     #region fields
-    public int neededCompPoints;
-    public int damage;
-    public int duration;
-    public Animation animation;
+    [System.Serializable]
+    public class CKapaSupFields
+    {
+        public int neededCompPoints;
+        public int ultPointsAdded;
+        public int damage;
+        public int duration;
+        public Animation animation;
+    }
+    
     #endregion
 
     #region inherited methodes
     public override bool Execute(Unit unit)
     {
-        if (unit.CompPoints < neededCompPoints) { RefuseKapa(); return false; }
+        if (unit.CompPoints < cKapaSupFields.neededCompPoints) { RefuseKapa(); return false; }
         DoKapa(unit);
         Debug.Log(Description); //PlaceHolder à remplir avec les anims et considération de dégâts
         EndKapa();
@@ -82,8 +90,8 @@ public class CKapaSO : AKapaSO
     void DoKapa(Unit unit)
     {
         //AJOUTER LA LOGIQUE DE TEAM POUR BAISSER LES POINTS DE COMP COMMUNS
-        unit.CompPoints -= neededCompPoints;
-
+        unit.CompPoints -= cKapaSupFields.neededCompPoints;
+        unit.UltPoints += cKapaSupFields.ultPointsAdded;
         //PlaceHolder à rempir avec les anims et considérations de dégâts
     }
     void RefuseKapa() { Debug.Log("nope"); }

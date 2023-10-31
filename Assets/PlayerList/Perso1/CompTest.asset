@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   kapaName: 
   id: 0
-  description: 
+  description: C
   cost: 0
   effectType: 0
   kapaType: 1
@@ -24,6 +24,9 @@ MonoBehaviour:
   - {x: 0, y: -2, z: 0}
   - {x: 1, y: -1, z: 0}
   - {x: 0, y: -1, z: 1}
-  damage: 0
-  duration: 0
-  animation: {fileID: 0}
+  cKapaSupFields:
+    neededCompPoints: 0
+    ultPointsAdded: 0
+    damage: 0
+    duration: 0
+    animation: {fileID: 0}

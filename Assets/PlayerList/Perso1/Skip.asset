@@ -14,8 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   kapaName: Skip
   id: 0
-  description: 
-  cost: 0
-  effectType: 5
+  description: S
   kapaType: 4
   kapaUI: {fileID: 0}
