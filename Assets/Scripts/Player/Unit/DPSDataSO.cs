@@ -8,7 +8,7 @@ public class DPSDataSO : AUnitSO
     [SerializeField] private int movePoints;
 
     public override int Speed => speed;
-    [SerializeField] protected int speed;
+    [SerializeField] private int speed;
 
     public override int HealthPoint { get => healthPoint; set { healthPoint = value; } }
     [SerializeField] private int healthPoint;

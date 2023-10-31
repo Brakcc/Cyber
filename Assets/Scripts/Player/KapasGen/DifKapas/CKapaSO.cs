@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Normal Attack Kapa", menuName = "Tactical/Kapas/Normal Attack")]
-public class NAKapaSO : AKapaSO
+[CreateAssetMenu(fileName = "Competence Kapa", menuName = "Tactical/Kapas/Competence")]
+public class CKapaSO : AKapaSO
 {
     #region inherited accessors
     public override string KapaName { get => kapaName; }
@@ -61,6 +61,7 @@ public class NAKapaSO : AKapaSO
     #endregion
 
     #region fields
+    public int neededCompPoints;
     public int damage;
     public int duration;
     public Animation animation;
@@ -69,7 +70,8 @@ public class NAKapaSO : AKapaSO
     #region inherited methodes
     public override bool Execute(Unit unit)
     {
-        DoKapa();
+        if (unit.CompPoints < neededCompPoints) { RefuseKapa(); return false; }
+        DoKapa(unit);
         Debug.Log(Description); //PlaceHolder à remplir avec les anims et considération de dégâts
         EndKapa();
         return true;
@@ -77,10 +79,14 @@ public class NAKapaSO : AKapaSO
     #endregion
 
     #region cache
-    void DoKapa()
+    void DoKapa(Unit unit)
     {
+        //AJOUTER LA LOGIQUE DE TEAM POUR BAISSER LES POINTS DE COMP COMMUNS
+        unit.CompPoints -= neededCompPoints;
+
         //PlaceHolder à rempir avec les anims et considérations de dégâts
     }
+    void RefuseKapa() { Debug.Log("nope"); }
     void EndKapa()
     {
         //Debug.Log("End Kapa");

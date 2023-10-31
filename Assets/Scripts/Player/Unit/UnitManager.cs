@@ -262,8 +262,7 @@ public class UnitManager : MonoBehaviour
         //Active Kapa
         if (CurrentKapaPaternPos != null || IsKapaSelected && CurrentTypeKapaSelected == type)
         {
-            selectedUnit.UnitData.KapasList[i].Execute();
-            FullResetKapAndPlayer();
+            if (selectedUnit.UnitData.KapasList[i].Execute(SelectedUnit)) { FullResetKapAndPlayer(); }
         }
     }
 

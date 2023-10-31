@@ -1,6 +1,6 @@
 public interface IKapa
 {
     //public void SelectTiles(Unit unit, HexGridStore hexGrid);
-    public void Execute();
+    public bool Execute(Unit unit);
     public void DeselectTiles(HexGridStore hexGrid);
 }

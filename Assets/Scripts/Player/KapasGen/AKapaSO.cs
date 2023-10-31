@@ -261,7 +261,7 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     /// <summary>
     /// Base Logique de l'execution de Kapa
     /// </summary>
-    public abstract void Execute();
+    public abstract bool Execute(Unit unit);
 
     /// <summary>
     /// Permet d'override les boutons necessaires selon les Kapa, du gerne retrun null sur le skip pour ne pas afficher de bouton

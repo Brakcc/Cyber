@@ -6,6 +6,9 @@ public abstract class Unit : MonoBehaviour, IUnit
 {
     #region fields/accessors to herit
     public abstract AUnitSO UnitData { get; set; }
+    public abstract bool IsOnTurret { get; set; }
+    public abstract int CompPoints { get; set; }
+    public abstract int UltPoints { get; set; }
     public abstract bool IsDead { get; set; }
     public abstract bool CanPlay { get; set; }
     public abstract bool IsPersoLocked { get; set; }

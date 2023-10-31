@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Normal Attack Kapa", menuName = "Tactical/Kapas/Normal Attack")]
-public class NAKapaSO : AKapaSO
+[CreateAssetMenu(fileName = "Ultimate Kapa", menuName = "Tactical/Kapas/Ultimate")]
+public class UKapaSO : AKapaSO
 {
     #region inherited accessors
     public override string KapaName { get => kapaName; }
@@ -61,6 +61,7 @@ public class NAKapaSO : AKapaSO
     #endregion
 
     #region fields
+    public int neededUltPoints;
     public int damage;
     public int duration;
     public Animation animation;
@@ -69,7 +70,8 @@ public class NAKapaSO : AKapaSO
     #region inherited methodes
     public override bool Execute(Unit unit)
     {
-        DoKapa();
+        if (unit.UltPoints < neededUltPoints) { RefuseKapa(); return false; }
+        DoKapa(unit);
         Debug.Log(Description); //PlaceHolder à remplir avec les anims et considération de dégâts
         EndKapa();
         return true;
@@ -77,10 +79,12 @@ public class NAKapaSO : AKapaSO
     #endregion
 
     #region cache
-    void DoKapa()
+    void DoKapa(Unit unit)
     {
+        unit.UltPoints -= neededUltPoints;
         //PlaceHolder à rempir avec les anims et considérations de dégâts
     }
+    void RefuseKapa() { Debug.Log("nope"); }
     void EndKapa()
     {
         //Debug.Log("End Kapa");

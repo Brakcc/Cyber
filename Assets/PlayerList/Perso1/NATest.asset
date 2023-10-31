@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc327a9d29d835444a0db66a632a8aec, type: 3}
-  m_Name: Test
+  m_Name: NATest
   m_EditorClassIdentifier: 
   kapaName: test
   id: 0

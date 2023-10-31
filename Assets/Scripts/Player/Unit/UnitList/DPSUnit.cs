@@ -9,6 +9,9 @@ public class DPSUnit : Unit
     public override AUnitSO UnitData { get => m_Unit; set { m_Unit = value; } }
 
     //Game Loop Logic BALEK LA VISIBILITE et BALEK LE SCRIPTABLE
+    public override bool IsOnTurret { get; set; }
+    public override int CompPoints { get; set; }
+    public override int UltPoints { get; set; }
     public override bool CanPlay { get; set; }
     public override bool IsDead { get; set; }
     public override bool IsPersoLocked { get; set; }
@@ -36,6 +39,8 @@ public class DPSUnit : Unit
         CanPlay = true;
         IsDead = false;
         IsPersoLocked = false;
+        IsOnTurret = false;
+        CompPoints = 0;
     }
 
     void Start()

@@ -12,10 +12,8 @@ public class SKapaSO : AKapaSO
     [SerializeField] private int id;
     public override string Description { get => description; }
     [SerializeField] private string description;
-    public override int Cost { get => cost; }
-    [SerializeField] private int cost;
-    public override EffectType EffectType { get => effectType; }
-    [SerializeField] private EffectType effectType;
+    public override int Cost { get => 0; }
+    public override EffectType EffectType { get => EffectType.None; }
     public override KapaType KapaType { get => kapaType; }
     [SerializeField] private KapaType kapaType;
     public override KapaUISO KapaUI { get => kapaUI; }
@@ -50,7 +48,7 @@ public class SKapaSO : AKapaSO
     #endregion
 
     #region inherited methodes (rendues null)
-    public override void Execute() { }
+    public override bool Execute(Unit unit) => true;
 
     public override void InitPaterns(Vector3Int[] p) { }
 
