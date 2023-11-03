@@ -15,6 +15,7 @@ MonoBehaviour:
   movePoints: 5
   speed: 15
   healthPoint: 10
+  sprite: {fileID: -9095717837082945937, guid: 03fed2c0d6f948444bf9428d2e26a8b7, type: 3}
   kapasList:
   - {fileID: 11400000, guid: c491a16f8ecd915468488ba91d2e0181, type: 2}
   - {fileID: 11400000, guid: dd416aed18ba69244a0db204171760da, type: 2}

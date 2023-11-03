@@ -387,6 +387,7 @@ public class UnitManager : MonoBehaviour
             //on inverse la sortie pour pouvoir continuer la methode de sélection des persos
             //ATENTION !!!!! dans le cas particulier ou une Kapa vise unu Unit au contact, on skip la selection de l'Unit mais on la selection de kapaDir à la pos de l'Unit visée
             if (IsKapaSelected) { HandleKapaDirSelect(unitRef.CurrentHexPos, SelectedUnit); }
+            Debug.Log("test");
             return true;
         }
     }
@@ -405,6 +406,7 @@ public class UnitManager : MonoBehaviour
             return false; 
         }
         //feedbacks un peu sad mais électro quand meme
+        if (IsKapaSelected) { HandleKapaDirSelect(unitRef.CurrentHexPos, SelectedUnit); }
         return true;
     }
 

@@ -13,6 +13,9 @@ public class DPSDataSO : AUnitSO
     public override int HealthPoint { get => healthPoint; set { healthPoint = value; } }
     [SerializeField] private int healthPoint;
 
+    public override Sprite Sprite { get => sprite; set { sprite = value; } }
+    [SerializeField] private Sprite sprite;
+
     public override List<AKapaSO> KapasList { get => kapasList; set { kapasList = value; } }
     [SerializeField] private List<AKapaSO> kapasList;
 }

@@ -7,6 +7,7 @@ public abstract class AUnitSO : ScriptableObject, IUnitData
     public abstract int MovePoints { get; }
     public abstract int Speed { get; }
     public abstract int HealthPoint { get; set; }
+    public abstract Sprite Sprite { get; set; }
     public abstract List<AKapaSO> KapasList { get; set; }
     #endregion
 }
