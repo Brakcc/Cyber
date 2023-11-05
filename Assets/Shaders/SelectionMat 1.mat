@@ -28,7 +28,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Emission:
-        m_Texture: {fileID: 2800000, guid: 7a1186df314cb8242978a94169f9f543, type: 3}
+        m_Texture: {fileID: 2800000, guid: e14deeb1f5a1d99429c860c8c70a53b2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -36,7 +36,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 03a6661a4dd713141b6feca811f39ac2, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9615b9a9f5e00d649b96dbe1bc4ca783, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskTex:

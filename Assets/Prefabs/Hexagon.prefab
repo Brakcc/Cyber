@@ -134,10 +134,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   glow:
-    glowMat: {fileID: 2100000, guid: 2f734e74115f88249833eb08ceae0f16, type: 2}
+    glowMat: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
     selectedPathColor: {r: 0, g: 1, b: 0.0323627, a: 1}
     selectedKapaColor: {r: 1, g: 0, b: 0.79645824, a: 1}
     selectedKapaColorButton: {r: 0, g: 0.050397873, b: 1, a: 1}
+  hexCoords: {x: 0, y: 0, z: 0}
 --- !u!1 &3976043299740282238
 GameObject:
   m_ObjectHideFlags: 0

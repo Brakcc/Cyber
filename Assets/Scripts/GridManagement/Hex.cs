@@ -9,7 +9,6 @@ public class Hex : MonoBehaviour
 
     //la Data importante
     public Vector3Int HexCoords { get; set; }
-    public Vector3Int hexCoords;
     public bool HasPlayerOnIt { get; set; }
     #endregion
 
@@ -18,7 +17,6 @@ public class Hex : MonoBehaviour
     {
         HexCoords = new HexCoordonnees(gameObject).OffsetCoordonnees;
         glow.SetGlow(this);
-        hexCoords = HexCoords;
     }
 
     /// <summary>
