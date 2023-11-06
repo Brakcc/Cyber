@@ -52,12 +52,10 @@ public class UnitManager : MonoBehaviour
     void Update()
     {
         //Update uniquement utile actuellement pour faire du debug, vouée à disparaitre
-        if (Input.GetKeyDown(KeyCode.Space)) { PlayerTurn = true; ResetLoop(); }
         if (Input.GetKeyDown(KeyCode.N)) 
         {
             foreach (Vector3Int v in hexGrid.GetNeighbourgs(HexCoordonnees.GetClosestHex(selectedUnit.transform.position))) { Debug.Log(v); }
         }
-        if (Input.GetKeyDown(KeyCode.T)) { Debug.Log(selectedUnit.CurrentHexPos); }
     }
 
     /// <summary>
@@ -518,8 +516,9 @@ public class UnitManager : MonoBehaviour
     /// <summary>
     /// reset manuel de la gameloop temporaire
     /// </summary>
-    void ResetLoop()
+    public void ResetLoop()
     {
+        PlayerTurn = true;
         foreach (GameObject u in GameObject.FindGameObjectsWithTag("Player")) { u.GetComponent<Unit>().CanPlay = true; }
     }
     #endregion

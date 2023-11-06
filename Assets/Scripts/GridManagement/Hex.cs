@@ -4,7 +4,7 @@ using UnityEngine;
 public class Hex : MonoBehaviour
 {
     #region 
-    [SerializeField] private HexType type;
+    public HexType type;
     [SerializeField] private SelectGlow glow;
 
     //la Data importante

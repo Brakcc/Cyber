@@ -16,6 +16,8 @@ public class NAKapaSO : AKapaSO
     [SerializeField] private EffectType effectType;
     public override KapaType KapaType { get => kapaType; }
     [SerializeField] private KapaType kapaType;
+    public override KapaFunctionType KapaFunctionType { get => kapaFunctionType; }
+    [SerializeField] private KapaFunctionType kapaFunctionType;
     public override KapaUISO KapaUI { get => kapaUI; }
     [SerializeField] private KapaUISO kapaUI;
     public override Vector3Int[] Patern { get => patern; }
