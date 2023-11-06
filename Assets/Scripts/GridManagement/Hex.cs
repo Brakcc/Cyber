@@ -3,34 +3,40 @@ using UnityEngine;
 [SelectionBase]
 public class Hex : MonoBehaviour
 {
-    #region fields
-    private SelectGlow glow;
+    #region 
     [SerializeField] private HexType type;
+    [SerializeField] private SelectGlow glow;
 
     //la Data importante
-    [HideInInspector] public Vector3Int hexCoords;
-    [HideInInspector] public bool hasPlayerOnIt;
+    public Vector3Int HexCoords { get; set; }
+    public bool HasPlayerOnIt { get; set; }
     #endregion
 
     #region methodes
     void Awake()
     {
-        hexCoords = new HexCoordonnees(gameObject).OffsetCoordonnees;
-        glow = GetComponent<SelectGlow>();
+        HexCoords = new HexCoordonnees(gameObject).OffsetCoordonnees;
+        glow.SetGlow(this);
     }
 
+    /// <summary>
+    /// Donne la valuer de la tile pour le A* BFS
+    /// </summary>
+    /// <returns></returns>
     public int GetValue() => type switch
     {
-        HexType.Default => int.MaxValue,    
+        HexType.Default => 1000,
         HexType.Walkable => 1,
-        HexType.Obstacle => int.MaxValue,
-        HexType.Hole => int.MaxValue,
-        _ => int.MaxValue
+        HexType.Obstacle => 1000,
+        HexType.Hole => 1000,
+        _ => 1000
     };
 
-    #region glow mats
-    public bool IsObstacle() => type == HexType.Obstacle || hasPlayerOnIt;
+    public bool IsObstacle() => type == HexType.Obstacle || type == HexType.Hole;
 
+    //Init graph a ajouter pour ajouter les textures en sqrt(2) a 45° pour le passage des Units devant ou derrière les props
+
+    #region glow mats
     //General Glow pour la range
     public void EnableGlow() => glow.ToggleGlow(true);
     public void DisableGlow() => glow.ToggleGlow(false);

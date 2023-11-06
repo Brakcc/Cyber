@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class UnitManager : MonoBehaviour
 {
     #region fields
-    [SerializeField] private HexGridStore hexGrid;
+    private HexGridStore hexGrid;
     private MoveSystem moveSys;
 
     //Unit currently stored
@@ -36,7 +36,8 @@ public class UnitManager : MonoBehaviour
     void Awake()
     {
         unitManager = this;
-        moveSys = GetComponent<MoveSystem>();
+        moveSys = new();
+        hexGrid = GetComponent<HexGridStore>();
         selectedUnit = null;
         previousSelectedHex = null;
         CurrentTypeKapaSelected = KapaType.Default;
@@ -89,9 +90,9 @@ public class UnitManager : MonoBehaviour
         if (selectedUnit == null || !PlayerTurn) return;
         Hex selHex = selectedHex.GetComponent<Hex>();
 
-        if (IsKapaSelected) { HandleKapaDirSelect(selHex.hexCoords, SelectedUnit); return; }
+        if (IsKapaSelected) { HandleKapaDirSelect(selHex.HexCoords, SelectedUnit); return; }
         if (selectedUnit.IsPersoLocked) return;
-        if (HandleHexOutOfRange(selHex.hexCoords) || HandleSelectedHexIsUnitHex(selHex.hexCoords)) return;
+        if (HandleHexOutOfRange(selHex.HexCoords) || HandleSelectedHexIsUnitHex(selHex.HexCoords)) return;
 
         HandleTargetSelectedHex(selHex);
     }
@@ -127,7 +128,7 @@ public class UnitManager : MonoBehaviour
         if (previousSelectedHex == null || previousSelectedHex != selects)
         {
             previousSelectedHex = selects;
-            moveSys.ShowPath(selects.hexCoords, hexGrid);
+            moveSys.ShowPath(selects.HexCoords, hexGrid);
         }
         else
         {
@@ -261,8 +262,7 @@ public class UnitManager : MonoBehaviour
         //Active Kapa
         if (CurrentKapaPaternPos != null || IsKapaSelected && CurrentTypeKapaSelected == type)
         {
-            selectedUnit.UnitData.KapasList[i].Execute();
-            FullResetKapAndPlayer();
+            if (selectedUnit.UnitData.KapasList[i].Execute(SelectedUnit)) { FullResetKapAndPlayer(); }
         }
     }
 
@@ -387,6 +387,7 @@ public class UnitManager : MonoBehaviour
             //on inverse la sortie pour pouvoir continuer la methode de sélection des persos
             //ATENTION !!!!! dans le cas particulier ou une Kapa vise unu Unit au contact, on skip la selection de l'Unit mais on la selection de kapaDir à la pos de l'Unit visée
             if (IsKapaSelected) { HandleKapaDirSelect(unitRef.CurrentHexPos, SelectedUnit); }
+            Debug.Log("test");
             return true;
         }
     }
@@ -405,6 +406,7 @@ public class UnitManager : MonoBehaviour
             return false; 
         }
         //feedbacks un peu sad mais électro quand meme
+        if (IsKapaSelected) { HandleKapaDirSelect(unitRef.CurrentHexPos, SelectedUnit); }
         return true;
     }
 
@@ -454,6 +456,7 @@ public class UnitManager : MonoBehaviour
     /// <returns></returns>
     bool HandleHexOutOfButton(Vector3Int hexPos)
     {
+        if (CurrentButtonPos == null) return true;
         if (CurrentButtonPos.Contains(hexPos)) return false;
         return true;
     }
@@ -467,7 +470,7 @@ public class UnitManager : MonoBehaviour
     async void Init(HexGridStore hex)
     {
         await Task.Delay(100);
-        foreach (GameObject u in GameObject.FindGameObjectsWithTag("Player")) { hex.GetTile(u.GetComponent<Unit>().CurrentHexPos).hasPlayerOnIt = true; }
+        foreach (GameObject u in GameObject.FindGameObjectsWithTag("Player")) { hex.GetTile(u.GetComponent<Unit>().CurrentHexPos).HasPlayerOnIt = true; }
     }
     #endregion
 
@@ -507,9 +510,9 @@ public class UnitManager : MonoBehaviour
     /// </summary>
     void ChargeNewUnitHexCoord()
     {
-        hexGrid.GetTile(selectedUnit.CurrentHexPos).hasPlayerOnIt = false;
-        previousSelectedHex.hasPlayerOnIt = true;
-        selectedUnit.CurrentHexPos = previousSelectedHex.hexCoords;
+        hexGrid.GetTile(selectedUnit.CurrentHexPos).HasPlayerOnIt = false;
+        previousSelectedHex.HasPlayerOnIt = true;
+        selectedUnit.CurrentHexPos = previousSelectedHex.HexCoords;
     }
 
     /// <summary>

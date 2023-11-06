@@ -261,7 +261,7 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     /// <summary>
     /// Base Logique de l'execution de Kapa
     /// </summary>
-    public abstract void Execute();
+    public abstract bool Execute(Unit unit);
 
     /// <summary>
     /// Permet d'override les boutons necessaires selon les Kapa, du gerne retrun null sur le skip pour ne pas afficher de bouton
@@ -278,14 +278,18 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     /// </summary>
     public virtual List<Vector3Int> SelectGraphTiles(Unit unit, HexGridStore hexGrid, Vector3Int[] tilesArray)
     {
+        KapaSystem kapaSys = new();
         List<Vector3Int> v = new();
         foreach (var i in tilesArray)
         {
             if (hexGrid.hexTiles.ContainsKey(HexCoordonnees.GetClosestHex(unit.transform.position) + i))
             {
                 Hex temp = hexGrid.GetTile(HexCoordonnees.GetClosestHex(unit.transform.position) + i);
-                temp.EnableGlowKapa();
-                v.Add(temp.hexCoords);
+                if (kapaSys.VerifyKapaRange(temp.HexCoords, unit, hexGrid))
+                {
+                    temp.EnableGlowKapa();
+                    v.Add(temp.HexCoords);
+                }
             }
         }
         return v;
