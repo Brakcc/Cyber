@@ -5,15 +5,15 @@ namespace CustomAttributes
 {
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property |
         AttributeTargets.Class | AttributeTargets.Struct, Inherited = true)]
-    public class HideIfFalse : PropertyAttribute
+    public class ShowIfTrue : PropertyAttribute
     {
         public string kapaProperty;
-        public KapaFunctionType kapaF;
+        public int kapaF;
 
-        public HideIfFalse(string kapaProperty, KapaFunctionType kapa)
+        public ShowIfTrue(string kapaProperty, int kapa)
         {
             this.kapaProperty = kapaProperty;
-            this.kapaF = kapa;
+            kapaF = kapa;
         }
     }
 }

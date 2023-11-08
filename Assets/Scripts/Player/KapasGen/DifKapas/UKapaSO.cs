@@ -24,6 +24,8 @@ public class UKapaSO : AKapaSO
     [SerializeField] private Vector3Int[] patern;
 
     [SerializeField] UKapaSupFields uKapaSupFields;
+
+    [SerializeField] private CameraManager cam;
     #endregion
 
     #region inherited paterns/accessors

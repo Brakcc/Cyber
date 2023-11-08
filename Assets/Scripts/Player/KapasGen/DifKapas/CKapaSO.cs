@@ -27,11 +27,13 @@ public class CKapaSO : AKapaSO
 
     [SerializeField] CKapaSupFields cKapaSupFields;
     
-    [HideIfFalse("kapaFunctionType", KapaFunctionType.Grab)]
+    [ShowIfTrue("kapaFunctionType", (int)KapaFunctionType.Grab)]
     [SerializeField] KapaGrab grab;
 
-    [HideIfFalse("kapaFunctionType", KapaFunctionType.Dash)]
+    [ShowIfTrue("kapaFunctionType", (int)KapaFunctionType.Dash)]
     [SerializeField] KapaDash dash;
+
+    [SerializeField] private CameraManager cam;
     #endregion
 
     #region inherited paterns/accessors

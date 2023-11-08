@@ -3,12 +3,12 @@ using UnityEditor;
 
 namespace CustomAttributes
 {
-    [CustomPropertyDrawer(typeof(HideIfFalse))]
+    [CustomPropertyDrawer(typeof(ShowIfTrue))]
     public class HidePropertyDrawer : PropertyDrawer
     {
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
-            HideIfFalse hideIfAttribute = (HideIfFalse)attribute;
+            ShowIfTrue hideIfAttribute = (ShowIfTrue)attribute;
             if (GetConditionalAttributeResult(hideIfAttribute, property))
             {
                 return EditorGUI.GetPropertyHeight(property, label);
@@ -21,7 +21,7 @@ namespace CustomAttributes
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            HideIfFalse hideIfAttribute = (HideIfFalse)attribute;
+            ShowIfTrue hideIfAttribute = (ShowIfTrue)attribute;
 
             if (GetConditionalAttributeResult(hideIfAttribute, property))
             {
@@ -29,7 +29,7 @@ namespace CustomAttributes
             }
         }
 
-        bool GetConditionalAttributeResult(HideIfFalse attribute, SerializedProperty property)
+        bool GetConditionalAttributeResult(ShowIfTrue attribute, SerializedProperty property)
         {
             bool enabled = true;
 
@@ -37,13 +37,14 @@ namespace CustomAttributes
             boolPropertyPathArray[^1] = attribute.kapaProperty;
             string boolPropertyPath = string.Join(".", boolPropertyPathArray);
 
-            KapaFunctionType boolP = attribute.kapaF;
+            int boolP = attribute.kapaF;
+            //CameraEffectType boolC = attribute.camT;
 
             SerializedProperty kapaValue = property.serializedObject.FindProperty(boolPropertyPath);
 
             if (kapaValue != null)
             {
-                enabled = kapaValue.enumValueIndex == (int)boolP;
+                enabled = kapaValue.enumValueIndex == boolP;
             }
             else
             {

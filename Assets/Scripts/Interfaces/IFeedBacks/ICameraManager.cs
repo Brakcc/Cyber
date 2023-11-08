@@ -9,3 +9,11 @@ public interface ICameraManager
 
     public void OnMoveMap();
 }
+
+public enum CameraEffectType
+{
+    Shake,
+    Impulse,
+    ShockWave,
+    None
+}

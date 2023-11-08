@@ -65,3 +65,14 @@ MonoBehaviour:
   graphs:
     orderInLayer: 0
     color: {r: 1, g: 0, b: 0.8343153, a: 1}
+  cam:
+    s:
+      cam: {fileID: 0}
+      last: 1000
+      chanPerl: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+      pivotOffset: {x: 1, y: 1, z: 0}
+      amplitudeGain: 1.5
+      frequencyGain: 0.1
+    i:
+      cam: {fileID: 0}
+      cimpl: {fileID: 0}
