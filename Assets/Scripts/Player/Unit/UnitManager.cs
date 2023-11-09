@@ -467,8 +467,11 @@ public class UnitManager : MonoBehaviour
     /// <param name="hex"></param>
     async void Init(HexGridStore hex)
     {
-        await Task.Delay(100);
-        foreach (GameObject u in GameObject.FindGameObjectsWithTag("Player")) { hex.GetTile(u.GetComponent<Unit>().CurrentHexPos).HasPlayerOnIt = true; }
+        await Task.Delay(500);
+        foreach (GameObject u in GameObject.FindGameObjectsWithTag("Player"))
+        {
+            hex.GetTile(u.GetComponent<Unit>().CurrentHexPos).HasPlayerOnIt = true;
+        }
     }
     #endregion
 
