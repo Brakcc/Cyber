@@ -1,4 +1,6 @@
 using UnityEngine;
+using CustomAttributes;
+using UnityEngine.InputSystem.XR;
 
 [CreateAssetMenu(fileName = "Competence Kapa", menuName = "Tactical/Kapas/Competence")]
 public class CKapaSO : AKapaSO
@@ -16,12 +18,22 @@ public class CKapaSO : AKapaSO
     [SerializeField] private EffectType effectType;
     public override KapaType KapaType { get => kapaType; }
     [SerializeField] private KapaType kapaType;
+    public override KapaFunctionType KapaFunctionType { get => kapaFunctionType; }
+    [SerializeField] private KapaFunctionType kapaFunctionType;
     public override KapaUISO KapaUI { get => kapaUI; }
     [SerializeField] private KapaUISO kapaUI;
     public override Vector3Int[] Patern { get => patern; }
     [SerializeField] private Vector3Int[] patern;
 
     [SerializeField] CKapaSupFields cKapaSupFields;
+    
+    [ShowIfTrue("kapaFunctionType", (int)KapaFunctionType.Grab)]
+    [SerializeField] KapaGrab grab;
+
+    [ShowIfTrue("kapaFunctionType", (int)KapaFunctionType.Dash)]
+    [SerializeField] KapaDash dash;
+
+    [SerializeField] private CameraManager cam;
     #endregion
 
     #region inherited paterns/accessors

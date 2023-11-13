@@ -1,4 +1,5 @@
 using UnityEngine;
+using Cinemachine;
 
 [CreateAssetMenu(fileName = "Normal Attack Kapa", menuName = "Tactical/Kapas/Normal Attack")]
 public class NAKapaSO : AKapaSO
@@ -16,12 +17,16 @@ public class NAKapaSO : AKapaSO
     [SerializeField] private EffectType effectType;
     public override KapaType KapaType { get => kapaType; }
     [SerializeField] private KapaType kapaType;
+    public override KapaFunctionType KapaFunctionType { get => kapaFunctionType; }
+    [SerializeField] private KapaFunctionType kapaFunctionType;
     public override KapaUISO KapaUI { get => kapaUI; }
     [SerializeField] private KapaUISO kapaUI;
     public override Vector3Int[] Patern { get => patern; }
     [SerializeField] private Vector3Int[] patern;
 
     [SerializeField] NAKapaSupFields nAKapaSupFields;
+
+    [SerializeField] private CameraManager cam;
     #endregion
 
     #region inherited paterns/accessors
@@ -89,6 +94,7 @@ public class NAKapaSO : AKapaSO
     {
         unit.CompPoints += nAKapaSupFields.compPointsAdded;
         unit.UltPoints += nAKapaSupFields.ultPointsAdded;
+        cam.OnShake(FindObjectOfType<CinemachineVirtualCamera>());
         //PlaceHolder à rempir avec les anims et considérations de dégâts
     }
     void EndKapa()

@@ -1,8 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.Threading.Tasks;
+using CustomAttributes;
 using UnityEngine;
 
-public static class VFXManager 
+[System.Serializable]
+public class VFXManager 
 {
-    
+    #region fields
+
+    #endregion
+
+    #region methodes
+
+    #endregion
 }

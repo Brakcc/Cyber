@@ -5,7 +5,8 @@ public interface IKapasDatas
     public int Cost { get; }
     public string Description { get; }
     public EffectType EffectType { get; }
-    public  KapaType KapaType { get; }
+    public KapaType KapaType { get; }
+    public KapaFunctionType KapaFunctionType { get; }
 }
 
 public enum EffectType

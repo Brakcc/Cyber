@@ -20,10 +20,10 @@ public struct HexCoordonnees : IHexCoord
     #region methodes
     public static Vector3Int GetClosestHex(Vector3 worldPos)
     {
-        ///int x = (int)(worldPos.x / 0.79f);
-        ///int y = (int)(worldPos.y / 0.83f);
-        ///if (x % 2 != 0) { y += 1; }
-        int x = worldPos.x >= 0 ? Mathf.CeilToInt(worldPos.x) : Mathf.FloorToInt(worldPos.x);
+        float temp = ((worldPos.x / 0.05f) / 19);
+        int x = Mathf.RoundToInt(temp);
+        //Debug.Log(worldPos + " and " + temp + " and" + x);
+        //int x = worldPos.x >= 0 ? Mathf.CeilToInt(worldPos.x) : Mathf.FloorToInt(worldPos.x);
         int y = worldPos.y >= 0 ? Mathf.CeilToInt(worldPos.y) : Mathf.FloorToInt(worldPos.y);
         worldPos.z = 0;
         int z = (int)worldPos.z;

@@ -18,6 +18,7 @@ MonoBehaviour:
   cost: 0
   effectType: 0
   kapaType: 1
+  kapaFunctionType: 0
   kapaUI: {fileID: 0}
   patern:
   - {x: 0, y: -1, z: 0}
@@ -30,3 +31,29 @@ MonoBehaviour:
     damage: 0
     duration: 0
     animation: {fileID: 0}
+  grab:
+    range: 11
+    debufMP: 3
+  dash:
+    range: 0
+    speed: 0
+  cam:
+    effectType: 3
+    s:
+      last: 0
+      perlinParameters:
+        chanPerl: {fileID: 0}
+        pivotOffset: {x: 0, y: 0, z: 0}
+        amplitudeGain: 0
+        frequencyGain: 0
+    sW:
+      speed: 0
+    i:
+      ampli: 0
+      speedDir: {x: 0, y: 0, z: 0}
+      curve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4

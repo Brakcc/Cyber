@@ -11,6 +11,7 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     public abstract string Description { get; }
     public abstract EffectType EffectType { get; }
     public abstract KapaType KapaType { get; }
+    public abstract KapaFunctionType KapaFunctionType { get; }
     public abstract KapaUISO KapaUI { get; }
     public abstract Vector3Int[] Patern { get; }
     #endregion
