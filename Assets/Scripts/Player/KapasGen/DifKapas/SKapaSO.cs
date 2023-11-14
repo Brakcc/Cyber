@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,6 +12,7 @@ public class SKapaSO : AKapaSO
     public override string Description { get => description; }
     [SerializeField] private string description;
     public override int Cost { get => 0; }
+    public override int MaxPlayerPierce => 0;
     public override EffectType EffectType { get => EffectType.None; }
     public override KapaType KapaType { get => kapaType; }
     [SerializeField] private KapaType kapaType;

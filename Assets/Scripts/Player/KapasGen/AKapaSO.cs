@@ -9,6 +9,7 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     public abstract int ID { get; }
     public abstract int Cost { get; }
     public abstract string Description { get; }
+    public abstract int MaxPlayerPierce { get; }
     public abstract EffectType EffectType { get; }
     public abstract KapaType KapaType { get; }
     public abstract KapaFunctionType KapaFunctionType { get; }
@@ -286,7 +287,7 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
             if (hexGrid.hexTiles.ContainsKey(HexCoordonnees.GetClosestHex(unit.transform.position) + i))
             {
                 Hex temp = hexGrid.GetTile(HexCoordonnees.GetClosestHex(unit.transform.position) + i);
-                if (kapaSys.VerifyKapaRange(temp.HexCoords, unit, hexGrid))
+                if (kapaSys.VerifyKapaRange(temp.HexCoords, unit, hexGrid, MaxPlayerPierce))
                 {
                     temp.EnableGlowKapa();
                     v.Add(temp.HexCoords);

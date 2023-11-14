@@ -16,6 +16,7 @@ MonoBehaviour:
   id: 0
   description: NA
   cost: 10
+  maxPlayerPierce: 1
   effectType: 0
   kapaType: 0
   kapaFunctionType: 2

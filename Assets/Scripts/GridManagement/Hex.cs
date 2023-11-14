@@ -10,6 +10,7 @@ public class Hex : MonoBehaviour
     //la Data importante
     public Vector3Int HexCoords { get; set; }
     public bool HasPlayerOnIt { get; set; }
+    public Unit PlayerRef { get; set; }
     #endregion
 
     #region methodes
@@ -31,6 +32,10 @@ public class Hex : MonoBehaviour
         HexType.Hole => 1000,
         _ => 1000
     };
+
+    public void SetUnit(Unit unit) => PlayerRef = unit;
+    public Unit GetUnit() => PlayerRef;
+    public void ClearUnit() => PlayerRef = null;
 
     public bool IsObstacle() => type == HexType.Obstacle || type == HexType.Hole;
 

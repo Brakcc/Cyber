@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dde4142f37cff74cbe2ab6166f660cf, type: 3}
   m_Name: DPS Datas Test
   m_EditorClassIdentifier: 
+  iD: 0
   movePoints: 5
   speed: 15
   healthPoint: 10

@@ -16,6 +16,7 @@ MonoBehaviour:
   id: 0
   description: 4
   cost: 10
+  maxPlayerPierce: 1
   effectType: 0
   kapaType: 3
   kapaFunctionType: 2
@@ -33,9 +34,8 @@ MonoBehaviour:
   cam:
     effectType: 0
     s:
-      cam: {fileID: 0}
       last: 0
-      p:
+      perlinParameters:
         chanPerl: {fileID: 0}
         pivotOffset: {x: 0, y: 0, z: 0}
         amplitudeGain: 0
@@ -43,5 +43,11 @@ MonoBehaviour:
     sW:
       speed: 0
     i:
-      cam: {fileID: 0}
-      cimpl: {fileID: 0}
+      ampli: 0
+      speedDir: {x: 0, y: 0, z: 0}
+      curve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4

@@ -314,14 +314,14 @@ public class UnitManager : MonoBehaviour
         SelectedUnit.CanPlay = false;
         SelectedUnit = null;
         //GameLoop reset
-        /*if (GameLoopManager.playerPlay == 1)
+        if (GameLoopManager.playerPlay == 1)
         {
-            GameLoopManager.CountPerso1++;
+            GameLoopManager.countPerso1++;
         }
         if (GameLoopManager.playerPlay == 2)
         {
-            GameLoopManager.CountPerso2++;
-        }*/
+            GameLoopManager.countPerso2++;
+        }
     }
     #endregion
 
@@ -470,7 +470,9 @@ public class UnitManager : MonoBehaviour
         await Task.Delay(500);
         foreach (GameObject u in GameObject.FindGameObjectsWithTag("Player"))
         {
-            hex.GetTile(u.GetComponent<Unit>().CurrentHexPos).HasPlayerOnIt = true;
+            Hex h = hex.GetTile(u.GetComponent<Unit>().CurrentHexPos);
+            h.HasPlayerOnIt = true;
+            h.SetUnit(u.GetComponent<Unit>());
         }
     }
     #endregion
@@ -512,7 +514,9 @@ public class UnitManager : MonoBehaviour
     void ChargeNewUnitHexCoord()
     {
         hexGrid.GetTile(selectedUnit.CurrentHexPos).HasPlayerOnIt = false;
+        hexGrid.GetTile(selectedUnit.CurrentHexPos).ClearUnit();
         previousSelectedHex.HasPlayerOnIt = true;
+        previousSelectedHex.SetUnit(selectedUnit);
         selectedUnit.CurrentHexPos = previousSelectedHex.HexCoords;
     }
 
