@@ -4,6 +4,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "DPS Datas", menuName = "Tactical/Units/DPS Datas")]
 public class DPSDataSO : AUnitSO
 {
+    public override int ID => iD;
+    [SerializeField] private int iD;
+
     public override int MovePoints => movePoints;
     [SerializeField] private int movePoints;
 

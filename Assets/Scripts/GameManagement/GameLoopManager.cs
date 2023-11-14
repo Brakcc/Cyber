@@ -6,11 +6,11 @@ public class GameLoopManager : MonoBehaviour
 {
     #region fields
     public static int playerPlay = 1;
-    public List<GameObject> heroPlayer1 = new List<GameObject>();
-    public List<GameObject> heroPlayer2 = new List<GameObject>();
+    public List<GameObject> heroPlayer1 = new();
+    public List<GameObject> heroPlayer2 = new();
 
-    public static int countPerso1=0;
-    public static int countPerso2=0;
+    public static int countPerso1 = 0;
+    public static int countPerso2 = 0;
 
     #endregion
     private void Update()
@@ -21,19 +21,18 @@ public class GameLoopManager : MonoBehaviour
     #region selectionPlayer
 
     void OnSelectionPlayer()
-     {
-         if (playerPlay == 1)
-         {
-             OnPlayer1Play();
+    {
+        if (playerPlay == 1)
+        {
+            OnPlayer1Play();
             if (heroPlayer1.Count <= countPerso1)
             {
                 playerPlay = 2;
                 countPerso1 = 0;
             }
         }
-
         if (playerPlay == 2)
-         {
+        {
             OnPlayer2Play();
             if (heroPlayer2.Count <= countPerso2)
             {
@@ -41,9 +40,6 @@ public class GameLoopManager : MonoBehaviour
                 countPerso2 = 0;
             }
         }
-
-
-
     }
 
 

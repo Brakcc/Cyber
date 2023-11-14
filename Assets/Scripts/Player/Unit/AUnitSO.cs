@@ -4,6 +4,7 @@ using UnityEngine;
 public abstract class AUnitSO : ScriptableObject, IUnitData
 {
     #region fields/accessors to herit
+    public abstract int ID { get; }
     public abstract int MovePoints { get; }
     public abstract int Speed { get; }
     public abstract int HealthPoint { get; set; }

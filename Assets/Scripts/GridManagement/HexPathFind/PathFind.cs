@@ -5,6 +5,7 @@ using UnityEngine;
 public class PathFind
 {
     #region methodes
+    #region pathFind methodes
     /// <summary>
     /// Calcul en A* BFS pour determiner l'ensemble des tiles possibles pour une Unit à circuler dessus
     /// </summary>
@@ -54,7 +55,7 @@ public class PathFind
     }
 
     /// <summary>
-    /// oui je refais le pathfind pour juste changer le fait de pouvoir traverser l'ennemi et pas les murs ptn
+    /// PathFind prennant en compte seulement les obstacles et traverse un nombre limité d'Unit
     /// </summary>
     /// <param name="hexGrid"></param>
     /// <param name="startHex"></param>
@@ -76,8 +77,7 @@ public class PathFind
             foreach (Vector3Int adjPos in hexGrid.GetNeighbourgs(currentNode))
             {
                 var h = hexGrid.GetTile(adjPos);
-                //La seule dif avec la fonction d'avant est sur cette ligne ._.
-                if (h.IsObstacle()) continue;
+                if (h.IsObstacle()) continue; //La seule dif avec la fonction d'avant est sur cette ligne ._.
 
                 int nodeCost = h.GetValue();
                 int currentCost = totalCost[currentNode];
@@ -148,7 +148,9 @@ public class PathFind
         }
         return new PathResult { calculatedNodes = processedNodes };
     }
+    #endregion
 
+    #region Path generation
     /// <summary>
     /// Generation du chemin le plus court avec le pathFind pour ensuite l'inverser afin de placer la liste dans le bon sens
     /// </summary>
@@ -166,11 +168,42 @@ public class PathFind
         path.Reverse();
         return path.Skip(1).ToList();
     }
+
+    public static List<Vector3Int> GenerateKapaPath(HexGridStore hG, Vector3Int current, Dictionary<Vector3Int, Vector3Int?> proNodes, int maxPlayerPierce)
+    {
+        int piercedUnit = 0;
+
+        List<Vector3Int> path = new() { current };
+        while (proNodes[current] != null)
+        {
+            if (piercedUnit > maxPlayerPierce)
+            {
+                current = proNodes[current].Value;
+                continue;
+            }
+            if (!hG.GetTile(proNodes[current].Value).HasPlayerOnIt)
+            {
+                path.Add(proNodes[current].Value);
+            }
+            else
+            {
+                piercedUnit++;
+                path.Add(proNodes[current].Value);
+            }
+            current = proNodes[current].Value;
+        }
+        path.Reverse();
+        return path.Skip(1).ToList();
+    }
+    #endregion
     #endregion
 }
 
 public struct PathResult
 {
+    /// <summary>
+    /// Liste des tiles calulées pour la range d'un pathFind
+    /// </summary>
     public Dictionary<Vector3Int, Vector3Int?> calculatedNodes;
 
     /// <summary>
@@ -182,6 +215,19 @@ public struct PathResult
     {
         if (!calculatedNodes.ContainsKey(dest)) { return new List<Vector3Int>(); }
         return PathFind.GeneratePath(dest, calculatedNodes);
+    }
+
+    /// <summary>
+    /// Renvoit une liste de vector3Int qui permet de determiner selon un nombre Max d'Unit percee si une competence peut etre active sur une tile ou non
+    /// </summary>
+    /// <param name="dest"></param>
+    /// <param name="hG"></param>
+    /// <param name="maxPierced">nombre max d'Unit traversee</param>
+    /// <returns></returns>
+    public readonly List<Vector3Int> GetKapaPathTo(Vector3Int dest, HexGridStore hG, int maxPierced)
+    {
+        if (!calculatedNodes.ContainsKey(dest)) { return new List<Vector3Int>(); }
+        return PathFind.GenerateKapaPath(hG, dest, calculatedNodes, maxPierced);
     }
 
     public readonly bool IsHexPosInRange(Vector3Int pos) => calculatedNodes.ContainsKey(pos);

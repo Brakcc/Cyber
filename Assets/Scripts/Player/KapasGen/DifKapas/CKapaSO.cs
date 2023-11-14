@@ -1,6 +1,5 @@
 using UnityEngine;
 using CustomAttributes;
-using UnityEngine.InputSystem.XR;
 
 [CreateAssetMenu(fileName = "Competence Kapa", menuName = "Tactical/Kapas/Competence")]
 public class CKapaSO : AKapaSO
@@ -14,6 +13,8 @@ public class CKapaSO : AKapaSO
     [SerializeField] private string description;
     public override int Cost { get => cost; }
     [SerializeField] private int cost;
+    public override int MaxPlayerPierce => maxPlayerPierce;
+    [SerializeField] int maxPlayerPierce;
     public override EffectType EffectType { get => effectType; }
     [SerializeField] private EffectType effectType;
     public override KapaType KapaType { get => kapaType; }
