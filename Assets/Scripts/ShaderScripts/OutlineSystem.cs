@@ -10,11 +10,11 @@ public class OutlineSystem
     PathResult GetOutlineRange(Vector3Int pos, HexGridStore hexGrid, int range) => PathFind.PathKapaVerif(hexGrid, pos, range);
     
     /// <summary>
-    /// revoit le dictionnaire contenant en clé les Pos et en value les Hex d'une range à outline. 
+    /// revoit le dictionnaire contenant en clÃ© les Pos et en value les Hex d'une range Ã  outline. 
     /// </summary>
     /// <param name="pos">position centrale de la range</param>
     /// <param name="hexGrid">ref au HexGridStore, qui contient le dictionnaire de la map</param>
-    /// <param name="range">taille en la range à calculer</param>
+    /// <param name="range">taille en la range Ã  calculer</param>
     /// <returns></returns>
     public Dictionary<Vector3Int, Hex> GetOutlineList(Vector3Int pos, HexGridStore hexGrid, int range)
     {
@@ -27,4 +27,5 @@ public class OutlineSystem
         return outlinedTiles;
     }
     #endregion
+
 }

@@ -17,8 +17,8 @@ public class UnitManager : MonoBehaviour
     private Hex previousSelectedHex;
     public Hex PreviousSelectedHex { get => previousSelectedHex; }
 
-    //Is a Kapa Utility, pas vraiment de possibilitÈ de store directement une Kapa
-    //on store directement une list de patern, les methodes de kapas Ètant deja stored dans le cache AKapaSO
+    //Is a Kapa Utility, pas vraiment de possibilit√© de store directement une Kapa
+    //on store directement une list de patern, les methodes de kapas √©tant deja stored dans le cache AKapaSO
     public KapaType CurrentTypeKapaSelected { get; private set; }
     public KapaDir CurrentSelectedKapaDir { get; private set; }
     public bool IsKapaSelected { get; private set; }
@@ -26,7 +26,7 @@ public class UnitManager : MonoBehaviour
     public List<Vector3Int> CurrentButtonPos {get; private set; }
     public List<Vector3Int> CurrentKapaPaternPos { get; private set; }  
 
-    //Player Turn ‡ dÈplacer dans le GameLoopManager !!!!!
+    //Player Turn √† d√©placer dans le GameLoopManager !!!!!
     public bool PlayerTurn { get; private set; } = true;
     #endregion
 
@@ -51,7 +51,7 @@ public class UnitManager : MonoBehaviour
     #region selections methodes and update
     void Update()
     {
-        //Update uniquement utile actuellement pour faire du debug, vouÈe ‡ disparaitre
+        //Update uniquement utile actuellement pour faire du debug, vou√©e √† disparaitre
         if (Input.GetKeyDown(KeyCode.N)) 
         {
             foreach (Vector3Int v in hexGrid.GetNeighbourgs(HexCoordonnees.GetClosestHex(selectedUnit.transform.position))) { Debug.Log(v); }
@@ -59,8 +59,8 @@ public class UnitManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Si l'unit peut jouer son tour : 2 possibilitÈs :
-    /// -> Si elle Ètait dÈj‡ sÈlectionnÈe : ClearOldSelection
+    /// Si l'unit peut jouer son tour : 2 possibilit√©s :
+    /// -> Si elle √©tait d√©j√† s√©lectionn√©e : ClearOldSelection
     /// -> Sinon PreparUnitForMove
     /// </summary>
     /// <param name="unit"></param>
@@ -77,8 +77,8 @@ public class UnitManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Si une Unit est sÈlectionnÈe et le tour de l'Unit en cours : 
-    /// =>>> GËre la selection de kapaDir !!!!!
+    /// Si une Unit est s√©lectionn√©e et le tour de l'Unit en cours : 
+    /// =>>> G√®re la selection de kapaDir !!!!!
     /// -> Si l'hex est hors de range ou celle du perso (Si celle du perso le perso est unselect et ClearOldSelection) : 
     /// -> HandleTargetSelected
     /// </summary>
@@ -157,7 +157,7 @@ public class UnitManager : MonoBehaviour
 
     #region KapasCalls
     /// <summary>
-    /// GÈnere une liste de bouton de coordo basÈ sur la fonction GetNeighbours pour recup les boutons dispo autour du joueur
+    /// G√©nere une liste de bouton de coordo bas√© sur la fonction GetNeighbours pour recup les boutons dispo autour du joueur
     /// </summary>
     /// <param name="unit"></param>
     /// <param name="hexGrid"></param>
@@ -165,9 +165,9 @@ public class UnitManager : MonoBehaviour
     List<Vector3Int> GenerateButtonPos(Unit unit, HexGridStore hexGrid, AKapaSO kapa) => kapa.GenerateButton(hexGrid, unit);
 
     /// <summary>
-    /// BasÈ sur la pos du l'unit et celle de la tile cliquÈe, on trace un VECTEUR entre la tile et la selectedUnit pour connaitre la dir selon la paritÈ
-    /// Reset de la direction deja selectionnÈe PUIS selection de la nouvelle direction
-    /// -> modif la liste de tiles qui seront affectÈes par la kapa; la Kapa en elle meme est stockÈ grace ‡ la kapatype, selectedUnit et kapalist de la selectedUnit
+    /// Bas√© sur la pos du l'unit et celle de la tile cliqu√©e, on trace un VECTEUR entre la tile et la selectedUnit pour connaitre la dir selon la parit√©
+    /// Reset de la direction deja selectionn√©e PUIS selection de la nouvelle direction
+    /// -> modif la liste de tiles qui seront affect√©es par la kapa; la Kapa en elle meme est stock√© grace √† la kapatype, selectedUnit et kapalist de la selectedUnit
     /// -> refresh les affichages de boutons
     /// </summary>
     /// <param name="buttonPos"></param>
@@ -192,7 +192,7 @@ public class UnitManager : MonoBehaviour
 
     #region Patern Application
     /// <summary>
-    /// pour l'unit sur une case IMPAIRE, revoit le bon paterne de Kapa qui sera affichÈ sur les bonne tiles ensuite selon la pos de l'unit
+    /// pour l'unit sur une case IMPAIRE, revoit le bon paterne de Kapa qui sera affich√© sur les bonne tiles ensuite selon la pos de l'unit
     /// </summary>
     /// <param name="dir"></param>
     /// <param name="unit"></param>
@@ -212,7 +212,7 @@ public class UnitManager : MonoBehaviour
     }
 
     /// <summary>
-    /// pour l'unit sur une case PAIRE, revoit le bon paterne de Kapa qui sera affichÈ sur les bonne tiles ensuite selon la pos de l'unit
+    /// pour l'unit sur une case PAIRE, revoit le bon paterne de Kapa qui sera affich√© sur les bonne tiles ensuite selon la pos de l'unit
     /// </summary>
     /// <param name="dir"></param>
     /// <param name="unit"></param>
@@ -233,7 +233,7 @@ public class UnitManager : MonoBehaviour
     #endregion
 
     /// <summary>
-    /// GËre la selection des Kapas ‡ la faÁon des Units, On doit selectionner ‡ 2 fois une compÈtence avant de pouvoir l'executer.
+    /// G√®re la selection des Kapas √† la fa√ßon des Units, On doit selectionner √† 2 fois une comp√©tence avant de pouvoir l'executer.
     /// PENSER A AJOUTER LA METHODES POUR LA SELECTION DE LA DIRECTION DE LA COMPETENCE
     /// </summary>
     /// <param name="i"></param>
@@ -325,15 +325,15 @@ public class UnitManager : MonoBehaviour
     }
     #endregion
 
-    #region passage d'une Unit ‡ l'autre
+    #region passage d'une Unit √† l'autre
     /// <summary>
-    /// si une autre unit est selectionnÈe avant le lock par dÈplacement de la selected unit ou si pas d'unit selectionnÈe: 
+    /// si une autre unit est selectionn√©e avant le lock par d√©placement de la selected unit ou si pas d'unit selectionn√©e: 
     /// -> pas d'unit
-    /// -> switch la sÈlection d'unit
-    /// -> sinon bloque la sÈlection
+    /// -> switch la s√©lection d'unit
+    /// -> sinon bloque la s√©lection
     /// GERE EGALEMENT LA TRANSITION ENTRE UNIT ET KAPA
     /// </summary>
-    /// <param name="unitRef">È_È</param>
+    /// <param name="unitRef">√©_√©</param>
     /// <returns></returns>
     bool CheckIfCanSelectOtherUnitAndIfSameUnit(Unit unitRef)
     {
@@ -354,7 +354,7 @@ public class UnitManager : MonoBehaviour
                 ResetKapaData();
                 return false;
             }
-            //on inverse la sortie pour pouvoir continuer la methode de sÈlection des persos
+            //on inverse la sortie pour pouvoir continuer la methode de s√©lection des persos
         }
         //On clique sur LA MEME Unit et elle est DEJA LOCK
         else if (selectedUnit == unitRef && selectedUnit.IsPersoLocked)
@@ -382,8 +382,8 @@ public class UnitManager : MonoBehaviour
         else
         {
             //action de refus : mettre des feedbacks
-            //on inverse la sortie pour pouvoir continuer la methode de sÈlection des persos
-            //ATENTION !!!!! dans le cas particulier ou une Kapa vise unu Unit au contact, on skip la selection de l'Unit mais on la selection de kapaDir ‡ la pos de l'Unit visÈe
+            //on inverse la sortie pour pouvoir continuer la methode de s√©lection des persos
+            //ATENTION !!!!! dans le cas particulier ou une Kapa vise unu Unit au contact, on skip la selection de l'Unit mais on la selection de kapaDir √† la pos de l'Unit vis√©e
             if (IsKapaSelected) { HandleKapaDirSelect(unitRef.CurrentHexPos, SelectedUnit); }
             Debug.Log("test");
             return true;
@@ -391,25 +391,25 @@ public class UnitManager : MonoBehaviour
     }
 
     /// <summary>
-    /// verif si le perso n'est pas mort et que son tour n'est pas passÈ
+    /// verif si le perso n'est pas mort et que son tour n'est pas pass√©
     /// </summary>
     /// <param name="unitRef"></param>
     /// <returns></returns>
     bool CheckIfUnitCanPlay(Unit unitRef)
     {
-        //Si l'unit sÈlectionnÈe peut faire son tour ET n'est pas morte
+        //Si l'unit s√©lectionn√©e peut faire son tour ET n'est pas morte
         if (unitRef.CanPlay && !unitRef.IsDead)
         {
-            //condition inversÈe pour continuer
+            //condition invers√©e pour continuer
             return false; 
         }
-        //feedbacks un peu sad mais Èlectro quand meme
+        //feedbacks un peu sad mais √©lectro quand meme
         if (IsKapaSelected) { HandleKapaDirSelect(unitRef.CurrentHexPos, SelectedUnit); }
         return true;
     }
 
     /// <summary>
-    /// force l'utilisation de capa ou skip capa du perso aprËs son dÈplacement
+    /// force l'utilisation de capa ou skip capa du perso apr√®s son d√©placement
     /// </summary>
     /// <param name="unit"></param>
     void LockUnitAfterMove()
@@ -420,7 +420,7 @@ public class UnitManager : MonoBehaviour
 
     #region cas particuliers de Hexs
     /// <summary>
-    /// Si hex sÈlectionnÈe celui de l'Unit, mÍme effet que SameUnitSelected : 
+    /// Si hex s√©lectionn√©e celui de l'Unit, m√™me effet que SameUnitSelected : 
     /// -> ClearOldSelection
     /// </summary>
     /// <param name="hexPos"></param>
@@ -437,7 +437,7 @@ public class UnitManager : MonoBehaviour
     }
 
     /// <summary>
-    /// L'hex sÈlectionnÈe est ou non hors de portÈe
+    /// L'hex s√©lectionn√©e est ou non hors de port√©e
     /// </summary>
     /// <param name="hexPos"></param>
     /// <returns></returns>
@@ -448,7 +448,7 @@ public class UnitManager : MonoBehaviour
     }
 
     /// <summary>
-    /// vÈrifie si la tile selectionnÈe est un bouton autour du player ou juste une case sans action
+    /// v√©rifie si la tile selectionn√©e est un bouton autour du player ou juste une case sans action
     /// </summary>
     /// <param name="hexPos"></param>
     /// <returns></returns>
@@ -462,7 +462,7 @@ public class UnitManager : MonoBehaviour
 
     #region Init
     /// <summary>
-    /// Initialise la grille pour detecter les pos des joueurs en dÈbut de partie pour rendre impossible les dep sur ces tiles
+    /// Initialise la grille pour detecter les pos des joueurs en d√©but de partie pour rendre impossible les dep sur ces tiles
     /// </summary>
     /// <param name="hex"></param>
     async void Init(HexGridStore hex)
@@ -477,7 +477,7 @@ public class UnitManager : MonoBehaviour
 
     #region Clearing and Reset methodes
     /// <summary>
-    /// reset le perso selectionnÈ et les sÈlections graphiques
+    /// reset le perso selectionn√© et les s√©lections graphiques
     /// </summary>
     void ClearOldSelection()
     {
@@ -507,7 +507,7 @@ public class UnitManager : MonoBehaviour
     }
 
     /// <summary>
-    /// retire la selectedTile sur laquelle une Unit Ètait et place la nouvelle tile en hasPlayerOnIt
+    /// retire la selectedTile sur laquelle une Unit √©tait et place la nouvelle tile en hasPlayerOnIt
     /// </summary>
     void ChargeNewUnitHexCoord()
     {
@@ -525,4 +525,5 @@ public class UnitManager : MonoBehaviour
         foreach (GameObject u in GameObject.FindGameObjectsWithTag("Player")) { u.GetComponent<Unit>().CanPlay = true; }
     }
     #endregion
+    
 }
