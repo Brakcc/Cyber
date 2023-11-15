@@ -187,6 +187,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hexagon (92)
       objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -351,6 +355,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hexagon (32)
       objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -438,6 +446,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hexagon (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -519,6 +531,10 @@ PrefabInstance:
     - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Name
       value: Hexagon (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
@@ -793,6 +809,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hexagon (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -1027,6 +1047,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hexagon (68)
       objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -1191,6 +1215,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hexagon (65)
       objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -1272,6 +1300,10 @@ PrefabInstance:
     - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Name
       value: Hexagon (64)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
@@ -1440,6 +1472,10 @@ PrefabInstance:
     - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Name
       value: Hexagon (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1612,6 +1648,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hexagon (48)
       objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -1708,6 +1748,10 @@ PrefabInstance:
     - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Name
       value: Hexagon (84)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
@@ -2103,6 +2147,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hexagon (73)
       objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -2190,6 +2238,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hexagon (78)
       objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -2271,6 +2323,10 @@ PrefabInstance:
     - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Name
       value: Hexagon (63)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
@@ -2441,6 +2497,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hexagon (30)
       objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -2523,6 +2583,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hexagon (119)
       objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -2604,6 +2668,10 @@ PrefabInstance:
     - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Name
       value: Hexagon (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
@@ -2835,6 +2903,10 @@ PrefabInstance:
     - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Name
       value: Hexagon (103)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
@@ -3108,6 +3180,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hexagon (38)
       objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -3189,6 +3265,10 @@ PrefabInstance:
     - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Name
       value: Hexagon (54)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
@@ -3595,6 +3675,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hexagon (113)
       objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -3681,6 +3765,10 @@ PrefabInstance:
     - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Name
       value: Hexagon (95)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
@@ -3882,7 +3970,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 4.5
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -3978,14 +4066,14 @@ RectTransform:
   m_GameObject: {fileID: 520439289}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.804375, y: 1.4625, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 585207728}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -954.12, y: -535.93}
+  m_AnchoredPosition: {x: -954.1, y: -535.8}
   m_SizeDelta: {x: 16, y: 9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &520439291
@@ -4100,6 +4188,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hexagon (82)
       objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -4181,6 +4273,10 @@ PrefabInstance:
     - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Name
       value: Hexagon (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
@@ -4380,6 +4476,10 @@ PrefabInstance:
     - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Name
       value: Hexagon (25)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
@@ -4663,6 +4763,10 @@ PrefabInstance:
     - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Name
       value: Hexagon (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
@@ -5183,6 +5287,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hexagon (62)
       objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -5449,6 +5557,10 @@ PrefabInstance:
     - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Name
       value: Hexagon (56)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
@@ -5791,6 +5903,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hexagon (40)
       objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -6019,6 +6135,10 @@ PrefabInstance:
     - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Name
       value: Hexagon (57)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
@@ -6259,6 +6379,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hexagon (83)
       objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -6346,6 +6470,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hexagon (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -6427,6 +6555,10 @@ PrefabInstance:
     - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Name
       value: Hexagon (107)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
@@ -6510,6 +6642,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hexagon (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -6591,6 +6727,10 @@ PrefabInstance:
     - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Name
       value: Hexagon (79)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
@@ -6674,6 +6814,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hexagon (76)
       objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -6755,6 +6899,10 @@ PrefabInstance:
     - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Name
       value: Hexagon (85)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
@@ -6838,6 +6986,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hexagon (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -6919,6 +7071,10 @@ PrefabInstance:
     - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Name
       value: Hexagon (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
@@ -7006,6 +7162,10 @@ PrefabInstance:
     - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Name
       value: Hexagon (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
@@ -7133,6 +7293,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hexagon (22)
       objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -7214,6 +7378,10 @@ PrefabInstance:
     - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Name
       value: Hexagon (91)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
@@ -7334,6 +7502,10 @@ PrefabInstance:
     - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Name
       value: Hexagon (72)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
@@ -7698,6 +7870,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hexagon (75)
       objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -8053,6 +8229,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hexagon (31)
       objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -8134,6 +8314,10 @@ PrefabInstance:
     - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Name
       value: Hexagon (66)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
@@ -8217,6 +8401,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hexagon (35)
       objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -8299,6 +8487,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hexagon (41)
       objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -8380,6 +8572,10 @@ PrefabInstance:
     - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Name
       value: Hexagon (71)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
@@ -8750,6 +8946,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hexagon (67)
       objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -8836,6 +9036,10 @@ PrefabInstance:
     - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Name
       value: Hexagon (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
@@ -9023,6 +9227,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hexagon (90)
       objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -9110,6 +9318,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hexagon (49)
       objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -9191,6 +9403,10 @@ PrefabInstance:
     - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Name
       value: Hexagon (42)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
@@ -9278,6 +9494,10 @@ PrefabInstance:
     - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Name
       value: Hexagon (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
@@ -9370,6 +9590,10 @@ PrefabInstance:
     - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Name
       value: Hexagon (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
@@ -9467,6 +9691,10 @@ PrefabInstance:
     - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Name
       value: Hexagon (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
@@ -9844,6 +10072,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hexagon (80)
       objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -9930,6 +10162,10 @@ PrefabInstance:
     - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Name
       value: Hexagon (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10053,6 +10289,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 699921857}
     m_Modifications:
+    - target: {fileID: 1067889562282210981, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1775532470161103984, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 1.2
@@ -10113,6 +10353,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 9615b9a9f5e00d649b96dbe1bc4ca783, type: 3}
+    - target: {fileID: 9196578023794988851, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10358,6 +10602,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hexagon (88)
       objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -10439,6 +10687,10 @@ PrefabInstance:
     - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Name
       value: Hexagon (39)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
@@ -10697,6 +10949,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hexagon (69)
       objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -10866,6 +11122,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hexagon (27)
       objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -10973,6 +11233,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hexagon (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -11059,6 +11323,10 @@ PrefabInstance:
     - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Name
       value: Hexagon (33)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
@@ -11294,6 +11562,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hexagon (94)
       objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -11489,6 +11761,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 699921857}
     m_Modifications:
+    - target: {fileID: 1067889562282210981, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1775532470161103984, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 1.2
@@ -11557,6 +11833,10 @@ PrefabInstance:
       propertyPath: ar.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9196578023794988851, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 068875821e0c3c14dab4194604d75509, type: 3}
     - target: {fileID: 9196578023794988851, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -11634,6 +11914,10 @@ PrefabInstance:
     - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Name
       value: Hexagon (86)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
@@ -12230,7 +12514,6 @@ GameObject:
   - component: {fileID: 1821754743}
   - component: {fileID: 1821754742}
   - component: {fileID: 1821754741}
-  - component: {fileID: 1821754740}
   m_Layer: 0
   m_Name: Outline camera
   m_TagString: Untagged
@@ -12253,59 +12536,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 933115274}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1821754740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1821754738}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ImpulseDefinition:
-    m_ImpulseChannel: 1
-    m_ImpulseShape: 2
-    m_CustomImpulseShape:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_ImpulseDuration: 0.2
-    m_ImpulseType: 0
-    m_DissipationRate: 0.25
-    m_RawSignal: {fileID: 0}
-    m_AmplitudeGain: 1
-    m_FrequencyGain: 1
-    m_RepeatMode: 0
-    m_Randomize: 1
-    m_TimeEnvelope:
-      m_AttackShape:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      m_DecayShape:
-        serializedVersion: 2
-        m_Curve: []
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      m_AttackTime: 0
-      m_SustainTime: 0.2
-      m_DecayTime: 0.7
-      m_ScaleWithImpact: 1
-      m_HoldForever: 0
-    m_ImpactRadius: 100
-    m_DirectionMode: 0
-    m_DissipationMode: 2
-    m_DissipationDistance: 100
-    m_PropagationSpeed: 343
-  m_DefaultVelocity: {x: 0, y: -1, z: 0}
 --- !u!114 &1821754741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12409,7 +12639,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 6.4
+  orthographic size: 6.75
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -14190,6 +14420,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hexagon (26)
       objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -14366,6 +14600,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hexagon (93)
       objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -14532,6 +14770,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hexagon (47)
       objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -14657,6 +14899,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 699921857}
     m_Modifications:
+    - target: {fileID: 1067889562282210981, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1775532470161103984, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 1.2
@@ -14712,6 +14958,10 @@ PrefabInstance:
     - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Name
       value: Hexagon (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
@@ -14805,6 +15055,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hexagon (89)
       objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -14891,6 +15145,10 @@ PrefabInstance:
     - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Name
       value: Hexagon (44)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
@@ -15154,6 +15412,10 @@ PrefabInstance:
     - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Name
       value: Hexagon (46)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
@@ -15668,6 +15930,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hexagon (43)
       objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -15749,6 +16015,10 @@ PrefabInstance:
     - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Name
       value: Hexagon (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
@@ -16496,6 +16766,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hexagon (87)
       objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -16707,6 +16981,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hexagon (81)
       objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -16788,6 +17066,10 @@ PrefabInstance:
     - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Name
       value: Hexagon (70)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Sprite
