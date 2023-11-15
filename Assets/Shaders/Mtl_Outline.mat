@@ -63,5 +63,5 @@ Material:
     - _QueueOffset: 0
     - _Threshold: 0.14
     m_Colors:
-    - _OutlineColor: {r: 1.8629174, g: 5.992157, b: 1.254902, a: 0}
+    - _OutlineColor: {r: 1.8629174, g: 5.992157, b: 1.254902, a: 1}
   m_BuildTextureStacks: []
