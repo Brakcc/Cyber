@@ -4,9 +4,10 @@ using UnityEditor;
 
 public interface IKapa
 {
-    public List<Vector3Int> SelectGraphTiles(Unit unit, HexGridStore hexGrid, Vector3Int[] tilesArray);
-    public bool Execute(Unit unit);
-    public void DeselectTiles(HexGridStore hexGrid);
+    public List<Vector3Int> OnSelectGraphTiles(Unit unit, HexGridStore hexGrid, Vector3Int[] tilesArray);
+    public void OnDeselectTiles(HexGridStore hexGrid);
+    public void OnExecute(Unit unit);
+    public List<Vector3Int> OnGenerateButton(HexGridStore hexGrid, Unit unit);
 }
 
 public enum KapaFunctionType

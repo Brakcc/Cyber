@@ -82,12 +82,13 @@ public class NAKapaSO : AKapaSO
     #endregion
 
     #region inherited methodes
-    public override bool Execute(Unit unit)
+    public override bool OnCheckKapaPoints(Unit unit) => true;
+
+    public override void OnExecute(Unit unit)
     {
         DoKapa(unit);
         Debug.Log(Description); //PlaceHolder à remplir avec les anims et considération de dégâts
         EndKapa();
-        return true;
     }
     #endregion
 

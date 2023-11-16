@@ -260,10 +260,12 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
         EvenWSTiles = await GetEvenWStiles(p);
     }
 
+    public abstract bool OnCheckKapaPoints(Unit unit);
+
     /// <summary>
     /// Base Logique de l'execution de Kapa
     /// </summary>
-    public abstract bool Execute(Unit unit);
+    public abstract void OnExecute(Unit unit);
 
     /// <summary>
     /// Permet d'override les boutons necessaires selon les Kapa, du gerne retrun null sur le skip pour ne pas afficher de bouton
@@ -271,14 +273,14 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     /// <param name="hexGrid"></param>
     /// <param name="unit"></param>
     /// <returns></returns>
-    public virtual List<Vector3Int> GenerateButton(HexGridStore hexGrid, Unit unit) { return hexGrid.GetNeighbourgs(unit.CurrentHexPos); }
+    public virtual List<Vector3Int> OnGenerateButton(HexGridStore hexGrid, Unit unit) { return hexGrid.GetNeighbourgs(unit.CurrentHexPos); }
     #endregion
 
     #region graph selection methodes (to herit)
     /// <summary>
     /// Sélectionne les Tuiles utilisées par la compétence, dans une direction donnée
     /// </summary>
-    public virtual List<Vector3Int> SelectGraphTiles(Unit unit, HexGridStore hexGrid, Vector3Int[] tilesArray)
+    public virtual List<Vector3Int> OnSelectGraphTiles(Unit unit, HexGridStore hexGrid, Vector3Int[] tilesArray)
     {
         KapaSystem kapaSys = new();
         List<Vector3Int> v = new();
@@ -300,7 +302,7 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     /// <summary>
     /// Retire la sélection de Tuiles utilisées par la compétence
     /// </summary>
-    public virtual void DeselectTiles(HexGridStore hexGrid)
+    public virtual void OnDeselectTiles(HexGridStore hexGrid)
     {
         foreach (var i in hexGrid.hexTiles.Values)
         {

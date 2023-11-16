@@ -38,7 +38,6 @@ namespace CustomAttributes
             string boolPropertyPath = string.Join(".", boolPropertyPathArray);
 
             int boolP = attribute.kapaF;
-            //CameraEffectType boolC = attribute.camT;
 
             SerializedProperty kapaValue = property.serializedObject.FindProperty(boolPropertyPath);
 

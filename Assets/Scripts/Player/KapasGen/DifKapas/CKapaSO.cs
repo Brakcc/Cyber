@@ -21,18 +21,19 @@ public class CKapaSO : AKapaSO
     [SerializeField] private KapaType kapaType;
     public override KapaFunctionType KapaFunctionType { get => kapaFunctionType; }
     [SerializeField] private KapaFunctionType kapaFunctionType;
+
+    [ShowIfTrue("kapaFunctionType", (int)KapaFunctionType.Grab)]
+    [SerializeField] KapaGrab grab;
+
+    [ShowIfTrue("kapaFunctionType", (int)KapaFunctionType.Dash)]
+    [SerializeField] KapaDash dash;
+
     public override KapaUISO KapaUI { get => kapaUI; }
     [SerializeField] private KapaUISO kapaUI;
     public override Vector3Int[] Patern { get => patern; }
     [SerializeField] private Vector3Int[] patern;
 
     [SerializeField] CKapaSupFields cKapaSupFields;
-    
-    [ShowIfTrue("kapaFunctionType", (int)KapaFunctionType.Grab)]
-    [SerializeField] KapaGrab grab;
-
-    [ShowIfTrue("kapaFunctionType", (int)KapaFunctionType.Dash)]
-    [SerializeField] KapaDash dash;
 
     [SerializeField] private CameraManager cam;
     #endregion
@@ -85,17 +86,20 @@ public class CKapaSO : AKapaSO
         public int duration;
         public Animation animation;
     }
-    
     #endregion
 
     #region inherited methodes
-    public override bool Execute(Unit unit)
+    public override bool OnCheckKapaPoints(Unit unit)
     {
         if (unit.CompPoints < cKapaSupFields.neededCompPoints) { RefuseKapa(); return false; }
+        return true;
+    }
+
+    public override void OnExecute(Unit unit)
+    {
         DoKapa(unit);
         Debug.Log(Description); //PlaceHolder à remplir avec les anims et considération de dégâts
         EndKapa();
-        return true;
     }
     #endregion
 

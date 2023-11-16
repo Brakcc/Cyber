@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class OutlineMaker : MonoBehaviour
+/*public class OutlineMaker : MonoBehaviour
 {
     private OutlineSystem outSys;
     private List<Hex> hexList;
@@ -15,7 +15,7 @@ public class OutlineMaker : MonoBehaviour
     public void Start()
     {
         outSys = new();
-        hexList = new List<Hex>();
+        //hexList = new List<Hex>();
         
     }
 
@@ -31,7 +31,7 @@ public class OutlineMaker : MonoBehaviour
         }
         //DrawTexture(hexList);
     }
-    /*
+    
     public void DrawTexture(List<Hex> hexList)
     {
         
@@ -42,5 +42,5 @@ public class OutlineMaker : MonoBehaviour
         }
         
     }
-*/
-}
+
+}*/

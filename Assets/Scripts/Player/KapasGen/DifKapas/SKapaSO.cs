@@ -49,12 +49,14 @@ public class SKapaSO : AKapaSO
     #endregion
 
     #region inherited methodes (rendues null)
-    public override bool Execute(Unit unit) => true;
+    public override bool OnCheckKapaPoints(Unit unit) => true;
+
+    public override void OnExecute(Unit unit) { }
 
     public override void InitPaterns(Vector3Int[] p) { }
 
-    public override List<Vector3Int> GenerateButton(HexGridStore hexGrid, Unit unit) => null;
+    public override List<Vector3Int> OnGenerateButton(HexGridStore hexGrid, Unit unit) => null;
 
-    public override List<Vector3Int> SelectGraphTiles(Unit unit, HexGridStore hexGrid, Vector3Int[] tilesArray) => null;
+    public override List<Vector3Int> OnSelectGraphTiles(Unit unit, HexGridStore hexGrid, Vector3Int[] tilesArray) => null;
     #endregion
 }
