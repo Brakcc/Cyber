@@ -43,5 +43,6 @@ public class MoveSystem
     public void MoveUnit(Unit selects, HexGridStore hexGrid) => selects.MoveOnPath(currentPath.Select(pos => hexGrid.GetTile(pos).transform.position).ToList());
 
     public bool IsHexInRange(Vector3Int hexPos) => moveRange.IsHexPosInRange(hexPos);
+    
     #endregion
 }
