@@ -48,16 +48,7 @@ public class UnitManager : MonoBehaviour
     }
     #endregion
 
-    #region selections methodes and update
-    void Update()
-    {
-        //Update uniquement utile actuellement pour faire du debug, vouée à disparaitre
-        if (Input.GetKeyDown(KeyCode.N)) 
-        {
-            foreach (Vector3Int v in hexGrid.GetNeighbourgs(HexCoordonnees.GetClosestHex(selectedUnit.transform.position))) { Debug.Log(v); }
-        }
-    }
-
+    #region selections methodes (and update)
     /// <summary>
     /// Si l'unit peut jouer son tour : 2 possibilités :
     /// -> Si elle était déjà sélectionnée : ClearOldSelection

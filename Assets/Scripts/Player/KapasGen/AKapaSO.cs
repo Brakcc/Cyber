@@ -273,7 +273,16 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     /// <param name="hexGrid"></param>
     /// <param name="unit"></param>
     /// <returns></returns>
-    public virtual List<Vector3Int> OnGenerateButton(HexGridStore hexGrid, Unit unit) { return hexGrid.GetNeighbourgs(unit.CurrentHexPos); }
+    public virtual List<Vector3Int> OnGenerateButton(HexGridStore hexGrid, Unit unit) 
+    {
+        var availableButton = new List<Vector3Int>();
+        foreach (var i in hexGrid.GetNeighbourgs(unit.CurrentHexPos))
+        {
+            if (hexGrid.GetTile(i).IsObstacle()) continue;
+            availableButton.Add(i);
+        }
+        return availableButton;
+    }
     #endregion
 
     #region graph selection methodes (to herit)

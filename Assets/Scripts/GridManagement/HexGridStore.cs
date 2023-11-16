@@ -30,8 +30,6 @@ public class HexGridStore: MonoBehaviour
         foreach (var i in Direction.GetDirectionList(coords.x))
         {
             if (!hexTiles.ContainsKey(coords + i)) continue;
-            if (GetTile(coords + i).IsObstacle()) continue;
-
             neighbourgs[coords].Add(coords + i);
         }
 
