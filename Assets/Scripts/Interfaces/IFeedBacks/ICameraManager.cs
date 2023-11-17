@@ -3,7 +3,9 @@ using Cinemachine;
 
 public interface ICameraManager
 {
-    public void OnZoom(Unit unit, HexGridStore hexGrid, CinemachineVirtualCamera cam);
+    public void OnFocus(Vector3 pos, CinemachineVirtualCamera cam);
+
+    public void OnBack(Vector3 pos, CinemachineVirtualCamera cam);
 
     public void OnShake(CinemachineVirtualCamera cam);
 

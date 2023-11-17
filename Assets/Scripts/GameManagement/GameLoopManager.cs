@@ -4,73 +4,63 @@ using UnityEngine;
 public class GameLoopManager : MonoBehaviour
 {
     #region fields
-    public static int playerPlay = 1;
-    public List<GameObject> heroPlayer1 = new();
-    public List<GameObject> heroPlayer2 = new();
+    [SerializeField] int teamPlaying;
+    [SerializeField] List<GameObject> heroPlayer1 = new();
+    [SerializeField] List<GameObject> heroPlayer2 = new();
 
-    public static int countPerso1 = 0;
-    public static int countPerso2 = 0;
+    List<List<GameObject>> playerList = new();
 
-    #endregion
-    private void Update()
-    {
-        OnSelectionPlayer();
-    }
+    [SerializeField] List<int> countPlayer = new();
 
-    #region selectionPlayer
-
-    void OnSelectionPlayer()
-    {
-        if (playerPlay == 1)
-        {
-            OnPlayer1Play();
-            if (heroPlayer1.Count <= countPerso1)
-            {
-                playerPlay = 2;
-                countPerso1 = 0;
-            }
-        }
-        if (playerPlay == 2)
-        {
-            OnPlayer2Play();
-            if (heroPlayer2.Count <= countPerso2)
-            {
-                playerPlay = 1;
-                countPerso2 = 0;
-            }
-        }
-    }
-
-
+    public static GameLoopManager glManager;
     #endregion
 
-    #region PlayerPlay
-    void OnPlayer1Play()
+    #region methodes
+    void Awake()
     {
-        foreach (GameObject Bob in heroPlayer1)
+        glManager = this;
+        playerList = new() { heroPlayer1, heroPlayer2 };
+        countPlayer = new() { playerList[0].Count, playerList[1].Count };
+        teamPlaying = 0;
+    }
+    void Start()
+    {
+        InitTeam(teamPlaying);
+        UnTeam(teamPlaying == 0? 1 : 0);
+    }
+
+    void SwitchTeam(int newTeam) => InitTeam(newTeam);
+
+    public void OnPlayerAction()
+    {
+        countPlayer[teamPlaying]--;
+        if (countPlayer[teamPlaying] == 0)
         {
-            Bob.GetComponent<Unit>().CanPlay = true;
-        }
-        foreach (GameObject Bob in heroPlayer2)
-        {
-            Bob.GetComponent<Unit>().CanPlay = false;
+            SwitchTeam(teamPlaying == 1? 0 : 1);
         }
     }
 
-    void OnPlayer2Play()
+    void InitTeam(int i)
     {
-        foreach (GameObject Bob in heroPlayer2)
+        teamPlaying = i;
+        countPlayer[i] = 4;
+        foreach (var player in playerList[i])
         {
-            Bob.GetComponent<Unit>().CanPlay = true;
+            var u = player.GetComponent<Unit>();
+            if (u.IsDead) { countPlayer[i]--;  continue; }
 
-        }
-        foreach (GameObject Bob in heroPlayer1)
-        {
-            Bob.GetComponent<Unit>().CanPlay = false;
+            u.CanPlay = true;
         }
     }
 
+    void UnTeam(int i)
+    {
+        foreach (var player in playerList[i])
+        {
+            var u = player.GetComponent<Unit>();
+            u.CanPlay = false;
+            countPlayer[i]--;
+        }
+    }
     #endregion
-
-
 }

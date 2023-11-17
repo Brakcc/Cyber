@@ -16197,10 +16197,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c45330dcf2d47014ebb8f58c52bdf195, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  teamPlaying: 0
   heroPlayer1:
   - {fileID: 911532679}
   heroPlayer2:
   - {fileID: 477960834}
+  countPlayer: 
 --- !u!1001 &7610291275006497437
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16252,6 +16254,10 @@ PrefabInstance:
     - target: {fileID: 3708887672900631589, guid: 8626e43a11f102043ac52eb65b8e2a85, type: 3}
       propertyPath: m_Name
       value: Cams
+      objectReference: {fileID: 0}
+    - target: {fileID: 4971106662979360704, guid: 8626e43a11f102043ac52eb65b8e2a85, type: 3}
+      propertyPath: orthographic size
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
