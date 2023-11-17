@@ -6,6 +6,7 @@ public abstract class Unit : MonoBehaviour, IUnit
 {
     #region fields/accessors to herit
     public abstract AUnitSO UnitData { get; set; }
+    public abstract float Health { get; set; }
     public abstract bool IsOnTurret { get; set; }
     public abstract int CompPoints { get; set; }
     public abstract int UltPoints { get; set; }
@@ -20,6 +21,16 @@ public abstract class Unit : MonoBehaviour, IUnit
     public virtual void MoveOnPath(List<Vector3> currentPath) => StartCoroutine(FollowPath(currentPath,UnitData.Speed));
     public abstract void OnKapa();
     public abstract void Deselect();
+    public virtual void OnDie()
+    {
+        IsDead = true;
+        GetComponentInChildren<SpriteRenderer>().color = Color.red;
+    }
+    public virtual void OnRez()
+    {
+        IsDead = false;
+        GetComponent<SpriteRenderer>().color = Color.magenta;
+    }
     #endregion
 
     #region cache

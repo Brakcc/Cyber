@@ -3836,7 +3836,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 4.5
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -16604,7 +16604,10 @@ PrefabInstance:
     - {fileID: 6839896767206874220, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6839896767206874217, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6839896766878513046}
   m_SourcePrefab: {fileID: 100100000, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
 --- !u!114 &6839896766878513041 stripped
 MonoBehaviour:
@@ -16617,6 +16620,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e651d84be0075e4aab368a5501fe43c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6839896766878513046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 504544761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c45330dcf2d47014ebb8f58c52bdf195, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heroPlayer1:
+  - {fileID: 911532679}
+  heroPlayer2:
+  - {fileID: 477960834}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

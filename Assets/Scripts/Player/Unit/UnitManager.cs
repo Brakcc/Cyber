@@ -25,6 +25,7 @@ public class UnitManager : MonoBehaviour
     public bool IsKapaDirSelected { get; private set; }
     public List<Vector3Int> CurrentButtonPos {get; private set; }
     public List<Vector3Int> CurrentKapaPaternPos { get; private set; }  
+    Vector3Int CurrentDirSelected { get; set; }
 
     //Player Turn à déplacer dans le GameLoopManager !!!!!
     public bool PlayerTurn { get; private set; } = true;
@@ -167,6 +168,18 @@ public class UnitManager : MonoBehaviour
     {
         var dir = buttonPos - unitRef.CurrentHexPos;
         if (HandleHexOutOfButton(buttonPos)) return;
+
+        //Active Kapa With Click On Map
+        if (CurrentKapaPaternPos != null && IsKapaSelected && IsKapaDirSelected && CurrentDirSelected == dir)
+        {
+            if (SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].OnCheckKapaPoints(SelectedUnit))
+            {
+                SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].OnExecute(hexGrid, CurrentKapaPaternPos, SelectedUnit);
+                FullResetKapAndPlayer();
+                return;
+            }
+        }
+
         unitRef.UnitData.KapasList[(int)CurrentTypeKapaSelected].OnDeselectTiles(hexGrid);
         if (Direction.IsPariryEven(unitRef.CurrentHexPos.x))
         {
@@ -176,8 +189,8 @@ public class UnitManager : MonoBehaviour
         {
             CurrentKapaPaternPos = HandleKapaOddDirPaternGen(dir, unitRef);
         }
-        ShowButtons(CurrentButtonPos);
         IsKapaDirSelected = true;
+        CurrentDirSelected = dir;
     }
 
     #region Patern Application
@@ -234,7 +247,9 @@ public class UnitManager : MonoBehaviour
         KapaType type = SelectedUnit.UnitData.KapasList[i].KapaType;
         AKapaSO kapa = SelectedUnit.UnitData.KapasList[i];
 
+        //si switch sur autre Kapa
         if (CurrentTypeKapaSelected != KapaType.Default) kapa.OnDeselectTiles(hexGrid);
+        //supprimer l'outline de range 
         if (!IsKapaSelected && !SelectedUnit.IsPersoLocked) ClearGraphKeepUnit();
 
         //preselec Kapa
@@ -247,12 +262,12 @@ public class UnitManager : MonoBehaviour
             return;
         }
 
-        //Active Kapa
+        //Active Kapa With Bar Button
         if (CurrentKapaPaternPos != null || IsKapaSelected && CurrentTypeKapaSelected == type)
         {
             if (SelectedUnit.UnitData.KapasList[i].OnCheckKapaPoints(SelectedUnit)) 
             {
-                SelectedUnit.UnitData.KapasList[i].OnExecute(hexGrid, SelectedUnit);
+                SelectedUnit.UnitData.KapasList[i].OnExecute(hexGrid, CurrentKapaPaternPos, SelectedUnit);
                 FullResetKapAndPlayer();
             }
         }
@@ -290,6 +305,7 @@ public class UnitManager : MonoBehaviour
         IsKapaDirSelected = false;
         CurrentButtonPos = null;
         CurrentKapaPaternPos = null;
+        CurrentDirSelected = Vector3Int.zero;
     }
 
     /// <summary>
@@ -306,6 +322,7 @@ public class UnitManager : MonoBehaviour
         IsKapaDirSelected = false;
         CurrentButtonPos = null;
         CurrentKapaPaternPos = null;
+        CurrentDirSelected = Vector3Int.zero;
         //Unit Reset
         SelectedUnit.Deselect();
         SelectedUnit.IsPersoLocked = false;

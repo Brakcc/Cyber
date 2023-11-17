@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: DPS Datas Test
   m_EditorClassIdentifier: 
   iD: 0
+  type: 3
   movePoints: 5
+  attack: 10
+  defense: 5
   speed: 15
   healthPoint: 10
   sprite: {fileID: -9095717837082945937, guid: 03fed2c0d6f948444bf9428d2e26a8b7, type: 3}

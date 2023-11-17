@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using CustomAttributes;
 
@@ -95,9 +96,9 @@ public class CKapaSO : AKapaSO
         return true;
     }
 
-    public override void OnExecute(HexGridStore hexGrid, Unit unit)
+    public override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, Unit unit)
     {
-        base.OnExecute(hexGrid, unit);
+        base.OnExecute(hexGrid, pattern, unit);
         DoKapa(unit);
         Debug.Log(Description); //PlaceHolder à remplir avec les anims et considération de dégâts
         EndKapa();

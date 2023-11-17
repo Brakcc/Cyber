@@ -51,7 +51,7 @@ public class SKapaSO : AKapaSO
     #region inherited methodes (rendues null)
     public override bool OnCheckKapaPoints(Unit unit) => true;
 
-    public override void OnExecute(HexGridStore hexGrid, Unit unit) { }
+    public override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, Unit unit) { }
 
     public override void InitPaterns(Vector3Int[] p) { }
 
