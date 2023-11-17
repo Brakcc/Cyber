@@ -5,20 +5,29 @@ using UnityEngine;
 public class DPSDataSO : AUnitSO
 {
     public override int ID => iD;
-    [SerializeField] private int iD;
+    [SerializeField] int iD;
+
+    public override UnitType Type => type;
+    [SerializeField] UnitType type;
 
     public override int MovePoints => movePoints;
-    [SerializeField] private int movePoints;
+    [SerializeField] int movePoints;
+
+    public override int Attack => attack;
+    [SerializeField] int attack;
+
+    public override int Defense => defense;
+    [SerializeField] int defense;
 
     public override int Speed => speed;
-    [SerializeField] private int speed;
+    [SerializeField] int speed;
 
-    public override int HealthPoint { get => healthPoint; set { healthPoint = value; } }
-    [SerializeField] private int healthPoint;
+    public override float HealthPoint { get => healthPoint; set { healthPoint = value; } }
+    [SerializeField] float healthPoint;
 
     public override Sprite Sprite { get => sprite; set { sprite = value; } }
-    [SerializeField] private Sprite sprite;
+    [SerializeField] Sprite sprite;
 
     public override List<AKapaSO> KapasList { get => kapasList; set { kapasList = value; } }
-    [SerializeField] private List<AKapaSO> kapasList;
+    [SerializeField] List<AKapaSO> kapasList;
 }
