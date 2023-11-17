@@ -9511,6 +9511,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cams
       objectReference: {fileID: 0}
+    - target: {fileID: 4411748704660548461, guid: 8626e43a11f102043ac52eb65b8e2a85, type: 3}
+      propertyPath: m_Lens.OrthographicSize
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4971106662979360704, guid: 8626e43a11f102043ac52eb65b8e2a85, type: 3}
+      propertyPath: orthographic size
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
