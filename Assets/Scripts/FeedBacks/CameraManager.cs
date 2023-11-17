@@ -56,7 +56,17 @@ public class CameraManager : ICameraManager
     #endregion
 
     #region Zoom
-    public void OnZoom(Unit unit, HexGridStore hexGrid, CinemachineVirtualCamera vCam) { }
+    public async void OnFocus(Vector3 pos, CinemachineVirtualCamera vCam)
+    {
+        //faire zoom + focus 
+        await Task.Delay(0);
+    }
+
+    public async void OnBack(Vector3 pos, CinemachineVirtualCamera vCam)
+    {
+        //faire dézoom + défocus
+        await Task.Delay(0);
+    }
     #endregion
     #endregion
 }
