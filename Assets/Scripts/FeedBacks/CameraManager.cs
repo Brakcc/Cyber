@@ -4,7 +4,7 @@ using UnityEngine;
 using Cinemachine;
 
 [System.Serializable]
-public class CameraManager
+public class CameraManager : ICameraManager
 {
     #region fields
     [SerializeField] CameraEffectType effectType;
@@ -39,7 +39,7 @@ public class CameraManager
     #endregion
 
     #region ShockWave
-
+    public void OnShockWave() { }
     #endregion
 
     #region Impulse
@@ -56,7 +56,7 @@ public class CameraManager
     #endregion
 
     #region Zoom
-
+    public void OnZoom(Unit unit, HexGridStore hexGrid, CinemachineVirtualCamera vCam) { }
     #endregion
     #endregion
 }

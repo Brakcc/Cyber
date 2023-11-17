@@ -3,11 +3,13 @@ using Cinemachine;
 
 public interface ICameraManager
 {
-    public void OnZoomFight(Unit unit, HexGridStore hexGrid, CinemachineVirtualCamera cam);
+    public void OnZoom(Unit unit, HexGridStore hexGrid, CinemachineVirtualCamera cam);
 
-    public void OnCameraShake(Unit unit, HexGridStore hexGrid, CinemachineVirtualCamera cam);
+    public void OnShake(CinemachineVirtualCamera cam);
 
-    public void OnMoveMap();
+    public void OnImpulse(CinemachineImpulseSource impSource);
+
+    public void OnShockWave();
 }
 
 public enum CameraEffectType
