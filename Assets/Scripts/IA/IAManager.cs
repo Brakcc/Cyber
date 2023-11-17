@@ -11,7 +11,7 @@ public class IAManager: MonoBehaviour
     public static IAManager instance;
     Dictionary<int, Vector3> posibility = new Dictionary<int, Vector3>();
 
-    PathResult result = new PathResult();
+    //PathResult result = new PathResult();
 
     private void Awake()
     {
