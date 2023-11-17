@@ -25,13 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5587667834857246867}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.5, y: 2.64, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &8679146388495646315
 CircleCollider2D:
@@ -43,6 +43,25 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -63,16 +82,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Unit: {fileID: 11400000, guid: 1f1d880f0b3c20d4aa1e9a9db169ecd0, type: 2}
   graphs:
-    orderInLayer: 0
+    orderInLayer: 5
     color: {r: 1, g: 0, b: 0.8343153, a: 1}
-  cam:
-    s:
-      cam: {fileID: 0}
-      last: 1000
-      chanPerl: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
-      pivotOffset: {x: 1, y: 1, z: 0}
-      amplitudeGain: 1.5
-      frequencyGain: 0.1
-    i:
-      cam: {fileID: 0}
-      cimpl: {fileID: 0}

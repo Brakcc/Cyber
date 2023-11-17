@@ -5,7 +5,7 @@ public class Hex : MonoBehaviour
 {
     #region 
     public HexType type;
-    [SerializeField] private SelectGlow glow;
+    [SerializeField] SelectGlow glow;
 
     //la Data importante
     public Vector3Int HexCoords { get; set; }
@@ -17,7 +17,7 @@ public class Hex : MonoBehaviour
     void Awake()
     {
         HexCoords = new HexCoordonnees(gameObject).OffsetCoordonnees;
-        glow.SetGlow(this);
+        glow.SetHexaRefs();
     }
 
     /// <summary>
@@ -43,23 +43,20 @@ public class Hex : MonoBehaviour
 
     #region glow mats
     //General Glow pour la range
-    public void EnableGlow() => glow.ToggleGlow(true);
-    public void DisableGlow() => glow.ToggleGlow(false);
+    public void EnableGlow() => glow.ToggleRangeGlow(true);
+    public void DisableGlow() => glow.ToggleRangeGlow(false);
 
     //Glow pour le path
-    public void EnableGlowPath() => glow.StartGlowPath();
-    public void DisableGlowPath() => glow.ResetGlowPath();
+    public void EnableGlowPath() => glow.TogglePathGlow(true);
+    public void DisableGlowPath() => glow.TogglePathGlow(false);
 
     //Glow pour les kapas
-    public void EnableGlowKapa() => glow.ToggleGlowKapa(true);
-    public void DisableGlowKapa() => glow.ToggleGlowKapa(false);
-    public void GlowOnButton() => glow.GlowKapaOnButton();
+    public void EnableGlowKapa() => glow.ToggleKapaGlow(true);
+    public void DisableGlowKapa() => glow.ToggleKapaGlow(false);
 
     //Glow pour les boutons de sens de kapas
-    public void EnableGlowButton() => glow.ToggleSelectGlowKapa(true);
-    public void DisableGlowButton() => glow.ToggleSelectGlowKapa(false);
-    public void GetColorGlowButton() => glow.StartGlowButton();
-    public void ResetColorGlowButton() => glow.ResetGlowButton();
+    public void EnableGlowButton() => glow.ToggleButtonGlow(true);
+    public void DisableGlowButton() => glow.ToggleButtonGlow(false);
     #endregion
     #endregion
 }

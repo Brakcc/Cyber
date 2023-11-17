@@ -29,7 +29,8 @@ public class HexGridStore: MonoBehaviour
 
         foreach (var i in Direction.GetDirectionList(coords.x))
         {
-            if (hexTiles.ContainsKey(coords + i)) { neighbourgs[coords].Add(coords + i); }
+            if (!hexTiles.ContainsKey(coords + i)) continue;
+            neighbourgs[coords].Add(coords + i);
         }
 
         return neighbourgs[coords];
