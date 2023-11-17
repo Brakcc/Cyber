@@ -19,5 +19,10 @@ MonoBehaviour:
   defense: 1
   speed: 30
   healthPoint: 15
-  sprite: {fileID: 0}
-  kapasList: []
+  sprite: {fileID: -9095717837082945937, guid: 03fed2c0d6f948444bf9428d2e26a8b7, type: 3}
+  kapasList:
+  - {fileID: 11400000, guid: c491a16f8ecd915468488ba91d2e0181, type: 2}
+  - {fileID: 11400000, guid: dd416aed18ba69244a0db204171760da, type: 2}
+  - {fileID: 11400000, guid: a814e9b491df7d540a98b5c42fc7659e, type: 2}
+  - {fileID: 11400000, guid: d3cf122f54b487f4f841b9c317e4334a, type: 2}
+  - {fileID: 11400000, guid: 0d61fc820e8ffd74f8bb40bc8803f728, type: 2}
