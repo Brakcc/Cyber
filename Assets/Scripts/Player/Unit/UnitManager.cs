@@ -252,7 +252,7 @@ public class UnitManager : MonoBehaviour
         {
             if (SelectedUnit.UnitData.KapasList[i].OnCheckKapaPoints(SelectedUnit)) 
             {
-                SelectedUnit.UnitData.KapasList[i].OnExecute(SelectedUnit);
+                SelectedUnit.UnitData.KapasList[i].OnExecute(hexGrid, SelectedUnit);
                 FullResetKapAndPlayer();
             }
         }

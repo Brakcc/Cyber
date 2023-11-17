@@ -95,8 +95,9 @@ public class CKapaSO : AKapaSO
         return true;
     }
 
-    public override void OnExecute(Unit unit)
+    public override void OnExecute(HexGridStore hexGrid, Unit unit)
     {
+        base.OnExecute(hexGrid, unit);
         DoKapa(unit);
         Debug.Log(Description); //PlaceHolder à remplir avec les anims et considération de dégâts
         EndKapa();

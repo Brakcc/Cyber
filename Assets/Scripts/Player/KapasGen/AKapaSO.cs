@@ -265,7 +265,10 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     /// <summary>
     /// Base Logique de l'execution de Kapa
     /// </summary>
-    public abstract void OnExecute(Unit unit);
+    public virtual void OnExecute(HexGridStore hexGrid, Unit unit)
+    {
+        Debug.Log("tetttete");
+    }
 
     /// <summary>
     /// Permet d'override les boutons necessaires selon les Kapa, du gerne retrun null sur le skip pour ne pas afficher de bouton
