@@ -1,3 +1,5 @@
+using Cinemachine;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class GameLoopManager : MonoBehaviour
@@ -11,6 +13,8 @@ public class GameLoopManager : MonoBehaviour
     GameObject[][] playerList = new GameObject[2][];
 
     int[] countPlayer = new int[2];
+
+    [SerializeField] CameraMovement camM;
     #endregion
 
     #region methodes
@@ -60,6 +64,8 @@ public class GameLoopManager : MonoBehaviour
 
             u.CanPlay = true;
         }
+
+        camM.OnFollowPlayer(playerList[teamPlaying][0].GetComponent<Unit>());
     }
 
     /// <summary>

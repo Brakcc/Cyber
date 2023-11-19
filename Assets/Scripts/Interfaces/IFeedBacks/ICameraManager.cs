@@ -1,17 +1,20 @@
 ﻿using UnityEngine;
 using Cinemachine;
+using System.Collections;
 
 public interface ICameraManager
 {
-    public void OnFocus(Vector3 pos, CinemachineVirtualCamera cam);
+    public void OnFocus(Unit target, Transform vCam);
 
-    public void OnBack(Vector3 pos, CinemachineVirtualCamera cam);
+    public void OnZoom(Vector3 pos, CinemachineVirtualCamera vCam);
 
-    public void OnShake(CinemachineVirtualCamera cam);
+    public void OnBack(Vector3 pos, CinemachineVirtualCamera vCam);
 
-    public void OnImpulse(CinemachineImpulseSource impSource);
+    public void OnShake(CinemachineVirtualCamera vCam);
 
-    public void OnShockWave();
+    public void OnImpulse(CinemachineImpulseSource vCam);
+
+    public void OnShockWave(CinemachineVirtualCamera vCam);
 }
 
 public enum CameraEffectType
@@ -19,5 +22,7 @@ public enum CameraEffectType
     Shake,
     Impulse,
     ShockWave,
+    Focus,
+    Zoom,
     None
 }

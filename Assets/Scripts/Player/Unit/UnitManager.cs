@@ -187,7 +187,6 @@ public class UnitManager : MonoBehaviour
         {
             CurrentKapaPaternPos = HandleKapaOddDirPaternGen(dir, unitRef);
         }
-        //foreach (var i in CurrentKapaPaternPos) Debug.Log("UnitManager" + i);
         IsKapaDirSelected = true;
         CurrentDirSelected = dir;
     }
@@ -254,8 +253,18 @@ public class UnitManager : MonoBehaviour
         //preselec Kapa
         if (!IsKapaSelected || CurrentTypeKapaSelected != type)
         {
-            if (CurrentTypeKapaSelected != type) { HideButtons(CurrentButtonPos); }
-            CurrentButtonPos = GenerateButtonPos(SelectedUnit, hexGrid, kapa);
+            if (CurrentTypeKapaSelected != type)
+            {
+                try
+                {
+                    HideButtons(CurrentButtonPos);
+                    CurrentButtonPos = GenerateButtonPos(SelectedUnit, hexGrid, kapa);
+                }
+                catch
+                {
+                    CurrentButtonPos = GenerateButtonPos(SelectedUnit, hexGrid, kapa);
+                }
+            }
             CurrentTypeKapaSelected = type;
             IsKapaSelected = true;
             IsKapaDirSelected = false;
@@ -264,7 +273,7 @@ public class UnitManager : MonoBehaviour
         }
 
         //Active Kapa With Bar Button
-        if (CurrentKapaPaternPos != null || IsKapaSelected && CurrentTypeKapaSelected == type && IsKapaDirSelected)
+        if (CurrentKapaPaternPos != null || IsKapaSelected && CurrentTypeKapaSelected == type && IsKapaDirSelected || IsKapaSelected && CurrentButtonPos == null)
         {
             if (SelectedUnit.UnitData.KapasList[i].OnCheckKapaPoints(SelectedUnit)) 
             {
@@ -290,7 +299,7 @@ public class UnitManager : MonoBehaviour
     /// <param name="butPos"></param>
     void HideButtons(List<Vector3Int> butPos)
     {
-        if (butPos != null)
+        if (butPos == null) return;
         foreach (var i in butPos) { var j = hexGrid.GetTile(i); j.DisableGlowButton(); }
     }
     #endregion
@@ -531,7 +540,6 @@ public class UnitManager : MonoBehaviour
         previousSelectedHex.HasPlayerOnIt = true;
         previousSelectedHex.SetUnit(selectedUnit);
         SelectedUnit.CurrentHexPos = previousSelectedHex.HexCoords;
-        Debug.Log(SelectedUnit.CurrentHexPos + "___" + previousSelectedHex.HexCoords);
     }
 
     /// <summary>

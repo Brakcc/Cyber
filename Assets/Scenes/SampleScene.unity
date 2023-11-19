@@ -8825,7 +8825,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &712634111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28335,6 +28335,22 @@ PrefabInstance:
     - target: {fileID: 1283223407700948218, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
       propertyPath: natk.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2588066164149268060, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: camM
+      value: 
+      objectReference: {fileID: 747587543}
+    - target: {fileID: 2588066164149268060, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: camManager.effectType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2588066164149268060, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: camManager.focus.vCam
+      value: 
+      objectReference: {fileID: 747587540}
+    - target: {fileID: 2588066164149268060, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: camManager.focus.speed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2588066164149268060, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
       propertyPath: heroPlayer1.Array.data[0]
