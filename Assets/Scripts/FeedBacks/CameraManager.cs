@@ -39,6 +39,9 @@ public class CameraManager : ICameraManager
     #endregion
 
     #region ShockWave
+    /// <summary>
+    /// Certes, il faut encore bosser dessus
+    /// </summary>
     public void OnShockWave() { }
     #endregion
 
@@ -72,6 +75,9 @@ public class CameraManager : ICameraManager
 }
 
 #region diff classes
+/// <summary>
+/// shake that asssssss, baby lemme see what u got
+/// </summary>
 [System.Serializable]
 public class ShakeParams
 {
@@ -87,12 +93,18 @@ public class ShakeParams
     }
 }
 
+/// <summary>
+/// Paramettres pour les shockwaves effect
+/// </summary>
 [System.Serializable]
 public class ShockWaveParams
 {
     public float speed;
 }
 
+/// <summary>
+/// Paramettres pour les impulses de Cam
+/// </summary>
 [System.Serializable]
 public class ImpulseParams
 {
