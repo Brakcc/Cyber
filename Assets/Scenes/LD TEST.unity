@@ -1227,7 +1227,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6777165937725771344, guid: 40dced8ad9480134e88d2a4787ee5d86, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6777165937725771344, guid: 40dced8ad9480134e88d2a4787ee5d86, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3336,7 +3336,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5587667834857246865, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.5
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 5587667834857246865, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: m_LocalPosition.z
@@ -16196,6 +16196,14 @@ PrefabInstance:
       propertyPath: natk.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 2588066164149268060, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: heroPlayer1.Array.data[0]
+      value: 
+      objectReference: {fileID: 911532679}
+    - target: {fileID: 2588066164149268060, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: heroPlayer2.Array.data[0]
+      value: 
+      objectReference: {fileID: 477960834}
     - target: {fileID: 6839896767206874217, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
       propertyPath: m_Name
       value: MecaManager
@@ -16256,10 +16264,7 @@ PrefabInstance:
     - {fileID: 6839896767206874220, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6839896767206874217, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6839896766878513046}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
 --- !u!114 &6839896766878513041 stripped
 MonoBehaviour:
@@ -16272,24 +16277,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e651d84be0075e4aab368a5501fe43c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6839896766878513046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 504544761}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c45330dcf2d47014ebb8f58c52bdf195, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  teamPlaying: 0
-  heroPlayer1:
-  - {fileID: 911532679}
-  heroPlayer2:
-  - {fileID: 477960834}
-  countPlayer: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

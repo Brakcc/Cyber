@@ -32,16 +32,16 @@ MonoBehaviour:
     animation: {fileID: 0}
   cam:
     effectType: 0
-    s:
+    shake:
       last: 500
       perlinParameters:
         chanPerl: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
-        pivotOffset: {x: 1, y: 1, z: 0}
-        amplitudeGain: 1
-        frequencyGain: 0.1
-    sW:
+        pivotOffset: {x: 0, y: 0, z: -10}
+        amplitudeGain: 0.5
+        frequencyGain: 0.2
+    shockWave:
       speed: 0
-    i:
+    impulse:
       ampli: 0
       speedDir: {x: 0, y: 0, z: 0}
       curve:
@@ -50,3 +50,9 @@ MonoBehaviour:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
+    focus:
+      speed: 0
+    zoom:
+      orthoSizeChange: 0
+    back:
+      orthoSizeChange: 0

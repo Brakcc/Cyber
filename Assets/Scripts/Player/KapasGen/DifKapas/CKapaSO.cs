@@ -100,7 +100,7 @@ public class CKapaSO : AKapaSO
     {
         base.OnExecute(hexGrid, pattern, unit);
         DoKapa(unit);
-        Debug.Log(Description); //PlaceHolder à remplir avec les anims et considération de dégâts
+        //Debug.Log(Description); //PlaceHolder à remplir avec les anims et considération de dégâts
         EndKapa();
     }
     #endregion

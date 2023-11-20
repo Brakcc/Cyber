@@ -394,6 +394,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de63240a35abaa74dbe7232494399b8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camManager:
+    effectType: 3
+    shake:
+      last: 0
+      perlinParameters:
+        chanPerl: {fileID: 0}
+        pivotOffset: {x: 0, y: 0, z: 0}
+        amplitudeGain: 0
+        frequencyGain: 0
+    shockWave:
+      speed: 0
+    impulse:
+      ampli: 0
+      speedDir: {x: 0, y: 0, z: 0}
+      curve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+    focus:
+      speed: 20
+    zoom:
+      orthoSizeChange: 0
+    back:
+      orthoSizeChange: 0
+  switchDelay: 1250
 --- !u!1 &6983634340225661543
 GameObject:
   m_ObjectHideFlags: 0

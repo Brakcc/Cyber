@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2536175099072836728}
   - component: {fileID: 1283223407700948218}
   - component: {fileID: 489815630530185795}
+  - component: {fileID: 2588066164149268060}
   m_Layer: 0
   m_Name: MecaManager
   m_TagString: Untagged
@@ -232,3 +233,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4c2c1369db70a44b987bc32c2c79cc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2588066164149268060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6839896767206874217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c45330dcf2d47014ebb8f58c52bdf195, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstTeamPlaying: 0
+  heroPlayer1:
+  - {fileID: 0}
+  heroPlayer2:
+  - {fileID: 0}
