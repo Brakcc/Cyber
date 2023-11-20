@@ -260,11 +260,20 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
         EvenWSTiles = await GetEvenWStiles(p);
     }
 
+    /// <summary>
+    /// verifie si les points de comp et d'ult sont suffisants pour lancer une Kapa.
+    /// Dans le cas contraire, un refus de Kapa se fait.
+    /// </summary>
+    /// <param name="unit"></param>
+    /// <returns></returns>
     public abstract bool OnCheckKapaPoints(Unit unit);
 
     /// <summary>
     /// Base Logique de l'execution de Kapa
     /// </summary>
+    /// <param name="hexGrid"></param>
+    /// <param name="pattern">Prendre le patterne du UnitManager CurrentPatternPos</param>
+    /// <param name="unit"></param>
     public virtual void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern , Unit unit)
     {
         foreach (var i in pattern)
@@ -286,7 +295,7 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
             if (u.Health <= 0 ) { u.OnDie(); }
         }
 
-        OnDeselectTiles(hexGrid);
+        OnDeselectTiles(hexGrid, pattern);
     }
 
     /// <summary>
@@ -309,7 +318,8 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
 
     #region graph selection methodes (to herit)
     /// <summary>
-    /// Sélectionne les Tuiles utilisées par la compétence, dans une direction donnée
+    /// Sélectionne les Tuiles utilisées par la compétence, dans une direction donnée, revoie la liste des tiles
+    /// selectionnees
     /// </summary>
     public virtual List<Vector3Int> OnSelectGraphTiles(Unit unit, HexGridStore hexGrid, Vector3Int[] tilesArray)
     {
@@ -317,9 +327,9 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
         List<Vector3Int> v = new();
         foreach (var i in tilesArray)
         {
-            if (hexGrid.hexTiles.ContainsKey(HexCoordonnees.GetClosestHex(unit.transform.position) + i))
+            if (hexGrid.hexTiles.ContainsKey(unit.CurrentHexPos + i))
             {
-                Hex temp = hexGrid.GetTile(HexCoordonnees.GetClosestHex(unit.transform.position) + i);
+                Hex temp = hexGrid.GetTile(unit.CurrentHexPos + i);
                 if (kapaSys.VerifyKapaRange(temp.HexCoords, unit, hexGrid, MaxPlayerPierce))
                 {
                     temp.EnableGlowKapa();
@@ -331,13 +341,13 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     }
 
     /// <summary>
-    /// Retire la sélection de Tuiles utilisées par la compétence
+    /// Retire la sélection de Tiles utilisées par la compétence
     /// </summary>
-    public virtual void OnDeselectTiles(HexGridStore hexGrid)
+    public virtual void OnDeselectTiles(HexGridStore hexGrid, List<Vector3Int> pattern)
     {
-        foreach (var i in hexGrid.hexTiles.Values)
+        foreach (var i in pattern)
         {
-            i.DisableGlowKapa();
+            hexGrid.GetTile(i).DisableGlowKapa();
         }
     }
     #endregion

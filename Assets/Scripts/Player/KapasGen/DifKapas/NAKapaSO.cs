@@ -89,7 +89,7 @@ public class NAKapaSO : AKapaSO
     {
         base.OnExecute(hexGrid, pattern, unit);
         DoKapa(unit);
-        Debug.Log(Description); //PlaceHolder à remplir avec les anims et considération de dégâts
+        //Debug.Log(Description); //PlaceHolder à remplir avec les anims et considération de dégâts
         EndKapa();
     }
     #endregion
@@ -99,7 +99,7 @@ public class NAKapaSO : AKapaSO
     {
         unit.CompPoints += nAKapaSupFields.compPointsAdded;
         unit.UltPoints += nAKapaSupFields.ultPointsAdded;
-        cam.OnShake(FindObjectOfType<CinemachineVirtualCamera>());
+        CameraFunctions.OnShake(FindObjectOfType<CinemachineVirtualCamera>(), cam.shake);
         //PlaceHolder à rempir avec les anims et considérations de dégâts
     }
     void EndKapa()

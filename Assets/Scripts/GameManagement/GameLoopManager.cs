@@ -1,76 +1,86 @@
-using System.Collections.Generic;
+using Cinemachine;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class GameLoopManager : MonoBehaviour
 {
     #region fields
-    public static int playerPlay = 1;
-    public List<GameObject> heroPlayer1 = new();
-    public List<GameObject> heroPlayer2 = new();
+    [Range(0, 1, order = 1)][SerializeField] int firstTeamPlaying;
+    int teamPlaying;
+    [SerializeField] GameObject[] heroPlayer1;
+    [SerializeField] GameObject[] heroPlayer2;
 
-    public static int countPerso1 = 0;
-    public static int countPerso2 = 0;
+    GameObject[][] playerList = new GameObject[2][];
 
-    #endregion
-    private void Update()
-    {
-        OnSelectionPlayer();
-    }
+    int[] countPlayer = new int[2];
 
-    #region selectionPlayer
-
-    void OnSelectionPlayer()
-    {
-        if (playerPlay == 1)
-        {
-            OnPlayer1Play();
-            if (heroPlayer1.Count <= countPerso1)
-            {
-                playerPlay = 2;
-                countPerso1 = 0;
-            }
-        }
-        if (playerPlay == 2)
-        {
-            OnPlayer2Play();
-            if (heroPlayer2.Count <= countPerso2)
-            {
-                playerPlay = 1;
-                countPerso2 = 0;
-            }
-        }
-    }
-
-
+    [SerializeField] CameraMovement camM;
     #endregion
 
-    #region PlayerPlay
-    void OnPlayer1Play()
+    #region methodes
+    void Awake()
     {
-        foreach (GameObject Bob in heroPlayer1)
+        playerList = new[] { heroPlayer1, heroPlayer2 };
+        countPlayer = new[] { playerList[0].Length, playerList[1].Length };
+        teamPlaying = firstTeamPlaying;
+    }
+    void Start()
+    {
+        InitTeam(teamPlaying);
+        UnTeam(teamPlaying == 1? 0 : 1);
+    }
+
+    /// <summary>
+    /// action à réaliser dans un switch de team
+    /// PLACE HOLDER POSSIBLE POUR UN MOUVEMENT DE CAM OU AUTRE FEEDBACK DE SWITCH
+    /// </summary>
+    /// <param name="newTeam"></param>
+    void SwitchTeam(int newTeam) => InitTeam(newTeam);
+
+    /// <summary>
+    /// appelee à la fin d'une action de kapa d'une des Units.
+    /// </summary>
+    public void OnPlayerAction()
+    {
+        countPlayer[teamPlaying]--;
+        if (countPlayer[teamPlaying] == 0)
         {
-            Bob.GetComponent<Unit>().CanPlay = true;
-        }
-        foreach (GameObject Bob in heroPlayer2)
-        {
-            Bob.GetComponent<Unit>().CanPlay = false;
+            SwitchTeam(teamPlaying == 1? 0 : 1);
         }
     }
 
-    void OnPlayer2Play()
+    /// <summary>
+    /// initialisation d'une équipe apres fin de tour d'une autre équipe 
+    /// </summary>
+    /// <param name="i"></param>
+    void InitTeam(int i)
     {
-        foreach (GameObject Bob in heroPlayer2)
+        teamPlaying = i;
+        countPlayer[i] = playerList[i].Length;
+        foreach (var player in playerList[i])
         {
-            Bob.GetComponent<Unit>().CanPlay = true;
+            var u = player.GetComponent<Unit>();
+            if (u.IsDead) { countPlayer[i]--;  continue; }
 
+            u.CanPlay = true;
         }
-        foreach (GameObject Bob in heroPlayer1)
-        {
-            Bob.GetComponent<Unit>().CanPlay = false;
-        }
+
+        camM.OnFollowPlayer(playerList[teamPlaying][0].GetComponent<Unit>());
     }
 
+    /// <summary>
+    /// UNIQUEMENT APPELEE EN DEBUT DE JEU. Permet de deselectionner d'office les persos de l'equipe
+    /// qui ne commence pas. N'est plus appelé après ca
+    /// </summary>
+    /// <param name="i"></param>
+    void UnTeam(int i)
+    {
+        foreach (var player in playerList[i])
+        {
+            var u = player.GetComponent<Unit>();
+            u.CanPlay = false;
+            countPlayer[i]--;
+        }
+    }
     #endregion
-
-
 }

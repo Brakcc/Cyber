@@ -27,8 +27,8 @@ public class KapaSystem
         kapaRange = GetKapaRange(u, hgs);
         perfectRange = GetPerfectPath(u, hgs);
 
-        activeTiles = kapaRange.GetKapaPathTo(HexCoordonnees.GetClosestHex(kapaTile), hgs, mPP);
-        perfectTiles = perfectRange.GetPathTo(HexCoordonnees.GetClosestHex(kapaTile));
+        activeTiles = kapaRange.GetKapaPathTo(kapaTile, hgs, mPP);
+        perfectTiles = perfectRange.GetPathTo(kapaTile);
         if (activeTiles.Count == perfectTiles.Count) { return true; }
 
         return false;

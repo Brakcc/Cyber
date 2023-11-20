@@ -9,6 +9,7 @@ public class Hex : MonoBehaviour
 
     //la Data importante
     public Vector3Int HexCoords { get; set; }
+    [SerializeField] Vector3Int coords;
     public bool HasPlayerOnIt { get; set; }
     public Unit PlayerRef { get; set; }
     #endregion
@@ -18,6 +19,7 @@ public class Hex : MonoBehaviour
     {
         HexCoords = new HexCoordonnees(gameObject).OffsetCoordonnees;
         glow.SetHexaRefs();
+        coords = HexCoords;
     }
 
     /// <summary>

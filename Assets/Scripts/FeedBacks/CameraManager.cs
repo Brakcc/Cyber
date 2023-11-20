@@ -1,67 +1,37 @@
-﻿using System.Threading.Tasks;
-using CustomAttributes;
+﻿using CustomAttributes;
 using UnityEngine;
 using Cinemachine;
 
 [System.Serializable]
-public class CameraManager : ICameraManager
+public class CameraManager
 {
     #region fields
     [SerializeField] CameraEffectType effectType;
-    [ShowIfTrue("effectType", (int)CameraEffectType.Shake)][SerializeField] private ShakeParams s;
-    [ShowIfTrue("effectType", (int)CameraEffectType.ShockWave)][SerializeField] private ShockWaveParams sW;
-    [ShowIfTrue("effectType", (int)CameraEffectType.Impulse)][SerializeField] private ImpulseParams i;
-    #endregion
 
-    #region methodes
-    #region Shake
-    /// <summary>
-    /// Lance un cameraShake selon un profil choisi
-    /// => last est en MILLISECONDES
-    /// </summary>
-    public void OnShake(CinemachineVirtualCamera cam)
-    {
-        cam.AddCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-        var ccp = cam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+    [ShowIfTrue("effectType", (int)CameraEffectType.Shake)]
+    public ShakeParams shake;
 
-        ccp.m_NoiseProfile = s.perlinParameters.chanPerl;
-        ccp.m_PivotOffset = s.perlinParameters.pivotOffset;
-        ccp.m_AmplitudeGain = s.perlinParameters.amplitudeGain;
-        ccp.m_FrequencyGain = s.perlinParameters.frequencyGain;
+    [ShowIfTrue("effectType", (int)CameraEffectType.ShockWave)]
+    public ShockWaveParams shockWave;
 
-        OnStopShake(cam, s.last);
-    }
-    public async void OnStopShake(CinemachineVirtualCamera cam, int d)
-    {
-        await Task.Delay(d);
-        cam.DestroyCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-    }
-    #endregion
+    [ShowIfTrue("effectType", (int)CameraEffectType.Impulse)]
+    public ImpulseParams impulse;
 
-    #region ShockWave
-    public void OnShockWave() { }
-    #endregion
+    [ShowIfTrue("effectType", (int)CameraEffectType.Focus)]
+    public FocusParams focus;
 
-    #region Impulse
-    /// <summary>
-    /// Lance une impulse de camera 
-    /// </summary>
-    public void OnImpulse(CinemachineImpulseSource cam)
-    {
-        cam.m_ImpulseDefinition.m_AmplitudeGain = i.ampli;
-        cam.m_ImpulseDefinition.m_CustomImpulseShape = i.curve;
-        cam.m_DefaultVelocity = i.speedDir;
-        cam.GenerateImpulse();
-    }
-    #endregion
+    [ShowIfTrue("effectType", (int)CameraEffectType.Zoom)]
+    public ZoomParams zoom;
 
-    #region Zoom
-    public void OnZoom(Unit unit, HexGridStore hexGrid, CinemachineVirtualCamera vCam) { }
-    #endregion
+    [ShowIfTrue("effectType", (int)CameraEffectType.Zoom)]
+    public BackParams back;
     #endregion
 }
 
 #region diff classes
+/// <summary>
+/// shake that asssssss, baby lemme see what u got
+/// </summary>
 [System.Serializable]
 public class ShakeParams
 {
@@ -77,17 +47,50 @@ public class ShakeParams
     }
 }
 
+/// <summary>
+/// Paramettres pour les shockwaves effect
+/// </summary>
 [System.Serializable]
 public class ShockWaveParams
 {
     public float speed;
 }
 
+/// <summary>
+/// Paramettres pour les impulses de Cam
+/// </summary>
 [System.Serializable]
 public class ImpulseParams
 {
     public float ampli;
     public Vector3 speedDir;
     public AnimationCurve curve;
+}
+
+/// <summary>
+/// Paramettres de mouvement de Cam pour target une nouvelle equipe en fin de tour de joueur 
+/// </summary>
+[System.Serializable]
+public class FocusParams
+{
+    public float speed;
+}
+
+/// <summary>
+/// Parmattres de Mouvement de Cam pour viser une target et zoomer dessus pour feedback de Kapa
+/// </summary>
+[System.Serializable]
+public class ZoomParams
+{
+    public float orthoSizeChange;
+}
+
+/// <summary>
+/// Paramettres de Mouvement de Cam pour retourner sur l'OrthoSize de base de la Cam en fin de feedback de Kapa
+/// </summary>
+[System.Serializable]
+public class BackParams
+{
+    public float orthoSizeChange;
 }
 #endregion

@@ -169,6 +169,14 @@ public class PathFind
         return path.Skip(1).ToList();
     }
 
+    /// <summary>
+    /// Generation du chemin de verif pour les tiles selectionnees par un pattern de Kapa
+    /// </summary>
+    /// <param name="hG"></param>
+    /// <param name="current"></param>
+    /// <param name="proNodes"></param>
+    /// <param name="maxPlayerPierce"></param>
+    /// <returns></returns>
     public static List<Vector3Int> GenerateKapaPath(HexGridStore hG, Vector3Int current, Dictionary<Vector3Int, Vector3Int?> proNodes, int maxPlayerPierce)
     {
         int piercedUnit = 0;
