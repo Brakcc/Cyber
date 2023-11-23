@@ -1,5 +1,3 @@
-using Cinemachine;
-using System.Threading.Tasks;
 using UnityEngine;
 
 public class GameLoopManager : MonoBehaviour
@@ -15,11 +13,15 @@ public class GameLoopManager : MonoBehaviour
     int[] countPlayer = new int[2];
 
     [SerializeField] CameraMovement camM;
+
+    public static GameLoopManager gLM;
     #endregion
 
     #region methodes
     void Awake()
     {
+        gLM = this;
+
         playerList = new[] { heroPlayer1, heroPlayer2 };
         countPlayer = new[] { playerList[0].Length, playerList[1].Length };
         teamPlaying = firstTeamPlaying;
@@ -27,7 +29,6 @@ public class GameLoopManager : MonoBehaviour
     void Start()
     {
         InitTeam(teamPlaying);
-        UnTeam(teamPlaying == 1? 0 : 1);
     }
 
     /// <summary>
@@ -66,21 +67,6 @@ public class GameLoopManager : MonoBehaviour
         }
 
         camM.OnFollowPlayer(playerList[teamPlaying][0].GetComponent<Unit>());
-    }
-
-    /// <summary>
-    /// UNIQUEMENT APPELEE EN DEBUT DE JEU. Permet de deselectionner d'office les persos de l'equipe
-    /// qui ne commence pas. N'est plus appelé après ca
-    /// </summary>
-    /// <param name="i"></param>
-    void UnTeam(int i)
-    {
-        foreach (var player in playerList[i])
-        {
-            var u = player.GetComponent<Unit>();
-            u.CanPlay = false;
-            countPlayer[i]--;
-        }
     }
     #endregion
 }

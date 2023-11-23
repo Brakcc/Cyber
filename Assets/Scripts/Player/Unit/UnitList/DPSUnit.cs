@@ -36,18 +36,8 @@ public class DPSUnit : Unit
         //Pour que cette ligne fonctionne, il ne faut qu'aucun autre renderer ne soit sur l'objet
         //Donc suprimer celui qui est de base sur le Bob
         rend = GetComponentInChildren<SpriteRenderer>();
-        InitPlayer();
-    }
-
-    void InitPlayer()
-    {
         originColor = rend.color;
-        CanPlay = true;
-        IsDead = false;
-        IsPersoLocked = false;
-        IsOnTurret = false;
-        CompPoints = 0;
-        Health = UnitData.HealthPoint;
+        OnInit();
     }
 
     void Start()

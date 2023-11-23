@@ -17,6 +17,16 @@ public abstract class Unit : MonoBehaviour, IUnit
     #endregion
 
     #region methodes to herit
+    public virtual void OnInit()
+    {
+        CanPlay = false;
+        IsDead = false;
+        IsPersoLocked = false;
+        IsOnTurret = false;
+        CompPoints = 0;
+        Health = UnitData.HealthPoint;
+    }
+
     public abstract void Select();
     public virtual void MoveOnPath(List<Vector3> currentPath) => StartCoroutine(FollowPath(currentPath,UnitData.Speed));
     public abstract void OnKapa();

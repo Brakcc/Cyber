@@ -16,6 +16,7 @@ public interface IUnit
     #endregion
 
     #region methodes
+    void OnInit();
     void Select();
     void MoveOnPath(List<Vector3> currentPath);
     void OnKapa();

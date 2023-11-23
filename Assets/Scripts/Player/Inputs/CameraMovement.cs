@@ -14,6 +14,7 @@ public class CameraMovement : MonoBehaviour
     //AutoMove Params
     bool isMoving;
     Unit temp;
+    bool canClicSwitch;
 
     //camMovement avec la GameLoop
     [SerializeField] CameraManager camManager;
@@ -52,7 +53,16 @@ public class CameraMovement : MonoBehaviour
     #region SwitchMove
     public async void OnFollowPlayer(Unit unit)
     {
+        canClicSwitch = false;
         await Task.Delay(switchDelay);
+        isMoving = true;
+        temp = unit;
+        canClicSwitch = true;
+    }
+
+    public void OnFocusPlayer(Unit unit)
+    {
+        if (!canClicSwitch) return;
         isMoving = true;
         temp = unit;
     }
