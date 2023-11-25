@@ -6,13 +6,21 @@ public abstract class Unit : MonoBehaviour, IUnit
 {
     #region fields/accessors to herit
     public abstract AUnitSO UnitData { get; set; }
-    public abstract float Health { get; set; }
+    public abstract PlayerStatsUI StatUI { get; set; }
+    #region current stats
+    public abstract float CurrentHealth { get; set; }
+    public abstract int CurrentMP { get; set; }
+    public abstract int CurrentAtk { get; set; }
+    public abstract int CurrentDef { get; set; }
+    public abstract int CurrentCritRate { get; set; }
+    #endregion
     public abstract bool IsOnTurret { get; set; }
     public abstract int CompPoints { get; set; }
     public abstract int UltPoints { get; set; }
     public abstract bool IsDead { get; set; }
     public abstract bool CanPlay { get; set; }
     public abstract bool IsPersoLocked { get; set; }
+    public abstract bool CanKapa { get; set; }
     public abstract Vector3Int CurrentHexPos { get; set; }
     #endregion
 
@@ -22,9 +30,16 @@ public abstract class Unit : MonoBehaviour, IUnit
         CanPlay = false;
         IsDead = false;
         IsPersoLocked = false;
+        CanKapa = true;
         IsOnTurret = false;
         CompPoints = 0;
-        Health = UnitData.HealthPoint;
+
+        //stats that can vary over the game
+        CurrentHealth = UnitData.HealthPoint;
+        CurrentAtk = UnitData.Attack;
+        CurrentDef = UnitData.Defense;
+        CurrentCritRate = UnitData.CritRate;
+        CurrentMP = UnitData.MovePoints;
     }
 
     public abstract void Select();
@@ -33,11 +48,13 @@ public abstract class Unit : MonoBehaviour, IUnit
     public abstract void Deselect();
     public virtual void OnDie()
     {
+        CanPlay = false;
         IsDead = true;
         GetComponentInChildren<SpriteRenderer>().color = Color.red;
     }
     public virtual void OnRez()
     {
+        CanPlay = false;
         IsDead = false;
         GetComponent<SpriteRenderer>().color = Color.magenta;
     }
@@ -46,6 +63,7 @@ public abstract class Unit : MonoBehaviour, IUnit
     #region cache
     public IEnumerator FollowPath(List<Vector3> path, float speed)
     {
+        CanKapa = false;
         float pas = speed * Time.fixedDeltaTime / 10;
         foreach (var i in path)
         {
@@ -59,6 +77,7 @@ public abstract class Unit : MonoBehaviour, IUnit
             
             PositionCharacterOnTile(i);
         }
+        CanKapa = true;
     }
     protected void PositionCharacterOnTile(Vector3 pos) => transform.position = new Vector3(pos.x, pos.y, pos.z - 0.1f);
     #endregion

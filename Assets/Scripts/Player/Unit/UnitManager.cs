@@ -241,6 +241,7 @@ public class UnitManager : MonoBehaviour
     public void HandleKapaSelect(int i)
     {
         if (selectedUnit == null) return;
+        if (!selectedUnit.CanKapa) return;
 
         KapaType type = SelectedUnit.UnitData.KapasList[i].KapaType;
         AKapaSO kapa = SelectedUnit.UnitData.KapasList[i];

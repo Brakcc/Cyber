@@ -5,8 +5,8 @@ public class GameLoopManager : MonoBehaviour
     #region fields
     [Range(0, 1, order = 1)][SerializeField] int firstTeamPlaying;
     int teamPlaying;
-    [SerializeField] GameObject[] heroPlayer1;
-    [SerializeField] GameObject[] heroPlayer2;
+    public GameObject[] heroPlayer1;
+    public GameObject[] heroPlayer2;
 
     GameObject[][] playerList = new GameObject[2][];
 
