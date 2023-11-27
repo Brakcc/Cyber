@@ -101,6 +101,8 @@ public class UKapaSO : AKapaSO
     {
         unit.UltPoints -= uKapaSupFields.neededUltPoints;
         //PlaceHolder à rempir avec les anims et considérations de dégâts
+
+        unit.StatUI.SetUP(unit);
     }
     void RefuseKapa() { Debug.Log("nope"); }
     void EndKapa()
