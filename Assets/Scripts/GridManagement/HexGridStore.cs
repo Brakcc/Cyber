@@ -6,12 +6,22 @@ public class HexGridStore: MonoBehaviour
     #region fields
     public Dictionary<Vector3Int, Hex> hexTiles = new();
     private readonly Dictionary<Vector3Int, List<Vector3Int>> neighbourgs = new();
+
+    public List<Entity> emiters = new();
+
+    public static HexGridStore hGS;
     #endregion
 
     #region methodes
+    void Awake() => hGS = this;
+
     void Start()
     {
         foreach (Hex hex in FindObjectsOfType<Hex>()) { hexTiles[hex.HexCoords] = hex; }
+        foreach (Entity ent in FindObjectsOfType<Entity>()) 
+        {
+            if (ent.IsNetworkEmiter) emiters.Add(ent);
+        }
     }
 
     public Hex GetTile(Vector3Int hexCoords)
@@ -35,5 +45,18 @@ public class HexGridStore: MonoBehaviour
 
         return neighbourgs[coords];
     }
+
+    #region network emiters
+    public void OnAddEmiter(Entity ent)
+    {
+        emiters.Add(ent);
+    }
+
+    public void OnDelEmiter(Entity ent)
+    {
+        if (emiters == null) return;
+        emiters.Remove(ent);
+    }
+    #endregion
     #endregion
 }

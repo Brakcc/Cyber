@@ -1,17 +1,22 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 [SelectionBase]
 public class Hex : MonoBehaviour
 {
     #region 
-    public HexType type;
+    [SerializeField] HexType type;
     [SerializeField] SelectGlow glow;
+
+    [SerializeField] Network originNetwork;
+    public List<Network> MixedNetwork { get; set; } = new();
+    public List<Network> mixedNetwork;
 
     //la Data importante
     public Vector3Int HexCoords { get; set; }
-    [SerializeField] Vector3Int coords;
     public bool HasPlayerOnIt { get; set; }
     public Unit PlayerRef { get; set; }
+    public List<Network> CurrentNetwork { get => GetNetwork(); }
     #endregion
 
     #region methodes
@@ -19,7 +24,6 @@ public class Hex : MonoBehaviour
     {
         HexCoords = new HexCoordonnees(gameObject).OffsetCoordonnees;
         glow.SetHexaRefs();
-        coords = HexCoords;
     }
 
     /// <summary>
@@ -34,6 +38,20 @@ public class Hex : MonoBehaviour
         HexType.Hole => 1000,
         _ => 1000
     };
+
+    #region Network
+    List<Network> GetNetwork()
+    {
+        List<Network> result = MixedNetwork;
+        result.Add(originNetwork);
+        return result;
+    }
+
+    public void AddMixedNetwork(Network net) { MixedNetwork.Add(net); EnableGlowPath(); mixedNetwork = MixedNetwork; }
+    public void AddMixedNetwork(List<Network> networks) { MixedNetwork.AddRange(networks); EnableGlowPath(); mixedNetwork = MixedNetwork; }
+
+    public void ClearLMixedNetwork() { MixedNetwork.Clear(); DisableGlowPath(); }
+    #endregion
 
     public void SetUnit(Unit unit) => PlayerRef = unit;
     public Unit GetUnit() => PlayerRef;

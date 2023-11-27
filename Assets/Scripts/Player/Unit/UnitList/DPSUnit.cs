@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [SelectionBase]
@@ -26,8 +27,6 @@ public class DPSUnit : Unit
     public override bool IsDead { get; set; }
     public override bool IsPersoLocked { get; set; }
     public override bool CanKapa { get; set; }
-    public override Vector3Int CurrentHexPos { get => currentHexPos; set { currentHexPos = value; } }
-    private Vector3Int currentHexPos;
 
     [SerializeField] GraphInitUnit graphs;
     #endregion
@@ -42,7 +41,6 @@ public class DPSUnit : Unit
     void Awake() 
     {
         graphs.SetRenderer(gameObject, m_Unit.Sprite);
-        currentHexPos = HexCoordonnees.GetClosestHex(transform.position);
         //Pour que cette ligne fonctionne, il ne faut qu'aucun autre renderer ne soit sur l'objet
         //Donc suprimer celui qui est de base sur le Bob
         rend = GetComponentInChildren<SpriteRenderer>();

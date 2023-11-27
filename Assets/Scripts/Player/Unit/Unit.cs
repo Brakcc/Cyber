@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Unit : MonoBehaviour, IUnit
+public abstract class Unit : Entity, IUnit
 {
     #region fields/accessors to herit
     public abstract AUnitSO UnitData { get; set; }
@@ -21,17 +21,29 @@ public abstract class Unit : MonoBehaviour, IUnit
     public abstract bool CanPlay { get; set; }
     public abstract bool IsPersoLocked { get; set; }
     public abstract bool CanKapa { get; set; }
-    public abstract Vector3Int CurrentHexPos { get; set; }
+
+    #region Entity heritage
+    public override Vector3Int CurrentHexPos { get => currentHexPos; set { currentHexPos = value; } }
+    protected Vector3Int currentHexPos;
+    public override bool IsNetworkEmiter { get; set; }
+    public override int NetworkRange { get; set; }
+    #endregion
+
+    protected NetworkSystem netSys;
     #endregion
 
     #region methodes to herit
-    public virtual void OnInit()
+    protected override sealed void OnInit()
     {
+        base.OnInit();
+
         CanPlay = false;
         IsDead = false;
         IsPersoLocked = false;
         CanKapa = true;
         IsOnTurret = false;
+        if (UnitData.Type == UnitType.Hacker) { IsNetworkEmiter = true; NetworkRange = UnitData.NetworkRange; }
+        else { IsNetworkEmiter = false; NetworkRange = 0; }
 
         //stats that can vary over the game
         CurrentHealth = UnitData.HealthPoint;
@@ -39,6 +51,9 @@ public abstract class Unit : MonoBehaviour, IUnit
         CurrentDef = UnitData.Defense;
         CurrentCritRate = UnitData.CritRate;
         CurrentMP = UnitData.MovePoints;
+
+        netSys = new();
+        //if (UnitData.Type == UnitType.Hacker) { ChangeNetwotrk(); }
     }
 
     public abstract void Select();
@@ -60,7 +75,7 @@ public abstract class Unit : MonoBehaviour, IUnit
     #endregion
 
     #region cache
-    public IEnumerator FollowPath(List<Vector3> path, float speed)
+    protected IEnumerator FollowPath(List<Vector3> path, float speed)
     {
         CanKapa = false;
         float pas = speed * Time.fixedDeltaTime / 10;
@@ -77,7 +92,14 @@ public abstract class Unit : MonoBehaviour, IUnit
             PositionCharacterOnTile(i);
         }
         CanKapa = true;
+        if (UnitData.Type == UnitType.Hacker) { ChangeNetwotrk(); }
     }
     protected void PositionCharacterOnTile(Vector3 pos) => transform.position = new Vector3(pos.x, pos.y, pos.z - 0.1f);
+
+    protected void ChangeNetwotrk()
+    {
+        foreach (var i in HexGridStore.hGS.hexTiles.Values) { i.ClearLMixedNetwork(); }
+        netSys.OnActivateNetwork(this, HexGridStore.hGS);
+    }
     #endregion
 }

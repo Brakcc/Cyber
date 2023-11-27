@@ -240,5 +240,9 @@ public struct PathResult
 
     public readonly bool IsHexPosInRange(Vector3Int pos) => calculatedNodes.ContainsKey(pos);
 
+    /// <summary>
+    /// Enumerable des positions calculees dans la range d'un pathFind
+    /// </summary>
+    /// <returns></returns>
     public readonly IEnumerable<Vector3Int> GetRangePositions() => calculatedNodes.Keys;
 }

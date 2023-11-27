@@ -3035,6 +3035,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6824,6 +6828,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1946485446}
     m_Modifications:
+    - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
+      propertyPath: m_Unit
+      value: 
+      objectReference: {fileID: 11400000, guid: 51f7164ed8660cd4bbca737b4fcb7390, type: 2}
     - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: cam.s.cam
       value: 

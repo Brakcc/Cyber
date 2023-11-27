@@ -13,6 +13,8 @@ public class DPSDataSO : AUnitSO
     public override UnitType Type => type;
     [SerializeField] UnitType type;
 
+    public override int NetworkRange => 0;
+
     public override int MovePoints => movePoints;
     [SerializeField] int movePoints;
 

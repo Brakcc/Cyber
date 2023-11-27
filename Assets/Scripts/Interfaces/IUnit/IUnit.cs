@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public interface IUnit
+public interface IUnit : IEntity
 {
     #region accessors
     public AUnitSO UnitData { get; }
@@ -20,11 +20,9 @@ public interface IUnit
     public bool CanPlay { get; }
     public bool IsPersoLocked { get; }
     public bool CanKapa { get; }
-    public Vector3Int CurrentHexPos { get; }
     #endregion
 
     #region methodes
-    void OnInit();
     void Select();
     void MoveOnPath(List<Vector3> currentPath);
     void OnKapa();

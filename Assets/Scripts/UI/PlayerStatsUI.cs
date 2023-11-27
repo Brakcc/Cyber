@@ -25,10 +25,10 @@ public class PlayerStatsUI : MonoBehaviour
     void OnInit()
     {
         SetName(unit.UnitData.Name);
-        SetMP(unit, UIColorType.Default);
-        SetAtk(unit, UIColorType.Default);
-        SetDef(unit, UIColorType.Default);
-        SetCritRate(unit, UIColorType.Default);
+        SetMP(unit);
+        SetAtk(unit);
+        SetDef(unit);
+        SetCritRate(unit);
         SetHP(unit);
         SetUP(unit);
         SetSprite(unit);
@@ -36,12 +36,16 @@ public class PlayerStatsUI : MonoBehaviour
 
     #region recurent methodes
     public void SetMP(Unit unit, UIColorType uCT) { mpText.text = unit.CurrentMP.ToString(); SetColor(uCT); }
+    public void SetMP(Unit unit) { mpText.text = unit.CurrentMP.ToString(); SetColor(UIColorType.Default); }
 
     public void SetAtk(Unit unit, UIColorType uCT) { AtkText.text = unit.CurrentAtk.ToString(); SetColor(uCT); }
+    public void SetAtk(Unit unit) { AtkText.text = unit.CurrentAtk.ToString(); SetColor(UIColorType.Default); }
 
     public void SetDef(Unit unit, UIColorType uCT) { DefText.text = unit.CurrentDef.ToString(); SetColor(uCT); }
+    public void SetDef(Unit unit) { DefText.text = unit.CurrentDef.ToString(); SetColor(UIColorType.Default); }
 
     public void SetCritRate(Unit unit, UIColorType uCT) { CritRate.text = unit.CurrentCritRate.ToString(); SetColor(uCT); }
+    public void SetCritRate(Unit unit) { CritRate.text = unit.CurrentCritRate.ToString(); SetColor(UIColorType.Default); }
 
     public void SetHP(Unit unit)
     {

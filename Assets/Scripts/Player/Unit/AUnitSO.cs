@@ -7,6 +7,7 @@ public abstract class AUnitSO : ScriptableObject, IUnitData
     public abstract int ID { get; }
     public abstract string Name { get; }
     public abstract UnitType Type { get; }
+    public abstract int NetworkRange { get; }
     public abstract int MovePoints { get; }
     public abstract int Attack { get; }
     public abstract int Defense { get; }
