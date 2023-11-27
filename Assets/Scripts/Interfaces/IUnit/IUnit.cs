@@ -13,8 +13,8 @@ public interface IUnit
     public int CurrentDef { get; }
     public int CurrentAtk { get; }
     #endregion
+    public int TeamNumber { get; }
     public bool IsOnTurret { get; }
-    public int CompPoints { get; }
     public int UltPoints { get; }
     public bool IsDead { get; }
     public bool CanPlay { get; }

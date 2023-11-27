@@ -14,8 +14,8 @@ public abstract class Unit : MonoBehaviour, IUnit
     public abstract int CurrentDef { get; set; }
     public abstract int CurrentCritRate { get; set; }
     #endregion
+    public abstract int TeamNumber { get; set; }
     public abstract bool IsOnTurret { get; set; }
-    public abstract int CompPoints { get; set; }
     public abstract int UltPoints { get; set; }
     public abstract bool IsDead { get; set; }
     public abstract bool CanPlay { get; set; }
@@ -32,7 +32,6 @@ public abstract class Unit : MonoBehaviour, IUnit
         IsPersoLocked = false;
         CanKapa = true;
         IsOnTurret = false;
-        CompPoints = 0;
 
         //stats that can vary over the game
         CurrentHealth = UnitData.HealthPoint;

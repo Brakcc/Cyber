@@ -5,10 +5,11 @@ public class GameLoopManager : MonoBehaviour
     #region fields
     [Range(0, 1, order = 1)][SerializeField] int firstTeamPlaying;
     int teamPlaying;
+    public GameObject[] heroPlayer0;
     public GameObject[] heroPlayer1;
-    public GameObject[] heroPlayer2;
 
     GameObject[][] playerList = new GameObject[2][];
+    [HideInInspector] public int[] CompPoints;
 
     int[] countPlayer = new int[2];
 
@@ -22,8 +23,11 @@ public class GameLoopManager : MonoBehaviour
     {
         gLM = this;
 
-        playerList = new[] { heroPlayer1, heroPlayer2 };
+        playerList = new[] { heroPlayer0, heroPlayer1 };
+        foreach (var i in heroPlayer0) { i.GetComponent<Unit>().TeamNumber = 0; }
+        foreach (var i in heroPlayer1) { i.GetComponent<Unit>().TeamNumber = 1; }
         countPlayer = new[] { playerList[0].Length, playerList[1].Length };
+        CompPoints = new int[2] { 0, 0 };
         teamPlaying = firstTeamPlaying;
     }
     void Start()

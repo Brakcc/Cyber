@@ -97,10 +97,12 @@ public class NAKapaSO : AKapaSO
     #region cache
     void DoKapa(Unit unit)
     {
-        unit.CompPoints += nAKapaSupFields.compPointsAdded;
+        GameLoopManager.gLM.CompPoints[unit.TeamNumber] += nAKapaSupFields.compPointsAdded;
         unit.UltPoints += nAKapaSupFields.ultPointsAdded;
         CameraFunctions.OnShake(FindObjectOfType<CinemachineVirtualCamera>(), cam.shake);
         //PlaceHolder à rempir avec les anims et considérations de dégâts
+
+        unit.StatUI.SetUP(unit);
     }
     void EndKapa()
     {

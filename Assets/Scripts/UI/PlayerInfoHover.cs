@@ -14,7 +14,7 @@ public class PlayerInfoHover : MonoBehaviour
         if (!isHovering) return;
         counter += Time.deltaTime;
 
-        if (counter >= 1) { OnPrint(); }
+        if (counter >= 0.75f) { OnPrint(); }
     }
 
     public void OnPointerEnter()

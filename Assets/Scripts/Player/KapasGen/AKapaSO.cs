@@ -291,7 +291,7 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
             else u.CurrentHealth -= Damage.NormalDamage(unit.UnitData.Attack, unit.UnitData.Defense);
 
             //set new UI
-            u.StatUI.SetHP(u.CurrentHealth);
+            u.StatUI.SetHP(u);
 
             //Kill si Unit a plus de vie
             if (u.CurrentHealth <= 0 ) { u.OnDie(); }

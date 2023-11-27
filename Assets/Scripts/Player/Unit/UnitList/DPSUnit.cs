@@ -19,8 +19,8 @@ public class DPSUnit : Unit
     public override int CurrentDef { get; set; }
     public override int CurrentCritRate { get; set; }
     #endregion
+    public override int TeamNumber { get; set; }
     public override bool IsOnTurret { get; set; }
-    public override int CompPoints { get; set; }
     public override int UltPoints { get; set; }
     public override bool CanPlay { get; set; }
     public override bool IsDead { get; set; }

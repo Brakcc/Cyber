@@ -92,7 +92,7 @@ public class CKapaSO : AKapaSO
     #region inherited methodes
     public override bool OnCheckKapaPoints(Unit unit)
     {
-        if (unit.CompPoints < cKapaSupFields.neededCompPoints) { RefuseKapa(); return false; }
+        if (GameLoopManager.gLM.CompPoints[unit.TeamNumber] < cKapaSupFields.neededCompPoints) { RefuseKapa(); return false; }
         return true;
     }
 
@@ -109,9 +109,11 @@ public class CKapaSO : AKapaSO
     void DoKapa(Unit unit)
     {
         //AJOUTER LA LOGIQUE DE TEAM POUR BAISSER LES POINTS DE COMP COMMUNS
-        unit.CompPoints -= cKapaSupFields.neededCompPoints;
+        GameLoopManager.gLM.CompPoints[unit.TeamNumber] -= cKapaSupFields.neededCompPoints;
         unit.UltPoints += cKapaSupFields.ultPointsAdded;
         //PlaceHolder à rempir avec les anims et considérations de dégâts
+
+        unit.StatUI.SetUP(unit);
     }
     void RefuseKapa() { Debug.Log("nope"); }
     void EndKapa()

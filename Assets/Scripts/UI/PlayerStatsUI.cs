@@ -12,6 +12,7 @@ public class PlayerStatsUI : MonoBehaviour
     [SerializeField] TMP_Text DefText;
     [SerializeField] TMP_Text CritRate;
     [SerializeField] TMP_Text hP;
+    [SerializeField] TMP_Text uPText;
     [SerializeField] Image imageRef;
     #endregion
 
@@ -24,26 +25,55 @@ public class PlayerStatsUI : MonoBehaviour
     void OnInit()
     {
         SetName(unit.UnitData.Name);
-        SetMP(unit.CurrentMP);
-        SetAtk(unit.CurrentAtk);
-        SetDef(unit.CurrentDef);
-        SetCritRate(unit.CurrentCritRate);
-        SetHP(unit.CurrentHealth);
+        SetMP(unit, UIColorType.Default);
+        SetAtk(unit, UIColorType.Default);
+        SetDef(unit, UIColorType.Default);
+        SetCritRate(unit, UIColorType.Default);
+        SetHP(unit);
+        SetUP(unit);
         SetSprite(unit);
     }
 
-    public void SetMP(int mp) => mpText.text = "MP : " + mp;
-    
-    public void SetAtk(int atk) => AtkText.text = "ATK : " + atk;
-    
-    public void SetDef(int def) => DefText.text = "DEF : " + def;
-    
-    public void SetCritRate(int cr) => CritRate.text = "Crit Rate : " + cr;
-     
-    public void SetHP(float hp) => hP.text = "HP : " + hp;
+    #region recurent methodes
+    public void SetMP(Unit unit, UIColorType uCT) { mpText.text = unit.CurrentMP.ToString(); SetColor(uCT); }
+
+    public void SetAtk(Unit unit, UIColorType uCT) { AtkText.text = unit.CurrentAtk.ToString(); SetColor(uCT); }
+
+    public void SetDef(Unit unit, UIColorType uCT) { DefText.text = unit.CurrentDef.ToString(); SetColor(uCT); }
+
+    public void SetCritRate(Unit unit, UIColorType uCT) { CritRate.text = unit.CurrentCritRate.ToString(); SetColor(uCT); }
+
+    public void SetHP(Unit unit)
+    {
+        hP.text = unit.CurrentHealth.ToString();
+        hP.color = Color.Lerp(Color.red, Color.green, unit.CurrentHealth / unit.UnitData.HealthPoint);
+    }
+
+    public void SetUP(Unit unit)
+    {
+        uPText.text = unit.UltPoints.ToString();
+        if (unit.UltPoints > 0) { uPText.color = Color.green; }
+        else uPText.color = Color.red;
+    }
+    #endregion
 
     void SetSprite(Unit unit) { imageRef.sprite = unit.UnitData.Sprite; imageRef.color = unit.GetComponentInChildren<SpriteRenderer>().color; }
 
-    void SetName(string n) => nameP.text = n;
+    void SetName(string n) { nameP.text = n; }
+
+    Color SetColor(UIColorType uCT) => (int)uCT switch
+    {
+        0 => Color.green,
+        1 => Color.red,
+        2 => Color.white,
+        _ => Color.white,
+    };
     #endregion
+}
+
+public enum UIColorType
+{
+    Buff,
+    Debuff,
+    Default
 }
