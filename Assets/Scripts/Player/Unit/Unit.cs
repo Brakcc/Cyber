@@ -92,14 +92,7 @@ public abstract class Unit : Entity, IUnit
             PositionCharacterOnTile(i);
         }
         CanKapa = true;
-        if (UnitData.Type == UnitType.Hacker) { ChangeNetwotrk(); }
     }
     protected void PositionCharacterOnTile(Vector3 pos) => transform.position = new Vector3(pos.x, pos.y, pos.z - 0.1f);
-
-    protected void ChangeNetwotrk()
-    {
-        foreach (var i in HexGridStore.hGS.hexTiles.Values) { i.ClearLMixedNetwork(); }
-        netSys.OnActivateNetwork(this, HexGridStore.hGS);
-    }
     #endregion
 }

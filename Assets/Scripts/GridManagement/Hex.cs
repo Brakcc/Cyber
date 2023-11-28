@@ -9,14 +9,12 @@ public class Hex : MonoBehaviour
     [SerializeField] SelectGlow glow;
 
     [SerializeField] Network originNetwork;
-    public List<Network> MixedNetwork { get; set; } = new();
-    public List<Network> mixedNetwork;
 
     //la Data importante
     public Vector3Int HexCoords { get; set; }
     public bool HasPlayerOnIt { get; set; }
     public Unit PlayerRef { get; set; }
-    public List<Network> CurrentNetwork { get => GetNetwork(); }
+    public Network CurrentNetwork { get => GetLocalNetwork(); }
     #endregion
 
     #region methodes
@@ -40,17 +38,12 @@ public class Hex : MonoBehaviour
     };
 
     #region Network
-    List<Network> GetNetwork()
-    {
-        List<Network> result = MixedNetwork;
-        result.Add(originNetwork);
-        return result;
-    }
+    Network GetLocalNetwork() => originNetwork;
 
-    public void AddMixedNetwork(Network net) { MixedNetwork.Add(net); EnableGlowPath(); mixedNetwork = MixedNetwork; }
-    public void AddMixedNetwork(List<Network> networks) { MixedNetwork.AddRange(networks); EnableGlowPath(); mixedNetwork = MixedNetwork; }
+    //public void AddMixedNetwork(Network net) { MixedNetwork.Add(net); EnableGlowPath(); mixedNetwork = MixedNetwork; }
+    //public void AddMixedNetwork(List<Network> networks) { MixedNetwork.AddRange(networks); EnableGlowPath(); mixedNetwork = MixedNetwork; }
 
-    public void ClearLMixedNetwork() { MixedNetwork.Clear(); DisableGlowPath(); }
+    //public void ClearLMixedNetwork() { MixedNetwork.Clear(); DisableGlowPath(); }
     #endregion
 
     public void SetUnit(Unit unit) => PlayerRef = unit;
