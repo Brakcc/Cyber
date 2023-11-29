@@ -55,7 +55,11 @@ public class DPSUnit : Unit
     #endregion
 
     #region inherited methodes
-    public override void Select() => rend.color = Color.Lerp(Color.red, Color.yellow, 0.5f);
+    public override void Select()
+    {
+        base.Select();
+        rend.color = Color.Lerp(Color.red, Color.yellow, 0.5f);
+    }
     public override void Deselect() => rend.color = originColor;
     public override void OnKapa() => Debug.Log("Omegalul");
     #endregion

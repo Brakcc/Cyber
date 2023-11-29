@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public abstract class Unit : Entity, IUnit
@@ -26,11 +27,10 @@ public abstract class Unit : Entity, IUnit
     public override Vector3Int CurrentHexPos { get => currentHexPos; set { currentHexPos = value; } }
     protected Vector3Int currentHexPos;
     public override bool IsNetworkEmiter { get; set; }
+    public override bool IsOnNetwork { get; set; }
     public override int NetworkRange { get; set; }
-    public override List<Vector3Int> LocalNetwork { get; set; }
+    public override List<Vector3Int> GlobalNetwork { get; set; } = new();
     #endregion
-
-    protected NetworkSystem netSys;
     #endregion
 
     #region methodes to herit
@@ -43,7 +43,7 @@ public abstract class Unit : Entity, IUnit
         IsPersoLocked = false;
         CanKapa = true;
         IsOnTurret = false;
-        if (UnitData.Type == UnitType.Hacker) { IsNetworkEmiter = true; NetworkRange = UnitData.NetworkRange; }
+        if (UnitData.Type == UnitType.Hacker) { IsNetworkEmiter = true; IsOnNetwork = false; NetworkRange = UnitData.NetworkRange; GlobalNetwork = null; }
         else { IsNetworkEmiter = false; NetworkRange = 0; }
 
         //stats that can vary over the game
@@ -52,12 +52,18 @@ public abstract class Unit : Entity, IUnit
         CurrentDef = UnitData.Defense;
         CurrentCritRate = UnitData.CritRate;
         CurrentMP = UnitData.MovePoints;
-
-        netSys = new();
-        //if (UnitData.Type == UnitType.Hacker) { ChangeNetwotrk(); }
     }
 
-    public abstract void Select();
+    public virtual void Select()
+    {
+        if (UnitData.Type != UnitType.Hacker) return;
+
+        if (GlobalNetwork != null)
+        {
+            foreach (var i in GlobalNetwork) { HexGridStore.hGS.GetTile(i).DisableGlowDynaNet(); }
+        }
+        OnGenerateNewNetWork();
+    }
     public virtual void MoveOnPath(List<Vector3> currentPath) => StartCoroutine(FollowPath(currentPath,UnitData.Speed));
     public abstract void OnKapa();
     public abstract void Deselect();
@@ -93,7 +99,26 @@ public abstract class Unit : Entity, IUnit
             PositionCharacterOnTile(i);
         }
         CanKapa = true;
+
+        if (UnitData.Type != UnitType.Hacker) yield break;
+        if (GlobalNetwork != null)
+        {
+            foreach (var i in GlobalNetwork) { HexGridStore.hGS.GetTile(i).DisableGlowDynaNet(); }
+        }
+        OnGenerateNewNetWork();
+        foreach (var e in HexGridStore.hGS.emiters)
+        {
+            e.OnGenerateNet();
+        }
     }
     protected void PositionCharacterOnTile(Vector3 pos) => transform.position = new Vector3(pos.x, pos.y, pos.z - 0.1f);
+
+    protected void OnGenerateNewNetWork()
+    {
+        if (IsIntersecting(CurrentHexPos, HexGridStore.hGS, NetworkRange, out List<Network> net))
+        {
+            GlobalNetwork = OnIntersect(CurrentHexPos, HexGridStore.hGS, NetworkRange, net);
+        }
+    }
     #endregion
 }

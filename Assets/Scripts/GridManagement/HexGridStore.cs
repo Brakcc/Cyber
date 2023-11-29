@@ -54,7 +54,7 @@ public class HexGridStore: MonoBehaviour
 
         foreach (var hex in FindObjectsOfType<Hex>())
         {
-            if (hex.CurrentNetwork != Network.None) { networkList[(int)hex.CurrentNetwork].Add(hex.HexCoords); } 
+            if (hex.LocalNetwork != Network.None) { networkList[(int)hex.LocalNetwork].Add(hex.HexCoords); hex.EnableGlowBaseNet(); } 
         }
         
         foreach (Entity ent in FindObjectsOfType<Entity>())
@@ -90,6 +90,8 @@ public class HexGridStore: MonoBehaviour
         }
         return allNet;
     }
+
+    public bool IsOnNetwork(Vector3Int pos, Network net) => networkList[(int)net].Contains(pos);
     public bool IsOnNetwork(Vector3Int pos)
     {
         foreach (var i in networkList)
@@ -98,11 +100,6 @@ public class HexGridStore: MonoBehaviour
         }
         return false;
     }
-
-    /*public bool OnIntersect(List<Vector3Int> net)
-    {
-        
-    }*/
     #endregion
     #endregion
 }

@@ -15,7 +15,7 @@ MonoBehaviour:
   iD: 0
   pname: yes
   type: 3
-  networkRange: 3
+  networkRange: 2
   movePoints: 5
   attack: 10
   defense: 10

@@ -14,7 +14,7 @@ public class Hex : MonoBehaviour
     public Vector3Int HexCoords { get; set; }
     public bool HasPlayerOnIt { get; set; }
     public Unit PlayerRef { get; set; }
-    public Network CurrentNetwork { get => GetLocalNetwork(); }
+    public Network LocalNetwork { get => GetLocalNetwork(); }
     #endregion
 
     #region methodes
@@ -70,6 +70,14 @@ public class Hex : MonoBehaviour
     //Glow pour les boutons de sens de kapas
     public void EnableGlowButton() => glow.ToggleButtonGlow(true);
     public void DisableGlowButton() => glow.ToggleButtonGlow(false);
+
+    //Glow pour les base network
+    public void EnableGlowBaseNet() => glow.ToggleBaseNetGlow(true);
+    public void DisableGlowBaseNet() => glow.ToggleBaseNetGlow(false);
+
+    //Glow pour les dynamic network
+    public void EnableGlowDynaNet() => glow.ToggleDynaNetGlow(true);
+    public void DisableGlowDynaNet() => glow.ToggleDynaNetGlow(false);
     #endregion
     #endregion
 }
