@@ -27,6 +27,7 @@ public abstract class Unit : Entity, IUnit
     protected Vector3Int currentHexPos;
     public override bool IsNetworkEmiter { get; set; }
     public override int NetworkRange { get; set; }
+    public override List<Vector3Int> LocalNetwork { get; set; }
     #endregion
 
     protected NetworkSystem netSys;
