@@ -1,19 +1,28 @@
+using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameLoopManager : MonoBehaviour
 {
     #region fields
+    #region team inits
     [Range(0, 1, order = 1)][SerializeField] int firstTeamPlaying;
     int teamPlaying;
     public GameObject[] heroPlayer0;
     public GameObject[] heroPlayer1;
+    int[] countPlayer = new int[2];
+    #endregion
 
+    #region team inventory
     GameObject[][] playerList = new GameObject[2][];
     [HideInInspector] public int[] CompPoints;
+    [HideInInspector] public int[] TurretNumber;
+    #endregion
 
-    int[] countPlayer = new int[2];
-
+    //other fields
     [SerializeField] CameraMovement camM;
+    [SerializeField] List<TMP_Text> cPUI;
+    [SerializeField] List<TMP_Text> tNbUI;
 
     public static GameLoopManager gLM;
     #endregion
@@ -28,7 +37,10 @@ public class GameLoopManager : MonoBehaviour
         foreach (var i in heroPlayer1) { i.GetComponent<Unit>().TeamNumber = 1; }
         countPlayer = new[] { playerList[0].Length, playerList[1].Length };
         CompPoints = new int[2] { 0, 0 };
+        TurretNumber = new int[2] { 2, 2 };
         teamPlaying = firstTeamPlaying;
+        foreach (var i in cPUI) { i.text = 0.ToString(); }
+        foreach (var i in tNbUI) { i.text = 2.ToString(); }
     }
     void Start()
     {
@@ -71,6 +83,12 @@ public class GameLoopManager : MonoBehaviour
         }
 
         camM.OnFollowPlayer(playerList[teamPlaying][0].GetComponent<Unit>());
+    }
+
+    public void HandleCompPointValueChange(int teamNb, int pC)
+    {
+        CompPoints[teamNb] += pC;
+        cPUI[teamNb].text = CompPoints[teamNb].ToString();
     }
     #endregion
 }

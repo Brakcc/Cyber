@@ -25,10 +25,10 @@ public class Turret : Entity
         IsOnNetwork = true;
         NetworkRange = 2;
         HexGridStore.hGS.OnAddEmiter(this);
-        OnGenerateNewNetWorkForHexGridStore();
+        OnGenerateNet();
     }
 
-    protected void OnGenerateNewNetWorkForHexGridStore()
+    public override void OnGenerateNet()
     {
         if (IsIntersecting(CurrentHexPos, HexGridStore.hGS, NetworkRange, out List<Network> net))
         {

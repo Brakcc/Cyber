@@ -108,8 +108,7 @@ public class CKapaSO : AKapaSO
     #region cache
     void DoKapa(Unit unit)
     {
-        //AJOUTER LA LOGIQUE DE TEAM POUR BAISSER LES POINTS DE COMP COMMUNS
-        GameLoopManager.gLM.CompPoints[unit.TeamNumber] -= cKapaSupFields.neededCompPoints;
+        GameLoopManager.gLM.HandleCompPointValueChange(unit.TeamNumber, -cKapaSupFields.neededCompPoints);
         unit.UltPoints += cKapaSupFields.ultPointsAdded;
         //PlaceHolder à rempir avec les anims et considérations de dégâts
 

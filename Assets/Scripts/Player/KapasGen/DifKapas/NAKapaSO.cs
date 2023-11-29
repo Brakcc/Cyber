@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using static CKapaSO;
 
 [CreateAssetMenu(fileName = "Normal Attack Kapa", menuName = "Tactical/Kapas/Normal Attack")]
 public class NAKapaSO : AKapaSO
@@ -97,7 +98,7 @@ public class NAKapaSO : AKapaSO
     #region cache
     void DoKapa(Unit unit)
     {
-        GameLoopManager.gLM.CompPoints[unit.TeamNumber] += nAKapaSupFields.compPointsAdded;
+        GameLoopManager.gLM.HandleCompPointValueChange(unit.TeamNumber, nAKapaSupFields.compPointsAdded);
         unit.UltPoints += nAKapaSupFields.ultPointsAdded;
         CameraFunctions.OnShake(FindObjectOfType<CinemachineVirtualCamera>(), cam.shake);
         //PlaceHolder à rempir avec les anims et considérations de dégâts
