@@ -26,6 +26,7 @@ public class DPSUnit : Unit
     public override bool IsDead { get; set; }
     public override bool IsPersoLocked { get; set; }
     public override bool CanKapa { get; set; }
+    public override bool IsOnComputer { get; set; }
 
     [SerializeField] GraphInitUnit graphs;
     #endregion
@@ -59,7 +60,11 @@ public class DPSUnit : Unit
         base.Select();
         rend.color = Color.Lerp(Color.red, Color.yellow, 0.5f);
     }
-    public override void Deselect() => rend.color = originColor;
+    public override void Deselect()
+    {
+        base.Deselect();
+        rend.color = originColor;
+    }
     public override void OnKapa() => Debug.Log("Omegalul");
     #endregion
 }

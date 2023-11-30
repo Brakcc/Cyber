@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 [SelectionBase]
 public class Hex : MonoBehaviour
@@ -14,7 +15,7 @@ public class Hex : MonoBehaviour
     public Vector3Int HexCoords { get; set; }
     public bool HasEntityOnIt { get; set; }
     public Unit PlayerRef { get; set; }
-    public Network LocalNetwork { get => GetLocalNetwork(); }
+    public Network LocalNetwork { get => originNetwork; set { originNetwork = value; } }
     #endregion
 
     #region methodes
@@ -51,6 +52,7 @@ public class Hex : MonoBehaviour
     public void ClearUnit() => PlayerRef = null;
 
     public bool IsObstacle() => type == HexType.Obstacle || type == HexType.Hole;
+    public bool IsComputer() => type == HexType.Computer;
 
     //Init graph a ajouter pour ajouter les textures en sqrt(2) a 45° pour le passage des Units devant ou derrière les props
 

@@ -19,10 +19,15 @@ public class GameLoopManager : MonoBehaviour
     [HideInInspector] public int[] TurretNumber { get; set; }
     #endregion
 
+    //general objectif
+    public int ComputerNumber { get; set; }
+    [SerializeField] int maxObjectif;
+
     //other fields
     [SerializeField] CameraMovement camM;
     [SerializeField] List<TMP_Text> cPUI;
     [SerializeField] List<TMP_Text> tNbUI;
+    [SerializeField] TMP_Text computerText;
 
     public static GameLoopManager gLM;
     #endregion
@@ -39,8 +44,8 @@ public class GameLoopManager : MonoBehaviour
         CompPoints = new int[2] { 0, 0 };
         TurretNumber = new int[2] { 2, 2 };
         teamPlaying = firstTeamPlaying;
-        foreach (var i in cPUI) { i.text = 0.ToString(); }
-        foreach (var i in tNbUI) { i.text = 2.ToString(); }
+        foreach (var i in cPUI) { i.text = 0.ToString(); i.color = Color.red; }
+        foreach (var i in tNbUI) { i.text = 2.ToString(); i.color = Color.green; }
     }
     void Start()
     {
@@ -89,12 +94,22 @@ public class GameLoopManager : MonoBehaviour
     {
         CompPoints[teamNb] += pC;
         cPUI[teamNb].text = CompPoints[teamNb].ToString();
+        if (CompPoints[teamNb] > 0) { cPUI[teamNb].color = Color.green; }
     }
 
     public void HandleTurretUse(int teamNb)
     {
         TurretNumber[teamNb]--;
         tNbUI[teamNb].text = TurretNumber[teamNb].ToString();
+        if (TurretNumber[teamNb] == 0) { tNbUI[teamNb].color = Color.red; }
+    }
+
+    public void HandleComputerValueChange()
+    {
+        ComputerNumber++;
+        computerText.text = ComputerNumber.ToString();
+        //ajouter la fin du jeu d'urgence /!\
+        if (ComputerNumber == maxObjectif) { Time.timeScale = 0; }
     }
     #endregion
 }

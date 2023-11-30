@@ -11,6 +11,7 @@ public class HexGridStore: MonoBehaviour
 
     public List<Vector3Int>[] NetworkList {  get => networkList; set { networkList = value; } }
     List<Vector3Int>[] networkList = new List<Vector3Int>[(int)Network.None];
+    public int EmptySockets { get; set; }
 
     public static HexGridStore hGS;
     #endregion
@@ -49,12 +50,19 @@ public class HexGridStore: MonoBehaviour
     #region network params
     void OnInitNetwork()
     {
-        networkList = new List<Vector3Int>[(int)Network.None];
         for (int i = 0; i < networkList.Length; i++) { networkList[i] = new(); }
 
         foreach (var hex in FindObjectsOfType<Hex>())
         {
-            if (hex.LocalNetwork != Network.None) { networkList[(int)hex.LocalNetwork].Add(hex.HexCoords); hex.EnableGlowBaseNet(); } 
+            if (hex.LocalNetwork != Network.None)
+            {
+                networkList[(int)hex.LocalNetwork].Add(hex.HexCoords);
+                hex.EnableGlowBaseNet();
+            }
+        }
+        foreach (var i in networkList)
+        {
+            if (i.Count == 0 ) { EmptySockets++; }
         }
         
         foreach (Entity ent in FindObjectsOfType<Entity>())

@@ -20,6 +20,7 @@ public interface IUnit : IEntity
     public bool CanPlay { get; }
     public bool IsPersoLocked { get; }
     public bool CanKapa { get; }
+    public bool IsOnComputer { get; }
     #endregion
 
     #region methodes

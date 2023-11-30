@@ -71,6 +71,7 @@ public class GraphInitEntity
         //rend.sortingOrder = orderInLayer;
         //rend.color = color;
 
+        child.sortingOrder = orderInLayer;
         child.transform.localScale = new Vector3(1, Mathf.Sqrt(2), 1);
         child.transform.localEulerAngles = new(-45, 0);
         child.transform.localPosition = new Vector3(0, 0.6f, -child.size.y / 2);

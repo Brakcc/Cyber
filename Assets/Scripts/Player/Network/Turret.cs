@@ -20,6 +20,9 @@ public class Turret : Entity
         OnInit();
     }
 
+    /// <summary>
+    /// init a l'enable
+    /// </summary>
     protected override void OnInit()
     {
         base.OnInit();
@@ -29,38 +32,83 @@ public class Turret : Entity
         HexGridStore.hGS.OnAddEmiter(this);
         OnGenerateNet();
         graphInit.SetRenderer(gameObject);
+
+        foreach (var e in HexGridStore.hGS.emiters)
+        {
+            e.OnGenerateNet();
+        }
     }
 
+    /// <summary>
+    /// override de la OnGenNet de Entity avec list gen diff
+    /// </summary>
     public override void OnGenerateNet()
     {
-        if (IsIntersecting(CurrentHexPos, HexGridStore.hGS, NetworkRange, out List<Network> net))
+        IsIntersecting(CurrentHexPos, HexGridStore.hGS, NetworkRange, out List<Network> net);
+        GlobalNetwork = OnIntersect(CurrentHexPos, HexGridStore.hGS, NetworkRange, net);
+        
+
+        if (net.Count != 0)
         {
-            GlobalNetwork = OnIntersect(CurrentHexPos, HexGridStore.hGS, NetworkRange, net);
+            foreach (var i in net)
+            {
+                HexGridStore.hGS.NetworkList[(int)i].AddRange(GlobalNetwork);
+            }
+            foreach (var g in GlobalNetwork)
+            {
+                HexGridStore.hGS.GetTile(g).LocalNetwork = net[^1];
+            }
         }
-
-        if (net == null) return;
-
-        foreach (var i in net)
+        else
         {
-            HexGridStore.hGS.NetworkList[(int)i].AddRange(GlobalNetwork);
+            foreach (var g in GlobalNetwork)
+            {
+                HexGridStore.hGS.GetTile(g).LocalNetwork = (Network)HexGridStore.hGS.NetworkList.Length - HexGridStore.hGS.EmptySockets;
+            }
+            HexGridStore.hGS.EmptySockets--;
         }
     }
 
+    /// <summary>
+    /// Intersect les listes et gen les outlines specifiquement pour les tourelles
+    /// </summary>
+    /// <param name="pos"></param>
+    /// <param name="hexGrid"></param>
+    /// <param name="range"></param>
+    /// <param name="toMerge"></param>
+    /// <returns></returns>
     protected sealed override List<Vector3Int> OnIntersect(Vector3Int pos, HexGridStore hexGrid, int range, List<Network> toMerge)
     {
-        if (toMerge.Count == 0) { return null; }
-
         List<Vector3Int> newRange = GetRangeList(pos, hexGrid, range).ToList();
-        foreach (var i in toMerge)
-        {
-            foreach (var j in hexGrid.NetworkList[(int)i])
-            {
-                if (!newRange.Contains(j)) { newRange.Add(j); }
-            }
-        }
-        foreach (var l in newRange) { hexGrid.GetTile(l).EnableGlowBaseNet(); }
 
-        return newRange;
+        if (toMerge.Count == 0)
+        {
+
+            foreach (var l in newRange)
+            {
+                hexGrid.GetTile(l).EnableGlowBaseNet();
+            }
+
+            return newRange;
+        }
+
+        else
+        {
+            foreach (var i in toMerge)
+            {
+                foreach (var j in hexGrid.NetworkList[(int)i])
+                {
+                    if (!newRange.Contains(j)) { newRange.Add(j); }
+                }
+            }
+
+            foreach (var l in newRange)
+            {
+                hexGrid.GetTile(l).EnableGlowBaseNet();
+            }
+
+            return newRange;
+        }
     }
     #endregion
 }
