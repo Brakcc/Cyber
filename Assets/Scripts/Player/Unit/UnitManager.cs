@@ -490,7 +490,7 @@ public class UnitManager : MonoBehaviour
         foreach (GameObject u in GameObject.FindGameObjectsWithTag("Player"))
         {
             Hex h = hex.GetTile(u.GetComponent<Unit>().CurrentHexPos);
-            h.HasPlayerOnIt = true;
+            h.HasEntityOnIt = true;
             h.SetUnit(u.GetComponent<Unit>());
         }
     }
@@ -532,9 +532,9 @@ public class UnitManager : MonoBehaviour
     /// </summary>
     void ChargeNewUnitHexCoord()
     {
-        HexGridStore.hGS.GetTile(SelectedUnit.CurrentHexPos).HasPlayerOnIt = false;
+        HexGridStore.hGS.GetTile(SelectedUnit.CurrentHexPos).HasEntityOnIt = false;
         HexGridStore.hGS.GetTile(SelectedUnit.CurrentHexPos).ClearUnit();
-        previousSelectedHex.HasPlayerOnIt = true;
+        previousSelectedHex.HasEntityOnIt = true;
         previousSelectedHex.SetUnit(selectedUnit);
         SelectedUnit.CurrentHexPos = previousSelectedHex.HexCoords;
     }

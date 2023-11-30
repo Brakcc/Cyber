@@ -280,7 +280,7 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
         {
             //verif s'il y a joueur uniquemetn sur les case du pattern
             var h = hexGrid.GetTile(i);
-            if (!h.HasPlayerOnIt) continue;
+            if (!h.HasEntityOnIt) continue;
             var u = h.GetUnit();
 
             //retour départ boucle si Unit deja ded

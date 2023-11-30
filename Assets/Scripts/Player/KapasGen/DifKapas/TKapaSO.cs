@@ -7,57 +7,80 @@ public class TKapaSO : AKapaSO
 {
     #region inherited accessors
     public override string KapaName { get => kapaName; }
-    [SerializeField] private string kapaName;
+    [SerializeField] string kapaName;
     public override int ID { get => id; }
-    [SerializeField] private int id;
+    [SerializeField] int id;
     public override string Description { get => description; }
-    [SerializeField] private string description;
+    [SerializeField] string description;
     public override int Cost { get => 0; }
     public override int MaxPlayerPierce => 0;
     public override EffectType EffectType { get => EffectType.None; }
     public override KapaType KapaType { get => kapaType; }
-    [SerializeField] private KapaType kapaType;
+    [SerializeField] KapaType kapaType;
     public override KapaFunctionType KapaFunctionType { get => KapaFunctionType.Default; }
     public override KapaUISO KapaUI { get => kapaUI; }
-    [SerializeField] private KapaUISO kapaUI;
-    public override Vector3Int[] Patern { get => null; }
+    [SerializeField] KapaUISO kapaUI;
+    public override Vector3Int[] Patern { get => patern; }
+    [SerializeField] private Vector3Int[] patern;
+
+    [SerializeField] GameObject turret;
     #endregion
 
     #region inherited paterns/accessors
     //North tiles
-    public override Vector3Int[] OddNTiles { get => null; set { } }
-    public override Vector3Int[] EvenNTiles { get => null; set { } }
+    public override Vector3Int[] OddNTiles { get => oddNTiles; set { oddNTiles = value; } }
+    private Vector3Int[] oddNTiles;
+    public override Vector3Int[] EvenNTiles { get => evenNTiles; set { evenNTiles = value; } }
+    private Vector3Int[] evenNTiles;
 
     //EN tiles
-    public override Vector3Int[] OddENTiles { get => null; set { } }
-    public override Vector3Int[] EvenENTiles { get => null; set { } }
+    public override Vector3Int[] OddENTiles { get => oddENTiles; set { oddENTiles = value; } }
+    private Vector3Int[] oddENTiles;
+    public override Vector3Int[] EvenENTiles { get => evenENTiles; set { evenENTiles = value; } }
+    private Vector3Int[] evenENTiles;
 
     //ES tiles
-    public override Vector3Int[] OddESTiles { get => null; set { } }
-    public override Vector3Int[] EvenESTiles { get => null; set { } }
+    public override Vector3Int[] OddESTiles { get => oddESTiles; set { oddESTiles = value; } }
+    private Vector3Int[] oddESTiles;
+    public override Vector3Int[] EvenESTiles { get => evenESTiles; set { evenESTiles = value; } }
+    private Vector3Int[] evenESTiles;
 
     //S tiles
-    public override Vector3Int[] OddSTiles { get => null; set { } }
-    public override Vector3Int[] EvenSTiles { get => null; set { } }
+    public override Vector3Int[] OddSTiles { get => oddSTiles; set { oddSTiles = value; } }
+    private Vector3Int[] oddSTiles;
+    public override Vector3Int[] EvenSTiles { get => evenSTiles; set { evenSTiles = value; } }
+    private Vector3Int[] evenSTiles;
 
     //WS tiles
-    public override Vector3Int[] OddWSTiles { get => null; set { } }
-    public override Vector3Int[] EvenWSTiles { get => null; set { } }
+    public override Vector3Int[] OddWSTiles { get => oddWSTiles; set { oddWSTiles = value; } }
+    private Vector3Int[] oddWSTiles;
+    public override Vector3Int[] EvenWSTiles { get => evenWSTiles; set { evenWSTiles = value; } }
+    private Vector3Int[] evenWSTiles;
 
     //WN tiles
-    public override Vector3Int[] OddWNTiles { get => null; set { } }
-    public override Vector3Int[] EvenWNTiles { get => null; set { } }
+    public override Vector3Int[] OddWNTiles { get => oddWNTiles; set { oddWNTiles = value; } }
+    private Vector3Int[] oddWNTiles;
+    public override Vector3Int[] EvenWNTiles { get => evenWNTiles; set { evenWNTiles = value; } }
+    private Vector3Int[] evenWNTiles;
     #endregion
 
-    #region inherited methodes (rendues null)
-    public override bool OnCheckKapaPoints(Unit unit) => true;
+    #region inherited methodes
+    public override bool OnCheckKapaPoints(Unit unit) => GameLoopManager.gLM.TurretNumber[unit.TeamNumber] > 0;
 
-    public override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, Unit unit) { }
+    public override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, Unit unit)
+    {
+        if (GameLoopManager.gLM.TurretNumber[unit.TeamNumber] <= 0) return;
 
-    public override void InitPaterns(Vector3Int[] p) { }
+        Instantiate(turret, hexGrid.GetTile(pattern[0]).transform.position, Quaternion.identity, hexGrid.transform);
+        GameLoopManager.gLM.HandleTurretUse(unit.TeamNumber);
+        hexGrid.GetTile(pattern[0]).HasEntityOnIt = true;
 
-    public override List<Vector3Int> OnGenerateButton(HexGridStore hexGrid, Unit unit) => null;
+        OnDeselectTiles(hexGrid, pattern);
 
-    public override List<Vector3Int> OnSelectGraphTiles(Unit unit, HexGridStore hexGrid, Vector3Int[] tilesArray) => null;
+        foreach (var e in hexGrid.emiters)
+        {
+            e.OnGenerateNet();
+        }
+    }
     #endregion
 }

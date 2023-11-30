@@ -12,7 +12,7 @@ public class Hex : MonoBehaviour
 
     //la Data importante
     public Vector3Int HexCoords { get; set; }
-    public bool HasPlayerOnIt { get; set; }
+    public bool HasEntityOnIt { get; set; }
     public Unit PlayerRef { get; set; }
     public Network LocalNetwork { get => GetLocalNetwork(); }
     #endregion

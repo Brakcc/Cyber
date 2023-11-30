@@ -10,6 +10,8 @@ public class Turret : Entity
     public override bool IsOnNetwork { get; set; }
     public override int NetworkRange { get; set; }
     public override List<Vector3Int> GlobalNetwork { get; set; } = new();
+
+    [SerializeField] GraphInitEntity graphInit;
     #endregion
 
     #region methodes
@@ -26,6 +28,7 @@ public class Turret : Entity
         NetworkRange = 2;
         HexGridStore.hGS.OnAddEmiter(this);
         OnGenerateNet();
+        graphInit.SetRenderer(gameObject);
     }
 
     public override void OnGenerateNet()
@@ -39,7 +42,7 @@ public class Turret : Entity
 
         foreach (var i in net)
         {
-            HexGridStore.hGS.NetworkList[(int)i] = GlobalNetwork;
+            HexGridStore.hGS.NetworkList[(int)i].AddRange(GlobalNetwork);
         }
     }
 

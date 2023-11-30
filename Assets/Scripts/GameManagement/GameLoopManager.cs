@@ -15,8 +15,8 @@ public class GameLoopManager : MonoBehaviour
 
     #region team inventory
     GameObject[][] playerList = new GameObject[2][];
-    [HideInInspector] public int[] CompPoints;
-    [HideInInspector] public int[] TurretNumber;
+    [HideInInspector] public int[] CompPoints { get; set; }
+    [HideInInspector] public int[] TurretNumber { get; set; }
     #endregion
 
     //other fields
@@ -89,6 +89,12 @@ public class GameLoopManager : MonoBehaviour
     {
         CompPoints[teamNb] += pC;
         cPUI[teamNb].text = CompPoints[teamNb].ToString();
+    }
+
+    public void HandleTurretUse(int teamNb)
+    {
+        TurretNumber[teamNb]--;
+        tNbUI[teamNb].text = TurretNumber[teamNb].ToString();
     }
     #endregion
 }
