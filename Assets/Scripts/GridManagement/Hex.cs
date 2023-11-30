@@ -1,17 +1,20 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 [SelectionBase]
 public class Hex : MonoBehaviour
 {
     #region 
-    public HexType type;
+    [SerializeField] HexType type;
     [SerializeField] SelectGlow glow;
+
+    [SerializeField] Network originNetwork;
 
     //la Data importante
     public Vector3Int HexCoords { get; set; }
-    [SerializeField] Vector3Int coords;
-    public bool HasPlayerOnIt { get; set; }
+    public bool HasEntityOnIt { get; set; }
     public Unit PlayerRef { get; set; }
+    public Network LocalNetwork { get => GetLocalNetwork(); }
     #endregion
 
     #region methodes
@@ -19,7 +22,6 @@ public class Hex : MonoBehaviour
     {
         HexCoords = new HexCoordonnees(gameObject).OffsetCoordonnees;
         glow.SetHexaRefs();
-        coords = HexCoords;
     }
 
     /// <summary>
@@ -34,6 +36,15 @@ public class Hex : MonoBehaviour
         HexType.Hole => 1000,
         _ => 1000
     };
+
+    #region Network
+    Network GetLocalNetwork() => originNetwork;
+
+    //public void AddMixedNetwork(Network net) { MixedNetwork.Add(net); EnableGlowPath(); mixedNetwork = MixedNetwork; }
+    //public void AddMixedNetwork(List<Network> networks) { MixedNetwork.AddRange(networks); EnableGlowPath(); mixedNetwork = MixedNetwork; }
+
+    //public void ClearLMixedNetwork() { MixedNetwork.Clear(); DisableGlowPath(); }
+    #endregion
 
     public void SetUnit(Unit unit) => PlayerRef = unit;
     public Unit GetUnit() => PlayerRef;
@@ -59,6 +70,14 @@ public class Hex : MonoBehaviour
     //Glow pour les boutons de sens de kapas
     public void EnableGlowButton() => glow.ToggleButtonGlow(true);
     public void DisableGlowButton() => glow.ToggleButtonGlow(false);
+
+    //Glow pour les base network
+    public void EnableGlowBaseNet() => glow.ToggleBaseNetGlow(true);
+    public void DisableGlowBaseNet() => glow.ToggleBaseNetGlow(false);
+
+    //Glow pour les dynamic network
+    public void EnableGlowDynaNet() => glow.ToggleDynaNetGlow(true);
+    public void DisableGlowDynaNet() => glow.ToggleDynaNetGlow(false);
     #endregion
     #endregion
 }

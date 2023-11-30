@@ -5,21 +5,29 @@ public class DPSUnit : Unit
 {
     #region inherited accessors
     //moves fields 
-    [SerializeField] private AUnitSO m_Unit;
+    [SerializeField] AUnitSO m_Unit;
     public override AUnitSO UnitData { get => m_Unit; set { m_Unit = value; } }
 
+    [SerializeField] PlayerStatsUI m_StatsUI;
+    public override PlayerStatsUI StatUI { get => m_StatsUI; set { m_StatsUI = value; } }
+
     //Game Loop Logic BALEK LA VISIBILITE et BALEK LE SCRIPTABLE
-    public override float Health { get; set; }
+    #region current stats
+    public override float CurrentHealth { get; set; }
+    public override int CurrentMP { get; set; }
+    public override int CurrentAtk { get; set; }
+    public override int CurrentDef { get; set; }
+    public override int CurrentCritRate { get; set; }
+    #endregion
+    public override int TeamNumber { get; set; }
     public override bool IsOnTurret { get; set; }
-    public override int CompPoints { get; set; }
     public override int UltPoints { get; set; }
     public override bool CanPlay { get; set; }
     public override bool IsDead { get; set; }
     public override bool IsPersoLocked { get; set; }
-    public override Vector3Int CurrentHexPos { get => currentHexPos; set { currentHexPos = value; } }
-    private Vector3Int currentHexPos;
+    public override bool CanKapa { get; set; }
 
-    [SerializeField] private GraphInitUnit graphs;
+    [SerializeField] GraphInitUnit graphs;
     #endregion
 
     #region other fields
@@ -32,22 +40,11 @@ public class DPSUnit : Unit
     void Awake() 
     {
         graphs.SetRenderer(gameObject, m_Unit.Sprite);
-        currentHexPos = HexCoordonnees.GetClosestHex(transform.position);
         //Pour que cette ligne fonctionne, il ne faut qu'aucun autre renderer ne soit sur l'objet
         //Donc suprimer celui qui est de base sur le Bob
         rend = GetComponentInChildren<SpriteRenderer>();
-        InitPlayer();
-    }
-
-    void InitPlayer()
-    {
         originColor = rend.color;
-        CanPlay = true;
-        IsDead = false;
-        IsPersoLocked = false;
-        IsOnTurret = false;
-        CompPoints = 0;
-        Health = UnitData.HealthPoint;
+        OnInit();
     }
 
     void Start()
@@ -57,7 +54,11 @@ public class DPSUnit : Unit
     #endregion
 
     #region inherited methodes
-    public override void Select() => rend.color = Color.Lerp(Color.red, Color.yellow, 0.5f);
+    public override void Select()
+    {
+        base.Select();
+        rend.color = Color.Lerp(Color.red, Color.yellow, 0.5f);
+    }
     public override void Deselect() => rend.color = originColor;
     public override void OnKapa() => Debug.Log("Omegalul");
     #endregion

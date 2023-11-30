@@ -1,33 +1,50 @@
-using Cinemachine;
-using System.Threading.Tasks;
+using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameLoopManager : MonoBehaviour
 {
     #region fields
+    #region team inits
     [Range(0, 1, order = 1)][SerializeField] int firstTeamPlaying;
     int teamPlaying;
-    [SerializeField] GameObject[] heroPlayer1;
-    [SerializeField] GameObject[] heroPlayer2;
-
-    GameObject[][] playerList = new GameObject[2][];
-
+    public GameObject[] heroPlayer0;
+    public GameObject[] heroPlayer1;
     int[] countPlayer = new int[2];
+    #endregion
 
+    #region team inventory
+    GameObject[][] playerList = new GameObject[2][];
+    [HideInInspector] public int[] CompPoints { get; set; }
+    [HideInInspector] public int[] TurretNumber { get; set; }
+    #endregion
+
+    //other fields
     [SerializeField] CameraMovement camM;
+    [SerializeField] List<TMP_Text> cPUI;
+    [SerializeField] List<TMP_Text> tNbUI;
+
+    public static GameLoopManager gLM;
     #endregion
 
     #region methodes
     void Awake()
     {
-        playerList = new[] { heroPlayer1, heroPlayer2 };
+        gLM = this;
+
+        playerList = new[] { heroPlayer0, heroPlayer1 };
+        foreach (var i in heroPlayer0) { i.GetComponent<Unit>().TeamNumber = 0; }
+        foreach (var i in heroPlayer1) { i.GetComponent<Unit>().TeamNumber = 1; }
         countPlayer = new[] { playerList[0].Length, playerList[1].Length };
+        CompPoints = new int[2] { 0, 0 };
+        TurretNumber = new int[2] { 2, 2 };
         teamPlaying = firstTeamPlaying;
+        foreach (var i in cPUI) { i.text = 0.ToString(); }
+        foreach (var i in tNbUI) { i.text = 2.ToString(); }
     }
     void Start()
     {
         InitTeam(teamPlaying);
-        UnTeam(teamPlaying == 1? 0 : 1);
     }
 
     /// <summary>
@@ -68,19 +85,16 @@ public class GameLoopManager : MonoBehaviour
         camM.OnFollowPlayer(playerList[teamPlaying][0].GetComponent<Unit>());
     }
 
-    /// <summary>
-    /// UNIQUEMENT APPELEE EN DEBUT DE JEU. Permet de deselectionner d'office les persos de l'equipe
-    /// qui ne commence pas. N'est plus appelé après ca
-    /// </summary>
-    /// <param name="i"></param>
-    void UnTeam(int i)
+    public void HandleCompPointValueChange(int teamNb, int pC)
     {
-        foreach (var player in playerList[i])
-        {
-            var u = player.GetComponent<Unit>();
-            u.CanPlay = false;
-            countPlayer[i]--;
-        }
+        CompPoints[teamNb] += pC;
+        cPUI[teamNb].text = CompPoints[teamNb].ToString();
+    }
+
+    public void HandleTurretUse(int teamNb)
+    {
+        TurretNumber[teamNb]--;
+        tNbUI[teamNb].text = TurretNumber[teamNb].ToString();
     }
     #endregion
 }

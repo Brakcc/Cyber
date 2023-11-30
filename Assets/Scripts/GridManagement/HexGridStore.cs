@@ -6,12 +6,22 @@ public class HexGridStore: MonoBehaviour
     #region fields
     public Dictionary<Vector3Int, Hex> hexTiles = new();
     private readonly Dictionary<Vector3Int, List<Vector3Int>> neighbourgs = new();
+
+    [HideInInspector] public List<Entity> emiters = new();
+
+    public List<Vector3Int>[] NetworkList {  get => networkList; set { networkList = value; } }
+    List<Vector3Int>[] networkList = new List<Vector3Int>[(int)Network.None];
+
+    public static HexGridStore hGS;
     #endregion
 
     #region methodes
+    void Awake() => hGS = this;
+
     void Start()
     {
         foreach (Hex hex in FindObjectsOfType<Hex>()) { hexTiles[hex.HexCoords] = hex; }
+        OnInitNetwork();
     }
 
     public Hex GetTile(Vector3Int hexCoords)
@@ -35,5 +45,61 @@ public class HexGridStore: MonoBehaviour
 
         return neighbourgs[coords];
     }
+
+    #region network params
+    void OnInitNetwork()
+    {
+        networkList = new List<Vector3Int>[(int)Network.None];
+        for (int i = 0; i < networkList.Length; i++) { networkList[i] = new(); }
+
+        foreach (var hex in FindObjectsOfType<Hex>())
+        {
+            if (hex.LocalNetwork != Network.None) { networkList[(int)hex.LocalNetwork].Add(hex.HexCoords); hex.EnableGlowBaseNet(); } 
+        }
+        
+        foreach (Entity ent in FindObjectsOfType<Entity>())
+        {
+            if (ent.IsNetworkEmiter) emiters.Add(ent);
+        }
+    }
+
+
+    public void OnAddEmiter(Entity ent) => emiters.Add(ent);
+
+    public void OnDelEmiter(Entity ent)
+    {
+        if (emiters == null) return;
+        emiters.Remove(ent);
+    }
+
+    public void OnAddToNetwork(Network net, IEnumerable<Vector3Int> newNet) => networkList[(int)net].AddRange(newNet);
+    public void OnAddToNetwork(Network net, Vector3Int newNet) => networkList[(int)net].Add(newNet);
+
+    public void OnDelFromNetwork(Network net, List<Vector3Int> oldNet)
+    {
+        foreach (var i in oldNet) { networkList[(int)net].Remove(i); }
+    }
+    public void OnDelFromNetwork(Network net, Vector3Int oldNet) => networkList[(int)net].Remove(oldNet);
+
+    public List<Vector3Int> GetNetwork(Vector3Int pos)
+    {
+        List<Vector3Int> allNet = new();
+        foreach (var net in networkList)
+        {
+            if (net.Contains(pos)) { allNet.AddRange(net); }
+        }
+        return allNet;
+    }
+
+    public bool IsOnNetwork(Vector3Int pos, Network net) => networkList[(int)net].Contains(pos);
+    public bool IsOnNetwork(Vector3Int pos)
+    {
+        foreach (var i in networkList)
+        {
+            if (i.Contains(pos)) { return true; }
+        }
+        return false;
+    }
+    #endregion
     #endregion
 }

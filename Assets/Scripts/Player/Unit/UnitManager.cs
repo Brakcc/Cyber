@@ -6,9 +6,7 @@ using System.Collections.Generic;
 public class UnitManager : MonoBehaviour
 {
     #region fields
-    HexGridStore hexGrid;
     MoveSystem moveSys;
-    GameLoopManager glManager;
 
     //Unit currently stored
     Unit selectedUnit;
@@ -38,15 +36,13 @@ public class UnitManager : MonoBehaviour
     {
         unitManager = this;
         moveSys = new();
-        hexGrid = GetComponent<HexGridStore>();
-        glManager = GetComponent<GameLoopManager>();
         selectedUnit = null;
         previousSelectedHex = null;
         CurrentTypeKapaSelected = KapaType.Default;
         IsKapaSelected = false;
         CurrentKapaPaternPos = null;
         CurrentButtonPos = null;
-        Init(hexGrid);
+        Init(HexGridStore.hGS);
     }
     #endregion
 
@@ -98,12 +94,12 @@ public class UnitManager : MonoBehaviour
     /// <param name="unitRef"></param>
     void PrepareUnitForMove(Unit unitRef)
     {
-        if (IsKapaSelected && IsKapaDirSelected) { unitRef.UnitData.KapasList[(int)CurrentTypeKapaSelected].OnDeselectTiles(hexGrid, CurrentKapaPaternPos); }
+        if (IsKapaSelected && IsKapaDirSelected) { unitRef.UnitData.KapasList[(int)CurrentTypeKapaSelected].OnDeselectTiles(HexGridStore.hGS, CurrentKapaPaternPos); }
         if (selectedUnit != null && !IsKapaSelected) { ClearOldSelection(); ResetKapaData(); }
         
         selectedUnit = unitRef;
         selectedUnit.Select();
-        moveSys.ShowRange(selectedUnit, hexGrid);
+        moveSys.ShowRange(selectedUnit, HexGridStore.hGS);
     }
 
     /// <summary>
@@ -116,12 +112,12 @@ public class UnitManager : MonoBehaviour
         if (previousSelectedHex == null || previousSelectedHex != selects)
         {
             previousSelectedHex = selects;
-            moveSys.ShowPath(selects.HexCoords, hexGrid);
+            moveSys.ShowPath(selects.HexCoords, HexGridStore.hGS);
         }
         else
         {
             ChargeNewUnitHexCoord();
-            moveSys.MoveUnit(selectedUnit, hexGrid);
+            moveSys.MoveUnit(selectedUnit, HexGridStore.hGS);
             //PlayerTurn = false; trouver une autre methode pour bloquer le joueur en listant l'ensemble des units
             // Ici on utilise pas le ClearOldSelection pour ne pas reset l'Unit Selected, On veut Lock l'Unit pour la phase de Capa
             ClearGraphKeepUnit();
@@ -152,7 +148,7 @@ public class UnitManager : MonoBehaviour
     /// <param name="unit"></param>
     /// <param name="hexGrid"></param>
     /// <returns></returns>
-    List<Vector3Int> GenerateButtonPos(Unit unit, HexGridStore hexGrid, AKapaSO kapa) => kapa.OnGenerateButton(hexGrid, unit);
+    List<Vector3Int> GenerateButtonPos(Unit unit, HexGridStore hexGrid, AKapaSO kapa) => kapa.OnGenerateButton(HexGridStore.hGS, unit);
 
     /// <summary>
     /// Basé sur la pos du l'unit et celle de la tile cliquée, on trace un VECTEUR entre la tile et la selectedUnit pour connaitre la dir selon la parité
@@ -172,13 +168,13 @@ public class UnitManager : MonoBehaviour
         {
             if (SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].OnCheckKapaPoints(SelectedUnit))
             {
-                SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].OnExecute(hexGrid, CurrentKapaPaternPos, SelectedUnit);
+                SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].OnExecute(HexGridStore.hGS, CurrentKapaPaternPos, SelectedUnit);
                 FullResetKapAndPlayer();
                 return;
             }
         }
 
-        if (IsKapaDirSelected) { unitRef.UnitData.KapasList[(int)CurrentTypeKapaSelected].OnDeselectTiles(hexGrid, CurrentKapaPaternPos); }
+        if (IsKapaDirSelected) { unitRef.UnitData.KapasList[(int)CurrentTypeKapaSelected].OnDeselectTiles(HexGridStore.hGS, CurrentKapaPaternPos); }
         if (Direction.IsPariryEven(unitRef.CurrentHexPos.x))
         {
             CurrentKapaPaternPos = HandleKapaEvenDirPaternGen(dir, unitRef);
@@ -202,12 +198,12 @@ public class UnitManager : MonoBehaviour
         AKapaSO tempKapa = unit.UnitData.KapasList[(int)CurrentTypeKapaSelected];
         return (dir.x, dir.y, dir.z) switch
         {
-            (0, 1, 0) => tempKapa.OnSelectGraphTiles(unit, hexGrid, tempKapa.OddNTiles),
-            (1, 0, 0) => tempKapa.OnSelectGraphTiles(unit, hexGrid, tempKapa.OddENTiles),
-            (1, -1, 0) => tempKapa.OnSelectGraphTiles(unit, hexGrid, tempKapa.OddESTiles),
-            (0, -1, 0) => tempKapa.OnSelectGraphTiles(unit, hexGrid, tempKapa.OddSTiles),
-            (-1, -1, 0) => tempKapa.OnSelectGraphTiles(unit, hexGrid, tempKapa.OddWSTiles),
-            (-1, 0, 0) => tempKapa.OnSelectGraphTiles(unit, hexGrid, tempKapa.OddWNTiles),
+            (0, 1, 0) => tempKapa.OnSelectGraphTiles(unit, HexGridStore.hGS, tempKapa.OddNTiles),
+            (1, 0, 0) => tempKapa.OnSelectGraphTiles(unit, HexGridStore.hGS, tempKapa.OddENTiles),
+            (1, -1, 0) => tempKapa.OnSelectGraphTiles(unit, HexGridStore.hGS, tempKapa.OddESTiles),
+            (0, -1, 0) => tempKapa.OnSelectGraphTiles(unit, HexGridStore.hGS, tempKapa.OddSTiles),
+            (-1, -1, 0) => tempKapa.OnSelectGraphTiles(unit, HexGridStore.hGS, tempKapa.OddWSTiles),
+            (-1, 0, 0) => tempKapa.OnSelectGraphTiles(unit, HexGridStore.hGS, tempKapa.OddWNTiles),
             _ => new()
         };
     }
@@ -222,12 +218,12 @@ public class UnitManager : MonoBehaviour
         AKapaSO tempKapa = unit.UnitData.KapasList[(int)CurrentTypeKapaSelected];
         return (dir.x, dir.y, dir.z) switch
         {
-            (0, 1, 0) => tempKapa.OnSelectGraphTiles(unit, hexGrid, tempKapa.EvenNTiles),
-            (1, 1, 0) => tempKapa.OnSelectGraphTiles(unit, hexGrid, tempKapa.EvenENTiles),
-            (1, 0, 0) => tempKapa.OnSelectGraphTiles(unit, hexGrid, tempKapa.EvenESTiles),
-            (0, -1, 0) => tempKapa.OnSelectGraphTiles(unit, hexGrid, tempKapa.EvenSTiles),
-            (-1, 0, 0) => tempKapa.OnSelectGraphTiles(unit, hexGrid, tempKapa.EvenWSTiles),
-            (-1, 1, 0) => tempKapa.OnSelectGraphTiles(unit, hexGrid, tempKapa.EvenWNTiles),
+            (0, 1, 0) => tempKapa.OnSelectGraphTiles(unit, HexGridStore.hGS, tempKapa.EvenNTiles),
+            (1, 1, 0) => tempKapa.OnSelectGraphTiles(unit, HexGridStore.hGS, tempKapa.EvenENTiles),
+            (1, 0, 0) => tempKapa.OnSelectGraphTiles(unit, HexGridStore.hGS, tempKapa.EvenESTiles),
+            (0, -1, 0) => tempKapa.OnSelectGraphTiles(unit, HexGridStore.hGS, tempKapa.EvenSTiles),
+            (-1, 0, 0) => tempKapa.OnSelectGraphTiles(unit, HexGridStore.hGS, tempKapa.EvenWSTiles),
+            (-1, 1, 0) => tempKapa.OnSelectGraphTiles(unit, HexGridStore.hGS, tempKapa.EvenWNTiles),
             _ => new()
         };
     }
@@ -241,12 +237,13 @@ public class UnitManager : MonoBehaviour
     public void HandleKapaSelect(int i)
     {
         if (selectedUnit == null) return;
+        if (!selectedUnit.CanKapa) return;
 
         KapaType type = SelectedUnit.UnitData.KapasList[i].KapaType;
         AKapaSO kapa = SelectedUnit.UnitData.KapasList[i];
 
         //si switch sur autre Kapa
-        if (CurrentTypeKapaSelected != KapaType.Default && IsKapaDirSelected) kapa.OnDeselectTiles(hexGrid, CurrentKapaPaternPos);
+        if (CurrentTypeKapaSelected != KapaType.Default && IsKapaDirSelected) kapa.OnDeselectTiles(HexGridStore.hGS, CurrentKapaPaternPos);
         //supprimer l'outline de range 
         if (!IsKapaSelected && !SelectedUnit.IsPersoLocked) ClearGraphKeepUnit();
 
@@ -258,11 +255,11 @@ public class UnitManager : MonoBehaviour
                 try
                 {
                     HideButtons(CurrentButtonPos);
-                    CurrentButtonPos = GenerateButtonPos(SelectedUnit, hexGrid, kapa);
+                    CurrentButtonPos = GenerateButtonPos(SelectedUnit, HexGridStore.hGS, kapa);
                 }
                 catch
                 {
-                    CurrentButtonPos = GenerateButtonPos(SelectedUnit, hexGrid, kapa);
+                    CurrentButtonPos = GenerateButtonPos(SelectedUnit, HexGridStore.hGS, kapa);
                 }
             }
             CurrentTypeKapaSelected = type;
@@ -277,7 +274,7 @@ public class UnitManager : MonoBehaviour
         {
             if (SelectedUnit.UnitData.KapasList[i].OnCheckKapaPoints(SelectedUnit)) 
             {
-                SelectedUnit.UnitData.KapasList[i].OnExecute(hexGrid, CurrentKapaPaternPos, SelectedUnit);
+                SelectedUnit.UnitData.KapasList[i].OnExecute(HexGridStore.hGS, CurrentKapaPaternPos, SelectedUnit);
                 FullResetKapAndPlayer();
             }
         }
@@ -291,7 +288,7 @@ public class UnitManager : MonoBehaviour
     void ShowButtons(List<Vector3Int> butPos)
     {
         if (butPos != null)
-        foreach (var i in butPos) { var j = hexGrid.GetTile(i); j.EnableGlowButton(); }
+        foreach (var i in butPos) { var j = HexGridStore.hGS.GetTile(i); j.EnableGlowButton(); }
     }
     /// <summary>
     /// simple boucle de DESAFFICHAGE GRAPH SEULEMENT des boutons autour d'une Unit
@@ -300,7 +297,7 @@ public class UnitManager : MonoBehaviour
     void HideButtons(List<Vector3Int> butPos)
     {
         if (butPos == null) return;
-        foreach (var i in butPos) { var j = hexGrid.GetTile(i); j.DisableGlowButton(); }
+        foreach (var i in butPos) { var j = HexGridStore.hGS.GetTile(i); j.DisableGlowButton(); }
     }
     #endregion
 
@@ -343,7 +340,7 @@ public class UnitManager : MonoBehaviour
         SelectedUnit.CanPlay = false;
         SelectedUnit = null;
         //GameLoop reset
-        glManager.OnPlayerAction();
+        GameLoopManager.gLM.OnPlayerAction();
     }
     #endregion
     #endregion
@@ -372,7 +369,7 @@ public class UnitManager : MonoBehaviour
             }
             else
             {
-                if (IsKapaDirSelected) { SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].OnDeselectTiles(hexGrid, CurrentKapaPaternPos); }
+                if (IsKapaDirSelected) { SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].OnDeselectTiles(HexGridStore.hGS, CurrentKapaPaternPos); }
                 ClearDataSelectionAvoidRange();
                 ResetKapaData();
                 return false;
@@ -395,7 +392,7 @@ public class UnitManager : MonoBehaviour
             }
             else
             {
-                if (IsKapaDirSelected) { SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].OnDeselectTiles(hexGrid, CurrentKapaPaternPos); }
+                if (IsKapaDirSelected) { SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].OnDeselectTiles(HexGridStore.hGS, CurrentKapaPaternPos); }
                 ClearDataSelectionAvoidRange();
                 ResetKapaData();
                 return false;
@@ -493,7 +490,7 @@ public class UnitManager : MonoBehaviour
         foreach (GameObject u in GameObject.FindGameObjectsWithTag("Player"))
         {
             Hex h = hex.GetTile(u.GetComponent<Unit>().CurrentHexPos);
-            h.HasPlayerOnIt = true;
+            h.HasEntityOnIt = true;
             h.SetUnit(u.GetComponent<Unit>());
         }
     }
@@ -507,7 +504,7 @@ public class UnitManager : MonoBehaviour
     {
         previousSelectedHex = null;
         SelectedUnit.Deselect();
-        moveSys.HideRange(hexGrid);
+        moveSys.HideRange(HexGridStore.hGS);
         selectedUnit = null;
     }
 
@@ -527,7 +524,7 @@ public class UnitManager : MonoBehaviour
     void ClearGraphKeepUnit()
     {
         previousSelectedHex = null;
-        moveSys.HideRange(hexGrid);
+        moveSys.HideRange(HexGridStore.hGS);
     }
 
     /// <summary>
@@ -535,9 +532,9 @@ public class UnitManager : MonoBehaviour
     /// </summary>
     void ChargeNewUnitHexCoord()
     {
-        hexGrid.GetTile(SelectedUnit.CurrentHexPos).HasPlayerOnIt = false;
-        hexGrid.GetTile(SelectedUnit.CurrentHexPos).ClearUnit();
-        previousSelectedHex.HasPlayerOnIt = true;
+        HexGridStore.hGS.GetTile(SelectedUnit.CurrentHexPos).HasEntityOnIt = false;
+        HexGridStore.hGS.GetTile(SelectedUnit.CurrentHexPos).ClearUnit();
+        previousSelectedHex.HasEntityOnIt = true;
         previousSelectedHex.SetUnit(selectedUnit);
         SelectedUnit.CurrentHexPos = previousSelectedHex.HexCoords;
     }

@@ -29,7 +29,7 @@ public class PathFind
             foreach (Vector3Int adjPos in hexGrid.GetNeighbourgs(currentNode))
             {
                 var h = hexGrid.GetTile(adjPos);
-                if (h.IsObstacle() || h.HasPlayerOnIt) continue;
+                if (h.IsObstacle() || h.HasEntityOnIt) continue;
 
                 int nodeCost = h.GetValue();
                 int currentCost = totalCost[currentNode];
@@ -189,7 +189,7 @@ public class PathFind
                 current = proNodes[current].Value;
                 continue;
             }
-            if (!hG.GetTile(proNodes[current].Value).HasPlayerOnIt)
+            if (!hG.GetTile(proNodes[current].Value).HasEntityOnIt)
             {
                 path.Add(proNodes[current].Value);
             }
@@ -240,5 +240,9 @@ public struct PathResult
 
     public readonly bool IsHexPosInRange(Vector3Int pos) => calculatedNodes.ContainsKey(pos);
 
+    /// <summary>
+    /// Enumerable des positions calculees dans la range d'un pathFind
+    /// </summary>
+    /// <returns></returns>
     public readonly IEnumerable<Vector3Int> GetRangePositions() => calculatedNodes.Keys;
 }

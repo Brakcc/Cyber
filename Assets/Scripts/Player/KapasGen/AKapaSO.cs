@@ -280,19 +280,21 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
         {
             //verif s'il y a joueur uniquemetn sur les case du pattern
             var h = hexGrid.GetTile(i);
-            if (!h.HasPlayerOnIt) continue;
+            if (!h.HasEntityOnIt) continue;
             var u = h.GetUnit();
 
             //retour départ boucle si Unit deja ded
             if (u.IsDead) continue;
 
             //verif quelle fonction de degats utiliser selon le type de perso
-            if (u.UnitData.Type == UnitType.Hacker) u.Health -= Damage.HackerDamage(unit.UnitData.Attack);
-            else u.Health -= Damage.NormalDamage(unit.UnitData.Attack, unit.UnitData.Defense);
+            if (u.UnitData.Type == UnitType.Hacker) u.CurrentHealth -= Damage.HackerDamage(unit.UnitData.Attack);
+            else u.CurrentHealth -= Damage.NormalDamage(unit.UnitData.Attack, unit.UnitData.Defense);
+
+            //set new UI
+            u.StatUI.SetHP(u);
 
             //Kill si Unit a plus de vie
-            Debug.Log(u.Health);
-            if (u.Health <= 0 ) { u.OnDie(); }
+            if (u.CurrentHealth <= 0 ) { u.OnDie(); }
         }
 
         OnDeselectTiles(hexGrid, pattern);

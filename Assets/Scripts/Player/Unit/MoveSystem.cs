@@ -5,8 +5,8 @@ using UnityEngine;
 public class MoveSystem
 {
     #region fields
-    private PathResult moveRange = new();
-    private List<Vector3Int> currentPath = new();
+    PathResult moveRange = new();
+    List<Vector3Int> currentPath = new();
     #endregion
 
     #region methodes

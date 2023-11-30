@@ -10,6 +10,8 @@ public class SelectGlow
     bool isPathGlowing;
     bool isButtonGlowing;
     bool isKapaGlowing;
+    bool isBaseNetGlowing;
+    bool isDynaNetGlowing;
 
     /// <summary>
     /// Ensemble des Tiles des reférences en enfant d'un Hex pour modifs les renderTex
@@ -21,6 +23,8 @@ public class SelectGlow
         public SpriteRenderer pathSelect;
         public SpriteRenderer buttonsKapa;
         public SpriteRenderer kapaSelect;
+        public SpriteRenderer baseNetwork;
+        public SpriteRenderer dynamicNetwork;
     }
     /// <summary>
     /// Ensemble des couleurs dispos pour les différents types de Glow
@@ -32,6 +36,8 @@ public class SelectGlow
         public Color selectedPathColor;
         public Color selectedKapaColor;
         public Color selectedKapaColorButton;
+        public Color selectedBaseNetwork;
+        public Color selectedDynamicNetwork;
     }
     #endregion
 
@@ -45,6 +51,8 @@ public class SelectGlow
         hexaRefs.pathSelect.enabled = false;
         hexaRefs.buttonsKapa.enabled = false;
         hexaRefs.kapaSelect.enabled = false;
+        hexaRefs.baseNetwork.enabled = false;
+        hexaRefs.dynamicNetwork.enabled = false;
     }
 
     #region range glow
@@ -124,6 +132,46 @@ public class SelectGlow
         if (isKapaGlowing == b) return;
         isKapaGlowing = !b;
         ToggleKapa();
+    }
+    #endregion
+
+    #region Base network glow
+    void ToggleBaseNet()
+    {
+        if (!isBaseNetGlowing) { hexaRefs.baseNetwork.enabled = true; }
+        else { hexaRefs.baseNetwork.enabled = false; }
+
+        isBaseNetGlowing = !isBaseNetGlowing;
+    }
+    /// <summary>
+    /// active ou desactive le glow des kapas par dessus celui des boutons
+    /// </summary>
+    /// <param name="b"></param>
+    public void ToggleBaseNetGlow(bool b)
+    {
+        if (isBaseNetGlowing == b) return;
+        isBaseNetGlowing = !b;
+        ToggleBaseNet();
+    }
+    #endregion
+
+    #region Dynamic network glow
+    void ToggleDynaNet()
+    {
+        if (!isDynaNetGlowing) { hexaRefs.dynamicNetwork.enabled = true; }
+        else { hexaRefs.dynamicNetwork.enabled = false; }
+
+        isDynaNetGlowing = !isDynaNetGlowing;
+    }
+    /// <summary>
+    /// active ou desactive le glow des kapas par dessus celui des boutons
+    /// </summary>
+    /// <param name="b"></param>
+    public void ToggleDynaNetGlow(bool b)
+    {
+        if (isDynaNetGlowing == b) return;
+        isDynaNetGlowing = !b;
+        ToggleDynaNet();
     }
     #endregion
     #endregion

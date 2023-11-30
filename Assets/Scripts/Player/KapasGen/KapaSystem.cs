@@ -4,10 +4,10 @@ using UnityEngine;
 public class KapaSystem
 {
     #region fields
-    private PathResult kapaRange = new();
-    private PathResult perfectRange = new();
-    private List<Vector3Int> activeTiles = new();
-    private List<Vector3Int> perfectTiles = new();
+    PathResult kapaRange = new();
+    PathResult perfectRange = new();
+    List<Vector3Int> activeTiles = new();
+    List<Vector3Int> perfectTiles = new();
     #endregion
 
     #region methodes
