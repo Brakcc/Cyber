@@ -26,6 +26,6 @@ MonoBehaviour:
   kapasList:
   - {fileID: 11400000, guid: c491a16f8ecd915468488ba91d2e0181, type: 2}
   - {fileID: 11400000, guid: 81abfd05be151f24dae4f6e7f2d66074, type: 2}
-  - {fileID: 11400000, guid: a814e9b491df7d540a98b5c42fc7659e, type: 2}
+  - {fileID: 11400000, guid: db50d6b8bede33a4a8245242d7808f04, type: 2}
   - {fileID: 11400000, guid: 8ab20df95205ef04384187b6e432f9bc, type: 2}
   - {fileID: 11400000, guid: 0d61fc820e8ffd74f8bb40bc8803f728, type: 2}

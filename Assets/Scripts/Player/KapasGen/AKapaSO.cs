@@ -291,7 +291,10 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
 
             //verif quelle fonction de degats utiliser selon le type de perso
             if (u.UnitData.Type == UnitType.Hacker) u.CurrentHealth -= Damage.HackerDamage(unit.UnitData.Attack);
-            else u.CurrentHealth -= Damage.NormalDamage(unit.UnitData.Attack, unit.UnitData.Defense);
+            else
+            {
+                u.CurrentHealth -= Damage.NormalDamage(unit.UnitData.Attack, unit.UnitData.Defense);
+            }
 
             //set new UI
             u.StatUI.SetHP(u);

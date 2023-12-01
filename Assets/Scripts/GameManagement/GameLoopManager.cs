@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class GameLoopManager : MonoBehaviour
@@ -27,7 +28,7 @@ public class GameLoopManager : MonoBehaviour
     [SerializeField] CameraMovement camM;
     [SerializeField] List<TMP_Text> cPUI;
     [SerializeField] List<TMP_Text> tNbUI;
-    [SerializeField] TMP_Text computerText;
+    [SerializeField] Image[] computerUI;
 
     public static GameLoopManager gLM;
     #endregion
@@ -46,6 +47,7 @@ public class GameLoopManager : MonoBehaviour
         teamPlaying = firstTeamPlaying;
         foreach (var i in cPUI) { i.text = 0.ToString(); i.color = Color.red; }
         foreach (var i in tNbUI) { i.text = 2.ToString(); i.color = Color.green; }
+        foreach (var i in computerUI) { i.color = Color.red; }
     }
     void Start()
     {
@@ -107,7 +109,7 @@ public class GameLoopManager : MonoBehaviour
     public void HandleComputerValueChange()
     {
         ComputerNumber++;
-        computerText.text = ComputerNumber.ToString();
+        computerUI[ComputerNumber - 1].color = Color.green;
         //ajouter la fin du jeu d'urgence /!\
         if (ComputerNumber == maxObjectif) { Time.timeScale = 0; }
     }

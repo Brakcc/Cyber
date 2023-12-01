@@ -1788,6 +1788,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
@@ -3140,6 +3144,10 @@ PrefabInstance:
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: type
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: glow.glowMat
@@ -13813,6 +13821,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
@@ -15700,6 +15712,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2933498176978962826, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
   m_PrefabInstance: {fileID: 34211608}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1096194843 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8436578887426169338, guid: 3c13ea9b3c23ebd4da98ff1da3e9631f, type: 3}
+  m_PrefabInstance: {fileID: 3985531609310562578}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1103386842 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2933498176978962826, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
@@ -17923,6 +17946,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
@@ -18033,6 +18060,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+--- !u!114 &1325398852 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1406162861944819528, guid: 3c13ea9b3c23ebd4da98ff1da3e9631f, type: 3}
+  m_PrefabInstance: {fileID: 3985531609310562578}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1325599681 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2933498176978962826, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
@@ -18122,6 +18160,10 @@ PrefabInstance:
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: type
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: glow.glowMat
@@ -24425,6 +24467,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
@@ -29411,6 +29457,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
@@ -29940,6 +29990,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2933498176978962826, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
   m_PrefabInstance: {fileID: 2045993716}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2051014749 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4709722131675188006, guid: 3c13ea9b3c23ebd4da98ff1da3e9631f, type: 3}
+  m_PrefabInstance: {fileID: 3985531609310562578}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2054416207
 GameObject:
   m_ObjectHideFlags: 0
@@ -32150,6 +32211,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 747587540}
     - target: {fileID: 2588066164149268060, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: computerUI.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2588066164149268060, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
       propertyPath: camManager.focus.speed
       value: 10
       objectReference: {fileID: 0}
@@ -32165,6 +32230,18 @@ PrefabInstance:
       propertyPath: heroPlayer2.Array.size
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 2588066164149268060, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: computerUI.Array.data[0]
+      value: 
+      objectReference: {fileID: 1325398852}
+    - target: {fileID: 2588066164149268060, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: computerUI.Array.data[1]
+      value: 
+      objectReference: {fileID: 1096194843}
+    - target: {fileID: 2588066164149268060, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: computerUI.Array.data[2]
+      value: 
+      objectReference: {fileID: 2051014749}
     - target: {fileID: 2588066164149268060, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
       propertyPath: heroPlayer0.Array.data[0]
       value: 

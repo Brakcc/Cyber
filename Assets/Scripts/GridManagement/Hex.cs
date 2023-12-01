@@ -35,6 +35,7 @@ public class Hex : MonoBehaviour
         HexType.Walkable => 1,
         HexType.Obstacle => 1000,
         HexType.Hole => 1000,
+        HexType.Computer => 1,
         _ => 1000
     };
 
