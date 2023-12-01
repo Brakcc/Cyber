@@ -266,6 +266,12 @@ public class UnitManager : MonoBehaviour
             IsKapaSelected = true;
             IsKapaDirSelected = false;
             ShowButtons(CurrentButtonPos);
+
+            if (selectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].EffectType != EffectType.Hacked)
+            {
+                selectedUnit.OnDeselectNetworkTiles();
+            }
+
             return;
         }
 
@@ -487,11 +493,14 @@ public class UnitManager : MonoBehaviour
     async void Init(HexGridStore hex)
     {
         await Task.Delay(500);
-        foreach (GameObject u in GameObject.FindGameObjectsWithTag("Player"))
+        foreach (var u in FindObjectsOfType<Entity>())
         {
-            Hex h = hex.GetTile(u.GetComponent<Unit>().CurrentHexPos);
+            Hex h = hex.GetTile(u.GetComponent<Entity>().CurrentHexPos);
             h.HasEntityOnIt = true;
-            h.SetUnit(u.GetComponent<Unit>());
+            if (u.GetType() == typeof(Unit))
+            {
+                h.SetUnit(u.GetComponent<Unit>());
+            }
         }
     }
     #endregion
@@ -513,6 +522,10 @@ public class UnitManager : MonoBehaviour
     /// </summary>
     void ClearDataSelectionAvoidRange()
     {
+        if (selectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].EffectType == EffectType.Hacked)
+        {
+            selectedUnit.OnDeselectNetworkTiles();
+        }
         previousSelectedHex = null;
         SelectedUnit.Deselect();
         selectedUnit = null;

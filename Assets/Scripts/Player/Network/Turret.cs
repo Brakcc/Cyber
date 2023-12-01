@@ -23,7 +23,7 @@ public class Turret : Entity
     /// <summary>
     /// init a l'enable
     /// </summary>
-    protected override void OnInit()
+    protected override sealed void OnInit()
     {
         base.OnInit();
         IsNetworkEmiter = true;
@@ -42,7 +42,7 @@ public class Turret : Entity
     /// <summary>
     /// override de la OnGenNet de Entity avec list gen diff
     /// </summary>
-    public override void OnGenerateNet()
+    public override sealed void OnGenerateNet()
     {
         IsIntersecting(CurrentHexPos, HexGridStore.hGS, NetworkRange, out List<Network> net);
         GlobalNetwork = OnIntersect(CurrentHexPos, HexGridStore.hGS, NetworkRange, net);
@@ -77,7 +77,7 @@ public class Turret : Entity
     /// <param name="range"></param>
     /// <param name="toMerge"></param>
     /// <returns></returns>
-    protected sealed override List<Vector3Int> OnIntersect(Vector3Int pos, HexGridStore hexGrid, int range, List<Network> toMerge)
+    protected override sealed List<Vector3Int> OnIntersect(Vector3Int pos, HexGridStore hexGrid, int range, List<Network> toMerge)
     {
         List<Vector3Int> newRange = GetRangeList(pos, hexGrid, range).ToList();
 

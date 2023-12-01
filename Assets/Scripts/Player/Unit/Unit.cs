@@ -58,7 +58,7 @@ public abstract class Unit : Entity, IUnit
     public virtual void Select()
     {
         if (UnitData.Type != UnitType.Hacker) return;
-        
+
         OnGenerateNet();
     }
     public virtual void MoveOnPath(List<Vector3> currentPath) => StartCoroutine(FollowPath(currentPath,UnitData.Speed));
@@ -67,8 +67,6 @@ public abstract class Unit : Entity, IUnit
     {
         if (UnitData.Type != UnitType.Hacker) return;
         if (GlobalNetwork == null) return;
-
-        foreach (var i in GlobalNetwork) { HexGridStore.hGS.GetTile(i).DisableGlowDynaNet(); }
     }
     public virtual void OnDie()
     {

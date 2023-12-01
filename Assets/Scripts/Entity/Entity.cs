@@ -75,11 +75,6 @@ public abstract class Entity : MonoBehaviour, IEntity
 
         if (toMerge.Count == 0)
         {
-            foreach (var l in newRange)
-            {
-                hexGrid.GetTile(l).EnableGlowDynaNet();
-            }
-
             return newRange;
         }
 
@@ -93,11 +88,6 @@ public abstract class Entity : MonoBehaviour, IEntity
                 }
             }
 
-            foreach (var l in newRange)
-            {
-                hexGrid.GetTile(l).EnableGlowDynaNet();
-            }
-
             return newRange;
         }
     }
@@ -109,6 +99,26 @@ public abstract class Entity : MonoBehaviour, IEntity
     {
         IsIntersecting(CurrentHexPos, HexGridStore.hGS, NetworkRange, out List<Network> net);
         GlobalNetwork = OnIntersect(CurrentHexPos, HexGridStore.hGS, NetworkRange, net);
+    }
+
+    public void OnSelectNetworkTiles()
+    {
+        IsOnNetwork = true;
+
+        foreach (var l in GlobalNetwork)
+        {
+            HexGridStore.hGS.GetTile(l).EnableGlowDynaNet();
+        }
+    }
+    public void OnDeselectNetworkTiles()
+    {
+        if (!IsOnNetwork) return;
+
+        foreach (var l in GlobalNetwork)
+        {
+            HexGridStore.hGS.GetTile(l).DisableGlowDynaNet();
+        }
+        IsOnNetwork = false;
     }
     #endregion
 }

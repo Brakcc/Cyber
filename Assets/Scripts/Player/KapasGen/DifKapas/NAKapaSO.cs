@@ -83,9 +83,9 @@ public class NAKapaSO : AKapaSO
     #endregion
 
     #region inherited methodes
-    public override bool OnCheckKapaPoints(Unit unit) => true;
+    public sealed override bool OnCheckKapaPoints(Unit unit) => true;
 
-    public override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, Unit unit)
+    public sealed override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, Unit unit)
     {
         base.OnExecute(hexGrid, pattern, unit, out bool isHitting);
         DoKapa(unit, isHitting);

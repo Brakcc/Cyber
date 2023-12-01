@@ -90,15 +90,28 @@ public class CKapaSO : AKapaSO
     #endregion
 
     #region inherited methodes
-    public override bool OnCheckKapaPoints(Unit unit)
+    public sealed override bool OnCheckKapaPoints(Unit unit)
     {
         if (GameLoopManager.gLM.CompPoints[unit.TeamNumber] < cKapaSupFields.neededCompPoints) { RefuseKapa(); return false; }
         return true;
     }
+    public sealed override List<Vector3Int> OnGenerateButton(HexGridStore hexGrid, Unit unit)
+    {
+        if (EffectType == EffectType.Hacked)
+        {
+            unit.OnSelectNetworkTiles();
+            return null;
+        }
+        return base.OnGenerateButton(hexGrid, unit);
+    }
 
-    public override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, Unit unit)
+    public sealed override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, Unit unit)
     {
         base.OnExecute(hexGrid, pattern, unit);
+        if (EffectType == EffectType.Hacked)
+        {
+            unit.OnDeselectNetworkTiles();
+        }
         DoKapa(unit);
         //Debug.Log(Description); //PlaceHolder à remplir avec les anims et considération de dégâts
         EndKapa();

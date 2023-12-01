@@ -64,9 +64,9 @@ public class TKapaSO : AKapaSO
     #endregion
 
     #region inherited methodes
-    public override bool OnCheckKapaPoints(Unit unit) => GameLoopManager.gLM.TurretNumber[unit.TeamNumber] > 0;
+    public sealed override bool OnCheckKapaPoints(Unit unit) => GameLoopManager.gLM.TurretNumber[unit.TeamNumber] > 0;
 
-    public override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, Unit unit)
+    public sealed override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, Unit unit)
     {
         if (GameLoopManager.gLM.TurretNumber[unit.TeamNumber] <= 0) return;
 
