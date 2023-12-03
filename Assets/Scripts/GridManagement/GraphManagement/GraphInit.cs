@@ -28,6 +28,7 @@ public class GraphInitUnit
     #region fields
     [SerializeField] int orderInLayer;
     [SerializeField] Color color;
+    [SerializeField] Vector2 offset;
     #endregion
 
     #region cached methodes
@@ -43,7 +44,7 @@ public class GraphInitUnit
 
         child.transform.localScale = new Vector3(1, Mathf.Sqrt(2), 1);
         child.transform.localEulerAngles = new(-45, 0);
-        child.transform.localPosition = new Vector3(0, 0, -rend.size.y / 2);
+        child.transform.localPosition = new Vector3(offset.x, offset.y, -rend.size.y / 2);
         return child;
     }
     #endregion

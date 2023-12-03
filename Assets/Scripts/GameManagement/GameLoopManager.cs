@@ -8,6 +8,7 @@ public class GameLoopManager : MonoBehaviour
     #region fields
     #region team inits
     [Range(0, 1, order = 1)][SerializeField] int firstTeamPlaying;
+    [SerializeField] GameObject DeActButton;
     int teamPlaying;
     public GameObject[] heroPlayer0;
     public GameObject[] heroPlayer1;
@@ -88,7 +89,8 @@ public class GameLoopManager : MonoBehaviour
 
             u.CanPlay = true;
         }
-
+        if (i == 1) DeActButton.SetActive(true);
+        else DeActButton.SetActive(false);
         camM.OnFollowPlayer(playerList[teamPlaying][0].GetComponent<Unit>());
     }
 

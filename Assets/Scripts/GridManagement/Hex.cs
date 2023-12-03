@@ -14,7 +14,7 @@ public class Hex : MonoBehaviour
     //la Data importante
     public Vector3Int HexCoords { get; set; }
     public bool HasEntityOnIt { get; set; }
-    public Unit PlayerRef { get; set; }
+    public Unit UnitRef { get; set; }
     public Network LocalNetwork { get => originNetwork; set { originNetwork = value; } }
     #endregion
 
@@ -23,6 +23,7 @@ public class Hex : MonoBehaviour
     {
         HexCoords = new HexCoordonnees(gameObject).OffsetCoordonnees;
         glow.SetHexaRefs();
+        UnitRef = null;
     }
 
     /// <summary>
@@ -48,9 +49,9 @@ public class Hex : MonoBehaviour
     //public void ClearLMixedNetwork() { MixedNetwork.Clear(); DisableGlowPath(); }
     #endregion
 
-    public void SetUnit(Unit unit) => PlayerRef = unit;
-    public Unit GetUnit() => PlayerRef;
-    public void ClearUnit() => PlayerRef = null;
+    public void SetUnit(Unit unit) => UnitRef = unit;
+    public Unit GetUnit() => UnitRef;
+    public void ClearUnit() => UnitRef = null;
 
     public bool IsObstacle() => type == HexType.Obstacle || type == HexType.Hole;
     public bool IsComputer() => type == HexType.Computer;

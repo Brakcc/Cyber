@@ -280,11 +280,13 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
         int n = 0;
         foreach (var i in pattern)
         {
-            //verif s'il y a joueur uniquemetn sur les case du pattern
+            //verif s'il y a joueur uniquement sur les case du pattern
             var h = hexGrid.GetTile(i);
             if (!h.HasEntityOnIt) continue;
             var u = h.GetUnit();
-            n += 1;
+
+            //Verif de si l'Entity est une Unit
+            if (u == null) continue;
 
             //retour départ boucle si Unit deja ded
             if (u.IsDead) continue;
@@ -296,6 +298,8 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
                 u.CurrentHealth -= Damage.NormalDamage(unit.UnitData.Attack, unit.UnitData.Defense);
             }
 
+            //compteur de Hit
+            n++;
             //set new UI
             u.StatUI.SetHP(u);
 
@@ -321,6 +325,9 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
             var h = hexGrid.GetTile(i);
             if (!h.HasEntityOnIt) continue;
             var u = h.GetUnit();
+
+            //Verif de si l'Entity est une Unit
+            if (u == null) continue;
 
             //retour départ boucle si Unit deja ded
             if (u.IsDead) continue;
@@ -386,6 +393,7 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     /// </summary>
     public virtual void OnDeselectTiles(HexGridStore hexGrid, List<Vector3Int> pattern)
     {
+        if (pattern == null) return;
         foreach (var i in pattern)
         {
             hexGrid.GetTile(i).DisableGlowKapa();

@@ -1430,6 +1430,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1005802354}
     - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
+      propertyPath: graphs.offset.y
+      value: 0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: kapasList.Array.size
       value: 5
       objectReference: {fileID: 0}
@@ -6080,6 +6084,10 @@ PrefabInstance:
       propertyPath: graphs.color.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
+      propertyPath: graphs.offset.y
+      value: 0.65
+      objectReference: {fileID: 0}
     - target: {fileID: 5587667834857246865, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -7813,6 +7821,10 @@ PrefabInstance:
       propertyPath: graphs.color.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
+      propertyPath: graphs.offset.y
+      value: 0.65
+      objectReference: {fileID: 0}
     - target: {fileID: 5587667834857246865, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -8024,6 +8036,10 @@ PrefabInstance:
       propertyPath: m_StatsUI
       value: 
       objectReference: {fileID: 1738254132}
+    - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
+      propertyPath: graphs.offset.y
+      value: 0.65
+      objectReference: {fileID: 0}
     - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: kapasList.Array.size
       value: 5
@@ -10738,6 +10754,10 @@ PrefabInstance:
     - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: graphs.color.r
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
+      propertyPath: graphs.offset.y
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 5587667834857246865, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: m_RootOrder
@@ -14821,6 +14841,10 @@ PrefabInstance:
       propertyPath: m_StatsUI
       value: 
       objectReference: {fileID: 1302921093}
+    - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
+      propertyPath: graphs.offset.y
+      value: 0.65
+      objectReference: {fileID: 0}
     - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: kapasList.Array.size
       value: 5
@@ -27509,6 +27533,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 787106420}
     - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
+      propertyPath: graphs.offset.y
+      value: 0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: kapasList.Array.size
       value: 5
       objectReference: {fileID: 0}
@@ -29013,6 +29041,10 @@ PrefabInstance:
     - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: graphs.color.r
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
+      propertyPath: graphs.offset.y
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 5587667834857246865, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: m_RootOrder
@@ -32090,6 +32122,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &3985531609310562582 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5188276351999158816, guid: 3c13ea9b3c23ebd4da98ff1da3e9631f, type: 3}
+  m_PrefabInstance: {fileID: 3985531609310562578}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6839896766878513040
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32214,6 +32251,10 @@ PrefabInstance:
       propertyPath: camM
       value: 
       objectReference: {fileID: 747587543}
+    - target: {fileID: 2588066164149268060, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: DeActButton
+      value: 
+      objectReference: {fileID: 3985531609310562582}
     - target: {fileID: 2588066164149268060, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
       propertyPath: cPUI.Array.size
       value: 2

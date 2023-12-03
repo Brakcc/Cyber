@@ -107,11 +107,16 @@ public class CKapaSO : AKapaSO
 
     public sealed override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, Unit unit)
     {
-        base.OnExecute(hexGrid, pattern, unit);
         if (EffectType == EffectType.Hacked)
         {
+            base.OnExecute(hexGrid, unit.GlobalNetwork, unit);
             unit.OnDeselectNetworkTiles();
         }
+        else
+        {
+            base.OnExecute(hexGrid, pattern, unit);
+        }
+
         DoKapa(unit);
         //Debug.Log(Description); //PlaceHolder à remplir avec les anims et considération de dégâts
         EndKapa();

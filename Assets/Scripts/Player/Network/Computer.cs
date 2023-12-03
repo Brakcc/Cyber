@@ -9,6 +9,8 @@ public class Computer : Entity
     public override int NetworkRange { get; set; }
     public override List<Vector3Int> GlobalNetwork { get => null; set { } }
 
+    public bool GotHacked { get; set; }
+
     [SerializeField] GraphInitBoard initBoard;
 
     void OnEnable()
@@ -22,6 +24,8 @@ public class Computer : Entity
         IsNetworkEmiter = false;
         IsOnNetwork = false;
         NetworkRange = 0;
+
+        GotHacked = false;
 
         initBoard.SetRenderer(gameObject);
     }
