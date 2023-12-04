@@ -38,3 +38,11 @@ public enum Network
     Net19,
     None
 }
+
+public enum ComputerTarget
+{
+    C0,
+    C1,
+    C2,
+    Default
+}

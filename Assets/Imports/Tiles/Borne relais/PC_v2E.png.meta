@@ -235,6 +235,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: PC_v2E_6
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 24
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 638baeb56128bcf4e86f886c0a8ec415
+      internalID: 40158446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -252,6 +273,7 @@ TextureImporter:
       PC_v2E_3: -1928322898
       PC_v2E_4: 1016022762
       PC_v2E_5: 365099389
+      PC_v2E_6: 40158446
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

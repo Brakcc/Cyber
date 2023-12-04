@@ -49,9 +49,16 @@ public class DKapaSO : AKapaSO
     #endregion
 
     #region inherited methodes (rendues null)
-    public sealed override bool OnCheckKapaPoints(Unit unit) => (HexGridStore.hGS.GetTile(unit.CurrentHexPos).IsComputer() && unit.TeamNumber == 1);
+    public sealed override bool OnCheckKapaPoints(Unit unit)
+    {
+        return (HexGridStore.hGS.GetTile(unit.CurrentHexPos).IsComputer() && !HexGridStore.hGS.computerList[(int)HexGridStore.hGS.GetTile(unit.CurrentHexPos).ComputerTarget].GotHacked && unit.TeamNumber == 1);
+    }
 
-    public sealed override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, Unit unit) => GameLoopManager.gLM.HandleComputerValueChange();
+    public sealed override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, Unit unit)
+    {
+        GameLoopManager.gLM.HandleComputerValueChange();
+        hexGrid.HandlePCHacked(hexGrid.GetTile(unit.CurrentHexPos).ComputerTarget);
+    }
     
     public sealed override void InitPaterns(Vector3Int[] p) { }
 

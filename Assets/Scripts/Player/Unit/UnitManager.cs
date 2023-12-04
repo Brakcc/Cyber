@@ -492,7 +492,7 @@ public class UnitManager : MonoBehaviour
     /// <param name="hex"></param>
     async void Init(HexGridStore hex)
     {
-        await Task.Delay(500);
+        await Task.Delay(700);
         foreach (var u in FindObjectsOfType<Entity>())
         {
             Hex h = hex.GetTile(u.GetComponent<Entity>().CurrentHexPos);

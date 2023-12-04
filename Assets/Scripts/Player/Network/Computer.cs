@@ -9,6 +9,8 @@ public class Computer : Entity
     public override int NetworkRange { get; set; }
     public override List<Vector3Int> GlobalNetwork { get => null; set { } }
 
+    [SerializeField] ComputerTarget compTarget;
+    public ComputerTarget ComputerTarget { get => compTarget; }
     public bool GotHacked { get; set; }
 
     [SerializeField] GraphInitBoard initBoard;
@@ -31,4 +33,9 @@ public class Computer : Entity
     }
 
     public override sealed void OnGenerateNet() { }
+
+    public void HandleComputerHack()
+    {
+        initBoard.HandleDeAct(gameObject, false);
+    }
 }

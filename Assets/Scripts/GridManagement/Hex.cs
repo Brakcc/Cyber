@@ -1,6 +1,5 @@
 using UnityEngine;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+using CustomAttributes;
 
 [SelectionBase]
 public class Hex : MonoBehaviour
@@ -10,12 +9,16 @@ public class Hex : MonoBehaviour
     [SerializeField] SelectGlow glow;
 
     [SerializeField] Network originNetwork;
+    [ShowIfTrue("type", (int)HexType.Computer)]
+    [SerializeField] ComputerTarget computerTarget;
 
     //la Data importante
     public Vector3Int HexCoords { get; set; }
     public bool HasEntityOnIt { get; set; }
     public Unit UnitRef { get; set; }
+    public HexType CurrentType { get => type; set { type = value; } }
     public Network LocalNetwork { get => originNetwork; set { originNetwork = value; } }
+    public ComputerTarget ComputerTarget { get => computerTarget; }
     #endregion
 
     #region methodes

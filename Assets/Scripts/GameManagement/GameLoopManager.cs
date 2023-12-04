@@ -17,8 +17,8 @@ public class GameLoopManager : MonoBehaviour
 
     #region team inventory
     GameObject[][] playerList = new GameObject[2][];
-    [HideInInspector] public int[] CompPoints { get; set; }
-    [HideInInspector] public int[] TurretNumber { get; set; }
+    public int[] CompPoints { get; set; }
+    public int[] TurretNumber { get; set; }
     #endregion
 
     //general objectif
@@ -89,8 +89,10 @@ public class GameLoopManager : MonoBehaviour
 
             u.CanPlay = true;
         }
+
         if (i == 1) DeActButton.SetActive(true);
         else DeActButton.SetActive(false);
+
         camM.OnFollowPlayer(playerList[teamPlaying][0].GetComponent<Unit>());
     }
 
