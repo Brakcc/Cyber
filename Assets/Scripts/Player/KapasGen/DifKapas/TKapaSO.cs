@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using CustomAttributes;
 
 [CreateAssetMenu(fileName = "Turret Kapa", menuName = "Tactical/Kapas/Turret")]
 public class TKapaSO : AKapaSO
@@ -65,9 +64,9 @@ public class TKapaSO : AKapaSO
     #endregion
 
     #region inherited methodes
-    public override bool OnCheckKapaPoints(Unit unit) => GameLoopManager.gLM.TurretNumber[unit.TeamNumber] > 0;
+    public sealed override bool OnCheckKapaPoints(Unit unit) => GameLoopManager.gLM.TurretNumber[unit.TeamNumber] > 0;
 
-    public override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, Unit unit)
+    public sealed override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, Unit unit)
     {
         if (GameLoopManager.gLM.TurretNumber[unit.TeamNumber] <= 0) return;
 
@@ -76,11 +75,6 @@ public class TKapaSO : AKapaSO
         hexGrid.GetTile(pattern[0]).HasEntityOnIt = true;
 
         OnDeselectTiles(hexGrid, pattern);
-
-        foreach (var e in hexGrid.emiters)
-        {
-            e.OnGenerateNet();
-        }
     }
     #endregion
 }

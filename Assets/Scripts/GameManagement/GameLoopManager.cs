@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class GameLoopManager : MonoBehaviour
@@ -7,6 +8,7 @@ public class GameLoopManager : MonoBehaviour
     #region fields
     #region team inits
     [Range(0, 1, order = 1)][SerializeField] int firstTeamPlaying;
+    [SerializeField] GameObject DeActButton;
     int teamPlaying;
     public GameObject[] heroPlayer0;
     public GameObject[] heroPlayer1;
@@ -19,10 +21,15 @@ public class GameLoopManager : MonoBehaviour
     [HideInInspector] public int[] TurretNumber { get; set; }
     #endregion
 
+    //general objectif
+    public int ComputerNumber { get; set; }
+    [SerializeField] int maxObjectif;
+
     //other fields
     [SerializeField] CameraMovement camM;
     [SerializeField] List<TMP_Text> cPUI;
     [SerializeField] List<TMP_Text> tNbUI;
+    [SerializeField] Image[] computerUI;
 
     public static GameLoopManager gLM;
     #endregion
@@ -39,8 +46,9 @@ public class GameLoopManager : MonoBehaviour
         CompPoints = new int[2] { 0, 0 };
         TurretNumber = new int[2] { 2, 2 };
         teamPlaying = firstTeamPlaying;
-        foreach (var i in cPUI) { i.text = 0.ToString(); }
-        foreach (var i in tNbUI) { i.text = 2.ToString(); }
+        foreach (var i in cPUI) { i.text = 0.ToString(); i.color = Color.red; }
+        foreach (var i in tNbUI) { i.text = 2.ToString(); i.color = Color.green; }
+        foreach (var i in computerUI) { i.color = Color.red; }
     }
     void Start()
     {
@@ -81,7 +89,8 @@ public class GameLoopManager : MonoBehaviour
 
             u.CanPlay = true;
         }
-
+        if (i == 1) DeActButton.SetActive(true);
+        else DeActButton.SetActive(false);
         camM.OnFollowPlayer(playerList[teamPlaying][0].GetComponent<Unit>());
     }
 
@@ -89,12 +98,22 @@ public class GameLoopManager : MonoBehaviour
     {
         CompPoints[teamNb] += pC;
         cPUI[teamNb].text = CompPoints[teamNb].ToString();
+        if (CompPoints[teamNb] > 0) { cPUI[teamNb].color = Color.green; }
     }
 
     public void HandleTurretUse(int teamNb)
     {
         TurretNumber[teamNb]--;
         tNbUI[teamNb].text = TurretNumber[teamNb].ToString();
+        if (TurretNumber[teamNb] == 0) { tNbUI[teamNb].color = Color.red; }
+    }
+
+    public void HandleComputerValueChange()
+    {
+        ComputerNumber++;
+        computerUI[ComputerNumber - 1].color = Color.green;
+        //ajouter la fin du jeu d'urgence /!\
+        if (ComputerNumber == maxObjectif) { Time.timeScale = 0; }
     }
     #endregion
 }

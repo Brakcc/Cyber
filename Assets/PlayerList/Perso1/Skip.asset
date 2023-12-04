@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Skip
   m_EditorClassIdentifier: 
   kapaName: Skip
-  id: 0
+  id: 11
   description: S
   kapaType: 4
   kapaUI: {fileID: 0}

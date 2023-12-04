@@ -20,7 +20,10 @@ public class Turret : Entity
         OnInit();
     }
 
-    protected override void OnInit()
+    /// <summary>
+    /// init a l'enable
+    /// </summary>
+    protected override sealed void OnInit()
     {
         base.OnInit();
         IsNetworkEmiter = true;
@@ -29,38 +32,83 @@ public class Turret : Entity
         HexGridStore.hGS.OnAddEmiter(this);
         OnGenerateNet();
         graphInit.SetRenderer(gameObject);
-    }
 
-    public override void OnGenerateNet()
-    {
-        if (IsIntersecting(CurrentHexPos, HexGridStore.hGS, NetworkRange, out List<Network> net))
+        foreach (var e in HexGridStore.hGS.emiters)
         {
-            GlobalNetwork = OnIntersect(CurrentHexPos, HexGridStore.hGS, NetworkRange, net);
-        }
-
-        if (net == null) return;
-
-        foreach (var i in net)
-        {
-            HexGridStore.hGS.NetworkList[(int)i].AddRange(GlobalNetwork);
+            e.OnGenerateNet();
         }
     }
 
-    protected sealed override List<Vector3Int> OnIntersect(Vector3Int pos, HexGridStore hexGrid, int range, List<Network> toMerge)
+    /// <summary>
+    /// override de la OnGenNet de Entity avec list gen diff
+    /// </summary>
+    public override sealed void OnGenerateNet()
     {
-        if (toMerge.Count == 0) { return null; }
+        IsIntersecting(CurrentHexPos, HexGridStore.hGS, NetworkRange, out List<Network> net);
+        GlobalNetwork = OnIntersect(CurrentHexPos, HexGridStore.hGS, NetworkRange, net);
+        
 
-        List<Vector3Int> newRange = GetRangeList(pos, hexGrid, range).ToList();
-        foreach (var i in toMerge)
+        if (net.Count != 0)
         {
-            foreach (var j in hexGrid.NetworkList[(int)i])
+            foreach (var i in net)
             {
-                if (!newRange.Contains(j)) { newRange.Add(j); }
+                HexGridStore.hGS.NetworkList[(int)i].AddRange(GlobalNetwork);
+            }
+            foreach (var g in GlobalNetwork)
+            {
+                HexGridStore.hGS.GetTile(g).LocalNetwork = net[^1];
             }
         }
-        foreach (var l in newRange) { hexGrid.GetTile(l).EnableGlowBaseNet(); }
+        else
+        {
+            foreach (var g in GlobalNetwork)
+            {
+                HexGridStore.hGS.GetTile(g).LocalNetwork = (Network)HexGridStore.hGS.NetworkList.Length - HexGridStore.hGS.EmptySockets;
+            }
+            HexGridStore.hGS.EmptySockets--;
+        }
+    }
 
-        return newRange;
+    /// <summary>
+    /// Intersect les listes et gen les outlines specifiquement pour les tourelles
+    /// </summary>
+    /// <param name="pos"></param>
+    /// <param name="hexGrid"></param>
+    /// <param name="range"></param>
+    /// <param name="toMerge"></param>
+    /// <returns></returns>
+    protected override sealed List<Vector3Int> OnIntersect(Vector3Int pos, HexGridStore hexGrid, int range, List<Network> toMerge)
+    {
+        List<Vector3Int> newRange = GetRangeList(pos, hexGrid, range).ToList();
+
+        if (toMerge.Count == 0)
+        {
+
+            foreach (var l in newRange)
+            {
+                hexGrid.GetTile(l).EnableGlowBaseNet();
+            }
+
+            return newRange;
+        }
+
+        else
+        {
+            foreach (var i in toMerge)
+            {
+                foreach (var j in hexGrid.NetworkList[(int)i])
+                {
+                    if (!newRange.Contains(j)) { newRange.Add(j); }
+                }
+            }
+
+            foreach (var l in newRange)
+            {
+                hexGrid.GetTile(l).EnableGlowBaseNet();
+            }
+
+            return newRange;
+        }
     }
     #endregion
 }

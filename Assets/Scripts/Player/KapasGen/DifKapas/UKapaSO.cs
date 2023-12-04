@@ -81,13 +81,13 @@ public class UKapaSO : AKapaSO
     #endregion
 
     #region inherited methodes
-    public override bool OnCheckKapaPoints(Unit unit)
+    public sealed override bool OnCheckKapaPoints(Unit unit)
     {
         if (unit.UltPoints < uKapaSupFields.neededUltPoints) { RefuseKapa(); return false; }
         return true;
     }
 
-    public override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, Unit unit)
+    public sealed override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, Unit unit)
     {
         base.OnExecute(hexGrid, pattern, unit);
         DoKapa(unit);

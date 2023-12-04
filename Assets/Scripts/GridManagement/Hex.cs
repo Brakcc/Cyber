@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 [SelectionBase]
 public class Hex : MonoBehaviour
@@ -13,8 +14,8 @@ public class Hex : MonoBehaviour
     //la Data importante
     public Vector3Int HexCoords { get; set; }
     public bool HasEntityOnIt { get; set; }
-    public Unit PlayerRef { get; set; }
-    public Network LocalNetwork { get => GetLocalNetwork(); }
+    public Unit UnitRef { get; set; }
+    public Network LocalNetwork { get => originNetwork; set { originNetwork = value; } }
     #endregion
 
     #region methodes
@@ -22,6 +23,7 @@ public class Hex : MonoBehaviour
     {
         HexCoords = new HexCoordonnees(gameObject).OffsetCoordonnees;
         glow.SetHexaRefs();
+        UnitRef = null;
     }
 
     /// <summary>
@@ -34,6 +36,7 @@ public class Hex : MonoBehaviour
         HexType.Walkable => 1,
         HexType.Obstacle => 1000,
         HexType.Hole => 1000,
+        HexType.Computer => 1,
         _ => 1000
     };
 
@@ -46,11 +49,12 @@ public class Hex : MonoBehaviour
     //public void ClearLMixedNetwork() { MixedNetwork.Clear(); DisableGlowPath(); }
     #endregion
 
-    public void SetUnit(Unit unit) => PlayerRef = unit;
-    public Unit GetUnit() => PlayerRef;
-    public void ClearUnit() => PlayerRef = null;
+    public void SetUnit(Unit unit) => UnitRef = unit;
+    public Unit GetUnit() => UnitRef;
+    public void ClearUnit() => UnitRef = null;
 
     public bool IsObstacle() => type == HexType.Obstacle || type == HexType.Hole;
+    public bool IsComputer() => type == HexType.Computer;
 
     //Init graph a ajouter pour ajouter les textures en sqrt(2) a 45° pour le passage des Units devant ou derrière les props
 

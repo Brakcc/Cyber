@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
-using static CKapaSO;
 
 [CreateAssetMenu(fileName = "Normal Attack Kapa", menuName = "Tactical/Kapas/Normal Attack")]
 public class NAKapaSO : AKapaSO
@@ -84,21 +83,21 @@ public class NAKapaSO : AKapaSO
     #endregion
 
     #region inherited methodes
-    public override bool OnCheckKapaPoints(Unit unit) => true;
+    public sealed override bool OnCheckKapaPoints(Unit unit) => true;
 
-    public override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, Unit unit)
+    public sealed override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, Unit unit)
     {
-        base.OnExecute(hexGrid, pattern, unit);
-        DoKapa(unit);
-        //Debug.Log(Description); //PlaceHolder à remplir avec les anims et considération de dégâts
+        base.OnExecute(hexGrid, pattern, unit, out bool isHitting);
+        DoKapa(unit, isHitting);
+        //PlaceHolder à remplir avec les anims et considération de dégâts
         EndKapa();
     }
     #endregion
 
     #region cache
-    void DoKapa(Unit unit)
+    void DoKapa(Unit unit, bool hit)
     {
-        GameLoopManager.gLM.HandleCompPointValueChange(unit.TeamNumber, nAKapaSupFields.compPointsAdded);
+        if (hit) { GameLoopManager.gLM.HandleCompPointValueChange(unit.TeamNumber, nAKapaSupFields.compPointsAdded); }
         unit.UltPoints += nAKapaSupFields.ultPointsAdded;
         CameraFunctions.OnShake(FindObjectOfType<CinemachineVirtualCamera>(), cam.shake);
         //PlaceHolder à rempir avec les anims et considérations de dégâts

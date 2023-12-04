@@ -233,6 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4c2c1369db70a44b987bc32c2c79cc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  emiters: []
 --- !u!114 &2588066164149268060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,7 +247,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstTeamPlaying: 0
+  heroPlayer0: []
   heroPlayer1:
   - {fileID: 0}
-  heroPlayer2:
-  - {fileID: 0}
+  maxObjectif: 3
+  camM: {fileID: 0}
+  cPUI: []
+  tNbUI: []
+  computerText: {fileID: 0}

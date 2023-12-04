@@ -35,10 +35,9 @@ public abstract class Entity : MonoBehaviour, IEntity
     /// <param name="range">range du reseau local</param>
     /// <param name="net">list des reseaux de base impactes par le merge, s'il il y a intersection</param>
     /// <returns>bool de validation d'intersection</returns>
-    protected virtual bool IsIntersecting(Vector3Int pos, HexGridStore hexGrid, int range, out List<Network> net)
+    protected virtual void IsIntersecting(Vector3Int pos, HexGridStore hexGrid, int range, out List<Network> net)
     {
         net = IsInterOnNet(pos, hexGrid, range);
-        return net != null;
     }
 
     /// <summary>
@@ -54,13 +53,16 @@ public abstract class Entity : MonoBehaviour, IEntity
         foreach (var i in GetRangeList(pos, hexGrid, range))
         {
             var t = hexGrid.GetTile(i);
-            if (t.LocalNetwork != Network.None && !toMerge.Contains(t.LocalNetwork)) { toMerge.Add(t.LocalNetwork); }
+            if (t.LocalNetwork != Network.None && !toMerge.Contains(t.LocalNetwork))
+            {
+                toMerge.Add(t.LocalNetwork);
+            }
         }
         return toMerge;
     }
 
     /// <summary>
-    /// Merge les reseaux local et bases
+    /// Merge les reseaux local et bases // creer un reseau de base si pas inter
     /// </summary>
     /// <param name="pos">pos de depart de la range de reseau local</param>
     /// <param name="hexGrid">Ref de HexGridStore.hGS</param>
@@ -69,19 +71,25 @@ public abstract class Entity : MonoBehaviour, IEntity
     /// <returns>la nouvelle list de reseau local du hacker</returns>
     protected virtual List<Vector3Int> OnIntersect(Vector3Int pos, HexGridStore hexGrid, int range, List<Network> toMerge)
     {
-        if (toMerge.Count == 0) { return null; }
-
         List<Vector3Int> newRange = GetRangeList(pos, hexGrid, range).ToList();
-        foreach (var i in toMerge)
-        {
-            foreach (var j in hexGrid.NetworkList[(int)i])
-            {
-                if (!newRange.Contains(j)) { newRange.Add(j); }
-            }
-        }
-        foreach (var l in newRange) { hexGrid.GetTile(l).EnableGlowDynaNet(); }
 
-        return newRange;
+        if (toMerge.Count == 0)
+        {
+            return newRange;
+        }
+
+        else
+        {
+            foreach (var i in toMerge)
+            {
+                foreach (var j in hexGrid.NetworkList[(int)i])
+                {
+                    if (!newRange.Contains(j)) { newRange.Add(j); }
+                }
+            }
+
+            return newRange;
+        }
     }
 
     /// <summary>
@@ -89,10 +97,28 @@ public abstract class Entity : MonoBehaviour, IEntity
     /// </summary>
     public virtual void OnGenerateNet()
     {
-        if (IsIntersecting(CurrentHexPos, HexGridStore.hGS, NetworkRange, out List<Network> net))
+        IsIntersecting(CurrentHexPos, HexGridStore.hGS, NetworkRange, out List<Network> net);
+        GlobalNetwork = OnIntersect(CurrentHexPos, HexGridStore.hGS, NetworkRange, net);
+    }
+
+    public void OnSelectNetworkTiles()
+    {
+        IsOnNetwork = true;
+
+        foreach (var l in GlobalNetwork)
         {
-            GlobalNetwork = OnIntersect(CurrentHexPos, HexGridStore.hGS, NetworkRange, net);
+            HexGridStore.hGS.GetTile(l).EnableGlowDynaNet();
         }
+    }
+    public void OnDeselectNetworkTiles()
+    {
+        if (!IsOnNetwork) return;
+
+        foreach (var l in GlobalNetwork)
+        {
+            HexGridStore.hGS.GetTile(l).DisableGlowDynaNet();
+        }
+        IsOnNetwork = false;
     }
     #endregion
 }

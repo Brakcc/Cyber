@@ -207,6 +207,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -301,6 +305,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -395,6 +403,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -489,6 +501,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -578,6 +594,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -677,6 +697,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -771,6 +795,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -876,6 +904,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -970,6 +1002,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1064,6 +1100,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1153,6 +1193,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1247,6 +1291,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1348,7 +1396,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
     - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: originNetwork
-      value: 2
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1381,6 +1429,10 @@ PrefabInstance:
       propertyPath: m_StatsUI
       value: 
       objectReference: {fileID: 1005802354}
+    - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
+      propertyPath: graphs.offset.y
+      value: 0.65
+      objectReference: {fileID: 0}
     - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: kapasList.Array.size
       value: 5
@@ -1449,6 +1501,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5587667834857246867, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 5587667834857246867, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: m_Name
       value: Bob A(1)
@@ -1542,6 +1598,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1641,6 +1701,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1732,9 +1796,17 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1829,6 +1901,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1933,6 +2009,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2032,6 +2112,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2121,6 +2205,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2224,6 +2312,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2309,6 +2401,10 @@ PrefabInstance:
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2424,6 +2520,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2533,6 +2633,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2647,6 +2751,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2753,6 +2861,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2854,6 +2966,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2943,6 +3059,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3034,9 +3154,17 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3131,6 +3259,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3232,6 +3364,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3326,6 +3462,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3437,7 +3577,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
     - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: originNetwork
-      value: 0
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3533,6 +3673,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3632,6 +3776,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3738,7 +3886,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
     - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: originNetwork
-      value: 2
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3844,6 +3992,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3938,6 +4090,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4037,6 +4193,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4126,6 +4286,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4220,6 +4384,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4319,6 +4487,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4413,6 +4585,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4507,6 +4683,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4623,6 +4803,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4712,6 +4896,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4801,6 +4989,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4910,6 +5102,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5004,6 +5200,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5103,6 +5303,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5204,6 +5408,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5303,6 +5511,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5397,6 +5609,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5490,6 +5706,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5584,6 +5804,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5678,6 +5902,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5804,6 +6032,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5852,6 +6084,10 @@ PrefabInstance:
       propertyPath: graphs.color.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
+      propertyPath: graphs.offset.y
+      value: 0.65
+      objectReference: {fileID: 0}
     - target: {fileID: 5587667834857246865, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -5896,6 +6132,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5587667834857246867, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 5587667834857246867, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: m_Name
       value: Bob
@@ -5994,6 +6234,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6166,6 +6410,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6260,6 +6508,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6349,6 +6601,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6448,6 +6704,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6537,6 +6797,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6715,6 +6979,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6809,6 +7077,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6903,6 +7175,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7013,6 +7289,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7112,6 +7392,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7211,6 +7495,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7300,6 +7588,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7394,6 +7686,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7488,6 +7784,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7520,6 +7820,10 @@ PrefabInstance:
     - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: graphs.color.r
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
+      propertyPath: graphs.offset.y
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 5587667834857246865, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: m_RootOrder
@@ -7565,6 +7869,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5587667834857246867, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 5587667834857246867, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: m_Name
       value: Bob (2)
@@ -7684,6 +7992,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7724,6 +8036,10 @@ PrefabInstance:
       propertyPath: m_StatsUI
       value: 
       objectReference: {fileID: 1738254132}
+    - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
+      propertyPath: graphs.offset.y
+      value: 0.65
+      objectReference: {fileID: 0}
     - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: kapasList.Array.size
       value: 5
@@ -7792,6 +8108,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5587667834857246867, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 5587667834857246867, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: m_Name
       value: BobA (4)
@@ -7911,6 +8231,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8015,6 +8339,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8104,6 +8432,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8198,6 +8530,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8322,6 +8658,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8411,6 +8751,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8545,6 +8889,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8733,6 +9081,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8929,6 +9281,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9023,6 +9379,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9127,6 +9487,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9228,7 +9592,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
     - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: originNetwork
-      value: 2
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9324,6 +9688,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9418,6 +9786,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9511,6 +9883,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9902,6 +10278,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10016,6 +10396,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10110,6 +10494,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10325,6 +10713,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10362,6 +10754,10 @@ PrefabInstance:
     - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: graphs.color.r
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
+      propertyPath: graphs.offset.y
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 5587667834857246865, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: m_RootOrder
@@ -10407,6 +10803,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5587667834857246867, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 5587667834857246867, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: m_Name
       value: Bob (1)
@@ -10526,6 +10926,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10620,6 +11024,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 3976043299740282238, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
@@ -10735,6 +11143,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10840,6 +11252,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10934,6 +11350,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11028,6 +11448,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11117,6 +11541,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11211,6 +11639,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11330,6 +11762,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11445,6 +11881,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11539,6 +11979,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11628,6 +12072,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11739,6 +12187,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11828,6 +12280,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11917,6 +12373,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12011,6 +12471,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12107,7 +12571,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
     - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: originNetwork
-      value: 2
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12203,6 +12667,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12297,6 +12765,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12396,6 +12868,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12485,6 +12961,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12600,6 +13080,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12699,6 +13183,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12788,6 +13276,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12892,6 +13384,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12986,6 +13482,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13075,6 +13575,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13169,6 +13673,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13258,6 +13766,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13349,9 +13861,17 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13495,6 +14015,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13595,6 +14119,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13701,6 +14229,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13790,6 +14322,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13879,6 +14415,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13973,6 +14513,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14062,6 +14606,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14163,6 +14711,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14266,7 +14818,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
     - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: originNetwork
-      value: 2
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14289,6 +14841,10 @@ PrefabInstance:
       propertyPath: m_StatsUI
       value: 
       objectReference: {fileID: 1302921093}
+    - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
+      propertyPath: graphs.offset.y
+      value: 0.65
+      objectReference: {fileID: 0}
     - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: kapasList.Array.size
       value: 5
@@ -14357,6 +14913,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5587667834857246867, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 5587667834857246867, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: m_Name
       value: BobA (2)
@@ -14483,6 +15043,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14599,6 +15163,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14692,6 +15260,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14788,7 +15360,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
     - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: originNetwork
-      value: 2
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14884,6 +15456,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14978,6 +15554,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15067,6 +15647,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15176,6 +15760,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2933498176978962826, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
   m_PrefabInstance: {fileID: 34211608}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1096194843 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8436578887426169338, guid: 3c13ea9b3c23ebd4da98ff1da3e9631f, type: 3}
+  m_PrefabInstance: {fileID: 3985531609310562578}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1103386842 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2933498176978962826, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
@@ -15270,6 +15865,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15391,6 +15990,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15480,6 +16083,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15569,6 +16176,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15663,6 +16274,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15752,6 +16367,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15846,6 +16465,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15989,6 +16612,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16083,6 +16710,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16182,6 +16813,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16296,6 +16931,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16407,6 +17046,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16523,6 +17166,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16795,6 +17442,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16894,6 +17545,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16993,6 +17648,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17099,6 +17758,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17210,6 +17873,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17327,9 +17994,17 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17424,11 +18099,26 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+--- !u!114 &1325398852 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1406162861944819528, guid: 3c13ea9b3c23ebd4da98ff1da3e9631f, type: 3}
+  m_PrefabInstance: {fileID: 3985531609310562578}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1325599681 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2933498176978962826, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
@@ -17520,9 +18210,17 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17612,6 +18310,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17711,6 +18413,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17815,6 +18521,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17919,6 +18629,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18013,6 +18727,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18127,6 +18845,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18216,6 +18938,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18307,7 +19033,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
     - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: originNetwork
-      value: 2
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18398,6 +19124,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18507,6 +19237,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18601,6 +19335,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18710,6 +19448,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18887,6 +19629,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18981,6 +19727,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19072,7 +19822,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
     - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: originNetwork
-      value: 5
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -19163,6 +19913,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19264,6 +20018,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19368,6 +20126,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19462,6 +20224,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19551,6 +20317,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19650,6 +20420,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19743,7 +20517,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: originNetwork
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -19864,6 +20638,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19953,6 +20731,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20141,6 +20923,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20230,6 +21016,10 @@ PrefabInstance:
     - target: {fileID: 4410537367057232448, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -20330,6 +21120,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20503,6 +21297,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20602,6 +21400,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20691,6 +21493,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20790,6 +21596,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20893,6 +21703,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -21071,6 +21885,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -21165,6 +21983,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -21271,6 +22093,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -21377,6 +22203,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -21466,6 +22296,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -21555,6 +22389,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -21644,6 +22482,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -21738,6 +22580,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -21842,6 +22688,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -21941,6 +22791,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -22061,6 +22915,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -22160,6 +23018,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -22249,6 +23111,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -22343,6 +23209,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -22432,6 +23302,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -22541,6 +23415,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -22630,6 +23508,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -22719,6 +23601,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -22828,6 +23714,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -22922,6 +23812,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -23011,6 +23905,10 @@ PrefabInstance:
     - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: ar.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -23116,6 +24014,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -23230,7 +24132,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
     - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: originNetwork
-      value: 2
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -23321,6 +24223,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -23509,6 +24415,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -23605,12 +24515,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
     - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: originNetwork
-      value: 1
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -23711,6 +24625,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -23805,6 +24723,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -23993,6 +24915,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -24092,6 +25018,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -25892,6 +26822,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -26092,6 +27026,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -26191,6 +27129,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -26280,6 +27222,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -26374,6 +27320,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -26552,6 +27502,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -26578,6 +27532,10 @@ PrefabInstance:
       propertyPath: m_StatsUI
       value: 
       objectReference: {fileID: 787106420}
+    - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
+      propertyPath: graphs.offset.y
+      value: 0.65
+      objectReference: {fileID: 0}
     - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: kapasList.Array.size
       value: 5
@@ -26646,6 +27604,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5587667834857246867, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 5587667834857246867, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: m_Name
       value: BobA (3)
@@ -26760,6 +27722,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -26873,7 +27839,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
     - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: originNetwork
-      value: 2
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -26969,6 +27935,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -27063,6 +28033,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -27152,6 +28126,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -27256,6 +28234,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -27345,6 +28327,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -27444,6 +28430,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -27552,7 +28542,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
     - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: originNetwork
-      value: 2
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -27653,6 +28643,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -27747,6 +28741,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -27846,6 +28844,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -27949,6 +28951,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28036,6 +29042,10 @@ PrefabInstance:
       propertyPath: graphs.color.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
+      propertyPath: graphs.offset.y
+      value: 0.65
+      objectReference: {fileID: 0}
     - target: {fileID: 5587667834857246865, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -28080,6 +29090,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5587667834857246867, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 5587667834857246867, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: m_Name
       value: Bob (3)
@@ -28204,6 +29218,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28298,6 +29316,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28404,6 +29426,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28495,9 +29521,17 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28597,6 +29631,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28707,6 +29745,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28806,6 +29848,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28900,6 +29946,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28989,6 +30039,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2087727905389615736, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
     m_RemovedGameObjects: []
@@ -29000,6 +30054,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2933498176978962826, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
   m_PrefabInstance: {fileID: 2045993716}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2051014749 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4709722131675188006, guid: 3c13ea9b3c23ebd4da98ff1da3e9631f, type: 3}
+  m_PrefabInstance: {fileID: 3985531609310562578}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2054416207
 GameObject:
   m_ObjectHideFlags: 0
@@ -29177,6 +30242,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -29276,6 +30345,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -29374,6 +30447,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -29468,6 +30545,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -29567,6 +30648,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -29661,6 +30746,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -29807,6 +30896,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -29896,6 +30989,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -29990,6 +31087,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -30081,7 +31182,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
     - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: originNetwork
-      value: 6
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -30172,6 +31273,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -30272,6 +31377,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -30366,6 +31475,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -30455,6 +31568,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -30551,7 +31668,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
     - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: originNetwork
-      value: 5
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -30644,7 +31761,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
     - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
       propertyPath: originNetwork
-      value: 6
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -30740,6 +31857,10 @@ PrefabInstance:
       propertyPath: glow.glowMat
       value: 
       objectReference: {fileID: 2100000, guid: b309cde930c9285479afe1b2e03954b4, type: 2}
+    - target: {fileID: 6986528553207353622, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
+      propertyPath: originNetwork
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -30750,6 +31871,71 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3373666014041072228, guid: f37b434d544a2ae4cb254136628783a4, type: 3}
   m_PrefabInstance: {fileID: 1127363318}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2687681726100329667
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 148010489132730947, guid: 2ff5a5b5cce29fe4aa5b97b43dd0f344, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 148010489132730947, guid: 2ff5a5b5cce29fe4aa5b97b43dd0f344, type: 3}
+      propertyPath: m_Name
+      value: PC_v2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3622805808292242167, guid: 2ff5a5b5cce29fe4aa5b97b43dd0f344, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 11.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3622805808292242167, guid: 2ff5a5b5cce29fe4aa5b97b43dd0f344, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3622805808292242167, guid: 2ff5a5b5cce29fe4aa5b97b43dd0f344, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3622805808292242167, guid: 2ff5a5b5cce29fe4aa5b97b43dd0f344, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3622805808292242167, guid: 2ff5a5b5cce29fe4aa5b97b43dd0f344, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3622805808292242167, guid: 2ff5a5b5cce29fe4aa5b97b43dd0f344, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3622805808292242167, guid: 2ff5a5b5cce29fe4aa5b97b43dd0f344, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3622805808292242167, guid: 2ff5a5b5cce29fe4aa5b97b43dd0f344, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3622805808292242167, guid: 2ff5a5b5cce29fe4aa5b97b43dd0f344, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3622805808292242167, guid: 2ff5a5b5cce29fe4aa5b97b43dd0f344, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4696201388387603443, guid: 2ff5a5b5cce29fe4aa5b97b43dd0f344, type: 3}
+      propertyPath: initBoard.sprite
+      value: 
+      objectReference: {fileID: 1533743795, guid: e2ed4f8e4564966409390e6f23da16cf, type: 3}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2ff5a5b5cce29fe4aa5b97b43dd0f344, type: 3}
 --- !u!1001 &3985531609310562578
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30936,6 +32122,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &3985531609310562582 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5188276351999158816, guid: 3c13ea9b3c23ebd4da98ff1da3e9631f, type: 3}
+  m_PrefabInstance: {fileID: 3985531609310562578}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6839896766878513040
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31061,6 +32252,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 747587543}
     - target: {fileID: 2588066164149268060, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: DeActButton
+      value: 
+      objectReference: {fileID: 3985531609310562582}
+    - target: {fileID: 2588066164149268060, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
       propertyPath: cPUI.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -31093,6 +32288,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 747587540}
     - target: {fileID: 2588066164149268060, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: computerUI.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2588066164149268060, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
       propertyPath: camManager.focus.speed
       value: 10
       objectReference: {fileID: 0}
@@ -31108,6 +32307,18 @@ PrefabInstance:
       propertyPath: heroPlayer2.Array.size
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 2588066164149268060, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: computerUI.Array.data[0]
+      value: 
+      objectReference: {fileID: 1325398852}
+    - target: {fileID: 2588066164149268060, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: computerUI.Array.data[1]
+      value: 
+      objectReference: {fileID: 1096194843}
+    - target: {fileID: 2588066164149268060, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: computerUI.Array.data[2]
+      value: 
+      objectReference: {fileID: 2051014749}
     - target: {fileID: 2588066164149268060, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
       propertyPath: heroPlayer0.Array.data[0]
       value: 
@@ -31303,3 +32514,4 @@ SceneRoots:
   - {fileID: 7610291275006497437}
   - {fileID: 575644869}
   - {fileID: 1946485446}
+  - {fileID: 2687681726100329667}

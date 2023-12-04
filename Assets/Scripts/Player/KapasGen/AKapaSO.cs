@@ -274,7 +274,50 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     /// <param name="hexGrid"></param>
     /// <param name="pattern">Prendre le patterne du UnitManager CurrentPatternPos</param>
     /// <param name="unit"></param>
-    public virtual void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern , Unit unit)
+    public virtual void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern , Unit unit, out bool isHitting)
+    {
+        isHitting = false;
+        int n = 0;
+        foreach (var i in pattern)
+        {
+            //verif s'il y a joueur uniquement sur les case du pattern
+            var h = hexGrid.GetTile(i);
+            if (!h.HasEntityOnIt) continue;
+            var u = h.GetUnit();
+
+            //Verif de si l'Entity est une Unit
+            if (u == null) continue;
+
+            //retour départ boucle si Unit deja ded
+            if (u.IsDead) continue;
+
+            //verif quelle fonction de degats utiliser selon le type de perso
+            if (u.UnitData.Type == UnitType.Hacker) u.CurrentHealth -= Damage.HackerDamage(unit.UnitData.Attack);
+            else
+            {
+                u.CurrentHealth -= Damage.NormalDamage(unit.UnitData.Attack, unit.UnitData.Defense);
+            }
+
+            //compteur de Hit
+            n++;
+            //set new UI
+            u.StatUI.SetHP(u);
+
+            //Kill si Unit a plus de vie
+            if (u.CurrentHealth <= 0 ) { u.OnDie(); }
+        }
+
+        if (n > 0) { isHitting = true; }
+
+        OnDeselectTiles(hexGrid, pattern);
+    }
+    /// <summary>
+    /// Execute sans la surcharge de verif de Hit, parce que flemme de changer tt le code dépendant de Execute
+    /// </summary>
+    /// <param name="hexGrid"></param>
+    /// <param name="pattern"></param>
+    /// <param name="unit"></param>
+    public virtual void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, Unit unit)
     {
         foreach (var i in pattern)
         {
@@ -282,6 +325,9 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
             var h = hexGrid.GetTile(i);
             if (!h.HasEntityOnIt) continue;
             var u = h.GetUnit();
+
+            //Verif de si l'Entity est une Unit
+            if (u == null) continue;
 
             //retour départ boucle si Unit deja ded
             if (u.IsDead) continue;
@@ -294,7 +340,7 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
             u.StatUI.SetHP(u);
 
             //Kill si Unit a plus de vie
-            if (u.CurrentHealth <= 0 ) { u.OnDie(); }
+            if (u.CurrentHealth <= 0) { u.OnDie(); }
         }
 
         OnDeselectTiles(hexGrid, pattern);
@@ -347,6 +393,7 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     /// </summary>
     public virtual void OnDeselectTiles(HexGridStore hexGrid, List<Vector3Int> pattern)
     {
+        if (pattern == null) return;
         foreach (var i in pattern)
         {
             hexGrid.GetTile(i).DisableGlowKapa();
