@@ -14,6 +14,7 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     public abstract KapaType KapaType { get; }
     public abstract KapaFunctionType KapaFunctionType { get; }
     public abstract KapaUISO KapaUI { get; }
+    public abstract GameObject DamageFeedBack { get; }
     public abstract Vector3Int[] Patern { get; }
     #endregion
 
@@ -300,16 +301,22 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
             {
                 //on ne prend pas en compte les Hackers qui n'ont pas de taux crit
                 u.CurrentHealth -= Damage.NormalDamage(unit.UnitData.Attack, unit.UnitData.Defense) * 1.5f;
+                //FeedBack de degats
+                OnUIFeedBack(DamageFeedBack, new Vector3(u.transform.position.x, u.transform.position.y + 0.85f, - 1), Damage.NormalDamage(unit.UnitData.Attack, unit.UnitData.Defense) * 1.5f);
             }
             else 
             {
                 if (u.UnitData.Type == UnitType.Hacker)
                 {
                     u.CurrentHealth -= Damage.HackerDamage(unit.UnitData.Attack);
+                    //FeedBack de degats
+                    OnUIFeedBack(DamageFeedBack, new Vector3(u.transform.position.x, u.transform.position.y + 0.85f, - 1), Damage.HackerDamage(unit.UnitData.Attack));
                 }
                 else
                 {
                     u.CurrentHealth -= Damage.NormalDamage(unit.UnitData.Attack, unit.UnitData.Defense);
+                    //FeedBack de degats
+                    OnUIFeedBack(DamageFeedBack, new Vector3(u.transform.position.x, u.transform.position.y + 0.85f, - 1), Damage.NormalDamage(unit.UnitData.Attack, unit.UnitData.Defense));
                 }
             }
 
@@ -356,16 +363,22 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
             {
                 //on ne prend pas en compte les Hackers qui n'ont pas de taux crit
                 u.CurrentHealth -= Damage.NormalDamage(unit.UnitData.Attack, unit.UnitData.Defense) * 1.5f;
+                //FeedBack de degats
+                OnUIFeedBack(DamageFeedBack, new Vector3(u.transform.position.x, u.transform.position.y + 0.85f, - 1), Damage.NormalDamage(unit.UnitData.Attack, unit.UnitData.Defense) * 1.5f);
             }
             else
             {
                 if (u.UnitData.Type == UnitType.Hacker)
                 {
                     u.CurrentHealth -= Damage.HackerDamage(unit.UnitData.Attack);
+                    //FeedBack de degats
+                    OnUIFeedBack(DamageFeedBack, new Vector3(u.transform.position.x, u.transform.position.y + 0.85f, - 1), Damage.HackerDamage(unit.UnitData.Attack));
                 }
                 else
                 {
                     u.CurrentHealth -= Damage.NormalDamage(unit.UnitData.Attack, unit.UnitData.Defense);
+                    //FeedBack de degats
+                    OnUIFeedBack(DamageFeedBack, new Vector3(u.transform.position.x, u.transform.position.y + 0.85f, - 1), Damage.NormalDamage(unit.UnitData.Attack, unit.UnitData.Defense));
                 }
             }
 
@@ -431,6 +444,12 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
         {
             hexGrid.GetTile(i).DisableGlowKapa();
         }
+    }
+
+    protected void OnUIFeedBack(GameObject inst, Vector3 pos, float dam)
+    {
+        GameObject feed = Instantiate(inst, pos, Quaternion.identity);
+        feed.GetComponent<DamageFeedBack>().OnInit(dam);
     }
     #endregion
 }

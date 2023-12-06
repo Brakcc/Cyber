@@ -5,21 +5,22 @@ using UnityEngine;
 public class SKapaSO : AKapaSO
 {
     #region inherited accessors
-    public override string KapaName { get => kapaName; }
-    [SerializeField] private string kapaName;
-    public override int ID { get => id; }
-    [SerializeField] private int id;
-    public override string Description { get => description; }
-    [SerializeField] private string description;
-    public override int Cost { get => 0; }
+    public override string KapaName => kapaName; 
+    [SerializeField] string kapaName;
+    public override int ID => id;
+    [SerializeField] int id;
+    public override string Description => description;
+    [SerializeField] string description;
+    public override int Cost => 0;
     public override int MaxPlayerPierce => 0;
-    public override EffectType EffectType { get => EffectType.None; }
-    public override KapaType KapaType { get => kapaType; }
-    [SerializeField] private KapaType kapaType;
-    public override KapaFunctionType KapaFunctionType { get => KapaFunctionType.Default; }
-    public override KapaUISO KapaUI { get => kapaUI; }
-    [SerializeField] private KapaUISO kapaUI;
-    public override Vector3Int[] Patern { get => null; }
+    public override EffectType EffectType => EffectType.None;
+    public override KapaType KapaType => kapaType;
+    [SerializeField] KapaType kapaType;
+    public override KapaFunctionType KapaFunctionType => KapaFunctionType.Default;
+    public override KapaUISO KapaUI => kapaUI;
+    [SerializeField] KapaUISO kapaUI;
+    public override GameObject DamageFeedBack => null;
+    public override Vector3Int[] Patern => null;
     #endregion
 
     #region inherited paterns/accessors

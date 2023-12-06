@@ -52,7 +52,10 @@ public class DPSUnit : Unit
 
     void Start()
     {
-        foreach (var kap in m_Unit.KapasList) { kap.InitPaterns(kap.Patern); }
+        foreach (var kap in m_Unit.KapasList)
+        {
+            kap.InitPaterns(kap.Patern);
+        }
     }
     #endregion
 
