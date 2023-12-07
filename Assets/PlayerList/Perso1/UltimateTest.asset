@@ -16,9 +16,12 @@ MonoBehaviour:
   id: 0
   description: Ult
   cost: 0
+  maxPlayerPierce: 0
   effectType: 0
   kapaType: 2
+  kapaFunctionType: 0
   kapaUI: {fileID: 0}
+  damageFeedBack: {fileID: 8948626333531248720, guid: 8f927771530abf045b81020ae94b0299, type: 3}
   patern:
   - {x: 0, y: -1, z: 0}
   - {x: 0, y: -2, z: 0}
@@ -28,3 +31,29 @@ MonoBehaviour:
     damage: 0
     duration: 0
     animation: {fileID: 0}
+  cam:
+    effectType: 0
+    shake:
+      last: 0
+      perlinParameters:
+        chanPerl: {fileID: 0}
+        pivotOffset: {x: 0, y: 0, z: 0}
+        amplitudeGain: 0
+        frequencyGain: 0
+    shockWave:
+      speed: 0
+    impulse:
+      ampli: 0
+      speedDir: {x: 0, y: 0, z: 0}
+      curve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+    focus:
+      speed: 0
+    zoom:
+      orthoSizeChange: 0
+    back:
+      orthoSizeChange: 0

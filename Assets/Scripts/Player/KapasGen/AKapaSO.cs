@@ -14,6 +14,7 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     public abstract KapaType KapaType { get; }
     public abstract KapaFunctionType KapaFunctionType { get; }
     public abstract KapaUISO KapaUI { get; }
+    public abstract GameObject DamageFeedBack { get; }
     public abstract Vector3Int[] Patern { get; }
     #endregion
 
@@ -269,7 +270,8 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
     public abstract bool OnCheckKapaPoints(Unit unit);
 
     /// <summary>
-    /// Base Logique de l'execution de Kapa
+    /// Base Logique de l'execution de Kapa et verif du hit de la Kapa pour eviter la gen de Comp Point en tirant dans le vide
+    /// Surtout Utile dans le call de la NAKapa
     /// </summary>
     /// <param name="hexGrid"></param>
     /// <param name="pattern">Prendre le patterne du UnitManager CurrentPatternPos</param>
@@ -291,15 +293,36 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
             //retour départ boucle si Unit deja ded
             if (u.IsDead) continue;
 
-            //verif quelle fonction de degats utiliser selon le type de perso
-            if (u.UnitData.Type == UnitType.Hacker) u.CurrentHealth -= Damage.HackerDamage(unit.UnitData.Attack);
-            else
+            //verif de la precision
+            if (Random.Range(0, 100) > unit.CurrentPrecision) continue;
+
+            //verif si le coup est critique ou non et infliger les degats
+            if (Random.Range(0, 100) < unit.UnitData.CritRate)
             {
-                u.CurrentHealth -= Damage.NormalDamage(unit.UnitData.Attack, unit.UnitData.Defense);
+                //on ne prend pas en compte les Hackers qui n'ont pas de taux crit
+                u.CurrentHealth -= Damage.NormalDamage(unit.UnitData.Attack, unit.UnitData.Defense) * 1.5f;
+                //FeedBack de degats
+                OnUIFeedBack(DamageFeedBack, new Vector3(u.transform.position.x, u.transform.position.y + 0.85f, - 1), Damage.NormalDamage(unit.UnitData.Attack, unit.UnitData.Defense) * 1.5f);
+            }
+            else 
+            {
+                if (u.UnitData.Type == UnitType.Hacker)
+                {
+                    u.CurrentHealth -= Damage.HackerDamage(unit.UnitData.Attack);
+                    //FeedBack de degats
+                    OnUIFeedBack(DamageFeedBack, new Vector3(u.transform.position.x, u.transform.position.y + 0.85f, - 1), Damage.HackerDamage(unit.UnitData.Attack));
+                }
+                else
+                {
+                    u.CurrentHealth -= Damage.NormalDamage(unit.UnitData.Attack, unit.UnitData.Defense);
+                    //FeedBack de degats
+                    OnUIFeedBack(DamageFeedBack, new Vector3(u.transform.position.x, u.transform.position.y + 0.85f, - 1), Damage.NormalDamage(unit.UnitData.Attack, unit.UnitData.Defense));
+                }
             }
 
             //compteur de Hit
             n++;
+
             //set new UI
             u.StatUI.SetHP(u);
 
@@ -332,9 +355,32 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
             //retour départ boucle si Unit deja ded
             if (u.IsDead) continue;
 
-            //verif quelle fonction de degats utiliser selon le type de perso
-            if (u.UnitData.Type == UnitType.Hacker) u.CurrentHealth -= Damage.HackerDamage(unit.UnitData.Attack);
-            else u.CurrentHealth -= Damage.NormalDamage(unit.UnitData.Attack, unit.UnitData.Defense);
+            //verif de la precision
+            if (Random.Range(0, 100) > unit.CurrentPrecision) continue;
+
+            //verif si le coup est critique ou non
+            if (Random.Range(0, 100) < unit.UnitData.CritRate)
+            {
+                //on ne prend pas en compte les Hackers qui n'ont pas de taux crit
+                u.CurrentHealth -= Damage.NormalDamage(unit.UnitData.Attack, unit.UnitData.Defense) * 1.5f;
+                //FeedBack de degats
+                OnUIFeedBack(DamageFeedBack, new Vector3(u.transform.position.x, u.transform.position.y + 0.85f, - 1), Damage.NormalDamage(unit.UnitData.Attack, unit.UnitData.Defense) * 1.5f);
+            }
+            else
+            {
+                if (u.UnitData.Type == UnitType.Hacker)
+                {
+                    u.CurrentHealth -= Damage.HackerDamage(unit.UnitData.Attack);
+                    //FeedBack de degats
+                    OnUIFeedBack(DamageFeedBack, new Vector3(u.transform.position.x, u.transform.position.y + 0.85f, - 1), Damage.HackerDamage(unit.UnitData.Attack));
+                }
+                else
+                {
+                    u.CurrentHealth -= Damage.NormalDamage(unit.UnitData.Attack, unit.UnitData.Defense);
+                    //FeedBack de degats
+                    OnUIFeedBack(DamageFeedBack, new Vector3(u.transform.position.x, u.transform.position.y + 0.85f, - 1), Damage.NormalDamage(unit.UnitData.Attack, unit.UnitData.Defense));
+                }
+            }
 
             //set new UI
             u.StatUI.SetHP(u);
@@ -398,6 +444,12 @@ public abstract class AKapaSO : ScriptableObject, IKapa, IKapasDatas
         {
             hexGrid.GetTile(i).DisableGlowKapa();
         }
+    }
+
+    protected void OnUIFeedBack(GameObject inst, Vector3 pos, float dam)
+    {
+        GameObject feed = Instantiate(inst, pos, Quaternion.identity);
+        feed.GetComponent<DamageFeedBack>().OnInit(dam);
     }
     #endregion
 }

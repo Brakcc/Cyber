@@ -1,17 +1,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HexGridStore: MonoBehaviour
+public class HexGridStore : MonoBehaviour
 {
     #region fields
+    #region Grid Data
     public Dictionary<Vector3Int, Hex> hexTiles = new();
     private readonly Dictionary<Vector3Int, List<Vector3Int>> neighbourgs = new();
+    #endregion
 
-    [HideInInspector] public List<Entity> emiters = new();
+    #region ComputerList
+    List<Vector3Int>[] ComputerToHack { get; set; } = new List<Vector3Int>[3];
+    public Computer[] computerList;
+    #endregion
 
-    public List<Vector3Int>[] NetworkList {  get => networkList; set { networkList = value; } }
+    #region Network
+    public List<Vector3Int>[] NetworkList { get => networkList; set { networkList = value; } }
     List<Vector3Int>[] networkList = new List<Vector3Int>[(int)Network.None];
     public int EmptySockets { get; set; }
+
+    [HideInInspector] public List<Entity> emiters = new();
+    #endregion
 
     public static HexGridStore hGS;
     #endregion
@@ -23,6 +32,7 @@ public class HexGridStore: MonoBehaviour
     {
         foreach (Hex hex in FindObjectsOfType<Hex>()) { hexTiles[hex.HexCoords] = hex; }
         OnInitNetwork();
+        OnInitComputers();
     }
 
     public Hex GetTile(Vector3Int hexCoords)
@@ -62,9 +72,9 @@ public class HexGridStore: MonoBehaviour
         }
         foreach (var i in networkList)
         {
-            if (i.Count == 0 ) { EmptySockets++; }
+            if (i.Count == 0) { EmptySockets++; }
         }
-        
+
         foreach (Entity ent in FindObjectsOfType<Entity>())
         {
             if (ent.IsNetworkEmiter) emiters.Add(ent);
@@ -107,6 +117,39 @@ public class HexGridStore: MonoBehaviour
             if (i.Contains(pos)) { return true; }
         }
         return false;
+    }
+    #endregion
+
+    #region Computer
+    void OnInitComputers()
+    {
+        for (int i = 0; i < ComputerToHack.Length; i++) { ComputerToHack[i] = new(); }
+
+        computerList = new Computer[3];
+
+        foreach (var hex in FindObjectsOfType<Hex>())
+        {
+            if (hex.IsComputer())
+            {
+                ComputerToHack[(int)hex.ComputerTarget].Add(hex.HexCoords);
+            }
+        }
+        foreach (var c in FindObjectsOfType<Computer>())
+        {
+            computerList[(int)c.ComputerTarget] = c;
+        }
+    }
+
+    public void HandlePCHacked(ComputerTarget whichPC)
+    {
+        if (computerList[(int)whichPC].GotHacked) return;
+
+        foreach (var i in ComputerToHack[(int)whichPC])
+        {
+            GetTile(i).CurrentType = HexType.Walkable;
+        }
+        computerList[(int)whichPC].HandleComputerHack();
+        computerList[(int)whichPC].GotHacked = true;
     }
     #endregion
     #endregion

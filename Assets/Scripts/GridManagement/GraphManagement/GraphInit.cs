@@ -6,6 +6,8 @@ public class GraphInitBoard
     #region fields
     [SerializeField] int orderInLayer;
     [SerializeField] Vector2 offset;
+    [SerializeField] Sprite switchSprite;
+    [SerializeField] Material newMat;
     #endregion
 
     #region cached methodes
@@ -18,6 +20,13 @@ public class GraphInitBoard
         rend.transform.localScale = new Vector3(1, Mathf.Sqrt(2), 1);
         rend.transform.localEulerAngles = new(-45, 0);
         rend.transform.localPosition = new Vector3(offset.x, offset.y, -rend.size.y / 2 + 0.2f);
+    }
+
+    public void HandleDeAct(GameObject parent, bool actAnim)
+    {
+        parent.GetComponent<Animator>().enabled = actAnim;
+        parent.GetComponentInChildren<SpriteRenderer>().material = newMat;
+        parent.GetComponentInChildren<SpriteRenderer>().sprite = switchSprite;
     }
     #endregion
 }

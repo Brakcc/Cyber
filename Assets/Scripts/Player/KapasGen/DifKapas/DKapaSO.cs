@@ -5,21 +5,22 @@ using UnityEngine;
 public class DKapaSO : AKapaSO
 {
     #region inherited accessors
-    public override string KapaName { get => kapaName; }
-    [SerializeField] private string kapaName;
-    public override int ID { get => id; }
-    [SerializeField] private int id;
-    public override string Description { get => description; }
-    [SerializeField] private string description;
-    public override int Cost { get => 0; }
+    public override string KapaName => kapaName;
+    [SerializeField] string kapaName;
+    public override int ID => id;
+    [SerializeField] int id;
+    public override string Description => description;
+    [SerializeField] string description;
+    public override int Cost => 0;
     public override int MaxPlayerPierce => 0;
-    public override EffectType EffectType { get => EffectType.None; }
-    public override KapaType KapaType { get => kapaType; }
-    [SerializeField] private KapaType kapaType;
-    public override KapaFunctionType KapaFunctionType { get => KapaFunctionType.Default; }
-    public override KapaUISO KapaUI { get => kapaUI; }
-    [SerializeField] private KapaUISO kapaUI;
-    public override Vector3Int[] Patern { get => null; }
+    public override EffectType EffectType => EffectType.None;
+    public override KapaType KapaType => kapaType;
+    [SerializeField] KapaType kapaType;
+    public override KapaFunctionType KapaFunctionType => KapaFunctionType.Default;
+    public override KapaUISO KapaUI => kapaUI;
+    [SerializeField] KapaUISO kapaUI;
+    public override GameObject DamageFeedBack => null;
+    public override Vector3Int[] Patern => null;
     #endregion
 
     #region inherited paterns/accessors
@@ -49,9 +50,16 @@ public class DKapaSO : AKapaSO
     #endregion
 
     #region inherited methodes (rendues null)
-    public sealed override bool OnCheckKapaPoints(Unit unit) => (HexGridStore.hGS.GetTile(unit.CurrentHexPos).IsComputer() && unit.TeamNumber == 1);
+    public sealed override bool OnCheckKapaPoints(Unit unit)
+    {
+        return (HexGridStore.hGS.GetTile(unit.CurrentHexPos).IsComputer() && !HexGridStore.hGS.computerList[(int)HexGridStore.hGS.GetTile(unit.CurrentHexPos).ComputerTarget].GotHacked && unit.TeamNumber == 1);
+    }
 
-    public sealed override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, Unit unit) => GameLoopManager.gLM.HandleComputerValueChange();
+    public sealed override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, Unit unit)
+    {
+        GameLoopManager.gLM.HandleComputerValueChange();
+        hexGrid.HandlePCHacked(hexGrid.GetTile(unit.CurrentHexPos).ComputerTarget);
+    }
     
     public sealed override void InitPaterns(Vector3Int[] p) { }
 

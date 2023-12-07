@@ -18,6 +18,8 @@ public class DPSUnit : Unit
     public override int CurrentAtk { get; set; }
     public override int CurrentDef { get; set; }
     public override int CurrentCritRate { get; set; }
+    //additional precision stat
+    public override int CurrentPrecision { get; set; }
     #endregion
     public override int TeamNumber { get; set; }
     public override bool IsOnTurret { get; set; }
@@ -50,7 +52,10 @@ public class DPSUnit : Unit
 
     void Start()
     {
-        foreach (var kap in m_Unit.KapasList) { kap.InitPaterns(kap.Patern); }
+        foreach (var kap in m_Unit.KapasList)
+        {
+            kap.InitPaterns(kap.Patern);
+        }
     }
     #endregion
 

@@ -21,6 +21,7 @@ MonoBehaviour:
   kapaType: 3
   kapaFunctionType: 2
   kapaUI: {fileID: 0}
+  damageFeedBack: {fileID: 8948626333531248720, guid: 8f927771530abf045b81020ae94b0299, type: 3}
   patern:
   - {x: 0, y: -1, z: 0}
   - {x: 0, y: -2, z: 0}

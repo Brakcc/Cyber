@@ -13,6 +13,8 @@ public abstract class Unit : Entity, IUnit
     public abstract int CurrentAtk { get; set; }
     public abstract int CurrentDef { get; set; }
     public abstract int CurrentCritRate { get; set; }
+    //additional precision stat
+    public abstract int CurrentPrecision { get; set; }
     #endregion
     public abstract int TeamNumber { get; set; }
     public abstract bool IsOnTurret { get; set; }
@@ -53,6 +55,7 @@ public abstract class Unit : Entity, IUnit
         CurrentDef = UnitData.Defense;
         CurrentCritRate = UnitData.CritRate;
         CurrentMP = UnitData.MovePoints;
+        CurrentPrecision = 100;
     }
 
     public virtual void Select()

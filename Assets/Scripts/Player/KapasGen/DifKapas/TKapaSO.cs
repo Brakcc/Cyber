@@ -5,21 +5,22 @@ using UnityEngine;
 public class TKapaSO : AKapaSO
 {
     #region inherited accessors
-    public override string KapaName { get => kapaName; }
+    public override string KapaName => kapaName;
     [SerializeField] string kapaName;
-    public override int ID { get => id; }
+    public override int ID => id;
     [SerializeField] int id;
-    public override string Description { get => description; }
+    public override string Description => description;
     [SerializeField] string description;
-    public override int Cost { get => 0; }
+    public override int Cost => 0;
     public override int MaxPlayerPierce => 0;
-    public override EffectType EffectType { get => EffectType.None; }
-    public override KapaType KapaType { get => kapaType; }
+    public override EffectType EffectType => EffectType.None;
+    public override KapaType KapaType => kapaType;
     [SerializeField] KapaType kapaType;
-    public override KapaFunctionType KapaFunctionType { get => KapaFunctionType.Default; }
-    public override KapaUISO KapaUI { get => kapaUI; }
+    public override KapaFunctionType KapaFunctionType => KapaFunctionType.Default;
+    public override KapaUISO KapaUI => kapaUI;
     [SerializeField] KapaUISO kapaUI;
-    public override Vector3Int[] Patern { get => patern; }
+    public override GameObject DamageFeedBack => null;
+    public override Vector3Int[] Patern => patern;
     [SerializeField] private Vector3Int[] patern;
 
     [SerializeField] GameObject turret;

@@ -6,30 +6,32 @@ using Cinemachine;
 public class NAKapaSO : AKapaSO
 {
     #region inherited accessors
-    public override string KapaName { get => kapaName; }
-    [SerializeField] private string kapaName;
-    public override  int ID { get => id; }
-    [SerializeField] private int id;
-    public override string Description { get => description; }
-    [SerializeField] private string description;
-    public override int Cost { get => cost; }
-    [SerializeField] private int cost;
+    public override string KapaName => kapaName;
+    [SerializeField] string kapaName;
+    public override  int ID => id;
+    [SerializeField] int id;
+    public override string Description => description;
+    [SerializeField] string description;
+    public override int Cost => cost;
+    [SerializeField] int cost;
     public override int MaxPlayerPierce => maxPlayerPierce;
     [SerializeField] int maxPlayerPierce;
-    public override EffectType EffectType { get => effectType; }
-    [SerializeField] private EffectType effectType;
-    public override KapaType KapaType { get => kapaType; }
-    [SerializeField] private KapaType kapaType;
-    public override KapaFunctionType KapaFunctionType { get => kapaFunctionType; }
-    [SerializeField] private KapaFunctionType kapaFunctionType;
-    public override KapaUISO KapaUI { get => kapaUI; }
-    [SerializeField] private KapaUISO kapaUI;
-    public override Vector3Int[] Patern { get => patern; }
-    [SerializeField] private Vector3Int[] patern;
+    public override EffectType EffectType => effectType;
+    [SerializeField] EffectType effectType;
+    public override KapaType KapaType => kapaType;
+    [SerializeField] KapaType kapaType;
+    public override KapaFunctionType KapaFunctionType => kapaFunctionType;
+    [SerializeField] KapaFunctionType kapaFunctionType;
+    public override KapaUISO KapaUI => kapaUI;
+    [SerializeField] KapaUISO kapaUI;
+    public override GameObject DamageFeedBack => damageFeedBack;
+    [SerializeField] GameObject damageFeedBack;
+    public override Vector3Int[] Patern => patern;
+    [SerializeField] Vector3Int[] patern;
 
     [SerializeField] NAKapaSupFields nAKapaSupFields;
 
-    [SerializeField] private CameraManager cam;
+    [SerializeField] CameraManager cam;
     #endregion
 
     #region inherited paterns/accessors
