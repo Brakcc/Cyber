@@ -15,5 +15,5 @@ MonoBehaviour:
   kapaName: 
   id: 0
   description: 
-  kapaType: 0
+  kapaType: 5
   kapaUI: {fileID: 0}

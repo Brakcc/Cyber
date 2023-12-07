@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using Cinemachine;
-using System.Collections;
 
 public interface ICameraManager
 {
@@ -17,12 +16,3 @@ public interface ICameraManager
     public void OnShockWave(CinemachineVirtualCamera vCam);
 }
 
-public enum CameraEffectType
-{
-    Shake,
-    Impulse,
-    ShockWave,
-    Focus,
-    Zoom,
-    None
-}

@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4d40161ec8cffd4fa4eb487d60ab8f7, type: 3}
+  m_Name: Hack
+  m_EditorClassIdentifier: 
+  _kapaName: 
+  _id: 0
+  _description: 
+  _cost: 0
+  _maxPlayerPierce: 0
+  _balanceCoeff: 0
+  _effectType: 2
+  _kapaType: 1
+  _kapaFunctionType: 0
+  grab:
+    range: 0
+    debufMP: 0
+  dash:
+    range: 0
+    speed: 0
+  _kapaUI: {fileID: 0}
+  _damageFeedBack: {fileID: 8948626333531248720, guid: 8f927771530abf045b81020ae94b0299, type: 3}
+  _pattern:
+  - {x: 0, y: -1, z: 0}
+  _cKapaSupFields:
+    neededCompPoints: 5
+    ultPointsAdded: 0
+    damage: 0
+    duration: 0
+    animation: {fileID: 0}
+  cam:
+    effectType: 3
+    shake:
+      last: 0
+      perlinParameters:
+        chanPerl: {fileID: 0}
+        pivotOffset: {x: 0, y: 0, z: 0}
+        amplitudeGain: 0
+        frequencyGain: 0
+    shockWave:
+      speed: 0
+    impulse:
+      ampli: 0
+      speedDir: {x: 0, y: 0, z: 0}
+      curve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+    focus:
+      speed: 0
+    zoom:
+      orthoSizeChange: 0
+    back:
+      orthoSizeChange: 0

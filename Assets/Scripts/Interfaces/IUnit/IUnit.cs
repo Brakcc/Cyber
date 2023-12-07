@@ -4,23 +4,26 @@ using UnityEngine;
 public interface IUnit : IEntity
 {
     #region accessors
-    public AUnitSO UnitData { get; }
-    public PlayerStatsUI StatUI { get; }
+    AUnitSO UnitData { get; }
+    PlayerStatsUI StatUI { get; }
     #region current stats
-    public float CurrentHealth { get; }
-    public int CurrentMP { get; }
-    public int CurrentCritRate { get; }
-    public int CurrentDef { get; }
-    public int CurrentAtk { get; }
+    float CurrentHealth { get; set; }
+    int CurrentMP { get; }
+    int CurrentCritRate { get; }
+    int CurrentDef { get; }
+    int CurrentAtk { get; }
+    //additional precision stat
+    int CurrentPrecision { get; }
+    Vector3 CurrentWorldPos { get; }
     #endregion
-    public int TeamNumber { get; }
-    public bool IsOnTurret { get; }
-    public int UltPoints { get; }
-    public bool IsDead { get; }
-    public bool CanPlay { get; }
-    public bool IsPersoLocked { get; }
-    public bool CanKapa { get; }
-    public bool IsOnComputer { get; }
+    int TeamNumber { get; }
+    bool IsOnTurret { get; set; }
+    int UltPoints { get; set; }
+    bool IsDead { get; }
+    bool CanPlay { get; set; }
+    bool IsPersoLocked { get; set; }
+    bool CanKapa { get; }
+    bool IsOnComputer { get; }
     #endregion
 
     #region methodes

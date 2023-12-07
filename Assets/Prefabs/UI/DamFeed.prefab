@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 640068565897550785}
   - component: {fileID: 3304217408804448585}
   - component: {fileID: 1712044629378535215}
-  - component: {fileID: 9194226745067856665}
+  - component: {fileID: 1563248955036362857}
   m_Layer: 0
   m_Name: DamFeed
   m_TagString: Untagged
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 3304217408804448585}
   m_maskType: 0
---- !u!114 &9194226745067856665
+--- !u!114 &1563248955036362857
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -181,7 +181,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8948626333531248720}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 673d19546a25d6242bb5ca0354394ac3, type: 3}
+  m_Script: {fileID: 11500000, guid: e57d64bd367119f479a8ccb1e8df2787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damageText: {fileID: 1712044629378535215}

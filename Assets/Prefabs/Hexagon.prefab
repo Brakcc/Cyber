@@ -424,7 +424,7 @@ MonoBehaviour:
       selectedKapaColorButton: {r: 1, g: 0, b: 0.8365736, a: 1}
       selectedBaseNetwork: {r: 1, g: 0, b: 0, a: 0.6117647}
       selectedDynamicNetwork: {r: 0, g: 1, b: 0.8518257, a: 1}
-  originNetwork: 10
+  originNetwork: 20
   computerTarget: 3
 --- !u!1 &3992954869462812933
 GameObject:

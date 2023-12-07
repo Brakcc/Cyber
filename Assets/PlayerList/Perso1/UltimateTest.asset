@@ -17,15 +17,14 @@ MonoBehaviour:
   description: Ult
   cost: 0
   maxPlayerPierce: 0
+  balanceCoeff: 0
   effectType: 0
   kapaType: 2
   kapaFunctionType: 0
   kapaUI: {fileID: 0}
   damageFeedBack: {fileID: 8948626333531248720, guid: 8f927771530abf045b81020ae94b0299, type: 3}
-  patern:
+  pattern:
   - {x: 0, y: -1, z: 0}
-  - {x: 0, y: -2, z: 0}
-  - {x: 1, y: -1, z: 0}
   uKapaSupFields:
     neededUltPoints: 5
     damage: 0

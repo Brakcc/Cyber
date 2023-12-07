@@ -17,6 +17,6 @@ MonoBehaviour:
   description: 
   kapaType: 3
   kapaUI: {fileID: 0}
-  patern:
+  pattern:
   - {x: 0, y: -1, z: 0}
   turret: {fileID: 8855146878360697299, guid: 1ca258f892b358d4a9bf2515c7529ed0, type: 3}
