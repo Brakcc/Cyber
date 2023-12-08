@@ -54,7 +54,7 @@ public class DPSUnit : Unit
     {
         foreach (var kap in m_Unit.KapasList)
         {
-            kap.InitPatterns(kap.Pattern);
+            kap.InitPatterns(kap.Patterns);
         }
     }
     #endregion

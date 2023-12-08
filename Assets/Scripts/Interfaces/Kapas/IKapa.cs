@@ -15,7 +15,7 @@ public interface IKapa
     KapaFunctionType KapaFunctionType { get; }
     KapaUISO KapaUI { get; }
     GameObject DamageFeedBack { get; }
-    Vector3Int[] Pattern { get; }
+    Vector3Int[] Patterns { get; }
     #region paterns to herit
     //North tiles
     Vector3Int[] OddNTiles { get; }

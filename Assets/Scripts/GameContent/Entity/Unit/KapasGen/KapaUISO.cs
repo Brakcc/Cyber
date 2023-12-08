@@ -3,15 +3,15 @@ using UnityEngine.UI;
 
 public class KapaUISO : ScriptableObject, IKapaUISO
 {
-    [SerializeField] private Image kapaImage;
-    public Image KapaImage {  get => kapaImage; }
+    [SerializeField] Image kapaImage;
+    public Image KapaImage => kapaImage;
 
-    [SerializeField] private string kapaName;
-    public string KapaName { get => kapaName; }
+    [SerializeField] string kapaName;
+    public string KapaName => kapaName;
 
-    [SerializeField] private int kapaCost;
-    public int KapaCost { get => kapaCost; }
+    [SerializeField] int kapaCost;
+    public int KapaCost => kapaCost;
 
-    [SerializeField] private string kapaDescription;
-    public string KapaDescription { get => kapaDescription; }
+    [SerializeField] string kapaDescription;
+    public string KapaDescription => kapaDescription;
 }

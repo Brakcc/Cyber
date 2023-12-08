@@ -16,9 +16,7 @@ public abstract class AKapaSO : ScriptableObject, IKapa
     public abstract KapaFunctionType KapaFunctionType { get; }
     public abstract KapaUISO KapaUI { get; }
     public abstract GameObject DamageFeedBack { get; }
-    public abstract Vector3Int[] Pattern { get; }
-    
-    private const float damageUIRiseOffset = 1.5f;
+    public abstract Vector3Int[] Patterns { get; }
     #endregion
 
     #region paterns to herit
@@ -311,7 +309,7 @@ public abstract class AKapaSO : ScriptableObject, IKapa
                 //FeedBack de degats
                 var targetPos = unitTarget.CurrentWorldPos;
                 OnUIFeedBack(DamageFeedBack, 
-                            new Vector3(targetPos.x, targetPos.y + damageUIRiseOffset), 
+                            new Vector3(targetPos.x, targetPos.y + ConstList.damageUIRiseOffset), 
                             Damage.CritDamage(unit.UnitData.Attack, unit.UnitData.Defense) * BalanceCoeff);
             }
             else 
@@ -322,7 +320,7 @@ public abstract class AKapaSO : ScriptableObject, IKapa
                     //FeedBack de degats
                     var targetPos = unitTarget.CurrentWorldPos;
                     OnUIFeedBack(DamageFeedBack, 
-                                new Vector3(targetPos.x, targetPos.y + damageUIRiseOffset), 
+                                new Vector3(targetPos.x, targetPos.y + ConstList.damageUIRiseOffset), 
                                 Damage.HackerDamage(unit.UnitData.Attack) * BalanceCoeff);
                 }
                 else
@@ -331,7 +329,7 @@ public abstract class AKapaSO : ScriptableObject, IKapa
                     //FeedBack de degats
                     var targetPos = unitTarget.CurrentWorldPos;
                     OnUIFeedBack(DamageFeedBack, 
-                                new Vector3(targetPos.x, targetPos.y + damageUIRiseOffset), 
+                                new Vector3(targetPos.x, targetPos.y + ConstList.damageUIRiseOffset), 
                                 Damage.NormalDamage(unit.UnitData.Attack, unit.UnitData.Defense) * BalanceCoeff);
                 }
             }
@@ -382,7 +380,7 @@ public abstract class AKapaSO : ScriptableObject, IKapa
                 //FeedBack de degats
                 var targetPos = unitTarget.CurrentWorldPos;
                 OnUIFeedBack(DamageFeedBack, 
-                            new Vector3(targetPos.x, targetPos.y + damageUIRiseOffset), 
+                            new Vector3(targetPos.x, targetPos.y + ConstList.damageUIRiseOffset), 
                             Damage.CritDamage(unit.UnitData.Attack, unit.UnitData.Defense) * BalanceCoeff);
             }
             else
@@ -393,7 +391,7 @@ public abstract class AKapaSO : ScriptableObject, IKapa
                     //FeedBack de degats
                     var targetPos = unitTarget.CurrentWorldPos;
                     OnUIFeedBack(DamageFeedBack, 
-                        new Vector3(targetPos.x, targetPos.y + damageUIRiseOffset), 
+                        new Vector3(targetPos.x, targetPos.y + ConstList.damageUIRiseOffset), 
                         Damage.HackerDamage(unit.UnitData.Attack) * BalanceCoeff);
                 }
                 else
@@ -402,7 +400,7 @@ public abstract class AKapaSO : ScriptableObject, IKapa
                     //FeedBack de degats
                     var targetPos = unitTarget.CurrentWorldPos;
                     OnUIFeedBack(DamageFeedBack, 
-                                new Vector3(targetPos.x, targetPos.y + damageUIRiseOffset), 
+                                new Vector3(targetPos.x, targetPos.y + ConstList.damageUIRiseOffset), 
                                 Damage.NormalDamage(unit.UnitData.Attack, unit.UnitData.Defense) * BalanceCoeff);
                 }
             }

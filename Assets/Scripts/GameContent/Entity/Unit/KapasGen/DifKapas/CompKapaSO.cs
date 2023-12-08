@@ -3,7 +3,7 @@ using UnityEngine;
 using CustomAttributes;
 
 [CreateAssetMenu(fileName = "Competence Kapa", menuName = "Tactical/Kapas/Competence")]
-public class CKapaSO : AKapaSO
+public class CompKapaSO : AKapaSO
 {
     #region inherited accessors
     public override string KapaName => _kapaName;
@@ -37,7 +37,7 @@ public class CKapaSO : AKapaSO
     public override GameObject DamageFeedBack => _damageFeedBack;
     [SerializeField] GameObject _damageFeedBack;
 
-    public override Vector3Int[] Pattern => _pattern;
+    public override Vector3Int[] Patterns => _pattern;
     [SerializeField] Vector3Int[] _pattern;
 
     [SerializeField] CKapaSupFields _cKapaSupFields;

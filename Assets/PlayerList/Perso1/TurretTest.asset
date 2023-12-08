@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d02d7002093b5949923699622983592, type: 3}
   m_Name: TurretTest
   m_EditorClassIdentifier: 
-  kapaName: Turret
-  id: 0
-  description: 
-  kapaType: 3
-  kapaUI: {fileID: 0}
-  pattern:
+  _kapaName: 
+  _id: 0
+  _description: 
+  _kapaType: 0
+  _kapaUI: {fileID: 0}
+  _pattern:
   - {x: 0, y: -1, z: 0}
-  turret: {fileID: 8855146878360697299, guid: 1ca258f892b358d4a9bf2515c7529ed0, type: 3}
+  _turret: {fileID: 8855146878360697299, guid: 1ca258f892b358d4a9bf2515c7529ed0, type: 3}

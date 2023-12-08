@@ -1,38 +1,39 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
-[CreateAssetMenu(fileName = "Ultimate Kapa", menuName = "Tactical/Kapas/Ultimate")]
-public class UKapaSO : AKapaSO
+[CreateAssetMenu(fileName = "Normal Attack Kapa", menuName = "Tactical/Kapas/Normal Attack")]
+public class NormAtkKapaSO : AKapaSO
 {
     #region inherited accessors
-    public override string KapaName => kapaName;
-    [SerializeField] string kapaName;
-    public override  int ID => id;
-    [SerializeField] int id;
-    public override string Description => description;
-    [SerializeField] string description;
-    public override int Cost => cost;
-    [SerializeField] int cost;
-    public override int MaxPlayerPierce => maxPlayerPierce;
-    [SerializeField] int maxPlayerPierce;
-    public override float BalanceCoeff => balanceCoeff;
-    [SerializeField] float balanceCoeff;
-    public override EffectType EffectType => effectType;
-    [SerializeField] EffectType effectType;
-    public override KapaType KapaType => kapaType;
-    [SerializeField] KapaType kapaType;
-    public override KapaFunctionType KapaFunctionType => kapaFunctionType;
-    [SerializeField] KapaFunctionType kapaFunctionType;
-    public override KapaUISO KapaUI => kapaUI;
-    [SerializeField] KapaUISO kapaUI;
-    public override GameObject DamageFeedBack => damageFeedBack;
-    [SerializeField] GameObject damageFeedBack;
-    public override Vector3Int[] Pattern => pattern;
-    [SerializeField] Vector3Int[] pattern;
+    public override string KapaName => _kapaName;
+    [SerializeField] string _kapaName;
+    public override  int ID => _id;
+    [SerializeField] int _id;
+    public override string Description => _description;
+    [SerializeField] string _description;
+    public override int Cost => _cost;
+    [SerializeField] int _cost;
+    public override int MaxPlayerPierce => _maxPlayerPierce;
+    [SerializeField] int _maxPlayerPierce;
+    public override float BalanceCoeff => _balanceCoeff;
+    [SerializeField] float _balanceCoeff;
+    public override EffectType EffectType => _effectType;
+    [SerializeField] EffectType _effectType;
+    public override KapaType KapaType => _kapaType;
+    [SerializeField] KapaType _kapaType;
+    public override KapaFunctionType KapaFunctionType => _kapaFunctionType;
+    [SerializeField] KapaFunctionType _kapaFunctionType;
+    public override KapaUISO KapaUI => _kapaUI;
+    [SerializeField] KapaUISO _kapaUI;
+    public override GameObject DamageFeedBack => _damageFeedBack;
+    [SerializeField] GameObject _damageFeedBack;
+    public override Vector3Int[] Patterns => _pattern;
+    [SerializeField] Vector3Int[] _pattern;
 
-    [SerializeField] UKapaSupFields uKapaSupFields;
+    [SerializeField] NAKapaSupFields _nAKapaSupFields;
 
-    [SerializeField] CameraManager cam;
+    [SerializeField] CameraManager _cam;
     #endregion
 
     #region inherited paterns/accessors
@@ -75,9 +76,10 @@ public class UKapaSO : AKapaSO
 
     #region fields
     [System.Serializable]
-    public class UKapaSupFields
+    public class NAKapaSupFields
     {
-        public int neededUltPoints;
+        public int compPointsAdded;
+        public int ultPointsAdded;
         public int damage;
         public int duration;
         public Animation animation;
@@ -85,31 +87,31 @@ public class UKapaSO : AKapaSO
     #endregion
 
     #region inherited methodes
-    public sealed override bool OnCheckKapaPoints(IUnit unit)
-    {
-        if (unit.UltPoints >= uKapaSupFields.neededUltPoints) return true;
-        
-        RefuseKapa(); return false;
-    }
+    public sealed override bool OnCheckKapaPoints(IUnit unit) => true;
 
     public sealed override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, IUnit unit)
     {
-        base.OnExecute(hexGrid, pattern, unit);
-        DoKapa(unit);
-       //Debug.Log(Description); //PlaceHolder � remplir avec les anims et consid�ration de d�g�ts
+        base.OnExecute(hexGrid, pattern, unit, out bool isHitting);
+        DoKapa(unit, isHitting);
+        //PlaceHolder � remplir avec les anims et consid�ration de d�g�ts
         EndKapa();
     }
     #endregion
 
     #region cache
-    void DoKapa(IUnit unit)
+    void DoKapa(IUnit unit, bool hit)
     {
-        unit.UltPoints -= uKapaSupFields.neededUltPoints;
+        if (hit)
+        {
+            GameLoopManager.gLM.HandleCompPointValueChange(unit.TeamNumber, _nAKapaSupFields.compPointsAdded);
+        }
+
+        unit.UltPoints += _nAKapaSupFields.ultPointsAdded;
+        CameraFunctions.OnShake(FindObjectOfType<CinemachineVirtualCamera>(), _cam.shake);
         //PlaceHolder � rempir avec les anims et consid�rations de d�g�ts
 
         unit.StatUI.SetUP(unit);
     }
-    void RefuseKapa() { Debug.Log("nope"); }
     void EndKapa()
     {
         //Debug.Log("End Kapa");

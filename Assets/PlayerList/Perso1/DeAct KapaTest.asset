@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7ffc2ffc55f3cd4a983a20db08deb5b, type: 3}
   m_Name: DeAct KapaTest
   m_EditorClassIdentifier: 
-  kapaName: 
-  id: 0
-  description: 
-  kapaType: 5
-  kapaUI: {fileID: 0}
+  _kapaName: 
+  _id: 0
+  _description: 
+  _kapaType: 4
+  _kapaUI: {fileID: 0}

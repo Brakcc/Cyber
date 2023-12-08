@@ -4,6 +4,7 @@
     Competence,
     Ultimate,
     Turret,
+    DeAct,
     Skip,
     Default
 }

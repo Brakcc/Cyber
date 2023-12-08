@@ -6,6 +6,7 @@ public interface IUnit : IEntity
     #region accessors
     AUnitSO UnitData { get; }
     PlayerStatsUI StatUI { get; }
+
     #region current stats
     float CurrentHealth { get; set; }
     int CurrentMP { get; }
@@ -16,6 +17,7 @@ public interface IUnit : IEntity
     int CurrentPrecision { get; }
     Vector3 CurrentWorldPos { get; }
     #endregion
+
     int TeamNumber { get; }
     bool IsOnTurret { get; set; }
     int UltPoints { get; set; }

@@ -12,35 +12,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc327a9d29d835444a0db66a632a8aec, type: 3}
   m_Name: NATest
   m_EditorClassIdentifier: 
-  kapaName: test
-  id: 0
-  description: NA
-  cost: 10
-  maxPlayerPierce: 1
-  balanceCoeff: 1
-  effectType: 0
-  kapaType: 0
-  kapaFunctionType: 2
-  kapaUI: {fileID: 0}
-  damageFeedBack: {fileID: 8948626333531248720, guid: 8f927771530abf045b81020ae94b0299, type: 3}
-  pattern:
+  _kapaName: 
+  _id: 0
+  _description: 
+  _cost: 0
+  _maxPlayerPierce: 0
+  _balanceCoeff: 0
+  _effectType: 0
+  _kapaType: 0
+  _kapaFunctionType: 0
+  _kapaUI: {fileID: 0}
+  _damageFeedBack: {fileID: 8948626333531248720, guid: 8f927771530abf045b81020ae94b0299, type: 3}
+  _pattern:
   - {x: 0, y: -1, z: 0}
   - {x: 0, y: -2, z: 0}
-  nAKapaSupFields:
-    compPointsAdded: 6
-    ultPointsAdded: 6
+  _nAKapaSupFields:
+    compPointsAdded: 5
+    ultPointsAdded: 0
     damage: 0
     duration: 0
     animation: {fileID: 0}
-  cam:
-    effectType: 0
+  _cam:
+    effectType: 5
     shake:
-      last: 500
+      last: 0
       perlinParameters:
-        chanPerl: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
-        pivotOffset: {x: 0, y: 0, z: -10}
-        amplitudeGain: 0.35
-        frequencyGain: 0.1
+        chanPerl: {fileID: 0}
+        pivotOffset: {x: 0, y: 0, z: 0}
+        amplitudeGain: 0
+        frequencyGain: 0
     shockWave:
       speed: 0
     impulse:

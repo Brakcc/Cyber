@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Threading.Tasks;
-using UnityEngine.UI;
 using System.Collections.Generic;
 
 public class UnitManager : MonoBehaviour
@@ -367,7 +366,7 @@ public class UnitManager : MonoBehaviour
     /// </summary>
     /// <param name="unitRef">é_é</param>
     /// <returns></returns>
-    bool CheckIfCanSelectOtherUnitAndIfSameUnit(Entity unitRef)
+    bool CheckIfCanSelectOtherUnitAndIfSameUnit(IUnit unitRef)
     {
         //il n'y a pas d'unit pre-select
         if (_selectedUnit == null) return false;
@@ -424,7 +423,7 @@ public class UnitManager : MonoBehaviour
     /// </summary>
     /// <param name="unitRef"></param>
     /// <returns></returns>
-    bool CheckIfUnitCanPlay(Unit unitRef)
+    bool CheckIfUnitCanPlay(IUnit unitRef)
     {
         //Si l'unit sélectionnée peut faire son tour ET n'est pas morte
         if (unitRef.CanPlay && !unitRef.IsDead)

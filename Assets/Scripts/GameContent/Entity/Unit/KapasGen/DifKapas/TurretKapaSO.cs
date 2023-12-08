@@ -2,29 +2,29 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Turret Kapa", menuName = "Tactical/Kapas/Turret")]
-public class TKapaSO : AKapaSO
+public class TurretKapaSO : AKapaSO
 {
     #region inherited accessors
-    public override string KapaName => kapaName;
-    [SerializeField] string kapaName;
-    public override int ID => id;
-    [SerializeField] int id;
-    public override string Description => description;
-    [SerializeField] string description;
+    public override string KapaName => _kapaName;
+    [SerializeField] string _kapaName;
+    public override int ID => _id;
+    [SerializeField] int _id;
+    public override string Description => _description;
+    [SerializeField] string _description;
     public override int Cost => 0;
     public override int MaxPlayerPierce => 0;
     public override float BalanceCoeff => 0;
     public override EffectType EffectType => EffectType.None;
-    public override KapaType KapaType => kapaType;
-    [SerializeField] KapaType kapaType;
+    public override KapaType KapaType => _kapaType;
+    [SerializeField] KapaType _kapaType;
     public override KapaFunctionType KapaFunctionType => KapaFunctionType.Default;
-    public override KapaUISO KapaUI => kapaUI;
-    [SerializeField] KapaUISO kapaUI;
+    public override KapaUISO KapaUI => _kapaUI;
+    [SerializeField] KapaUISO _kapaUI;
     public override GameObject DamageFeedBack => null;
-    public override Vector3Int[] Pattern => pattern;
-    [SerializeField] private Vector3Int[] pattern;
+    public override Vector3Int[] Patterns => _pattern;
+    [SerializeField] Vector3Int[] _pattern;
 
-    [SerializeField] GameObject turret;
+    [SerializeField] GameObject _turret;
     #endregion
 
     #region inherited paterns/accessors
@@ -72,7 +72,7 @@ public class TKapaSO : AKapaSO
     {
         if (GameLoopManager.gLM.TurretNumber[unit.TeamNumber] <= 0) return;
 
-        Instantiate(turret, hexGrid.GetTile(pattern[0]).transform.position, Quaternion.identity, hexGrid.transform);
+        Instantiate(_turret, hexGrid.GetTile(pattern[0]).transform.position, Quaternion.identity, hexGrid.transform);
         GameLoopManager.gLM.HandleTurretUse(unit.TeamNumber);
         hexGrid.GetTile(pattern[0]).HasEntityOnIt = true;
 

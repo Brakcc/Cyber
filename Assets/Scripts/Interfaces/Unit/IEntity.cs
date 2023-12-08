@@ -18,5 +18,4 @@ public interface IEntity
 
     void OnDeselectNetworkTiles();
     #endregion
-
 }

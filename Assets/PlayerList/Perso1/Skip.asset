@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a896da2542af6114a9aac05e9f4a0927, type: 3}
   m_Name: Skip
   m_EditorClassIdentifier: 
-  kapaName: Skip
-  id: 11
-  description: S
-  kapaType: 4
-  kapaUI: {fileID: 0}
+  _kapaName: 
+  _id: 0
+  _description: 
+  _kapaType: 5
+  _kapaUI: {fileID: 0}
