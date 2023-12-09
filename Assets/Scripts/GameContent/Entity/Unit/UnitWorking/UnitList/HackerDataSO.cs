@@ -1,8 +1,8 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "DPS Datas", menuName = "Tactical/Units/DPS Datas")]
-public class DPSDataSO : AUnitSO
+[CreateAssetMenu(fileName = "Hacker Datas", menuName = "Tactical/Units/Hacker Datas")]
+public class HackerDataSO : AbstractUnitSO
 {
     public override int ID => iD;
     [SerializeField] int iD;
@@ -13,7 +13,8 @@ public class DPSDataSO : AUnitSO
     public override UnitType Type => type;
     [SerializeField] UnitType type;
 
-    public override int NetworkRange => 0;
+    public override int NetworkRange => networkRange;
+    [SerializeField] int networkRange;
 
     public override int MovePoints => movePoints;
     [SerializeField] int movePoints;
@@ -30,12 +31,12 @@ public class DPSDataSO : AUnitSO
     public override int Speed => speed;
     [SerializeField] int speed;
 
-    public override float HealthPoint => healthPoint;
+    public override float HealthPoint { get => healthPoint; }
     [SerializeField] float healthPoint;
 
-    public override Sprite Sprite { get => sprite; set => sprite = value; }
+    public override Sprite Sprite { get => sprite; set { sprite = value; } }
     [SerializeField] Sprite sprite;
 
-    public override List<AKapaSO> KapasList { get => kapasList; set => kapasList = value; }
-    [SerializeField] List<AKapaSO> kapasList;
+    public override List<AbstractKapaSO> KapasList { get => kapasList; set { kapasList = value; } }
+    [SerializeField] List<AbstractKapaSO> kapasList;
 }

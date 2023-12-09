@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "DeAct Kapa", menuName = "Tactical/Kapas/DeAct")]
-public class DeActKapaSO : AKapaSO
+public class DeActKapaSO : AbstractKapaSO
 {
     #region inherited accessors
     public override string KapaName => _kapaName;

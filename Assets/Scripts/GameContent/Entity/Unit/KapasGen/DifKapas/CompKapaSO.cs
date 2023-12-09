@@ -3,7 +3,7 @@ using UnityEngine;
 using CustomAttributes;
 
 [CreateAssetMenu(fileName = "Competence Kapa", menuName = "Tactical/Kapas/Competence")]
-public class CompKapaSO : AKapaSO
+public class CompKapaSO : AbstractKapaSO
 {
     #region inherited accessors
     public override string KapaName => _kapaName;

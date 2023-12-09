@@ -30640,11 +30640,11 @@ PrefabInstance:
     - target: {fileID: 5077562485929351747, guid: 3c13ea9b3c23ebd4da98ff1da3e9631f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 6839896766878513041}
+      objectReference: {fileID: 0}
     - target: {fileID: 5559459711735986033, guid: 3c13ea9b3c23ebd4da98ff1da3e9631f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 6839896766878513041}
+      objectReference: {fileID: 0}
     - target: {fileID: 6300031957346827611, guid: 3c13ea9b3c23ebd4da98ff1da3e9631f, type: 3}
       propertyPath: unit
       value: 
@@ -30660,7 +30660,7 @@ PrefabInstance:
     - target: {fileID: 6692607165979905293, guid: 3c13ea9b3c23ebd4da98ff1da3e9631f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 6839896766878513041}
+      objectReference: {fileID: 0}
     - target: {fileID: 6759659369388700755, guid: 3c13ea9b3c23ebd4da98ff1da3e9631f, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -30744,7 +30744,7 @@ PrefabInstance:
     - target: {fileID: 6804278457674522133, guid: 3c13ea9b3c23ebd4da98ff1da3e9631f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 6839896766878513041}
+      objectReference: {fileID: 0}
     - target: {fileID: 8263596259811757009, guid: 3c13ea9b3c23ebd4da98ff1da3e9631f, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -30760,7 +30760,7 @@ PrefabInstance:
     - target: {fileID: 8771451756969929617, guid: 3c13ea9b3c23ebd4da98ff1da3e9631f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 6839896766878513041}
+      objectReference: {fileID: 0}
     - target: {fileID: 8805761302050629422, guid: 3c13ea9b3c23ebd4da98ff1da3e9631f, type: 3}
       propertyPath: unit
       value: 
@@ -30820,6 +30820,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 489815630530185795, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: computerList.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 696318820416041608, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
       propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -31064,6 +31068,14 @@ PrefabInstance:
       propertyPath: hexGrid
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6839896767206874218, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: Unit.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6839896767206874218, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: Selection.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6839896767206874219, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -31109,22 +31121,11 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 6839896767206874220, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+    - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
---- !u!114 &6839896766878513041 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1283223407700948218, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
-  m_PrefabInstance: {fileID: 6839896766878513040}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 504544761}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e651d84be0075e4aab368a5501fe43c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &7610291275006497437
 PrefabInstance:
   m_ObjectHideFlags: 0

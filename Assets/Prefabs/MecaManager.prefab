@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 696318820416041608}
   - component: {fileID: 6839896767206874218}
   - component: {fileID: 2536175099072836728}
-  - component: {fileID: 1283223407700948218}
+  - component: {fileID: 9217339866666483883}
   - component: {fileID: 489815630530185795}
   - component: {fileID: 2588066164149268060}
   m_Layer: 0
@@ -154,7 +154,7 @@ MonoBehaviour:
   Selection:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1283223407700948218}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UnitManager, Assembly-CSharp
         m_MethodName: HandleTerrainSelect
         m_Mode: 0
@@ -169,7 +169,7 @@ MonoBehaviour:
   Unit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1283223407700948218}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UnitManager, Assembly-CSharp
         m_MethodName: HandleUnitSelected
         m_Mode: 0
@@ -209,7 +209,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   clic: {fileID: -4754627337383186262, guid: 171f437c71c279145b3967434ef2e7e5, type: 3}
---- !u!114 &1283223407700948218
+--- !u!114 &9217339866666483883
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -218,7 +218,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6839896767206874217}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e651d84be0075e4aab368a5501fe43c, type: 3}
+  m_Script: {fileID: 11500000, guid: f2be8fb6315c54c4f9dcf3a6ddc6a65b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &489815630530185795
@@ -233,7 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4c2c1369db70a44b987bc32c2c79cc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  emiters: []
+  computerList: []
 --- !u!114 &2588066164149268060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,6 +247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstTeamPlaying: 0
+  DeActButton: {fileID: 0}
   heroPlayer0: []
   heroPlayer1:
   - {fileID: 0}
@@ -254,4 +255,4 @@ MonoBehaviour:
   camM: {fileID: 0}
   cPUI: []
   tNbUI: []
-  computerText: {fileID: 0}
+  computerUI: []

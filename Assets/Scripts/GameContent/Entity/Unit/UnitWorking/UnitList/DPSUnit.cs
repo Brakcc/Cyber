@@ -5,8 +5,8 @@ public class DPSUnit : Unit
 {
     #region inherited accessors
     //moves fields 
-    [SerializeField] AUnitSO m_Unit;
-    public override AUnitSO UnitData => m_Unit;
+    [SerializeField] AbstractUnitSO m_Unit;
+    public override AbstractUnitSO UnitData => m_Unit;
 
     [SerializeField] PlayerStatsUI m_StatsUI;
     public override PlayerStatsUI StatUI => m_StatsUI;
@@ -22,12 +22,12 @@ public class DPSUnit : Unit
     public override int CurrentPrecision { get; set; }
     #endregion
     public override int TeamNumber { get; set; }
-    public override bool IsOnTurret { get; set; }
+    public override bool IsOnTurret { get; protected set; }
     public override int UltPoints { get; set; }
     public override bool CanPlay { get; set; }
     public override bool IsDead { get; protected set; }
     public override bool IsPersoLocked { get; set; }
-    public override bool CanKapa { get; set; }
+    public override bool CanKapa { get; protected set; }
     public override bool IsOnComputer { get; protected set; }
 
     [SerializeField] GraphInitUnit graphs;

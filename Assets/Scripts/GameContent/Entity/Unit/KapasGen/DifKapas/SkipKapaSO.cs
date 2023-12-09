@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Skip Kapa", menuName = "Tactical/Kapas/Skip")]
-public class SkipKapaSO : AKapaSO
+public class SkipKapaSO : AbstractKapaSO
 {
     #region inherited accessors
     public override string KapaName => _kapaName; 

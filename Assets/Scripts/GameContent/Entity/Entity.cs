@@ -7,7 +7,7 @@ public abstract class Entity : MonoBehaviour, IEntity
     #region interface fields
     public abstract Vector3Int CurrentHexPos { get; set; }
     public abstract bool IsNetworkEmiter { get; set; }
-    public abstract bool IsOnNetwork { get; set; }
+    public abstract bool IsOnNetwork { get; protected set; }
     public abstract int NetworkRange { get; set; }
     public abstract List<Vector3Int> GlobalNetwork { get; set; }
     #endregion

@@ -10,7 +10,7 @@ public class HexGridStore : MonoBehaviour
     #endregion
 
     #region ComputerList
-    List<Vector3Int>[] ComputerToHack { get; set; } = new List<Vector3Int>[3];
+    public List<Vector3Int>[] ComputerToHack { get; private set; } = new List<Vector3Int>[3];
     public Computer[] computerList;
     #endregion
 

@@ -3,7 +3,7 @@ using UnityEngine;
 using Cinemachine;
 
 [CreateAssetMenu(fileName = "Normal Attack Kapa", menuName = "Tactical/Kapas/Normal Attack")]
-public class NormAtkKapaSO : AKapaSO
+public class NormAtkKapaSO : AbstractKapaSO
 {
     #region inherited accessors
     public override string KapaName => _kapaName;

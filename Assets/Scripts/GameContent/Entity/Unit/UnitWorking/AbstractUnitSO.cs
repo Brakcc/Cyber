@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class AUnitSO : ScriptableObject, IUnitData
+public abstract class AbstractUnitSO : ScriptableObject, IUnitData
 {
     #region fields/accessors to herit
     public abstract int ID { get; }
@@ -15,6 +15,6 @@ public abstract class AUnitSO : ScriptableObject, IUnitData
     public abstract int Speed { get; }
     public abstract float HealthPoint { get; }
     public abstract Sprite Sprite { get; set; }
-    public abstract List<AKapaSO> KapasList { get; set; }
+    public abstract List<AbstractKapaSO> KapasList { get; set; }
     #endregion
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 public interface IUnit : IEntity
 {
     #region accessors
-    AUnitSO UnitData { get; }
+    AbstractUnitSO UnitData { get; }
     PlayerStatsUI StatUI { get; }
 
     #region current stats
@@ -19,7 +19,7 @@ public interface IUnit : IEntity
     #endregion
 
     int TeamNumber { get; }
-    bool IsOnTurret { get; set; }
+    bool IsOnTurret { get; }
     int UltPoints { get; set; }
     bool IsDead { get; }
     bool CanPlay { get; set; }

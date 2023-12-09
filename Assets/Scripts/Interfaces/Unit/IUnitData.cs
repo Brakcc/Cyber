@@ -14,6 +14,6 @@ public interface IUnitData
     int Speed { get; }
     float HealthPoint { get; }
     Sprite Sprite {  get; }
-    List<AKapaSO> KapasList { get; }
+    List<AbstractKapaSO> KapasList { get; }
 }
 

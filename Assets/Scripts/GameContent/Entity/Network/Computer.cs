@@ -5,7 +5,7 @@ public class Computer : Entity
 {
     public override Vector3Int CurrentHexPos { get; set; }
     public override bool IsNetworkEmiter { get; set; }
-    public override bool IsOnNetwork { get; set; }
+    public override bool IsOnNetwork { get; protected set; }
     public override int NetworkRange { get; set; }
     public override List<Vector3Int> GlobalNetwork { get => null; set { } }
 

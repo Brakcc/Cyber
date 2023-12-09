@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Unit : Entity, IUnit
 {
     #region fields/accessors to herit
-    public abstract AUnitSO UnitData { get; }
+    public abstract AbstractUnitSO UnitData { get; }
     public abstract PlayerStatsUI StatUI { get; }
     #region current stats
     public abstract float CurrentHealth { get; set; }
@@ -18,18 +18,18 @@ public abstract class Unit : Entity, IUnit
     public Vector3 CurrentWorldPos => transform.position;
     #endregion
     public abstract int TeamNumber { get; set; }
-    public abstract bool IsOnTurret { get; set; }
+    public abstract bool IsOnTurret { get; protected set; }
     public abstract int UltPoints { get; set; }
     public abstract bool IsDead { get; protected set; }
     public abstract bool CanPlay { get; set; }
     public abstract bool IsPersoLocked { get; set; }
-    public abstract bool CanKapa { get; set; }
+    public abstract bool CanKapa { get; protected set; }
     public abstract bool IsOnComputer {  get; protected set; }
     #region Entity heritage
     public override Vector3Int CurrentHexPos { get => _currentHexPos; set => _currentHexPos = value; }
     Vector3Int _currentHexPos;
     public override bool IsNetworkEmiter { get; set; }
-    public override bool IsOnNetwork { get; set; }
+    public override bool IsOnNetwork { get; protected set; }
     public override int NetworkRange { get; set; }
     public override List<Vector3Int> GlobalNetwork { get; set; } = new();
     #endregion

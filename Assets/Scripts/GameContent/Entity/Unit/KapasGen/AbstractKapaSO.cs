@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class AKapaSO : ScriptableObject, IKapa
+public abstract class AbstractKapaSO : ScriptableObject, IKapa
 {
     #region fields to herit
     public abstract string KapaName { get; }

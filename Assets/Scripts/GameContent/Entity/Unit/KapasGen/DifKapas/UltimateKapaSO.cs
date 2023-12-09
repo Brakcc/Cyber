@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Ultimate Kapa", menuName = "Tactical/Kapas/Ultimate")]
-public class UltimateKapaSO : AKapaSO
+public class UltimateKapaSO : AbstractKapaSO
 {
     #region inherited accessors
     public override string KapaName => _kapaName;

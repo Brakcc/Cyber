@@ -22,9 +22,6 @@ public class UnitManager : MonoBehaviour
     public List<Vector3Int> CurrentButtonPos {get; private set; }
     public List<Vector3Int> CurrentKapaPaternPos { get; private set; }  
     Vector3Int CurrentDirSelected { get; set; }
-
-    //Player Turn à déplacer dans le GameLoopManager !!!!!
-    public bool PlayerTurn { get; private set; } = true;
     #endregion
 
     #region Instance et Awake
@@ -53,7 +50,6 @@ public class UnitManager : MonoBehaviour
     /// <param name="unit"></param>
     public void HandleUnitSelected(GameObject unit)
     {
-        if (!PlayerTurn) return;
         Unit unitReference = unit.GetComponent<Unit>();
         
         if (CheckIfUnitCanPlay(unitReference)) return;
@@ -72,7 +68,7 @@ public class UnitManager : MonoBehaviour
     /// <param name="selectedHex"></param>
     public void HandleTerrainSelect(GameObject selectedHex)
     {
-        if (_selectedUnit == null || !PlayerTurn) return;
+        if (_selectedUnit == null) return;
         Hex selHex = selectedHex.GetComponent<Hex>();
 
         if (IsKapaSelected) { HandleKapaDirSelect(selHex.HexCoords, SelectedUnit); return; }
@@ -560,7 +556,6 @@ public class UnitManager : MonoBehaviour
     /// </summary>
     public void ResetLoop()
     {
-        PlayerTurn = true;
         foreach (GameObject u in GameObject.FindGameObjectsWithTag("Player")) { u.GetComponent<Unit>().CanPlay = true; }
     }
     #endregion
