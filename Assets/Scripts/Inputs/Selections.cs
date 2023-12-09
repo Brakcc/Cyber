@@ -1,34 +1,38 @@
+using GameContent.Entity.Unit.UnitWorking;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Selections : MonoBehaviour
+namespace Inputs
 {
-    #region fields
-    [SerializeField] private Camera mainC;
-    private InputsManager inputsMan;
-
-    public LayerMask tileSelectionMask;
-
-    public UnityEvent<GameObject> Selection;
-    public UnityEvent<GameObject> Unit;
-    #endregion
-
-    #region methodes
-    void Awake()
+    public class Selections : MonoBehaviour
     {
-        if (mainC == null) { mainC = Camera.main; }
-        inputsMan = new();
-    }
+        #region fields
+        [SerializeField] private Camera mainC;
+        private InputsManager _inputsMan;
 
-    public void HandleClick(Vector3 mousePos)
-    {
-        if (inputsMan.FocV2(tileSelectionMask, mainC, mousePos, out GameObject result))
+        public LayerMask tileSelectionMask;
+
+        public UnityEvent<GameObject> selection;
+        public UnityEvent<GameObject> unit;
+        #endregion
+
+        #region methodes
+        void Awake()
         {
-            if (UnitSelected(result)) { Unit?.Invoke(result); }
-            else { Selection?.Invoke(result); }
+            if (mainC == null) { mainC = Camera.main; }
+            _inputsMan = new();
         }
-    }
 
-    bool UnitSelected(GameObject result) => result.GetComponent<Unit>() != null;
-    #endregion
+        public void HandleClick(Vector3 mousePos)
+        {
+            if (_inputsMan.FocV2(tileSelectionMask, mainC, mousePos, out GameObject result))
+            {
+                if (UnitSelected(result)) { unit?.Invoke(result); }
+                else { selection?.Invoke(result); }
+            }
+        }
+
+        bool UnitSelected(GameObject result) => result.GetComponent<Unit>() != null;
+        #endregion
+    }
 }

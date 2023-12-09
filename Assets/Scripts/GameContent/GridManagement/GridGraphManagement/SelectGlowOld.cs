@@ -1,163 +1,166 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class SelectGlowOld
+namespace GameContent.GridManagement.GridGraphManagement
 {
-    #region fields
-    //Dicts de materials
-    private readonly Dictionary<Renderer, Material[]> glowMats = new();
-    private readonly Dictionary<Renderer, Material[]> originMats = new();
-    private readonly Dictionary<Color, Material> cachedGlowMats = new();
+    [System.Serializable]
+    public class SelectGlowOld
+    {
+        #region fields
+        //Dicts de materials
+        private readonly Dictionary<Renderer, Material[]> glowMats = new();
+        private readonly Dictionary<Renderer, Material[]> originMats = new();
+        private readonly Dictionary<Color, Material> cachedGlowMats = new();
 
-    //couleurs et materials de base pour le glow
+        //couleurs et materials de base pour le glow
 
-    [SerializeField] private Material glowMat;
-    [SerializeField] Color selectedPathColor;
-    [SerializeField] Color selectedKapaColor;
-    [SerializeField] Color selectedKapaColorButton;
+        [SerializeField] private Material glowMat;
+        [SerializeField] Color selectedPathColor;
+        [SerializeField] Color selectedKapaColor;
+        [SerializeField] Color selectedKapaColorButton;
     
-    //Simple glow and color logic
-    private Color originColor;
-    private bool isGlowing;
-    private Hex thisHex;
-    #endregion
+        //Simple glow and color logic
+        private Color originColor;
+        private bool isGlowing;
+        private Hex thisHex;
+        #endregion
 
-    #region methodes
-    public void SetGlow(Hex h) 
-    {
-        thisHex = h;
-        PrepareMatsDicts();
-        originColor = glowMat.GetColor("_GlowColor");
-    }
-
-    void PrepareMatsDicts()
-    {
-        foreach (Renderer rend in thisHex.GetComponentsInChildren<Renderer>())
+        #region methodes
+        public void SetGlow(Hex h) 
         {
-            Material[] origins = rend.materials;
-            originMats.Add(rend, origins);
-            Material[] newMats = new Material[rend.materials.Length];
-            for (int i = 0; i < origins.Length; i++)
+            thisHex = h;
+            PrepareMatsDicts();
+            originColor = glowMat.GetColor("_GlowColor");
+        }
+
+        void PrepareMatsDicts()
+        {
+            foreach (Renderer rend in thisHex.GetComponentsInChildren<Renderer>())
             {
-                if (!cachedGlowMats.TryGetValue(origins[i].color, out Material mat))
+                Material[] origins = rend.materials;
+                originMats.Add(rend, origins);
+                Material[] newMats = new Material[rend.materials.Length];
+                for (int i = 0; i < origins.Length; i++)
                 {
-                    mat = new Material(glowMat) { color = origins[i].color };
-                    cachedGlowMats[mat.color] = mat;
+                    if (!cachedGlowMats.TryGetValue(origins[i].color, out Material mat))
+                    {
+                        mat = new Material(glowMat) { color = origins[i].color };
+                        cachedGlowMats[mat.color] = mat;
+                    }
+                    newMats[i] = mat;
                 }
-                newMats[i] = mat;
+                glowMats.Add(rend, newMats);
             }
-            glowMats.Add(rend, newMats);
         }
-    }
 
-    #region standard glow
-    void Toggle()
-    {
-        if (!isGlowing)
+        #region standard glow
+        void Toggle()
         {
-            foreach (Renderer rend in originMats.Keys) { rend.materials = glowMats[rend]; }
-        }
-        else
-        {
-            foreach (Renderer rend in originMats.Keys) { rend.materials = originMats[rend]; }
-        }
-        isGlowing = !isGlowing;
-    }
-
-    public void ToggleGlow(bool b)
-    {
-        if (isGlowing == b) return;
-        isGlowing = !b;
-        Toggle();
-    }
-    #endregion
-
-    #region path glow
-    public void StartGlowPath()
-    {
-        if (!isGlowing) return;
-        foreach (Renderer rend in glowMats.Keys)
-        {
-            foreach (Material m in glowMats[rend]) { m.SetColor("_GlowColor", selectedPathColor); }
-        }
-    }
-    public void ResetGlowPath()
-    {
-        if (!isGlowing) return;
-        foreach (Renderer rend in glowMats.Keys)
-        {
-            foreach (Material m in glowMats[rend]) { m.SetColor("_GlowColor", originColor); }
-            rend.materials = glowMats[rend];
-        }
-    }
-    #endregion
-
-    #region kapa glow
-    void ToggleKapa()
-    {
-        if (!isGlowing)
-        {
-            foreach (Renderer rend in originMats.Keys) 
+            if (!isGlowing)
             {
+                foreach (Renderer rend in originMats.Keys) { rend.materials = glowMats[rend]; }
+            }
+            else
+            {
+                foreach (Renderer rend in originMats.Keys) { rend.materials = originMats[rend]; }
+            }
+            isGlowing = !isGlowing;
+        }
+
+        public void ToggleGlow(bool b)
+        {
+            if (isGlowing == b) return;
+            isGlowing = !b;
+            Toggle();
+        }
+        #endregion
+
+        #region path glow
+        public void StartGlowPath()
+        {
+            if (!isGlowing) return;
+            foreach (Renderer rend in glowMats.Keys)
+            {
+                foreach (Material m in glowMats[rend]) { m.SetColor("_GlowColor", selectedPathColor); }
+            }
+        }
+        public void ResetGlowPath()
+        {
+            if (!isGlowing) return;
+            foreach (Renderer rend in glowMats.Keys)
+            {
+                foreach (Material m in glowMats[rend]) { m.SetColor("_GlowColor", originColor); }
                 rend.materials = glowMats[rend];
+            }
+        }
+        #endregion
+
+        #region kapa glow
+        void ToggleKapa()
+        {
+            if (!isGlowing)
+            {
+                foreach (Renderer rend in originMats.Keys) 
+                {
+                    rend.materials = glowMats[rend];
+                    foreach (Material m in glowMats[rend]) { m.SetColor("_GlowColor", selectedKapaColor); }
+                }
+            }
+            else
+            {
+                foreach (Renderer rend in originMats.Keys) 
+                {
+                    rend.materials = originMats[rend]; 
+                    foreach (Material m in glowMats[rend]) { m.SetColor("_GlowColor", originColor); }
+                    rend.materials = originMats[rend];
+                }
+            }
+            isGlowing = !isGlowing;
+        }
+
+        public void ToggleGlowKapa(bool b)
+        {
+            if (isGlowing == b) return;
+            isGlowing = !b;
+            ToggleKapa();
+        }
+
+        public void GlowKapaOnButton()
+        {
+            if (!isGlowing) return;
+            foreach (Renderer rend in glowMats.Keys)
+            {
                 foreach (Material m in glowMats[rend]) { m.SetColor("_GlowColor", selectedKapaColor); }
             }
         }
-        else
+        #endregion
+
+        #region preselect kapa glow
+        public void ToggleSelectGlowKapa(bool b)
         {
-            foreach (Renderer rend in originMats.Keys) 
+            if (isGlowing == b) return;
+            isGlowing = !b;
+            ToggleKapa();
+        }
+
+        public void StartGlowButton()
+        {
+            if (!isGlowing) return;
+            foreach (Renderer rend in glowMats.Keys)
             {
-                rend.materials = originMats[rend]; 
-                foreach (Material m in glowMats[rend]) { m.SetColor("_GlowColor", originColor); }
-                rend.materials = originMats[rend];
+                foreach (Material m in glowMats[rend]) { m.SetColor("_GlowColor", selectedKapaColorButton); }
             }
         }
-        isGlowing = !isGlowing;
-    }
-
-    public void ToggleGlowKapa(bool b)
-    {
-        if (isGlowing == b) return;
-        isGlowing = !b;
-        ToggleKapa();
-    }
-
-    public void GlowKapaOnButton()
-    {
-        if (!isGlowing) return;
-        foreach (Renderer rend in glowMats.Keys)
+        public void ResetGlowButton()
         {
-            foreach (Material m in glowMats[rend]) { m.SetColor("_GlowColor", selectedKapaColor); }
+            if (!isGlowing) return;
+            foreach (Renderer rend in glowMats.Keys)
+            {
+                foreach (Material m in glowMats[rend]) { m.SetColor("_GlowColor", originColor); }
+                rend.materials = glowMats[rend];
+            }
         }
+        #endregion
+        #endregion
     }
-    #endregion
-
-    #region preselect kapa glow
-    public void ToggleSelectGlowKapa(bool b)
-    {
-        if (isGlowing == b) return;
-        isGlowing = !b;
-        ToggleKapa();
-    }
-
-    public void StartGlowButton()
-    {
-        if (!isGlowing) return;
-        foreach (Renderer rend in glowMats.Keys)
-        {
-            foreach (Material m in glowMats[rend]) { m.SetColor("_GlowColor", selectedKapaColorButton); }
-        }
-    }
-    public void ResetGlowButton()
-    {
-        if (!isGlowing) return;
-        foreach (Renderer rend in glowMats.Keys)
-        {
-            foreach (Material m in glowMats[rend]) { m.SetColor("_GlowColor", originColor); }
-            rend.materials = glowMats[rend];
-        }
-    }
-    #endregion
-    #endregion
 }

@@ -1,31 +1,35 @@
 using UnityEngine;
 using UnityEngine.UI;
+using Utilities;
 
-public class MouseHoverPause : MonoBehaviour, IUIHelper
+namespace UI.InGameUI
 {
-    [SerializeField] Button button;
-
-    [SerializeField] Vector3 originsCale = new(1, 1, 1);
-
-    [SerializeField] Vector3 scalecahnge = new(0.1f, 0.1f, 0.1f);
-
-    public void OnPointerEnter()
+    public class MouseHoverPause : MonoBehaviour, IUIHelper
     {
-        button.transform.localScale = originsCale + scalecahnge;
-    }
+        [SerializeField] Button button;
 
-    public void OnPointerExit()
-    {
-        button.transform.localScale = originsCale;
-    }
+        [SerializeField] Vector3 originsCale = new(1, 1, 1);
 
-    public void OnEnable()
-    {
+        [SerializeField] Vector3 scalecahnge = new(0.1f, 0.1f, 0.1f);
 
-        button.transform.localScale = originsCale;
-    }
-    public void OnDisable()
-    {
-        button.transform.localScale = originsCale;
+        public void OnPointerEnter()
+        {
+            button.transform.localScale = originsCale + scalecahnge;
+        }
+
+        public void OnPointerExit()
+        {
+            button.transform.localScale = originsCale;
+        }
+
+        public void OnEnable()
+        {
+
+            button.transform.localScale = originsCale;
+        }
+        public void OnDisable()
+        {
+            button.transform.localScale = originsCale;
+        }
     }
 }

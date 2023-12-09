@@ -1,10 +1,13 @@
-﻿public enum KapaType
+﻿namespace Enums.UnitEnums.KapaEnums
 {
-    NormalAttack,
-    Competence,
-    Ultimate,
-    Turret,
-    DeAct,
-    Skip,
-    Default
+    public enum KapaType
+    {
+        NormalAttack,
+        Competence,
+        DeAct,
+        Turret,
+        Skip,
+        Ultimate,
+        Default
+    }
 }

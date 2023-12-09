@@ -151,11 +151,12 @@ MonoBehaviour:
   tileSelectionMask:
     serializedVersion: 2
     m_Bits: 72
-  Selection:
+  selection:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnitManager, Assembly-CSharp
+      - m_Target: {fileID: 9217339866666483883}
+        m_TargetAssemblyTypeName: GameContent.Entity.Unit.UnitWorking.UnitManager,
+          Assembly-CSharp
         m_MethodName: HandleTerrainSelect
         m_Mode: 0
         m_Arguments:
@@ -166,11 +167,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  Unit:
+  unit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnitManager, Assembly-CSharp
+      - m_Target: {fileID: 9217339866666483883}
+        m_TargetAssemblyTypeName: GameContent.Entity.Unit.UnitWorking.UnitManager,
+          Assembly-CSharp
         m_MethodName: HandleUnitSelected
         m_Mode: 0
         m_Arguments:
@@ -233,7 +235,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4c2c1369db70a44b987bc32c2c79cc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapData: []
   computerList: []
+  emiters: []
 --- !u!114 &2588066164149268060
 MonoBehaviour:
   m_ObjectHideFlags: 0

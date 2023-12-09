@@ -2,22 +2,25 @@
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-public class ClicInput : MonoBehaviour
+namespace Inputs
 {
-    public UnityEvent<Vector3> mouseClic;
-    [SerializeField] InputActionReference clic;
-
-    void Update()
+    public class ClicInput : MonoBehaviour
     {
-        DetectClic();
-    }
+        public UnityEvent<Vector3> mouseClic;
+        [SerializeField] InputActionReference clic;
 
-    public void DetectClic()
-    {
-        if (clic.action.WasPerformedThisFrame())
+        void Update()
         {
-            Vector3 mousePos = Mouse.current.position.ReadValue();
-            mouseClic?.Invoke(mousePos);
+            DetectClic();
+        }
+
+        public void DetectClic()
+        {
+            if (clic.action.WasPerformedThisFrame())
+            {
+                Vector3 mousePos = Mouse.current.position.ReadValue();
+                mouseClic?.Invoke(mousePos);
+            }
         }
     }
 }

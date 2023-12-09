@@ -1,6 +1,9 @@
-﻿public interface IUIHelper
+﻿namespace Utilities
 {
-    void OnPointerEnter();
+    public interface IUIHelper
+    {
+        void OnPointerEnter();
 
-    void OnPointerExit();
+        void OnPointerExit();
+    }
 }

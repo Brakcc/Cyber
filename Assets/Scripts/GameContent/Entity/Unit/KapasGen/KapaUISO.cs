@@ -1,17 +1,21 @@
+using Interfaces.Kapas;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class KapaUISO : ScriptableObject, IKapaUISO
+namespace GameContent.Entity.Unit.KapasGen
 {
-    [SerializeField] Image kapaImage;
-    public Image KapaImage => kapaImage;
+    public class KapaUISO : ScriptableObject, IKapaUISO
+    {
+        [SerializeField] Image kapaImage;
+        public Image KapaImage => kapaImage;
 
-    [SerializeField] string kapaName;
-    public string KapaName => kapaName;
+        [SerializeField] string kapaName;
+        public string KapaName => kapaName;
 
-    [SerializeField] int kapaCost;
-    public int KapaCost => kapaCost;
+        [SerializeField] int kapaCost;
+        public int KapaCost => kapaCost;
 
-    [SerializeField] string kapaDescription;
-    public string KapaDescription => kapaDescription;
+        [SerializeField] string kapaDescription;
+        public string KapaDescription => kapaDescription;
+    }
 }

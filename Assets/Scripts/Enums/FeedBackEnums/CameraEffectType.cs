@@ -1,9 +1,12 @@
-﻿public enum CameraEffectType
+﻿namespace Enums.FeedBackEnums
 {
-    Shake,
-    Impulse,
-    ShockWave,
-    Focus,
-    Zoom,
-    None
+    public enum CameraEffectType
+    {
+        Shake,
+        Impulse,
+        ShockWave,
+        Focus,
+        Zoom,
+        None
+    }
 }

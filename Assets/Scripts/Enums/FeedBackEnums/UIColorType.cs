@@ -1,6 +1,9 @@
-public enum UIColorType
+namespace Enums.FeedBackEnums
 {
-    Buff,
-    Debuff,
-    Default
+    public enum UIColorType
+    {
+        Buff,
+        Debuff,
+        Default
+    }
 }

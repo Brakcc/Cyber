@@ -1,41 +1,46 @@
 ﻿using System.Collections.Generic;
+using Enums.GridEnums;
+using GameContent.GridManagement.GridGraphManagement;
 using UnityEngine;
 
-public class Computer : Entity
+namespace GameContent.Entity.Network
 {
-    public override Vector3Int CurrentHexPos { get; set; }
-    public override bool IsNetworkEmiter { get; set; }
-    public override bool IsOnNetwork { get; protected set; }
-    public override int NetworkRange { get; set; }
-    public override List<Vector3Int> GlobalNetwork { get => null; set { } }
-
-    [SerializeField] ComputerTarget compTarget;
-    public ComputerTarget ComputerTarget { get => compTarget; }
-    public bool GotHacked { get; set; }
-
-    [SerializeField] GraphInitBoard initBoard;
-
-    void Awake()
+    public class Computer : Entity
     {
-        OnInit();
-    }
+        public override Vector3Int CurrentHexPos { get; set; }
+        public override bool IsNetworkEmiter { get; set; }
+        public override bool IsOnNetwork { get; protected set; }
+        public override int NetworkRange { get; set; }
+        public override List<Vector3Int> GlobalNetwork { get => null; set { } }
 
-    protected sealed override void OnInit()
-    {
-        base.OnInit();
-        IsNetworkEmiter = false;
-        IsOnNetwork = false;
-        NetworkRange = 0;
+        [SerializeField] ComputerTarget compTarget;
+        public ComputerTarget ComputerTarget { get => compTarget; }
+        public bool GotHacked { get; set; }
 
-        GotHacked = false;
+        [SerializeField] GraphInitBoard initBoard;
 
-        initBoard.SetRenderer(gameObject);
-    }
+        void Awake()
+        {
+            OnInit();
+        }
 
-    public sealed override void OnGenerateNet() { }
+        protected sealed override void OnInit()
+        {
+            base.OnInit();
+            IsNetworkEmiter = false;
+            IsOnNetwork = false;
+            NetworkRange = 0;
 
-    public void HandleComputerHack()
-    {
-        initBoard.HandleDeAct(gameObject, false);
+            GotHacked = false;
+
+            initBoard.SetRenderer(gameObject);
+        }
+
+        public sealed override void OnGenerateNet() { }
+
+        public void HandleComputerHack()
+        {
+            initBoard.HandleDeAct(gameObject, false);
+        }
     }
 }

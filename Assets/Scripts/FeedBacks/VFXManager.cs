@@ -1,15 +1,14 @@
-using System.Threading.Tasks;
-using CustomAttributes;
-using UnityEngine;
-
-[System.Serializable]
-public class VFXManager 
+namespace FeedBacks
 {
-    #region fields
+    [System.Serializable]
+    public class VFXManager 
+    {
+        #region fields
 
-    #endregion
+        #endregion
 
-    #region methodes
+        #region methodes
 
-    #endregion
+        #endregion
+    }
 }

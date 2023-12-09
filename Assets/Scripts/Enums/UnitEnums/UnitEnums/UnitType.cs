@@ -1,7 +1,10 @@
-﻿public enum UnitType
+﻿namespace Enums.UnitEnums.UnitEnums
 {
-    Default,
-    Tank,
-    DPS,
-    Hacker
+    public enum UnitType
+    {
+        Default,
+        Tank,
+        DPS,
+        Hacker
+    }
 }

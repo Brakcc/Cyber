@@ -1,19 +1,24 @@
 ﻿using System.Collections.Generic;
+using Enums.UnitEnums.UnitEnums;
+using GameContent.Entity.Unit.KapasGen;
 using UnityEngine;
 
-public interface IUnitData
+namespace Interfaces.Unit
 {
-    int ID { get; }
-    string Name { get; }
-    UnitType Type { get; }
-    int NetworkRange { get; }
-    int MovePoints { get; }
-    int Attack { get; }
-    int Defense { get; }
-    int CritRate { get; }
-    int Speed { get; }
-    float HealthPoint { get; }
-    Sprite Sprite {  get; }
-    List<AbstractKapaSO> KapasList { get; }
+    public interface IUnitData
+    {
+        int ID { get; }
+        string Name { get; }
+        UnitType Type { get; }
+        int NetworkRange { get; }
+        int MovePoints { get; }
+        int Attack { get; }
+        int Defense { get; }
+        int CritRate { get; }
+        int Speed { get; }
+        float HealthPoint { get; }
+        Sprite Sprite {  get; }
+        List<AbstractKapaSO> KapasList { get; }
+    }
 }
 

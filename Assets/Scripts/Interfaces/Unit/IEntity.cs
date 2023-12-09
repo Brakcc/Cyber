@@ -1,21 +1,24 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
-public interface IEntity
+namespace Interfaces.Unit
 {
-    #region fields
-    Vector3Int CurrentHexPos { get; set; }
-    bool IsNetworkEmiter { get; }
-    bool IsOnNetwork { get; }
-    int NetworkRange { get; }
-    List<Vector3Int> GlobalNetwork { get; }
-    #endregion
+    public interface IEntity
+    {
+        #region fields
+        Vector3Int CurrentHexPos { get; set; }
+        bool IsNetworkEmiter { get; }
+        bool IsOnNetwork { get; }
+        int NetworkRange { get; }
+        List<Vector3Int> GlobalNetwork { get; }
+        #endregion
 
-    #region methodes
-    void OnGenerateNet();
+        #region methodes
+        void OnGenerateNet();
 
-    void OnSelectNetworkTiles();
+        void OnSelectNetworkTiles();
 
-    void OnDeselectNetworkTiles();
-    #endregion
+        void OnDeselectNetworkTiles();
+        #endregion
+    }
 }

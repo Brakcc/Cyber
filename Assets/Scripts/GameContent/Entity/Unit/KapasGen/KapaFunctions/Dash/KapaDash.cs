@@ -1,11 +1,13 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-[System.Serializable]
-public class KapaDash
+namespace GameContent.Entity.Unit.KapasGen.KapaFunctions.Dash
 {
-    [SerializeField] private int range;
-    [SerializeField] private int speed;
+    [System.Serializable]
+    public class KapaDash
+    {
+        [SerializeField] private int range;
+        [SerializeField] private int speed;
 
-    public void Grab() { Debug.Log(range); }
+        public void Grab() { Debug.Log(range); }
+    }
 }

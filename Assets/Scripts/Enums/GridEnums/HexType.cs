@@ -1,8 +1,11 @@
-﻿public enum HexType
+﻿namespace Enums.GridEnums
 {
-    Default,
-    Walkable,
-    Obstacle,
-    Hole,
-    Computer
+    public enum HexType
+    {
+        Default,
+        Walkable,
+        Obstacle,
+        Hole,
+        Computer
+    }
 }

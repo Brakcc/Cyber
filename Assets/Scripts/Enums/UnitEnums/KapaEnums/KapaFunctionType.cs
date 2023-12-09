@@ -1,10 +1,13 @@
-﻿public enum KapaFunctionType
+﻿namespace Enums.UnitEnums.KapaEnums
 {
-    DoubleAttack,
-    TripleAttack,
-    Grab,
-    Dash,
-    SelectionAttack,
-    //en attente de plus
-    Default
+    public enum KapaFunctionType
+    {
+        DoubleAttack,
+        TripleAttack,
+        Grab,
+        Dash,
+        SelectionAttack,
+        //en attente de plus
+        Default
+    }
 }

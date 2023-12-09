@@ -1,10 +1,13 @@
-﻿public enum EffectType
+﻿namespace Enums.UnitEnums.KapaEnums
 {
-    SingleDamage,
-    DOT,
-    Hacked,
-    Debuff,
-    Buff,
-    Rez,
-    None
+    public enum EffectType
+    {
+        SingleDamage,
+        DOT,
+        Hacked,
+        Debuff,
+        Buff,
+        Rez,
+        None
+    }
 }

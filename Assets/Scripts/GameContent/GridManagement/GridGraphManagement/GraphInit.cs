@@ -1,84 +1,87 @@
 using UnityEngine;
 
-[System.Serializable]
-public class GraphInitBoard
+namespace GameContent.GridManagement.GridGraphManagement
 {
-    #region fields
-    [SerializeField] int orderInLayer;
-    [SerializeField] Vector2 offset;
-    [SerializeField] Sprite switchSprite;
-    [SerializeField] Material newMat;
-    #endregion
-
-    #region cached methodes
-    public void SetRenderer(GameObject parent)
+    [System.Serializable]
+    public class GraphInitBoard
     {
-        SpriteRenderer rend = parent.GetComponentInChildren<SpriteRenderer>();
+        #region fields
+        [SerializeField] int orderInLayer;
+        [SerializeField] Vector2 offset;
+        [SerializeField] Sprite switchSprite;
+        [SerializeField] Material newMat;
+        #endregion
 
-        rend.sortingOrder = orderInLayer;
+        #region cached methodes
+        public void SetRenderer(GameObject parent)
+        {
+            SpriteRenderer rend = parent.GetComponentInChildren<SpriteRenderer>();
 
-        rend.transform.localScale = new Vector3(1, Mathf.Sqrt(2), 1);
-        rend.transform.localEulerAngles = new(-45, 0);
-        rend.transform.localPosition = new Vector3(offset.x, offset.y, -rend.size.y / 2 + 0.2f);
+            rend.sortingOrder = orderInLayer;
+
+            rend.transform.localScale = new Vector3(1, Mathf.Sqrt(2), 1);
+            rend.transform.localEulerAngles = new(-45, 0);
+            rend.transform.localPosition = new Vector3(offset.x, offset.y, -rend.size.y / 2 + 0.2f);
+        }
+
+        public void HandleDeAct(GameObject parent, bool actAnim)
+        {
+            parent.GetComponent<Animator>().enabled = actAnim;
+            parent.GetComponentInChildren<SpriteRenderer>().material = newMat;
+            parent.GetComponentInChildren<SpriteRenderer>().sprite = switchSprite;
+        }
+        #endregion
     }
-
-    public void HandleDeAct(GameObject parent, bool actAnim)
-    {
-        parent.GetComponent<Animator>().enabled = actAnim;
-        parent.GetComponentInChildren<SpriteRenderer>().material = newMat;
-        parent.GetComponentInChildren<SpriteRenderer>().sprite = switchSprite;
-    }
-    #endregion
-}
 
     [System.Serializable]
-public class GraphInitUnit
-{
-    #region fields
-    [SerializeField] int orderInLayer;
-    [SerializeField] Color color;
-    [SerializeField] Vector2 offset;
-    #endregion
-
-    #region cached methodes
-    public GameObject SetRenderer(GameObject parent, Sprite sprite)
+    public class GraphInitUnit
     {
-        GameObject child = new("_tex");
-        child.transform.SetParent(parent.transform);
-        SpriteRenderer rend = child.AddComponent<SpriteRenderer>();
+        #region fields
+        [SerializeField] int orderInLayer;
+        [SerializeField] Color color;
+        [SerializeField] Vector2 offset;
+        #endregion
 
-        rend.sprite = sprite;
-        rend.sortingOrder = orderInLayer;
-        rend.color = color;
+        #region cached methodes
+        public GameObject SetRenderer(GameObject parent, Sprite sprite)
+        {
+            GameObject child = new("_tex");
+            child.transform.SetParent(parent.transform);
+            SpriteRenderer rend = child.AddComponent<SpriteRenderer>();
 
-        child.transform.localScale = new Vector3(1, Mathf.Sqrt(2), 1);
-        child.transform.localEulerAngles = new(-45, 0);
-        child.transform.localPosition = new Vector3(offset.x, offset.y, -rend.size.y / 2);
-        return child;
+            rend.sprite = sprite;
+            rend.sortingOrder = orderInLayer;
+            rend.color = color;
+
+            child.transform.localScale = new Vector3(1, Mathf.Sqrt(2), 1);
+            child.transform.localEulerAngles = new(-45, 0);
+            child.transform.localPosition = new Vector3(offset.x, offset.y, -rend.size.y / 2);
+            return child;
+        }
+        #endregion
     }
-    #endregion
-}
 
-[System.Serializable]
-public class GraphInitEntity
-{
-    #region fields
-    [SerializeField] int orderInLayer;
-    #endregion
-
-    #region cached methodes
-    public void SetRenderer(GameObject parent)
+    [System.Serializable]
+    public class GraphInitEntity
     {
-        SpriteRenderer child = parent.GetComponentInChildren<SpriteRenderer>();
+        #region fields
+        [SerializeField] int orderInLayer;
+        #endregion
 
-        //rend.sprite = sprite;
-        //rend.sortingOrder = orderInLayer;
-        //rend.color = color;
+        #region cached methodes
+        public void SetRenderer(GameObject parent)
+        {
+            SpriteRenderer child = parent.GetComponentInChildren<SpriteRenderer>();
 
-        child.sortingOrder = orderInLayer;
-        child.transform.localScale = new Vector3(1, Mathf.Sqrt(2), 1);
-        child.transform.localEulerAngles = new(-45, 0);
-        child.transform.localPosition = new Vector3(0, 0.6f, -child.size.y / 2);
+            //rend.sprite = sprite;
+            //rend.sortingOrder = orderInLayer;
+            //rend.color = color;
+
+            child.sortingOrder = orderInLayer;
+            child.transform.localScale = new Vector3(1, Mathf.Sqrt(2), 1);
+            child.transform.localEulerAngles = new(-45, 0);
+            child.transform.localPosition = new Vector3(0, 0.6f, -child.size.y / 2);
+        }
+        #endregion
     }
-    #endregion
 }

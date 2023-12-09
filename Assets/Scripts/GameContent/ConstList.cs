@@ -1,4 +1,7 @@
-﻿public static class ConstList
+﻿namespace GameContent
 {
-    public const float damageUIRiseOffset = 1.5f;
+    public static class ConstList
+    {
+        public const float DamageUIRiseOffset = 1.5f;
+    }
 }

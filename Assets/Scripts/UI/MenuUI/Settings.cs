@@ -1,30 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
-using System.Linq;
 
-public class Settings : MonoBehaviour
+namespace UI.MenuUI
 {
-    [SerializeField] private AudioMixer audiomixer;
-
-    //param sons
-    [SerializeField] private Slider musicslider;
-    [SerializeField] private Slider soundslider;
-
-    public void SetVolume(float volume)
+    public class Settings : MonoBehaviour
     {
-        audiomixer.SetFloat("Music", volume);
-    }
+        [SerializeField] private AudioMixer audiomixer;
 
-    public void SetSoundEffVolume(float volume)
-    {
-        audiomixer.SetFloat("SoundEff", volume);
-    }
+        //param sons
+        [SerializeField] private Slider musicslider;
+        [SerializeField] private Slider soundslider;
 
-    public void SetFullScreen(bool isFullscreen)
-    {
-        Screen.fullScreen = isFullscreen;
+        public void SetVolume(float volume)
+        {
+            audiomixer.SetFloat("Music", volume);
+        }
+
+        public void SetSoundEffVolume(float volume)
+        {
+            audiomixer.SetFloat("SoundEff", volume);
+        }
+
+        public void SetFullScreen(bool isFullscreen)
+        {
+            Screen.fullScreen = isFullscreen;
+        }
     }
 }

@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public interface IHexCoord
+namespace Interfaces.Grid
 {
-    public Vector3Int OffsetCoordonnees { get; set; }
+    public interface IHexCoord
+    {
+        public Vector3Int OffsetCoordonnees { get; set; }
+    }
 }

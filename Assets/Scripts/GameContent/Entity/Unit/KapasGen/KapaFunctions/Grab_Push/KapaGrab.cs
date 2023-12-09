@@ -1,11 +1,13 @@
-using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class KapaGrab
+namespace GameContent.Entity.Unit.KapasGen.KapaFunctions.Grab_Push
 {
-    [SerializeField] private int range;
-    [SerializeField] private int debufMP;
+    [System.Serializable]
+    public class KapaGrab
+    {
+        [SerializeField] private int range;
+        [SerializeField] private int debufMP;
 
-    public void Grab() { Debug.Log(range); }
+        public void Grab() { Debug.Log(range); }
+    }
 }

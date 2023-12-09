@@ -1,7 +1,7 @@
-using UnityEngine;
 using System;
+using UnityEngine;
 
-namespace CustomAttributes
+namespace Utilities.CustomHideAttribute
 {
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property |
         AttributeTargets.Class | AttributeTargets.Struct, Inherited = true)]

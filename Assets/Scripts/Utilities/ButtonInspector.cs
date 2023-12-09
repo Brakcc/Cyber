@@ -1,17 +1,21 @@
 ﻿#if UNITY_EDITOR
+using GameContent.Entity.Unit.UnitWorking;
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(UnitManager))]
-public class SpecKapa : Editor
+namespace Utilities
 {
-    public override void OnInspectorGUI()
+    [CustomEditor(typeof(UnitManager))]
+    public class SpecKapa : Editor
     {
-        DrawDefaultInspector();
-        UnitManager unit = (UnitManager)target;
-        if (GUILayout.Button("Restart Turn"))
+        public override void OnInspectorGUI()
         {
-            unit.ResetLoop();
+            DrawDefaultInspector();
+            UnitManager unit = (UnitManager)target;
+            if (GUILayout.Button("Restart Turn"))
+            {
+                unit.ResetLoop();
+            }
         }
     }
 }

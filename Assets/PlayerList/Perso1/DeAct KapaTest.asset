@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _kapaName: 
   _id: 0
+  _kapaType: 2
   _description: 
-  _kapaType: 4
   _kapaUI: {fileID: 0}

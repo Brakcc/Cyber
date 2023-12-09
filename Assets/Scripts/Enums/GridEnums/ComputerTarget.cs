@@ -1,7 +1,10 @@
-﻿public enum ComputerTarget
+﻿namespace Enums.GridEnums
 {
-    C0,
-    C1,
-    C2,
-    Default
+    public enum ComputerTarget
+    {
+        C0,
+        C1,
+        C2,
+        Default
+    }
 }
