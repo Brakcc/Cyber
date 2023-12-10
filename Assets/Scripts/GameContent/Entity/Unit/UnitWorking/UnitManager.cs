@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using Enums.UnitEnums.KapaEnums;
 using GameContent.GameManagement;
 using GameContent.GridManagement;
@@ -28,24 +27,21 @@ namespace GameContent.Entity.Unit.UnitWorking
         public bool IsKapaSelected { get; private set; }
         public bool IsKapaDirSelected { get; private set; }
         public List<Vector3Int> CurrentButtonPos {get; private set; }
-        public List<Vector3Int> CurrentKapaPaternPos { get; private set; }  
+        public List<Vector3Int> CurrentKapaPatternPos { get; private set; }  
         Vector3Int CurrentDirSelected { get; set; }
         #endregion
 
         #region Instance et Awake
-        public static UnitManager unitManager;
 
         void Awake()
         {
-            unitManager = this;
             _moveSys = new();
             _selectedUnit = null;
             _previousSelectedHex = null;
             CurrentTypeKapaSelected = KapaType.Default;
             IsKapaSelected = false;
-            CurrentKapaPaternPos = null;
+            CurrentKapaPatternPos = null;
             CurrentButtonPos = null;
-            Init(HexGridStore.hGs);
         }
         #endregion
 
@@ -96,7 +92,10 @@ namespace GameContent.Entity.Unit.UnitWorking
         /// <param name="unitRef"></param>
         void PrepareUnitForMove(IUnit unitRef)
         {
-            if (IsKapaSelected && IsKapaDirSelected) { unitRef.UnitData.KapasList[(int)CurrentTypeKapaSelected].OnDeselectTiles(HexGridStore.hGs, CurrentKapaPaternPos); }
+            if (IsKapaSelected && IsKapaDirSelected)
+            {
+                unitRef.UnitData.KapasList[(int)CurrentTypeKapaSelected].OnDeselectTiles(HexGridStore.hGs, CurrentKapaPatternPos);
+            }
             if (_selectedUnit != null && !IsKapaSelected) { ClearOldSelection(); ResetKapaData(); }
         
             _selectedUnit = unitRef;
@@ -151,24 +150,27 @@ namespace GameContent.Entity.Unit.UnitWorking
             if (HandleHexOutOfButton(buttonPos)) return;
 
             //Active Kapa With Click On Map
-            if (CurrentKapaPaternPos != null && IsKapaSelected && IsKapaDirSelected && CurrentDirSelected == dir)
+            if (CurrentKapaPatternPos != null && IsKapaSelected && IsKapaDirSelected && CurrentDirSelected == dir)
             {
                 if (OnCheckKapa(SelectedUnit, (int)CurrentTypeKapaSelected))
                 {
-                    OnExecuteKapa(SelectedUnit, (int)CurrentTypeKapaSelected, CurrentKapaPaternPos);
+                    OnExecuteKapa(SelectedUnit, (int)CurrentTypeKapaSelected, CurrentKapaPatternPos);
                     FullResetKapAndPlayer();
                     return;
                 }
             }
 
-            if (IsKapaDirSelected) { unitRef.UnitData.KapasList[(int)CurrentTypeKapaSelected].OnDeselectTiles(HexGridStore.hGs, CurrentKapaPaternPos); }
+            if (IsKapaDirSelected)
+            {
+                unitRef.UnitData.KapasList[(int)CurrentTypeKapaSelected].OnDeselectTiles(HexGridStore.hGs, CurrentKapaPatternPos); 
+            }
             if (Direction.IsPariryEven(unitRef.CurrentHexPos.x))
             {
-                CurrentKapaPaternPos = HandleKapaEvenDirPaternGen(dir, unitRef, unitRef.UnitData.KapasList[(int)CurrentTypeKapaSelected]);
+                CurrentKapaPatternPos = HandleKapaEvenDirPaternGen(dir, unitRef, unitRef.UnitData.KapasList[(int)CurrentTypeKapaSelected]);
             }
             else
             {
-                CurrentKapaPaternPos = HandleKapaOddDirPaternGen(dir, unitRef, unitRef.UnitData.KapasList[(int)CurrentTypeKapaSelected]);
+                CurrentKapaPatternPos = HandleKapaOddDirPaternGen(dir, unitRef, unitRef.UnitData.KapasList[(int)CurrentTypeKapaSelected]);
             }
             IsKapaDirSelected = true;
             CurrentDirSelected = dir;
@@ -228,7 +230,7 @@ namespace GameContent.Entity.Unit.UnitWorking
             //si switch sur autre Kapa
             if (CurrentTypeKapaSelected != KapaType.Default && IsKapaDirSelected)
             {
-                kapa.OnDeselectTiles(HexGridStore.hGs, CurrentKapaPaternPos);
+                kapa.OnDeselectTiles(HexGridStore.hGs, CurrentKapaPatternPos);
             }
 
             if (IsKapaSelected)
@@ -270,11 +272,11 @@ namespace GameContent.Entity.Unit.UnitWorking
             }
 
             //Active Kapa With Bar Button
-            if (CurrentKapaPaternPos != null || IsKapaSelected && CurrentTypeKapaSelected == type && IsKapaDirSelected || IsKapaSelected && CurrentButtonPos == null)
+            if (CurrentKapaPatternPos != null || IsKapaSelected && CurrentTypeKapaSelected == type && IsKapaDirSelected || IsKapaSelected && CurrentButtonPos == null)
             {
                 if (!OnCheckKapa(SelectedUnit, (int)CurrentTypeKapaSelected)) return;
             
-                OnExecuteKapa(SelectedUnit, i, CurrentKapaPaternPos);
+                OnExecuteKapa(SelectedUnit, i, CurrentKapaPatternPos);
                 FullResetKapAndPlayer();
             }
         }
@@ -322,7 +324,7 @@ namespace GameContent.Entity.Unit.UnitWorking
             IsKapaSelected = false;
             IsKapaDirSelected = false;
             CurrentButtonPos = null;
-            CurrentKapaPaternPos = null;
+            CurrentKapaPatternPos = null;
             CurrentDirSelected = Vector3Int.zero;
         }
 
@@ -339,7 +341,7 @@ namespace GameContent.Entity.Unit.UnitWorking
             IsKapaSelected = false;
             IsKapaDirSelected = false;
             CurrentButtonPos = null;
-            CurrentKapaPaternPos = null;
+            CurrentKapaPatternPos = null;
             CurrentDirSelected = Vector3Int.zero;
             //Unit Reset
             SelectedUnit.Deselect();
@@ -347,7 +349,7 @@ namespace GameContent.Entity.Unit.UnitWorking
             SelectedUnit.CanPlay = false;
             SelectedUnit = null;
             //GameLoop reset
-            GameLoopManager.gLM.OnPlayerAction();
+            GameLoopManager.gLm.OnPlayerAction();
         }
         #endregion
         #endregion
@@ -362,7 +364,7 @@ namespace GameContent.Entity.Unit.UnitWorking
         /// </summary>
         /// <param name="unitRef">é_é</param>
         /// <returns></returns>
-        bool CheckIfCanSelectOtherUnitAndIfSameUnit(IUnit unitRef)
+        bool CheckIfCanSelectOtherUnitAndIfSameUnit(IEntity unitRef)
         {
             //il n'y a pas d'unit pre-select
             if (_selectedUnit == null) return false;
@@ -375,7 +377,10 @@ namespace GameContent.Entity.Unit.UnitWorking
                     return false;
                 }
 
-                if (IsKapaDirSelected) { SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].OnDeselectTiles(HexGridStore.hGs, CurrentKapaPaternPos); }
+                if (IsKapaDirSelected)
+                {
+                    SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].OnDeselectTiles(HexGridStore.hGs, CurrentKapaPatternPos);
+                }
                 ClearDataSelectionAvoidRange();
                 ResetKapaData();
             
@@ -385,7 +390,7 @@ namespace GameContent.Entity.Unit.UnitWorking
             //On clique sur LA MEME Unit et elle est DEJA LOCK
             else if (_selectedUnit == unitRef && SelectedUnit.IsPersoLocked)
             {
-                //feedbacks pour montrer que le perso doit faire une capa (ex : petit son de bip un peu techno des familles)
+                //feedbacks pour montrer que le perso doit faire une kapa (ex : petit son de bip un peu techno des familles)
                 return true;
             }
             //On clique sur LA MEME unit mais ELLE n'est PAS LOCK (Old CheckIfSameUnitSelected)
@@ -397,7 +402,10 @@ namespace GameContent.Entity.Unit.UnitWorking
                     return true;
                 }
 
-                if (IsKapaDirSelected) { SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].OnDeselectTiles(HexGridStore.hGs, CurrentKapaPaternPos); }
+                if (IsKapaDirSelected)
+                {
+                    SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].OnDeselectTiles(HexGridStore.hGs, CurrentKapaPatternPos); 
+                }
                 ClearDataSelectionAvoidRange();
                 ResetKapaData();
             
@@ -421,19 +429,19 @@ namespace GameContent.Entity.Unit.UnitWorking
         /// <returns></returns>
         bool CheckIfUnitCanPlay(IUnit unitRef)
         {
-            //Si l'unit sélectionnée peut faire son tour ET n'est pas morte
+            //Si l'unit sélectionnee peut faire son tour ET n'est pas morte
             if (unitRef.CanPlay && !unitRef.IsDead)
             {
                 //condition inversée pour continuer
                 return false; 
             }
-            //feedbacks un peu sad mais électro quand meme
+            //feedbacks un peu sad mais electro quand meme
             if (IsKapaSelected) { HandleKapaDirSelect(unitRef.CurrentHexPos, SelectedUnit); }
             return true;
         }
 
         /// <summary>
-        /// force l'utilisation de capa ou skip capa du perso après son déplacement
+        /// force l'utilisation de kapa ou skip kapa du perso après son déplacement
         /// </summary>
         void LockUnitAfterMove()
         {
@@ -480,26 +488,6 @@ namespace GameContent.Entity.Unit.UnitWorking
             if (CurrentButtonPos == null) return true;
             if (CurrentButtonPos.Contains(hexPos)) return false;
             return true;
-        }
-        #endregion
-
-        #region Init
-        /// <summary>
-        /// Initialise la grille pour detecter les pos des joueurs en début de partie pour rendre impossible les dep sur ces tiles
-        /// </summary>
-        /// <param name="hex"></param>
-        async void Init(HexGridStore hex)
-        {
-            await Task.Delay(700);
-            foreach (var u in FindObjectsOfType<Entity>())
-            {
-                Hex h = hex.GetTile(u.GetComponent<Entity>().CurrentHexPos);
-                h.HasEntityOnIt = true;
-                if (u.GetType() == typeof(Unit))
-                {
-                    h.SetUnit(u.GetComponent<Unit>());
-                }
-            }
         }
         #endregion
 

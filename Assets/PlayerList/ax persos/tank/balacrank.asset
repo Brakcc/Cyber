@@ -12,14 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dde4142f37cff74cbe2ab6166f660cf, type: 3}
   m_Name: balacrank
   m_EditorClassIdentifier: 
-  iD: 0
+  iD: 1
+  pname: balacrank
   type: 1
   movePoints: 6
   attack: 17
   defense: 24
+  critRate: 0
   speed: 30
   healthPoint: 36
-  sprite: {fileID: -9095717837082945937, guid: 03fed2c0d6f948444bf9428d2e26a8b7, type: 3}
+  sprite: {fileID: 21300000, guid: 9159ffa33093a434882ba17cbd3655d1, type: 3}
   kapasList:
   - {fileID: 11400000, guid: c491a16f8ecd915468488ba91d2e0181, type: 2}
   - {fileID: 11400000, guid: dd416aed18ba69244a0db204171760da, type: 2}

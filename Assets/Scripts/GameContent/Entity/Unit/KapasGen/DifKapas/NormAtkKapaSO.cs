@@ -110,7 +110,8 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
         {
             if (hit)
             {
-                GameLoopManager.gLM.HandleCompPointValueChange(unit.TeamNumber, _nAKapaSupFields.compPointsAdded);
+                Debug.Log("test");
+                GameLoopManager.gLm.HandleCompPointValueChange(unit.TeamNumber, _nAKapaSupFields.compPointsAdded);
             }
 
             unit.UltPoints += _nAKapaSupFields.ultPointsAdded;

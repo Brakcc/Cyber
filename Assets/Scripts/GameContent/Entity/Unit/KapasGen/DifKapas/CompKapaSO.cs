@@ -107,7 +107,7 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
         #region inherited methodes
         public sealed override bool OnCheckKapaPoints(IUnit unit)
         {
-            if (GameLoopManager.gLM.CompPoints[unit.TeamNumber] >= _cKapaSupFields.neededCompPoints) return true;
+            if (GameLoopManager.gLm.teamInventory.CompPoints[unit.TeamNumber] >= _cKapaSupFields.neededCompPoints) return true;
         
             RefuseKapa(); return false;
         }
@@ -143,7 +143,7 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
         #region cache
         void DoKapa(IUnit unit)
         {
-            GameLoopManager.gLM.HandleCompPointValueChange(unit.TeamNumber, -_cKapaSupFields.neededCompPoints);
+            GameLoopManager.gLm.HandleCompPointValueChange(unit.TeamNumber, -_cKapaSupFields.neededCompPoints);
             unit.UltPoints += _cKapaSupFields.ultPointsAdded;
             //PlaceHolder à rempir avec les anims et considérations de dégâts
 

@@ -8,12 +8,12 @@ namespace Interfaces.Unit
     public interface IUnit : IEntity
     {
         #region accessors
-        AbstractUnitSO UnitData { get; }
+        AbstractUnitSO UnitData { get; set; }
         PlayerStatsUI StatUI { get; }
 
         #region current stats
         float CurrentHealth { get; set; }
-        int CurrentMP { get; }
+        int CurrentMp { get; }
         int CurrentCritRate { get; }
         int CurrentDef { get; }
         int CurrentAtk { get; }
@@ -22,7 +22,7 @@ namespace Interfaces.Unit
         Vector3 CurrentWorldPos { get; }
         #endregion
 
-        int TeamNumber { get; }
+        int TeamNumber { get; set; }
         bool IsOnTurret { get; }
         int UltPoints { get; set; }
         bool IsDead { get; }

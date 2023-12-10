@@ -11,16 +11,16 @@ namespace GameContent.Entity.Unit.UnitWorking
     public abstract class Unit : Entity, IUnit
     {
         #region fields/accessors to herit
-        public abstract AbstractUnitSO UnitData { get; }
+        public abstract AbstractUnitSO UnitData { get; set; }
         public abstract PlayerStatsUI StatUI { get; }
         #region current stats
         public abstract float CurrentHealth { get; set; }
-        public abstract int CurrentMP { get; set; }
+        public abstract int CurrentMp { get; protected set; }
         public abstract int CurrentAtk { get; protected set; }
         public abstract int CurrentDef { get; protected set; }
-        public abstract int CurrentCritRate { get; set; }
+        public abstract int CurrentCritRate { get; protected set; }
         //additional precision stat
-        public abstract int CurrentPrecision { get; set; }
+        public abstract int CurrentPrecision { get; protected set; }
         public Vector3 CurrentWorldPos => transform.position;
         #endregion
         public abstract int TeamNumber { get; set; }
@@ -42,7 +42,7 @@ namespace GameContent.Entity.Unit.UnitWorking
         #endregion
 
         #region methodes to herit
-        protected sealed override void OnInit()
+        public override void OnInit()
         {
             base.OnInit();
 
@@ -52,23 +52,27 @@ namespace GameContent.Entity.Unit.UnitWorking
             CanKapa = true;
             IsOnTurret = false;
             IsOnComputer = false;
-            if (UnitData.Type == UnitType.Hacker) { IsNetworkEmiter = false; IsOnNetwork = false; NetworkRange = UnitData.NetworkRange; GlobalNetwork = null; }
+            if (UnitData.Type == UnitType.Hacker)
+            {
+                IsNetworkEmiter = true;
+                IsOnNetwork = false;
+                NetworkRange = UnitData.NetworkRange;
+                GlobalNetwork = null;
+            }
             else { IsNetworkEmiter = false; NetworkRange = 0; }
 
-            //stats that can vary over the game
+            //stats that can vary during the game
             CurrentHealth = UnitData.HealthPoint;
             CurrentAtk = UnitData.Attack;
             CurrentDef = UnitData.Defense;
             CurrentCritRate = UnitData.CritRate;
-            CurrentMP = UnitData.MovePoints;
+            CurrentMp = UnitData.MovePoints;
             CurrentPrecision = 100;
         }
 
         public virtual void Select()
         {
-            if (UnitData.Type != UnitType.Hacker) return;
-
-            OnGenerateNet();
+            
         }
         public virtual void MoveOnPath(List<Vector3> currentPath) => StartCoroutine(FollowPath(currentPath,UnitData.Speed));
         public abstract void OnKapa();
@@ -120,7 +124,7 @@ namespace GameContent.Entity.Unit.UnitWorking
             }
             OnGenerateNet();
         }
-        protected void PositionCharacterOnTile(Vector3 pos) => transform.position = new Vector3(pos.x, pos.y, pos.z - 0.1f);
+        void PositionCharacterOnTile(Vector3 pos) => transform.position = new Vector3(pos.x, pos.y, pos.z - 0.1f);
         #endregion
     }
 }

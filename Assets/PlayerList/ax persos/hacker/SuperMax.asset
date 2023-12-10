@@ -9,20 +9,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dde4142f37cff74cbe2ab6166f660cf, type: 3}
-  m_Name: super max
+  m_Script: {fileID: 11500000, guid: 3befcc34aabc0cd4ca2f779b7e603c7f, type: 3}
+  m_Name: SuperMax
   m_EditorClassIdentifier: 
-  iD: 0
+  iD: 11
+  pname: super max
   type: 3
+  networkRange: 2
   movePoints: 8
   attack: 18
   defense: 1
+  critRate: 0
   speed: 30
   healthPoint: 15
-  sprite: {fileID: -9095717837082945937, guid: 03fed2c0d6f948444bf9428d2e26a8b7, type: 3}
+  sprite: {fileID: 21300000, guid: 9159ffa33093a434882ba17cbd3655d1, type: 3}
   kapasList:
   - {fileID: 11400000, guid: c491a16f8ecd915468488ba91d2e0181, type: 2}
-  - {fileID: 11400000, guid: dd416aed18ba69244a0db204171760da, type: 2}
-  - {fileID: 11400000, guid: a814e9b491df7d540a98b5c42fc7659e, type: 2}
-  - {fileID: 11400000, guid: d3cf122f54b487f4f841b9c317e4334a, type: 2}
+  - {fileID: 11400000, guid: 159927fc75b56644e950f593eecd6ae0, type: 2}
+  - {fileID: 11400000, guid: db50d6b8bede33a4a8245242d7808f04, type: 2}
+  - {fileID: 11400000, guid: 8ab20df95205ef04384187b6e432f9bc, type: 2}
   - {fileID: 11400000, guid: 0d61fc820e8ffd74f8bb40bc8803f728, type: 2}

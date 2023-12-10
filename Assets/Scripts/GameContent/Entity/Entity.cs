@@ -19,7 +19,7 @@ namespace GameContent.Entity
         #endregion
 
         #region methodes
-        protected virtual void OnInit() => CurrentHexPos = HexCoordonnees.GetClosestHex(transform.position);
+        public virtual void OnInit() => CurrentHexPos = HexCoordonnees.GetClosestHex(transform.position);
 
         /// <summary>
         /// Renvoie la liste (IEnumerable) complete de tiles dans la range d'un Network
@@ -28,7 +28,7 @@ namespace GameContent.Entity
         /// <param name="hexGrid">Ref au HexGridStore.hGS</param>
         /// <param name="range">Range max du reseau de l'Entity</param>
         /// <returns>IEnumerable des tiles d'un Network</returns>
-        protected virtual IEnumerable<Vector3Int> GetRangeList(Vector3Int hexPos, HexGridStore hexGrid, int range) => PathFind.PathKapaVerif(hexGrid, hexPos, range).GetRangePositions();
+        protected IEnumerable<Vector3Int> GetRangeList(Vector3Int hexPos, HexGridStore hexGrid, int range) => PathFind.PathKapaVerif(hexGrid, hexPos, range).GetRangePositions();
 
         /// <summary>
         /// Verif d'intersection entre diff reseaux
@@ -38,7 +38,7 @@ namespace GameContent.Entity
         /// <param name="range">range du reseau local</param>
         /// <param name="net">list des reseaux de base impactes par le merge, s'il il y a intersection</param>
         /// <returns>bool de validation d'intersection</returns>
-        protected virtual void IsIntersecting(Vector3Int pos, HexGridStore hexGrid, int range, out List<NetworkType> net)
+        protected void IsIntersecting(Vector3Int pos, HexGridStore hexGrid, int range, out List<NetworkType> net)
         {
             net = IsInterOnNet(pos, hexGrid, range);
         }
@@ -50,7 +50,7 @@ namespace GameContent.Entity
         /// <param name="hexGrid">Ref de HexGridStore.hGS</param>
         /// <param name="range">range max du reseau local</param>
         /// <returns>liste de network impactee par le merge</returns>
-        protected virtual List<NetworkType> IsInterOnNet(Vector3Int pos, HexGridStore hexGrid, int range)
+        protected List<NetworkType> IsInterOnNet(Vector3Int pos, HexGridStore hexGrid, int range)
         {
             List<NetworkType> toMerge = new();
             foreach (var i in GetRangeList(pos, hexGrid, range))

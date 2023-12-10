@@ -14,6 +14,9 @@ namespace Interfaces.Unit
         #endregion
 
         #region methodes
+
+        void OnInit();
+        
         void OnGenerateNet();
 
         void OnSelectNetworkTiles();

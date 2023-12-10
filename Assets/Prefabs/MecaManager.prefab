@@ -235,9 +235,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4c2c1369db70a44b987bc32c2c79cc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitList: {fileID: 11400000, guid: a4b3272c79f96364f9b4b408e765db19, type: 2}
   mapData: []
   computerList: []
-  emiters: []
 --- !u!114 &2588066164149268060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,13 +250,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c45330dcf2d47014ebb8f58c52bdf195, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstTeamPlaying: 0
-  DeActButton: {fileID: 0}
-  heroPlayer0: []
-  heroPlayer1:
-  - {fileID: 0}
-  maxObjectif: 3
-  camM: {fileID: 0}
-  cPUI: []
-  tNbUI: []
-  computerUI: []
+  teamInits:
+    firstTeamPlaying: 0
+    deActButton: {fileID: 0}
+    teamPlaying: 0
+    heroPlayer0: []
+    heroPlayer1: []
+    countPlayer: 0000000000000000
+  teamInventory:
+    unitList: {fileID: 11400000, guid: a4b3272c79f96364f9b4b408e765db19, type: 2}
+  objectifs:
+    maxObjectif: 1
+  uiFields:
+    camM: {fileID: 0}
+    cPui:
+    - {fileID: 0}
+    - {fileID: 0}
+    tNbUI:
+    - {fileID: 0}
+    - {fileID: 0}
+    computerUI:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    playerStats: []

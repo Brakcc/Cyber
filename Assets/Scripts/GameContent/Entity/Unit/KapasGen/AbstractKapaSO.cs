@@ -300,11 +300,14 @@ namespace GameContent.Entity.Unit.KapasGen
                 //Verif de si l'Entity est une Unit
                 if (unitTarget == null) continue;
 
+                //Verif si l'Unit est de meme team
+                if (unitTarget.TeamNumber == unit.TeamNumber) continue;
+                
                 //retour départ boucle si Unit deja ded
                 if (unitTarget.IsDead) continue;
 
                 //verif team 
-                if (unitTarget.TeamNumber != unit.TeamNumber) continue;
+                if (unitTarget.TeamNumber == unit.TeamNumber) continue;
 
                 //verif de la precision
                 if (Random.Range(0, 100) > unit.CurrentPrecision) continue;
@@ -374,6 +377,9 @@ namespace GameContent.Entity.Unit.KapasGen
                 //Verif de si l'Entity est une Unit
                 if (unitTarget == null) continue;
 
+                //Verif si l'Unit est de meme team
+                if (unitTarget.TeamNumber == unit.TeamNumber) continue;
+                
                 //retour départ boucle si Unit deja ded
                 if (unitTarget.IsDead) continue;
 

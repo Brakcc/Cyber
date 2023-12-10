@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9c9e658a99a4ff2ab34eae6d443f5ff, type: 3}
+  m_Name: CurrentTeamList
+  m_EditorClassIdentifier: 
+  currentTankList:
+  - {fileID: 11400000, guid: d0831b8e9a5ef704785894c2e21e83ff, type: 2}
+  - {fileID: 11400000, guid: 58fd991b27bcb6c429d22ccac0334d82, type: 2}
+  - {fileID: 11400000, guid: bd4edb7a55014c04da0b2b82385e2112, type: 2}
+  - {fileID: 11400000, guid: ddf4aeb05e3f6a14f8505e348fabb317, type: 2}
+  currentDpsList:
+  - {fileID: 11400000, guid: 6a421d048c55ae84ab8b7b25e59382fb, type: 2}
+  - {fileID: 11400000, guid: 978742e43d0474c48907f63df91a475f, type: 2}
+  - {fileID: 11400000, guid: e1b9999a2eb23184ca719084652a9c44, type: 2}
+  - {fileID: 11400000, guid: 5ddf92d059f7cb24ca50298ced6bacaf, type: 2}
+  currentHackerList:
+  - {fileID: 11400000, guid: 54200537b2363a04ba138334cf6ac015, type: 2}
+  - {fileID: 11400000, guid: 0625eb3bc7b3b7e40b3dd98801e09e49, type: 2}
+  - {fileID: 11400000, guid: 80298a439ad4060438ddfbd3cbcb31ac, type: 2}
+  - {fileID: 11400000, guid: dcc965a54cf6c0d4187a46125f983e90, type: 2}

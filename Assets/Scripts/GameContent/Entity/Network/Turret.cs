@@ -28,7 +28,7 @@ namespace GameContent.Entity.Network
         /// <summary>
         /// init a l'enable
         /// </summary>
-        protected sealed override void OnInit()
+        public sealed override void OnInit()
         {
             base.OnInit();
             IsNetworkEmiter = true;

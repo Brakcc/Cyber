@@ -1622,9 +1622,9 @@ MonoBehaviour:
   unit: {fileID: 0}
   nameP: {fileID: 0}
   mpText: {fileID: 4585540895354400157}
-  AtkText: {fileID: 8368272576302219714}
-  DefText: {fileID: 5587695829387446178}
-  CritRate: {fileID: 822216999203756241}
+  atkText: {fileID: 8368272576302219714}
+  defText: {fileID: 5587695829387446178}
+  critRate: {fileID: 822216999203756241}
   hP: {fileID: 7570979554308481652}
   uPText: {fileID: 8757666235556454015}
   imageRef: {fileID: 0}

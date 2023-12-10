@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using Enums.GridEnums;
 using GameContent.Entity.Network;
+using GameContent.GameManagement;
 using GameContent.GridManagement.HexPathFind;
+using Interfaces.Unit;
 using UnityEngine;
 
 namespace GameContent.GridManagement
@@ -9,6 +11,7 @@ namespace GameContent.GridManagement
     public class HexGridStore : MonoBehaviour
     {
         #region fields
+        
         #region Grid Data
         [SerializeField] private Hex[] mapData; 
         public readonly Dictionary<Vector3Int, Hex> hexTiles = new();
@@ -16,7 +19,8 @@ namespace GameContent.GridManagement
         #endregion
 
         #region ComputerList
-        public List<Vector3Int>[] ComputerToHack { get; } = new List<Vector3Int>[3];
+
+        private List<Vector3Int>[] ComputerToHack { get; } = new List<Vector3Int>[3];
         public Computer[] computerList;
         #endregion
 
@@ -27,7 +31,7 @@ namespace GameContent.GridManagement
         public int EmptySockets { get; set; }
 
         [Tooltip("Only for Hackers and Turrets")]
-        public List<Entity.Entity> emiters = new();
+        public readonly List<IEntity> emiters = new();
         #endregion
 
         public static HexGridStore hGs;
@@ -38,13 +42,15 @@ namespace GameContent.GridManagement
 
         void Start()
         {
-            OnIntMap();
+            OnIntMapAndEntities();
         }
 
         #region  Map Gen
         
-        void OnIntMap()
+        void OnIntMapAndEntities()
         {
+            GameLoopManager.gLm.OnInitSceneUnits();
+            
             //Network init
             for (int i = 0; i < _networkList.Length; i++)
             {
@@ -55,7 +61,6 @@ namespace GameContent.GridManagement
             {
                 ComputerToHack[i] = new();
             }
-            computerList = new Computer[3];
             
             //Circulation sur la Map
             foreach (var hex in mapData)
@@ -78,10 +83,68 @@ namespace GameContent.GridManagement
             {
                 if (i.Count == 0) { EmptySockets++; }
             }
+
+            EntityInit();
+            
+            GameLoopManager.gLm.InitTeam(GameLoopManager.gLm.teamInits.firstTeamPlaying);
+            
+            GameLoopManager.gLm.OnInitUi();
         }
         
         #endregion
 
+        #region Enity Init
+
+        /// <summary>
+        /// Initialise la grille pour detecter les pos des joueurs en début de partie pour rendre
+        /// impossible les dep sur ces tiles
+        /// </summary>
+        void EntityInit()
+        {
+            foreach (var unit in GameLoopManager.gLm.teamInits.heroPlayer0)
+            {
+                var uEnt = unit.GetComponent<IEntity>();
+                var hex = GetTile(uEnt.CurrentHexPos);
+                
+                hex.HasEntityOnIt = true;
+                var unitTemp = unit.GetComponent<IUnit>();
+                
+                hex.SetUnit(unitTemp);
+                
+                uEnt.OnInit();
+
+                if (!uEnt.IsNetworkEmiter) continue;
+                
+                emiters.Add(uEnt);
+                uEnt.OnGenerateNet();
+            }
+            foreach (var unit in GameLoopManager.gLm.teamInits.heroPlayer1)
+            {
+                var uEnt = unit.GetComponent<IEntity>();
+                var hex = GetTile(uEnt.CurrentHexPos);
+                
+                hex.HasEntityOnIt = true;
+                var unitTemp = unit.GetComponent<IUnit>();
+                
+                hex.SetUnit(unitTemp);
+                
+                uEnt.OnInit();
+
+                if (!uEnt.IsNetworkEmiter) continue;
+                
+                emiters.Add(uEnt);
+                uEnt.OnGenerateNet();
+            }
+
+            foreach (var computer in computerList)
+            {
+                var hex = GetTile(computer.CurrentHexPos);
+                computer.OnInit();
+                hex.HasEntityOnIt = true;
+            }
+        }
+        #endregion
+        
         #region Map Data Access
 
         public Hex GetTile(Vector3Int hexCoords)
@@ -92,8 +155,15 @@ namespace GameContent.GridManagement
         
         public List<Vector3Int> GetNeighbourgs(Vector3Int coords)
         {
-            if (!hexTiles.ContainsKey(coords)) { return new List<Vector3Int>(); }
-            if (_neighbourgs.ContainsKey(coords)) { return _neighbourgs[coords]; }
+            if (!hexTiles.ContainsKey(coords))
+            {
+                return new List<Vector3Int>();
+            }
+
+            if (_neighbourgs.TryGetValue(coords, out var neighbourgs))
+            {
+                return neighbourgs;
+            }
         
             _neighbourgs.Add(coords, new List<Vector3Int>());
         

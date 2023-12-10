@@ -66,7 +66,7 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
 
         public sealed override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, IUnit unit)
         {
-            GameLoopManager.gLM.HandleComputerValueChange();
+            GameLoopManager.gLm.HandleComputerValueChange();
             hexGrid.HandlePCHacked(hexGrid.GetTile(unit.CurrentHexPos).ComputerTarget);
         }
     

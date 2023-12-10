@@ -3,6 +3,7 @@ using GameContent.Entity.Unit.UnitWorking;
 using Interfaces.Unit;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace UI.InGameUI
@@ -13,21 +14,17 @@ namespace UI.InGameUI
         [SerializeField] Unit unit;
         [SerializeField] TMP_Text nameP;
         [SerializeField] TMP_Text mpText;
-        [SerializeField] TMP_Text AtkText;
-        [SerializeField] TMP_Text DefText;
-        [SerializeField] TMP_Text CritRate;
+        [SerializeField] TMP_Text atkText;
+        [SerializeField] TMP_Text defText;
+        [SerializeField] TMP_Text critRate;
         [SerializeField] TMP_Text hP;
         [SerializeField] TMP_Text uPText;
         [SerializeField] Image imageRef;
         #endregion
 
         #region methodes
-        void Start()
-        {
-            OnInit();
-        }
 
-        void OnInit()
+        public void OnInit()
         {
             SetName(unit.UnitData.Name);
             SetMP(unit);
@@ -40,17 +37,17 @@ namespace UI.InGameUI
         }
 
         #region recurent methodes
-        public void SetMP(IUnit unit, UIColorType uCT) { mpText.text = unit.CurrentMP.ToString(); SetColor(uCT); }
-        public void SetMP(IUnit unit) { mpText.text = unit.CurrentMP.ToString(); SetColor(UIColorType.Default); }
+        public void SetMP(IUnit unit, UIColorType uCT) { mpText.text = unit.CurrentMp.ToString(); SetColor(uCT); }
+        public void SetMP(IUnit unit) { mpText.text = unit.CurrentMp.ToString(); SetColor(UIColorType.Default); }
 
-        public void SetAtk(IUnit unit, UIColorType uCT) { AtkText.text = unit.CurrentAtk.ToString(); SetColor(uCT); }
-        public void SetAtk(IUnit unit) { AtkText.text = unit.CurrentAtk.ToString(); SetColor(UIColorType.Default); }
+        public void SetAtk(IUnit unit, UIColorType uCT) { atkText.text = unit.CurrentAtk.ToString(); SetColor(uCT); }
+        public void SetAtk(IUnit unit) { atkText.text = unit.CurrentAtk.ToString(); SetColor(UIColorType.Default); }
 
-        public void SetDef(IUnit unit, UIColorType uCT) { DefText.text = unit.CurrentDef.ToString(); SetColor(uCT); }
-        public void SetDef(IUnit unit) { DefText.text = unit.CurrentDef.ToString(); SetColor(UIColorType.Default); }
+        public void SetDef(IUnit unit, UIColorType uCT) { defText.text = unit.CurrentDef.ToString(); SetColor(uCT); }
+        public void SetDef(IUnit unit) { defText.text = unit.CurrentDef.ToString(); SetColor(UIColorType.Default); }
 
-        public void SetCritRate(IUnit unit, UIColorType uCT) { CritRate.text = unit.CurrentCritRate.ToString(); SetColor(uCT); }
-        public void SetCritRate(IUnit unit) { CritRate.text = unit.CurrentCritRate.ToString(); SetColor(UIColorType.Default); }
+        public void SetCritRate(IUnit unit, UIColorType uCT) { critRate.text = unit.CurrentCritRate.ToString(); SetColor(uCT); }
+        public void SetCritRate(IUnit unit) { critRate.text = unit.CurrentCritRate.ToString(); SetColor(UIColorType.Default); }
 
         public void SetHP(IUnit unit)
         {
@@ -66,7 +63,7 @@ namespace UI.InGameUI
         }
         #endregion
 
-        void SetSprite(Unit unit) { imageRef.sprite = unit.UnitData.Sprite; imageRef.color = unit.GetComponentInChildren<SpriteRenderer>().color; }
+        void SetSprite(IUnit unit) { imageRef.sprite = unit.UnitData.Sprite; /*imageRef.color = unit.GetComponentInChildren<SpriteRenderer>().color;*/ }
 
         void SetName(string n) { nameP.text = n; }
 
