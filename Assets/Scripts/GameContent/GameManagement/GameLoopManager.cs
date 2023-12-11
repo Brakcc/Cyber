@@ -35,8 +35,6 @@ namespace GameContent.GameManagement
         public class TeamInventory
         {
             //All Chara Datas;
-            public UnitListSo unitList;
-                    
             public GameObject[][] playerList = new GameObject[2][];
             public int[] CompPoints { get; set; }
             public int[] TurretNumber { get; set; }
@@ -82,27 +80,6 @@ namespace GameContent.GameManagement
             foreach (var i in uiFields.cPui) { i.text = 0.ToString(); i.color = Color.red; }
             foreach (var i in uiFields.tNbUI) { i.text = 2.ToString(); i.color = Color.green; }
             foreach (var i in uiFields.computerUI) { i.color = Color.red; }
-        }
-
-        public void OnInitSceneUnits()
-        {
-            foreach (var unitHolder in teamInits.heroPlayer0)
-            {
-                unitHolder.GetComponent<Unit>().UnitData = teamInventory.unitList.GetUnitData(11);
-            }
-
-            foreach (var unitHolder in teamInits.heroPlayer1)
-            {
-                unitHolder.GetComponent<Unit>().UnitData = teamInventory.unitList.GetUnitData(8);
-            }
-        }
-
-        public void OnInitUi()
-        {
-            foreach (var playstat in uiFields.playerStats)
-            {
-                playstat.OnInit();
-            }
         }
 
         #region During Game Logic

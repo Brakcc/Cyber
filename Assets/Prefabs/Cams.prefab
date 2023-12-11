@@ -396,6 +396,13 @@ MonoBehaviour:
     back:
       orthoSizeChange: 0
   switchDelay: 1250
+  camZoomMove:
+    vCam: {fileID: 4411748704660548461}
+    zoomValue: 0
+    zoomCoef: 5
+    maxOrthoSize: 11
+    minOrthoSize: 3
+    offSet: 5
 --- !u!1 &6983634340225661543
 GameObject:
   m_ObjectHideFlags: 0

@@ -110,7 +110,6 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
         {
             if (hit)
             {
-                Debug.Log("test");
                 GameLoopManager.gLm.HandleCompPointValueChange(unit.TeamNumber, _nAKapaSupFields.compPointsAdded);
             }
 

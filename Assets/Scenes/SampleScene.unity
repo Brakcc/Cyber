@@ -8224,9 +8224,49 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2687681726100329668}
     - target: {fileID: 696318820416041608, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 696318820416041608, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_ActionId
+      value: a3009d71-106a-4529-baf3-b5ef23bd2641
+      objectReference: {fileID: 0}
+    - target: {fileID: 696318820416041608, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_ActionName
+      value: Player/Scroll[/Mouse/scroll]
+      objectReference: {fileID: 0}
+    - target: {fileID: 696318820416041608, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 696318820416041608, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 696318820416041608, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
       propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 747587543}
+    - target: {fileID: 696318820416041608, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 747587543}
+    - target: {fileID: 696318820416041608, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 696318820416041608, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ZoomMove
+      objectReference: {fileID: 0}
+    - target: {fileID: 696318820416041608, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Inputs.CameraMovement, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 696318820416041608, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1283223407700948218, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
       propertyPath: kapaaa
       value: 
@@ -8597,6 +8637,82 @@ PrefabInstance:
       objectReference: {fileID: 1861157178}
     - target: {fileID: 2588066164149268060, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
       propertyPath: teamInits.heroPlayer1.Array.data[3]
+      value: 
+      objectReference: {fileID: 519870410}
+    - target: {fileID: 3628622637204811794, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: playerStats.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3628622637204811794, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: playerStats.Array.data[0]
+      value: 
+      objectReference: {fileID: 843942705}
+    - target: {fileID: 3628622637204811794, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: playerStats.Array.data[1]
+      value: 
+      objectReference: {fileID: 2012223073}
+    - target: {fileID: 3628622637204811794, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: playerStats.Array.data[2]
+      value: 
+      objectReference: {fileID: 2108596891}
+    - target: {fileID: 3628622637204811794, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: playerStats.Array.data[3]
+      value: 
+      objectReference: {fileID: 1407297235}
+    - target: {fileID: 3628622637204811794, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: playerStats.Array.data[4]
+      value: 
+      objectReference: {fileID: 1440989062}
+    - target: {fileID: 3628622637204811794, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: playerStats.Array.data[5]
+      value: 
+      objectReference: {fileID: 1680732718}
+    - target: {fileID: 3628622637204811794, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: playerStats.Array.data[6]
+      value: 
+      objectReference: {fileID: 2051161054}
+    - target: {fileID: 3628622637204811794, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: playerStats.Array.data[7]
+      value: 
+      objectReference: {fileID: 1905437363}
+    - target: {fileID: 3628622637204811794, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: teamLists.heroPlayer0.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3628622637204811794, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: teamLists.heroPlayer1.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3628622637204811794, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: teamLists.heroPlayer0.Array.data[0]
+      value: 
+      objectReference: {fileID: 911532679}
+    - target: {fileID: 3628622637204811794, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: teamLists.heroPlayer0.Array.data[1]
+      value: 
+      objectReference: {fileID: 752244281}
+    - target: {fileID: 3628622637204811794, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: teamLists.heroPlayer0.Array.data[2]
+      value: 
+      objectReference: {fileID: 506590175}
+    - target: {fileID: 3628622637204811794, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: teamLists.heroPlayer0.Array.data[3]
+      value: 
+      objectReference: {fileID: 1954993695}
+    - target: {fileID: 3628622637204811794, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: teamLists.heroPlayer1.Array.data[0]
+      value: 
+      objectReference: {fileID: 477960834}
+    - target: {fileID: 3628622637204811794, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: teamLists.heroPlayer1.Array.data[1]
+      value: 
+      objectReference: {fileID: 1033391711}
+    - target: {fileID: 3628622637204811794, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: teamLists.heroPlayer1.Array.data[2]
+      value: 
+      objectReference: {fileID: 1861157178}
+    - target: {fileID: 3628622637204811794, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: teamLists.heroPlayer1.Array.data[3]
       value: 
       objectReference: {fileID: 519870410}
     - target: {fileID: 6839896767206874217, guid: 74002d9789d4acf4494be321fe00199d, type: 3}

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 9217339866666483883}
   - component: {fileID: 489815630530185795}
   - component: {fileID: 2588066164149268060}
+  - component: {fileID: 3628622637204811794}
   m_Layer: 0
   m_Name: MecaManager
   m_TagString: Untagged
@@ -235,7 +236,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4c2c1369db70a44b987bc32c2c79cc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitList: {fileID: 11400000, guid: a4b3272c79f96364f9b4b408e765db19, type: 2}
   mapData: []
   computerList: []
 --- !u!114 &2588066164149268060
@@ -274,3 +274,20 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     playerStats: []
+--- !u!114 &3628622637204811794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6839896767206874217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13d0ce400deb408c8532915f1047678b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitList: {fileID: 11400000, guid: a4b3272c79f96364f9b4b408e765db19, type: 2}
+  playerStats: []
+  teamLists:
+    heroPlayer0: []
+    heroPlayer1: []

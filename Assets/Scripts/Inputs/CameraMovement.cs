@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using CameraManagement;
+using Cinemachine;
 using GameContent.Entity.Unit.UnitWorking;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,27 +10,49 @@ namespace Inputs
     public class CameraMovement : MonoBehaviour
     {
         #region fields
+
+        #region DragParams
+
         //Drag Params
         Camera cam;
         Vector3 origingPos;
         Vector3 diff;
         bool isDragging;
-
+        
         //AutoMove Params
         bool isMoving;
         Unit temp;
         bool canClicSwitch;
 
+        #endregion
+
         //camMovement avec la GameLoop
         [SerializeField] CameraManager camManager;
         [SerializeField] int switchDelay;
+
+        #region ZoomParams
+
+        [SerializeField] CamZoomMove camZoomMove;
+                
+        [System.Serializable]
+        public class CamZoomMove 
+        {
+            public CinemachineVirtualCamera vCam;
+            [HideInInspector] public float zoomValue;
+            public float zoomCoef;
+            public float maxOrthoSize; 
+            public float minOrthoSize; 
+            public float offSet;
+        }
+
+        #endregion
+        
+        
         #endregion
 
         #region methodes
-        void Awake()
-        {
-            cam = Camera.main;
-        }
+        
+        void Awake() => cam = Camera.main;
 
         void LateUpdate()
         {
@@ -38,6 +61,7 @@ namespace Inputs
         }
 
         #region MouseMove
+        
         void OnMouseMove()
         {
             if (!isDragging || isMoving) return;
@@ -52,6 +76,22 @@ namespace Inputs
             isDragging = ctx.started || ctx.performed;
         }
         Vector3 GetMousePosition() => cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+
+        #endregion
+        
+        #region Zoom
+
+        public void ZoomMove(InputAction.CallbackContext ctx)
+        {
+            var s = ctx.ReadValue<Vector2>().y;
+                    
+            camZoomMove.zoomValue -= s * camZoomMove.zoomCoef;
+            camZoomMove.zoomValue = Mathf.Clamp(camZoomMove.zoomValue, camZoomMove.minOrthoSize, camZoomMove.maxOrthoSize);
+                    
+            camZoomMove.vCam.m_Lens.OrthographicSize = Mathf.Lerp(camZoomMove.vCam.m_Lens.OrthographicSize,
+                camZoomMove.zoomValue, Time.deltaTime * camZoomMove.offSet);
+        }
+
         #endregion
 
         #region SwitchMove

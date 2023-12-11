@@ -40,17 +40,10 @@ namespace GameContent.GridManagement
         #region methodes
         void Awake() => hGs = this;
 
-        void Start()
-        {
-            OnIntMapAndEntities();
-        }
-
         #region  Map Gen
         
-        void OnIntMapAndEntities()
+        public void OnIntMapAndEntities()
         {
-            GameLoopManager.gLm.OnInitSceneUnits();
-            
             //Network init
             for (int i = 0; i < _networkList.Length; i++)
             {
@@ -85,15 +78,11 @@ namespace GameContent.GridManagement
             }
 
             EntityInit();
-            
-            GameLoopManager.gLm.InitTeam(GameLoopManager.gLm.teamInits.firstTeamPlaying);
-            
-            GameLoopManager.gLm.OnInitUi();
         }
         
         #endregion
-
-        #region Enity Init
+        
+        #region Enity On Map Init
 
         /// <summary>
         /// Initialise la grille pour detecter les pos des joueurs en début de partie pour rendre
@@ -101,7 +90,7 @@ namespace GameContent.GridManagement
         /// </summary>
         void EntityInit()
         {
-            foreach (var unit in GameLoopManager.gLm.teamInits.heroPlayer0)
+            foreach (var unit in GameGenManager.gGm.TeamLists.heroPlayer0)
             {
                 var uEnt = unit.GetComponent<IEntity>();
                 var hex = GetTile(uEnt.CurrentHexPos);
@@ -118,7 +107,7 @@ namespace GameContent.GridManagement
                 emiters.Add(uEnt);
                 uEnt.OnGenerateNet();
             }
-            foreach (var unit in GameLoopManager.gLm.teamInits.heroPlayer1)
+            foreach (var unit in GameGenManager.gGm.TeamLists.heroPlayer1)
             {
                 var uEnt = unit.GetComponent<IEntity>();
                 var hex = GetTile(uEnt.CurrentHexPos);

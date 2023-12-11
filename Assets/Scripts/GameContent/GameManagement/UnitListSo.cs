@@ -8,18 +8,18 @@ namespace GameContent.GameManagement
     [CreateAssetMenu(fileName = "Team List", menuName = "Tactical/Team/Team List")]
     public class UnitListSo : ScriptableObject
     {
-        public AbstractUnitSO[] CurrentTankList => currentTankList;
+        private AbstractUnitSO[] CurrentTankList => currentTankList;
         [SerializeField] AbstractUnitSO[] currentTankList;
 
-        public AbstractUnitSO[] CurrentDpsList => currentDpsList;
+        private AbstractUnitSO[] CurrentDpsList => currentDpsList;
         [SerializeField] AbstractUnitSO[] currentDpsList;
 
-        public AbstractUnitSO[] CurrentHackerList => currentHackerList;
+        private AbstractUnitSO[] CurrentHackerList => currentHackerList;
         [SerializeField] AbstractUnitSO[] currentHackerList;
 
-        public AbstractUnitSO[] FullList => ConcatLists();
+        private AbstractUnitSO[] FullList => ConcatLists();
 
-        public Dictionary<int, AbstractUnitSO> AllUnitsDict => PresetDict(FullList);
+        private Dictionary<int, AbstractUnitSO> AllUnitsDict => PresetDict(FullList);
         
         AbstractUnitSO[] ConcatLists()
         {

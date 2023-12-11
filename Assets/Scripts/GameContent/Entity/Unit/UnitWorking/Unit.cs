@@ -44,8 +44,8 @@ namespace GameContent.Entity.Unit.UnitWorking
         #region methodes to herit
         public override void OnInit()
         {
-            base.OnInit();
-
+            base.OnInit(); 
+            
             CanPlay = false;
             IsDead = false;
             IsPersoLocked = false;
