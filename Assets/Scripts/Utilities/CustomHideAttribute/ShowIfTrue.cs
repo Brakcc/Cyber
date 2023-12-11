@@ -8,12 +8,12 @@ namespace Utilities.CustomHideAttribute
     public class ShowIfTrue : PropertyAttribute
     {
         public string kapaProperty;
-        public int kapaF;
-
-        public ShowIfTrue(string kapaProperty, int kapa)
+        public int[] kapaFs;
+        
+        public ShowIfTrue(string kapaProperty, int[] kapas)
         {
             this.kapaProperty = kapaProperty;
-            kapaF = kapa;
+            kapaFs = kapas;
         }
     }
 }

@@ -7,26 +7,84 @@ using Interfaces.Kapas;
 using Interfaces.Unit;
 using UI.InGameUI;
 using UnityEngine;
+using Utilities.CustomHideAttribute;
+using GameContent.Entity.Unit.KapasGen.KapaFunctions.Buff_Debuff;
+using GameContent.Entity.Unit.KapasGen.KapaFunctions.Dash;
+using GameContent.Entity.Unit.KapasGen.KapaFunctions.DoubleDiffAtk;
+using GameContent.Entity.Unit.UnitWorking;
 
 namespace GameContent.Entity.Unit.KapasGen
 {
     public abstract class AbstractKapaSO : ScriptableObject, IKapa
     {
         #region fields to herit
-        public abstract string KapaName { get; }
-        public abstract int ID { get; }
-        public abstract int Cost { get; }
-        public abstract string Description { get; }
-        public abstract int MaxPlayerPierce { get; }
-        public abstract float BalanceCoeff { get; }
-        public abstract EffectType EffectType { get; }
-        public abstract KapaType KapaType { get; }
-        public abstract KapaFunctionType KapaFunctionType { get; }
+
+        public int ID => iD;
+        [SerializeField] private int iD;
+        
+        public string KapaName => kapaNane;
+        [SerializeField] private string kapaNane;
+        
+        public string Description => description;
+        [SerializeField] private string description;
+        
+        public int MaxPlayerPierce => maxPlayerpierce;
+        [ShowIfTrue("kapaType", new[]{(int)KapaType.NormalAttack, (int)KapaType.Competence, (int)KapaType.Ultimate})]
+        [SerializeField] private int maxPlayerpierce;
+        
+        public float BalanceCoeff => balanceCoeff;
+        [ShowIfTrue("kapaType", new[]{(int)KapaType.NormalAttack, (int)KapaType.Competence, (int)KapaType.Ultimate})]
+        [SerializeField] private float balanceCoeff;
+        
+        public KapaType KapaType => kapaType;
+        [SerializeField] private KapaType kapaType;
+        
+        public EffectType EffectType => effectType;
+        [ShowIfTrue("kapaType", new[]{(int)KapaType.NormalAttack, (int)KapaType.Competence, (int)KapaType.Ultimate})]
+        [SerializeField] private EffectType effectType;
+        
+        #region BuffDebuff
+        
+        [ShowIfTrue("kapaType", new[]{(int)KapaType.NormalAttack, (int)KapaType.Competence, (int)KapaType.Ultimate})]
+        [SerializeField] private bool buffDebuffs;
+        
+        [ShowIfBoolTrue("buffDebuffs")]
+        [SerializeField] private bool movePointsBDb;
+        [ShowIfBoolTrue("movePointsBDb")][ShowIfSecu("buffDebuffs")]
+        [SerializeField] BuffDebuffKapaDatas mPBuffDebuffData;
+        
+        [ShowIfBoolTrue("buffDebuffs")]
+        [SerializeField] private bool critRateBDb;
+        [ShowIfBoolTrue("critRateBDb")][ShowIfSecu("buffDebuffs")]
+        [SerializeField] BuffDebuffKapaDatas cRBuffDebuffData;
+        
+        [ShowIfBoolTrue("buffDebuffs")]
+        [SerializeField] private bool precisionBDb;
+        [ShowIfBoolTrue("precisionBDb")][ShowIfSecu("buffDebuffs")]
+        [SerializeField] BuffDebuffKapaDatas precBuffDebuffData;
+        
+        #endregion
+                
+        public KapaFunctionType KapaFunctionType => kapaFunctionType;
+        [ShowIfTrue("kapaType", new[]{(int)KapaType.NormalAttack, (int)KapaType.Competence, (int)KapaType.Ultimate})]
+        [SerializeField] KapaFunctionType kapaFunctionType;
+        
         public abstract KapaUISO KapaUI { get; }
         public abstract GameObject DamageFeedBack { get; }
         public abstract Vector3Int[] Patterns { get; }
         #endregion
 
+        #region Diff Kapas fields
+
+        #region Double Diff Atk
+
+        [ShowIfTrue("kapaFunctionType", new[] { (int)KapaFunctionType.DoubleDiffAttack })] 
+        [SerializeField] private DoubleDiffAtkKapaDatas doubleDiffAtk;
+
+        #endregion
+
+        #endregion
+        
         #region paterns to herit
         //North tiles
         public abstract Vector3Int[] OddNTiles { get; protected set; }
@@ -313,41 +371,57 @@ namespace GameContent.Entity.Unit.KapasGen
                 if (Random.Range(0, 100) > unit.CurrentPrecision) continue;
 
                 //verif si le coup est critique ou non et infliger les degats et feedbacks 
-                if (Random.Range(0, 100) < unit.UnitData.CritRate)
+                if (Random.Range(0, 100) < unit.CurrentCritRate)
                 {
                     //on ne prend pas en compte les Hackers qui n'ont pas de taux crit
-                    unitTarget.CurrentHealth -= Damage.CritDamage(unit.UnitData.Attack, unit.UnitData.Defense) * BalanceCoeff;
+                    unitTarget.CurrentHealth -= Damage.CritDamage(unit.CurrentAtk, unitTarget.CurrentDef) * BalanceCoeff;
                     //FeedBack de degats
                     var targetPos = unitTarget.CurrentWorldPos;
                     OnUIFeedBack(DamageFeedBack, 
                         new Vector3(targetPos.x, targetPos.y + ConstList.DamageUIRiseOffset), 
-                        Damage.CritDamage(unit.UnitData.Attack, unit.UnitData.Defense) * BalanceCoeff);
+                        Damage.CritDamage(unit.CurrentAtk, unitTarget.CurrentDef) * BalanceCoeff);
                 }
                 else 
                 {
                     if (unitTarget.UnitData.Type == UnitType.Hacker)
                     {
-                        unitTarget.CurrentHealth -= Damage.HackerDamage(unit.UnitData.Attack) * BalanceCoeff;
+                        unitTarget.CurrentHealth -= Damage.HackerDamage(unit.CurrentAtk) * BalanceCoeff;
                         //FeedBack de degats
                         var targetPos = unitTarget.CurrentWorldPos;
                         OnUIFeedBack(DamageFeedBack, 
                             new Vector3(targetPos.x, targetPos.y + ConstList.DamageUIRiseOffset), 
-                            Damage.HackerDamage(unit.UnitData.Attack) * BalanceCoeff);
+                            Damage.HackerDamage(unit.CurrentAtk) * BalanceCoeff);
                     }
                     else
                     {
-                        unitTarget.CurrentHealth -= Damage.NormalDamage(unit.UnitData.Attack, unit.UnitData.Defense) * BalanceCoeff;
+                        unitTarget.CurrentHealth -= Damage.NormalDamage(unit.CurrentAtk, unitTarget.CurrentDef) * BalanceCoeff;
                         //FeedBack de degats
                         var targetPos = unitTarget.CurrentWorldPos;
                         OnUIFeedBack(DamageFeedBack, 
                             new Vector3(targetPos.x, targetPos.y + ConstList.DamageUIRiseOffset), 
-                            Damage.NormalDamage(unit.UnitData.Attack, unit.UnitData.Defense) * BalanceCoeff);
+                            Damage.NormalDamage(unit.CurrentAtk, unitTarget.CurrentDef) * BalanceCoeff);
                     }
                 }
 
+                if (buffDebuffs && movePointsBDb)
+                {
+                    BuffDebuffKapa.OnBuffDebuffMP(unitTarget, mPBuffDebuffData.value, mPBuffDebuffData.turnNumber);
+                }
+                if (buffDebuffs && critRateBDb)
+                {
+                    BuffDebuffKapa.OnBuffDebuffCritRate(unitTarget, cRBuffDebuffData.value, cRBuffDebuffData.turnNumber);
+                }
+                if (buffDebuffs && precisionBDb)
+                {
+                    BuffDebuffKapa.OnBuffDebuffPrecision(unitTarget, precBuffDebuffData.value, precBuffDebuffData.turnNumber);
+                }
+                
                 //compteur de Hit
                 n++;
 
+                DashKapa.OnSecondKapa(UnitManager.uM, unitTarget.CurrentHexPos);
+                Debug.Log(unitTarget.CurrentHexPos);
+                
                 //set new UI
                 unitTarget.StatUI.SetHP(unitTarget);
 
@@ -387,7 +461,7 @@ namespace GameContent.Entity.Unit.KapasGen
                 if (Random.Range(0, 100) > unit.CurrentPrecision) continue;
 
                 //verif si le coup est critique ou non
-                if (Random.Range(0, 100) < unit.UnitData.CritRate)
+                if (Random.Range(0, 100) < unit.CurrentCritRate)
                 {
                     //on ne prend pas en compte les Hackers qui n'ont pas de taux crit
                     unitTarget.CurrentHealth -= Damage.CritDamage(unit.UnitData.Attack, unit.UnitData.Defense) * BalanceCoeff;
@@ -395,30 +469,43 @@ namespace GameContent.Entity.Unit.KapasGen
                     var targetPos = unitTarget.CurrentWorldPos;
                     OnUIFeedBack(DamageFeedBack, 
                         new Vector3(targetPos.x, targetPos.y + ConstList.DamageUIRiseOffset), 
-                        Damage.CritDamage(unit.UnitData.Attack, unit.UnitData.Defense) * BalanceCoeff);
+                        Damage.CritDamage(unit.CurrentAtk, unitTarget.CurrentDef) * BalanceCoeff);
                 }
                 else
                 {
-                    if (unitTarget.UnitData.Type == UnitType.Hacker)
+                    if (unit.UnitData.Type == UnitType.Hacker)
                     {
-                        unitTarget.CurrentHealth -= Damage.HackerDamage(unit.UnitData.Attack) * BalanceCoeff;
+                        unitTarget.CurrentHealth -= Damage.HackerDamage(unit.CurrentAtk) * BalanceCoeff;
                         //FeedBack de degats
                         var targetPos = unitTarget.CurrentWorldPos;
                         OnUIFeedBack(DamageFeedBack, 
                             new Vector3(targetPos.x, targetPos.y + ConstList.DamageUIRiseOffset), 
-                            Damage.HackerDamage(unit.UnitData.Attack) * BalanceCoeff);
+                            Damage.HackerDamage(unit.CurrentAtk) * BalanceCoeff);
                     }
                     else
                     {
-                        unitTarget.CurrentHealth -= Damage.NormalDamage(unit.UnitData.Attack, unit.UnitData.Defense) * BalanceCoeff;
+                        unitTarget.CurrentHealth -= Damage.NormalDamage(unit.CurrentAtk, unitTarget.CurrentDef) * BalanceCoeff;
                         //FeedBack de degats
                         var targetPos = unitTarget.CurrentWorldPos;
                         OnUIFeedBack(DamageFeedBack, 
                             new Vector3(targetPos.x, targetPos.y + ConstList.DamageUIRiseOffset), 
-                            Damage.NormalDamage(unit.UnitData.Attack, unit.UnitData.Defense) * BalanceCoeff);
+                            Damage.NormalDamage(unit.CurrentAtk, unitTarget.CurrentDef) * BalanceCoeff);
                     }
                 }
 
+                if (buffDebuffs && movePointsBDb)
+                {
+                    BuffDebuffKapa.OnBuffDebuffMP(unitTarget, mPBuffDebuffData.value, mPBuffDebuffData.turnNumber);
+                }
+                if (buffDebuffs && critRateBDb)
+                {
+                    BuffDebuffKapa.OnBuffDebuffCritRate(unitTarget, cRBuffDebuffData.value, cRBuffDebuffData.turnNumber);
+                }
+                if (buffDebuffs && precisionBDb)
+                {
+                    BuffDebuffKapa.OnBuffDebuffPrecision(unitTarget, precBuffDebuffData.value, precBuffDebuffData.turnNumber);
+                }
+                
                 //set new UI
                 unitTarget.StatUI.SetHP(unitTarget);
 

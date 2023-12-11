@@ -12,20 +12,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc327a9d29d835444a0db66a632a8aec, type: 3}
   m_Name: NATest
   m_EditorClassIdentifier: 
-  _kapaName: 
-  _id: 0
-  _description: 
-  _cost: 0
-  _maxPlayerPierce: 0
-  _balanceCoeff: 0
-  _effectType: 0
-  _kapaType: 0
-  _kapaFunctionType: 0
+  iD: 0
+  kapaNane: 
+  description: 
+  maxPlayerpierce: 1
+  balanceCoeff: 1
+  kapaType: 0
+  effectType: 1
+  buffDebuffs: 1
+  movePointsBDb: 1
+  mPBuffDebuffData:
+    value: -3
+    turnNumber: 2
+  critRateBDb: 0
+  cRBuffDebuffData:
+    value: 0
+    turnNumber: 0
+  precisionBDb: 1
+  precBuffDebuffData:
+    value: -50
+    turnNumber: 1
+  kapaFunctionType: 1
+  doubleDiffAtk:
+    buffDebuffs1: 0
+    movePointsBDb1: 0
+    mPBuffDebuffData1:
+      value: 0
+      turnNumber: 0
+    critRateBDb1: 0
+    cRBuffDebuffData1:
+      value: 0
+      turnNumber: 0
+    precisionBDb1: 0
+    precBuffDebuffData1:
+      value: 0
+      turnNumber: 0
+    buffDebuffs2: 0
+    movePointsBDb2: 0
+    mPBuffDebuffData2:
+      value: 0
+      turnNumber: 0
+    critRateBDb2: 0
+    cRBuffDebuffData2:
+      value: 0
+      turnNumber: 0
+    precisionBDb2: 0
+    precBuffDebuffData2:
+      value: 0
+      turnNumber: 0
   _kapaUI: {fileID: 0}
   _damageFeedBack: {fileID: 8948626333531248720, guid: 8f927771530abf045b81020ae94b0299, type: 3}
   _pattern:
   - {x: 0, y: -1, z: 0}
   - {x: 0, y: -2, z: 0}
+  - {x: 0, y: -3, z: 0}
   _nAKapaSupFields:
     compPointsAdded: 5
     ultPointsAdded: 0

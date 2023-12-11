@@ -14,7 +14,7 @@ namespace GameContent.GridManagement
         [SerializeField] SelectGlow glow;
 
         [SerializeField] NetworkType originNetwork;
-        [ShowIfTrue("type", (int)HexType.Computer)]
+        [ShowIfTrue("type", new[]{(int)HexType.Computer})]
         [SerializeField] ComputerTarget computerTarget;
 
         //la Data importante

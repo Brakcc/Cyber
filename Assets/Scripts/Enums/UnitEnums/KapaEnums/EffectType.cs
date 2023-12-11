@@ -2,12 +2,8 @@
 {
     public enum EffectType
     {
+        None,
         SingleDamage,
-        DOT,
         Hacked,
-        Debuff,
-        Buff,
-        Rez,
-        None
     }
 }

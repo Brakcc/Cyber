@@ -11,23 +11,12 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
     public class DeActKapaSO : AbstractKapaSO
     {
         #region inherited accessors
-        public override string KapaName => _kapaName;
-        [SerializeField] string _kapaName;
-        public override int ID => _id;
-        [SerializeField] int _id;
-        public override KapaType KapaType => _kapaType;
-        [SerializeField] KapaType _kapaType;
-        public override string Description => _description;
-        [SerializeField] string _description;
-        public override int Cost => 0;
-        public override int MaxPlayerPierce => 0;
-        public override float BalanceCoeff => 0;
-        public override EffectType EffectType => EffectType.None;
-        public override KapaFunctionType KapaFunctionType => KapaFunctionType.Default;
+        
         public override KapaUISO KapaUI => _kapaUI;
         [SerializeField] KapaUISO _kapaUI;
         public override GameObject DamageFeedBack => null;
         public override Vector3Int[] Patterns => null;
+        
         #endregion
 
         #region inherited paterns/accessors

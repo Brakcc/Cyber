@@ -11,22 +11,22 @@ namespace CameraManagement
         #region fields
         [SerializeField] CameraEffectType effectType;
 
-        [ShowIfTrue("effectType", (int)CameraEffectType.Shake)]
+        [ShowIfTrue("effectType", new[]{(int)CameraEffectType.Shake})]
         public ShakeParams shake;
 
-        [ShowIfTrue("effectType", (int)CameraEffectType.ShockWave)]
+        [ShowIfTrue("effectType", new[]{(int)CameraEffectType.ShockWave})]
         public ShockWaveParams shockWave;
 
-        [ShowIfTrue("effectType", (int)CameraEffectType.Impulse)]
+        [ShowIfTrue("effectType", new[]{(int)CameraEffectType.Impulse})]
         public ImpulseParams impulse;
 
-        [ShowIfTrue("effectType", (int)CameraEffectType.Focus)]
+        [ShowIfTrue("effectType", new[]{(int)CameraEffectType.Focus})]
         public FocusParams focus;
 
-        [ShowIfTrue("effectType", (int)CameraEffectType.Zoom)]
+        [ShowIfTrue("effectType", new[]{(int)CameraEffectType.Zoom})]
         public ZoomParams zoom;
 
-        [ShowIfTrue("effectType", (int)CameraEffectType.Zoom)]
+        [ShowIfTrue("effectType", new[]{(int)CameraEffectType.Zoom})]
         public BackParams back;
         #endregion
     }

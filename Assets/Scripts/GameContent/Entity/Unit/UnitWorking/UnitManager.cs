@@ -12,7 +12,7 @@ namespace GameContent.Entity.Unit.UnitWorking
     public class UnitManager : MonoBehaviour
     {
         #region fields
-        MoveSystem _moveSys;
+        [HideInInspector] public MoveSystem moveSys;
 
         //Unit currently stored
         IUnit _selectedUnit;
@@ -29,13 +29,17 @@ namespace GameContent.Entity.Unit.UnitWorking
         public List<Vector3Int> CurrentButtonPos {get; private set; }
         public List<Vector3Int> CurrentKapaPatternPos { get; private set; }  
         Vector3Int CurrentDirSelected { get; set; }
+
+        public static UnitManager uM;
         #endregion
 
         #region Instance et Awake
 
         void Awake()
         {
-            _moveSys = new();
+            uM = this;
+            
+            moveSys = new();
             _selectedUnit = null;
             _previousSelectedHex = null;
             CurrentTypeKapaSelected = KapaType.Default;
@@ -60,7 +64,6 @@ namespace GameContent.Entity.Unit.UnitWorking
             if (CheckIfCanSelectOtherUnitAndIfSameUnit(unitReference)) return;
 
             PrepareUnitForMove(unitReference);
-            //ShowKapasUI(unitReference);
         }
 
         /// <summary>
@@ -100,7 +103,7 @@ namespace GameContent.Entity.Unit.UnitWorking
         
             _selectedUnit = unitRef;
             _selectedUnit.Select();
-            _moveSys.ShowRange(_selectedUnit, HexGridStore.hGs);
+            moveSys.ShowRange(_selectedUnit, HexGridStore.hGs);
         }
 
         /// <summary>
@@ -113,12 +116,12 @@ namespace GameContent.Entity.Unit.UnitWorking
             if (_previousSelectedHex == null || _previousSelectedHex != selects)
             {
                 _previousSelectedHex = selects;
-                _moveSys.ShowPath(selects.HexCoords, HexGridStore.hGs);
+                moveSys.ShowPath(selects.HexCoords, HexGridStore.hGs);
             }
             else
             {
                 ChargeNewUnitHexCoord();
-                _moveSys.MoveUnit(_selectedUnit, HexGridStore.hGs);
+                moveSys.MoveUnit(_selectedUnit, HexGridStore.hGs);
                 //PlayerTurn = false; trouver une autre methode pour bloquer le joueur en listant l'ensemble des units
                 // Ici on utilise pas le ClearOldSelection pour ne pas reset l'Unit Selected, On veut Lock l'Unit pour la phase de Capa
                 ClearGraphKeepUnit();
@@ -474,7 +477,7 @@ namespace GameContent.Entity.Unit.UnitWorking
         /// <returns></returns>
         bool HandleHexOutOfRange(Vector3Int hexPos)
         {
-            if (!_moveSys.IsHexInRange(hexPos)) { return true; }
+            if (!moveSys.IsHexInRange(hexPos)) { return true; }
             return false;
         }
 
@@ -499,7 +502,7 @@ namespace GameContent.Entity.Unit.UnitWorking
         {
             _previousSelectedHex = null;
             SelectedUnit.Deselect();
-            _moveSys.HideRange(HexGridStore.hGs);
+            moveSys.HideRange(HexGridStore.hGs);
             _selectedUnit = null;
         }
 
@@ -523,7 +526,7 @@ namespace GameContent.Entity.Unit.UnitWorking
         void ClearGraphKeepUnit()
         {
             _previousSelectedHex = null;
-            _moveSys.HideRange(HexGridStore.hGs);
+            moveSys.HideRange(HexGridStore.hGs);
         }
 
         /// <summary>

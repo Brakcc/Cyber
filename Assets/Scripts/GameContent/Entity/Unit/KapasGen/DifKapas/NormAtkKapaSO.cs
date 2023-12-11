@@ -13,24 +13,7 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
     public class NormAtkKapaSO : AbstractKapaSO
     {
         #region inherited accessors
-        public override string KapaName => _kapaName;
-        [SerializeField] string _kapaName;
-        public override  int ID => _id;
-        [SerializeField] int _id;
-        public override KapaType KapaType => _kapaType;
-        [SerializeField] KapaType _kapaType;
-        public override string Description => _description;
-        [SerializeField] string _description;
-        public override int Cost => _cost;
-        [SerializeField] int _cost;
-        public override int MaxPlayerPierce => _maxPlayerPierce;
-        [SerializeField] int _maxPlayerPierce;
-        public override float BalanceCoeff => _balanceCoeff;
-        [SerializeField] float _balanceCoeff;
-        public override EffectType EffectType => _effectType;
-        [SerializeField] EffectType _effectType;
-        public override KapaFunctionType KapaFunctionType => _kapaFunctionType;
-        [SerializeField] KapaFunctionType _kapaFunctionType;
+        
         public override KapaUISO KapaUI => _kapaUI;
         [SerializeField] KapaUISO _kapaUI;
         public override GameObject DamageFeedBack => _damageFeedBack;
@@ -41,6 +24,7 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
         [SerializeField] NAKapaSupFields _nAKapaSupFields;
 
         [SerializeField] CameraManager _cam;
+        
         #endregion
 
         #region inherited paterns/accessors
@@ -113,11 +97,7 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
                 GameLoopManager.gLm.HandleCompPointValueChange(unit.TeamNumber, _nAKapaSupFields.compPointsAdded);
             }
 
-            unit.UltPoints += _nAKapaSupFields.ultPointsAdded;
             CameraFunctions.OnShake(FindObjectOfType<CinemachineVirtualCamera>(), _cam.shake);
-            //PlaceHolder � rempir avec les anims et consid�rations de d�g�ts
-
-            unit.StatUI.SetUP(unit);
         }
         void EndKapa()
         {

@@ -13,7 +13,6 @@ namespace Interfaces.Kapas
         string KapaName { get; }
         int ID { get; }
         KapaType KapaType { get; }
-        int Cost { get; }
         string Description { get; }
         int MaxPlayerPierce { get; }
         float BalanceCoeff { get; }

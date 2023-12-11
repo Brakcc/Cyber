@@ -12,8 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a896da2542af6114a9aac05e9f4a0927, type: 3}
   m_Name: Skip
   m_EditorClassIdentifier: 
-  _kapaName: 
-  _id: 4
-  _kapaType: 4
-  _description: 
+  iD: 0
+  kapaNane: 
+  description: 
+  maxPlayerpierce: 0
+  balanceCoeff: 0
+  kapaType: 4
+  effectType: 0
+  kapaFunctionType: 0
+  mPBuffDebuff:
+    value: 0
+    turnNumber: 0
+  cRBuffDebuff:
+    value: 0
+    turnNumber: 0
+  precBuffDebuff:
+    value: 0
+    turnNumber: 0
   _kapaUI: {fileID: 0}

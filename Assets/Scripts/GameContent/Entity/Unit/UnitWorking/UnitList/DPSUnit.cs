@@ -8,6 +8,7 @@ namespace GameContent.Entity.Unit.UnitWorking.UnitList
     public class DPSUnit : Unit
     {
         #region inherited accessors
+        
         //moves fields 
         [SerializeField] AbstractUnitSO m_Unit;
         public override AbstractUnitSO UnitData { get => m_Unit; set => m_Unit = value; }
@@ -16,15 +17,24 @@ namespace GameContent.Entity.Unit.UnitWorking.UnitList
         public override PlayerStatsUI StatUI => m_StatsUI;
 
         //Game Loop Logic BALEK LA VISIBILITE et BALEK LE SCRIPTABLE
+        
         #region current stats
+        
         public override float CurrentHealth { get; set; }
-        public override int CurrentMp { get; protected set; }
-        public override int CurrentAtk { get; protected set; }
-        public override int CurrentDef { get; protected set; }
-        public override int CurrentCritRate { get; protected set; }
+        public override int CurrentMp { get; set; }
+        public override int CurrentAtk { get; set; }
+        public override int CurrentDef { get; set; }
+        public override int CurrentCritRate { get; set; }
         //additional precision stat
-        public override int CurrentPrecision { get; protected set; }
+        public override int CurrentPrecision { get; set; }
+        
+        //BDb Counters
+        public override int MpBDbCounter { get; set; }
+        public override int CrBDbCounter { get; set; }
+        public override int PrecBDbCounter { get; set; }
+        
         #endregion
+        
         public override int TeamNumber { get; set; }
         public override bool IsOnTurret { get; protected set; }
         public override int UltPoints { get; set; }
@@ -35,25 +45,19 @@ namespace GameContent.Entity.Unit.UnitWorking.UnitList
         public override bool IsOnComputer { get; protected set; }
 
         [SerializeField] GraphInitUnit graphs;
+        
         #endregion
 
         #region other fields
+        
         //graph fields
         private SpriteRenderer _rend;
         private Color _originColor;
+        
         #endregion
 
         #region methodes
-        void Awake() 
-        {
-            //graphs.SetRenderer(gameObject, m_Unit.Sprite);
-            ////Pour que cette ligne fonctionne, il ne faut qu'aucun autre renderer ne soit sur l'objet
-            ////Donc suprimer celui qui est de base sur le Bob
-            //_rend = GetComponentInChildren<SpriteRenderer>();
-            //_originColor = _rend.color;
-            //OnInit();
-        }
-
+        
         public override void OnInit()
         {
             graphs.SetRenderer(gameObject, m_Unit.Sprite);

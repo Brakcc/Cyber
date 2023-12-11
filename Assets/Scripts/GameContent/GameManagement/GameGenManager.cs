@@ -2,6 +2,7 @@ using UnityEngine;
 using GameContent.GridManagement;
 using GameContent.Entity.Unit.UnitWorking;
 using UI.InGameUI;
+using DataManagement;
 
 namespace GameContent.GameManagement
 {
@@ -21,14 +22,23 @@ namespace GameContent.GameManagement
             public GameObject[] heroPlayer1;
         }
 
+        //Teams IDs
+        [HideInInspector] public int[] team0;
+        [HideInInspector] public int[] team1;
+        
         public static GameGenManager gGm;
         
         #endregion
         
         #region methodes
 
-        void Awake() => gGm = this;
-        
+        void Awake()
+        {
+            gGm = this;
+            
+            OnGetTeamDatas();
+        }
+
         void Start() => OnInitGameScene();
         
         #region Inits
@@ -43,6 +53,12 @@ namespace GameContent.GameManagement
                     
             OnInitUi();
         }
+
+        void OnGetTeamDatas()
+        {
+            team0 = TeamDatasSaveAndLoad.OnLoadSingleTeam(0);
+            team1 = TeamDatasSaveAndLoad.OnLoadSingleTeam(1);
+        }
         
         void OnInitUi()
         {
@@ -54,20 +70,18 @@ namespace GameContent.GameManagement
                 
         void OnInitSceneUnits()
         {
-            foreach (var unitHolder in teamLists.heroPlayer0)
+            for (var i = 0; i < 3; i++)
             {
-                unitHolder.GetComponent<Unit>().UnitData = unitList.GetUnitData(11);
+                teamLists.heroPlayer0[i].GetComponent<Unit>().UnitData = unitList.GetUnitData(team0[i]);
             }
-        
-            foreach (var unitHolder in teamLists.heroPlayer1)
+            for (var i = 0; i < 3; i++)
             {
-                unitHolder.GetComponent<Unit>().UnitData = unitList.GetUnitData(8);
+                teamLists.heroPlayer1[i].GetComponent<Unit>().UnitData = unitList.GetUnitData(team1[i]);
             }
         }
 
         #endregion
         
         #endregion
-        
     }
 }

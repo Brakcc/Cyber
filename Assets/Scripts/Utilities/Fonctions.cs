@@ -93,6 +93,30 @@ namespace Utilities
             return result;
         }
 
+        public static int[] StringToInts(string str)
+        {
+            if (str.StartsWith("[") && str.EndsWith("]"))
+            {
+                str = str.Substring(1, str.Length - 1);
+            }
+
+            var sArray = str.Split(",");
+
+            for(var i = 0; i < sArray.Length; i++)
+            {
+                var sMono = sArray[i];
+                sMono = sMono.Replace(")", "");
+                sArray[i] = sMono;
+            }
+
+            var a = int.Parse(sArray[0], CultureInfo.InvariantCulture);
+            var b = int.Parse(sArray[0], CultureInfo.InvariantCulture);
+            var c = int.Parse(sArray[0], CultureInfo.InvariantCulture);
+            var d = int.Parse(sArray[0], CultureInfo.InvariantCulture);
+
+            return new[] { a, b, c, d };
+        }
+
         /// <summary>
         /// Cut the data list (single string) in strings array to be used in other methodes 
         /// </summary>

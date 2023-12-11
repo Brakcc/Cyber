@@ -15,31 +15,7 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
     public class CompKapaSO : AbstractKapaSO
     {
         #region inherited accessors
-        public override string KapaName => _kapaName;
-        [SerializeField] string _kapaName;
-        public override  int ID => _id;
-        [SerializeField] int _id;
-        public override KapaType KapaType => _kapaType;
-        [SerializeField] KapaType _kapaType;
-        public override string Description => _description;
-        [SerializeField] string _description;
-        public override int Cost => _cost;
-        [SerializeField] int _cost;
-        public override int MaxPlayerPierce => _maxPlayerPierce;
-        [SerializeField] int _maxPlayerPierce;
-        public override float BalanceCoeff => _balanceCoeff;
-        [SerializeField] float _balanceCoeff;
-        public override EffectType EffectType => _effectType;
-        [SerializeField] EffectType _effectType;
-        public override KapaFunctionType KapaFunctionType => _kapaFunctionType;
-        [SerializeField] KapaFunctionType _kapaFunctionType;
-
-        [ShowIfTrue("_kapaFunctionType", (int)KapaFunctionType.Grab)]
-        [SerializeField] KapaGrab grab;
-
-        [ShowIfTrue("_kapaFunctionType", (int)KapaFunctionType.Dash)]
-        [SerializeField] KapaDash dash;
-
+        
         public override KapaUISO KapaUI => _kapaUI;
         [SerializeField] KapaUISO _kapaUI;
 

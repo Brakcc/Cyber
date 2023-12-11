@@ -12,10 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d02d7002093b5949923699622983592, type: 3}
   m_Name: TurretTest
   m_EditorClassIdentifier: 
-  _kapaName: 
-  _id: 0
-  _kapaType: 3
-  _description: 
+  iD: 0
+  kapaNane: 
+  description: 
+  maxPlayerpierce: 0
+  balanceCoeff: 0
+  kapaType: 3
+  effectType: 0
+  kapaFunctionType: 0
+  mPBuffDebuff:
+    value: 0
+    turnNumber: 0
+  cRBuffDebuff:
+    value: 0
+    turnNumber: 0
+  precBuffDebuff:
+    value: 0
+    turnNumber: 0
   _kapaUI: {fileID: 0}
   _pattern:
   - {x: 0, y: -1, z: 0}

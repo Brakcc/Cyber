@@ -12,8 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7ffc2ffc55f3cd4a983a20db08deb5b, type: 3}
   m_Name: DeAct KapaTest
   m_EditorClassIdentifier: 
-  _kapaName: 
-  _id: 0
-  _kapaType: 2
-  _description: 
+  iD: 0
+  kapaNane: 
+  description: 
+  maxPlayerpierce: 0
+  balanceCoeff: 0
+  kapaType: 2
+  effectType: 0
+  kapaFunctionType: 0
+  mPBuffDebuff:
+    value: 0
+    turnNumber: 0
+  cRBuffDebuff:
+    value: 0
+    turnNumber: 0
+  precBuffDebuff:
+    value: 0
+    turnNumber: 0
   _kapaUI: {fileID: 0}

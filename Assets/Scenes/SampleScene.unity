@@ -757,7 +757,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5587667834857246865, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.511754
+      value: -7.811754
       objectReference: {fileID: 0}
     - target: {fileID: 5587667834857246865, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: m_LocalPosition.y
@@ -8832,6 +8832,10 @@ PrefabInstance:
     - target: {fileID: 2301420532017815582, guid: 8626e43a11f102043ac52eb65b8e2a85, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2954676767314560787, guid: 8626e43a11f102043ac52eb65b8e2a85, type: 3}
+      propertyPath: camZoomMove.maxOrthoSize
+      value: 6.75
       objectReference: {fileID: 0}
     - target: {fileID: 3708887672900631589, guid: 8626e43a11f102043ac52eb65b8e2a85, type: 3}
       propertyPath: m_Name

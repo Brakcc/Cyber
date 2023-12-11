@@ -12,21 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4d40161ec8cffd4fa4eb487d60ab8f7, type: 3}
   m_Name: Hack
   m_EditorClassIdentifier: 
-  _kapaName: 
-  _id: 0
-  _description: 
-  _cost: 0
-  _maxPlayerPierce: 0
-  _balanceCoeff: 0
-  _effectType: 2
-  _kapaType: 1
-  _kapaFunctionType: 0
-  grab:
-    range: 0
-    debufMP: 0
-  dash:
-    range: 0
-    speed: 0
+  iD: 0
+  kapaNane: 
+  description: 
+  maxPlayerpierce: 3
+  balanceCoeff: 1
+  kapaType: 1
+  effectType: 2
+  kapaFunctionType: 0
+  mPBuffDebuff:
+    value: 0
+    turnNumber: 0
+  cRBuffDebuff:
+    value: 0
+    turnNumber: 0
+  precBuffDebuff:
+    value: 0
+    turnNumber: 0
   _kapaUI: {fileID: 0}
   _damageFeedBack: {fileID: 8948626333531248720, guid: 8f927771530abf045b81020ae94b0299, type: 3}
   _pattern:

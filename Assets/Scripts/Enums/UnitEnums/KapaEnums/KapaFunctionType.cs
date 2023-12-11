@@ -2,12 +2,12 @@
 {
     public enum KapaFunctionType
     {
-        DoubleAttack,
-        TripleAttack,
-        Grab,
+        Default,
+        DoubleDiffAttack,
+        MultSameAttack,
         Dash,
         SelectionAttack,
-        //en attente de plus
-        Default
+        AOE,
+        DOT
     }
 }

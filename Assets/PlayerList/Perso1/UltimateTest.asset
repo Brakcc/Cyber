@@ -12,15 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a8da640c4a15854aa7d5951a2fb41d9, type: 3}
   m_Name: UltimateTest
   m_EditorClassIdentifier: 
-  _kapaName: 
-  _id: 0
-  _kapaType: 5
-  _description: 
-  _cost: 0
-  _maxPlayerPierce: 0
-  _balanceCoeff: 0
-  _effectType: 0
-  _kapaFunctionType: 0
+  iD: 0
+  kapaNane: 
+  description: 
+  maxPlayerpierce: 0
+  balanceCoeff: 0
+  kapaType: 5
+  effectType: 1
+  kapaFunctionType: 5
+  mPBuffDebuff:
+    value: 0
+    turnNumber: 0
+  cRBuffDebuff:
+    value: 0
+    turnNumber: 0
+  precBuffDebuff:
+    value: 0
+    turnNumber: 0
   _kapaUI: {fileID: 0}
   _damageFeedBack: {fileID: 8948626333531248720, guid: 8f927771530abf045b81020ae94b0299, type: 3}
   _patterns: []
