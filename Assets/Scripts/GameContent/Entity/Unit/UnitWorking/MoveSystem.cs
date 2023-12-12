@@ -49,8 +49,6 @@ namespace GameContent.Entity.Unit.UnitWorking
         public List<Vector3Int> GetPath(Vector3Int target) => _moveRange.GetPathTo(target);
 
         public void MoveUnit(IUnit selects, HexGridStore hexGrid) => selects.MoveOnPath(_currentPath.Select(pos => hexGrid.GetTile(pos).transform.position).ToList());
-
-        public void MoveInFront(IUnit selects, HexGridStore hexGrid) => selects.MoveInFrontOf(_currentPath.Select(pos => hexGrid.GetTile(pos).transform.position).ToList());
         
         public bool IsHexInRange(Vector3Int hexPos) => _moveRange.IsHexPosInRange(hexPos);
     

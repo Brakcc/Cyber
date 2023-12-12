@@ -17,6 +17,7 @@ namespace Interfaces.Unit
         float CurrentHealth { get; set; }
         int CurrentMp { get; set;  }
         int CurrentCritRate { get; set; }
+        int CurrentCRRez { get; set; }
         int CurrentDef { get; set;  }
         int CurrentAtk { get; set; }
         //additional precision stat
@@ -27,6 +28,9 @@ namespace Interfaces.Unit
         int MpBDbCounter { get; set; }
         int CrBDbCounter { get; set; }
         int PrecBDbCounter { get; set; }
+        int DefBDbCounter { get; set; }
+        int CrRezBDbCounter { get; set; }
+        int TempKapaMult { get; set; }
         
         #endregion
 
@@ -44,7 +48,7 @@ namespace Interfaces.Unit
         #region methodes
         void Select();
         void MoveOnPath(List<Vector3> currentPath);
-        void MoveInFrontOf(List<Vector3> currentPath);
+        void MoveInFrontOf(Vector3 currentPath);
         void OnKapa();
         void Deselect();
         void OnDie();

@@ -11,7 +11,7 @@ using Utilities.CustomHideAttribute;
 using GameContent.Entity.Unit.KapasGen.KapaFunctions.Buff_Debuff;
 using GameContent.Entity.Unit.KapasGen.KapaFunctions.Dash;
 using GameContent.Entity.Unit.KapasGen.KapaFunctions.DoubleDiffAtk;
-using GameContent.Entity.Unit.UnitWorking;
+using GameContent.Entity.Unit.KapasGen.KapaFunctions.Grab_Push;
 
 namespace GameContent.Entity.Unit.KapasGen
 {
@@ -72,17 +72,18 @@ namespace GameContent.Entity.Unit.KapasGen
         public abstract KapaUISO KapaUI { get; }
         public abstract GameObject DamageFeedBack { get; }
         public abstract Vector3Int[] Patterns { get; }
-        #endregion
-
+        
         #region Diff Kapas fields
-
+        
         #region Double Diff Atk
-
-        [ShowIfTrue("kapaFunctionType", new[] { (int)KapaFunctionType.DoubleDiffAttack })] 
+        
+        [ShowIfTrue("kapaFunctionType", new[] { (int)KapaFunctionType.DoubleDiffAttack })]
         [SerializeField] private DoubleDiffAtkKapaDatas doubleDiffAtk;
-
+        
         #endregion
-
+        
+        #endregion
+        
         #endregion
         
         #region paterns to herit
@@ -418,9 +419,6 @@ namespace GameContent.Entity.Unit.KapasGen
                 
                 //compteur de Hit
                 n++;
-
-                DashKapa.OnSecondKapa(UnitManager.uM, unitTarget.CurrentHexPos);
-                Debug.Log(unitTarget.CurrentHexPos);
                 
                 //set new UI
                 unitTarget.StatUI.SetHP(unitTarget);
@@ -443,7 +441,7 @@ namespace GameContent.Entity.Unit.KapasGen
         {
             foreach (var pos in pattern)
             {
-                //verif s'il y a joueur uniquemetn sur les case du pattern
+                //verif s'il y a joueur uniquement sur les case du pattern
                 var hex = hexGrid.GetTile(pos);
                 if (!hex.HasEntityOnIt) continue;
                 var unitTarget = hex.GetUnit();

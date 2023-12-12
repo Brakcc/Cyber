@@ -165,6 +165,13 @@ namespace GameContent.GridManagement
             return _neighbourgs[coords];
         }
 
+        public Hex GetNorthTile(Vector3Int targetPos) => GetTile(GetNeighbourgs(targetPos)[0]);
+        public Hex GetEastNorthTile(Vector3Int targetPos) => GetTile(GetNeighbourgs(targetPos)[1]);
+        public Hex GetEastSouthTile(Vector3Int targetPos) => GetTile(GetNeighbourgs(targetPos)[2]);
+        public Hex GetSouthTile(Vector3Int targetPos) => GetTile(GetNeighbourgs(targetPos)[3]);
+        public Hex GetWestSouthTile(Vector3Int targetPos) => GetTile(GetNeighbourgs(targetPos)[4]);
+        public Hex GetWestNorthTile(Vector3Int targetPos) => GetTile(GetNeighbourgs(targetPos)[5]);
+
         #endregion
 
         #region network params

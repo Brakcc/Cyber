@@ -5,7 +5,7 @@ namespace GameContent.GridManagement.HexPathFind
 {
     public static class Direction
     {
-        public static List<Vector3Int> directionOffsetOdd = new()
+        private static readonly List<Vector3Int> directionOffsetOdd = new()
         {
             new Vector3Int(0, 1, 0), //N
             new Vector3Int(1, 0, 0), //E-N
@@ -15,7 +15,7 @@ namespace GameContent.GridManagement.HexPathFind
             new Vector3Int(-1, 0, 0), //W-N
         };
 
-        public static List<Vector3Int> directionOffsetEven = new()
+        private static readonly List<Vector3Int> directionOffsetEven = new()
         {
             new Vector3Int(0, 1, 0), //N
             new Vector3Int(1, 1, 0), //E-N

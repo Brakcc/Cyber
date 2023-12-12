@@ -25,6 +25,7 @@ namespace GameContent.Entity.Unit.UnitWorking.UnitList
         public override int CurrentAtk { get; set; }
         public override int CurrentDef { get; set; }
         public override int CurrentCritRate { get; set; }
+        public override int CurrentCRRez { get; set; }
         //additional precision stat
         public override int CurrentPrecision { get; set; }
         
@@ -32,6 +33,9 @@ namespace GameContent.Entity.Unit.UnitWorking.UnitList
         public override int MpBDbCounter { get; set; }
         public override int CrBDbCounter { get; set; }
         public override int PrecBDbCounter { get; set; }
+        public override int DefBDbCounter { get; set; }
+        public override int CrRezBDbCounter { get; set; }
+        public override int TempKapaMult { get; set; }
         
         #endregion
         

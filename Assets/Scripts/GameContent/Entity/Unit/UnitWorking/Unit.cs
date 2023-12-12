@@ -22,6 +22,7 @@ namespace GameContent.Entity.Unit.UnitWorking
         public abstract int CurrentAtk { get; set; }
         public abstract int CurrentDef { get; set; }
         public abstract int CurrentCritRate { get; set; }
+        public abstract int CurrentCRRez { get; set; }
         //additional precision stat
         public abstract int CurrentPrecision { get; set; }
         public Vector3 CurrentWorldPos => transform.position;
@@ -30,6 +31,9 @@ namespace GameContent.Entity.Unit.UnitWorking
         public abstract int MpBDbCounter { get; set; }
         public abstract int CrBDbCounter { get; set; }
         public abstract int PrecBDbCounter { get; set; }
+        public abstract int DefBDbCounter { get; set; }
+        public abstract int CrRezBDbCounter { get; set; }
+        public abstract int TempKapaMult { get; set; }
 
         #endregion
         
@@ -95,12 +99,11 @@ namespace GameContent.Entity.Unit.UnitWorking
         
         public virtual void MoveOnPath(List<Vector3> currentPath) => StartCoroutine(FollowPath(currentPath,UnitData.Speed));
 
-        public void MoveInFrontOf(List<Vector3> currentPath)
+        public void MoveInFrontOf(Vector3 currentPath)
         {
-            currentPath.RemoveAt(currentPath.Count - 1);
-            StartCoroutine(DashPath(currentPath, UnitData.Speed * ConstList.SpeedDashMult));
+            //currentPath.RemoveAt(currentPath.Count - 1);
+            StartCoroutine(DashGrabPath(currentPath, UnitData.Speed * ConstList.SpeedDashMult));
         }
-            
         
         public abstract void OnKapa();
         public virtual void Deselect()
@@ -180,25 +183,24 @@ namespace GameContent.Entity.Unit.UnitWorking
             }
         }
 
-        IEnumerator DashPath(List<Vector3> path, float speed)
+        IEnumerator DashGrabPath(Vector3 path, float speed)
         {
             CanKapa = false;
-            float pas = speed * Time.fixedDeltaTime / 10;
-            foreach (var i in path)
+            var pas = speed * Time.fixedDeltaTime / 10;
+            
+            const float z = -0.1f;
+            while (Vector2.Distance(transform.position, path) >= 0.001f)
             {
-                float z = path[0].z;
-                while (Vector2.Distance(transform.position, i) >= 0.001f)
-                {
-                    var position = transform.position;
+                var position = transform.position;
 
-                    position = Vector2.MoveTowards(position, i, pas);
-                    position = new Vector3(position.x, position.y, z);
-                    transform.position = position;
-                    yield return null;
-                }
-
-                PositionCharacterOnTile(i);
+                position = Vector2.MoveTowards(position, path, pas);
+                position = new Vector3(position.x, position.y, z);
+                transform.position = position;
+                yield return null;
             }
+
+            PositionCharacterOnTile(path);
+            
             OnGenerateNet();
         }
 
