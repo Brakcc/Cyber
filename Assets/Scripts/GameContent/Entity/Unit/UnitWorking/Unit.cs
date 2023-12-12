@@ -22,7 +22,6 @@ namespace GameContent.Entity.Unit.UnitWorking
         public abstract int CurrentAtk { get; set; }
         public abstract int CurrentDef { get; set; }
         public abstract int CurrentCritRate { get; set; }
-        public abstract int CurrentCRRez { get; set; }
         //additional precision stat
         public abstract int CurrentPrecision { get; set; }
         public Vector3 CurrentWorldPos => transform.position;
@@ -32,7 +31,6 @@ namespace GameContent.Entity.Unit.UnitWorking
         public abstract int CrBDbCounter { get; set; }
         public abstract int PrecBDbCounter { get; set; }
         public abstract int DefBDbCounter { get; set; }
-        public abstract int CrRezBDbCounter { get; set; }
         public abstract int TempKapaMult { get; set; }
 
         #endregion
@@ -101,7 +99,6 @@ namespace GameContent.Entity.Unit.UnitWorking
 
         public void MoveInFrontOf(Vector3 currentPath)
         {
-            //currentPath.RemoveAt(currentPath.Count - 1);
             StartCoroutine(DashGrabPath(currentPath, UnitData.Speed * ConstList.SpeedDashMult));
         }
         
@@ -152,8 +149,32 @@ namespace GameContent.Entity.Unit.UnitWorking
             {
                 foreach (var i in GlobalNetwork) { HexGridStore.hGs.GetTile(i).DisableGlowDynaNet(); }
             }
-            OnGenerateNet();
+            OnGenerateNet(NetworkRange);
+        }
+        
+        IEnumerator DashGrabPath(Vector3 path, float speed)
+        {
+            CanKapa = false;
+            var pas = speed * Time.fixedDeltaTime / 10;
+            
+            const float z = -0.1f;
+            while (Vector2.Distance(transform.position, path) >= 0.001f)
+            {
+                var position = transform.position;
 
+                position = Vector2.MoveTowards(position, path, pas);
+                position = new Vector3(position.x, position.y, z);
+                transform.position = position;
+                yield return null;
+            }
+
+            PositionCharacterOnTile(path);
+            
+            OnGenerateNet(NetworkRange);
+        }
+
+        public void OnCheckBuffDebuffCounter()
+        {
             if (MpBDbCounter > 0)
             {
                 MpBDbCounter--;
@@ -181,29 +202,17 @@ namespace GameContent.Entity.Unit.UnitWorking
                     StatUI.SetPrec(this);
                 }
             }
-        }
-
-        IEnumerator DashGrabPath(Vector3 path, float speed)
-        {
-            CanKapa = false;
-            var pas = speed * Time.fixedDeltaTime / 10;
-            
-            const float z = -0.1f;
-            while (Vector2.Distance(transform.position, path) >= 0.001f)
+            if (DefBDbCounter > 0)
             {
-                var position = transform.position;
-
-                position = Vector2.MoveTowards(position, path, pas);
-                position = new Vector3(position.x, position.y, z);
-                transform.position = position;
-                yield return null;
+                DefBDbCounter--;
+                if (DefBDbCounter == 0)
+                {
+                    CurrentDef = UnitData.Defense;
+                    StatUI.SetDef(this);
+                }
             }
-
-            PositionCharacterOnTile(path);
-            
-            OnGenerateNet();
         }
-
+        
         void PositionCharacterOnTile(Vector3 pos) => transform.position = new Vector3(pos.x, pos.y, pos.z - 0.1f);
         #endregion
     }

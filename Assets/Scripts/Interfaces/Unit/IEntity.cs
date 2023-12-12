@@ -17,7 +17,7 @@ namespace Interfaces.Unit
 
         void OnInit();
         
-        void OnGenerateNet();
+        void OnGenerateNet(int range);
 
         void OnSelectNetworkTiles();
 

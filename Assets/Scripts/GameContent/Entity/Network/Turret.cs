@@ -35,22 +35,22 @@ namespace GameContent.Entity.Network
             IsOnNetwork = true;
             NetworkRange = 2;
             HexGridStore.hGs.OnAddEmiter(this);
-            OnGenerateNet();
+            OnGenerateNet(NetworkRange);
             graphInit.SetRenderer(gameObject);
 
             foreach (var e in HexGridStore.hGs.emiters)
             {
-                e.OnGenerateNet();
+                e.OnGenerateNet(NetworkRange);
             }
         }
 
         /// <summary>
         /// override de la OnGenNet de Entity avec list gen diff
         /// </summary>
-        public sealed override void OnGenerateNet()
+        public sealed override void OnGenerateNet(int range)
         {
-            IsIntersecting(CurrentHexPos, HexGridStore.hGs, NetworkRange, out List<NetworkType> net);
-            GlobalNetwork = OnIntersect(CurrentHexPos, HexGridStore.hGs, NetworkRange, net);
+            IsIntersecting(CurrentHexPos, HexGridStore.hGs, range, out List<NetworkType> net);
+            GlobalNetwork = OnIntersect(CurrentHexPos, HexGridStore.hGs, range, net);
         
 
             if (net.Count != 0)

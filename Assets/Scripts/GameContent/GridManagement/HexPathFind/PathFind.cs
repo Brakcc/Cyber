@@ -34,23 +34,22 @@ namespace GameContent.GridManagement.HexPathFind
                     var h = hexGrid.GetTile(adjPos);
                     if (h.IsObstacle() || h.HasEntityOnIt) continue;
 
-                    int nodeCost = h.GetValue();
-                    int currentCost = totalCost[currentNode];
-                    int newCost = currentCost + nodeCost;
+                    var nodeCost = h.GetValue();
+                    var currentCost = totalCost[currentNode];
+                    var newCost = currentCost + nodeCost;
 
-                    if (newCost <= movePoints)
+                    if (newCost > movePoints) continue;
+                    
+                    if (!processedNodes.ContainsKey(adjPos))
                     {
-                        if (!processedNodes.ContainsKey(adjPos))
-                        {
-                            processedNodes[adjPos] = currentNode;
-                            totalCost[adjPos] = newCost;
-                            nextNodes.Enqueue(adjPos);
-                        }
-                        else if (totalCost[adjPos] > newCost)
-                        {
-                            totalCost[adjPos] = newCost;
-                            processedNodes[adjPos] = currentNode;
-                        }
+                        processedNodes[adjPos] = currentNode;
+                        totalCost[adjPos] = newCost;
+                        nextNodes.Enqueue(adjPos);
+                    }
+                    else if (totalCost[adjPos] > newCost)
+                    {
+                        totalCost[adjPos] = newCost;
+                        processedNodes[adjPos] = currentNode;
                     }
                 }
             }
@@ -82,23 +81,22 @@ namespace GameContent.GridManagement.HexPathFind
                     var h = hexGrid.GetTile(adjPos);
                     if (h.IsObstacle()) continue; //La seule dif avec la fonction d'avant est sur cette ligne ._.
 
-                    int nodeCost = h.GetValue();
-                    int currentCost = totalCost[currentNode];
-                    int newCost = currentCost + nodeCost;
+                    var nodeCost = h.GetValue();
+                    var currentCost = totalCost[currentNode];
+                    var newCost = currentCost + nodeCost;
 
-                    if (newCost <= movePoints)
+                    if (newCost > movePoints) continue;
+                    
+                    if (!processedNodes.ContainsKey(adjPos))
                     {
-                        if (!processedNodes.ContainsKey(adjPos))
-                        {
-                            processedNodes[adjPos] = currentNode;
-                            totalCost[adjPos] = newCost;
-                            nextNodes.Enqueue(adjPos);
-                        }
-                        else if (totalCost[adjPos] > newCost)
-                        {
-                            totalCost[adjPos] = newCost;
-                            processedNodes[adjPos] = currentNode;
-                        }
+                        processedNodes[adjPos] = currentNode;
+                        totalCost[adjPos] = newCost;
+                        nextNodes.Enqueue(adjPos);
+                    }
+                    else if (totalCost[adjPos] > newCost)
+                    {
+                        totalCost[adjPos] = newCost;
+                        processedNodes[adjPos] = currentNode;
                     }
                 }
             }
@@ -124,28 +122,27 @@ namespace GameContent.GridManagement.HexPathFind
 
             while (nextNodes.Count > 0)
             {
-                Vector3Int currentNode = nextNodes.Dequeue();
-                foreach (Vector3Int adjPos in hexGrid.GetNeighbourgs(currentNode))
+                var currentNode = nextNodes.Dequeue();
+                foreach (var adjPos in hexGrid.GetNeighbourgs(currentNode))
                 {
                     //a plus la verif :D
                     //on utilise la valeur d'un walkable pour comparer sans considérer d'obstacle
-                    int nodeCost = (int)HexType.Walkable;
-                    int currentCost = totalCost[currentNode];
-                    int newCost = currentCost + nodeCost;
+                    var nodeCost = (int)HexType.Walkable;
+                    var currentCost = totalCost[currentNode];
+                    var newCost = currentCost + nodeCost;
 
-                    if (newCost <= movePoints)
+                    if (newCost > movePoints) continue;
+                    
+                    if (!processedNodes.ContainsKey(adjPos))
                     {
-                        if (!processedNodes.ContainsKey(adjPos))
-                        {
-                            processedNodes[adjPos] = currentNode;
-                            totalCost[adjPos] = newCost;
-                            nextNodes.Enqueue(adjPos);
-                        }
-                        else if (totalCost[adjPos] > newCost)
-                        {
-                            totalCost[adjPos] = newCost;
-                            processedNodes[adjPos] = currentNode;
-                        }
+                        processedNodes[adjPos] = currentNode;
+                        totalCost[adjPos] = newCost;
+                        nextNodes.Enqueue(adjPos);
+                    }
+                    else if (totalCost[adjPos] > newCost)
+                    {
+                        totalCost[adjPos] = newCost;
+                        processedNodes[adjPos] = currentNode;
                     }
                 }
             }
@@ -179,7 +176,6 @@ namespace GameContent.GridManagement.HexPathFind
         /// <param name="current"></param>
         /// <param name="proNodes"></param>
         /// <param name="maxPlayerPierce"></param>
-        /// <param name="teamNb"></param>
         /// <returns></returns>
         public static List<Vector3Int> GenerateKapaPath(HexGridStore hG, Vector3Int current, Dictionary<Vector3Int, Vector3Int?> proNodes, int maxPlayerPierce/*, int teamNb*/)
         {
@@ -239,7 +235,6 @@ namespace GameContent.GridManagement.HexPathFind
         /// <param name="dest"></param>
         /// <param name="hG"></param>
         /// <param name="maxPierced">nombre max d'Unit traversee</param>
-        /// <param name="teamNb"></param>
         /// <returns></returns>
         public readonly List<Vector3Int> GetKapaPathTo(Vector3Int dest, HexGridStore hG, int maxPierced/*, int teamNb*/)
         {

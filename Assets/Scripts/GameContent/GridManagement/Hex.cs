@@ -52,7 +52,7 @@ namespace GameContent.GridManagement
         public IUnit GetUnit() => _unitRef;
         public void ClearUnit() => _unitRef = null;
 
-        public bool IsObstacle() => type == HexType.Obstacle || type == HexType.Hole;
+        public bool IsObstacle() => type is HexType.Obstacle or HexType.Hole;
         public bool IsComputer() => type == HexType.Computer;
 
         //Init graph a ajouter pour ajouter les textures en sqrt(2) a 45° pour le passage des Units devant ou derrière les props

@@ -12,6 +12,8 @@ using GameContent.Entity.Unit.KapasGen.KapaFunctions.Buff_Debuff;
 using GameContent.Entity.Unit.KapasGen.KapaFunctions.Dash;
 using GameContent.Entity.Unit.KapasGen.KapaFunctions.DoubleDiffAtk;
 using GameContent.Entity.Unit.KapasGen.KapaFunctions.Grab_Push;
+using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 namespace GameContent.Entity.Unit.KapasGen
 {
@@ -32,9 +34,9 @@ namespace GameContent.Entity.Unit.KapasGen
         [ShowIfTrue("kapaType", new[]{(int)KapaType.NormalAttack, (int)KapaType.Competence, (int)KapaType.Ultimate})]
         [SerializeField] private int maxPlayerpierce;
         
-        public float BalanceCoeff => balanceCoeff;
+        public int BalanceMult => balanceMult;
         [ShowIfTrue("kapaType", new[]{(int)KapaType.NormalAttack, (int)KapaType.Competence, (int)KapaType.Ultimate})]
-        [SerializeField] private float balanceCoeff;
+        [Range(1, 10)] [SerializeField] private int balanceMult;
         
         public KapaType KapaType => kapaType;
         [SerializeField] private KapaType kapaType;
@@ -47,27 +49,16 @@ namespace GameContent.Entity.Unit.KapasGen
         
         [ShowIfTrue("kapaType", new[]{(int)KapaType.NormalAttack, (int)KapaType.Competence, (int)KapaType.Ultimate})]
         [SerializeField] private bool buffDebuffs;
-        
+
+        [FormerlySerializedAs("buffDebuffData")]
         [ShowIfBoolTrue("buffDebuffs")]
-        [SerializeField] private bool movePointsBDb;
-        [ShowIfBoolTrue("movePointsBDb")][ShowIfSecu("buffDebuffs")]
-        [SerializeField] BuffDebuffKapaDatas mPBuffDebuffData;
-        
-        [ShowIfBoolTrue("buffDebuffs")]
-        [SerializeField] private bool critRateBDb;
-        [ShowIfBoolTrue("critRateBDb")][ShowIfSecu("buffDebuffs")]
-        [SerializeField] BuffDebuffKapaDatas cRBuffDebuffData;
-        
-        [ShowIfBoolTrue("buffDebuffs")]
-        [SerializeField] private bool precisionBDb;
-        [ShowIfBoolTrue("precisionBDb")][ShowIfSecu("buffDebuffs")]
-        [SerializeField] BuffDebuffKapaDatas precBuffDebuffData;
+        [SerializeField] private BuffDebuffList buffDebuffDatas;
         
         #endregion
-                
+        
         public KapaFunctionType KapaFunctionType => kapaFunctionType;
         [ShowIfTrue("kapaType", new[]{(int)KapaType.NormalAttack, (int)KapaType.Competence, (int)KapaType.Ultimate})]
-        [SerializeField] KapaFunctionType kapaFunctionType;
+        [SerializeField] private KapaFunctionType kapaFunctionType;
         
         public abstract KapaUISO KapaUI { get; }
         public abstract GameObject DamageFeedBack { get; }
@@ -78,7 +69,7 @@ namespace GameContent.Entity.Unit.KapasGen
         #region Double Diff Atk
         
         [ShowIfTrue("kapaFunctionType", new[] { (int)KapaFunctionType.DoubleDiffAttack })]
-        [SerializeField] private DoubleDiffAtkKapaDatas doubleDiffAtk;
+        [SerializeField] private DoubleDiffAtkKapaDatas doubleDiffAtkDatas;
         
         #endregion
         
@@ -348,9 +339,11 @@ namespace GameContent.Entity.Unit.KapasGen
         protected virtual void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern , IUnit unit, out bool isHitting)
         {
             isHitting = false;
-            int n = 0;
+            var n = 0;
             foreach (var pos in pattern)
             {
+                var canDoubleKapa = true;
+                
                 //verif s'il y a joueur uniquement sur les case du pattern
                 var hex = hexGrid.GetTile(pos);
                 if (!hex.HasEntityOnIt) continue;
@@ -362,63 +355,85 @@ namespace GameContent.Entity.Unit.KapasGen
                 //Verif si l'Unit est de meme team
                 if (unitTarget.TeamNumber == unit.TeamNumber) continue;
                 
-                //retour départ boucle si Unit deja ded
+                //Verif si Unit deja ded
                 if (unitTarget.IsDead) continue;
 
-                //verif team 
-                if (unitTarget.TeamNumber == unit.TeamNumber) continue;
-
+                Retake:
                 //verif de la precision
                 if (Random.Range(0, 100) > unit.CurrentPrecision) continue;
 
-                //verif si le coup est critique ou non et infliger les degats et feedbacks 
-                if (Random.Range(0, 100) < unit.CurrentCritRate)
-                {
-                    //on ne prend pas en compte les Hackers qui n'ont pas de taux crit
-                    unitTarget.CurrentHealth -= Damage.CritDamage(unit.CurrentAtk, unitTarget.CurrentDef) * BalanceCoeff;
-                    //FeedBack de degats
-                    var targetPos = unitTarget.CurrentWorldPos;
-                    OnUIFeedBack(DamageFeedBack, 
-                        new Vector3(targetPos.x, targetPos.y + ConstList.DamageUIRiseOffset), 
-                        Damage.CritDamage(unit.CurrentAtk, unitTarget.CurrentDef) * BalanceCoeff);
-                }
-                else 
-                {
-                    if (unitTarget.UnitData.Type == UnitType.Hacker)
-                    {
-                        unitTarget.CurrentHealth -= Damage.HackerDamage(unit.CurrentAtk) * BalanceCoeff;
-                        //FeedBack de degats
-                        var targetPos = unitTarget.CurrentWorldPos;
-                        OnUIFeedBack(DamageFeedBack, 
-                            new Vector3(targetPos.x, targetPos.y + ConstList.DamageUIRiseOffset), 
-                            Damage.HackerDamage(unit.CurrentAtk) * BalanceCoeff);
-                    }
-                    else
-                    {
-                        unitTarget.CurrentHealth -= Damage.NormalDamage(unit.CurrentAtk, unitTarget.CurrentDef) * BalanceCoeff;
-                        //FeedBack de degats
-                        var targetPos = unitTarget.CurrentWorldPos;
-                        OnUIFeedBack(DamageFeedBack, 
-                            new Vector3(targetPos.x, targetPos.y + ConstList.DamageUIRiseOffset), 
-                            Damage.NormalDamage(unit.CurrentAtk, unitTarget.CurrentDef) * BalanceCoeff);
-                    }
-                }
+                //Verif du delay de la consideration d'atk
+                var delayAtk = KapaFunctionType == KapaFunctionType.DoubleDiffAttack && !canDoubleKapa
+                    ? ConstList.SecondAtkDelay
+                    : 0;
+                
+                //Verif d'un changement de BalanceMult
+                var firstBalance = buffDebuffs && buffDebuffDatas.balanceMultBDb && canDoubleKapa
+                    ? buffDebuffDatas.balMultBuffDebuffData
+                    : BalanceMult; 
+                var secondBalance =
+                    KapaFunctionType == KapaFunctionType.DoubleDiffAttack && doubleDiffAtkDatas.balanceMultBDb2 &&
+                    !canDoubleKapa
+                        ? doubleDiffAtkDatas.balMultBuffDebuffData2
+                        : BalanceMult;
+                
+                //Apply des degats
+                OnDamageConsideration(unit, unitTarget, canDoubleKapa ? firstBalance : secondBalance, delayAtk,
+                    DamageFeedBack);
 
-                if (buffDebuffs && movePointsBDb)
+                if (buffDebuffs && buffDebuffDatas.movePointsBDb && canDoubleKapa)
                 {
-                    BuffDebuffKapa.OnBuffDebuffMP(unitTarget, mPBuffDebuffData.value, mPBuffDebuffData.turnNumber);
+                    BuffDebuffKapa.OnBuffDebuffMP(unitTarget, buffDebuffDatas.mPBuffDebuffData.value,
+                        buffDebuffDatas.mPBuffDebuffData.turnNumber);
                 }
-                if (buffDebuffs && critRateBDb)
+                if (buffDebuffs && buffDebuffDatas.critRateBDb && canDoubleKapa)
                 {
-                    BuffDebuffKapa.OnBuffDebuffCritRate(unitTarget, cRBuffDebuffData.value, cRBuffDebuffData.turnNumber);
+                    BuffDebuffKapa.OnBuffDebuffCritRate(unitTarget, buffDebuffDatas.cRBuffDebuffData.value,
+                        buffDebuffDatas.cRBuffDebuffData.turnNumber);
                 }
-                if (buffDebuffs && precisionBDb)
+                if (buffDebuffs && buffDebuffDatas.precisionBDb && canDoubleKapa)
                 {
-                    BuffDebuffKapa.OnBuffDebuffPrecision(unitTarget, precBuffDebuffData.value, precBuffDebuffData.turnNumber);
+                    BuffDebuffKapa.OnBuffDebuffPrecision(unitTarget, buffDebuffDatas.precBuffDebuffData.value,
+                        buffDebuffDatas.precBuffDebuffData.turnNumber);
+                }
+                if (buffDebuffs && buffDebuffDatas.defenseBDb && canDoubleKapa)
+                {
+                    BuffDebuffKapa.OnBuffDebuffDef(unitTarget, buffDebuffDatas.defBuffDebuffData.value,
+                        buffDebuffDatas.defBuffDebuffData.turnNumber);
+                }
+                
+                switch (kapaFunctionType)
+                {
+                    case KapaFunctionType.Dash:
+                        DashKapa.OnSecondKapa(HexGridStore.hGs, unit, unitTarget);
+                        break;
+                    
+                    case KapaFunctionType.DoubleDiffAttack when doubleDiffAtkDatas.dashAfterKapa && canDoubleKapa:
+                        canDoubleKapa = false;
+                        DashKapa.OnSecondKapa(HexGridStore.hGs, unit, unitTarget);
+                        goto Retake;
+                        
+                    case KapaFunctionType.Grab:
+                        GrabKapa.OnSecondKapa(HexGridStore.hGs, unit, unitTarget);
+                        break;
+                    
+                    case KapaFunctionType.DoubleDiffAttack when doubleDiffAtkDatas.grabAfterKapa && canDoubleKapa:
+                        canDoubleKapa = false;
+                        GrabKapa.OnSecondKapa(HexGridStore.hGs, unit, unitTarget);
+                        goto Retake;
+                        
+                    case KapaFunctionType.AOE:
+                        break;
+                        
+                    case KapaFunctionType.DOT:
+                        break;
+                    
+                    case KapaFunctionType.Default:
+                        break;
                 }
                 
                 //compteur de Hit
-                n++;
+                if (canDoubleKapa) n++;
                 
                 //set new UI
                 unitTarget.StatUI.SetHP(unitTarget);
@@ -441,6 +456,8 @@ namespace GameContent.Entity.Unit.KapasGen
         {
             foreach (var pos in pattern)
             {
+                var canDoubleKapa = true;
+                
                 //verif s'il y a joueur uniquement sur les case du pattern
                 var hex = hexGrid.GetTile(pos);
                 if (!hex.HasEntityOnIt) continue;
@@ -450,58 +467,87 @@ namespace GameContent.Entity.Unit.KapasGen
                 if (unitTarget == null) continue;
 
                 //Verif si l'Unit est de meme team
-                if (unitTarget.TeamNumber == unit.TeamNumber) continue;
+                if (unitTarget.TeamNumber == unit.TeamNumber)
+                {
+                    //placer la logique de Buff des Units de meme team
+                    continue;
+                }
                 
-                //retour départ boucle si Unit deja ded
+                //Verif si Unit deja ded
                 if (unitTarget.IsDead) continue;
 
+                Retake:
                 //verif de la precision
                 if (Random.Range(0, 100) > unit.CurrentPrecision) continue;
 
-                //verif si le coup est critique ou non
-                if (Random.Range(0, 100) < unit.CurrentCritRate)
-                {
-                    //on ne prend pas en compte les Hackers qui n'ont pas de taux crit
-                    unitTarget.CurrentHealth -= Damage.CritDamage(unit.UnitData.Attack, unit.UnitData.Defense) * BalanceCoeff;
-                    //FeedBack de degats
-                    var targetPos = unitTarget.CurrentWorldPos;
-                    OnUIFeedBack(DamageFeedBack, 
-                        new Vector3(targetPos.x, targetPos.y + ConstList.DamageUIRiseOffset), 
-                        Damage.CritDamage(unit.CurrentAtk, unitTarget.CurrentDef) * BalanceCoeff);
-                }
-                else
-                {
-                    if (unit.UnitData.Type == UnitType.Hacker)
-                    {
-                        unitTarget.CurrentHealth -= Damage.HackerDamage(unit.CurrentAtk) * BalanceCoeff;
-                        //FeedBack de degats
-                        var targetPos = unitTarget.CurrentWorldPos;
-                        OnUIFeedBack(DamageFeedBack, 
-                            new Vector3(targetPos.x, targetPos.y + ConstList.DamageUIRiseOffset), 
-                            Damage.HackerDamage(unit.CurrentAtk) * BalanceCoeff);
-                    }
-                    else
-                    {
-                        unitTarget.CurrentHealth -= Damage.NormalDamage(unit.CurrentAtk, unitTarget.CurrentDef) * BalanceCoeff;
-                        //FeedBack de degats
-                        var targetPos = unitTarget.CurrentWorldPos;
-                        OnUIFeedBack(DamageFeedBack, 
-                            new Vector3(targetPos.x, targetPos.y + ConstList.DamageUIRiseOffset), 
-                            Damage.NormalDamage(unit.CurrentAtk, unitTarget.CurrentDef) * BalanceCoeff);
-                    }
-                }
+                //Verif du delay de la consideration d'atk
+                var delayAtk = KapaFunctionType == KapaFunctionType.DoubleDiffAttack && !canDoubleKapa
+                    ? ConstList.SecondAtkDelay
+                    : 0;
+                
+                //Verif d'un changement de BalanceMult
+                var firstBalance = buffDebuffs && buffDebuffDatas.balanceMultBDb && canDoubleKapa
+                    ? buffDebuffDatas.balMultBuffDebuffData
+                    : BalanceMult; 
+                var secondBalance =
+                    KapaFunctionType == KapaFunctionType.DoubleDiffAttack && doubleDiffAtkDatas.balanceMultBDb2 &&
+                    !canDoubleKapa
+                        ? doubleDiffAtkDatas.balMultBuffDebuffData2
+                        : BalanceMult;
+                
+                //Apply des degats
+                OnDamageConsideration(unit, unitTarget, canDoubleKapa ? firstBalance : secondBalance, delayAtk,
+                    DamageFeedBack);
 
-                if (buffDebuffs && movePointsBDb)
+                if (buffDebuffs && buffDebuffDatas.movePointsBDb && canDoubleKapa)
                 {
-                    BuffDebuffKapa.OnBuffDebuffMP(unitTarget, mPBuffDebuffData.value, mPBuffDebuffData.turnNumber);
+                    BuffDebuffKapa.OnBuffDebuffMP(unitTarget, buffDebuffDatas.mPBuffDebuffData.value,
+                        buffDebuffDatas.mPBuffDebuffData.turnNumber);
                 }
-                if (buffDebuffs && critRateBDb)
+                if (buffDebuffs && buffDebuffDatas.critRateBDb && canDoubleKapa)
                 {
-                    BuffDebuffKapa.OnBuffDebuffCritRate(unitTarget, cRBuffDebuffData.value, cRBuffDebuffData.turnNumber);
+                    BuffDebuffKapa.OnBuffDebuffCritRate(unitTarget, buffDebuffDatas.cRBuffDebuffData.value,
+                        buffDebuffDatas.cRBuffDebuffData.turnNumber);
                 }
-                if (buffDebuffs && precisionBDb)
+                if (buffDebuffs && buffDebuffDatas.precisionBDb && canDoubleKapa)
                 {
-                    BuffDebuffKapa.OnBuffDebuffPrecision(unitTarget, precBuffDebuffData.value, precBuffDebuffData.turnNumber);
+                    BuffDebuffKapa.OnBuffDebuffPrecision(unitTarget, buffDebuffDatas.precBuffDebuffData.value,
+                        buffDebuffDatas.precBuffDebuffData.turnNumber);
+                }
+                if (buffDebuffs && buffDebuffDatas.defenseBDb && canDoubleKapa)
+                {
+                    BuffDebuffKapa.OnBuffDebuffDef(unitTarget, buffDebuffDatas.defBuffDebuffData.value,
+                        buffDebuffDatas.defBuffDebuffData.turnNumber);
+                }
+                
+                switch (KapaFunctionType)
+                {
+                    case KapaFunctionType.Dash:
+                        DashKapa.OnSecondKapa(HexGridStore.hGs, unit, unitTarget);
+                        break;
+                    
+                    case KapaFunctionType.DoubleDiffAttack when doubleDiffAtkDatas.dashAfterKapa && canDoubleKapa:
+                        canDoubleKapa = false;
+                        DashKapa.OnSecondKapa(HexGridStore.hGs, unit, unitTarget);
+                        goto Retake;
+                        
+                    case KapaFunctionType.Grab:
+                        GrabKapa.OnSecondKapa(HexGridStore.hGs, unit, unitTarget);
+                        break;
+                    
+                    case KapaFunctionType.DoubleDiffAttack when doubleDiffAtkDatas.grabAfterKapa && canDoubleKapa:
+                        canDoubleKapa = false;
+                        GrabKapa.OnSecondKapa(HexGridStore.hGs, unit, unitTarget);
+                        goto Retake;
+                        
+                    case KapaFunctionType.AOE:
+                        break;
+                        
+                    case KapaFunctionType.DOT:
+                        break;
+                    
+                    case KapaFunctionType.Default:
+                        break;
                 }
                 
                 //set new UI
@@ -546,9 +592,58 @@ namespace GameContent.Entity.Unit.KapasGen
             }
             return availableButton;
         }
+
+        private static async void OnDamageConsideration(IUnit unit, IUnit unitTarget, int balance, int delay, GameObject feedBack)
+        {
+            await Task.Delay(delay);
+            
+            //verif si le coup est critique ou non
+            if (Random.Range(0, 100) < unit.CurrentCritRate)
+            {
+                //on ne prend pas en compte les Hackers qui n'ont pas de taux crit
+                var damage = Damage.CritDamage(unit.CurrentAtk, unitTarget.CurrentDef) / balance;
+                
+                //apply
+                unitTarget.CurrentHealth -= damage;
+                    
+                //FeedBack de degats
+                var targetPos = unitTarget.CurrentWorldPos;
+                OnUIFeedBack(feedBack, 
+                    new Vector3(targetPos.x, targetPos.y + ConstList.DamageUIRiseOffset), damage);
+            }
+            else 
+            {
+                if (unitTarget.UnitData.Type == UnitType.Hacker)
+                {
+                    var damage = Damage.HackerDamage(unit.CurrentAtk) / balance;
+                    
+                    //apply
+                    unitTarget.CurrentHealth -= damage;
+                        
+                    //FeedBack de degats
+                    var targetPos = unitTarget.CurrentWorldPos;
+                    OnUIFeedBack(feedBack, 
+                        new Vector3(targetPos.x, targetPos.y + ConstList.DamageUIRiseOffset), damage);
+                }
+                else
+                {
+                    var damage = Damage.NormalDamage(unit.CurrentAtk, unitTarget.CurrentDef) / balance;
+                    
+                    //apply
+                    unitTarget.CurrentHealth -= damage;
+                        
+                    //feedback de degats
+                    var targetPos = unitTarget.CurrentWorldPos;
+                    OnUIFeedBack(feedBack, 
+                        new Vector3(targetPos.x, targetPos.y + ConstList.DamageUIRiseOffset), damage);
+                }
+            }
+        }
+        
         #endregion
 
         #region graph selection methodes (to herit)
+        
         /// <summary>
         /// Sélectionne les Tuiles utilisées par la compétence, dans une direction donnée, revoie la liste des tiles
         /// selectionnees
@@ -561,7 +656,7 @@ namespace GameContent.Entity.Unit.KapasGen
             {
                 if (!hexGrid.hexTiles.ContainsKey(unit.CurrentHexPos + pos)) continue;
                 
-                Hex temp = hexGrid.GetTile(unit.CurrentHexPos + pos);
+                var temp = hexGrid.GetTile(unit.CurrentHexPos + pos);
 
                 if (!kapaSys.VerifyKapaRange(temp.HexCoords, unit, hexGrid, MaxPlayerPierce)) continue;
                 
@@ -585,11 +680,12 @@ namespace GameContent.Entity.Unit.KapasGen
             }
         }
 
-        protected void OnUIFeedBack(GameObject inst, Vector3 pos, float dam)
+        private static void OnUIFeedBack(GameObject inst, Vector3 pos, float dam)
         {
-            GameObject feed = Instantiate(inst, pos, Quaternion.identity);
+            var feed = Instantiate(inst, pos, Quaternion.identity);
             feed.GetComponent<DamageFeedBack>().OnInit(dam);
         }
+        
         #endregion
     }
 }

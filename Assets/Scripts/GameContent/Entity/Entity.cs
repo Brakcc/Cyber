@@ -74,34 +74,31 @@ namespace GameContent.Entity
         /// <returns>la nouvelle list de reseau local du hacker</returns>
         protected virtual List<Vector3Int> OnIntersect(Vector3Int pos, HexGridStore hexGrid, int range, List<NetworkType> toMerge)
         {
-            List<Vector3Int> newRange = GetRangeList(pos, hexGrid, range).ToList();
+            var newRange = GetRangeList(pos, hexGrid, range).ToList();
 
             if (toMerge.Count == 0)
             {
                 return newRange;
             }
 
-            else
+            foreach (var i in toMerge)
             {
-                foreach (var i in toMerge)
+                foreach (var j in hexGrid.NetworkList[(int)i])
                 {
-                    foreach (var j in hexGrid.NetworkList[(int)i])
-                    {
-                        if (!newRange.Contains(j)) { newRange.Add(j); }
-                    }
+                    if (!newRange.Contains(j)) { newRange.Add(j); }
                 }
-
-                return newRange;
             }
+
+            return newRange;
         }
 
         /// <summary>
         /// Remplace l'ancien global network par le nouveau // Fonction generale de generation de reseau /!\
         /// </summary>
-        public virtual void OnGenerateNet()
+        public virtual void OnGenerateNet(int range)
         {
-            IsIntersecting(CurrentHexPos, HexGridStore.hGs, NetworkRange, out List<NetworkType> net);
-            GlobalNetwork = OnIntersect(CurrentHexPos, HexGridStore.hGs, NetworkRange, net);
+            IsIntersecting(CurrentHexPos, HexGridStore.hGs, range, out List<NetworkType> net);
+            GlobalNetwork = OnIntersect(CurrentHexPos, HexGridStore.hGs, range, net);
         }
 
         public void OnSelectNetworkTiles()

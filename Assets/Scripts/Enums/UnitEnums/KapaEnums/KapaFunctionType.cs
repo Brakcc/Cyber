@@ -4,9 +4,8 @@
     {
         Default,
         DoubleDiffAttack,
-        MultSameAttack,
         Dash,
-        SelectionAttack,
+        Grab,
         AOE,
         DOT
     }

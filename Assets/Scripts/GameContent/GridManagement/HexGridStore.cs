@@ -105,7 +105,7 @@ namespace GameContent.GridManagement
                 if (!uEnt.IsNetworkEmiter) continue;
                 
                 emiters.Add(uEnt);
-                uEnt.OnGenerateNet();
+                uEnt.OnGenerateNet(uEnt.NetworkRange);
             }
             foreach (var unit in GameGenManager.gGm.TeamLists.heroPlayer1)
             {
@@ -122,7 +122,7 @@ namespace GameContent.GridManagement
                 if (!uEnt.IsNetworkEmiter) continue;
                 
                 emiters.Add(uEnt);
-                uEnt.OnGenerateNet();
+                uEnt.OnGenerateNet(uEnt.NetworkRange);
             }
 
             foreach (var computer in computerList)

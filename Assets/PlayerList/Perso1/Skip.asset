@@ -16,17 +16,49 @@ MonoBehaviour:
   kapaNane: 
   description: 
   maxPlayerpierce: 0
-  balanceCoeff: 0
+  balanceMult: 0
   kapaType: 4
   effectType: 0
+  buffDebuffs: 0
+  buffDebuffDatas:
+    movePointsBDb: 0
+    mPBuffDebuffData:
+      value: 0
+      turnNumber: 0
+    defenseBDb: 0
+    defBuffDebuffData:
+      value: 0
+      turnNumber: 0
+    critRateBDb: 0
+    cRBuffDebuffData:
+      value: 0
+      turnNumber: 0
+    precisionBDb: 0
+    precBuffDebuffData:
+      value: 0
+      turnNumber: 0
+    balanceMultBDb: 0
+    balMultBuffDebuffData: 0
   kapaFunctionType: 0
-  mPBuffDebuff:
-    value: 0
-    turnNumber: 0
-  cRBuffDebuff:
-    value: 0
-    turnNumber: 0
-  precBuffDebuff:
-    value: 0
-    turnNumber: 0
+  doubleDiffAtkDatas:
+    movePointsBDb2: 0
+    mPBuffDebuffData2:
+      value: 0
+      turnNumber: 0
+    defenseBDb2: 0
+    defBuffDebuffData2:
+      value: 0
+      turnNumber: 0
+    critRateBDb2: 0
+    cRBuffDebuffData2:
+      value: 0
+      turnNumber: 0
+    precisionBDb2: 0
+    precBuffDebuffData2:
+      value: 0
+      turnNumber: 0
+    balanceMultBDb2: 0
+    balMultBuffDebuffData2: 0
+    dashAfterKapa: 0
+    grabAfterKapa: 0
   _kapaUI: {fileID: 0}

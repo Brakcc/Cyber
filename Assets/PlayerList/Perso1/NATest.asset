@@ -16,40 +16,37 @@ MonoBehaviour:
   kapaNane: 
   description: 
   maxPlayerpierce: 1
-  balanceCoeff: 1
+  balanceMult: 1
   kapaType: 0
   effectType: 1
   buffDebuffs: 1
-  movePointsBDb: 1
-  mPBuffDebuffData:
-    value: -3
-    turnNumber: 2
-  critRateBDb: 0
-  cRBuffDebuffData:
-    value: 0
-    turnNumber: 0
-  precisionBDb: 1
-  precBuffDebuffData:
-    value: -50
-    turnNumber: 1
+  buffDebuffDatas:
+    movePointsBDb: 0
+    mPBuffDebuffData:
+      value: 0
+      turnNumber: 0
+    defenseBDb: 0
+    defBuffDebuffData:
+      value: 0
+      turnNumber: 0
+    critRateBDb: 0
+    cRBuffDebuffData:
+      value: 0
+      turnNumber: 0
+    precisionBDb: 0
+    precBuffDebuffData:
+      value: 0
+      turnNumber: 0
+    balanceMultBDb: 1
+    balMultBuffDebuffData: 7
   kapaFunctionType: 1
-  doubleDiffAtk:
-    buffDebuffs1: 0
-    movePointsBDb1: 0
-    mPBuffDebuffData1:
-      value: 0
-      turnNumber: 0
-    critRateBDb1: 0
-    cRBuffDebuffData1:
-      value: 0
-      turnNumber: 0
-    precisionBDb1: 0
-    precBuffDebuffData1:
-      value: 0
-      turnNumber: 0
-    buffDebuffs2: 0
+  doubleDiffAtkDatas:
     movePointsBDb2: 0
     mPBuffDebuffData2:
+      value: 0
+      turnNumber: 0
+    defenseBDb2: 0
+    defBuffDebuffData2:
       value: 0
       turnNumber: 0
     critRateBDb2: 0
@@ -60,6 +57,10 @@ MonoBehaviour:
     precBuffDebuffData2:
       value: 0
       turnNumber: 0
+    balanceMultBDb2: 1
+    balMultBuffDebuffData2: 4
+    dashAfterKapa: 1
+    grabAfterKapa: 0
   _kapaUI: {fileID: 0}
   _damageFeedBack: {fileID: 8948626333531248720, guid: 8f927771530abf045b81020ae94b0299, type: 3}
   _pattern:
@@ -69,8 +70,6 @@ MonoBehaviour:
   _nAKapaSupFields:
     compPointsAdded: 5
     ultPointsAdded: 0
-    damage: 0
-    duration: 0
     animation: {fileID: 0}
   _cam:
     effectType: 5

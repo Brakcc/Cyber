@@ -71,8 +71,6 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
         {
             public int compPointsAdded;
             public int ultPointsAdded;
-            public int damage;
-            public int duration;
             public Animation animation;
         }
         #endregion

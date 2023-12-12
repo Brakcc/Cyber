@@ -15,7 +15,7 @@ namespace Interfaces.Kapas
         KapaType KapaType { get; }
         string Description { get; }
         int MaxPlayerPierce { get; }
-        float BalanceCoeff { get; }
+        int BalanceMult { get; }
         EffectType EffectType { get; }
         KapaFunctionType KapaFunctionType { get; }
         KapaUISO KapaUI { get; }

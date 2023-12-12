@@ -48,7 +48,7 @@ namespace GameContent.Entity.Network
             initBoard.SetRenderer(gameObject);
         }
         
-        public sealed override void OnGenerateNet() { }
+        public sealed override void OnGenerateNet(int range) { }
 
         #endregion
         #endregion

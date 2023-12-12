@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using GameContent.GridManagement;
 using Interfaces.Unit;
 
@@ -5,12 +6,14 @@ namespace GameContent.Entity.Unit.KapasGen.KapaFunctions.Dash
 {
     public static class DashKapa
     {
-        public static void OnSecondKapa(HexGridStore hexGrid, IUnit unit, IUnit target)
+        public static async void OnSecondKapa(HexGridStore hexGrid, IUnit unit, IUnit target)
         {
             var xDiff = target.CurrentWorldPos.x - unit.CurrentWorldPos.x;
             var yDiff = target.CurrentWorldPos.y - unit.CurrentWorldPos.y;
 
             var targetTile = OnGetTargetTile(hexGrid, xDiff, yDiff, unit, target);
+            
+            await Task.Delay(ConstList.DashGrabDelay);
             
             ChangeUnitHexPos(unit, targetTile);
             

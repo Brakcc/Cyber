@@ -32,18 +32,18 @@ namespace GameContent.GameManagement
         
         #region methodes
 
-        void Awake()
+        private void Awake()
         {
             gGm = this;
             
             OnGetTeamDatas();
         }
 
-        void Start() => OnInitGameScene();
+        private void Start() => OnInitGameScene();
         
         #region Inits
 
-        void OnInitGameScene()
+        private void OnInitGameScene()
         {
             OnInitSceneUnits();
                     
@@ -54,21 +54,21 @@ namespace GameContent.GameManagement
             OnInitUi();
         }
 
-        void OnGetTeamDatas()
+        private void OnGetTeamDatas()
         {
             team0 = TeamDatasSaveAndLoad.OnLoadSingleTeam(0);
             team1 = TeamDatasSaveAndLoad.OnLoadSingleTeam(1);
         }
-        
-        void OnInitUi()
+
+        private void OnInitUi()
         {
-            foreach (var playstat in playerStats)
+            foreach (var playStat in playerStats)
             {
-                playstat.OnInit();
+                playStat.OnInit();
             }
         }
                 
-        void OnInitSceneUnits()
+        private void OnInitSceneUnits()
         {
             for (var i = 0; i < 3; i++)
             {

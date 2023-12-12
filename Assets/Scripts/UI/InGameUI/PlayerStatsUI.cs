@@ -61,16 +61,19 @@ namespace UI.InGameUI
         public void SetUP(IUnit unit)
         {
             uPText.text = unit.UltPoints.ToString();
-            if (unit.UltPoints > 0) { uPText.color = Color.green; }
-            else uPText.color = Color.red;
+            uPText.color = unit.UltPoints > 0 ? Color.green : Color.red;
         }
         #endregion
 
-        void SetSprite(IUnit unit) { imageRef.sprite = unit.UnitData.Sprite; /*imageRef.color = unit.GetComponentInChildren<SpriteRenderer>().color;*/ }
+        private void SetSprite(IUnit unit)
+        {
+            imageRef.sprite = unit.UnitData.Sprite; 
+            /*imageRef.color = unit.GetComponentInChildren<SpriteRenderer>().color;*/
+        }
 
-        void SetName(string n) { nameP.text = n; }
+        private void SetName(string n) { nameP.text = n; }
 
-        Color SetColor(UIColorType uCT) => (int)uCT switch
+        private static Color SetColor(UIColorType uCT) => (int)uCT switch
         {
             0 => Color.green,
             1 => Color.red,

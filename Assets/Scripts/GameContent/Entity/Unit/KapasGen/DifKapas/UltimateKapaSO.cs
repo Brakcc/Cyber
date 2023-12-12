@@ -66,8 +66,6 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
         public class UKapaSupFields
         {
             public int neededUltPoints;
-            public int damage;
-            public int duration;
             public Animation animation;
         }
         #endregion

@@ -12,6 +12,7 @@ namespace GameContent.Entity.Unit.UnitWorking
     public class UnitManager : MonoBehaviour
     {
         #region fields
+        
         [HideInInspector] public MoveSystem moveSys;
 
         //Unit currently stored
@@ -31,6 +32,7 @@ namespace GameContent.Entity.Unit.UnitWorking
         Vector3Int CurrentDirSelected { get; set; }
 
         public static UnitManager uM;
+        
         #endregion
 
         #region Instance et Awake
@@ -314,6 +316,7 @@ namespace GameContent.Entity.Unit.UnitWorking
         #endregion
 
         #region Kapas resets
+        
         /// <summary>
         /// Reset les datas stored sur les Kapas : 
         /// -> Bool isKapaSelected
@@ -330,30 +333,7 @@ namespace GameContent.Entity.Unit.UnitWorking
             CurrentKapaPatternPos = null;
             CurrentDirSelected = Vector3Int.zero;
         }
-
-        /// <summary>
-        /// reset completement l'ensemble des datas d'une kapa pour switch sur une autre
-        /// et celle du perso selected
-        /// </summary>
-        void FullResetKapAndPlayer()
-        {
-            //Kapa Reset
-            HideButtons(CurrentButtonPos);
-            CurrentTypeKapaSelected = KapaType.Default;
-            CurrentSelectedKapaDir = KapaDir.Default;
-            IsKapaSelected = false;
-            IsKapaDirSelected = false;
-            CurrentButtonPos = null;
-            CurrentKapaPatternPos = null;
-            CurrentDirSelected = Vector3Int.zero;
-            //Unit Reset
-            SelectedUnit.Deselect();
-            SelectedUnit.IsPersoLocked = false;
-            SelectedUnit.CanPlay = false;
-            SelectedUnit = null;
-            //GameLoop reset
-            GameLoopManager.gLm.OnPlayerAction();
-        }
+        
         #endregion
         #endregion
 
@@ -541,6 +521,31 @@ namespace GameContent.Entity.Unit.UnitWorking
             SelectedUnit.CurrentHexPos = _previousSelectedHex.HexCoords;
         }
 
+        /// <summary>
+        /// reset completement l'ensemble des datas d'une kapa pour switch sur une autre
+        /// et celle du perso selected
+        /// </summary>
+        void FullResetKapAndPlayer()
+        {
+            //Kapa Reset
+            HideButtons(CurrentButtonPos);
+            CurrentTypeKapaSelected = KapaType.Default;
+            CurrentSelectedKapaDir = KapaDir.Default;
+            IsKapaSelected = false;
+            IsKapaDirSelected = false;
+            CurrentButtonPos = null;
+            CurrentKapaPatternPos = null;
+            CurrentDirSelected = Vector3Int.zero;
+            //Unit Reset
+            SelectedUnit.OnCheckBuffDebuffCounter();
+            SelectedUnit.Deselect();
+            SelectedUnit.IsPersoLocked = false;
+            SelectedUnit.CanPlay = false;
+            SelectedUnit = null;
+            //GameLoop reset
+            GameLoopManager.gLm.OnPlayerAction();
+        }
+        
         /// <summary>
         /// reset manuel de la gameloop temporaire
         /// </summary>
