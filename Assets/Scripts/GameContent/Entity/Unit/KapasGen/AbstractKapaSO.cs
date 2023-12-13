@@ -12,6 +12,7 @@ using GameContent.Entity.Unit.KapasGen.KapaFunctions.Buff_Debuff;
 using GameContent.Entity.Unit.KapasGen.KapaFunctions.Dash;
 using GameContent.Entity.Unit.KapasGen.KapaFunctions.DoubleDiffAtk;
 using GameContent.Entity.Unit.KapasGen.KapaFunctions.Grab_Push;
+using GameContent.Entity.Unit.KapasGen.KapaFunctions.PerfoAtk;
 using Random = UnityEngine.Random;
 
 namespace GameContent.Entity.Unit.KapasGen
@@ -50,7 +51,7 @@ namespace GameContent.Entity.Unit.KapasGen
         [SerializeField] private bool hasBuffDebuffs;
         
         [ShowIfBoolTrue("hasBuffDebuffs")]
-        [SerializeField] private BuffDebuffList buffDebuffDatas;
+        [SerializeField] private FullBuffDebuff buffDebuffDatas;
         
         #endregion
         
@@ -69,6 +70,13 @@ namespace GameContent.Entity.Unit.KapasGen
         [ShowIfTrue("kapaFunctionType", new[] { (int)KapaFunctionType.DoubleDiffAttack })]
         [SerializeField] private DoubleDiffAtkKapaDatas doubleDiffAtkDatas;
         
+        #endregion
+
+        #region First Hit Effect
+
+        [ShowIfTrue("kapaFunctionType", new[] { (int)KapaFunctionType.FirstHitEffect })]
+        [SerializeField] private PerfoHitEffects firstHitEffectsData;
+
         #endregion
         
         #endregion
@@ -355,45 +363,50 @@ namespace GameContent.Entity.Unit.KapasGen
         /// <param name="isHitting"></param>
         protected virtual void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern , IUnit unit, out bool isHitting)
         {
+            //Init des mutable local
             isHitting = false;
             var n = 0;
-            foreach (var pos in pattern)
+            var canDoubleKapa = true;
+            List<Vector3Int> patternToUse;
+            var canFirstEffect = true;
+            
+            //Changement de Pattern, ne considère que le point de base au centre comme pattern 1
+            ChangePatterns:
+            if (KapaFunctionType == KapaFunctionType.DoubleDiffAttack && doubleDiffAtkDatas.hasDiffPatterns && canDoubleKapa)
             {
-                var canDoubleKapa = true;
-                
+                patternToUse = new List<Vector3Int>{ pattern[0] };
+            }
+            else
+            {
+                patternToUse = pattern;
+            }
+            
+            foreach (var pos in patternToUse)
+            {
                 //verif s'il y a joueur uniquement sur les case du pattern
                 var hex = hexGrid.GetTile(pos);
                 if (!hex.HasEntityOnIt) continue;
                 var unitTarget = hex.GetUnit();
 
                 //Verif de si l'Entity est une Unit
-                if (unitTarget == null) continue;
+                if (unitTarget == null)
+                {
+                    //Si pas de target mais Diff patterns, relance l'atk
+                    if (KapaFunctionType == KapaFunctionType.DoubleDiffAttack && 
+                        doubleDiffAtkDatas.hasDiffPatterns && canDoubleKapa)
+                    {
+                        canDoubleKapa = false;
+                        goto ChangePatterns;
+                    }
+                    continue;
+                }
 
                 //Verif si l'Unit est de meme team
                 if (unitTarget.TeamNumber == unit.TeamNumber)
                 {
                     if (hasBuffDebuffs && buffDebuffDatas.isBuff)
                     {
-                        if (buffDebuffDatas.hasMovePointsBDb)
-                        {
-                            BuffDebuffKapa.OnBuffDebuffMP(unitTarget, buffDebuffDatas.mPBuffDebuffData.value,
-                                buffDebuffDatas.mPBuffDebuffData.turnNumber);
-                        }
-                        if (buffDebuffDatas.hasCritRateBDb)
-                        {
-                            BuffDebuffKapa.OnBuffDebuffCritRate(unitTarget, buffDebuffDatas.cRBuffDebuffData.value,
-                                buffDebuffDatas.cRBuffDebuffData.turnNumber);
-                        }
-                        if (buffDebuffDatas.hasPrecisionBDb)
-                        {
-                            BuffDebuffKapa.OnBuffDebuffPrecision(unitTarget, buffDebuffDatas.precBuffDebuffData.value,
-                                buffDebuffDatas.precBuffDebuffData.turnNumber);
-                        }
-                        if (buffDebuffDatas.hasDefenseBDb)
-                        {
-                            BuffDebuffKapa.OnBuffDebuffDef(unitTarget, buffDebuffDatas.defBuffDebuffData.value,
-                                buffDebuffDatas.defBuffDebuffData.turnNumber);
-                        }
+                        OnBuffDebuffConsideration(unitTarget, buffDebuffDatas.buffDebuffList);
                     }
                     continue;
                 }
@@ -413,17 +426,17 @@ namespace GameContent.Entity.Unit.KapasGen
                     : 0;
                 
                 //Verif d'un changement de BalanceMult
-                var firstBalance = hasBuffDebuffs && buffDebuffDatas.hasBalanceMultBDb && canDoubleKapa ? 
-                    buffDebuffDatas.balMultBuffDebuffData
+                var firstBalance = hasBuffDebuffs && buffDebuffDatas.buffDebuffList.hasBalanceMultBDb && canDoubleKapa ? 
+                    buffDebuffDatas.buffDebuffList.balMultBuffDebuffData
                     : BalanceMult; 
                 var secondBalance =
-                    KapaFunctionType == KapaFunctionType.DoubleDiffAttack && doubleDiffAtkDatas.doubleDABuffDebuff.hasBalanceMultBDb2 &&
+                    KapaFunctionType == KapaFunctionType.DoubleDiffAttack && doubleDiffAtkDatas.hasBalanceMultBDb2 &&
                     !canDoubleKapa ? 
-                        doubleDiffAtkDatas.doubleDABuffDebuff.balMultBuffDebuffData2
+                        doubleDiffAtkDatas.balMultBuffDebuffData2
                         : BalanceMult;
                 
                 //Apply des degats
-                if (buffDebuffDatas.isCritGuarented)
+                if (buffDebuffDatas.isCritGuaranted)
                 {
                     var damage = Damage.CritDamage(unit.CurrentAtk, unitTarget.CurrentDef) / (canDoubleKapa ? firstBalance : secondBalance);
                 
@@ -443,57 +456,16 @@ namespace GameContent.Entity.Unit.KapasGen
                 //Buff Debuff en 1st Kapa excecution
                 if (hasBuffDebuffs && canDoubleKapa)
                 {
-                    if (buffDebuffDatas.hasMovePointsBDb)
-                    {
-                        BuffDebuffKapa.OnBuffDebuffMP(unitTarget, buffDebuffDatas.mPBuffDebuffData.value,
-                            buffDebuffDatas.mPBuffDebuffData.turnNumber);
-                    }
-                    if (buffDebuffDatas.hasCritRateBDb)
-                    {
-                        BuffDebuffKapa.OnBuffDebuffCritRate(unitTarget, buffDebuffDatas.cRBuffDebuffData.value,
-                            buffDebuffDatas.cRBuffDebuffData.turnNumber);
-                    }
-                    if (buffDebuffDatas.hasPrecisionBDb)
-                    {
-                        BuffDebuffKapa.OnBuffDebuffPrecision(unitTarget, buffDebuffDatas.precBuffDebuffData.value,
-                            buffDebuffDatas.precBuffDebuffData.turnNumber);
-                    }
-                    if (buffDebuffDatas.hasDefenseBDb)
-                    {
-                        BuffDebuffKapa.OnBuffDebuffDef(unitTarget, buffDebuffDatas.defBuffDebuffData.value,
-                            buffDebuffDatas.defBuffDebuffData.turnNumber);
-                    }
+                    OnBuffDebuffConsideration(unitTarget, buffDebuffDatas.buffDebuffList);
                 }
 
                 //Buff Debuff en 2nd Kapa excecution
                 if (KapaFunctionType == KapaFunctionType.DoubleDiffAttack && !canDoubleKapa)
                 {
-                    if (doubleDiffAtkDatas.doubleDABuffDebuff.hasMovePointsBDb2)
-                    {
-                        BuffDebuffKapa.OnBuffDebuffMP(unitTarget,
-                            doubleDiffAtkDatas.doubleDABuffDebuff.mPBuffDebuffData2.value,
-                            doubleDiffAtkDatas.doubleDABuffDebuff.mPBuffDebuffData2.turnNumber);
-                    }
-                    if (doubleDiffAtkDatas.doubleDABuffDebuff.hasCritRateBDb2)
-                    {
-                        BuffDebuffKapa.OnBuffDebuffCritRate(unitTarget,
-                            doubleDiffAtkDatas.doubleDABuffDebuff.cRBuffDebuffData2.value,
-                            doubleDiffAtkDatas.doubleDABuffDebuff.cRBuffDebuffData2.turnNumber);
-                    }
-                    if (doubleDiffAtkDatas.doubleDABuffDebuff.hasPrecisionBDb2)
-                    {
-                        BuffDebuffKapa.OnBuffDebuffPrecision(unitTarget,
-                            doubleDiffAtkDatas.doubleDABuffDebuff.precBuffDebuffData2.value,
-                            doubleDiffAtkDatas.doubleDABuffDebuff.precBuffDebuffData2.turnNumber);
-                    }
-                    if (doubleDiffAtkDatas.doubleDABuffDebuff.hasDefenseBDb2)
-                    {
-                        BuffDebuffKapa.OnBuffDebuffDef(unitTarget,
-                            doubleDiffAtkDatas.doubleDABuffDebuff.defBuffDebuffData2.value,
-                            doubleDiffAtkDatas.doubleDABuffDebuff.defBuffDebuffData2.turnNumber);
-                    }
+                    OnBuffDebuffConsideration(unitTarget, doubleDiffAtkDatas.doubleABuffDebuff);
                 }
-
+                
+                //Verif des possibles KapaFunctions
                 switch (kapaFunctionType)
                 {
                     case KapaFunctionType.Dash:
@@ -514,13 +486,26 @@ namespace GameContent.Entity.Unit.KapasGen
                         GrabKapa.OnSecondKapa(HexGridStore.hGs, unit, unitTarget);
                         goto Retake;
                         
+                    case KapaFunctionType.DoubleDiffAttack when doubleDiffAtkDatas.hasDiffPatterns && canDoubleKapa:
+                        canDoubleKapa = false;
+                        goto ChangePatterns;
+                        
                     case KapaFunctionType.AOE:
                         break;
                         
                     case KapaFunctionType.DOT:
                         break;
                     
+                    case KapaFunctionType.FirstHitEffect when canFirstEffect:
+                        OnBuffDebuffConsideration(unitTarget, firstHitEffectsData.buffDebuffList);
+                        canFirstEffect = false;
+                        break;
+                    
                     case KapaFunctionType.Default:
+                        break;
+                    
+                    default:
+                        Debug.Log("default");
                         break;
                 }
                 
@@ -546,43 +531,48 @@ namespace GameContent.Entity.Unit.KapasGen
         /// <param name="unit"></param>
         public virtual void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, IUnit unit)
         {
-            foreach (var pos in pattern)
+            var canDoubleKapa = true;
+            List<Vector3Int> patternToUse;
+            var canFirstEffect = true;
+            
+            //Changement de Pattern, ne considère que le point de base au centre comme pattern 1
+            ChangePatterns:
+            if (KapaFunctionType == KapaFunctionType.DoubleDiffAttack && doubleDiffAtkDatas.hasDiffPatterns && canDoubleKapa)
             {
-                var canDoubleKapa = true;
-                
+                patternToUse = new List<Vector3Int>{ pattern[0] };
+            }
+            else
+            {
+                patternToUse = pattern;
+            }
+            
+            //Circulation sur le patterns
+            foreach (var pos in patternToUse)
+            {
                 //verif s'il y a joueur uniquement sur les case du pattern
                 var hex = hexGrid.GetTile(pos);
-                if (!hex.HasEntityOnIt) continue;
+                if (!hex.HasEntityOnIt) continue; 
                 var unitTarget = hex.GetUnit();
 
                 //Verif de si l'Entity est une Unit
-                if (unitTarget == null) continue;
+                if (unitTarget == null)
+                {
+                    //Si pas de target mais Diff patterns, relance l'atk
+                    if (KapaFunctionType == KapaFunctionType.DoubleDiffAttack && 
+                        doubleDiffAtkDatas.hasDiffPatterns && canDoubleKapa)
+                    {
+                        canDoubleKapa = false;
+                        goto ChangePatterns;
+                    }
+                    continue;
+                }
 
                 //Verif si l'Unit est de meme team
                 if (unitTarget.TeamNumber == unit.TeamNumber)
                 {
                     if (hasBuffDebuffs && buffDebuffDatas.isBuff)
                     {
-                        if (buffDebuffDatas.hasMovePointsBDb)
-                        {
-                            BuffDebuffKapa.OnBuffDebuffMP(unitTarget, buffDebuffDatas.mPBuffDebuffData.value,
-                                buffDebuffDatas.mPBuffDebuffData.turnNumber);
-                        }
-                        if (buffDebuffDatas.hasCritRateBDb)
-                        {
-                            BuffDebuffKapa.OnBuffDebuffCritRate(unitTarget, buffDebuffDatas.cRBuffDebuffData.value,
-                                buffDebuffDatas.cRBuffDebuffData.turnNumber);
-                        }
-                        if (buffDebuffDatas.hasPrecisionBDb)
-                        {
-                            BuffDebuffKapa.OnBuffDebuffPrecision(unitTarget, buffDebuffDatas.precBuffDebuffData.value,
-                                buffDebuffDatas.precBuffDebuffData.turnNumber);
-                        }
-                        if (buffDebuffDatas.hasDefenseBDb)
-                        {
-                            BuffDebuffKapa.OnBuffDebuffDef(unitTarget, buffDebuffDatas.defBuffDebuffData.value,
-                                buffDebuffDatas.defBuffDebuffData.turnNumber);
-                        }
+                        OnBuffDebuffConsideration(unitTarget, buffDebuffDatas.buffDebuffList);
                     }
                     continue;
                 }
@@ -602,17 +592,17 @@ namespace GameContent.Entity.Unit.KapasGen
                     : 0;
                 
                 //Verif d'un changement de BalanceMult
-                var firstBalance = hasBuffDebuffs && buffDebuffDatas.hasBalanceMultBDb && canDoubleKapa ? 
-                    buffDebuffDatas.balMultBuffDebuffData
+                var firstBalance = hasBuffDebuffs && buffDebuffDatas.buffDebuffList.hasBalanceMultBDb && canDoubleKapa ? 
+                    buffDebuffDatas.buffDebuffList.balMultBuffDebuffData
                     : BalanceMult; 
                 var secondBalance =
-                    KapaFunctionType == KapaFunctionType.DoubleDiffAttack && doubleDiffAtkDatas.doubleDABuffDebuff.hasBalanceMultBDb2 &&
+                    KapaFunctionType == KapaFunctionType.DoubleDiffAttack && doubleDiffAtkDatas.hasBalanceMultBDb2 &&
                     !canDoubleKapa ? 
-                        doubleDiffAtkDatas.doubleDABuffDebuff.balMultBuffDebuffData2
+                        doubleDiffAtkDatas.balMultBuffDebuffData2
                         : BalanceMult;
                 
                 //Apply des degats
-                if (buffDebuffDatas.isCritGuarented)
+                if (buffDebuffDatas.isCritGuaranted)
                 {
                     var damage = Damage.CritDamage(unit.CurrentAtk, unitTarget.CurrentDef) / (canDoubleKapa ? firstBalance : secondBalance);
                 
@@ -632,87 +622,55 @@ namespace GameContent.Entity.Unit.KapasGen
                 //Debuff en 1st Kapa excecution
                 if (hasBuffDebuffs && canDoubleKapa)
                 {
-                    if (buffDebuffDatas.hasMovePointsBDb)
-                    {
-                        BuffDebuffKapa.OnBuffDebuffMP(unitTarget, buffDebuffDatas.mPBuffDebuffData.value,
-                            buffDebuffDatas.mPBuffDebuffData.turnNumber);
-                    }
-                    if (buffDebuffDatas.hasCritRateBDb)
-                    {
-                        BuffDebuffKapa.OnBuffDebuffCritRate(unitTarget, buffDebuffDatas.cRBuffDebuffData.value,
-                            buffDebuffDatas.cRBuffDebuffData.turnNumber);
-                    }
-                    if (buffDebuffDatas.hasPrecisionBDb)
-                    {
-                        BuffDebuffKapa.OnBuffDebuffPrecision(unitTarget, buffDebuffDatas.precBuffDebuffData.value,
-                            buffDebuffDatas.precBuffDebuffData.turnNumber);
-                    }
-                    if (buffDebuffDatas.hasDefenseBDb)
-                    {
-                        BuffDebuffKapa.OnBuffDebuffDef(unitTarget, buffDebuffDatas.defBuffDebuffData.value,
-                            buffDebuffDatas.defBuffDebuffData.turnNumber);
-                    }
+                    OnBuffDebuffConsideration(unitTarget, buffDebuffDatas.buffDebuffList);
                 }
 
                 //Debuff en 2nd Kapa excecution
                 if (KapaFunctionType == KapaFunctionType.DoubleDiffAttack && !canDoubleKapa)
                 {
-                    if (doubleDiffAtkDatas.doubleDABuffDebuff.hasMovePointsBDb2)
-                    {
-                        BuffDebuffKapa.OnBuffDebuffMP(unitTarget,
-                            doubleDiffAtkDatas.doubleDABuffDebuff.mPBuffDebuffData2.value,
-                            doubleDiffAtkDatas.doubleDABuffDebuff.mPBuffDebuffData2.turnNumber);
-                    }
-
-                    if (doubleDiffAtkDatas.doubleDABuffDebuff.hasCritRateBDb2)
-                    {
-                        BuffDebuffKapa.OnBuffDebuffCritRate(unitTarget,
-                            doubleDiffAtkDatas.doubleDABuffDebuff.cRBuffDebuffData2.value,
-                            doubleDiffAtkDatas.doubleDABuffDebuff.cRBuffDebuffData2.turnNumber);
-                    }
-
-                    if (doubleDiffAtkDatas.doubleDABuffDebuff.hasPrecisionBDb2)
-                    {
-                        BuffDebuffKapa.OnBuffDebuffPrecision(unitTarget,
-                            doubleDiffAtkDatas.doubleDABuffDebuff.precBuffDebuffData2.value,
-                            doubleDiffAtkDatas.doubleDABuffDebuff.precBuffDebuffData2.turnNumber);
-                    }
-
-                    if (doubleDiffAtkDatas.doubleDABuffDebuff.hasDefenseBDb2)
-                    {
-                        BuffDebuffKapa.OnBuffDebuffDef(unitTarget,
-                            doubleDiffAtkDatas.doubleDABuffDebuff.defBuffDebuffData2.value,
-                            doubleDiffAtkDatas.doubleDABuffDebuff.defBuffDebuffData2.turnNumber);
-                    }
+                    OnBuffDebuffConsideration(unitTarget, doubleDiffAtkDatas.doubleABuffDebuff);
                 }
-                
+
                 switch (KapaFunctionType)
                 {
                     case KapaFunctionType.Dash:
                         DashKapa.OnSecondKapa(HexGridStore.hGs, unit, unitTarget);
                         break;
-                    
-                    case KapaFunctionType.DoubleDiffAttack when doubleDiffAtkDatas.hasDashAfterKapa && canDoubleKapa:
+
+                    case KapaFunctionType.DoubleDiffAttack when doubleDiffAtkDatas.hasDashAfterKapa && canDoubleKapa && unitTarget.CurrentHealth > 0:
                         canDoubleKapa = false;
                         DashKapa.OnSecondKapa(HexGridStore.hGs, unit, unitTarget);
                         goto Retake;
-                        
+
                     case KapaFunctionType.Grab:
                         GrabKapa.OnSecondKapa(HexGridStore.hGs, unit, unitTarget);
                         break;
-                    
-                    case KapaFunctionType.DoubleDiffAttack when doubleDiffAtkDatas.hasGrabAfterKapa && canDoubleKapa:
+
+                    case KapaFunctionType.DoubleDiffAttack when doubleDiffAtkDatas.hasGrabAfterKapa && canDoubleKapa && unitTarget.CurrentHealth > 0:
                         canDoubleKapa = false;
                         GrabKapa.OnSecondKapa(HexGridStore.hGs, unit, unitTarget);
                         goto Retake;
-                        
+
+                    case KapaFunctionType.DoubleDiffAttack when doubleDiffAtkDatas.hasDiffPatterns && canDoubleKapa:
+                        canDoubleKapa = false;
+                        goto ChangePatterns;
+
                     case KapaFunctionType.AOE:
                         break;
-                        
+
                     case KapaFunctionType.DOT:
                         break;
-                    
+
+                    case KapaFunctionType.FirstHitEffect when canFirstEffect:
+                        OnBuffDebuffConsideration(unitTarget, firstHitEffectsData.buffDebuffList);
+                        canFirstEffect = false;
+                        break;
+
                     case KapaFunctionType.Default:
+                        break;
+                    
+                    default:
+                        Debug.Log("default");
                         break;
                 }
                 
@@ -759,6 +717,39 @@ namespace GameContent.Entity.Unit.KapasGen
             return availableButton;
         }
 
+        #region Static Considerations
+        
+        private static void OnBuffDebuffConsideration(IUnit unitT, BuffDebuffList bDbList)
+        {
+            if (bDbList.hasMovePointsBDb)
+            {
+                BuffDebuffKapa.OnBuffDebuffMP(unitT,
+                    bDbList.mPBuffDebuffData.value,
+                    bDbList.mPBuffDebuffData.turnNumber);
+            }
+
+            if (bDbList.hasCritRateBDb)
+            {
+                BuffDebuffKapa.OnBuffDebuffCritRate(unitT,
+                    bDbList.cRBuffDebuffData.value,
+                    bDbList.cRBuffDebuffData.turnNumber);
+            }
+
+            if (bDbList.hasPrecisionBDb)
+            {
+                BuffDebuffKapa.OnBuffDebuffPrecision(unitT,
+                    bDbList.precBuffDebuffData.value,
+                    bDbList.precBuffDebuffData.turnNumber);
+            }
+
+            if (bDbList.hasDefenseBDb)
+            {
+                BuffDebuffKapa.OnBuffDebuffDef(unitT,
+                    bDbList.defBuffDebuffData.value,
+                    bDbList.defBuffDebuffData.turnNumber);
+            }
+        }
+        
         private static async void OnDamageConsideration(IUnit unit, IUnit unitTarget, int balance, int delay, GameObject feedBack)
         {
             await Task.Delay(delay);
@@ -805,6 +796,8 @@ namespace GameContent.Entity.Unit.KapasGen
                 }
             }
         }
+        
+        #endregion
         
         #endregion
 

@@ -6,8 +6,6 @@ namespace GameContent.Entity.Unit.KapasGen.KapaFunctions.Buff_Debuff
     [System.Serializable]
     public class BuffDebuffList
     {
-        public bool isBuff; 
-        
         public bool hasMovePointsBDb;
         [ShowIfBoolTrue("hasMovePointsBDb")]
         public BuffDebuffKapaDatas mPBuffDebuffData;
@@ -27,7 +25,5 @@ namespace GameContent.Entity.Unit.KapasGen.KapaFunctions.Buff_Debuff
         public bool hasBalanceMultBDb;
         [ShowIfBoolTrue("hasBalanceMultBDb")]
         [Range(1, 10)] public int balMultBuffDebuffData = 1;
-
-        public bool isCritGuarented;
     }
 }

@@ -4,6 +4,7 @@
     {
         Default,
         DoubleDiffAttack,
+        FirstHitEffect,
         Dash,
         Grab,
         AOE,

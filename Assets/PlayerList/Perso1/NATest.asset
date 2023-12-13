@@ -15,55 +15,79 @@ MonoBehaviour:
   iD: 0
   kapaNane: 
   description: 
-  maxPlayerpierce: 1
+  maxPlayerpierce: 2
   balanceMult: 1
   kapaType: 0
   effectType: 1
   hasBuffDebuffs: 1
   buffDebuffDatas:
-    isBuff: 1
-    hasMovePointsBDb: 0
-    mPBuffDebuffData:
-      value: 0
-      turnNumber: 0
-    hasDefenseBDb: 1
-    defBuffDebuffData:
-      value: 5
-      turnNumber: 1
-    hasCritRateBDb: 0
-    cRBuffDebuffData:
-      value: 0
-      turnNumber: 0
-    hasPrecisionBDb: 0
-    precBuffDebuffData:
-      value: 0
-      turnNumber: 0
-    hasBalanceMultBDb: 1
-    balMultBuffDebuffData: 7
-    isCritGuarented: 0
-  kapaFunctionType: 1
+    isBuff: 0
+    isCritGuaranted: 0
+    buffDebuffList:
+      hasMovePointsBDb: 0
+      mPBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasDefenseBDb: 0
+      defBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasCritRateBDb: 0
+      cRBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasPrecisionBDb: 0
+      precBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasBalanceMultBDb: 0
+      balMultBuffDebuffData: 1
+  kapaFunctionType: 2
   doubleDiffAtkDatas:
-    doubleDABuffDebuff:
-      hasMovePointsBDb2: 0
-      mPBuffDebuffData2:
+    doubleABuffDebuff:
+      hasMovePointsBDb: 0
+      mPBuffDebuffData:
         value: 0
         turnNumber: 0
-      hasDefenseBDb2: 0
-      defBuffDebuffData2:
+      hasDefenseBDb: 0
+      defBuffDebuffData:
         value: 0
         turnNumber: 0
-      hasCritRateBDb2: 0
-      cRBuffDebuffData2:
-        value: -15
-        turnNumber: 0
-      hasPrecisionBDb2: 0
-      precBuffDebuffData2:
+      hasCritRateBDb: 0
+      cRBuffDebuffData:
         value: 0
         turnNumber: 0
-      hasBalanceMultBDb2: 0
-      balMultBuffDebuffData2: 1
-    hasDashAfterKapa: 1
+      hasPrecisionBDb: 0
+      precBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasBalanceMultBDb: 0
+      balMultBuffDebuffData: 1
+    hasBalanceMultBDb2: 0
+    balMultBuffDebuffData2: 1
+    hasDashAfterKapa: 0
     hasGrabAfterKapa: 0
+    hasDiffPatterns: 0
+  firstHitEffectsData:
+    buffDebuffList:
+      hasMovePointsBDb: 1
+      mPBuffDebuffData:
+        value: -50
+        turnNumber: 2
+      hasDefenseBDb: 0
+      defBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasCritRateBDb: 0
+      cRBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasPrecisionBDb: 0
+      precBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasBalanceMultBDb: 0
+      balMultBuffDebuffData: 1
   _kapaUI: {fileID: 0}
   _damageFeedBack: {fileID: 8948626333531248720, guid: 8f927771530abf045b81020ae94b0299, type: 3}
   _pattern:
