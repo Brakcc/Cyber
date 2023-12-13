@@ -1,8 +1,6 @@
 using System.Collections.Generic;
 using CameraManagement;
 using Enums.UnitEnums.KapaEnums;
-using GameContent.Entity.Unit.KapasGen.KapaFunctions.Dash;
-using GameContent.Entity.Unit.KapasGen.KapaFunctions.Grab_Push;
 using GameContent.GameManagement;
 using GameContent.GridManagement;
 using Interfaces.Unit;

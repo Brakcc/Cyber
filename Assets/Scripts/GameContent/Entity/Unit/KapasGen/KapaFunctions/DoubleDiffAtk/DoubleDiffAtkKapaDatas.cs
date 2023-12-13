@@ -7,28 +7,34 @@ namespace GameContent.Entity.Unit.KapasGen.KapaFunctions.DoubleDiffAtk
     [System.Serializable]
     public class DoubleDiffAtkKapaDatas
     {
-        public bool movePointsBDb2;
-        [ShowIfBoolTrue("movePointsBDb2")]
-        public BuffDebuffKapaDatas mPBuffDebuffData2;
+        public DoubleDiffAtkBDbList doubleDABuffDebuff;
         
-        public bool defenseBDb2;
-        [ShowIfBoolTrue("defenseBDb2")]
-        public BuffDebuffKapaDatas defBuffDebuffData2;
+        [System.Serializable]
+        public class DoubleDiffAtkBDbList
+        {
+            public bool hasMovePointsBDb2;
+            [ShowIfBoolTrue("hasMovePointsBDb2")]
+            public BuffDebuffKapaDatas mPBuffDebuffData2;
             
-        public bool critRateBDb2;
-        [ShowIfBoolTrue("critRateBDb2")]
-        public BuffDebuffKapaDatas cRBuffDebuffData2;
+            public bool hasDefenseBDb2;
+            [ShowIfBoolTrue("hasDefenseBDb2")]
+            public BuffDebuffKapaDatas defBuffDebuffData2;
+                
+            public bool hasCritRateBDb2;
+            [ShowIfBoolTrue("hasCritRateBDb2")]
+            public BuffDebuffKapaDatas cRBuffDebuffData2;
+                
+            public bool hasPrecisionBDb2;
+            [ShowIfBoolTrue("hasPrecisionBDb2")]
+            public BuffDebuffKapaDatas precBuffDebuffData2;
             
-        public bool precisionBDb2;
-        [ShowIfBoolTrue("precisionBDb2")]
-        public BuffDebuffKapaDatas precBuffDebuffData2;
+            public bool hasBalanceMultBDb2;
+            [ShowIfBoolTrue("hasBalanceMultBDb2")]
+            [Range(1, 10)] public int balMultBuffDebuffData2 = 1;
+        }
+        
+        public bool hasDashAfterKapa;
 
-        public bool balanceMultBDb2;
-        [ShowIfBoolTrue("balanceMultBDb2")]
-        [Range(1, 10)] public int balMultBuffDebuffData2;
-
-        public bool dashAfterKapa;
-
-        public bool grabAfterKapa;
+        public bool hasGrabAfterKapa;
     }
 }

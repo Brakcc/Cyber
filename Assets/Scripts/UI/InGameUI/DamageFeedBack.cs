@@ -19,7 +19,7 @@ namespace UI.InGameUI
 
         public void OnInit(float damage)
         {
-            damageText.text = "-" + damage;
+            damageText.text = "-" + (int)damage;
             damageText.color = Color.red;
             transform.DOMoveY(transform.position.y + 0.75f, 2);
         }

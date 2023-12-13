@@ -54,7 +54,7 @@ namespace UI.InGameUI
 
         public void SetHP(IUnit unit)
         {
-            hP.text = unit.CurrentHealth.ToString();
+            hP.text = ((int)unit.CurrentHealth).ToString();
             hP.color = Color.Lerp(Color.red, Color.green, unit.CurrentHealth / unit.UnitData.HealthPoint);
         }
 
