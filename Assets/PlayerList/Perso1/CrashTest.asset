@@ -9,25 +9,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc327a9d29d835444a0db66a632a8aec, type: 3}
-  m_Name: NATest
+  m_Script: {fileID: 11500000, guid: a4d40161ec8cffd4fa4eb487d60ab8f7, type: 3}
+  m_Name: CrashTest
   m_EditorClassIdentifier: 
   iD: 0
   kapaNane: 
   description: 
-  maxPlayerpierce: 2
-  balanceMult: 1
-  kapaType: 0
+  maxPlayerpierce: 1
+  balanceMult: 5
+  kapaType: 1
   effectType: 1
   hasBuffDebuffs: 1
   buffDebuffDatas:
     isBuff: 0
     isCritGuaranted: 0
     buffDebuffList:
-      hasMovePointsBDb: 0
+      hasMovePointsBDb: 1
       mPBuffDebuffData:
-        value: 0
-        turnNumber: 0
+        value: -5
+        turnNumber: 3
       hasDefenseBDb: 0
       defBuffDebuffData:
         value: 0
@@ -42,7 +42,7 @@ MonoBehaviour:
         turnNumber: 0
       hasBalanceMultBDb: 0
       balMultBuffDebuffData: 1
-  kapaFunctionType: 0
+  kapaFunctionType: 1
   doubleDiffAtkDatas:
     doubleABuffDebuff:
       hasMovePointsBDb: 0
@@ -57,23 +57,23 @@ MonoBehaviour:
       cRBuffDebuffData:
         value: 0
         turnNumber: 0
-      hasPrecisionBDb: 0
+      hasPrecisionBDb: 1
       precBuffDebuffData:
-        value: 0
-        turnNumber: 0
-      hasBalanceMultBDb: 0
-      balMultBuffDebuffData: 1
+        value: -5
+        turnNumber: 1
+      hasBalanceMultBDb: 1
+      balMultBuffDebuffData: 6
     hasBalanceMultBDb2: 0
     balMultBuffDebuffData2: 1
     hasDashAfterKapa: 0
-    hasGrabAfterKapa: 0
+    hasGrabAfterKapa: 1
     hasDiffPatterns: 0
   firstHitEffectsData:
     buffDebuffList:
-      hasMovePointsBDb: 1
+      hasMovePointsBDb: 0
       mPBuffDebuffData:
-        value: -50
-        turnNumber: 2
+        value: 0
+        turnNumber: 0
       hasDefenseBDb: 0
       defBuffDebuffData:
         value: 0
@@ -88,25 +88,24 @@ MonoBehaviour:
         turnNumber: 0
       hasBalanceMultBDb: 0
       balMultBuffDebuffData: 1
-  _kapaUI: {fileID: 0}
-  _damageFeedBack: {fileID: 8948626333531248720, guid: 8f927771530abf045b81020ae94b0299, type: 3}
-  _pattern:
+  kapaUI: {fileID: 0}
+  damageFeedBack: {fileID: 8948626333531248720, guid: 8f927771530abf045b81020ae94b0299, type: 3}
+  pattern:
   - {x: 0, y: -1, z: 0}
   - {x: 0, y: -2, z: 0}
-  - {x: 0, y: -3, z: 0}
-  _nAKapaSupFields:
-    compPointsAdded: 0
+  cKapaSupFields:
+    neededCompPoints: 2
     ultPointsAdded: 0
     animation: {fileID: 0}
-  _cam:
+  cam:
     effectType: 0
     shake:
-      last: 300
+      last: 0
       perlinParameters:
-        chanPerl: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+        chanPerl: {fileID: 0}
         pivotOffset: {x: 0, y: 0, z: 0}
-        amplitudeGain: 0.5
-        frequencyGain: 0.2
+        amplitudeGain: 0
+        frequencyGain: 0
     shockWave:
       speed: 0
     impulse:

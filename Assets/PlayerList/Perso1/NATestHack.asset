@@ -18,8 +18,8 @@ MonoBehaviour:
   maxPlayerpierce: 2
   balanceMult: 1
   kapaType: 0
-  effectType: 2
-  hasBuffDebuffs: 1
+  effectType: 1
+  hasBuffDebuffs: 0
   buffDebuffDatas:
     isBuff: 0
     isCritGuaranted: 0
@@ -42,7 +42,7 @@ MonoBehaviour:
         turnNumber: 0
       hasBalanceMultBDb: 0
       balMultBuffDebuffData: 1
-  kapaFunctionType: 5
+  kapaFunctionType: 1
   doubleDiffAtkDatas:
     doubleABuffDebuff:
       hasMovePointsBDb: 0
@@ -63,9 +63,9 @@ MonoBehaviour:
         turnNumber: 0
       hasBalanceMultBDb: 0
       balMultBuffDebuffData: 1
-    hasBalanceMultBDb2: 0
+    hasBalanceMultBDb2: 1
     balMultBuffDebuffData2: 1
-    hasDashAfterKapa: 0
+    hasDashAfterKapa: 1
     hasGrabAfterKapa: 0
     hasDiffPatterns: 0
   firstHitEffectsData:
@@ -95,7 +95,7 @@ MonoBehaviour:
   - {x: 0, y: -2, z: 0}
   - {x: 0, y: -3, z: 0}
   _nAKapaSupFields:
-    compPointsAdded: 5
+    compPointsAdded: 0
     ultPointsAdded: 0
     animation: {fileID: 0}
   _cam:
