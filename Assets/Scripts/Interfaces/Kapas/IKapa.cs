@@ -21,7 +21,9 @@ namespace Interfaces.Kapas
         KapaUISO KapaUI { get; }
         GameObject DamageFeedBack { get; }
         Vector3Int[] Patterns { get; }
+        
         #region paterns to herit
+        
         //North tiles
         Vector3Int[] OddNTiles { get; }
         Vector3Int[] EvenNTiles { get; }
@@ -40,16 +42,19 @@ namespace Interfaces.Kapas
         //WN tiles
         Vector3Int[] OddWNTiles { get; }
         Vector3Int[] EvenWNTiles { get; }
+        
         #endregion
+        
         #endregion
 
         #region methodes
+        
         void InitPatterns(Vector3Int[] patterns);
         bool OnCheckKapaPoints(IUnit unit);
         List<Vector3Int> OnSelectGraphTiles(IUnit unit, HexGridStore hexGrid, Vector3Int[] tilesArray);
         void OnDeselectTiles(HexGridStore hexGrid, List<Vector3Int> pattern);
-        void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, IUnit unit);
         List<Vector3Int> OnGenerateButton(HexGridStore hexGrid, IUnit unit);
+        
         #endregion
     }
 }

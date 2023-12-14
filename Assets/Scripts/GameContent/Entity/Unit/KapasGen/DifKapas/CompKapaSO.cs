@@ -5,6 +5,7 @@ using GameContent.GameManagement;
 using GameContent.GridManagement;
 using Interfaces.Unit;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace GameContent.Entity.Unit.KapasGen.DifKapas
 {
@@ -13,16 +14,16 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
     {
         #region inherited accessors
         
-        public override KapaUISO KapaUI => _kapaUI;
-        [SerializeField] KapaUISO _kapaUI;
+        public override KapaUISO KapaUI => kapaUI;
+        [SerializeField] private KapaUISO kapaUI;
 
-        public override GameObject DamageFeedBack => _damageFeedBack;
-        [SerializeField] GameObject _damageFeedBack;
+        public override GameObject DamageFeedBack => damageFeedBack;
+        [SerializeField] private GameObject damageFeedBack;
 
-        public override Vector3Int[] Patterns => _pattern;
-        [SerializeField] Vector3Int[] _pattern;
+        public override Vector3Int[] Patterns => pattern;
+        [SerializeField] private Vector3Int[] pattern;
 
-        [SerializeField] CKapaSupFields _cKapaSupFields;
+        [SerializeField] private CKapaSupFields cKapaSupFields;
 
         [SerializeField] CameraManager cam;
         #endregion
@@ -78,14 +79,15 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
         #region inherited methodes
         public sealed override bool OnCheckKapaPoints(IUnit unit)
         {
-            if (GameLoopManager.gLm.teamInventory.CompPoints[unit.TeamNumber] >= _cKapaSupFields.neededCompPoints) return true;
+            if (GameLoopManager.gLm.teamInventory.CompPoints[unit.TeamNumber] >= cKapaSupFields.neededCompPoints) return true;
         
             RefuseKapa(); return false;
         }
 
         public sealed override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, IUnit unit)
         {
-            if (EffectType == EffectType.Hacked)
+            //Ne fait des degats d'AOE que si la Kapa est un hack en AOE 
+            if (EffectType == EffectType.Hack && KapaFunctionType == KapaFunctionType.AOE)
             {
                 base.OnExecute(hexGrid, unit.GlobalNetwork, unit);
                 unit.OnDeselectNetworkTiles();
@@ -104,8 +106,8 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
         #region cache
         void DoKapa(IUnit unit)
         {
-            GameLoopManager.gLm.HandleCompPointValueChange(unit.TeamNumber, -_cKapaSupFields.neededCompPoints);
-            unit.UltPoints += _cKapaSupFields.ultPointsAdded;
+            GameLoopManager.gLm.HandleCompPointValueChange(unit.TeamNumber, -cKapaSupFields.neededCompPoints);
+            unit.UltPoints += cKapaSupFields.ultPointsAdded;
             //PlaceHolder à rempir avec les anims et considérations de dégâts
 
             unit.StatUI.SetUP(unit);

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using CameraManagement;
 using Cinemachine;
+using Enums.UnitEnums.KapaEnums;
 using GameContent.GameManagement;
 using GameContent.GridManagement;
 using Interfaces.Unit;
@@ -79,8 +80,19 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
 
         public sealed override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, IUnit unit)
         {
-            base.OnExecute(hexGrid, pattern, unit, out bool isHitting);
-            DoKapa(unit, isHitting);
+            //Ne fait des degats d'AOE que si la Kapa est un hack en AOE 
+            if (EffectType == EffectType.Hack && KapaFunctionType == KapaFunctionType.AOE)
+            {
+                base.OnExecute(hexGrid, unit.GlobalNetwork, unit, out var isHitting);
+                DoKapa(unit, isHitting);
+                unit.OnDeselectNetworkTiles();
+            }
+            else
+            {
+                base.OnExecute(hexGrid, pattern, unit, out var isHitting);
+                DoKapa(unit, isHitting);
+            }
+            
             //PlaceHolder � remplir avec les anims et consid�ration de d�g�ts
             EndKapa();
         }

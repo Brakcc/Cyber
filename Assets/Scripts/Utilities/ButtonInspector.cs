@@ -14,7 +14,7 @@ namespace Utilities
             UnitManager unit = (UnitManager)target;
             if (GUILayout.Button("Restart Turn"))
             {
-                unit.ResetLoop();
+                UnitManager.ResetLoop();
             }
         }
     }

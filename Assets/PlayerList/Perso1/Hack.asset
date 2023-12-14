@@ -16,28 +16,84 @@ MonoBehaviour:
   kapaNane: 
   description: 
   maxPlayerpierce: 3
-  balanceCoeff: 1
+  balanceMult: 1
   kapaType: 1
   effectType: 2
+  hasBuffDebuffs: 0
+  buffDebuffDatas:
+    isBuff: 0
+    isCritGuaranted: 0
+    buffDebuffList:
+      hasMovePointsBDb: 0
+      mPBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasDefenseBDb: 0
+      defBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasCritRateBDb: 0
+      cRBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasPrecisionBDb: 0
+      precBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasBalanceMultBDb: 0
+      balMultBuffDebuffData: 1
   kapaFunctionType: 0
-  mPBuffDebuff:
-    value: 0
-    turnNumber: 0
-  cRBuffDebuff:
-    value: 0
-    turnNumber: 0
-  precBuffDebuff:
-    value: 0
-    turnNumber: 0
-  _kapaUI: {fileID: 0}
-  _damageFeedBack: {fileID: 8948626333531248720, guid: 8f927771530abf045b81020ae94b0299, type: 3}
-  _pattern:
-  - {x: 0, y: -1, z: 0}
-  _cKapaSupFields:
-    neededCompPoints: 5
+  doubleDiffAtkDatas:
+    doubleABuffDebuff:
+      hasMovePointsBDb: 0
+      mPBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasDefenseBDb: 0
+      defBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasCritRateBDb: 0
+      cRBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasPrecisionBDb: 0
+      precBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasBalanceMultBDb: 0
+      balMultBuffDebuffData: 1
+    hasBalanceMultBDb2: 0
+    balMultBuffDebuffData2: 1
+    hasDashAfterKapa: 0
+    hasGrabAfterKapa: 0
+    hasDiffPatterns: 0
+  firstHitEffectsData:
+    buffDebuffList:
+      hasMovePointsBDb: 0
+      mPBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasDefenseBDb: 0
+      defBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasCritRateBDb: 0
+      cRBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasPrecisionBDb: 0
+      precBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasBalanceMultBDb: 0
+      balMultBuffDebuffData: 1
+  kapaUI: {fileID: 0}
+  damageFeedBack: {fileID: 8948626333531248720, guid: 8f927771530abf045b81020ae94b0299, type: 3}
+  pattern: []
+  cKapaSupFields:
+    neededCompPoints: 0
     ultPointsAdded: 0
-    damage: 0
-    duration: 0
     animation: {fileID: 0}
   cam:
     effectType: 3

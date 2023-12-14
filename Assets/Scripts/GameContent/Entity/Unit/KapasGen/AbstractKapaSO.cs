@@ -84,6 +84,7 @@ namespace GameContent.Entity.Unit.KapasGen
         #endregion
         
         #region paterns to herit
+        
         //North tiles
         public abstract Vector3Int[] OddNTiles { get; protected set; }
         public abstract Vector3Int[] EvenNTiles { get; protected set; }
@@ -102,6 +103,7 @@ namespace GameContent.Entity.Unit.KapasGen
         //WN tiles
         public abstract Vector3Int[] OddWNTiles { get; protected set; }
         public abstract Vector3Int[] EvenWNTiles { get; protected set; }
+        
         #endregion
 
         #region patern gen cache
@@ -404,6 +406,7 @@ namespace GameContent.Entity.Unit.KapasGen
                 //Verif si l'Unit est de meme team
                 if (unitTarget.TeamNumber == unit.TeamNumber)
                 {
+                    //Buff s'il y a buff
                     if (hasBuffDebuffs && buffDebuffDatas.isBuff)
                     {
                         OnBuffDebuffConsideration(unitTarget, buffDebuffDatas.buffDebuffList);
@@ -421,18 +424,18 @@ namespace GameContent.Entity.Unit.KapasGen
                 //Verif du delay de la consideration d'atk
                 var delayAtk = KapaFunctionType == KapaFunctionType.DoubleDiffAttack && !canDoubleKapa || 
                                KapaFunctionType == KapaFunctionType.Dash || 
-                               KapaFunctionType == KapaFunctionType.Grab ? 
-                    ConstList.SecondAtkDelay
+                               KapaFunctionType == KapaFunctionType.Grab
+                    ? ConstList.SecondAtkDelay
                     : 0;
                 
                 //Verif d'un changement de BalanceMult
-                var firstBalance = hasBuffDebuffs && buffDebuffDatas.buffDebuffList.hasBalanceMultBDb && canDoubleKapa ? 
-                    buffDebuffDatas.buffDebuffList.balMultBuffDebuffData
+                var firstBalance = hasBuffDebuffs && buffDebuffDatas.buffDebuffList.hasBalanceMultBDb && canDoubleKapa
+                    ? buffDebuffDatas.buffDebuffList.balMultBuffDebuffData
                     : BalanceMult; 
                 var secondBalance =
                     KapaFunctionType == KapaFunctionType.DoubleDiffAttack && doubleDiffAtkDatas.hasBalanceMultBDb2 &&
-                    !canDoubleKapa ? 
-                        doubleDiffAtkDatas.balMultBuffDebuffData2
+                    !canDoubleKapa
+                        ? doubleDiffAtkDatas.balMultBuffDebuffData2
                         : BalanceMult;
                 
                 //Apply des degats
@@ -512,7 +515,7 @@ namespace GameContent.Entity.Unit.KapasGen
                 //compteur de Hit
                 if (canDoubleKapa) n++;
                 
-                //set new UI
+                //set new UI des Stats des Units touchees 
                 unitTarget.StatUI.SetHP(unitTarget);
 
                 //Kill si Unit a plus de vie
@@ -570,6 +573,7 @@ namespace GameContent.Entity.Unit.KapasGen
                 //Verif si l'Unit est de meme team
                 if (unitTarget.TeamNumber == unit.TeamNumber)
                 {
+                    //Buff s'il y a buff, certes :/
                     if (hasBuffDebuffs && buffDebuffDatas.isBuff)
                     {
                         OnBuffDebuffConsideration(unitTarget, buffDebuffDatas.buffDebuffList);
@@ -587,18 +591,18 @@ namespace GameContent.Entity.Unit.KapasGen
                 //Verif du delay de la consideration d'atk
                 var delayAtk = KapaFunctionType == KapaFunctionType.DoubleDiffAttack && !canDoubleKapa || 
                                KapaFunctionType == KapaFunctionType.Dash || 
-                               KapaFunctionType == KapaFunctionType.Grab ? 
-                    ConstList.SecondAtkDelay
+                               KapaFunctionType == KapaFunctionType.Grab
+                    ? ConstList.SecondAtkDelay
                     : 0;
                 
                 //Verif d'un changement de BalanceMult
-                var firstBalance = hasBuffDebuffs && buffDebuffDatas.buffDebuffList.hasBalanceMultBDb && canDoubleKapa ? 
-                    buffDebuffDatas.buffDebuffList.balMultBuffDebuffData
+                var firstBalance = hasBuffDebuffs && buffDebuffDatas.buffDebuffList.hasBalanceMultBDb && canDoubleKapa
+                    ? buffDebuffDatas.buffDebuffList.balMultBuffDebuffData
                     : BalanceMult; 
                 var secondBalance =
                     KapaFunctionType == KapaFunctionType.DoubleDiffAttack && doubleDiffAtkDatas.hasBalanceMultBDb2 &&
-                    !canDoubleKapa ? 
-                        doubleDiffAtkDatas.balMultBuffDebuffData2
+                    !canDoubleKapa
+                        ? doubleDiffAtkDatas.balMultBuffDebuffData2
                         : BalanceMult;
                 
                 //Apply des degats
@@ -674,7 +678,7 @@ namespace GameContent.Entity.Unit.KapasGen
                         break;
                 }
                 
-                //set new UI
+                //set new UI des Stats des Units touchees 
                 unitTarget.StatUI.SetHP(unitTarget);
 
                 //Kill si Unit a plus de vie
@@ -692,7 +696,7 @@ namespace GameContent.Entity.Unit.KapasGen
         /// <returns></returns>
         public virtual List<Vector3Int> OnGenerateButton(HexGridStore hexGrid, IUnit unit) 
         {
-            if (EffectType == EffectType.Hacked)
+            if (EffectType == EffectType.Hack)
             {
                 return unit.GlobalNetwork;
             }
@@ -803,16 +807,23 @@ namespace GameContent.Entity.Unit.KapasGen
         {
             KapaSystem kapaSys = new();
             List<Vector3Int> toSelects = new();
+            
             foreach (var pos in tilesArray)
             {
-                if (!hexGrid.hexTiles.ContainsKey(unit.CurrentHexPos + pos)) continue;
+                var tempPos = EffectType == EffectType.Hack && KapaFunctionType != KapaFunctionType.AOE
+                    ? pos
+                    : unit.CurrentHexPos + pos;
                 
-                var temp = hexGrid.GetTile(unit.CurrentHexPos + pos);
-
-                if (!kapaSys.VerifyKapaRange(temp.HexCoords, unit, hexGrid, MaxPlayerPierce)) continue;
+                if (!hexGrid.hexTiles.ContainsKey(tempPos)) continue;
                 
-                temp.EnableGlowKapa();
-                toSelects.Add(temp.HexCoords);
+                var tempHex = hexGrid.GetTile(tempPos);
+                
+                if (!kapaSys.VerifyKapaRange(tempHex.HexCoords, unit, hexGrid, MaxPlayerPierce) && 
+                    EffectType != EffectType.Hack) 
+                    continue;
+                
+                tempHex.EnableGlowKapa();
+                toSelects.Add(tempHex.HexCoords);
             }
             return toSelects;
         }

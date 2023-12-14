@@ -1,4 +1,3 @@
-using Utilities.CustomHideAttribute;
 using GameContent.Entity.Unit.KapasGen.KapaFunctions.Buff_Debuff;
 
 namespace GameContent.Entity.Unit.KapasGen.KapaFunctions.PerfoAtk

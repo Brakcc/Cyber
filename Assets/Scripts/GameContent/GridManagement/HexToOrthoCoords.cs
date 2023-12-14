@@ -7,8 +7,9 @@ namespace GameContent.GridManagement
     {
         #region conversion Impaire
         /// <summary>
-        /// Convertit de façon bourrine mais assez opti une coordonnée hexa en 3D algébrique en 
+        /// Convertit de façon bourrine mais obligatoire une coordonnée hexa en 3D algébrique en 
         /// 2D algébrique d'un plan orthonormé, pour une tuile en coord orthoN Impaire/Odd
+        /// Appelé /!\ UNE SEULE FOIS /!\ en multithreading en lancement de partie 
         /// </summary>
         /// <param name="u"></param>
         /// <returns></returns>
@@ -63,8 +64,9 @@ namespace GameContent.GridManagement
 
         #region conversion Paire
         /// <summary>
-        /// Convertit de façon bourrine mais assez opti une coordonnée hexa en 3D algébrique en 
+        /// Convertit de façon bourrine mais obligatoire une coordonnée hexa en 3D algébrique en 
         /// 2D algébrique d'un plan orthonormé, pour une tuile en coord orthoN Paire/Even
+        /// Appelé /!\ UNE SEULE FOIS /!\ en multithreading en lancement de partie 
         /// </summary>
         /// <param name="u"></param>
         /// <returns></returns>

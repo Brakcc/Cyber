@@ -10,23 +10,26 @@ namespace GameContent.GridManagement
     public class Hex : MonoBehaviour
     {
         #region fields
-        [SerializeField] HexType type;
-        [SerializeField] SelectGlow glow;
+        
+        [SerializeField] private HexType type;
+        [SerializeField] private SelectGlow glow;
 
-        [SerializeField] NetworkType originNetwork;
+        [SerializeField] private NetworkType originNetwork;
         [ShowIfTrue("type", new[]{(int)HexType.Computer})]
-        [SerializeField] ComputerTarget computerTarget;
+        [SerializeField] private ComputerTarget computerTarget;
 
         //la Data importante
         public Vector3Int HexCoords { get; private set; }
         public bool HasEntityOnIt { get; set; }
-        IUnit _unitRef;
+        private IUnit _unitRef;
         public HexType CurrentType { set => type = value; }
         public NetworkType LocalNetwork { get => originNetwork; set => originNetwork = value; }
         public ComputerTarget ComputerTarget => computerTarget;
+        
         #endregion
 
         #region methodes
+        
         void Awake()
         {
             HexCoords = new HexCoordonnees(gameObject).OffsetCoordonnees;
@@ -53,11 +56,12 @@ namespace GameContent.GridManagement
         public void ClearUnit() => _unitRef = null;
 
         public bool IsObstacle() => type is HexType.Obstacle or HexType.Hole;
-        public bool IsComputer() => type == HexType.Computer;
+        public bool IsComputer() => type is HexType.Computer;
 
         //Init graph a ajouter pour ajouter les textures en sqrt(2) a 45° pour le passage des Units devant ou derrière les props
 
         #region glow mats
+        
         //General Glow pour la range
         public void EnableGlow() => glow.ToggleRangeGlow(true);
         public void DisableGlow() => glow.ToggleRangeGlow(false);
@@ -81,7 +85,9 @@ namespace GameContent.GridManagement
         //Glow pour les dynamic network
         public void EnableGlowDynaNet() => glow.ToggleDynaNetGlow(true);
         public void DisableGlowDynaNet() => glow.ToggleDynaNetGlow(false);
+        
         #endregion
+        
         #endregion
     }
 }

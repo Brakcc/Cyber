@@ -68,7 +68,7 @@ namespace GameContent.Entity.Unit.UnitWorking.UnitList
             base.OnInit();
         }
 
-        void Start()
+        private void Start()
         {
             foreach (var kap in m_Unit.KapasList)
             {

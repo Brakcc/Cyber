@@ -42,7 +42,7 @@ MonoBehaviour:
         turnNumber: 0
       hasBalanceMultBDb: 0
       balMultBuffDebuffData: 1
-  kapaFunctionType: 0
+  kapaFunctionType: 5
   doubleDiffAtkDatas:
     doubleABuffDebuff:
       hasMovePointsBDb: 0

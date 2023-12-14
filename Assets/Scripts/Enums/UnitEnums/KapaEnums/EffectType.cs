@@ -4,6 +4,6 @@
     {
         None,
         SingleDamage,
-        Hacked,
+        Hack
     }
 }
