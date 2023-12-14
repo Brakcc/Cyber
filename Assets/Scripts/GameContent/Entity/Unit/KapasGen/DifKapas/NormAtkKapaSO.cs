@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using CameraManagement;
 using Cinemachine;
-using Enums.UnitEnums.KapaEnums;
 using GameContent.GameManagement;
 using GameContent.GridManagement;
 using Interfaces.Unit;

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Enums.UnitEnums.KapaEnums;
 using GameContent.GameManagement;
 using GameContent.GridManagement;
 using Interfaces.Unit;

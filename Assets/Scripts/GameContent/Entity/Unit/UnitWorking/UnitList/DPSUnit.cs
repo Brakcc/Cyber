@@ -33,7 +33,6 @@ namespace GameContent.Entity.Unit.UnitWorking.UnitList
         public override int CrBDbCounter { get; set; }
         public override int PrecBDbCounter { get; set; }
         public override int DefBDbCounter { get; set; }
-        public override int TempKapaMult { get; set; }
         
         #endregion
         

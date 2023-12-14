@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Enums.UnitEnums.KapaEnums;
 using GameContent.GridManagement;
 using Interfaces.Unit;
 using UnityEngine;
@@ -52,8 +51,6 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
         }
 
         public sealed override void InitPatterns(Vector3Int[] p) { }
-
-        public sealed override List<Vector3Int> OnGenerateButton(HexGridStore hexGrid, IEntity entity) => null;
         public sealed override List<Vector3Int> OnGenerateButton(HexGridStore hexGrid, IUnit unit) => null;
 
         public sealed override List<Vector3Int> OnSelectGraphTiles(IUnit unit, HexGridStore hexGrid, Vector3Int[] tilesArray) => null;

@@ -28,7 +28,6 @@ namespace Interfaces.Unit
         int CrBDbCounter { get; set; }
         int PrecBDbCounter { get; set; }
         int DefBDbCounter { get; set; }
-        int TempKapaMult { get; set; }
         
         #endregion
 

@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using CameraManagement;
-using Enums.UnitEnums.KapaEnums;
 using GameContent.GridManagement;
 using Interfaces.Unit;
 using UnityEngine;

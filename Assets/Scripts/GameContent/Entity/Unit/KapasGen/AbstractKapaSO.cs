@@ -692,21 +692,13 @@ namespace GameContent.Entity.Unit.KapasGen
         /// <returns></returns>
         public virtual List<Vector3Int> OnGenerateButton(HexGridStore hexGrid, IUnit unit) 
         {
+            if (EffectType == EffectType.Hacked)
+            {
+                return unit.GlobalNetwork;
+            }
+            
             var availableButton = new List<Vector3Int>();
             foreach (var pos in hexGrid.GetNeighbourgs(unit.CurrentHexPos))
-            {
-                if (hexGrid.GetTile(pos).IsObstacle())
-                {
-                    continue;
-                }
-                availableButton.Add(pos);
-            }
-            return availableButton;
-        }
-        public virtual List<Vector3Int> OnGenerateButton(HexGridStore hexGrid, IEntity entity) 
-        {
-            var availableButton = new List<Vector3Int>();
-            foreach (var pos in hexGrid.GetNeighbourgs(entity.CurrentHexPos))
             {
                 if (hexGrid.GetTile(pos).IsObstacle())
                 {

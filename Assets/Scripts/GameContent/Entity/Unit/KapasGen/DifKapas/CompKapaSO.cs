@@ -5,7 +5,6 @@ using GameContent.GameManagement;
 using GameContent.GridManagement;
 using Interfaces.Unit;
 using UnityEngine;
-using Utilities.CustomHideAttribute;
 
 namespace GameContent.Entity.Unit.KapasGen.DifKapas
 {
@@ -82,16 +81,6 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
             if (GameLoopManager.gLm.teamInventory.CompPoints[unit.TeamNumber] >= _cKapaSupFields.neededCompPoints) return true;
         
             RefuseKapa(); return false;
-        }
-        public sealed override List<Vector3Int> OnGenerateButton(HexGridStore hexGrid, IUnit unit)
-        {
-            if (EffectType != EffectType.Hacked)
-            {
-                return base.OnGenerateButton(hexGrid, unit);
-            }
-            unit.OnSelectNetworkTiles();
-        
-            return null;
         }
 
         public sealed override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, IUnit unit)

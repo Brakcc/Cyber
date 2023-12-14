@@ -31,7 +31,6 @@ namespace GameContent.Entity.Unit.UnitWorking
         public abstract int CrBDbCounter { get; set; }
         public abstract int PrecBDbCounter { get; set; }
         public abstract int DefBDbCounter { get; set; }
-        public abstract int TempKapaMult { get; set; }
 
         #endregion
         
