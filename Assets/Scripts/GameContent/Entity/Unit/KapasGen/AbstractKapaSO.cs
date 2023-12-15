@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Enums.UnitEnums.KapaEnums;
 using Enums.UnitEnums.UnitEnums;
+using GameContent.Entity.Unit.KapasGen.KapaFunctions.AOEDistAtk;
 using GameContent.GridManagement;
 using Interfaces.Kapas;
 using Interfaces.Unit;
@@ -58,6 +59,8 @@ namespace GameContent.Entity.Unit.KapasGen
         public KapaFunctionType KapaFunctionType => kapaFunctionType;
         [ShowIfTrue("kapaType", new[]{(int)KapaType.NormalAttack, (int)KapaType.Competence, (int)KapaType.Ultimate})]
         [SerializeField] private KapaFunctionType kapaFunctionType;
+
+        [SerializeField] private AOEFreeAreaDatas free;
         
         public abstract KapaUISO KapaUI { get; }
         public abstract GameObject DamageFeedBack { get; }
