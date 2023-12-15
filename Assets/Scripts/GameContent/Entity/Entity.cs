@@ -11,14 +11,17 @@ namespace GameContent.Entity
     public abstract class Entity : MonoBehaviour, IEntity
     {
         #region interface fields
+        
         public abstract Vector3Int CurrentHexPos { get; set; }
         public abstract bool IsNetworkEmiter { get; set; }
         public abstract bool IsOnNetwork { get; protected set; }
         public abstract int NetworkRange { get; set; }
-        public abstract List<Vector3Int> GlobalNetwork { get; set; }
+        public abstract List<Vector3Int> GlobalNetwork { get; protected set; }
+        
         #endregion
 
         #region methodes
+        
         public virtual void OnInit() => CurrentHexPos = HexCoordonnees.GetClosestHex(transform.position);
 
         /// <summary>
@@ -28,7 +31,7 @@ namespace GameContent.Entity
         /// <param name="hexGrid">Ref au HexGridStore.hGS</param>
         /// <param name="range">Range max du reseau de l'Entity</param>
         /// <returns>IEnumerable des tiles d'un Network</returns>
-        protected IEnumerable<Vector3Int> GetRangeList(Vector3Int hexPos, HexGridStore hexGrid, int range) => PathFind.PathKapaVerif(hexGrid, hexPos, range).GetRangePositions();
+        protected static IEnumerable<Vector3Int> GetRangeList(Vector3Int hexPos, HexGridStore hexGrid, int range) => PathFind.PathKapaVerif(hexGrid, hexPos, range).GetRangePositions();
 
         /// <summary>
         /// Verif d'intersection entre diff reseaux
@@ -38,7 +41,7 @@ namespace GameContent.Entity
         /// <param name="range">range du reseau local</param>
         /// <param name="net">list des reseaux de base impactes par le merge, s'il il y a intersection</param>
         /// <returns>bool de validation d'intersection</returns>
-        protected void IsIntersecting(Vector3Int pos, HexGridStore hexGrid, int range, out List<NetworkType> net)
+        protected static void IsIntersecting(Vector3Int pos, HexGridStore hexGrid, int range, out List<NetworkType> net)
         {
             net = IsInterOnNet(pos, hexGrid, range);
         }
@@ -50,7 +53,7 @@ namespace GameContent.Entity
         /// <param name="hexGrid">Ref de HexGridStore.hGS</param>
         /// <param name="range">range max du reseau local</param>
         /// <returns>liste de network impactee par le merge</returns>
-        protected List<NetworkType> IsInterOnNet(Vector3Int pos, HexGridStore hexGrid, int range)
+        private static List<NetworkType> IsInterOnNet(Vector3Int pos, HexGridStore hexGrid, int range)
         {
             List<NetworkType> toMerge = new();
             foreach (var i in GetRangeList(pos, hexGrid, range))
@@ -97,7 +100,7 @@ namespace GameContent.Entity
         /// </summary>
         public virtual void OnGenerateNet(int range)
         {
-            IsIntersecting(CurrentHexPos, HexGridStore.hGs, range, out List<NetworkType> net);
+            IsIntersecting(CurrentHexPos, HexGridStore.hGs, range, out var net);
             GlobalNetwork = OnIntersect(CurrentHexPos, HexGridStore.hGs, range, net);
         }
 
@@ -120,6 +123,7 @@ namespace GameContent.Entity
             }
             IsOnNetwork = false;
         }
+        
         #endregion
     }
 }

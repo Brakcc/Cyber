@@ -60,7 +60,7 @@ namespace GameContent.Entity.Unit.KapasGen
         [ShowIfTrue("kapaType", new[]{(int)KapaType.NormalAttack, (int)KapaType.Competence, (int)KapaType.Ultimate})]
         [SerializeField] private KapaFunctionType kapaFunctionType;
 
-        [SerializeField] private AOEFreeAreaDatas free;
+        [SerializeField] private AoeFreeAreaDatas free;
         
         public abstract KapaUISO KapaUI { get; }
         public abstract GameObject DamageFeedBack { get; }

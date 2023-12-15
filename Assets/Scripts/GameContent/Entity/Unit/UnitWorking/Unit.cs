@@ -50,7 +50,7 @@ namespace GameContent.Entity.Unit.UnitWorking
         public override bool IsNetworkEmiter { get; set; }
         public override bool IsOnNetwork { get; protected set; }
         public override int NetworkRange { get; set; }
-        public override List<Vector3Int> GlobalNetwork { get; set; } = new();
+        public override List<Vector3Int> GlobalNetwork { get; protected set; } = new();
         
         #endregion
         

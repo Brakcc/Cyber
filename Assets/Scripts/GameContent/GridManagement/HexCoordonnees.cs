@@ -23,11 +23,11 @@ namespace GameContent.GridManagement
         #region methodes
         public static Vector3Int GetClosestHex(Vector3 worldPos)
         {
-            float temp = worldPos.x / 0.05f / 19;
-            int x = Mathf.RoundToInt(temp);
-            int y = worldPos.y >= 0 ? Mathf.CeilToInt(worldPos.y) : Mathf.FloorToInt(worldPos.y);
+            var temp = worldPos.x / 0.05f / 19;
+            var x = Mathf.RoundToInt(temp);
+            var y = worldPos.y >= 0 ? Mathf.CeilToInt(worldPos.y) : Mathf.FloorToInt(worldPos.y);
             worldPos.z = 0;
-            int z = (int)worldPos.z;
+            var z = (int)worldPos.z;
             return new Vector3Int(x, y, z);
         }
         #endregion

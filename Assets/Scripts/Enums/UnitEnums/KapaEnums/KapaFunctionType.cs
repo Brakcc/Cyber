@@ -8,6 +8,8 @@
         Dash,
         Grab,
         AOE,
+        ThrowFreeArea,
+        ThrowLImit,
         DOT
     }
 }

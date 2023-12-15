@@ -88,7 +88,7 @@ namespace GameContent.GridManagement
         /// Initialise la grille pour detecter les pos des joueurs en début de partie pour rendre
         /// impossible les dep sur ces tiles
         /// </summary>
-        void EntityInit()
+        private void EntityInit()
         {
             foreach (var unit in GameGenManager.gGm.TeamLists.heroPlayer0)
             {
