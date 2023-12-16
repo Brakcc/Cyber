@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Enums.UnitEnums.KapaEnums;
 using Enums.UnitEnums.UnitEnums;
-using GameContent.Entity.Unit.KapasGen.KapaFunctions.AOEDistAtk;
 using GameContent.GridManagement;
 using Interfaces.Kapas;
 using Interfaces.Unit;
@@ -14,6 +13,7 @@ using GameContent.Entity.Unit.KapasGen.KapaFunctions.Dash;
 using GameContent.Entity.Unit.KapasGen.KapaFunctions.DoubleDiffAtk;
 using GameContent.Entity.Unit.KapasGen.KapaFunctions.Grab_Push;
 using GameContent.Entity.Unit.KapasGen.KapaFunctions.PerfoAtk;
+using GameContent.Entity.Unit.KapasGen.KapaFunctions.AOEDistAtk;
 using Random = UnityEngine.Random;
 
 namespace GameContent.Entity.Unit.KapasGen
