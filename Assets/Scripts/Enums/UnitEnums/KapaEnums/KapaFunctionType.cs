@@ -9,7 +9,7 @@
         Grab,
         AOE,
         ThrowFreeArea,
-        ThrowLImit,
+        ThrowLimit,
         DOT
     }
 }

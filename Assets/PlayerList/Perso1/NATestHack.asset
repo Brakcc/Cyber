@@ -42,7 +42,7 @@ MonoBehaviour:
         turnNumber: 0
       hasBalanceMultBDb: 0
       balMultBuffDebuffData: 1
-  kapaFunctionType: 1
+  kapaFunctionType: 7
   doubleDiffAtkDatas:
     doubleABuffDebuff:
       hasMovePointsBDb: 0
@@ -88,12 +88,52 @@ MonoBehaviour:
         turnNumber: 0
       hasBalanceMultBDb: 0
       balMultBuffDebuffData: 1
+  freeThrowAreaDatas:
+    range: 5
+    centerDebuffList:
+      hasMovePointsBDb: 1
+      mPBuffDebuffData:
+        value: -6
+        turnNumber: 2
+      hasDefenseBDb: 0
+      defBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasCritRateBDb: 0
+      cRBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasPrecisionBDb: 0
+      precBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasBalanceMultBDb: 0
+      balMultBuffDebuffData: 1
+  limitedThrowAreaDatas:
+    centerDebuffList:
+      hasMovePointsBDb: 1
+      mPBuffDebuffData:
+        value: -5
+        turnNumber: 1
+      hasDefenseBDb: 0
+      defBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasCritRateBDb: 0
+      cRBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasPrecisionBDb: 0
+      precBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasBalanceMultBDb: 0
+      balMultBuffDebuffData: 1
   _kapaUI: {fileID: 0}
   _damageFeedBack: {fileID: 8948626333531248720, guid: 8f927771530abf045b81020ae94b0299, type: 3}
   _pattern:
   - {x: 0, y: -1, z: 0}
   - {x: 0, y: -2, z: 0}
-  - {x: 0, y: -3, z: 0}
   _nAKapaSupFields:
     compPointsAdded: 0
     ultPointsAdded: 0

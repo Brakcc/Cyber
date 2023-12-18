@@ -14,6 +14,7 @@ using GameContent.Entity.Unit.KapasGen.KapaFunctions.DoubleDiffAtk;
 using GameContent.Entity.Unit.KapasGen.KapaFunctions.Grab_Push;
 using GameContent.Entity.Unit.KapasGen.KapaFunctions.PerfoAtk;
 using GameContent.Entity.Unit.KapasGen.KapaFunctions.AOEDistAtk;
+using GameContent.GridManagement.HexPathFind;
 using Random = UnityEngine.Random;
 
 namespace GameContent.Entity.Unit.KapasGen
@@ -59,8 +60,6 @@ namespace GameContent.Entity.Unit.KapasGen
         public KapaFunctionType KapaFunctionType => kapaFunctionType;
         [ShowIfTrue("kapaType", new[]{(int)KapaType.NormalAttack, (int)KapaType.Competence, (int)KapaType.Ultimate})]
         [SerializeField] private KapaFunctionType kapaFunctionType;
-
-        [SerializeField] private AoeFreeAreaDatas free;
         
         public abstract KapaUISO KapaUI { get; }
         public abstract GameObject DamageFeedBack { get; }
@@ -79,6 +78,20 @@ namespace GameContent.Entity.Unit.KapasGen
 
         [ShowIfTrue("kapaFunctionType", new[] { (int)KapaFunctionType.FirstHitEffect })]
         [SerializeField] private PerfoHitEffects firstHitEffectsData;
+
+        #endregion
+
+        #region AOE Free throw
+
+        [ShowIfTrue("kapaFunctionType", new[] {(int)KapaFunctionType.ThrowFreeArea})]
+        [SerializeField] private AoeFreeAreaDatas freeThrowAreaDatas;
+
+        #endregion
+        
+        #region AOE Free throw
+
+        [ShowIfTrue("kapaFunctionType", new[] {(int)KapaFunctionType.ThrowLimit})]
+        [SerializeField] private AoeLimitedThrowDatas limitedThrowAreaDatas;
 
         #endregion
         
@@ -460,7 +473,7 @@ namespace GameContent.Entity.Unit.KapasGen
                 }
                 
                 //Buff Debuff en 1st Kapa excecution
-                if (hasBuffDebuffs && canDoubleKapa)
+                if (hasBuffDebuffs && canDoubleKapa && !canFirstEffect)
                 {
                     OnBuffDebuffConsideration(unitTarget, buffDebuffDatas.buffDebuffList);
                 }
@@ -496,7 +509,13 @@ namespace GameContent.Entity.Unit.KapasGen
                         canDoubleKapa = false;
                         goto ChangePatterns;
                         
-                    case KapaFunctionType.AOE:
+                    case KapaFunctionType.ThrowFreeArea:
+                        OnBuffDebuffConsideration(unitTarget, freeThrowAreaDatas.centerDebuffList);
+                        canFirstEffect = false;
+                        break;
+
+                    case KapaFunctionType.ThrowLimit:
+                        OnBuffDebuffConsideration(unitTarget, limitedThrowAreaDatas.centerDebuffList);
                         break;
                         
                     case KapaFunctionType.DOT:
@@ -508,8 +527,7 @@ namespace GameContent.Entity.Unit.KapasGen
                         break;
                     
                     case KapaFunctionType.Default:
-                        break;
-                    
+                    case KapaFunctionType.AOE:
                     default:
                         Debug.Log("default");
                         break;
@@ -662,9 +680,15 @@ namespace GameContent.Entity.Unit.KapasGen
                         canDoubleKapa = false;
                         goto ChangePatterns;
 
-                    case KapaFunctionType.AOE:
+                    case KapaFunctionType.ThrowFreeArea:
+                        OnBuffDebuffConsideration(unitTarget, freeThrowAreaDatas.centerDebuffList);
+                        canFirstEffect = false;
                         break;
 
+                    case KapaFunctionType.ThrowLimit:
+                        OnBuffDebuffConsideration(unitTarget, limitedThrowAreaDatas.centerDebuffList);
+                        break;
+                    
                     case KapaFunctionType.DOT:
                         break;
 
@@ -674,8 +698,7 @@ namespace GameContent.Entity.Unit.KapasGen
                         break;
 
                     case KapaFunctionType.Default:
-                        break;
-                    
+                    case KapaFunctionType.AOE:
                     default:
                         Debug.Log("default");
                         break;
@@ -703,14 +726,38 @@ namespace GameContent.Entity.Unit.KapasGen
             {
                 return unit.GlobalNetwork;
             }
+
+            if (KapaFunctionType == KapaFunctionType.ThrowFreeArea)
+            {
+                return AOEFreeAreaKapa.GetThrowRange(unit.CurrentHexPos, hexGrid, freeThrowAreaDatas.range);
+            }
             
             var availableButton = new List<Vector3Int>();
+            
+            if (KapaFunctionType == KapaFunctionType.ThrowLimit)
+            {
+                var tempBut =  Direction.IsPariryEven(unit.CurrentHexPos.x)
+                    ? AoeLimitedThrowKapa.ConcatEvenPattern(unit.CurrentHexPos, this)
+                    : AoeLimitedThrowKapa.ConcatOddPattern(unit.CurrentHexPos, this);
+
+                foreach (var tempTile in tempBut)
+                {
+                    var hex = hexGrid.GetTile(tempTile);
+                    
+                    if(hex == null)
+                        continue;
+                    if(hex.IsObstacle())
+                        continue;
+
+                    availableButton.Add(tempTile);
+                }
+            }
+            
             foreach (var pos in hexGrid.GetNeighbourgs(unit.CurrentHexPos))
             {
-                if (hexGrid.GetTile(pos).IsObstacle())
-                {
+                if (hexGrid.GetTile(pos).IsObstacle()) 
                     continue;
-                }
+                
                 availableButton.Add(pos);
             }
             return availableButton;
@@ -810,10 +857,18 @@ namespace GameContent.Entity.Unit.KapasGen
         {
             KapaSystem kapaSys = new();
             List<Vector3Int> toSelects = new();
+            List<Vector3Int> initList = new(tilesArray);
             
-            foreach (var pos in tilesArray)
+            if (KapaFunctionType is KapaFunctionType.ThrowFreeArea or KapaFunctionType.ThrowLimit)
+            {
+                initList.AddRange(AOEFreeAreaKapa.GetAtkArea(tilesArray[0], hexGrid));
+            }
+            
+            foreach (var pos in initList)
             {
                 var tempPos = EffectType == EffectType.Hack && KapaFunctionType != KapaFunctionType.AOE
+                    || KapaFunctionType == KapaFunctionType.ThrowFreeArea
+                    || KapaFunctionType == KapaFunctionType.ThrowLimit
                     ? pos
                     : unit.CurrentHexPos + pos;
                 

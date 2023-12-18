@@ -3,9 +3,8 @@ using GameContent.Entity.Unit.KapasGen.KapaFunctions.Buff_Debuff;
 namespace GameContent.Entity.Unit.KapasGen.KapaFunctions.AOEDistAtk
 {
     [System.Serializable]
-    public class AoeFreeAreaDatas
+    public class AoeLimitedThrowDatas
     {
-        public int range;
         public BuffDebuffList centerDebuffList;
     }
 }

@@ -37,7 +37,7 @@ namespace GameContent.Entity.Unit.UnitWorking
 
         #region Instance et Awake
 
-        void Awake()
+        private void Awake()
         {
             _moveSys = new();
             SelectedUnit = null;
@@ -159,8 +159,8 @@ namespace GameContent.Entity.Unit.UnitWorking
         /// <param name="unitRef"></param>
         private void HandleKapaDirSelect(Vector3Int buttonPos, IUnit unitRef)
         {
-            if (SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].EffectType == EffectType.Hack &&
-                SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].KapaFunctionType == KapaFunctionType.AOE)
+            if (SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].EffectType == EffectType.Hack 
+                && SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].KapaFunctionType == KapaFunctionType.AOE)
             {
                 return;
             }
@@ -172,15 +172,13 @@ namespace GameContent.Entity.Unit.UnitWorking
             if (IsKapaSelected  && CurrentKapaPatternPos != null)
             {
                 if (IsTargetSelected && CurrentTargetSelected == buttonPos &&
-                    SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].EffectType == EffectType.Hack &&
-                    SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].KapaFunctionType != KapaFunctionType.AOE)
+                    (SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].EffectType == EffectType.Hack 
+                    && SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].KapaFunctionType != KapaFunctionType.AOE
+                    || SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].KapaFunctionType == KapaFunctionType.ThrowFreeArea
+                    || SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].KapaFunctionType == KapaFunctionType.ThrowLimit))
                 {
                     if (OnCheckKapa(SelectedUnit, (int)CurrentTypeKapaSelected))
                     {
-                        foreach (var i in CurrentKapaPatternPos)
-                        {
-                            Debug.Log(i);
-                        }
                         OnExecuteKapa(SelectedUnit, (int)CurrentTypeKapaSelected, CurrentKapaPatternPos);
                         FullResetKapaAndUnit();
                         return;
@@ -206,7 +204,9 @@ namespace GameContent.Entity.Unit.UnitWorking
             
             //selection de position unique dans une range de Map
             if (unitRef.UnitData.KapasList[(int)CurrentTypeKapaSelected].EffectType == EffectType.Hack && 
-                SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].KapaFunctionType != KapaFunctionType.AOE)
+                SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].KapaFunctionType != KapaFunctionType.AOE
+                || SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].KapaFunctionType == KapaFunctionType.ThrowFreeArea
+                || SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].KapaFunctionType == KapaFunctionType.ThrowLimit)
             {
                 CurrentKapaPatternPos = HandleKapaSelectOnRange(buttonPos, unitRef,
                     unitRef.UnitData.KapasList[(int)CurrentTypeKapaSelected]);
@@ -262,6 +262,7 @@ namespace GameContent.Entity.Unit.UnitWorking
 
         private static List<Vector3Int> HandleKapaSelectOnRange(Vector3Int pos, IUnit tempUnit, IKapa tempKapa)
             => tempKapa.OnSelectGraphTiles(tempUnit, HexGridStore.hGs, new[] { pos });
+        
         
         #endregion
 
@@ -355,7 +356,8 @@ namespace GameContent.Entity.Unit.UnitWorking
 
             foreach (var i in butPos)
             {
-                var j = HexGridStore.hGs.GetTile(i); j.EnableGlowButton();
+                var j = HexGridStore.hGs.GetTile(i); 
+                j.EnableGlowButton();
             }
         }
         /// <summary>
@@ -368,7 +370,8 @@ namespace GameContent.Entity.Unit.UnitWorking
         
             foreach (var i in butPos)
             {
-                var j = HexGridStore.hGs.GetTile(i); j.DisableGlowButton();
+                var j = HexGridStore.hGs.GetTile(i); 
+                j.DisableGlowButton();
             }
         }
         
