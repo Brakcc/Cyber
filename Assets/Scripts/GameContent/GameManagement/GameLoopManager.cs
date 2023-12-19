@@ -114,8 +114,19 @@ namespace GameContent.GameManagement
             foreach (var player in teamInventory.playerList[i])
             {
                 var u = player.GetComponent<IUnit>();
-                if (u.IsDead) { teamInits.countPlayer[i]--;  continue; }
+                if (u.IsDead)
+                {
+                    u.OnCheckRez(u, out var rezed);
+                    if (rezed)
+                    {
+                        u.CanPlay = true;
+                        continue;
+                    }
+                    teamInits.countPlayer[i]--; 
+                    continue;
+                }
         
+                u.OnCheckBuffDebuffCounter(u);
                 u.CanPlay = true;
             }
         

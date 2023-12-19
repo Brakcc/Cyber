@@ -31,9 +31,11 @@ namespace GameContent.Entity.Unit.UnitWorking
         public abstract int CrBDbCounter { get; set; }
         public abstract int PrecBDbCounter { get; set; }
         public abstract int DefBDbCounter { get; set; }
+        public abstract int DeathCounter { get; set; }
 
         #endregion
         
+        public abstract Vector3Int OriginPos { get; protected set; }
         public abstract int TeamNumber { get; set; }
         public abstract bool IsOnTurret { get; protected set; }
         public abstract int UltPoints { get; set; }
@@ -57,10 +59,12 @@ namespace GameContent.Entity.Unit.UnitWorking
         #endregion
 
         #region methodes to herit
+        
         public override void OnInit()
         {
-            base.OnInit(); 
-            
+            base.OnInit();
+
+            OriginPos = CurrentHexPos;
             CanPlay = false;
             IsDead = false;
             IsPersoLocked = false;
@@ -104,25 +108,29 @@ namespace GameContent.Entity.Unit.UnitWorking
         public abstract void OnKapa();
         public virtual void Deselect()
         {
-            if (UnitData.Type != UnitType.Hacker) return;
-            if (GlobalNetwork == null) return;
+            
         }
         public virtual void OnDie()
         {
             CanPlay = false;
             IsDead = true;
+            DeathCounter = 3;
             GetComponentInChildren<SpriteRenderer>().color = Color.red;
         }
         public virtual void OnRez()
         {
             CanPlay = false;
             IsDead = false;
-            GetComponent<SpriteRenderer>().color = Color.magenta;
+            
+            ChangeUnitHexPos(this, HexGridStore.hGs);
+            PositionCharacterOnTile(HexGridStore.hGs.GetTile(OriginPos).transform.position);
         }
+        
         #endregion
     
         #region cache
-        IEnumerator FollowPath(List<Vector3> path, float speed)
+
+        private IEnumerator FollowPath(List<Vector3> path, float speed)
         {
             CanKapa = false;
             float pas = speed * Time.fixedDeltaTime / 10;
@@ -150,8 +158,8 @@ namespace GameContent.Entity.Unit.UnitWorking
             }
             OnGenerateNet(NetworkRange);
         }
-        
-        IEnumerator DashGrabPath(Vector3 path, float speed)
+
+        private IEnumerator DashGrabPath(Vector3 path, float speed)
         {
             CanKapa = false;
             var pas = speed * Time.fixedDeltaTime / 10;
@@ -172,47 +180,72 @@ namespace GameContent.Entity.Unit.UnitWorking
             OnGenerateNet(NetworkRange);
         }
 
-        public void OnCheckBuffDebuffCounter()
+        public void OnCheckBuffDebuffCounter(IUnit unit)
         {
-            if (MpBDbCounter > 0)
+            if (unit.MpBDbCounter > 0)
             {
-                MpBDbCounter--;
-                if (MpBDbCounter == 0)
+                unit.MpBDbCounter--;
+                if (unit.MpBDbCounter == 0)
                 {
-                    CurrentMp = UnitData.MovePoints;
-                    StatUI.SetMP(this);
+                    unit.CurrentMp = unit.UnitData.MovePoints;
+                    unit.StatUI.SetMP(unit);
                 }
             }
-            if (CrBDbCounter > 0)
+            if (unit.CrBDbCounter > 0)
             {
-                CrBDbCounter--;
-                if (CrBDbCounter == 0)
+                unit.CrBDbCounter--;
+                if (unit.CrBDbCounter == 0)
                 {
-                    CurrentCritRate = UnitData.CritRate;
-                    StatUI.SetCritRate(this);
+                    unit.CurrentCritRate = unit.UnitData.CritRate;
+                    unit.StatUI.SetCritRate(unit);
                 }
             }
-            if (PrecBDbCounter > 0)
+            if (unit.PrecBDbCounter > 0)
             {
-                PrecBDbCounter--;
-                if (PrecBDbCounter == 0)
+                unit.PrecBDbCounter--;
+                if (unit.PrecBDbCounter == 0)
                 {
-                    CurrentPrecision = 100;
-                    StatUI.SetPrec(this);
+                    unit.CurrentPrecision = 100;
+                    unit.StatUI.SetPrec(unit);
                 }
             }
-            if (DefBDbCounter > 0)
+            if (unit.DefBDbCounter > 0)
             {
-                DefBDbCounter--;
-                if (DefBDbCounter == 0)
+                unit.DefBDbCounter--;
+                if (unit.DefBDbCounter == 0)
                 {
-                    CurrentDef = UnitData.Defense;
-                    StatUI.SetDef(this);
+                    unit.CurrentDef = unit.UnitData.Defense;
+                    unit.StatUI.SetDef(unit);
                 }
             }
         }
+
+        public void OnCheckRez(IUnit unit, out bool rezed)
+        {
+            rezed = false;
+            if (!unit.IsDead) return;
+            
+            unit.DeathCounter--;
+            if (unit.DeathCounter != 0) return;
+            
+            rezed = true;
+            OnRez();
+        }
+
+        private void PositionCharacterOnTile(Vector3 pos) =>
+            transform.position = new Vector3(pos.x, pos.y, pos.z - ConstList.OffsetZPos);
         
-        void PositionCharacterOnTile(Vector3 pos) => transform.position = new Vector3(pos.x, pos.y, pos.z - 0.1f);
+        private static void ChangeUnitHexPos(IUnit uT, HexGridStore hexGrid)
+        {
+            var tT = hexGrid.GetTile(uT.OriginPos);
+            
+            hexGrid.GetTile(uT.CurrentHexPos).HasEntityOnIt = false;
+            hexGrid.GetTile(uT.CurrentHexPos).ClearUnit();
+            tT.HasEntityOnIt = true;
+            tT.SetUnit(uT);
+            uT.CurrentHexPos = tT.HexCoords;
+        }
+        
         #endregion
     }
 }

@@ -33,9 +33,11 @@ namespace GameContent.Entity.Unit.UnitWorking.UnitList
         public override int CrBDbCounter { get; set; }
         public override int PrecBDbCounter { get; set; }
         public override int DefBDbCounter { get; set; }
+        public override int DeathCounter { get; set; }
         
         #endregion
-        
+
+        public override Vector3Int OriginPos { get; protected set; }
         public override int TeamNumber { get; set; }
         public override bool IsOnTurret { get; protected set; }
         public override int UltPoints { get; set; }

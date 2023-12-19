@@ -608,7 +608,6 @@ namespace GameContent.Entity.Unit.UnitWorking
             CurrentDirSelected = Vector3Int.zero;
             CurrentTargetSelected = Vector3Int.zero;
             //Unit Reset
-            SelectedUnit.OnCheckBuffDebuffCounter();
             SelectedUnit.Deselect();
             SelectedUnit.IsPersoLocked = false;
             SelectedUnit.CanPlay = false;

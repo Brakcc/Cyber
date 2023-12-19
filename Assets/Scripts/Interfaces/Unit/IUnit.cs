@@ -9,7 +9,7 @@ namespace Interfaces.Unit
     {
         #region accessors
         
-        AbstractUnitSO UnitData { get; set; }
+        AbstractUnitSO UnitData { get; }
         PlayerStatsUI StatUI { get; }
 
         #region current stats
@@ -28,9 +28,11 @@ namespace Interfaces.Unit
         int CrBDbCounter { get; set; }
         int PrecBDbCounter { get; set; }
         int DefBDbCounter { get; set; }
+        int DeathCounter { get; set; }
         
         #endregion
 
+        Vector3Int OriginPos { get; }
         int TeamNumber { get; set; }
         bool IsOnTurret { get; }
         int UltPoints { get; set; }
@@ -46,11 +48,12 @@ namespace Interfaces.Unit
         void Select();
         void MoveOnPath(List<Vector3> currentPath);
         void MoveInFrontOf(Vector3 currentPath);
-        void OnCheckBuffDebuffCounter();
+        void OnCheckBuffDebuffCounter(IUnit unit);
         void OnKapa();
         void Deselect();
         void OnDie();
-        void OnRez();
+        void OnCheckRez(IUnit unit, out bool rezed);
+
         #endregion
     }
 }

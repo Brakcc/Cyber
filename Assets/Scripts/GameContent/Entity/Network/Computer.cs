@@ -30,9 +30,7 @@ namespace GameContent.Entity.Network
         #endregion
 
         #region  methodes
-
-        //void Awake() => OnInit();
-
+        
         public void HandleComputerHack() => initBoard.HandleDeAct(gameObject, false);
 
         #region Entity overrides
@@ -52,7 +50,7 @@ namespace GameContent.Entity.Network
         public sealed override void OnGenerateNet(int range) { }
 
         #endregion
-        #endregion
         
+        #endregion
     }
 }
