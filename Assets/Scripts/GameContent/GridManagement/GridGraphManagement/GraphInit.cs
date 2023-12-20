@@ -13,15 +13,18 @@ namespace GameContent.GridManagement.GridGraphManagement
         #endregion
 
         #region cached methodes
+        
         public void SetRenderer(GameObject parent)
         {
-            SpriteRenderer rend = parent.GetComponentInChildren<SpriteRenderer>();
+            var rend = parent.GetComponentInChildren<SpriteRenderer>();
 
             rend.sortingOrder = orderInLayer;
 
-            rend.transform.localScale = new Vector3(1, Mathf.Sqrt(2), 1);
-            rend.transform.localEulerAngles = new(-45, 0);
-            rend.transform.localPosition = new Vector3(offset.x, offset.y, -rend.size.y / 2 + 0.2f);
+            var transRend = rend.transform;
+            
+            transRend.localScale = new Vector3(1, Mathf.Sqrt(2), 1);
+            transRend.localEulerAngles = new Vector3(-45, 0);
+            transRend.localPosition = new Vector3(offset.x, offset.y, -rend.size.y / 2 + 0.2f);
         }
 
         public void HandleDeAct(GameObject parent, bool actAnim)
@@ -30,6 +33,7 @@ namespace GameContent.GridManagement.GridGraphManagement
             parent.GetComponentInChildren<SpriteRenderer>().material = newMat;
             parent.GetComponentInChildren<SpriteRenderer>().sprite = switchSprite;
         }
+        
         #endregion
     }
 

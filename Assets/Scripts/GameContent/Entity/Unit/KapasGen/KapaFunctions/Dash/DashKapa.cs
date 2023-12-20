@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Enums.UnitEnums.KapaEnums;
 using GameContent.GridManagement;
 using Interfaces.Unit;
 
@@ -23,20 +24,20 @@ namespace GameContent.Entity.Unit.KapasGen.KapaFunctions.Dash
         private static void ChangeUnitHexPos(IUnit u, Hex tT)
         {
             HexGridStore.hGs.GetTile(u.CurrentHexPos).HasEntityOnIt = false;
-            HexGridStore.hGs.GetTile(u.CurrentHexPos).ClearUnit();
+            HexGridStore.hGs.GetTile(u.CurrentHexPos).ClearEntity();
             tT.HasEntityOnIt = true;
-            tT.SetUnit(u);
+            tT.SetEntity(u);
             u.CurrentHexPos = tT.HexCoords;
         }
         
         private static Hex OnGetTargetTile(HexGridStore hexG, float x, float y, IEntity u, IEntity t) => (x, y) switch
         {
-            ( 0, < -ConstList.DashOffSetValue) => hexG.GetNorthTile(t.CurrentHexPos),
-            ( < -ConstList.DashOffSetValue, < -ConstList.DashOffSetValue) => hexG.GetEastNorthTile(t.CurrentHexPos),
-            ( < -ConstList.DashOffSetValue, > ConstList.DashOffSetValue) => hexG.GetEastSouthTile(t.CurrentHexPos),
-            ( 0, > ConstList.DashOffSetValue) => hexG.GetSouthTile(t.CurrentHexPos),
-            ( > ConstList.DashOffSetValue, > ConstList.DashOffSetValue) => hexG.GetWestSouthTile(t.CurrentHexPos),
-            ( > ConstList.DashOffSetValue, < -ConstList.DashOffSetValue) => hexG.GetWestNorthTile(t.CurrentHexPos),
+            ( 0, < -ConstList.DashOffSetValue) => hexG.GetDirectionTile(t.CurrentHexPos, KapaDir.North),
+            ( < -ConstList.DashOffSetValue, < -ConstList.DashOffSetValue) => hexG.GetDirectionTile(t.CurrentHexPos, KapaDir.NorthEast),
+            ( < -ConstList.DashOffSetValue, > ConstList.DashOffSetValue) => hexG.GetDirectionTile(t.CurrentHexPos, KapaDir.SouthEast),
+            ( 0, > ConstList.DashOffSetValue) => hexG.GetDirectionTile(t.CurrentHexPos, KapaDir.South),
+            ( > ConstList.DashOffSetValue, > ConstList.DashOffSetValue) => hexG.GetDirectionTile(t.CurrentHexPos, KapaDir.SouthWest),
+            ( > ConstList.DashOffSetValue, < -ConstList.DashOffSetValue) => hexG.GetDirectionTile(t.CurrentHexPos, KapaDir.NorthWest),
             _ => hexG.GetTile(u.CurrentHexPos)
         };
     }

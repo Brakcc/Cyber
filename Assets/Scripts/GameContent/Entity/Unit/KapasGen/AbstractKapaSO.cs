@@ -404,7 +404,7 @@ namespace GameContent.Entity.Unit.KapasGen
                 //verif s'il y a joueur uniquement sur les case du pattern
                 var hex = hexGrid.GetTile(pos);
                 if (!hex.HasEntityOnIt) continue;
-                var unitTarget = hex.GetUnit();
+                var unitTarget = hex.GetEntity<IUnit>();
 
                 //Verif de si l'Entity est une Unit
                 if (unitTarget == null)
@@ -576,7 +576,7 @@ namespace GameContent.Entity.Unit.KapasGen
                 //verif s'il y a joueur uniquement sur les case du pattern
                 var hex = hexGrid.GetTile(pos);
                 if (!hex.HasEntityOnIt) continue; 
-                var unitTarget = hex.GetUnit();
+                var unitTarget = hex.GetEntity<IUnit>();
 
                 //Verif de si l'Entity est une Unit
                 if (unitTarget == null)

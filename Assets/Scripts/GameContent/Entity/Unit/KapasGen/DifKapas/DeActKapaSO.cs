@@ -3,6 +3,7 @@ using GameContent.GameManagement;
 using GameContent.GridManagement;
 using Interfaces.Unit;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace GameContent.Entity.Unit.KapasGen.DifKapas
 {
@@ -11,8 +12,8 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
     {
         #region inherited accessors
         
-        public override KapaUISO KapaUI => _kapaUI;
-        [SerializeField] KapaUISO _kapaUI;
+        public override KapaUISO KapaUI => kapaUI;
+        [SerializeField] private KapaUISO kapaUI;
         public override GameObject DamageFeedBack => null;
         public override Vector3Int[] Patterns => null;
         
@@ -48,14 +49,14 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
         public sealed override bool OnCheckKapaPoints(IUnit unit)
         {
             return HexGridStore.hGs.GetTile(unit.CurrentHexPos).IsComputer() &&
-                   !HexGridStore.hGs.computerList[(int)HexGridStore.hGs.GetTile(unit.CurrentHexPos).ComputerTarget]
+                   !HexGridStore.hGs.relayList[(int)HexGridStore.hGs.GetTile(unit.CurrentHexPos).RelayTarget]
                        .GotHacked && unit.TeamNumber == 1;
         }
 
         public sealed override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, IUnit unit)
         {
-            GameLoopManager.gLm.HandleComputerValueChange();
-            hexGrid.HandlePCHacked(hexGrid.GetTile(unit.CurrentHexPos).ComputerTarget);
+            GameLoopManager.HandleComputerValueChange();
+            hexGrid.HandlePCHacked(hexGrid.GetTile(unit.CurrentHexPos).RelayTarget);
         }
     
         public sealed override void InitPatterns(Vector3Int[] p) { }

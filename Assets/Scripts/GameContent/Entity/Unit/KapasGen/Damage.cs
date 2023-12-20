@@ -16,7 +16,7 @@ namespace GameContent.Entity.Unit.KapasGen
         /// <param name="defValue"></param>
         /// <returns></returns>
         public static float NormalDamage(int atkValue, int defValue) =>
-            10 + (atkValue / (0.5f * defValue + 10)) * 15 - defValue / 5;
+            10 + atkValue / (0.5f * defValue + 10) * 15 - defValue / 5;
 
         /// <summary>
         /// /!\ Critical /!\ Damage done by DPS and Tank. Consider the def value of the attacked Unit

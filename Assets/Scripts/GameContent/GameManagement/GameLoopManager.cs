@@ -15,7 +15,7 @@ namespace GameContent.GameManagement
 
         public TeamInits teamInits;
         public TeamInventory teamInventory;
-        public Objectifs objectifs;
+        //public Objectifs objectifs;
         public UIFields uiFields;
         
         #region Datas Classes
@@ -79,7 +79,7 @@ namespace GameContent.GameManagement
             teamInits.teamPlaying = teamInits.firstTeamPlaying;
             foreach (var i in uiFields.cPui) { i.text = 0.ToString(); i.color = Color.red; }
             foreach (var i in uiFields.tNbUI) { i.text = 2.ToString(); i.color = Color.green; }
-            foreach (var i in uiFields.computerUI) { i.color = Color.red; }
+            //foreach (var i in uiFields.computerUI) { i.color = Color.red; }
         }
 
         #region During Game Logic
@@ -155,15 +155,9 @@ namespace GameContent.GameManagement
             }
         }
         
-        public void HandleComputerValueChange()
+        public static void HandleComputerValueChange()
         {
-            objectifs.ComputerNumber++;
-            uiFields.computerUI[objectifs.ComputerNumber - 1].color = Color.green;
-            //ajouter la fin du jeu d'urgence /!\
-            if (objectifs.ComputerNumber == objectifs.maxObjectif)
-            {
-                Time.timeScale = 0;
-            }
+            //changer la logique de Hack des relays
         }
 
         #endregion

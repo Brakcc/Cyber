@@ -240,9 +240,9 @@ namespace GameContent.Entity.Unit.UnitWorking
             var tT = hexGrid.GetTile(uT.OriginPos);
             
             hexGrid.GetTile(uT.CurrentHexPos).HasEntityOnIt = false;
-            hexGrid.GetTile(uT.CurrentHexPos).ClearUnit();
+            hexGrid.GetTile(uT.CurrentHexPos).ClearEntity();
             tT.HasEntityOnIt = true;
-            tT.SetUnit(uT);
+            tT.SetEntity(uT);
             uT.CurrentHexPos = tT.HexCoords;
         }
         

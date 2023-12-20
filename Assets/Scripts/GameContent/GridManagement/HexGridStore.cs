@@ -1,10 +1,13 @@
+using System;
 using System.Collections.Generic;
 using Enums.GridEnums;
+using Enums.UnitEnums.KapaEnums;
 using GameContent.Entity.Network;
 using GameContent.GameManagement;
 using GameContent.GridManagement.HexPathFind;
 using Interfaces.Unit;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace GameContent.GridManagement
 {
@@ -13,15 +16,18 @@ namespace GameContent.GridManagement
         #region fields
         
         #region Grid Data
+        
         [SerializeField] private Hex[] mapData; 
         public readonly Dictionary<Vector3Int, Hex> hexTiles = new();
         private readonly Dictionary<Vector3Int, List<Vector3Int>> _neighbourgs = new();
+        
         #endregion
 
         #region ComputerList
 
-        private List<Vector3Int>[] ComputerToHack { get; } = new List<Vector3Int>[3];
-        public Computer[] computerList;
+        public Relay[] relayList;
+        [SerializeField] private Computer[] computerList;
+        
         #endregion
 
         #region Network
@@ -35,6 +41,7 @@ namespace GameContent.GridManagement
         #endregion
 
         public static HexGridStore hGs;
+        
         #endregion
 
         #region methodes
@@ -49,26 +56,16 @@ namespace GameContent.GridManagement
             {
                 _networkList[i] = new();
             }
-            //Computer init
-            for (int i = 0; i < ComputerToHack.Length; i++)
-            {
-                ComputerToHack[i] = new();
-            }
             
             //Circulation sur la Map
             foreach (var hex in mapData)
             {
                 hexTiles[hex.HexCoords] = hex;
-                if (hex.LocalNetwork != NetworkType.None)
-                {
-                    _networkList[(int)hex.LocalNetwork].Add(hex.HexCoords);
-                    hex.EnableGlowBaseNet();
-                }
-
-                if (hex.IsComputer())
-                {
-                    ComputerToHack[(int)hex.ComputerTarget].Add(hex.HexCoords);
-                }
+                if (hex.LocalNetwork == NetworkType.None)
+                    continue;
+                
+                _networkList[(int)hex.LocalNetwork].Add(hex.HexCoords);
+                hex.EnableGlowBaseNet();
             }
             
             //Depose des Sockets pour les merges de network
@@ -98,7 +95,7 @@ namespace GameContent.GridManagement
                 hex.HasEntityOnIt = true;
                 var unitTemp = unit.GetComponent<IUnit>();
                 
-                hex.SetUnit(unitTemp);
+                hex.SetEntity(unitTemp);
                 
                 uEnt.OnInit();
 
@@ -115,7 +112,7 @@ namespace GameContent.GridManagement
                 hex.HasEntityOnIt = true;
                 var unitTemp = unit.GetComponent<IUnit>();
                 
-                hex.SetUnit(unitTemp);
+                hex.SetEntity(unitTemp);
                 
                 uEnt.OnInit();
 
@@ -124,21 +121,33 @@ namespace GameContent.GridManagement
                 emiters.Add(uEnt);
                 uEnt.OnGenerateNet(uEnt.NetworkRange);
             }
+            
+            InitNpcEntity(relayList);
+            
+            InitNpcEntity(computerList);
+        }
 
-            foreach (var computer in computerList)
+        #region NpcEntity
+        
+        private void InitNpcEntity<T>(IEnumerable<T> list) where T : IEntity
+        {
+            foreach (var t in list)
             {
-                var hex = GetTile(computer.CurrentHexPos);
-                computer.OnInit();
+                var hex = GetTile(t.CurrentHexPos);
+                t.OnInit();
                 hex.HasEntityOnIt = true;
             }
         }
+        
+        #endregion
+        
         #endregion
         
         #region Map Data Access
 
         public Hex GetTile(Vector3Int hexCoords)
         {
-            hexTiles.TryGetValue(hexCoords, out Hex results);
+            hexTiles.TryGetValue(hexCoords, out var results);
                     return results;
         }
         
@@ -165,13 +174,18 @@ namespace GameContent.GridManagement
             return _neighbourgs[coords];
         }
 
-        public Hex GetNorthTile(Vector3Int targetPos) => GetTile(GetNeighbourgs(targetPos)[0]);
-        public Hex GetEastNorthTile(Vector3Int targetPos) => GetTile(GetNeighbourgs(targetPos)[1]);
-        public Hex GetEastSouthTile(Vector3Int targetPos) => GetTile(GetNeighbourgs(targetPos)[2]);
-        public Hex GetSouthTile(Vector3Int targetPos) => GetTile(GetNeighbourgs(targetPos)[3]);
-        public Hex GetWestSouthTile(Vector3Int targetPos) => GetTile(GetNeighbourgs(targetPos)[4]);
-        public Hex GetWestNorthTile(Vector3Int targetPos) => GetTile(GetNeighbourgs(targetPos)[5]);
-
+        public Hex GetDirectionTile(Vector3Int targetPos, KapaDir dir) => dir switch
+        {
+            KapaDir.North => GetTile(GetNeighbourgs(targetPos)[0]),
+            KapaDir.NorthEast => GetTile(GetNeighbourgs(targetPos)[1]),
+            KapaDir.SouthEast => GetTile(GetNeighbourgs(targetPos)[2]),
+            KapaDir.South => GetTile(GetNeighbourgs(targetPos)[3]),
+            KapaDir.SouthWest => GetTile(GetNeighbourgs(targetPos)[4]),
+            KapaDir.NorthWest => GetTile(GetNeighbourgs(targetPos)[5]),
+            KapaDir.Default => GetTile(targetPos),
+            _ => throw new ArgumentOutOfRangeException(nameof(dir), dir, null)
+        };
+        
         #endregion
 
         #region network params
@@ -216,18 +230,22 @@ namespace GameContent.GridManagement
 
         #region Computer
 
-        public void HandlePCHacked(ComputerTarget whichPC)
+        public void HandlePCHacked(RelayTarget whichRelay)
         {
-            if (computerList[(int)whichPC].GotHacked) return;
+            if (relayList[(int)whichRelay].GotHacked) return;
 
-            foreach (var i in ComputerToHack[(int)whichPC])
+            foreach (var i in GetNeighbourgs(relayList[(int)whichRelay].CurrentHexPos))
             {
-                GetTile(i).CurrentType = HexType.Walkable;
+                var tile = GetTile(i);
+                
+                tile.CurrentType = HexType.Walkable;
+                tile.RelayTarget = RelayTarget.None;
             }
-            computerList[(int)whichPC].HandleComputerHack();
-            computerList[(int)whichPC].GotHacked = true;
+            relayList[(int)whichRelay].OnNetworkHack();
         }
+        
         #endregion
+        
         #endregion
     }
 }

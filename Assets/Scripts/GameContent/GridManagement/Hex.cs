@@ -2,6 +2,7 @@ using Enums.GridEnums;
 using GameContent.GridManagement.GridGraphManagement;
 using Interfaces.Unit;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Utilities.CustomHideAttribute;
 
 namespace GameContent.GridManagement
@@ -13,28 +14,33 @@ namespace GameContent.GridManagement
         
         [SerializeField] private HexType type;
         [SerializeField] private SelectGlow glow;
-
         [SerializeField] private NetworkType originNetwork;
+        [FormerlySerializedAs("computerTarget")]
         [ShowIfTrue("type", new[]{(int)HexType.Computer})]
-        [SerializeField] private ComputerTarget computerTarget;
-
+        [SerializeField] private RelayTarget relayTarget;
+        private IEntity _entityRef;
+        
         //la Data importante
         public Vector3Int HexCoords { get; private set; }
         public bool HasEntityOnIt { get; set; }
-        private IUnit _unitRef;
         public HexType CurrentType { set => type = value; }
         public NetworkType LocalNetwork { get => originNetwork; set => originNetwork = value; }
-        public ComputerTarget ComputerTarget => computerTarget;
-        
+        public RelayTarget RelayTarget
+        {
+            get => relayTarget;
+            set => relayTarget = value;
+        }
+
         #endregion
 
         #region methodes
-        
-        void Awake()
+
+        private void Awake()
         {
             HexCoords = new HexCoordonnees(gameObject).OffsetCoordonnees;
+            RelayTarget = RelayTarget.None;
             glow.SetHexaRefs();
-            _unitRef = null;
+            _entityRef = null;
         }
 
         /// <summary>
@@ -51,14 +57,12 @@ namespace GameContent.GridManagement
             _ => 1000
         };
 
-        public void SetUnit(IUnit unit) => _unitRef = unit;
-        public IUnit GetUnit() => _unitRef;
-        public void ClearUnit() => _unitRef = null;
+        public void SetEntity(IEntity entity) => _entityRef = entity;
+        public T GetEntity<T>() where T : IEntity => _entityRef is T entityRef ? entityRef : default;
+        public void ClearEntity() => _entityRef = null;
 
         public bool IsObstacle() => type is HexType.Obstacle or HexType.Hole;
         public bool IsComputer() => type is HexType.Computer;
-
-        //Init graph a ajouter pour ajouter les textures en sqrt(2) a 45° pour le passage des Units devant ou derrière les props
 
         #region glow mats
         

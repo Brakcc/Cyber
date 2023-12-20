@@ -585,9 +585,9 @@ namespace GameContent.Entity.Unit.UnitWorking
         private void ChargeNewUnitHexCoord()
         {
             HexGridStore.hGs.GetTile(SelectedUnit.CurrentHexPos).HasEntityOnIt = false;
-            HexGridStore.hGs.GetTile(SelectedUnit.CurrentHexPos).ClearUnit();
+            HexGridStore.hGs.GetTile(SelectedUnit.CurrentHexPos).ClearEntity();
             _previousSelectedHex.HasEntityOnIt = true;
-            _previousSelectedHex.SetUnit(SelectedUnit);
+            _previousSelectedHex.SetEntity(SelectedUnit);
             SelectedUnit.CurrentHexPos = _previousSelectedHex.HexCoords;
         }
 

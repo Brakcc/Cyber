@@ -1,7 +1,8 @@
 using System.Collections.Generic;
+using System.Linq;
 using Enums.GridEnums;
+using GameContent.GridManagement;
 using GameContent.GridManagement.GridGraphManagement;
-using Interfaces.Unit;
 using UnityEngine;
 
 namespace GameContent.Entity.Network
@@ -20,22 +21,43 @@ namespace GameContent.Entity.Network
             protected set { } }
 
         #endregion
-        
-        [SerializeField] RelayTarget reTarget;
-        public RelayTarget RelayTarget => reTarget;
-        
-        public bool GotHacked { get; set; }
-        
-        public IEntity[] EntityRef => entityRef;
-        [SerializeField] private IEntity[] entityRef;
-        
-        [SerializeField] GraphInitBoard initBoard;
 
+        #region Hack
+
+        [SerializeField] private RelayTarget reTarget;
+        public RelayTarget ReTarget => reTarget;
+        
+        public bool GotHacked { get; private set; }
+        private bool _isTransmitting;
+        public bool IsTransmitting
+        {
+            get => _isTransmitting;
+            set
+            {
+                IsTransmitting = PrecRefList.Any(i => i.GotHacked && i.IsTransmitting);
+                _isTransmitting = value;
+                foreach (var i in PrecRefList)
+                {
+                    if (i.IsTransmitting && i.GotHacked)
+                    {
+                        OnLink(i);
+                    }
+                }
+            }
+        }
+        
+        public IEnumerable<Relay> PrecRefList => precRefList;
+        [SerializeField] private Relay[] precRefList;
+        
+        [SerializeField] private Hex[] networkRef;
+                
+        [SerializeField] private GraphInitBoard initBoard;
+
+        #endregion
+        
         #endregion
 
         #region  methodes
-        
-        public void HandleComputerHack() => initBoard.HandleDeAct(gameObject, false);
 
         #region Entity overrides
 
@@ -49,9 +71,52 @@ namespace GameContent.Entity.Network
             GotHacked = false;
         
             initBoard.SetRenderer(gameObject);
+            
+            OnNeighbourgsInit(CurrentHexPos, HexGridStore.hGs);
         }
         
         public sealed override void OnGenerateNet(int range) { }
+        
+        #endregion
+        
+        #region Hack methodes
+        
+        private void HandleComputerHack() => initBoard.HandleDeAct(gameObject, false);
+        
+        private void OnNeighbourgsInit(Vector3Int pos, HexGridStore hexGrid)
+        {
+            foreach (var t in hexGrid.GetNeighbourgs(pos))
+            {
+                var tile = hexGrid.GetTile(t);
+                tile.CurrentType = HexType.Computer;
+                tile.RelayTarget = ReTarget;
+            }
+        }
+        
+        public void OnNetworkHack()
+        {
+            HandleComputerHack();
+            GotHacked = true;
+
+            foreach (var i in networkRef)
+            {
+                i.LocalNetwork = NetworkType.Net1;
+                //diff les glows pour la team atk et def
+            }
+            
+            OnCheckIfPrecOn();
+        }
+        
+        public void OnCheckIfPrecOn()
+        {
+            
+        }
+
+        public void OnLink(Relay relayTarget)
+        {
+            Debug.Log("allez");
+            //LineMeshRender
+        }
 
         #endregion
         
