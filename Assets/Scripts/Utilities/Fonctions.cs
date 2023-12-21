@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
 
@@ -93,6 +94,20 @@ namespace Utilities
             return result;
         }
 
+        public static string NumbersToString<T>(IEnumerable<T> nbs) where T : struct
+        {
+            var newStr = "[";
+            foreach (var i in nbs)
+            {
+                newStr += $"{i},";
+            }
+
+            newStr = newStr[..^1];
+            newStr += "]";
+
+            return newStr;
+        }
+        
         public static int[] StringToInts(string str)
         {
             if (str.StartsWith("[") && str.EndsWith("]"))
@@ -105,14 +120,14 @@ namespace Utilities
             for(var i = 0; i < sArray.Length; i++)
             {
                 var sMono = sArray[i];
-                sMono = sMono.Replace(")", "");
+                sMono = sMono.Replace("]", "");
                 sArray[i] = sMono;
             }
 
             var a = int.Parse(sArray[0], CultureInfo.InvariantCulture);
-            var b = int.Parse(sArray[0], CultureInfo.InvariantCulture);
-            var c = int.Parse(sArray[0], CultureInfo.InvariantCulture);
-            var d = int.Parse(sArray[0], CultureInfo.InvariantCulture);
+            var b = int.Parse(sArray[1], CultureInfo.InvariantCulture);
+            var c = int.Parse(sArray[2], CultureInfo.InvariantCulture);
+            var d = int.Parse(sArray[3], CultureInfo.InvariantCulture);
 
             return new[] { a, b, c, d };
         }

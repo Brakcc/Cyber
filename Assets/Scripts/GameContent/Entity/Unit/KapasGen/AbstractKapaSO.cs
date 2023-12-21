@@ -38,7 +38,7 @@ namespace GameContent.Entity.Unit.KapasGen
         
         public int BalanceMult => balanceMult;
         [ShowIfTrue("kapaType", new[]{(int)KapaType.NormalAttack, (int)KapaType.Competence, (int)KapaType.Ultimate})]
-        [Range(1, 10)] [SerializeField] private int balanceMult = 1;
+        [Range(0, 10)] [SerializeField] private int balanceMult = 1;
         
         public KapaType KapaType => kapaType;
         [SerializeField] private KapaType kapaType;
@@ -799,6 +799,9 @@ namespace GameContent.Entity.Unit.KapasGen
         private static async void OnDamageConsideration(IUnit unit, IUnit unitTarget, int balance, int delay, GameObject feedBack)
         {
             await Task.Delay(delay);
+
+            //balanceMult a 0 pas de degats
+            if (balance <= 0) return;
             
             //verif si le coup est critique ou non
             if (Random.Range(0, 100) < unit.CurrentCritRate)

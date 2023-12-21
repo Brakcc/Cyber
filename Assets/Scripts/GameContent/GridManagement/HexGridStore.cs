@@ -32,7 +32,7 @@ namespace GameContent.GridManagement
 
         #region Network
         public List<Vector3Int>[] NetworkList => _networkList;
-        readonly List<Vector3Int>[] _networkList = new List<Vector3Int>[(int)NetworkType.None];
+        readonly List<Vector3Int>[] _networkList = new List<Vector3Int>[(int)NetworkType.OldNet15];
         
         public int EmptySockets { get; set; }
 
