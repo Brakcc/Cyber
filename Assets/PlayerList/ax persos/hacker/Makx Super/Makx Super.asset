@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3befcc34aabc0cd4ca2f779b7e603c7f, type: 3}
-  m_Name: hecker 4
+  m_Name: Makx Super
   m_EditorClassIdentifier: 
-  iD: 10
-  pname: hacker 4
+  iD: 11
+  pname: super max
   type: 3
   networkRange: 2
-  movePoints: 7
-  attack: 24
-  defense: 3
+  movePoints: 8
+  attack: 18
+  defense: 1
   critRate: 0
   speed: 30
-  healthPoint: 19
+  healthPoint: 15
   sprite: {fileID: 21300000, guid: 9159ffa33093a434882ba17cbd3655d1, type: 3}
   kapasList:
   - {fileID: 11400000, guid: c491a16f8ecd915468488ba91d2e0181, type: 2}
