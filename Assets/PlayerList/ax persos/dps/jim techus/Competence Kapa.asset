@@ -10,28 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a4d40161ec8cffd4fa4eb487d60ab8f7, type: 3}
-  m_Name: C Makx Super
+  m_Name: Competence Kapa
   m_EditorClassIdentifier: 
   iD: 0
   kapaNane: 
   description: 
   maxPlayerpierce: 4
-  balanceMult: 0
+  balanceMult: 5
   kapaType: 1
-  effectType: 2
+  effectType: 1
   hasBuffDebuffs: 1
   buffDebuffDatas:
-    isBuff: 1
+    isBuff: 0
     isCritGuaranted: 0
     buffDebuffList:
-      hasMovePointsBDb: 0
+      hasMovePointsBDb: 1
       mPBuffDebuffData:
+        value: -1
+        turnNumber: 1
+      hasDefenseBDb: 0
+      defBuffDebuffData:
         value: 0
         turnNumber: 0
-      hasDefenseBDb: 1
-      defBuffDebuffData:
-        value: 10
-        turnNumber: 1
       hasCritRateBDb: 0
       cRBuffDebuffData:
         value: 0
@@ -42,7 +42,7 @@ MonoBehaviour:
         turnNumber: 0
       hasBalanceMultBDb: 0
       balMultBuffDebuffData: 1
-  kapaFunctionType: 0
+  kapaFunctionType: 6
   doubleDiffAtkDatas:
     doubleABuffDebuff:
       hasMovePointsBDb: 0
@@ -89,12 +89,12 @@ MonoBehaviour:
       hasBalanceMultBDb: 0
       balMultBuffDebuffData: 1
   freeThrowAreaDatas:
-    range: 0
+    range: 5
     centerDebuffList:
-      hasMovePointsBDb: 0
+      hasMovePointsBDb: 1
       mPBuffDebuffData:
-        value: 0
-        turnNumber: 0
+        value: -2
+        turnNumber: 1
       hasDefenseBDb: 0
       defBuffDebuffData:
         value: 0
@@ -107,7 +107,7 @@ MonoBehaviour:
       precBuffDebuffData:
         value: 0
         turnNumber: 0
-      hasBalanceMultBDb: 0
+      hasBalanceMultBDb: 1
       balMultBuffDebuffData: 1
   limitedThrowAreaDatas:
     centerDebuffList:

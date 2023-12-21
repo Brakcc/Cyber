@@ -10,28 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a4d40161ec8cffd4fa4eb487d60ab8f7, type: 3}
-  m_Name: C Makx Super
+  m_Name: Competence Kapa
   m_EditorClassIdentifier: 
   iD: 0
   kapaNane: 
   description: 
-  maxPlayerpierce: 4
-  balanceMult: 0
+  maxPlayerpierce: 3
+  balanceMult: 1
   kapaType: 1
-  effectType: 2
-  hasBuffDebuffs: 1
+  effectType: 1
+  hasBuffDebuffs: 0
   buffDebuffDatas:
-    isBuff: 1
+    isBuff: 0
     isCritGuaranted: 0
     buffDebuffList:
       hasMovePointsBDb: 0
       mPBuffDebuffData:
         value: 0
         turnNumber: 0
-      hasDefenseBDb: 1
+      hasDefenseBDb: 0
       defBuffDebuffData:
-        value: 10
-        turnNumber: 1
+        value: 0
+        turnNumber: 0
       hasCritRateBDb: 0
       cRBuffDebuffData:
         value: 0
@@ -42,7 +42,7 @@ MonoBehaviour:
         turnNumber: 0
       hasBalanceMultBDb: 0
       balMultBuffDebuffData: 1
-  kapaFunctionType: 0
+  kapaFunctionType: 1
   doubleDiffAtkDatas:
     doubleABuffDebuff:
       hasMovePointsBDb: 0
@@ -67,7 +67,7 @@ MonoBehaviour:
     balMultBuffDebuffData2: 1
     hasDashAfterKapa: 0
     hasGrabAfterKapa: 0
-    hasDiffPatterns: 0
+    hasDiffPatterns: 1
   firstHitEffectsData:
     buffDebuffList:
       hasMovePointsBDb: 0
@@ -132,7 +132,9 @@ MonoBehaviour:
   kapaUI: {fileID: 0}
   damageFeedBack: {fileID: 0}
   pattern:
-  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: -1, z: 0}
+  - {x: 1, y: 0, z: 0}
+  - {x: 0, y: 0, z: 1}
   cKapaSupFields:
     neededCompPoints: 1
     ultPointsAdded: 0

@@ -16,7 +16,7 @@ MonoBehaviour:
   kapaNane: 
   description: 
   maxPlayerpierce: 4
-  balanceMult: 1
+  balanceMult: 0
   kapaType: 1
   effectType: 1
   hasBuffDebuffs: 1
@@ -127,7 +127,7 @@ MonoBehaviour:
       precBuffDebuffData:
         value: 0
         turnNumber: 0
-      hasBalanceMultBDb: 0
+      hasBalanceMultBDb: 1
       balMultBuffDebuffData: 1
   kapaUI: {fileID: 0}
   damageFeedBack: {fileID: 0}

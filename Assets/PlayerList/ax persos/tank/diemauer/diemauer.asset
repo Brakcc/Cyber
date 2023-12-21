@@ -23,8 +23,8 @@ MonoBehaviour:
   healthPoint: 54
   sprite: {fileID: 21300000, guid: 9159ffa33093a434882ba17cbd3655d1, type: 3}
   kapasList:
-  - {fileID: 11400000, guid: c491a16f8ecd915468488ba91d2e0181, type: 2}
-  - {fileID: 11400000, guid: dd416aed18ba69244a0db204171760da, type: 2}
+  - {fileID: 11400000, guid: 693336eece3f472448170e98b71a62fa, type: 2}
+  - {fileID: 11400000, guid: 13a98095a519315418e4cddfd721a001, type: 2}
   - {fileID: 11400000, guid: db50d6b8bede33a4a8245242d7808f04, type: 2}
   - {fileID: 11400000, guid: d3cf122f54b487f4f841b9c317e4334a, type: 2}
   - {fileID: 11400000, guid: 0d61fc820e8ffd74f8bb40bc8803f728, type: 2}

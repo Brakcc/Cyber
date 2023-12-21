@@ -9,29 +9,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4d40161ec8cffd4fa4eb487d60ab8f7, type: 3}
-  m_Name: C Makx Super
+  m_Script: {fileID: 11500000, guid: fc327a9d29d835444a0db66a632a8aec, type: 3}
+  m_Name: Normal Attack Kapa
   m_EditorClassIdentifier: 
   iD: 0
   kapaNane: 
   description: 
-  maxPlayerpierce: 4
-  balanceMult: 0
-  kapaType: 1
-  effectType: 2
-  hasBuffDebuffs: 1
+  maxPlayerpierce: 1
+  balanceMult: 2
+  kapaType: 0
+  effectType: 1
+  hasBuffDebuffs: 0
   buffDebuffDatas:
-    isBuff: 1
+    isBuff: 0
     isCritGuaranted: 0
     buffDebuffList:
       hasMovePointsBDb: 0
       mPBuffDebuffData:
         value: 0
         turnNumber: 0
-      hasDefenseBDb: 1
+      hasDefenseBDb: 0
       defBuffDebuffData:
-        value: 10
-        turnNumber: 1
+        value: 0
+        turnNumber: 0
       hasCritRateBDb: 0
       cRBuffDebuffData:
         value: 0
@@ -42,7 +42,7 @@ MonoBehaviour:
         turnNumber: 0
       hasBalanceMultBDb: 0
       balMultBuffDebuffData: 1
-  kapaFunctionType: 0
+  kapaFunctionType: 1
   doubleDiffAtkDatas:
     doubleABuffDebuff:
       hasMovePointsBDb: 0
@@ -129,15 +129,15 @@ MonoBehaviour:
         turnNumber: 0
       hasBalanceMultBDb: 0
       balMultBuffDebuffData: 1
-  kapaUI: {fileID: 0}
-  damageFeedBack: {fileID: 0}
-  pattern:
-  - {x: 0, y: 0, z: 0}
-  cKapaSupFields:
-    neededCompPoints: 1
+  _kapaUI: {fileID: 0}
+  _damageFeedBack: {fileID: 0}
+  _pattern:
+  - {x: 0, y: -1, z: 0}
+  _nAKapaSupFields:
+    compPointsAdded: 1
     ultPointsAdded: 0
     animation: {fileID: 0}
-  cam:
+  _cam:
     effectType: 0
     shake:
       last: 0

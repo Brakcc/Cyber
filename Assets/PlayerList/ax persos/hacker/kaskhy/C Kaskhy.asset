@@ -16,7 +16,7 @@ MonoBehaviour:
   kapaNane: 
   description: 
   maxPlayerpierce: 4
-  balanceMult: 1
+  balanceMult: 0
   kapaType: 1
   effectType: 2
   hasBuffDebuffs: 1

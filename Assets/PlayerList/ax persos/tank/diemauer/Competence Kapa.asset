@@ -16,7 +16,7 @@ MonoBehaviour:
   kapaNane: 
   description: 
   maxPlayerpierce: 0
-  balanceMult: 1
+  balanceMult: 0
   kapaType: 0
   effectType: 0
   hasBuffDebuffs: 0
@@ -139,7 +139,7 @@ MonoBehaviour:
   - {x: -1, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
   cKapaSupFields:
-    neededCompPoints: 0
+    neededCompPoints: 1
     ultPointsAdded: 0
     animation: {fileID: 0}
   cam:

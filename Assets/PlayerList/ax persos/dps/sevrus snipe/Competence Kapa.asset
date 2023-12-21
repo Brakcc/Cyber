@@ -10,28 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a4d40161ec8cffd4fa4eb487d60ab8f7, type: 3}
-  m_Name: C Makx Super
+  m_Name: Competence Kapa
   m_EditorClassIdentifier: 
   iD: 0
   kapaNane: 
   description: 
   maxPlayerpierce: 4
-  balanceMult: 0
+  balanceMult: 1
   kapaType: 1
-  effectType: 2
+  effectType: 1
   hasBuffDebuffs: 1
   buffDebuffDatas:
-    isBuff: 1
+    isBuff: 0
     isCritGuaranted: 0
     buffDebuffList:
-      hasMovePointsBDb: 0
+      hasMovePointsBDb: 1
       mPBuffDebuffData:
+        value: -2
+        turnNumber: 1
+      hasDefenseBDb: 0
+      defBuffDebuffData:
         value: 0
         turnNumber: 0
-      hasDefenseBDb: 1
-      defBuffDebuffData:
-        value: 10
-        turnNumber: 1
       hasCritRateBDb: 0
       cRBuffDebuffData:
         value: 0
@@ -131,10 +131,9 @@ MonoBehaviour:
       balMultBuffDebuffData: 1
   kapaUI: {fileID: 0}
   damageFeedBack: {fileID: 0}
-  pattern:
-  - {x: 0, y: 0, z: 0}
+  pattern: []
   cKapaSupFields:
-    neededCompPoints: 1
+    neededCompPoints: 0
     ultPointsAdded: 0
     animation: {fileID: 0}
   cam:

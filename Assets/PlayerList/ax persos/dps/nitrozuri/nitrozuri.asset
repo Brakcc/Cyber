@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0dde4142f37cff74cbe2ab6166f660cf, type: 3}
-  m_Name: artaiur
+  m_Name: nitrozuri
   m_EditorClassIdentifier: 
-  iD: 0
-  pname: artaiur
-  type: 1
-  movePoints: 5
-  attack: 12
-  defense: 32
+  iD: 5
+  pname: nitrozuri
+  type: 2
+  movePoints: 7
+  attack: 25
+  defense: 5
   critRate: 0
   speed: 30
-  healthPoint: 48
+  healthPoint: 20
   sprite: {fileID: 21300000, guid: 9159ffa33093a434882ba17cbd3655d1, type: 3}
   kapasList:
-  - {fileID: 11400000, guid: c491a16f8ecd915468488ba91d2e0181, type: 2}
-  - {fileID: 11400000, guid: 52a87349e4aee764188ad697bbd19874, type: 2}
+  - {fileID: 11400000, guid: f47203e1e994a344082e7d9d9278a58e, type: 2}
+  - {fileID: 11400000, guid: 0c1345a40736dbd45bb517be19edf9e0, type: 2}
   - {fileID: 11400000, guid: db50d6b8bede33a4a8245242d7808f04, type: 2}
   - {fileID: 11400000, guid: d3cf122f54b487f4f841b9c317e4334a, type: 2}
   - {fileID: 11400000, guid: 0d61fc820e8ffd74f8bb40bc8803f728, type: 2}
