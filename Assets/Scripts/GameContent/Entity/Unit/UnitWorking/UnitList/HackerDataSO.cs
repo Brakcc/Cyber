@@ -6,7 +6,7 @@ using UnityEngine;
 namespace GameContent.Entity.Unit.UnitWorking.UnitList
 {
     [CreateAssetMenu(fileName = "Hacker Datas", menuName = "Tactical/Units/Hacker Datas")]
-    public class HackerDataSO : AbstractUnitSO
+    public sealed class HackerDataSO : AbstractUnitSO
     {
         public override int ID => iD;
         [SerializeField] int iD;

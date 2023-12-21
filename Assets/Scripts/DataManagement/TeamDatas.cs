@@ -6,13 +6,13 @@ namespace DataManagement
     [System.Serializable]
     public class TeamDatas
     {
+        public int[] team0IDs;
         public int[] team1IDs;
-        public int[] team2IDs;
         
         public TeamDatas(TeamSelections tS)
         {
+            team0IDs = tS.team0;
             team1IDs = tS.team1;
-            team2IDs = tS.team2;
         }
     }
 }

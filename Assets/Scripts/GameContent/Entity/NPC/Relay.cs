@@ -5,7 +5,7 @@ using GameContent.GridManagement;
 using GameContent.GridManagement.GridGraphManagement;
 using UnityEngine;
 
-namespace GameContent.Entity.Network
+namespace GameContent.Entity.NPC
 {
     public class Relay : Entity
     {

@@ -441,7 +441,7 @@ namespace GameContent.Entity.Unit.KapasGen
                 var delayAtk = KapaFunctionType == KapaFunctionType.DoubleDiffAttack && !canDoubleKapa || 
                                KapaFunctionType == KapaFunctionType.Dash || 
                                KapaFunctionType == KapaFunctionType.Grab
-                    ? ConstList.SecondAtkDelay
+                    ? Constants.SecondAtkDelay
                     : 0;
                 
                 //Verif d'un changement de BalanceMult
@@ -455,22 +455,9 @@ namespace GameContent.Entity.Unit.KapasGen
                         : BalanceMult;
                 
                 //Apply des degats
-                if (buffDebuffDatas.isCritGuaranted)
-                {
-                    var damage = Damage.CritDamage(unit.CurrentAtk, unitTarget.CurrentDef) / (canDoubleKapa ? firstBalance : secondBalance);
+                OnDamageConsideration(this, unit, unitTarget, canDoubleKapa ? firstBalance : secondBalance, delayAtk,
+                    DamageFeedBack);
                 
-                    //apply
-                    unitTarget.CurrentHealth -= damage;
-                    
-                    //FeedBack de degats
-                    var targetPos = unitTarget.CurrentWorldPos;
-                    OnUIFeedBack(DamageFeedBack, new Vector3(targetPos.x, targetPos.y + ConstList.DamageUIRiseOffset), damage);
-                }
-                else
-                {
-                    OnDamageConsideration(unit, unitTarget, canDoubleKapa ? firstBalance : secondBalance, delayAtk,
-                                        DamageFeedBack);
-                }
                 
                 //Buff Debuff en 1st Kapa excecution
                 if (hasBuffDebuffs && canDoubleKapa && !canFirstEffect)
@@ -613,7 +600,7 @@ namespace GameContent.Entity.Unit.KapasGen
                 var delayAtk = KapaFunctionType == KapaFunctionType.DoubleDiffAttack && !canDoubleKapa || 
                                KapaFunctionType == KapaFunctionType.Dash || 
                                KapaFunctionType == KapaFunctionType.Grab
-                    ? ConstList.SecondAtkDelay
+                    ? Constants.SecondAtkDelay
                     : 0;
                 
                 //Verif d'un changement de BalanceMult
@@ -627,22 +614,9 @@ namespace GameContent.Entity.Unit.KapasGen
                         : BalanceMult;
                 
                 //Apply des degats
-                if (buffDebuffDatas.isCritGuaranted)
-                {
-                    var damage = Damage.CritDamage(unit.CurrentAtk, unitTarget.CurrentDef) / (canDoubleKapa ? firstBalance : secondBalance);
+                OnDamageConsideration(this, unit, unitTarget, canDoubleKapa ? firstBalance : secondBalance, delayAtk,
+                    DamageFeedBack);
                 
-                    //apply
-                    unitTarget.CurrentHealth -= damage;
-                    
-                    //FeedBack de degats
-                    var targetPos = unitTarget.CurrentWorldPos;
-                    OnUIFeedBack(DamageFeedBack, new Vector3(targetPos.x, targetPos.y + ConstList.DamageUIRiseOffset), damage);
-                }
-                else
-                {
-                    OnDamageConsideration(unit, unitTarget, canDoubleKapa ? firstBalance : secondBalance, delayAtk,
-                        DamageFeedBack);
-                }
 
                 //Debuff en 1st Kapa excecution
                 if (hasBuffDebuffs && canDoubleKapa)
@@ -796,12 +770,28 @@ namespace GameContent.Entity.Unit.KapasGen
             }
         }
         
-        private static async void OnDamageConsideration(IUnit unit, IUnit unitTarget, int balance, int delay, GameObject feedBack)
+        private static async void OnDamageConsideration(AbstractKapaSO kapa, IUnit unit, IUnit unitTarget, int balance, int delay, GameObject feedBack)
         {
             await Task.Delay(delay);
 
             //balanceMult a 0 pas de degats
             if (balance <= 0) return;
+            
+            //verif perma Crit
+            if (kapa.buffDebuffDatas.isCritGuaranted)
+            {
+                var damage = Damage.CritDamage(unit.CurrentAtk, unitTarget.CurrentDef) / balance;
+                
+                //apply
+                unitTarget.CurrentHealth -= damage;
+                    
+                //FeedBack de degats
+                var targetPos = unitTarget.CurrentWorldPos;
+                OnUIFeedBack(feedBack, 
+                    new Vector3(targetPos.x, targetPos.y + Constants.DamageUIRiseOffset), damage);
+                
+                return;
+            }
             
             //verif si le coup est critique ou non
             if (Random.Range(0, 100) < unit.CurrentCritRate)
@@ -815,34 +805,35 @@ namespace GameContent.Entity.Unit.KapasGen
                 //FeedBack de degats
                 var targetPos = unitTarget.CurrentWorldPos;
                 OnUIFeedBack(feedBack, 
-                    new Vector3(targetPos.x, targetPos.y + ConstList.DamageUIRiseOffset), damage);
+                    new Vector3(targetPos.x, targetPos.y + Constants.DamageUIRiseOffset), damage);
+                
+                return;
             }
-            else 
+
+            //Verif de UnitType
+            if (unitTarget.UnitData.Type == UnitType.Hacker)
             {
-                if (unitTarget.UnitData.Type == UnitType.Hacker)
-                {
-                    var damage = Damage.HackerDamage(unit.CurrentAtk) / balance;
+                var damage = Damage.HackerDamage(unit.CurrentAtk) / balance;
                     
-                    //apply
-                    unitTarget.CurrentHealth -= damage;
+                //apply
+                unitTarget.CurrentHealth -= damage;
                         
-                    //FeedBack de degats
-                    var targetPos = unitTarget.CurrentWorldPos;
-                    OnUIFeedBack(feedBack, 
-                        new Vector3(targetPos.x, targetPos.y + ConstList.DamageUIRiseOffset), damage);
-                }
-                else
-                {
-                    var damage = Damage.NormalDamage(unit.CurrentAtk, unitTarget.CurrentDef) / balance;
+                //FeedBack de degats
+                var targetPos = unitTarget.CurrentWorldPos;
+                OnUIFeedBack(feedBack, 
+                    new Vector3(targetPos.x, targetPos.y + Constants.DamageUIRiseOffset), damage);
+            }
+            else
+            {
+                var damage = Damage.NormalDamage(unit.CurrentAtk, unitTarget.CurrentDef) / balance;
                     
-                    //apply
-                    unitTarget.CurrentHealth -= damage;
+                //apply
+                unitTarget.CurrentHealth -= damage;
                         
-                    //feedback de degats
-                    var targetPos = unitTarget.CurrentWorldPos;
-                    OnUIFeedBack(feedBack, 
-                        new Vector3(targetPos.x, targetPos.y + ConstList.DamageUIRiseOffset), damage);
-                }
+                //feedback de degats
+                var targetPos = unitTarget.CurrentWorldPos;
+                OnUIFeedBack(feedBack, 
+                    new Vector3(targetPos.x, targetPos.y + Constants.DamageUIRiseOffset), damage);
             }
         }
         

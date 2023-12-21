@@ -14,7 +14,7 @@ namespace GameContent.Entity.Unit.KapasGen.KapaFunctions.Grab_Push
 
             var targetTile = OnGetTargetTile(hexGrid, xDiff, yDiff, target, unit);
 
-            await Task.Delay(ConstList.DashGrabDelay);
+            await Task.Delay(Constants.DashGrabDelay);
             
             ChangeUnitHexPos(target, targetTile);
             
@@ -32,12 +32,12 @@ namespace GameContent.Entity.Unit.KapasGen.KapaFunctions.Grab_Push
         
         private static Hex OnGetTargetTile(HexGridStore hexG, float x, float y, IEntity t, IEntity u) => (x, y) switch
         {
-            ( 0, < -ConstList.DashOffSetValue) => hexG.GetDirectionTile(u.CurrentHexPos, KapaDir.North),
-            ( < -ConstList.DashOffSetValue, < -ConstList.DashOffSetValue) => hexG.GetDirectionTile(u.CurrentHexPos, KapaDir.NorthEast),
-            ( < -ConstList.DashOffSetValue, > ConstList.DashOffSetValue) => hexG.GetDirectionTile(u.CurrentHexPos, KapaDir.SouthEast),
-            ( 0, > ConstList.DashOffSetValue) => hexG.GetDirectionTile(u.CurrentHexPos, KapaDir.South),
-            ( > ConstList.DashOffSetValue, > ConstList.DashOffSetValue) => hexG.GetDirectionTile(u.CurrentHexPos, KapaDir.SouthWest),
-            ( > ConstList.DashOffSetValue, < -ConstList.DashOffSetValue) => hexG.GetDirectionTile(u.CurrentHexPos, KapaDir.NorthWest),
+            ( 0, < -Constants.DashOffSetValue) => hexG.GetDirectionTile(u.CurrentHexPos, KapaDir.North),
+            ( < -Constants.DashOffSetValue, < -Constants.DashOffSetValue) => hexG.GetDirectionTile(u.CurrentHexPos, KapaDir.NorthEast),
+            ( < -Constants.DashOffSetValue, > Constants.DashOffSetValue) => hexG.GetDirectionTile(u.CurrentHexPos, KapaDir.SouthEast),
+            ( 0, > Constants.DashOffSetValue) => hexG.GetDirectionTile(u.CurrentHexPos, KapaDir.South),
+            ( > Constants.DashOffSetValue, > Constants.DashOffSetValue) => hexG.GetDirectionTile(u.CurrentHexPos, KapaDir.SouthWest),
+            ( > Constants.DashOffSetValue, < -Constants.DashOffSetValue) => hexG.GetDirectionTile(u.CurrentHexPos, KapaDir.NorthWest),
             _ => hexG.GetTile(t.CurrentHexPos)
         };
     }

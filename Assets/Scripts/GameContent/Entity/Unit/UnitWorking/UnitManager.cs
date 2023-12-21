@@ -61,8 +61,10 @@ namespace GameContent.Entity.Unit.UnitWorking
         {
             var unitReference = unit.GetComponent<Unit>();
         
-            if (CheckIfUnitCanPlay(unitReference)) return;
-            if (CheckIfCanSelectOtherUnitAndIfSameUnit(unitReference)) return;
+            if (CheckIfUnitCanPlay(unitReference)) 
+                return;
+            if (CheckIfCanSelectOtherUnitAndIfSameUnit(unitReference)) 
+                return;
 
             PrepareUnitForMove(unitReference);
         }
@@ -76,12 +78,19 @@ namespace GameContent.Entity.Unit.UnitWorking
         /// <param name="selectedHex"></param>
         public void HandleTerrainSelect(GameObject selectedHex)
         {
-            if (SelectedUnit == null) return;
+            if (SelectedUnit == null) 
+                return;
             var selHex = selectedHex.GetComponent<Hex>();
 
-            if (IsKapaSelected) { HandleKapaDirSelect(selHex.HexCoords, SelectedUnit); return; }
-            if (SelectedUnit.IsPersoLocked) return;
-            if (HandleHexOutOfRange(selHex.HexCoords) || HandleSelectedHexIsUnitHex(selHex.HexCoords)) return;
+            if (IsKapaSelected)
+            {
+                HandleKapaDirSelect(selHex.HexCoords, SelectedUnit);
+                return;
+            }
+            if (SelectedUnit.IsPersoLocked) 
+                return;
+            if (HandleHexOutOfRange(selHex.HexCoords) || HandleSelectedHexIsUnitHex(selHex.HexCoords)) 
+                return;
 
             HandleTargetSelectedHex(selHex);
         }
@@ -102,7 +111,12 @@ namespace GameContent.Entity.Unit.UnitWorking
             {
                 unitRef.UnitData.KapasList[(int)CurrentTypeKapaSelected].OnDeselectTiles(HexGridStore.hGs, CurrentKapaPatternPos);
             }
-            if (SelectedUnit != null && !IsKapaSelected) { ClearOldSelection(); ResetKapaData(); }
+
+            if (SelectedUnit != null && !IsKapaSelected)
+            {
+                ClearOldSelection(); 
+                ResetKapaData();
+            }
         
             SelectedUnit = unitRef;
             SelectedUnit.Select();
@@ -126,7 +140,7 @@ namespace GameContent.Entity.Unit.UnitWorking
                 ChargeNewUnitHexCoord();
                 _moveSys.MoveUnit(SelectedUnit, HexGridStore.hGs);
                 ClearGraphKeepUnit();
-                LockUnitAfterMove();
+                LockUnitAfterAction();
             }
         }
         
@@ -159,27 +173,24 @@ namespace GameContent.Entity.Unit.UnitWorking
         /// <param name="unitRef"></param>
         private void HandleKapaDirSelect(Vector3Int buttonPos, IUnit unitRef)
         {
-            if (SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].EffectType == EffectType.Hack 
-                && SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].KapaFunctionType == KapaFunctionType.AOE)
+            if (unitRef.UnitData.KapasList[(int)CurrentTypeKapaSelected].EffectType == EffectType.Hack 
+                && unitRef.UnitData.KapasList[(int)CurrentTypeKapaSelected].KapaFunctionType == KapaFunctionType.AOE)
             {
                 return;
-            }
-
+            } 
+            
             var dir = buttonPos - unitRef.CurrentHexPos;
-            if (HandleHexOutOfButton(buttonPos)) return;
+            if (HandleHexOutOfButton(buttonPos)) 
+                return;
 
             //Active la Kapa avec Click sur Map
             if (IsKapaSelected  && CurrentKapaPatternPos != null)
             {
-                if (IsTargetSelected && CurrentTargetSelected == buttonPos &&
-                    (SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].EffectType == EffectType.Hack 
-                    && SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].KapaFunctionType != KapaFunctionType.AOE
-                    || SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].KapaFunctionType == KapaFunctionType.ThrowFreeArea
-                    || SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].KapaFunctionType == KapaFunctionType.ThrowLimit))
+                if (IsTargetSelected && CurrentTargetSelected == buttonPos && IsRangeAtk(unitRef, CurrentTypeKapaSelected))
                 {
-                    if (OnCheckKapa(SelectedUnit, (int)CurrentTypeKapaSelected))
+                    if (OnCheckKapa(unitRef, (int)CurrentTypeKapaSelected))
                     {
-                        OnExecuteKapa(SelectedUnit, (int)CurrentTypeKapaSelected, CurrentKapaPatternPos);
+                        OnExecuteKapa(unitRef, (int)CurrentTypeKapaSelected, CurrentKapaPatternPos);
                         FullResetKapaAndUnit();
                         return;
                     }
@@ -187,9 +198,9 @@ namespace GameContent.Entity.Unit.UnitWorking
                 
                 if (IsKapaDirSelected && CurrentDirSelected == dir)
                 {
-                    if (OnCheckKapa(SelectedUnit, (int)CurrentTypeKapaSelected))
+                    if (OnCheckKapa(unitRef, (int)CurrentTypeKapaSelected))
                     {
-                        OnExecuteKapa(SelectedUnit, (int)CurrentTypeKapaSelected, CurrentKapaPatternPos);
+                        OnExecuteKapa(unitRef, (int)CurrentTypeKapaSelected, CurrentKapaPatternPos);
                         FullResetKapaAndUnit();
                         return;
                     }
@@ -203,10 +214,7 @@ namespace GameContent.Entity.Unit.UnitWorking
             }
             
             //selection de position unique dans une range de Map
-            if (unitRef.UnitData.KapasList[(int)CurrentTypeKapaSelected].EffectType == EffectType.Hack && 
-                SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].KapaFunctionType != KapaFunctionType.AOE
-                || SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].KapaFunctionType == KapaFunctionType.ThrowFreeArea
-                || SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].KapaFunctionType == KapaFunctionType.ThrowLimit)
+            if (IsRangeAtk(unitRef, CurrentTypeKapaSelected))
             {
                 CurrentKapaPatternPos = HandleKapaSelectOnRange(buttonPos, unitRef,
                     unitRef.UnitData.KapasList[(int)CurrentTypeKapaSelected]);
@@ -494,7 +502,7 @@ namespace GameContent.Entity.Unit.UnitWorking
         /// <summary>
         /// force l'utilisation de kapa ou skip kapa du perso après son déplacement
         /// </summary>
-        void LockUnitAfterMove()
+        private void LockUnitAfterAction()
         {
             SelectedUnit.IsPersoLocked = true;
         }
@@ -623,6 +631,17 @@ namespace GameContent.Entity.Unit.UnitWorking
         {
             foreach (var u in GameObject.FindGameObjectsWithTag("Player")) { u.GetComponent<Unit>().CanPlay = true; }
         }
+        #endregion
+
+        #region Checkers
+
+        private static bool IsRangeAtk(IUnit uRef, KapaType type)
+            => uRef.UnitData.KapasList[(int)type].EffectType == EffectType.Hack &&
+               uRef.UnitData.KapasList[(int)type].KapaFunctionType != KapaFunctionType.AOE
+               || uRef.UnitData.KapasList[(int)type].KapaFunctionType == KapaFunctionType.ThrowFreeArea
+               || uRef.UnitData.KapasList[(int)type].KapaFunctionType == KapaFunctionType.ThrowLimit;
+
+
         #endregion
     }
 }

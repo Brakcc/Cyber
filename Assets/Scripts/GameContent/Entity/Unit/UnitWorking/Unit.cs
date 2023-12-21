@@ -102,7 +102,7 @@ namespace GameContent.Entity.Unit.UnitWorking
 
         public void MoveInFrontOf(Vector3 currentPath)
         {
-            StartCoroutine(DashGrabPath(currentPath, UnitData.Speed * ConstList.SpeedDashMult));
+            StartCoroutine(DashGrabPath(currentPath, UnitData.Speed * Constants.SpeedDashMult));
         }
         
         public abstract void OnKapa();
@@ -233,7 +233,7 @@ namespace GameContent.Entity.Unit.UnitWorking
         }
 
         private void PositionCharacterOnTile(Vector3 pos) =>
-            transform.position = new Vector3(pos.x, pos.y, pos.z - ConstList.OffsetZPos);
+            transform.position = new Vector3(pos.x, pos.y, pos.z - Constants.OffsetZPos);
         
         private static void ChangeUnitHexPos(IUnit uT, HexGridStore hexGrid)
         {

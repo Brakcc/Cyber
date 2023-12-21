@@ -3,7 +3,7 @@ using Enums.GridEnums;
 using GameContent.GridManagement.GridGraphManagement;
 using UnityEngine;
 
-namespace GameContent.Entity.Network
+namespace GameContent.Entity.NPC
 {
     public class Computer : Entity
     {

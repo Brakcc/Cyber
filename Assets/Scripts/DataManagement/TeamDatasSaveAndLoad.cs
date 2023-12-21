@@ -14,7 +14,7 @@ namespace DataManagement
             var path = Application.persistentDataPath + "/teamDatas.data";
             TeamDatas datas = new(teamSel);
                     
-            File.WriteAllText(path, Fonctions.NumbersToString(datas.team1IDs) + ";" + Fonctions.NumbersToString(datas.team2IDs));
+            File.WriteAllText(path, Fonctions.NumbersToString(datas.team0IDs) + ";" + Fonctions.NumbersToString(datas.team1IDs));
         }
 
         #endregion

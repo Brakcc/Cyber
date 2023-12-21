@@ -723,10 +723,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 1946485446}
     m_Modifications:
     - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
-      propertyPath: m_Unit
-      value: 
-      objectReference: {fileID: 11400000, guid: 51f7164ed8660cd4bbca737b4fcb7390, type: 2}
-    - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: cam.s.cam
       value: 
       objectReference: {fileID: 747587540}
@@ -3692,10 +3688,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 575644869}
     m_Modifications:
-    - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
-      propertyPath: m_Unit
-      value: 
-      objectReference: {fileID: 11400000, guid: 51f7164ed8660cd4bbca737b4fcb7390, type: 2}
     - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: cam.s.cam
       value: 
@@ -9684,7 +9676,7 @@ PrefabInstance:
       objectReference: {fileID: 519870410}
     - target: {fileID: 2588066164149268060, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
       propertyPath: teamInits.firstTeamPlaying
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2588066164149268060, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
       propertyPath: uiFields.cPui.Array.data[0]

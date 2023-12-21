@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Enums.GridEnums;
 using Enums.UnitEnums.KapaEnums;
-using GameContent.Entity.Network;
+using GameContent.Entity.NPC;
 using GameContent.GameManagement;
 using GameContent.GridManagement.HexPathFind;
 using Interfaces.Unit;
@@ -30,7 +30,7 @@ namespace GameContent.GridManagement
         
         #endregion
 
-        #region Network
+        #region NPC
         public List<Vector3Int>[] NetworkList => _networkList;
         readonly List<Vector3Int>[] _networkList = new List<Vector3Int>[(int)NetworkType.OldNet15];
         
@@ -51,7 +51,7 @@ namespace GameContent.GridManagement
         
         public void OnIntMapAndEntities()
         {
-            //Network init
+            //NPC init
             for (int i = 0; i < _networkList.Length; i++)
             {
                 _networkList[i] = new();
