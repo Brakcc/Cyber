@@ -88,6 +88,47 @@ MonoBehaviour:
         turnNumber: 0
       hasBalanceMultBDb: 0
       balMultBuffDebuffData: 1
+  freeThrowAreaDatas:
+    range: 0
+    centerDebuffList:
+      hasMovePointsBDb: 0
+      mPBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasDefenseBDb: 0
+      defBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasCritRateBDb: 0
+      cRBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasPrecisionBDb: 0
+      precBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasBalanceMultBDb: 0
+      balMultBuffDebuffData: 1
+  limitedThrowAreaDatas:
+    centerDebuffList:
+      hasMovePointsBDb: 0
+      mPBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasDefenseBDb: 0
+      defBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasCritRateBDb: 0
+      cRBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasPrecisionBDb: 0
+      precBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasBalanceMultBDb: 0
+      balMultBuffDebuffData: 1
   kapaUI: {fileID: 0}
   damageFeedBack: {fileID: 8948626333531248720, guid: 8f927771530abf045b81020ae94b0299, type: 3}
   pattern:

@@ -8,27 +8,27 @@ namespace GameContent.GameManagement
     [CreateAssetMenu(fileName = "Team List", menuName = "Tactical/Team/Team List")]
     public class UnitListSo : ScriptableObject
     {
-        private AbstractUnitSO[] CurrentTankList => currentTankList;
-        [SerializeField] AbstractUnitSO[] currentTankList;
+        private IEnumerable<AbstractUnitSO> CurrentTankList => currentTankList;
+        [SerializeField] private AbstractUnitSO[] currentTankList;
 
-        private AbstractUnitSO[] CurrentDpsList => currentDpsList;
-        [SerializeField] AbstractUnitSO[] currentDpsList;
+        private IEnumerable<AbstractUnitSO> CurrentDpsList => currentDpsList;
+        [SerializeField] private AbstractUnitSO[] currentDpsList;
 
-        private AbstractUnitSO[] CurrentHackerList => currentHackerList;
+        private IEnumerable<AbstractUnitSO> CurrentHackerList => currentHackerList;
         [SerializeField] AbstractUnitSO[] currentHackerList;
 
-        private AbstractUnitSO[] FullList => ConcatLists();
+        private IEnumerable<AbstractUnitSO> FullList => ConcatLists();
 
         private Dictionary<int, AbstractUnitSO> AllUnitsDict => PresetDict(FullList);
-        
-        AbstractUnitSO[] ConcatLists()
+
+        private IEnumerable<AbstractUnitSO> ConcatLists()
         {
-            AbstractUnitSO[] temp = CurrentTankList.Concat(CurrentDpsList).ToArray();
-            AbstractUnitSO[] final = temp.Concat(CurrentHackerList).ToArray();
+            var temp = CurrentTankList.Concat(CurrentDpsList).ToArray();
+            var final = temp.Concat(CurrentHackerList).ToArray();
             return final;
         }
 
-        Dictionary<int, AbstractUnitSO> PresetDict(AbstractUnitSO[] fullList)
+        private static Dictionary<int, AbstractUnitSO> PresetDict(IEnumerable<AbstractUnitSO> fullList)
         {
             var dict = new Dictionary<int, AbstractUnitSO>();
             
@@ -42,7 +42,7 @@ namespace GameContent.GameManagement
 
         public AbstractUnitSO GetUnitData(int key)
         {
-            AllUnitsDict.TryGetValue(key, out AbstractUnitSO unitData);
+            AllUnitsDict.TryGetValue(key, out var unitData);
             return unitData;
         }
     }
