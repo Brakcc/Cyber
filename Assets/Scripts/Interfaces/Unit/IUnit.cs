@@ -29,6 +29,7 @@ namespace Interfaces.Unit
         int PrecBDbCounter { get; set; }
         int DefBDbCounter { get; set; }
         int DeathCounter { get; set; }
+        int DotCounter { get; set; }
         
         #endregion
 
@@ -45,10 +46,11 @@ namespace Interfaces.Unit
         #endregion
 
         #region methodes
+        
         void Select();
         void MoveOnPath(List<Vector3> currentPath);
         void MoveInFrontOf(Vector3 currentPath);
-        void OnCheckBuffDebuffCounter(IUnit unit);
+        void OnCheckEffectCounter(IUnit unit);
         void OnKapa();
         void Deselect();
         void OnDie();

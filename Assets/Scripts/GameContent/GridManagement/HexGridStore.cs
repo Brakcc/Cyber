@@ -85,7 +85,7 @@ namespace GameContent.GridManagement
         /// </summary>
         private void EntityInit()
         {
-            foreach (var unit in GameGenManager.gGm.TeamLists.heroPlayer0)
+            foreach (var unit in UnitGenManager.gGm.TeamLists.heroPlayer0)
             {
                 var uEnt = unit.GetComponent<IEntity>();
                 var hex = GetTile(uEnt.CurrentHexPos);
@@ -102,7 +102,7 @@ namespace GameContent.GridManagement
                 emiters.Add(uEnt);
                 uEnt.OnGenerateNet(uEnt.NetworkRange);
             }
-            foreach (var unit in GameGenManager.gGm.TeamLists.heroPlayer1)
+            foreach (var unit in UnitGenManager.gGm.TeamLists.heroPlayer1)
             {
                 var uEnt = unit.GetComponent<IEntity>();
                 var hex = GetTile(uEnt.CurrentHexPos);

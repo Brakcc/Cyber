@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Enums.UnitEnums.KapaEnums;
 using Enums.UnitEnums.UnitEnums;
 using GameContent.GridManagement;
 using Interfaces.Unit;
@@ -32,6 +33,7 @@ namespace GameContent.Entity.Unit.UnitWorking
         public abstract int PrecBDbCounter { get; set; }
         public abstract int DefBDbCounter { get; set; }
         public abstract int DeathCounter { get; set; }
+        public abstract int DotCounter { get; set; }
 
         #endregion
         
@@ -117,7 +119,8 @@ namespace GameContent.Entity.Unit.UnitWorking
             DeathCounter = 3;
             GetComponentInChildren<SpriteRenderer>().color = Color.red;
         }
-        public virtual void OnRez()
+
+        private void OnRez()
         {
             CanPlay = false;
             IsDead = false;
@@ -180,7 +183,7 @@ namespace GameContent.Entity.Unit.UnitWorking
             OnGenerateNet(NetworkRange);
         }
 
-        public void OnCheckBuffDebuffCounter(IUnit unit)
+        public void OnCheckEffectCounter(IUnit unit)
         {
             if (unit.MpBDbCounter > 0)
             {
@@ -216,6 +219,21 @@ namespace GameContent.Entity.Unit.UnitWorking
                 {
                     unit.CurrentDef = unit.UnitData.Defense;
                     unit.StatUI.SetDef(unit);
+                }
+            }
+
+            if (unit.DotCounter > 0)
+            {
+                unit.DotCounter--;
+                if (!IsIntersecting(CurrentHexPos, HexGridStore.hGs, UnitData.NetworkRange, out _))
+                {
+                    DotCounter = 0;
+                }
+                //Avec ca on part totallement du principe, et de facon tres rigide, que la Kapa de type Dot est 
+                //obligatoirement une competence. Donc, on appelle la Kapa 1 dans la liste de Kapa 
+                if (unit.DotCounter > 0)
+                {
+                    unit.UnitData.KapasList[(int)KapaType.Competence].OnExecute(HexGridStore.hGs, GlobalNetwork, unit, true);
                 }
             }
         }

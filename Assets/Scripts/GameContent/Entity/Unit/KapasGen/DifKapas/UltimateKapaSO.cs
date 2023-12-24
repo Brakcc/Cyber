@@ -77,9 +77,9 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
             RefuseKapa(); return false;
         }
 
-        public sealed override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, IUnit unit)
+        public sealed override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, IUnit unit, bool fromUnit)
         {
-            base.OnExecute(hexGrid, pattern, unit);
+            base.OnExecute(hexGrid, pattern, unit, fromUnit);
             DoKapa(unit);
             //Debug.Log(Description); //PlaceHolder � remplir avec les anims et consid�ration de d�g�ts
             EndKapa();

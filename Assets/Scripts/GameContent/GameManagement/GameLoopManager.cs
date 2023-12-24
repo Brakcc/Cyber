@@ -126,7 +126,7 @@ namespace GameContent.GameManagement
                     continue;
                 }
         
-                u.OnCheckBuffDebuffCounter(u);
+                u.OnCheckEffectCounter(u);
                 u.CanPlay = true;
             }
         

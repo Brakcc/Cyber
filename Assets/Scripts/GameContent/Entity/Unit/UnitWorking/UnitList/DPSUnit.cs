@@ -34,6 +34,7 @@ namespace GameContent.Entity.Unit.UnitWorking.UnitList
         public override int PrecBDbCounter { get; set; }
         public override int DefBDbCounter { get; set; }
         public override int DeathCounter { get; set; }
+        public override int DotCounter { get; set; }
         
         #endregion
 

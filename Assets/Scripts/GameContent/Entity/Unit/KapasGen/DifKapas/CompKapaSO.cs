@@ -5,7 +5,6 @@ using GameContent.GameManagement;
 using GameContent.GridManagement;
 using Interfaces.Unit;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace GameContent.Entity.Unit.KapasGen.DifKapas
 {
@@ -84,17 +83,17 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
             RefuseKapa(); return false;
         }
 
-        public sealed override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, IUnit unit)
+        public sealed override void OnExecute(HexGridStore hexGrid, List<Vector3Int> patterns, IUnit unit, bool fromUnit)
         {
             //Ne fait des degats d'AOE que si la Kapa est un hack en AOE 
             if (EffectType == EffectType.Hack && KapaFunctionType == KapaFunctionType.AOE)
             {
-                base.OnExecute(hexGrid, unit.GlobalNetwork, unit);
+                base.OnExecute(hexGrid, unit.GlobalNetwork, unit, fromUnit);
                 unit.OnDeselectNetworkTiles();
             }
             else
             {
-                base.OnExecute(hexGrid, pattern, unit);
+                base.OnExecute(hexGrid, patterns, unit, fromUnit);
             }
 
             DoKapa(unit);

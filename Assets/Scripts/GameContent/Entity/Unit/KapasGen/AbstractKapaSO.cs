@@ -14,6 +14,7 @@ using GameContent.Entity.Unit.KapasGen.KapaFunctions.DoubleDiffAtk;
 using GameContent.Entity.Unit.KapasGen.KapaFunctions.Grab_Push;
 using GameContent.Entity.Unit.KapasGen.KapaFunctions.PerfoAtk;
 using GameContent.Entity.Unit.KapasGen.KapaFunctions.AOEDistAtk;
+using GameContent.Entity.Unit.KapasGen.KapaFunctions.DOTAtk;
 using GameContent.GridManagement.HexPathFind;
 using Random = UnityEngine.Random;
 
@@ -92,6 +93,13 @@ namespace GameContent.Entity.Unit.KapasGen
 
         [ShowIfTrue("kapaFunctionType", new[] {(int)KapaFunctionType.ThrowLimit})]
         [SerializeField] private AoeLimitedThrowDatas limitedThrowAreaDatas;
+
+        #endregion
+
+        #region DOT
+
+        [ShowIfTrue("kapaFunctionType", new[] {(int)KapaFunctionType.DOT})]
+        [SerializeField] private DotKapaDatas dotKapaDatas;
 
         #endregion
         
@@ -378,8 +386,9 @@ namespace GameContent.Entity.Unit.KapasGen
         /// <param name="hexGrid"></param>
         /// <param name="pattern">Prendre le pattern du UnitManager CurrentPatternPos</param>
         /// <param name="unit"></param>
+        /// <param name="fromUnit"></param>
         /// <param name="isHitting"></param>
-        protected virtual void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern , IUnit unit, out bool isHitting)
+        protected virtual void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern , IUnit unit, bool fromUnit, out bool isHitting)
         {
             //Init des mutable local
             isHitting = false;
@@ -397,6 +406,12 @@ namespace GameContent.Entity.Unit.KapasGen
             else
             {
                 patternToUse = pattern;
+            }
+            
+            //Si Dot lezgo Dot
+            if (KapaFunctionType == KapaFunctionType.DOT && !fromUnit)
+            {
+                DotKapa.OnStartDot(unit, dotKapaDatas.turnNumber);
             }
             
             foreach (var pos in patternToUse)
@@ -534,13 +549,15 @@ namespace GameContent.Entity.Unit.KapasGen
 
             OnDeselectTiles(hexGrid, pattern);
         }
+
         /// <summary>
         /// Execute sans la surcharge de verif de Hit, parce que flemme de changer tt le code dépendant de Execute
         /// </summary>
         /// <param name="hexGrid"></param>
         /// <param name="pattern"></param>
+        /// <param name="fromUnit"></param>
         /// <param name="unit"></param>
-        public virtual void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, IUnit unit)
+        public virtual void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, IUnit unit, bool fromUnit)
         {
             var canDoubleKapa = true;
             List<Vector3Int> patternToUse;
@@ -555,6 +572,12 @@ namespace GameContent.Entity.Unit.KapasGen
             else
             {
                 patternToUse = pattern;
+            }
+            
+            //Si Dot lezgo Dot
+            if (KapaFunctionType == KapaFunctionType.DOT && !fromUnit)
+            {
+                DotKapa.OnStartDot(unit, dotKapaDatas.turnNumber);
             }
             
             //Circulation sur le patterns
@@ -664,6 +687,7 @@ namespace GameContent.Entity.Unit.KapasGen
                         break;
                     
                     case KapaFunctionType.DOT:
+                        
                         break;
 
                     case KapaFunctionType.FirstHitEffect when canFirstEffect:
@@ -813,7 +837,11 @@ namespace GameContent.Entity.Unit.KapasGen
             //Verif de UnitType
             if (unitTarget.UnitData.Type == UnitType.Hacker)
             {
-                var damage = Damage.HackerDamage(unit.CurrentAtk) / balance;
+                //Si l'execution est Dot
+                var newBal = kapa.KapaFunctionType == KapaFunctionType.DOT
+                    ? kapa.dotKapaDatas.balMultBuffDebuffData
+                    : balance;
+                var damage = Damage.HackerDamage(unit.CurrentAtk) / newBal;
                     
                 //apply
                 unitTarget.CurrentHealth -= damage;

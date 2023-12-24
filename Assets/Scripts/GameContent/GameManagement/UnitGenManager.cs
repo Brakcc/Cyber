@@ -6,7 +6,7 @@ using DataManagement;
 
 namespace GameContent.GameManagement
 {
-    public class GameGenManager : MonoBehaviour
+    public class UnitGenManager : MonoBehaviour
     {
         #region fields
 
@@ -26,7 +26,7 @@ namespace GameContent.GameManagement
         [HideInInspector] public int[] team0;
         [HideInInspector] public int[] team1;
         
-        public static GameGenManager gGm;
+        public static UnitGenManager gGm;
         
         #endregion
         

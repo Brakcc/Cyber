@@ -41,9 +41,10 @@ namespace GameContent.Entity
         /// <param name="range">range du reseau local</param>
         /// <param name="net">list des reseaux de base impactes par le merge, s'il il y a intersection</param>
         /// <returns>bool de validation d'intersection</returns>
-        protected static void IsIntersecting(Vector3Int pos, HexGridStore hexGrid, int range, out List<NetworkType> net)
+        protected static bool IsIntersecting(Vector3Int pos, HexGridStore hexGrid, int range, out List<NetworkType> net)
         {
             net = IsInterOnNet(pos, hexGrid, range);
+            return net != null;
         }
 
         /// <summary>

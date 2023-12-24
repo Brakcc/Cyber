@@ -53,7 +53,7 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
                        .GotHacked && unit.TeamNumber == 1;
         }
 
-        public sealed override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, IUnit unit)
+        public sealed override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, IUnit unit, bool fromUnit)
         {
             GameLoopManager.HandleComputerValueChange();
             hexGrid.HandlePCHacked(hexGrid.GetTile(unit.CurrentHexPos).RelayTarget);
