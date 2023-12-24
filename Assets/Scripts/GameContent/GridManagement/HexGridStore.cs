@@ -7,7 +7,6 @@ using GameContent.GameManagement;
 using GameContent.GridManagement.HexPathFind;
 using Interfaces.Unit;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace GameContent.GridManagement
 {
@@ -32,11 +31,10 @@ namespace GameContent.GridManagement
 
         #region NPC
         public List<Vector3Int>[] NetworkList => _networkList;
-        readonly List<Vector3Int>[] _networkList = new List<Vector3Int>[(int)NetworkType.OldNet15];
+        private readonly List<Vector3Int>[] _networkList = new List<Vector3Int>[(int)NetworkType.OldNet15];
         
         public int EmptySockets { get; set; }
-
-        [Tooltip("Only for Hackers and Turrets")]
+        
         public readonly List<IEntity> emiters = new();
         #endregion
 
@@ -45,16 +43,16 @@ namespace GameContent.GridManagement
         #endregion
 
         #region methodes
-        void Awake() => hGs = this;
+        private void Awake() => hGs = this;
 
         #region  Map Gen
         
         public void OnIntMapAndEntities()
         {
             //NPC init
-            for (int i = 0; i < _networkList.Length; i++)
+            for (var i = 0; i < _networkList.Length; i++)
             {
-                _networkList[i] = new();
+                _networkList[i] = new List<Vector3Int>();
             }
             
             //Circulation sur la Map

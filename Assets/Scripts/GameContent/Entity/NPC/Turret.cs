@@ -20,7 +20,7 @@ namespace GameContent.Entity.NPC
         #endregion
 
         #region methodes
-        void OnEnable()
+        private void OnEnable()
         {
             OnInit();
         }
@@ -49,7 +49,7 @@ namespace GameContent.Entity.NPC
         /// </summary>
         public sealed override void OnGenerateNet(int range)
         {
-            IsIntersecting(CurrentHexPos, HexGridStore.hGs, range, out List<NetworkType> net);
+            IsIntersecting(CurrentHexPos, HexGridStore.hGs, range, out var net);
             GlobalNetwork = OnIntersect(CurrentHexPos, HexGridStore.hGs, range, net);
         
 
@@ -84,7 +84,7 @@ namespace GameContent.Entity.NPC
         /// <returns></returns>
         protected sealed override List<Vector3Int> OnIntersect(Vector3Int pos, HexGridStore hexGrid, int range, List<NetworkType> toMerge)
         {
-            List<Vector3Int> newRange = GetRangeList(pos, hexGrid, range).ToList();
+            var newRange = GetRangeList(pos, hexGrid, range).ToList();
 
             if (toMerge.Count == 0)
             {
@@ -96,8 +96,7 @@ namespace GameContent.Entity.NPC
 
                 return newRange;
             }
-
-            else
+            
             {
                 foreach (var i in toMerge)
                 {
