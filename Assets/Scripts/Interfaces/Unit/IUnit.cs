@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using GameContent.Entity.Unit.UnitWorking;
+using GameContent.GridManagement;
 using UI.InGameUI;
 using UnityEngine;
 
@@ -55,6 +56,8 @@ namespace Interfaces.Unit
         void Deselect();
         void OnDie();
         void OnCheckRez(IUnit unit, out bool rezed);
+        void OnSelectSelfTile(IEntity uRef, HexGridStore hexGrid);
+        void OnDeselectSelfTile(IEntity uRef, HexGridStore hexGrid);
 
         #endregion
     }

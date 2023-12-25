@@ -18,7 +18,7 @@ MonoBehaviour:
   maxPlayerpierce: 2
   balanceMult: 1
   kapaType: 1
-  effectType: 1
+  effectType: 2
   hasBuffDebuffs: 0
   buffDebuffDatas:
     isBuff: 0
@@ -42,7 +42,7 @@ MonoBehaviour:
         turnNumber: 0
       hasBalanceMultBDb: 0
       balMultBuffDebuffData: 1
-  kapaFunctionType: 1
+  kapaFunctionType: 8
   doubleDiffAtkDatas:
     doubleABuffDebuff:
       hasMovePointsBDb: 0
@@ -89,12 +89,12 @@ MonoBehaviour:
       hasBalanceMultBDb: 0
       balMultBuffDebuffData: 1
   freeThrowAreaDatas:
-    range: 0
+    range: 3
     centerDebuffList:
-      hasMovePointsBDb: 0
+      hasMovePointsBDb: 1
       mPBuffDebuffData:
-        value: 0
-        turnNumber: 0
+        value: 1
+        turnNumber: 1
       hasDefenseBDb: 0
       defBuffDebuffData:
         value: 0
@@ -129,6 +129,10 @@ MonoBehaviour:
         turnNumber: 0
       hasBalanceMultBDb: 0
       balMultBuffDebuffData: 1
+  dotKapaDatas:
+    hasBalanceMultBDb: 0
+    balMultBuffDebuffData: 1
+    turnNumber: 3
   kapaUI: {fileID: 0}
   damageFeedBack: {fileID: 8948626333531248720, guid: 8f927771530abf045b81020ae94b0299, type: 3}
   pattern:

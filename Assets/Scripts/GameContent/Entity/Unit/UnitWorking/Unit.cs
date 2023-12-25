@@ -136,7 +136,7 @@ namespace GameContent.Entity.Unit.UnitWorking
         private IEnumerator FollowPath(List<Vector3> path, float speed)
         {
             CanKapa = false;
-            float pas = speed * Time.fixedDeltaTime / 10;
+            var  pas = speed * Time.fixedDeltaTime / 10;
             foreach (var i in path)
             {
                 float z = path[0].z;
@@ -262,6 +262,17 @@ namespace GameContent.Entity.Unit.UnitWorking
             tT.HasEntityOnIt = true;
             tT.SetEntity(uT);
             uT.CurrentHexPos = tT.HexCoords;
+        }
+
+        public void OnSelectSelfTile(IEntity uRef, HexGridStore hexGrid)
+        {
+            var tile = hexGrid.GetTile(uRef.CurrentHexPos);
+            tile.EnableGlowPath();
+        }
+        public void OnDeselectSelfTile(IEntity uRef, HexGridStore hexGrid)
+        {
+            var tile = hexGrid.GetTile(uRef.CurrentHexPos);
+            tile.DisableGlowPath();
         }
         
         #endregion

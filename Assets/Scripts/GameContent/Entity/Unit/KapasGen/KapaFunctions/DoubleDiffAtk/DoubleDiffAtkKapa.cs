@@ -5,7 +5,7 @@ namespace GameContent.Entity.Unit.KapasGen.KapaFunctions.DoubleDiffAtk
         //je pensais avoir mis des trucs dedans :/
         public static void DoubleDiffAtk()
         {
-            //toujours rien :/
+            //bah en fait non :/
         }
     }
 }
