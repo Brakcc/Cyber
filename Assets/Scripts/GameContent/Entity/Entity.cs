@@ -89,7 +89,8 @@ namespace GameContent.Entity
             {
                 foreach (var j in hexGrid.NetworkList[(int)i])
                 {
-                    if (!newRange.Contains(j)) { newRange.Add(j); }
+                    if (!newRange.Contains(j))
+                        newRange.Add(j);
                 }
             }
 

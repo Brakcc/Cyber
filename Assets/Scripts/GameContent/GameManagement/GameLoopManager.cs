@@ -66,19 +66,33 @@ namespace GameContent.GameManagement
 
         #region methodes
         
-        void Awake()
+        private void Awake()
         {
             gLm = this;
 
             teamInventory.playerList = new[] { teamInits.heroPlayer0, teamInits.heroPlayer1 };
-            foreach (var i in teamInits.heroPlayer0) { i.GetComponent<IUnit>().TeamNumber = 0; }
-            foreach (var i in teamInits.heroPlayer1) { i.GetComponent<IUnit>().TeamNumber = 1; }
+            foreach (var i in teamInits.heroPlayer0)
+            {
+                i.GetComponent<IUnit>().TeamNumber = 0;
+            }
+            foreach (var i in teamInits.heroPlayer1)
+            {
+                i.GetComponent<IUnit>().TeamNumber = 1;
+            }
             teamInits.countPlayer = new[] { teamInventory.playerList[0].Length, teamInventory.playerList[1].Length };
             teamInventory.CompPoints = new[] { 0, 0 };
             teamInventory.TurretNumber = new[] { 2, 2 };
             teamInits.teamPlaying = teamInits.firstTeamPlaying;
-            foreach (var i in uiFields.cPui) { i.text = 0.ToString(); i.color = Color.red; }
-            foreach (var i in uiFields.tNbUI) { i.text = 2.ToString(); i.color = Color.green; }
+            foreach (var i in uiFields.cPui)
+            {
+                i.text = 0.ToString();
+                i.color = Color.red;
+            }
+            foreach (var i in uiFields.tNbUI)
+            {
+                i.text = 2.ToString();
+                i.color = Color.green;
+            }
             //foreach (var i in uiFields.computerUI) { i.color = Color.red; }
         }
 

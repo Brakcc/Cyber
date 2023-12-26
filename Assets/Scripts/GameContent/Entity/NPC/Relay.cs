@@ -32,16 +32,13 @@ namespace GameContent.Entity.NPC
         public bool IsTransmitting
         {
             get => _isTransmitting;
-            set
+            private set
             {
-                IsTransmitting = PrecRefList.Any(i => i.GotHacked && i.IsTransmitting);
                 _isTransmitting = value;
-                foreach (var i in PrecRefList)
+                _isTransmitting = PrecRefList.Any(i => i.GotHacked && i.IsTransmitting);
+                if (_isTransmitting)
                 {
-                    if (i.IsTransmitting && i.GotHacked)
-                    {
-                        OnLink(i);
-                    }
+                    Debug.Log("guez");
                 }
             }
         }
@@ -104,15 +101,24 @@ namespace GameContent.Entity.NPC
                 //diff les glows pour la team atk et def
             }
             
-            OnCheckIfPrecOn();
+            OnCheckIfPrecOn(this, precRefList);
         }
         
-        public void OnCheckIfPrecOn()
+        private static void OnCheckIfPrecOn(Relay rRef, IEnumerable<Relay> precRelayRefs)
         {
-            
+            if (precRelayRefs == null)
+                return;
+
+            foreach (var relay in precRelayRefs)
+            {
+                if (!relay.IsTransmitting)
+                    continue;
+                rRef.IsTransmitting = true;
+                relay.OnLink(rRef, relay);
+            }
         }
 
-        public void OnLink(Relay relayTarget)
+        public void OnLink(Relay relayTarget, Relay relayRef)
         {
             Debug.Log("allez");
             //LineMeshRender
