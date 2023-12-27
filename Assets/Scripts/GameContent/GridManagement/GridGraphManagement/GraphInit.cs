@@ -41,9 +41,9 @@ namespace GameContent.GridManagement.GridGraphManagement
     public class GraphInitUnit
     {
         #region fields
-        [SerializeField] int orderInLayer;
-        [SerializeField] Color color;
-        [SerializeField] Vector2 offset;
+        [SerializeField] private int orderInLayer;
+        [SerializeField] private Color color;
+        [SerializeField] private Vector2 offset;
         #endregion
 
         #region cached methodes
@@ -51,7 +51,7 @@ namespace GameContent.GridManagement.GridGraphManagement
         {
             GameObject child = new("_tex");
             child.transform.SetParent(parent.transform);
-            SpriteRenderer rend = child.AddComponent<SpriteRenderer>();
+            var rend = child.AddComponent<SpriteRenderer>();
 
             rend.sprite = sprite;
             rend.sortingOrder = orderInLayer;

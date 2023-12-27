@@ -94,7 +94,7 @@ namespace GameContent.Entity.Unit.UnitWorking
             CrBDbCounter = 0;
             PrecBDbCounter = 0;
         }
-
+        
         public virtual void Select()
         {
             
@@ -120,7 +120,7 @@ namespace GameContent.Entity.Unit.UnitWorking
             GetComponentInChildren<SpriteRenderer>().color = Color.red;
         }
 
-        private void OnRez()
+        protected virtual void OnRez()
         {
             CanPlay = false;
             IsDead = false;
@@ -159,7 +159,7 @@ namespace GameContent.Entity.Unit.UnitWorking
             {
                 foreach (var i in GlobalNetwork) { HexGridStore.hGs.GetTile(i).DisableGlowDynaNet(); }
             }
-            OnGenerateNet(NetworkRange);
+            OnGenerateNet(NetworkRange, TeamNumber);
         }
 
         private IEnumerator DashGrabPath(Vector3 path, float speed)
@@ -180,7 +180,7 @@ namespace GameContent.Entity.Unit.UnitWorking
 
             PositionCharacterOnTile(path);
             
-            OnGenerateNet(NetworkRange);
+            OnGenerateNet(NetworkRange, TeamNumber);
         }
 
         public void OnCheckEffectCounter(IUnit unit)

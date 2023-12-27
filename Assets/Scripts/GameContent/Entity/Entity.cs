@@ -97,6 +97,30 @@ namespace GameContent.Entity
             return newRange;
         }
 
+        private static List<Vector3Int> OnIntersect(Vector3Int pos, HexGridStore hexGrid, int range, List<NetworkType> toMerge, int teamNb)
+        {
+            var newRange = GetRangeList(pos, hexGrid, range).ToList();
+
+            if (toMerge.Count == 0)
+            {
+                return newRange;
+            }
+
+            foreach (var i in toMerge)
+            {
+                if (IsTeamed((int)i, teamNb))
+                    continue;
+                
+                foreach (var j in hexGrid.NetworkList[(int)i])
+                {
+                    if (!newRange.Contains(j))
+                        newRange.Add(j);
+                }
+            }
+
+            return newRange;
+        }
+
         /// <summary>
         /// Remplace l'ancien global network par le nouveau // Fonction generale de generation de reseau /!\
         /// </summary>
@@ -104,6 +128,12 @@ namespace GameContent.Entity
         {
             IsIntersecting(CurrentHexPos, HexGridStore.hGs, range, out var net);
             GlobalNetwork = OnIntersect(CurrentHexPos, HexGridStore.hGs, range, net);
+        }
+
+        public void OnGenerateNet(int range, int team)
+        {
+            IsIntersecting(CurrentHexPos, HexGridStore.hGs, range, out var net);
+            GlobalNetwork = OnIntersect(CurrentHexPos, HexGridStore.hGs, range, net, team);
         }
 
         public void OnSelectNetworkTiles()
@@ -126,6 +156,13 @@ namespace GameContent.Entity
             IsOnNetwork = false;
         }
         
+        #endregion
+
+        #region Chechers
+
+        private static bool IsTeamed(int netNb, int tNb)
+            => (netNb == 1 && tNb + 1 != netNb) || (netNb == 2 && tNb + 1 != netNb);
+
         #endregion
     }
 }

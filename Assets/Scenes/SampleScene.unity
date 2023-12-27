@@ -986,12 +986,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 619394800}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -3.48, y: 0.72, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1003032604}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &636835336 stripped
 GameObject:
@@ -1299,6 +1299,7 @@ Transform:
   - {fileID: 1824286811}
   - {fileID: 426509712}
   - {fileID: 1155493942}
+  - {fileID: 619394802}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1033391709
@@ -9676,7 +9677,7 @@ PrefabInstance:
       objectReference: {fileID: 519870410}
     - target: {fileID: 2588066164149268060, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
       propertyPath: teamInits.firstTeamPlaying
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2588066164149268060, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
       propertyPath: uiFields.cPui.Array.data[0]
@@ -9964,6 +9965,42 @@ PrefabInstance:
       propertyPath: initBoard.offset.y
       value: 0.45
       objectReference: {fileID: 0}
+    - target: {fileID: 3927965128190217529, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
+      propertyPath: networkRef.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3927965128190217529, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
+      propertyPath: networkRef.Array.data[0]
+      value: 
+      objectReference: {fileID: 14694641723745676}
+    - target: {fileID: 3927965128190217529, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
+      propertyPath: networkRef.Array.data[1]
+      value: 
+      objectReference: {fileID: 14694641723745675}
+    - target: {fileID: 3927965128190217529, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
+      propertyPath: networkRef.Array.data[2]
+      value: 
+      objectReference: {fileID: 14694641723745674}
+    - target: {fileID: 3927965128190217529, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
+      propertyPath: networkRef.Array.data[3]
+      value: 
+      objectReference: {fileID: 14694641723745673}
+    - target: {fileID: 3927965128190217529, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
+      propertyPath: networkRef.Array.data[4]
+      value: 
+      objectReference: {fileID: 14694641723745672}
+    - target: {fileID: 3927965128190217529, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
+      propertyPath: networkRef.Array.data[5]
+      value: 
+      objectReference: {fileID: 14694641723745671}
+    - target: {fileID: 3927965128190217529, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
+      propertyPath: networkRef.Array.data[6]
+      value: 
+      objectReference: {fileID: 14694641723745670}
+    - target: {fileID: 3927965128190217529, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
+      propertyPath: networkRef.Array.data[7]
+      value: 
+      objectReference: {fileID: 14694641723745669}
     - target: {fileID: 3936230893689620697, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 13.299999
@@ -10011,6 +10048,10 @@ PrefabInstance:
     - target: {fileID: 5714707210176988669, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
       propertyPath: m_Name
       value: Relay
+      objectReference: {fileID: 0}
+    - target: {fileID: 5714707210176988669, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10090,7 +10131,6 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 619394802}
   - {fileID: 14694641723745517}
   - {fileID: 6839896766878513040}
   - {fileID: 1003032604}

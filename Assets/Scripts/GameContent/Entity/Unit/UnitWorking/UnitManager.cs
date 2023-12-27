@@ -751,6 +751,9 @@ namespace GameContent.Entity.Unit.UnitWorking
 
         private static bool IsSkip(IUnit uRef, KapaType type)
             => uRef.UnitData.KapasList[(int)type].KapaType == KapaType.Skip;
+
+        private static bool IsDeAct(IUnit uRef, KapaType type)
+            => uRef.UnitData.KapasList[(int)type].KapaType == KapaType.DeAct;
         
         private static bool IsAoe(IUnit uRef, KapaType type)
             => uRef.UnitData.KapasList[(int)type].EffectType == EffectType.Hack &&
@@ -763,6 +766,7 @@ namespace GameContent.Entity.Unit.UnitWorking
         private bool CanActivateKapaWithButtons(IUnit uRef, KapaType type)
             => CurrentKapaPatternPos != null ||
                IsKapaSelected && CurrentTypeKapaSelected == type && IsKapaDirSelected ||
+               IsKapaSelected && CurrentTypeKapaSelected == type && IsDeAct(uRef, type) ||
                IsKapaSelected && CurrentButtonPos == null && (IsAoe(uRef, type) || IsSkip( uRef, type));
 
         #endregion

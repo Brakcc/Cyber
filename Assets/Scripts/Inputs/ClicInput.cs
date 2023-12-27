@@ -7,20 +7,20 @@ namespace Inputs
     public class ClicInput : MonoBehaviour
     {
         public UnityEvent<Vector3> mouseClic;
-        [SerializeField] InputActionReference clic;
+        [SerializeField] private InputActionReference clic;
 
-        void Update()
+        private void Update()
         {
             DetectClic();
         }
 
-        public void DetectClic()
+        private void DetectClic()
         {
-            if (clic.action.WasPerformedThisFrame())
-            {
-                Vector3 mousePos = Mouse.current.position.ReadValue();
-                mouseClic?.Invoke(mousePos);
-            }
+            if (!clic.action.WasPerformedThisFrame())
+                return;
+            
+            Vector3 mousePos = Mouse.current.position.ReadValue();
+            mouseClic?.Invoke(mousePos);
         }
     }
 }

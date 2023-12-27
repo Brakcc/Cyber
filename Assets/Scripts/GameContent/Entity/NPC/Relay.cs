@@ -25,14 +25,15 @@ namespace GameContent.Entity.NPC
         #region Hack
 
         [SerializeField] private RelayTarget reTarget;
-        public RelayTarget ReTarget => reTarget;
+        private RelayTarget ReTarget => reTarget;
         
         public bool GotHacked { get; private set; }
         private bool _isTransmitting;
-        public bool IsTransmitting
+
+        private bool IsTransmitting
         {
             get => _isTransmitting;
-            private set
+            set
             {
                 _isTransmitting = value;
                 _isTransmitting = PrecRefList.Any(i => i.GotHacked && i.IsTransmitting);
@@ -42,8 +43,8 @@ namespace GameContent.Entity.NPC
                 }
             }
         }
-        
-        public IEnumerable<Relay> PrecRefList => precRefList;
+
+        private IEnumerable<Relay> PrecRefList => precRefList;
         [SerializeField] private Relay[] precRefList;
         
         [SerializeField] private Hex[] networkRef;
@@ -98,7 +99,8 @@ namespace GameContent.Entity.NPC
             foreach (var i in networkRef)
             {
                 i.LocalNetwork = NetworkType.Net1;
-                //diff les glows pour la team atk et def
+                i.DisableGlowBaseNet();
+                i.EnableGlowHackedNet();
             }
             
             OnCheckIfPrecOn(this, precRefList);
@@ -118,7 +120,7 @@ namespace GameContent.Entity.NPC
             }
         }
 
-        public void OnLink(Relay relayTarget, Relay relayRef)
+        private void OnLink(Relay relayTarget, Relay relayRef)
         {
             Debug.Log("allez");
             //LineMeshRender

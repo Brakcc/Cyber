@@ -48,7 +48,7 @@ namespace GameContent.Entity.Unit.UnitWorking.UnitList
         public override bool CanKapa { get; protected set; }
         public override bool IsOnComputer { get; protected set; }
 
-        [SerializeField] GraphInitUnit graphs;
+        [SerializeField] private GraphInitUnit graphs;
         
         #endregion
 
@@ -92,6 +92,13 @@ namespace GameContent.Entity.Unit.UnitWorking.UnitList
             _rend.color = _originColor;
         }
         public override void OnKapa() => Debug.Log("Omegalul");
+
+        protected sealed override void OnRez()
+        {
+            base.OnRez();
+            GetComponentInChildren<SpriteRenderer>().color = _originColor;
+        }
+
         #endregion
     }
 }

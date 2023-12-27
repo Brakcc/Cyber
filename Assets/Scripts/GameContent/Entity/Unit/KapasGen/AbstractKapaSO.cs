@@ -718,7 +718,7 @@ namespace GameContent.Entity.Unit.KapasGen
         /// <param name="hexGrid"></param>
         /// <param name="unit"></param>
         /// <returns></returns>
-        public virtual List<Vector3Int> OnGenerateButton(HexGridStore hexGrid, IUnit unit) 
+        public virtual List<Vector3Int> OnGenerateButton(HexGridStore hexGrid, IUnit unit)
         {
             if (EffectType == EffectType.Hack)
             {
@@ -734,6 +734,8 @@ namespace GameContent.Entity.Unit.KapasGen
             
             if (KapaFunctionType == KapaFunctionType.ThrowLimit)
             {
+                KapaSystem _kapaSys = new();
+                
                 var tempBut =  Direction.IsPariryEven(unit.CurrentHexPos.x)
                     ? AoeLimitedThrowKapa.ConcatEvenPattern(unit.CurrentHexPos, this)
                     : AoeLimitedThrowKapa.ConcatOddPattern(unit.CurrentHexPos, this);
@@ -742,9 +744,11 @@ namespace GameContent.Entity.Unit.KapasGen
                 {
                     var hex = hexGrid.GetTile(tempTile);
                     
-                    if(hex == null)
+                    if (hex == null)
                         continue;
-                    if(hex.IsObstacle())
+                    if (hex.IsObstacle())
+                        continue;
+                    if (!_kapaSys.VerifyKapaRange(tempTile, unit, hexGrid, 100))
                         continue;
 
                     availableButton.Add(tempTile);
@@ -889,17 +893,17 @@ namespace GameContent.Entity.Unit.KapasGen
             foreach (var pos in initList)
             {
                 var tempPos = EffectType == EffectType.Hack && KapaFunctionType != KapaFunctionType.AOE
-                    || KapaFunctionType == KapaFunctionType.ThrowFreeArea
-                    || KapaFunctionType == KapaFunctionType.ThrowLimit
+                    || IsRanged()
                     ? pos
                     : unit.CurrentHexPos + pos;
                 
-                if (!hexGrid.hexTiles.ContainsKey(tempPos)) continue;
+                if (!hexGrid.hexTiles.ContainsKey(tempPos))
+                    continue;
                 
                 var tempHex = hexGrid.GetTile(tempPos);
                 
                 if (!kapaSys.VerifyKapaRange(tempHex.HexCoords, unit, hexGrid, MaxPlayerPierce) && 
-                    EffectType != EffectType.Hack) 
+                    EffectType != EffectType.Hack && !IsRanged() || tempHex.IsObstacle()) 
                     continue;
                 
                 tempHex.EnableGlowKapa();
@@ -927,6 +931,12 @@ namespace GameContent.Entity.Unit.KapasGen
             var feed = Instantiate(inst, pos, Quaternion.identity);
             feed.GetComponent<DamageFeedBack>().OnInit(dam);
         }
+        
+        #endregion
+
+        #region Checkers
+        
+        private bool IsRanged() => KapaFunctionType is KapaFunctionType.ThrowFreeArea or KapaFunctionType.ThrowLimit;
         
         #endregion
     }

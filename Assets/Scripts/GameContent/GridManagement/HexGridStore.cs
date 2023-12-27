@@ -100,7 +100,7 @@ namespace GameContent.GridManagement
                 if (!uEnt.IsNetworkEmiter) continue;
                 
                 emiters.Add(uEnt);
-                uEnt.OnGenerateNet(uEnt.NetworkRange);
+                uEnt.OnGenerateNet(uEnt.NetworkRange, unitTemp.TeamNumber);
             }
             foreach (var unit in UnitGenManager.gGm.TeamLists.heroPlayer1)
             {
@@ -117,7 +117,7 @@ namespace GameContent.GridManagement
                 if (!uEnt.IsNetworkEmiter) continue;
                 
                 emiters.Add(uEnt);
-                uEnt.OnGenerateNet(uEnt.NetworkRange);
+                uEnt.OnGenerateNet(uEnt.NetworkRange, unitTemp.TeamNumber);
             }
             
             InitNpcEntity(relayList);

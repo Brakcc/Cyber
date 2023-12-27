@@ -129,11 +129,16 @@ MonoBehaviour:
         turnNumber: 0
       hasBalanceMultBDb: 0
       balMultBuffDebuffData: 1
+  dotKapaDatas:
+    hasBalanceMultBDb: 0
+    balMultBuffDebuffData: 1
+    turnNumber: 0
   _kapaUI: {fileID: 0}
   _damageFeedBack: {fileID: 8948626333531248720, guid: 8f927771530abf045b81020ae94b0299, type: 3}
   _pattern:
   - {x: 0, y: -1, z: 0}
   - {x: 0, y: -2, z: 0}
+  - {x: 0, y: -3, z: 0}
   _nAKapaSupFields:
     compPointsAdded: 0
     ultPointsAdded: 0

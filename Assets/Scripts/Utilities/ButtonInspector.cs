@@ -11,7 +11,7 @@ namespace Utilities
         public override void OnInspectorGUI()
         {
             DrawDefaultInspector();
-            UnitManager unit = (UnitManager)target;
+            var  unit = (UnitManager)target;
             if (GUILayout.Button("Restart Turn"))
             {
                 UnitManager.ResetLoop();

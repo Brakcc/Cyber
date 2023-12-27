@@ -3,7 +3,6 @@ using GameContent.GameManagement;
 using GameContent.GridManagement;
 using Interfaces.Unit;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace GameContent.Entity.Unit.KapasGen.DifKapas
 {

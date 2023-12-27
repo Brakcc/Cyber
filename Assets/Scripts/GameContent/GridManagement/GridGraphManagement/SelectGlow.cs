@@ -6,14 +6,15 @@ namespace GameContent.GridManagement.GridGraphManagement
     public class SelectGlow
     {
         #region fields
-        [SerializeField] HexaRefs hexaRefs;
-        [SerializeField] GLowColors glowColors;
-        bool _isRangeGlowing;
-        bool _isPathGlowing;
-        bool _isButtonGlowing;
-        bool _isKapaGlowing;
-        bool _isBaseNetGlowing;
-        bool _isDynaNetGlowing;
+        
+        [SerializeField] private HexaRefs hexaRefs;
+        private bool _isRangeGlowing;
+        private bool _isPathGlowing;
+        private bool _isButtonGlowing;
+        private bool _isKapaGlowing;
+        private bool _isBaseNetGlowing;
+        private bool _isHackedNetGlowing;
+        private bool _isDynaNetGlowing;
 
         /// <summary>
         /// Ensemble des Tiles des reférences en enfant d'un Hex pour modifs les renderTex
@@ -26,24 +27,14 @@ namespace GameContent.GridManagement.GridGraphManagement
             public SpriteRenderer buttonsKapa;
             public SpriteRenderer kapaSelect;
             public SpriteRenderer baseNetwork;
+            public SpriteRenderer hackedNetwork;
             public SpriteRenderer dynamicNetwork;
         }
-        /// <summary>
-        /// Ensemble des couleurs dispos pour les différents types de Glow
-        /// </summary>
-        [System.Serializable]
-        public class GLowColors
-        {
-            public Color moveRangeColor;
-            public Color selectedPathColor;
-            public Color selectedKapaColor;
-            public Color selectedKapaColorButton;
-            public Color selectedBaseNetwork;
-            public Color selectedDynamicNetwork;
-        }
+        
         #endregion
 
         #region methodes 
+        
         /// <summary>
         /// premier Set de secu pour desactiver l'ensemble des SpriteRenderer ref des RenderTextures
         /// </summary>
@@ -54,15 +45,15 @@ namespace GameContent.GridManagement.GridGraphManagement
             hexaRefs.buttonsKapa.enabled = false;
             hexaRefs.kapaSelect.enabled = false;
             hexaRefs.baseNetwork.enabled = false;
+            hexaRefs.hackedNetwork.enabled = false;
             hexaRefs.dynamicNetwork.enabled = false;
         }
 
         #region range glow
-        void ToggleRange()
-        {
-            if (!_isRangeGlowing) { hexaRefs.moveRange.enabled = true; }
-            else { hexaRefs.moveRange.enabled = false; }
 
+        private void ToggleRange()
+        {
+            hexaRefs.moveRange.enabled = !_isRangeGlowing;
             _isRangeGlowing = !_isRangeGlowing;
         }
         /// <summary>
@@ -75,14 +66,14 @@ namespace GameContent.GridManagement.GridGraphManagement
             _isRangeGlowing = !b;
             ToggleRange();
         }
+        
         #endregion
 
         #region path glow
-        void TogglePath()
-        {
-            if (!_isPathGlowing) { hexaRefs.pathSelect.enabled = true; }
-            else { hexaRefs.pathSelect.enabled = false; }
 
+        private void TogglePath()
+        {
+            hexaRefs.pathSelect.enabled = !_isPathGlowing;
             _isPathGlowing = !_isPathGlowing;
         }
         /// <summary>
@@ -95,14 +86,14 @@ namespace GameContent.GridManagement.GridGraphManagement
             _isPathGlowing = !b;
             TogglePath();
         }
+        
         #endregion
 
         #region button glow
-        void ToggleButton()
-        {
-            if (!_isButtonGlowing) { hexaRefs.buttonsKapa.enabled = true; }
-            else { hexaRefs.buttonsKapa.enabled = false; }
 
+        private void ToggleButton()
+        {
+            hexaRefs.buttonsKapa.enabled = !_isButtonGlowing;
             _isButtonGlowing = !_isButtonGlowing;
         }
         /// <summary>
@@ -115,14 +106,14 @@ namespace GameContent.GridManagement.GridGraphManagement
             _isButtonGlowing = !b;
             ToggleButton();
         }
+        
         #endregion
 
         #region kapa glow
-        void ToggleKapa()
-        {
-            if (!_isKapaGlowing) { hexaRefs.kapaSelect.enabled = true; }
-            else { hexaRefs.kapaSelect.enabled = false; }
 
+        private void ToggleKapa()
+        {
+            hexaRefs.kapaSelect.enabled = !_isKapaGlowing;
             _isKapaGlowing = !_isKapaGlowing;
         }
         /// <summary>
@@ -135,14 +126,14 @@ namespace GameContent.GridManagement.GridGraphManagement
             _isKapaGlowing = !b;
             ToggleKapa();
         }
+        
         #endregion
 
         #region Base network glow
-        void ToggleBaseNet()
-        {
-            if (!_isBaseNetGlowing) { hexaRefs.baseNetwork.enabled = true; }
-            else { hexaRefs.baseNetwork.enabled = false; }
 
+        private void ToggleBaseNet()
+        {
+            hexaRefs.baseNetwork.enabled = !_isBaseNetGlowing;
             _isBaseNetGlowing = !_isBaseNetGlowing;
         }
         /// <summary>
@@ -155,14 +146,34 @@ namespace GameContent.GridManagement.GridGraphManagement
             _isBaseNetGlowing = !b;
             ToggleBaseNet();
         }
+        
+        #endregion
+        
+        #region Hacked network glow
+
+        private void ToggleHackedNet()
+        {
+            hexaRefs.hackedNetwork.enabled = !_isHackedNetGlowing;
+            _isHackedNetGlowing = !_isHackedNetGlowing;
+        }
+        /// <summary>
+        /// active ou desactive le glow des kapas par dessus celui des boutons
+        /// </summary>
+        /// <param name="b"></param>
+        public void ToggleHackedNetGlow(bool b)
+        {
+            if (_isHackedNetGlowing == b) return;
+            _isHackedNetGlowing = !b;
+            ToggleHackedNet();
+        }
+        
         #endregion
 
         #region Dynamic network glow
-        void ToggleDynaNet()
-        {
-            if (!_isDynaNetGlowing) { hexaRefs.dynamicNetwork.enabled = true; }
-            else { hexaRefs.dynamicNetwork.enabled = false; }
 
+        private void ToggleDynaNet()
+        {
+            hexaRefs.dynamicNetwork.enabled = !_isDynaNetGlowing;
             _isDynaNetGlowing = !_isDynaNetGlowing;
         }
         /// <summary>
@@ -175,7 +186,9 @@ namespace GameContent.GridManagement.GridGraphManagement
             _isDynaNetGlowing = !b;
             ToggleDynaNet();
         }
+        
         #endregion
+        
         #endregion
     }
 }
