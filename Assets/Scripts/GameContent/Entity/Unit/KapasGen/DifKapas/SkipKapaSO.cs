@@ -10,7 +10,7 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
     {
         #region inherited accessors
         public override KapaUISO KapaUI => _kapaUI;
-        [SerializeField] KapaUISO _kapaUI;
+        [SerializeField] private KapaUISO _kapaUI;
         public override GameObject DamageFeedBack => null;
         public override Vector3Int[] Patterns => null;
         #endregion

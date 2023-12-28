@@ -11,15 +11,15 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
     {
         #region inherited accessors
         public override KapaUISO KapaUI => _kapaUI;
-        [SerializeField] KapaUISO _kapaUI;
+        [SerializeField] private KapaUISO _kapaUI;
         public override GameObject DamageFeedBack => _damageFeedBack;
-        [SerializeField] GameObject _damageFeedBack;
+        [SerializeField] private GameObject _damageFeedBack;
         public override Vector3Int[] Patterns => _patterns;
-        [SerializeField] Vector3Int[] _patterns;
+        [SerializeField] private Vector3Int[] _patterns;
 
-        [SerializeField] UKapaSupFields _uKapaSupFields;
+        [SerializeField] private UKapaSupFields _uKapaSupFields;
 
-        [SerializeField] CameraManager _cam;
+        [SerializeField] private CameraManager _cam;
         #endregion
 
         #region inherited paterns/accessors
@@ -87,15 +87,18 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
         #endregion
 
         #region cache
-        void DoKapa(IUnit unit)
+
+        private void DoKapa(IUnit unit)
         {
             unit.UltPoints -= _uKapaSupFields.neededUltPoints;
             //PlaceHolder � rempir avec les anims et consid�rations de d�g�ts
 
             unit.StatUI.SetUP(unit);
         }
-        void RefuseKapa() { Debug.Log("nope"); }
-        void EndKapa()
+
+        private void RefuseKapa() { Debug.Log("nope"); }
+
+        private void EndKapa()
         {
             //Debug.Log("End Kapa");
         }

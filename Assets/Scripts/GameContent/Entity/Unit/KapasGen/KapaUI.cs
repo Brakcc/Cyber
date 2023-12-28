@@ -15,7 +15,8 @@ namespace GameContent.Entity.Unit.KapasGen
         #endregion
 
         #region Inits Methodes
-        void Start()
+
+        private void Start()
         {
             kapaImage = GetComponent<Image>();
             kapaText = GetComponentInChildren<TextMeshPro>();

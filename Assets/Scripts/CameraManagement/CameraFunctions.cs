@@ -25,7 +25,8 @@ namespace CameraManagement
 
             OnStopShake(vCam, shake.last);
         }
-        static async void OnStopShake(CinemachineVirtualCamera cam, int d)
+
+        private static async void OnStopShake(CinemachineVirtualCamera cam, int d)
         {
             await Task.Delay(d);
             cam.DestroyCinemachineComponent<CinemachineBasicMultiChannelPerlin>();

@@ -15,9 +15,9 @@ namespace GameContent.GridManagement.GridGraphManagement
         //couleurs et materials de base pour le glow
 
         [SerializeField] private Material glowMat;
-        [SerializeField] Color selectedPathColor;
-        [SerializeField] Color selectedKapaColor;
-        [SerializeField] Color selectedKapaColorButton;
+        [SerializeField] private Color selectedPathColor;
+        [SerializeField] private Color selectedKapaColor;
+        [SerializeField] private Color selectedKapaColorButton;
     
         //Simple glow and color logic
         private Color originColor;
@@ -33,7 +33,7 @@ namespace GameContent.GridManagement.GridGraphManagement
             originColor = glowMat.GetColor("_GlowColor");
         }
 
-        void PrepareMatsDicts()
+        private void PrepareMatsDicts()
         {
             foreach (Renderer rend in thisHex.GetComponentsInChildren<Renderer>())
             {
@@ -54,7 +54,8 @@ namespace GameContent.GridManagement.GridGraphManagement
         }
 
         #region standard glow
-        void Toggle()
+
+        private void Toggle()
         {
             if (!isGlowing)
             {
@@ -96,7 +97,8 @@ namespace GameContent.GridManagement.GridGraphManagement
         #endregion
 
         #region kapa glow
-        void ToggleKapa()
+
+        private void ToggleKapa()
         {
             if (!isGlowing)
             {

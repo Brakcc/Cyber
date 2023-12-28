@@ -103,7 +103,7 @@ namespace GameContent.GameManagement
         /// PLACE HOLDER POSSIBLE POUR UN MOUVEMENT DE CAM OU AUTRE FEEDBACK DE SWITCH
         /// </summary>
         /// <param name="newTeam"></param>
-        void SwitchTeam(int newTeam) => InitTeam(newTeam);
+        private void SwitchTeam(int newTeam) => InitTeam(newTeam);
         
         /// <summary>
         /// appelee à la fin d'une action de kapa d'une des Units.

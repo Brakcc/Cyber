@@ -2,7 +2,7 @@
 using System.Linq;
 using Enums.GridEnums;
 using GameContent.GridManagement;
-using GameContent.GridManagement.GridGraphManagement;
+using GameContent.GridManagement.GridGraphManagement.GraphInits;
 using UnityEngine;
 
 namespace GameContent.Entity.NPC
@@ -16,7 +16,7 @@ namespace GameContent.Entity.NPC
         public override int NetworkRange { get; set; }
         public override List<Vector3Int> GlobalNetwork { get; protected set; } = new();
 
-        [SerializeField] GraphInitEntity graphInit;
+        [SerializeField] private GraphInitEntity graphInit;
         #endregion
 
         #region methodes

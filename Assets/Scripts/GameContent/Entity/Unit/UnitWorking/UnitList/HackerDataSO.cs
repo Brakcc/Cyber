@@ -9,39 +9,39 @@ namespace GameContent.Entity.Unit.UnitWorking.UnitList
     public sealed class HackerDataSO : AbstractUnitSO
     {
         public override int ID => iD;
-        [SerializeField] int iD;
+        [SerializeField] private int iD;
 
         public override string Name => pname;
-        [SerializeField] string pname;
+        [SerializeField] private string pname;
 
         public override UnitType Type => type;
-        [SerializeField] UnitType type;
+        [SerializeField] private UnitType type;
 
         public override int NetworkRange => networkRange;
-        [SerializeField] int networkRange;
+        [SerializeField] private int networkRange;
 
         public override int MovePoints => movePoints;
-        [SerializeField] int movePoints;
+        [SerializeField] private int movePoints;
 
         public override int Attack => attack;
-        [SerializeField] int attack;
+        [SerializeField] private int attack;
 
         public override int Defense => defense;
-        [SerializeField] int defense;
+        [SerializeField] private int defense;
 
         public override int CritRate => critRate;
-        [SerializeField] int critRate;
+        [SerializeField] private int critRate;
 
         public override int Speed => speed;
-        [SerializeField] int speed;
+        [SerializeField] private int speed;
 
         public override float HealthPoint { get => healthPoint; }
-        [SerializeField] float healthPoint;
+        [SerializeField] private float healthPoint;
 
         public override Sprite Sprite { get => sprite; set { sprite = value; } }
-        [SerializeField] Sprite sprite;
+        [SerializeField] private Sprite sprite;
 
         public override List<AbstractKapaSO> KapasList { get => kapasList; set { kapasList = value; } }
-        [SerializeField] List<AbstractKapaSO> kapasList;
+        [SerializeField] private List<AbstractKapaSO> kapasList;
     }
 }

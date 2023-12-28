@@ -10,8 +10,9 @@ namespace GameContent.Entity.Unit.UnitWorking
     public class MoveSystem
     {
         #region fields
-        PathResult _moveRange;
-        List<Vector3Int> _currentPath = new();
+
+        private PathResult _moveRange;
+        private List<Vector3Int> _currentPath = new();
         #endregion
 
         #region methodes

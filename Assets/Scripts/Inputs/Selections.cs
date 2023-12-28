@@ -17,7 +17,8 @@ namespace Inputs
         #endregion
 
         #region methodes
-        void Awake()
+
+        private void Awake()
         {
             if (mainC == null) { mainC = Camera.main; }
             _inputsMan = new();
@@ -32,7 +33,7 @@ namespace Inputs
             }
         }
 
-        bool UnitSelected(GameObject result) => result.GetComponent<Unit>() != null;
+        private bool UnitSelected(GameObject result) => result.GetComponent<Unit>() != null;
         #endregion
     }
 }

@@ -24,7 +24,7 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
 
         [SerializeField] private CKapaSupFields cKapaSupFields;
 
-        [SerializeField] CameraManager cam;
+        [SerializeField] private CameraManager cam;
         #endregion
 
         #region inherited paterns/accessors
@@ -103,7 +103,8 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
         #endregion
 
         #region cache
-        void DoKapa(IUnit unit)
+
+        private void DoKapa(IUnit unit)
         {
             GameLoopManager.gLm.HandleCompPointValueChange(unit.TeamNumber, -cKapaSupFields.neededCompPoints);
             unit.UltPoints += cKapaSupFields.ultPointsAdded;
@@ -111,8 +112,10 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
 
             unit.StatUI.SetUP(unit);
         }
-        void RefuseKapa() { Debug.Log("nope"); }
-        void EndKapa()
+
+        private void RefuseKapa() { Debug.Log("nope"); }
+
+        private void EndKapa()
         {
             //Debug.Log("End Kapa");
         }

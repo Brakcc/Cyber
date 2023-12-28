@@ -50,7 +50,7 @@ namespace GameContent.Entity.Unit.UnitWorking
         #region Entity heritage
         
         public override Vector3Int CurrentHexPos { get => _currentHexPos; set => _currentHexPos = value; }
-        Vector3Int _currentHexPos;
+        private Vector3Int _currentHexPos;
         public override bool IsNetworkEmiter { get; set; }
         public override bool IsOnNetwork { get; protected set; }
         public override int NetworkRange { get; set; }

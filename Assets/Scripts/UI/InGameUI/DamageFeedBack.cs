@@ -8,11 +8,12 @@ namespace UI.InGameUI
     public class DamageFeedBack : MonoBehaviour
     {
         #region fields
-        [SerializeField] TMP_Text damageText;
+        [SerializeField] private TMP_Text damageText;
         #endregion
 
         #region methodes
-        void OnEnable()
+
+        private void OnEnable()
         {
             StartCoroutine(UIEffect());
         }
@@ -24,7 +25,7 @@ namespace UI.InGameUI
             transform.DOMoveY(transform.position.y + 0.75f, 2);
         }
 
-        IEnumerator UIEffect()
+        private IEnumerator UIEffect()
         {
             float t = 0;
             yield return new WaitForSeconds(0.75f);

@@ -15,7 +15,7 @@ namespace GameContent.GameManagement
         [SerializeField] private AbstractUnitSO[] currentDpsList;
 
         private IEnumerable<AbstractUnitSO> CurrentHackerList => currentHackerList;
-        [SerializeField] AbstractUnitSO[] currentHackerList;
+        [SerializeField] private AbstractUnitSO[] currentHackerList;
 
         private IEnumerable<AbstractUnitSO> FullList => ConcatLists();
 

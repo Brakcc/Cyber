@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Enums.GridEnums;
-using GameContent.GridManagement.GridGraphManagement;
+using GameContent.GridManagement.GridGraphManagement.GraphInits;
 using UnityEngine;
 
 namespace GameContent.Entity.NPC
@@ -20,12 +20,12 @@ namespace GameContent.Entity.NPC
 
         #endregion
         
-        [SerializeField] ComputerTarget compTarget;
+        [SerializeField] private ComputerTarget compTarget;
         public ComputerTarget ComputerTarget => compTarget;
         
         public bool GotHacked { get; set; }
         
-        [SerializeField] GraphInitBoard initBoard;
+        [SerializeField] private GraphInitBoard initBoard;
 
         #endregion
 
