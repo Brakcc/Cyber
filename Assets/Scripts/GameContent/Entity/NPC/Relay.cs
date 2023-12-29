@@ -157,6 +157,7 @@ namespace GameContent.Entity.NPC
             GotHacked = true;
 
             HexGridStore.hGs.OnAddToNetwork(NetworkType.Net1, relayRefs.networkRef);
+            HexGridStore.hGs.OnDelFromNetwork(NetworkType.Net0, relayRefs.networkRef);
 
             if (relayRefs.precRefList.Length == 0)
             {

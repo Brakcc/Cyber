@@ -4684,6 +4684,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
+--- !u!1 &1344458223 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6013605041413109649, guid: 3c13ea9b3c23ebd4da98ff1da3e9631f, type: 3}
+  m_PrefabInstance: {fileID: 3985531609310562578}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1405534015
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35550,7 +35555,7 @@ PrefabInstance:
     - target: {fileID: 2588066164149268060, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
       propertyPath: teamInits.deActButton
       value: 
-      objectReference: {fileID: 3985531609310562582}
+      objectReference: {fileID: 1344458223}
     - target: {fileID: 2588066164149268060, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
       propertyPath: camManager.focus.speed
       value: 10

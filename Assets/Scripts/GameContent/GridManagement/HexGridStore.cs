@@ -194,8 +194,7 @@ namespace GameContent.GridManagement
 
         public void OnDelEmiter(Entity.Entity ent)
         {
-            if (emiters == null) return;
-            emiters.Remove(ent);
+            emiters?.Remove(ent);
         }
 
         public void OnAddToNetwork(NetworkType net, IEnumerable<Vector3Int> newNet) => NetworkList[(int)net].AddRange(newNet);
@@ -214,7 +213,14 @@ namespace GameContent.GridManagement
             foreach (var i in oldNet) { NetworkList[(int)net].Remove(i); }
         }
         public void OnDelFromNetwork(NetworkType net, Vector3Int oldNet) => NetworkList[(int)net].Remove(oldNet);
-
+        public void OnDelFromNetwork(NetworkType net, IEnumerable<Hex> hexs)
+        {
+            foreach (var h in hexs)
+            {
+                NetworkList[(int)net].Remove(h.HexCoords);
+            }
+        }
+        
         public List<Vector3Int> GetNetwork(Vector3Int pos)
         {
             List<Vector3Int> allNet = new();
@@ -234,6 +240,7 @@ namespace GameContent.GridManagement
             }
             return false;
         }
+        
         #endregion
 
         #region Computer
