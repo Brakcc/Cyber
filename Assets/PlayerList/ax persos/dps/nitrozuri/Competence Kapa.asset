@@ -1,0 +1,169 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4d40161ec8cffd4fa4eb487d60ab8f7, type: 3}
+  m_Name: Competence Kapa
+  m_EditorClassIdentifier: 
+  iD: 0
+  kapaNane: 
+  description: 
+  maxPlayerpierce: 1
+  balanceMult: 2
+  kapaType: 1
+  effectType: 1
+  hasBuffDebuffs: 0
+  buffDebuffDatas:
+    isBuff: 0
+    isCritGuaranted: 0
+    buffDebuffList:
+      hasMovePointsBDb: 0
+      mPBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasDefenseBDb: 0
+      defBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasCritRateBDb: 0
+      cRBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasPrecisionBDb: 0
+      precBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasBalanceMultBDb: 0
+      balMultBuffDebuffData: 1
+  kapaFunctionType: 1
+  doubleDiffAtkDatas:
+    doubleABuffDebuff:
+      hasMovePointsBDb: 0
+      mPBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasDefenseBDb: 0
+      defBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasCritRateBDb: 1
+      cRBuffDebuffData:
+        value: -25
+        turnNumber: 1
+      hasPrecisionBDb: 0
+      precBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasBalanceMultBDb: 0
+      balMultBuffDebuffData: 1
+    hasBalanceMultBDb2: 0
+    balMultBuffDebuffData2: 1
+    hasDashAfterKapa: 0
+    hasGrabAfterKapa: 1
+    hasDiffPatterns: 0
+  firstHitEffectsData:
+    buffDebuffList:
+      hasMovePointsBDb: 0
+      mPBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasDefenseBDb: 0
+      defBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasCritRateBDb: 0
+      cRBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasPrecisionBDb: 0
+      precBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasBalanceMultBDb: 0
+      balMultBuffDebuffData: 1
+  freeThrowAreaDatas:
+    range: 0
+    centerDebuffList:
+      hasMovePointsBDb: 0
+      mPBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasDefenseBDb: 0
+      defBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasCritRateBDb: 0
+      cRBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasPrecisionBDb: 0
+      precBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasBalanceMultBDb: 0
+      balMultBuffDebuffData: 1
+  limitedThrowAreaDatas:
+    centerDebuffList:
+      hasMovePointsBDb: 0
+      mPBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasDefenseBDb: 0
+      defBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasCritRateBDb: 0
+      cRBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasPrecisionBDb: 0
+      precBuffDebuffData:
+        value: 0
+        turnNumber: 0
+      hasBalanceMultBDb: 0
+      balMultBuffDebuffData: 1
+  kapaUI: {fileID: 0}
+  damageFeedBack: {fileID: 0}
+  pattern:
+  - {x: 0, y: -1, z: 0}
+  - {x: 0, y: -2, z: 0}
+  - {x: 0, y: -3, z: 0}
+  - {x: 0, y: -4, z: 0}
+  - {x: 0, y: -5, z: 0}
+  cKapaSupFields:
+    neededCompPoints: 1
+    ultPointsAdded: 0
+    animation: {fileID: 0}
+  cam:
+    effectType: 0
+    shake:
+      last: 0
+      perlinParameters:
+        chanPerl: {fileID: 0}
+        pivotOffset: {x: 0, y: 0, z: 0}
+        amplitudeGain: 0
+        frequencyGain: 0
+    shockWave:
+      speed: 0
+    impulse:
+      ampli: 0
+      speedDir: {x: 0, y: 0, z: 0}
+      curve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+    focus:
+      speed: 0
+    zoom:
+      orthoSizeChange: 0
+    back:
+      orthoSizeChange: 0
