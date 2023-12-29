@@ -16,7 +16,7 @@ MonoBehaviour:
   pname: yes
   type: 3
   networkRange: 2
-  movePoints: 5
+  movePoints: 20
   attack: 10
   defense: 10
   critRate: 10

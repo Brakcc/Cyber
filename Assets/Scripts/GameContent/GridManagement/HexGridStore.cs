@@ -88,16 +88,16 @@ namespace GameContent.GridManagement
             foreach (var unit in UnitGenManager.gGm.TeamLists.heroPlayer0)
             {
                 var uEnt = unit.GetComponent<IEntity>();
+                uEnt.OnInit();
+                
                 var hex = GetTile(uEnt.CurrentHexPos);
-                
                 hex.HasEntityOnIt = true;
-                var unitTemp = unit.GetComponent<IUnit>();
                 
+                var unitTemp = unit.GetComponent<IUnit>();
                 hex.SetEntity(unitTemp);
                 
-                uEnt.OnInit();
-
-                if (!uEnt.IsNetworkEmiter) continue;
+                if (!uEnt.IsNetworkEmiter)
+                    continue;
                 
                 emiters.Add(uEnt);
                 uEnt.OnGenerateNet(uEnt.NetworkRange, unitTemp.TeamNumber);
@@ -105,16 +105,16 @@ namespace GameContent.GridManagement
             foreach (var unit in UnitGenManager.gGm.TeamLists.heroPlayer1)
             {
                 var uEnt = unit.GetComponent<IEntity>();
-                var hex = GetTile(uEnt.CurrentHexPos);
-                
-                hex.HasEntityOnIt = true;
-                var unitTemp = unit.GetComponent<IUnit>();
-                
-                hex.SetEntity(unitTemp);
-                
                 uEnt.OnInit();
+                
+                var hex = GetTile(uEnt.CurrentHexPos);
+                hex.HasEntityOnIt = true;
+                
+                var unitTemp = unit.GetComponent<IUnit>();
+                hex.SetEntity(unitTemp);
 
-                if (!uEnt.IsNetworkEmiter) continue;
+                if (!uEnt.IsNetworkEmiter)
+                    continue;
                 
                 emiters.Add(uEnt);
                 uEnt.OnGenerateNet(uEnt.NetworkRange, unitTemp.TeamNumber);
@@ -131,8 +131,8 @@ namespace GameContent.GridManagement
         {
             foreach (var t in list)
             {
-                var hex = GetTile(t.CurrentHexPos);
                 t.OnInit();
+                var hex = GetTile(t.CurrentHexPos);
                 hex.HasEntityOnIt = true;
             }
         }
@@ -235,6 +235,8 @@ namespace GameContent.GridManagement
             foreach (var i in GetNeighbourgs(relayList[(int)whichRelay].CurrentHexPos))
             {
                 var tile = GetTile(i);
+                if (tile.IsObstacle())
+                    continue;
                 
                 tile.CurrentType = HexType.Walkable;
                 tile.RelayTarget = RelayTarget.None;

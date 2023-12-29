@@ -27,15 +27,8 @@ namespace GameContent.Entity.NPC
         
         #region Hack checkers
         public bool GotHacked { get; private set; }
-        private bool _isTransmitting;
 
-        private bool IsTransmitting
-        {
-            get => _isTransmitting;
-            set =>
-                //_isTransmitting = PrecRefList.Any(i => i.GotHacked && i.IsTransmitting);
-                _isTransmitting = value;
-        }
+        public bool IsTransmitting { get; private set; }
 
         #endregion
 
@@ -47,6 +40,7 @@ namespace GameContent.Entity.NPC
         public class RelayRefs
         {
             public Relay[] precRefList;
+            public int[] precRefIDs;
             public Relay[] nextRefList;
             public Hex[] networkRef;
         }
@@ -85,7 +79,13 @@ namespace GameContent.Entity.NPC
         
             GotHacked = false;
             IsTransmitting = false;
-        
+
+            if (ReTarget == RelayTarget.R0)
+            {
+                GotHacked = true;
+                IsTransmitting = true;
+            }
+            
             relayGraphs.initBoard.SetRenderer(gameObject);
             
             OnNeighbourgsInit(CurrentHexPos, HexGridStore.hGs);
@@ -172,7 +172,7 @@ namespace GameContent.Entity.NPC
         
         #region Hack chain
         
-        private static void OnCheckIfPrecTransmit(Relay rRef, IReadOnlyList<Relay> precRelayRefs, IReadOnlyList<GameObject> lines)
+        private static void OnCheckIfPrecTransmit(Relay rRef, IReadOnlyList<Relay> precRelayRefs, IReadOnlyCollection<GameObject> lines)
         {
             if (precRelayRefs == null)
                 return;
@@ -182,16 +182,15 @@ namespace GameContent.Entity.NPC
                 if (!precRelayRefs[i].IsTransmitting)
                     continue;
                 rRef.IsTransmitting = true;
-                OnCheckIfPrecTransmit(precRelayRefs[i], precRelayRefs[i].relayRefs.nextRefList,
+                OnCheckIfPrecTransmit(precRelayRefs[i], precRelayRefs[i].relayRefs.precRefList,
                     precRelayRefs[i]._lineList);
-                Debug.Log("2");
                 
                 if (lines.Count == 0)
                     continue;
-                OnLink(i, lines);
+                OnLink(precRelayRefs[i]._lineList[rRef.relayRefs.precRefIDs[i]]);
             }
         }
-
+        
         private static void OnCheckIfNextGotHacked(Relay rRef, IReadOnlyList<Relay> nextRelyRefs, IReadOnlyList<GameObject> lines)
         {
             if (nextRelyRefs == null)
@@ -207,17 +206,15 @@ namespace GameContent.Entity.NPC
                 nextRelyRefs[i].IsTransmitting = true;
                 OnCheckIfNextGotHacked(nextRelyRefs[i], nextRelyRefs[i].relayRefs.nextRefList,
                     nextRelyRefs[i]._lineList);
-                Debug.Log("1");
                 
                 if (lines.Count == 0)
                     continue;
-                OnLink(i, lines);
-                
+                OnLink(lines[i]);
             }
         }
 
-        private static void OnLink(int iD, IReadOnlyList<GameObject> lines)
-            => lines[iD].GetComponent<LineRenderer>().enabled = true;
+        private static void OnLink(GameObject line)
+            => line.GetComponent<LineRenderer>().enabled = true;
         
         #endregion
 

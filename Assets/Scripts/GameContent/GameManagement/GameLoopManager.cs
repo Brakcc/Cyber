@@ -1,11 +1,12 @@
 using System.Collections.Generic;
-using GameContent.Entity.Unit.UnitWorking;
 using Inputs;
-using Interfaces.Unit;
 using TMPro;
 using UI.InGameUI;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using IUnit = Interfaces.Unit.IUnit;
+using Unit = GameContent.Entity.Unit.UnitWorking.Unit;
 
 namespace GameContent.GameManagement
 {
@@ -172,6 +173,12 @@ namespace GameContent.GameManagement
         public static void HandleComputerValueChange()
         {
             //changer la logique de Hack des relays
+        }
+
+        public void OnEndGame()
+        {
+            Time.timeScale = 0;
+            GetComponent<PlayerInput>().enabled = false;
         }
 
         #endregion
