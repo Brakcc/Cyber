@@ -70,11 +70,11 @@ namespace GameContent.GameManagement
                 
         private void OnInitSceneUnits()
         {
-            for (var i = 0; i < 3; i++)
+            for (var i = 0; i < 4; i++)
             {
                 teamLists.heroPlayer0[i].GetComponent<Unit>().UnitData = unitList.GetUnitData(team0[i]);
             }
-            for (var i = 0; i < 3; i++)
+            for (var i = 0; i < 4; i++)
             {
                 teamLists.heroPlayer1[i].GetComponent<Unit>().UnitData = unitList.GetUnitData(team1[i]);
             }

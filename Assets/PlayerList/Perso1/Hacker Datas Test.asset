@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3befcc34aabc0cd4ca2f779b7e603c7f, type: 3}
   m_Name: Hacker Datas Test
   m_EditorClassIdentifier: 
-  iD: 0
+  iD: 15
   pname: yes
   type: 3
   networkRange: 2
