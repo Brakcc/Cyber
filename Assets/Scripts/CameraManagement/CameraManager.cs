@@ -9,7 +9,7 @@ namespace CameraManagement
     public class CameraManager
     {
         #region fields
-        [SerializeField] CameraEffectType effectType;
+        [SerializeField] private CameraEffectType effectType;
 
         [ShowIfTrue("effectType", new[]{(int)CameraEffectType.Shake})]
         public ShakeParams shake;

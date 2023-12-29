@@ -17,6 +17,8 @@ namespace Enums.GridEnums
         R12,
         R13,
         R14,
+        R15,
+        R16,
         None
     }
 }

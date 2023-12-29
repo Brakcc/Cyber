@@ -11,12 +11,12 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
     {
         #region inherited accessors
         public override KapaUISO KapaUI => _kapaUI;
-        [SerializeField] KapaUISO _kapaUI;
+        [SerializeField] private KapaUISO _kapaUI;
         public override GameObject DamageFeedBack => null;
         public override Vector3Int[] Patterns => _pattern;
-        [SerializeField] Vector3Int[] _pattern;
+        [SerializeField] private Vector3Int[] _pattern;
 
-        [SerializeField] GameObject _turret;
+        [SerializeField] private GameObject _turret;
         #endregion
 
         #region inherited paterns/accessors
@@ -60,7 +60,7 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
         #region inherited methodes
         public sealed override bool OnCheckKapaPoints(IUnit unit) => GameLoopManager.gLm.teamInventory.TurretNumber[unit.TeamNumber] > 0;
 
-        public sealed override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, IUnit unit)
+        public sealed override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, IUnit unit, bool fromUnit)
         {
             if (GameLoopManager.gLm.teamInventory.TurretNumber[unit.TeamNumber] <= 0) return;
 

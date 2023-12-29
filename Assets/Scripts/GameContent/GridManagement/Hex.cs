@@ -85,6 +85,10 @@ namespace GameContent.GridManagement
         //Glow pour les base network
         public void EnableGlowBaseNet() => glow.ToggleBaseNetGlow(true);
         public void DisableGlowBaseNet() => glow.ToggleBaseNetGlow(false);
+        
+        //Glow pour les base network
+        public void EnableGlowHackedNet() => glow.ToggleHackedNetGlow(true);
+        public void DisableGlowHackedNet() => glow.ToggleHackedNetGlow(false);
 
         //Glow pour les dynamic network
         public void EnableGlowDynaNet() => glow.ToggleDynaNetGlow(true);

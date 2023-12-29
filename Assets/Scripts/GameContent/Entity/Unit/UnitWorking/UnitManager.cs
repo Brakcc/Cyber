@@ -16,22 +16,22 @@ namespace GameContent.Entity.Unit.UnitWorking
         private MoveSystem _moveSys;
 
         //Unit currently stored
-
         private IUnit SelectedUnit { get; set; }
-
+        private bool _hasKapaBeenPlayed;
+        
         //Hex Currently processed
         private Hex _previousSelectedHex;
 
         //Is a Kapa Utility, pas vraiment interessant de store directement une Kapa
         //on store directement une list de pattern et son Type, les methodes de kapas étant deja stored dans le cache AKapaSO
-        public KapaType CurrentTypeKapaSelected { get; set; }
-        public bool IsKapaSelected { get; private set; }
-        public bool IsKapaDirSelected { get; private set; }
-        public bool IsTargetSelected { get; private set; }
-        public List<Vector3Int> CurrentButtonPos {get; private set; }
-        public List<Vector3Int> CurrentKapaPatternPos { get; private set; }  
-        public Vector3Int CurrentDirSelected { get; set; }
-        public Vector3Int CurrentTargetSelected { get; private set; }
+        private KapaType CurrentTypeKapaSelected { get; set; }
+        private bool IsKapaSelected { get; set; }
+        private bool IsKapaDirSelected { get; set; }
+        private bool IsTargetSelected { get; set; }
+        private List<Vector3Int> CurrentButtonPos {get; set; }
+        private List<Vector3Int> CurrentKapaPatternPos { get; set; }  
+        private Vector3Int CurrentDirSelected { get; set; }
+        private Vector3Int CurrentTargetSelected { get; set; }
 
         #endregion
 
@@ -46,6 +46,7 @@ namespace GameContent.Entity.Unit.UnitWorking
             IsKapaSelected = false;
             CurrentKapaPatternPos = null;
             CurrentButtonPos = null;
+            _hasKapaBeenPlayed = false;
         }
         #endregion
 
@@ -61,8 +62,10 @@ namespace GameContent.Entity.Unit.UnitWorking
         {
             var unitReference = unit.GetComponent<Unit>();
         
-            if (CheckIfUnitCanPlay(unitReference)) return;
-            if (CheckIfCanSelectOtherUnitAndIfSameUnit(unitReference)) return;
+            if (CheckIfUnitCanPlay(unitReference)) 
+                return;
+            if (CheckIfCanSelectOtherUnitAndIfSameUnit(unitReference)) 
+                return;
 
             PrepareUnitForMove(unitReference);
         }
@@ -76,12 +79,19 @@ namespace GameContent.Entity.Unit.UnitWorking
         /// <param name="selectedHex"></param>
         public void HandleTerrainSelect(GameObject selectedHex)
         {
-            if (SelectedUnit == null) return;
+            if (SelectedUnit == null) 
+                return;
             var selHex = selectedHex.GetComponent<Hex>();
 
-            if (IsKapaSelected) { HandleKapaDirSelect(selHex.HexCoords, SelectedUnit); return; }
-            if (SelectedUnit.IsPersoLocked) return;
-            if (HandleHexOutOfRange(selHex.HexCoords) || HandleSelectedHexIsUnitHex(selHex.HexCoords)) return;
+            if (IsKapaSelected)
+            {
+                HandleKapaDirSelect(selHex.HexCoords, SelectedUnit);
+                return;
+            }
+            if (SelectedUnit.IsPersoLocked && !_hasKapaBeenPlayed)
+                return;
+            if (HandleHexOutOfRange(selHex.HexCoords) || HandleSelectedHexIsUnitHex(selHex.HexCoords)) 
+                return;
 
             HandleTargetSelectedHex(selHex);
         }
@@ -102,11 +112,22 @@ namespace GameContent.Entity.Unit.UnitWorking
             {
                 unitRef.UnitData.KapasList[(int)CurrentTypeKapaSelected].OnDeselectTiles(HexGridStore.hGs, CurrentKapaPatternPos);
             }
-            if (SelectedUnit != null && !IsKapaSelected) { ClearOldSelection(); ResetKapaData(); }
+
+            if (SelectedUnit != null && !IsKapaSelected)
+            {
+                ClearOldSelection(); 
+                ResetKapaData();
+            }
         
             SelectedUnit = unitRef;
             SelectedUnit.Select();
             _moveSys.ShowRange(SelectedUnit, HexGridStore.hGs);
+        }
+
+        private void OnPrepareForMoveAfterKapa(IUnit unitRef)
+        {
+            _moveSys.ShowRange(unitRef, HexGridStore.hGs);
+            _hasKapaBeenPlayed = true;
         }
 
         /// <summary>
@@ -120,13 +141,39 @@ namespace GameContent.Entity.Unit.UnitWorking
             {
                 _previousSelectedHex = selects;
                 _moveSys.ShowPath(selects.HexCoords, HexGridStore.hGs);
+                SelectedUnit.OnDeselectSelfTile(SelectedUnit, HexGridStore.hGs);
             }
             else
             {
                 ChargeNewUnitHexCoord();
                 _moveSys.MoveUnit(SelectedUnit, HexGridStore.hGs);
                 ClearGraphKeepUnit();
-                LockUnitAfterMove();
+                if (_hasKapaBeenPlayed)
+                {
+                    FullResetKapaAndUnit();
+                    return;
+                }
+                LockUnitAfterAction();
+            }
+        }
+
+        private void SoftSkipMove()
+        {
+            //Considere les actions de deplacement null apres l'utilisation de la Kapa
+            var tempSelectedTile = HexGridStore.hGs.GetTile(SelectedUnit.CurrentHexPos);
+
+            if (_previousSelectedHex == null || _previousSelectedHex != tempSelectedTile)
+            {
+                _previousSelectedHex = tempSelectedTile;
+                SelectedUnit.OnSelectSelfTile(SelectedUnit, HexGridStore.hGs);
+                _moveSys.HidePath(HexGridStore.hGs);
+            }
+            else
+            {
+                ChargeNewUnitHexCoord();
+                SelectedUnit.OnDeselectSelfTile(SelectedUnit, HexGridStore.hGs);
+                ClearGraphKeepUnit();
+                FullResetKapaAndUnit();
             }
         }
         
@@ -140,13 +187,149 @@ namespace GameContent.Entity.Unit.UnitWorking
             => kapa.OnGenerateButton(HexGridStore.hGs, unit);
 
         private static void OnExecuteKapa(IUnit unit, int i, List<Vector3Int> kapaPatternPos)
-            => unit.UnitData.KapasList[i].OnExecute(HexGridStore.hGs, kapaPatternPos, unit);
+            => unit.UnitData.KapasList[i].OnExecute(HexGridStore.hGs, kapaPatternPos, unit, false);
 
         private static bool OnCheckKapa(IUnit unit, int i) 
             => unit.UnitData.KapasList[i].OnCheckKapaPoints(unit);
         
         #endregion
 
+        #region Encapsuls
+
+        private void TryKapaActiveOnMap(IUnit uRef, Vector3Int butPos, Vector3Int dir, out bool active)
+        {
+            if (IsTargetSelected && CurrentTargetSelected == butPos && IsRangeAtk(uRef, CurrentTypeKapaSelected))
+            {
+                if (OnCheckKapa(uRef, (int)CurrentTypeKapaSelected))
+                {
+                    OnExecuteKapa(uRef, (int)CurrentTypeKapaSelected, CurrentKapaPatternPos);
+                    active = true;
+                    ResetAfterKapa(uRef);
+                    return;
+                }
+            }
+
+            if (IsKapaDirSelected && CurrentDirSelected == dir)
+            {
+                if (OnCheckKapa(uRef, (int)CurrentTypeKapaSelected))
+                {
+                    OnExecuteKapa(uRef, (int)CurrentTypeKapaSelected, CurrentKapaPatternPos);
+                    active = true;
+                    ResetAfterKapa(uRef);
+                    return;
+                }
+            }
+
+            active = false;
+        }
+
+        private void ResetAfterKapa(IUnit uRef)
+        {
+            switch (uRef.IsPersoLocked)
+            {
+                case true:
+                    FullResetKapaAndUnit();
+                    break;
+                        
+                case false:
+                    ResetKapaData();
+                    LockUnitAfterAction(); 
+                    OnPrepareForMoveAfterKapa(uRef);
+                    break;
+            }
+        }
+        
+        private void OnActiveKapaWithButton(IUnit uRef, int index, KapaType type, List<Vector3Int> currentPatternPos)
+        {
+            if (!OnCheckKapa(uRef, (int)type)) return;
+
+            switch (IsAoe(uRef, type))
+            {
+                case true:
+                    OnExecuteKapa(uRef, index, uRef.GlobalNetwork);
+                    break;
+                case false:
+                    OnExecuteKapa(uRef, index, currentPatternPos);
+                    break;
+            }
+            
+            ResetAfterKapa(uRef);
+        }
+
+        private void OnGarbageSelectionDir(IUnit uRef)
+        {
+            uRef.UnitData.KapasList[(int)CurrentTypeKapaSelected].OnDeselectTiles(HexGridStore.hGs, CurrentKapaPatternPos);
+        }
+
+        private void OnTargetSelection(IUnit uRef, Vector3Int butPos)
+        {
+            CurrentKapaPatternPos = HandleKapaSelectOnRange(butPos, uRef,
+                uRef.UnitData.KapasList[(int)CurrentTypeKapaSelected]);
+            IsTargetSelected = true;
+            CurrentTargetSelected = butPos;
+        }
+
+        private void OnDirSelection(IUnit uRef, Vector3Int dir)
+        {
+            CurrentKapaPatternPos = Direction.IsPariryEven(uRef.CurrentHexPos.x)
+                ? HandleKapaEvenDirPatternGen(dir, uRef, uRef.UnitData.KapasList[(int)CurrentTypeKapaSelected])
+                : HandleKapaOddDirPatternGen(dir, uRef, uRef.UnitData.KapasList[(int)CurrentTypeKapaSelected]);
+            IsKapaDirSelected = true;
+            CurrentDirSelected = dir;
+        }
+
+        private void OnSwitchKapaSelection(IKapa kapa)
+        {
+            if (CurrentTypeKapaSelected != KapaType.Default && (IsKapaDirSelected || IsTargetSelected))
+                kapa.OnDeselectTiles(HexGridStore.hGs, CurrentKapaPatternPos);
+            
+            switch (IsKapaSelected)
+            {
+                case true:
+                {
+                    if (IsAoe(SelectedUnit, CurrentTypeKapaSelected))
+                    {
+                        SelectedUnit.OnDeselectNetworkTiles();
+                    }
+                    break;
+                }
+                
+                //supprimer l'outline de range 
+                case false when !SelectedUnit.IsPersoLocked:
+                    ClearGraphKeepUnit();
+                    break;
+            }
+            
+            if (CurrentTypeKapaSelected != kapa.KapaType)
+                SoftResetKapaData();
+        }
+
+        private void OnPreselecKapa(IKapa kapa, KapaType type)
+        {
+            if (IsAoe(SelectedUnit, type))
+            {
+                if (IsKapaSelected)
+                {
+                    HideButtons(CurrentButtonPos);
+                }
+                SelectedUnit.OnSelectNetworkTiles();
+                CurrentTypeKapaSelected = type;
+                IsKapaSelected = true;
+                IsKapaDirSelected = false;
+                return;
+            }
+                
+            HideButtons(CurrentButtonPos);
+            CurrentButtonPos = GenerateButtonPos(SelectedUnit, kapa);
+                
+            CurrentTypeKapaSelected = type;
+            IsKapaSelected = true;
+            IsKapaDirSelected = false;
+            ShowButtons(CurrentButtonPos);
+        }
+
+        #endregion
+        
         /// <summary>
         /// Basé sur la pos du l'unit et celle de la tile cliquée, on trace un VECTEUR entre la tile et la selectedUnit
         /// pour connaitre la dir selon la parité
@@ -159,70 +342,69 @@ namespace GameContent.Entity.Unit.UnitWorking
         /// <param name="unitRef"></param>
         private void HandleKapaDirSelect(Vector3Int buttonPos, IUnit unitRef)
         {
-            if (SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].EffectType == EffectType.Hack 
-                && SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].KapaFunctionType == KapaFunctionType.AOE)
-            {
+            if (IsAoe(unitRef, CurrentTypeKapaSelected))
                 return;
-            }
-
             var dir = buttonPos - unitRef.CurrentHexPos;
-            if (HandleHexOutOfButton(buttonPos)) return;
+            
+            if (HandleHexOutOfButton(buttonPos)) 
+                return;
 
             //Active la Kapa avec Click sur Map
             if (IsKapaSelected  && CurrentKapaPatternPos != null)
             {
-                if (IsTargetSelected && CurrentTargetSelected == buttonPos &&
-                    (SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].EffectType == EffectType.Hack 
-                    && SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].KapaFunctionType != KapaFunctionType.AOE
-                    || SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].KapaFunctionType == KapaFunctionType.ThrowFreeArea
-                    || SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].KapaFunctionType == KapaFunctionType.ThrowLimit))
-                {
-                    if (OnCheckKapa(SelectedUnit, (int)CurrentTypeKapaSelected))
-                    {
-                        OnExecuteKapa(SelectedUnit, (int)CurrentTypeKapaSelected, CurrentKapaPatternPos);
-                        FullResetKapaAndUnit();
-                        return;
-                    }
-                }
-                
-                if (IsKapaDirSelected && CurrentDirSelected == dir)
-                {
-                    if (OnCheckKapa(SelectedUnit, (int)CurrentTypeKapaSelected))
-                    {
-                        OnExecuteKapa(SelectedUnit, (int)CurrentTypeKapaSelected, CurrentKapaPatternPos);
-                        FullResetKapaAndUnit();
-                        return;
-                    }
-                }
+                TryKapaActiveOnMap(unitRef, buttonPos, dir, out var active);
+                if (active)
+                    return;
             }
 
             //Garbage de la selection de Dir precedente sur la map 
             if (IsKapaDirSelected || IsTargetSelected)
             {
-                unitRef.UnitData.KapasList[(int)CurrentTypeKapaSelected].OnDeselectTiles(HexGridStore.hGs, CurrentKapaPatternPos); 
+                OnGarbageSelectionDir(unitRef);
             }
             
             //selection de position unique dans une range de Map
-            if (unitRef.UnitData.KapasList[(int)CurrentTypeKapaSelected].EffectType == EffectType.Hack && 
-                SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].KapaFunctionType != KapaFunctionType.AOE
-                || SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].KapaFunctionType == KapaFunctionType.ThrowFreeArea
-                || SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].KapaFunctionType == KapaFunctionType.ThrowLimit)
+            if (IsRangeAtk(unitRef, CurrentTypeKapaSelected))
             {
-                CurrentKapaPatternPos = HandleKapaSelectOnRange(buttonPos, unitRef,
-                    unitRef.UnitData.KapasList[(int)CurrentTypeKapaSelected]);
-                IsTargetSelected = true;
-                CurrentTargetSelected = buttonPos;
+                OnTargetSelection(unitRef, buttonPos);
                 return;
             }
             
             //New selection de direction
-            CurrentKapaPatternPos = Direction.IsPariryEven(unitRef.CurrentHexPos.x)
-                ? HandleKapaEvenDirPatternGen(dir, unitRef, unitRef.UnitData.KapasList[(int)CurrentTypeKapaSelected])
-                : HandleKapaOddDirPatternGen(dir, unitRef, unitRef.UnitData.KapasList[(int)CurrentTypeKapaSelected]);
-            IsKapaDirSelected = true;
-            CurrentDirSelected = dir;
+            OnDirSelection(unitRef, dir);
         }
 
+        /// <summary>
+        /// Gère la selection des Kapas à la façon des Units, On doit selectionner à 2 fois une compétence avant de pouvoir l'executer.
+        /// </summary>
+        /// <param name="i"></param>
+        public void HandleKapaSelect(int i)
+        {
+            if (SelectedUnit == null)
+                return;
+            if (!SelectedUnit.CanKapa || _hasKapaBeenPlayed)
+                return;
+
+            var type = SelectedUnit.UnitData.KapasList[i].KapaType;
+            var kapa = SelectedUnit.UnitData.KapasList[i];
+            
+            //si switch sur autre Kapa
+            OnSwitchKapaSelection(kapa);
+
+            //preselec Kapa
+            if (!IsKapaSelected || CurrentTypeKapaSelected != type)
+            {
+                OnPreselecKapa(kapa, type);
+                return;
+            }
+
+            //Active Kapa With Bar Button
+            if (CanActivateKapaWithButtons(SelectedUnit, type))
+            {
+                OnActiveKapaWithButton(SelectedUnit, i, CurrentTypeKapaSelected, CurrentKapaPatternPos);
+            }
+        }
+        
         #region Patern Application
 
         /// <summary>
@@ -263,86 +445,8 @@ namespace GameContent.Entity.Unit.UnitWorking
         private static List<Vector3Int> HandleKapaSelectOnRange(Vector3Int pos, IUnit tempUnit, IKapa tempKapa)
             => tempKapa.OnSelectGraphTiles(tempUnit, HexGridStore.hGs, new[] { pos });
         
-        
         #endregion
 
-        /// <summary>
-        /// Gère la selection des Kapas à la façon des Units, On doit selectionner à 2 fois une compétence avant de pouvoir l'executer.
-        /// </summary>
-        /// <param name="i"></param>
-        public void HandleKapaSelect(int i)
-        {
-            if (SelectedUnit == null) return;
-            if (!SelectedUnit.CanKapa) return;
-
-            var type = SelectedUnit.UnitData.KapasList[i].KapaType;
-            var kapa = SelectedUnit.UnitData.KapasList[i];
-
-            //si switch sur autre Kapa
-            if (CurrentTypeKapaSelected != KapaType.Default && (IsKapaDirSelected || IsTargetSelected))
-            {
-                kapa.OnDeselectTiles(HexGridStore.hGs, CurrentKapaPatternPos);
-            }
-
-            switch (IsKapaSelected)
-            {
-                case true:
-                {
-                    if (SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].EffectType == EffectType.Hack && 
-                        SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].KapaFunctionType == KapaFunctionType.AOE)
-                    {
-                        SelectedUnit.OnDeselectNetworkTiles();
-                    }
-                    break;
-                }
-                
-                //supprimer l'outline de range 
-                case false when !SelectedUnit.IsPersoLocked:
-                    ClearGraphKeepUnit();
-                    break;
-            }
-
-            //preselec Kapa
-            if (!IsKapaSelected || CurrentTypeKapaSelected != type)
-            {
-                if (SelectedUnit.UnitData.KapasList[(int)type].EffectType == EffectType.Hack &&
-                    SelectedUnit.UnitData.KapasList[(int)type].KapaFunctionType == KapaFunctionType.AOE)
-                {
-                    SelectedUnit.OnSelectNetworkTiles();
-                    CurrentTypeKapaSelected = type;
-                    IsKapaSelected = true;
-                    IsKapaDirSelected = false;
-                    return;
-                }
-                
-                try
-                {
-                    HideButtons(CurrentButtonPos);
-                    CurrentButtonPos = GenerateButtonPos(SelectedUnit, kapa);
-                }
-                catch
-                {
-                    CurrentButtonPos = GenerateButtonPos(SelectedUnit, kapa);
-                }
-                
-                CurrentTypeKapaSelected = type;
-                IsKapaSelected = true;
-                IsKapaDirSelected = false;
-                ShowButtons(CurrentButtonPos);
-
-                return;
-            }
-
-            //Active Kapa With Bar Button
-            if (CurrentKapaPatternPos != null || IsKapaSelected && CurrentTypeKapaSelected == type && IsKapaDirSelected || IsKapaSelected && CurrentButtonPos == null)
-            {
-                if (!OnCheckKapa(SelectedUnit, (int)CurrentTypeKapaSelected)) return;
-            
-                OnExecuteKapa(SelectedUnit, i, CurrentKapaPatternPos);
-                FullResetKapaAndUnit();
-            }
-        }
-        
         #region buttons graphs
         
         /// <summary>
@@ -386,12 +490,25 @@ namespace GameContent.Entity.Unit.UnitWorking
         /// </summary>
         private void ResetKapaData()
         {
+            if (IsKapaDirSelected || IsTargetSelected) 
+                SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].OnDeselectTiles(HexGridStore.hGs, CurrentKapaPatternPos);
+            if (IsHack(SelectedUnit, CurrentTypeKapaSelected))
+                SelectedUnit.OnDeselectNetworkTiles();
             HideButtons(CurrentButtonPos);
             CurrentTypeKapaSelected = KapaType.Default;
             IsKapaSelected = false;
             IsKapaDirSelected = false;
             IsTargetSelected = false;
             CurrentButtonPos = null;
+            CurrentKapaPatternPos = null;
+            CurrentDirSelected = Vector3Int.zero;
+            CurrentTargetSelected = Vector3Int.zero;
+        }
+
+        private void SoftResetKapaData()
+        {
+            IsKapaDirSelected = false;
+            IsTargetSelected = false;
             CurrentKapaPatternPos = null;
             CurrentDirSelected = Vector3Int.zero;
             CurrentTargetSelected = Vector3Int.zero;
@@ -425,13 +542,9 @@ namespace GameContent.Entity.Unit.UnitWorking
                     ClearOldSelection();
                     return false;
                 }
-
-                if (IsKapaDirSelected || IsTargetSelected)
-                {
-                    SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].OnDeselectTiles(HexGridStore.hGs, CurrentKapaPatternPos);
-                }
-                ClearDataSelectionAvoidRange();
+                
                 ResetKapaData();
+                ClearDataSelectionAvoidRange();
             
                 //on inverse la sortie pour pouvoir continuer la methode de sélection des persos
                 return false;
@@ -440,10 +553,13 @@ namespace GameContent.Entity.Unit.UnitWorking
             //On clique sur LA MEME Unit et elle est DEJA LOCK
             if (SelectedUnit == unitRef && SelectedUnit.IsPersoLocked)
             {
-                //feedbacks pour montrer que le perso doit faire une kapa (ex : petit son de bip un peu techno des familles)
+                if (!_hasKapaBeenPlayed)
+                    return true;
+                
+                SoftSkipMove();
                 return true;
             }
-            
+
             //On clique sur LA MEME unit mais ELLE n'est PAS LOCK (Old CheckIfSameUnitSelected)
             if (SelectedUnit == unitRef && !SelectedUnit.IsPersoLocked)
             {
@@ -452,24 +568,21 @@ namespace GameContent.Entity.Unit.UnitWorking
                     ClearOldSelection();
                     return true;
                 }
-
-                if (IsKapaDirSelected || IsKapaSelected)
-                {
-                    SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].OnDeselectTiles(HexGridStore.hGs, CurrentKapaPatternPos); 
-                }
-                ClearDataSelectionAvoidRange();
+                
                 ResetKapaData();
-            
+                ClearDataSelectionAvoidRange();
                 return false;
             }
             
             //On clique sur UNE AUTRE Unit mais la SELECTED UNIT est DEJA LOCKED
-
-            //action de refus : mettre des feedbacks
+            
             //on inverse la sortie pour pouvoir continuer la methode de sélection des persos
-            //ATENTION !!!!! dans le cas particulier ou une Kapa vise unu Unit au contact, on skip la selection de
+            //ATENTION !!!!! dans le cas particulier ou une Kapa vise une Unit au contact, on skip la selection de
             //l'Unit mais on la selection de kapaDir à la pos de l'Unit visée
-            if (IsKapaSelected) { HandleKapaDirSelect(unitRef.CurrentHexPos, SelectedUnit); }
+            if (IsKapaSelected)
+            {
+                HandleKapaDirSelect(unitRef.CurrentHexPos, SelectedUnit);
+            }
             return true;
         }
 
@@ -487,14 +600,17 @@ namespace GameContent.Entity.Unit.UnitWorking
                 return false; 
             }
             //feedbacks un peu sad mais electro quand meme
-            if (IsKapaSelected) { HandleKapaDirSelect(unitRef.CurrentHexPos, SelectedUnit); }
+            if (IsKapaSelected)
+            {
+                HandleKapaDirSelect(unitRef.CurrentHexPos, SelectedUnit);
+            }
             return true;
         }
 
         /// <summary>
         /// force l'utilisation de kapa ou skip kapa du perso après son déplacement
         /// </summary>
-        void LockUnitAfterMove()
+        private void LockUnitAfterAction()
         {
             SelectedUnit.IsPersoLocked = true;
         }
@@ -511,13 +627,12 @@ namespace GameContent.Entity.Unit.UnitWorking
         /// <returns></returns>
         private bool HandleSelectedHexIsUnitHex(Vector3Int hexPos)
         {
-            if (hexPos == SelectedUnit.CurrentHexPos)
-            {
-                SelectedUnit.Deselect();
-                ClearOldSelection();
-                return true;
-            }
-            return false;
+            if (hexPos != SelectedUnit.CurrentHexPos)
+                return false;
+            
+            SelectedUnit.Deselect();
+            ClearOldSelection();
+            return true;
         }
 
         /// <summary>
@@ -525,10 +640,7 @@ namespace GameContent.Entity.Unit.UnitWorking
         /// </summary>
         /// <param name="hexPos"></param>
         /// <returns></returns>
-        private bool HandleHexOutOfRange(Vector3Int hexPos)
-        {
-            return !_moveSys.IsHexInRange(hexPos);
-        }
+        private bool HandleHexOutOfRange(Vector3Int hexPos) => !_moveSys.IsHexInRange(hexPos);
 
         /// <summary>
         /// vérifie si la tile selectionnée est un bouton autour du player ou juste une case sans action
@@ -561,7 +673,8 @@ namespace GameContent.Entity.Unit.UnitWorking
         /// </summary>
         private void ClearDataSelectionAvoidRange()
         {
-            if (SelectedUnit.UnitData.KapasList[(int)CurrentTypeKapaSelected].EffectType == EffectType.Hack)
+            
+            if (IsHack(SelectedUnit, CurrentTypeKapaSelected))
             {
                 SelectedUnit.OnDeselectNetworkTiles();
             }
@@ -598,6 +711,8 @@ namespace GameContent.Entity.Unit.UnitWorking
         private void FullResetKapaAndUnit()
         {
             //Kapa Reset
+            _hasKapaBeenPlayed = false;
+            
             HideButtons(CurrentButtonPos);
             CurrentTypeKapaSelected = KapaType.Default;
             IsKapaSelected = false;
@@ -623,6 +738,37 @@ namespace GameContent.Entity.Unit.UnitWorking
         {
             foreach (var u in GameObject.FindGameObjectsWithTag("Player")) { u.GetComponent<Unit>().CanPlay = true; }
         }
+        #endregion
+
+        #region Checkers
+
+        private static bool IsRangeAtk(IUnit uRef, KapaType type)
+            => uRef.UnitData.KapasList[(int)type].EffectType == EffectType.Hack
+               && uRef.UnitData.KapasList[(int)type].KapaFunctionType != KapaFunctionType.AOE
+               && uRef.UnitData.KapasList[(int)type].KapaFunctionType != KapaFunctionType.DOT
+               || uRef.UnitData.KapasList[(int)type].KapaFunctionType == KapaFunctionType.ThrowFreeArea
+               || uRef.UnitData.KapasList[(int)type].KapaFunctionType == KapaFunctionType.ThrowLimit;
+
+        private static bool IsSkip(IUnit uRef, KapaType type)
+            => uRef.UnitData.KapasList[(int)type].KapaType == KapaType.Skip;
+
+        private static bool IsDeAct(IUnit uRef, KapaType type)
+            => uRef.UnitData.KapasList[(int)type].KapaType == KapaType.DeAct;
+        
+        private static bool IsAoe(IUnit uRef, KapaType type)
+            => uRef.UnitData.KapasList[(int)type].EffectType == EffectType.Hack &&
+               (uRef.UnitData.KapasList[(int)type].KapaFunctionType == KapaFunctionType.AOE 
+               || uRef.UnitData.KapasList[(int)type].KapaFunctionType == KapaFunctionType.DOT);
+
+        private static bool IsHack(IUnit uRef, KapaType type)
+            => type != KapaType.Default && uRef.UnitData.KapasList[(int)type].EffectType == EffectType.Hack;
+
+        private bool CanActivateKapaWithButtons(IUnit uRef, KapaType type)
+            => CurrentKapaPatternPos != null ||
+               IsKapaSelected && CurrentTypeKapaSelected == type && IsKapaDirSelected ||
+               IsKapaSelected && CurrentTypeKapaSelected == type && IsDeAct(uRef, type) ||
+               IsKapaSelected && CurrentButtonPos == null && (IsAoe(uRef, type) || IsSkip( uRef, type));
+
         #endregion
     }
 }

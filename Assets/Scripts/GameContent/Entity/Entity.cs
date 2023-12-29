@@ -25,12 +25,12 @@ namespace GameContent.Entity
         public virtual void OnInit() => CurrentHexPos = HexCoordonnees.GetClosestHex(transform.position);
 
         /// <summary>
-        /// Renvoie la liste (IEnumerable) complete de tiles dans la range d'un Network
+        /// Renvoie la liste (IEnumerable) complete de tiles dans la range d'un NPC
         /// </summary>
         /// <param name="hexPos">Position de depart pour calculer des tiles de reseau</param>
         /// <param name="hexGrid">Ref au HexGridStore.hGS</param>
         /// <param name="range">Range max du reseau de l'Entity</param>
-        /// <returns>IEnumerable des tiles d'un Network</returns>
+        /// <returns>IEnumerable des tiles d'un NPC</returns>
         protected static IEnumerable<Vector3Int> GetRangeList(Vector3Int hexPos, HexGridStore hexGrid, int range) => PathFind.PathKapaVerif(hexGrid, hexPos, range).GetRangePositions();
 
         /// <summary>
@@ -41,9 +41,10 @@ namespace GameContent.Entity
         /// <param name="range">range du reseau local</param>
         /// <param name="net">list des reseaux de base impactes par le merge, s'il il y a intersection</param>
         /// <returns>bool de validation d'intersection</returns>
-        protected static void IsIntersecting(Vector3Int pos, HexGridStore hexGrid, int range, out List<NetworkType> net)
+        protected static bool IsIntersecting(Vector3Int pos, HexGridStore hexGrid, int range, out List<NetworkType> net)
         {
             net = IsInterOnNet(pos, hexGrid, range);
+            return net != null;
         }
 
         /// <summary>
@@ -88,7 +89,32 @@ namespace GameContent.Entity
             {
                 foreach (var j in hexGrid.NetworkList[(int)i])
                 {
-                    if (!newRange.Contains(j)) { newRange.Add(j); }
+                    if (!newRange.Contains(j))
+                        newRange.Add(j);
+                }
+            }
+
+            return newRange;
+        }
+
+        private static List<Vector3Int> OnIntersect(Vector3Int pos, HexGridStore hexGrid, int range, List<NetworkType> toMerge, int teamNb)
+        {
+            var newRange = GetRangeList(pos, hexGrid, range).ToList();
+
+            if (toMerge.Count == 0)
+            {
+                return newRange;
+            }
+
+            foreach (var i in toMerge)
+            {
+                if (IsTeamed((int)i, teamNb))
+                    continue;
+                
+                foreach (var j in hexGrid.NetworkList[(int)i])
+                {
+                    if (!newRange.Contains(j))
+                        newRange.Add(j);
                 }
             }
 
@@ -102,6 +128,12 @@ namespace GameContent.Entity
         {
             IsIntersecting(CurrentHexPos, HexGridStore.hGs, range, out var net);
             GlobalNetwork = OnIntersect(CurrentHexPos, HexGridStore.hGs, range, net);
+        }
+
+        public void OnGenerateNet(int range, int team)
+        {
+            IsIntersecting(CurrentHexPos, HexGridStore.hGs, range, out var net);
+            GlobalNetwork = OnIntersect(CurrentHexPos, HexGridStore.hGs, range, net, team);
         }
 
         public void OnSelectNetworkTiles()
@@ -124,6 +156,13 @@ namespace GameContent.Entity
             IsOnNetwork = false;
         }
         
+        #endregion
+
+        #region Chechers
+
+        private static bool IsTeamed(int netNb, int tNb)
+            => (netNb == 1 && tNb + 1 != netNb) || (netNb == 2 && tNb + 1 != netNb);
+
         #endregion
     }
 }

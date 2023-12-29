@@ -14,25 +14,25 @@ namespace Inputs
         #region DragParams
 
         //Drag Params
-        Camera cam;
-        Vector3 origingPos;
-        Vector3 diff;
-        bool isDragging;
+        private Camera cam;
+        private Vector3 origingPos;
+        private Vector3 diff;
+        private bool isDragging;
         
         //AutoMove Params
-        bool isMoving;
-        Unit temp;
-        bool canClicSwitch;
+        private bool isMoving;
+        private Unit temp;
+        private bool canClicSwitch;
 
         #endregion
 
         //camMovement avec la GameLoop
-        [SerializeField] CameraManager camManager;
-        [SerializeField] int switchDelay;
+        [SerializeField] private CameraManager camManager;
+        [SerializeField] private int switchDelay;
 
         #region ZoomParams
 
-        [SerializeField] CamZoomMove camZoomMove;
+        [SerializeField] private CamZoomMove camZoomMove;
                 
         [System.Serializable]
         public class CamZoomMove 
@@ -51,18 +51,18 @@ namespace Inputs
         #endregion
 
         #region methodes
-        
-        void Awake() => cam = Camera.main;
 
-        void LateUpdate()
+        private void Awake() => cam = Camera.main;
+
+        private void LateUpdate()
         {
             OnKeepFollow();
             OnMouseMove();
         }
 
         #region MouseMove
-        
-        void OnMouseMove()
+
+        private void OnMouseMove()
         {
             if (!isDragging || isMoving) return;
 
@@ -75,7 +75,8 @@ namespace Inputs
             if (ctx.started) { origingPos = GetMousePosition(); }
             isDragging = ctx.started || ctx.performed;
         }
-        Vector3 GetMousePosition() => cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+
+        private Vector3 GetMousePosition() => cam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 
         #endregion
         
@@ -111,7 +112,7 @@ namespace Inputs
             temp = unit;
         }
 
-        void OnKeepFollow()
+        private void OnKeepFollow()
         {
             if (isMoving && isDragging) isMoving = false;
             if (!isMoving) return;

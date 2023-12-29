@@ -6,16 +6,16 @@ namespace GameContent.Entity.Unit.KapasGen
 {
     public class KapaUISO : ScriptableObject, IKapaUISO
     {
-        [SerializeField] Image kapaImage;
+        [SerializeField] private Image kapaImage;
         public Image KapaImage => kapaImage;
 
-        [SerializeField] string kapaName;
+        [SerializeField] private string kapaName;
         public string KapaName => kapaName;
 
-        [SerializeField] int kapaCost;
+        [SerializeField] private int kapaCost;
         public int KapaCost => kapaCost;
 
-        [SerializeField] string kapaDescription;
+        [SerializeField] private string kapaDescription;
         public string KapaDescription => kapaDescription;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using GameContent.Entity.Unit.UnitWorking;
+using GameContent.GridManagement;
 using UI.InGameUI;
 using UnityEngine;
 
@@ -29,6 +30,7 @@ namespace Interfaces.Unit
         int PrecBDbCounter { get; set; }
         int DefBDbCounter { get; set; }
         int DeathCounter { get; set; }
+        int DotCounter { get; set; }
         
         #endregion
 
@@ -45,14 +47,17 @@ namespace Interfaces.Unit
         #endregion
 
         #region methodes
+        
         void Select();
         void MoveOnPath(List<Vector3> currentPath);
         void MoveInFrontOf(Vector3 currentPath);
-        void OnCheckBuffDebuffCounter(IUnit unit);
+        void OnCheckEffectCounter(IUnit unit);
         void OnKapa();
         void Deselect();
         void OnDie();
         void OnCheckRez(IUnit unit, out bool rezed);
+        void OnSelectSelfTile(IEntity uRef, HexGridStore hexGrid);
+        void OnDeselectSelfTile(IEntity uRef, HexGridStore hexGrid);
 
         #endregion
     }

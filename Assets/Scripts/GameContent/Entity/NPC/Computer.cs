@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Enums.GridEnums;
-using GameContent.GridManagement.GridGraphManagement;
+using GameContent.GameManagement;
+using GameContent.GridManagement.GridGraphManagement.GraphInits;
 using UnityEngine;
 
-namespace GameContent.Entity.Network
+namespace GameContent.Entity.NPC
 {
     public class Computer : Entity
     {
@@ -20,17 +22,25 @@ namespace GameContent.Entity.Network
 
         #endregion
         
-        [SerializeField] ComputerTarget compTarget;
+        [SerializeField] private ComputerTarget compTarget;
         public ComputerTarget ComputerTarget => compTarget;
+
+        [SerializeField] private Relay relayRef;
         
-        public bool GotHacked { get; set; }
-        
-        [SerializeField] GraphInitBoard initBoard;
+        [SerializeField] private GraphInitBoard initBoard;
 
         #endregion
 
         #region  methodes
-        
+
+        private void Update()
+        {
+            if (!relayRef.IsTransmitting)
+                return;
+            
+            GameLoopManager.gLm.OnEndGame();
+        }
+
         public void HandleComputerHack() => initBoard.HandleDeAct(gameObject, false);
 
         #region Entity overrides
@@ -41,8 +51,6 @@ namespace GameContent.Entity.Network
             IsNetworkEmiter = false;
             IsOnNetwork = false;
             NetworkRange = 0;
-        
-            GotHacked = false;
         
             initBoard.SetRenderer(gameObject);
         }

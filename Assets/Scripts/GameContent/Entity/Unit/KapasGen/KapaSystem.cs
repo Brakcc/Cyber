@@ -9,15 +9,17 @@ namespace GameContent.Entity.Unit.KapasGen
     public class KapaSystem
     {
         #region fields
-        PathResult _kapaRange;
-        PathResult _perfectRange;
-        List<Vector3Int> _activeTiles = new();
-        List<Vector3Int> _perfectTiles = new();
+
+        private PathResult _kapaRange;
+        private PathResult _perfectRange;
+        private List<Vector3Int> _activeTiles = new();
+        private List<Vector3Int> _perfectTiles = new();
         #endregion
 
         #region methodes
-        PathResult GetKapaRange(IUnit unit, HexGridStore hexGrid) => PathFind.PathKapaVerif(hexGrid, unit.CurrentHexPos, unit.UnitData.MovePoints + 10);
-        PathResult GetPerfectPath(IUnit unit, HexGridStore hexGrid) => PathFind.PerfectPath(hexGrid, unit.CurrentHexPos, unit.UnitData.MovePoints + 10);
+
+        private PathResult GetKapaRange(IUnit unit, HexGridStore hexGrid) => PathFind.PathKapaVerif(hexGrid, unit.CurrentHexPos, unit.UnitData.MovePoints + 10);
+        private PathResult GetPerfectPath(IUnit unit, HexGridStore hexGrid) => PathFind.PerfectPath(hexGrid, unit.CurrentHexPos, unit.UnitData.MovePoints + 10);
 
         /// <summary>
         /// Verifie le chemin parfait et obstacle pour comparer et determiner si le chemin est

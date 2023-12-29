@@ -14,6 +14,7 @@ using GameContent.Entity.Unit.KapasGen.KapaFunctions.DoubleDiffAtk;
 using GameContent.Entity.Unit.KapasGen.KapaFunctions.Grab_Push;
 using GameContent.Entity.Unit.KapasGen.KapaFunctions.PerfoAtk;
 using GameContent.Entity.Unit.KapasGen.KapaFunctions.AOEDistAtk;
+using GameContent.Entity.Unit.KapasGen.KapaFunctions.DOTAtk;
 using GameContent.GridManagement.HexPathFind;
 using Random = UnityEngine.Random;
 
@@ -92,6 +93,13 @@ namespace GameContent.Entity.Unit.KapasGen
 
         [ShowIfTrue("kapaFunctionType", new[] {(int)KapaFunctionType.ThrowLimit})]
         [SerializeField] private AoeLimitedThrowDatas limitedThrowAreaDatas;
+
+        #endregion
+
+        #region DOT
+
+        [ShowIfTrue("kapaFunctionType", new[] {(int)KapaFunctionType.DOT})]
+        [SerializeField] private DotKapaDatas dotKapaDatas;
 
         #endregion
         
@@ -378,8 +386,9 @@ namespace GameContent.Entity.Unit.KapasGen
         /// <param name="hexGrid"></param>
         /// <param name="pattern">Prendre le pattern du UnitManager CurrentPatternPos</param>
         /// <param name="unit"></param>
+        /// <param name="fromUnit"></param>
         /// <param name="isHitting"></param>
-        protected virtual void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern , IUnit unit, out bool isHitting)
+        protected virtual void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern , IUnit unit, bool fromUnit, out bool isHitting)
         {
             //Init des mutable local
             isHitting = false;
@@ -397,6 +406,12 @@ namespace GameContent.Entity.Unit.KapasGen
             else
             {
                 patternToUse = pattern;
+            }
+            
+            //Si Dot lezgo Dot
+            if (KapaFunctionType == KapaFunctionType.DOT && !fromUnit)
+            {
+                DotKapa.OnStartDot(unit, dotKapaDatas.turnNumber);
             }
             
             foreach (var pos in patternToUse)
@@ -441,7 +456,7 @@ namespace GameContent.Entity.Unit.KapasGen
                 var delayAtk = KapaFunctionType == KapaFunctionType.DoubleDiffAttack && !canDoubleKapa || 
                                KapaFunctionType == KapaFunctionType.Dash || 
                                KapaFunctionType == KapaFunctionType.Grab
-                    ? ConstList.SecondAtkDelay
+                    ? Constants.SecondAtkDelay
                     : 0;
                 
                 //Verif d'un changement de BalanceMult
@@ -455,22 +470,9 @@ namespace GameContent.Entity.Unit.KapasGen
                         : BalanceMult;
                 
                 //Apply des degats
-                if (buffDebuffDatas.isCritGuaranted)
-                {
-                    var damage = Damage.CritDamage(unit.CurrentAtk, unitTarget.CurrentDef) / (canDoubleKapa ? firstBalance : secondBalance);
+                OnDamageConsideration(this, unit, unitTarget, canDoubleKapa ? firstBalance : secondBalance, delayAtk,
+                    DamageFeedBack);
                 
-                    //apply
-                    unitTarget.CurrentHealth -= damage;
-                    
-                    //FeedBack de degats
-                    var targetPos = unitTarget.CurrentWorldPos;
-                    OnUIFeedBack(DamageFeedBack, new Vector3(targetPos.x, targetPos.y + ConstList.DamageUIRiseOffset), damage);
-                }
-                else
-                {
-                    OnDamageConsideration(unit, unitTarget, canDoubleKapa ? firstBalance : secondBalance, delayAtk,
-                                        DamageFeedBack);
-                }
                 
                 //Buff Debuff en 1st Kapa excecution
                 if (hasBuffDebuffs && canDoubleKapa && !canFirstEffect)
@@ -547,13 +549,15 @@ namespace GameContent.Entity.Unit.KapasGen
 
             OnDeselectTiles(hexGrid, pattern);
         }
+
         /// <summary>
         /// Execute sans la surcharge de verif de Hit, parce que flemme de changer tt le code dépendant de Execute
         /// </summary>
         /// <param name="hexGrid"></param>
         /// <param name="pattern"></param>
+        /// <param name="fromUnit"></param>
         /// <param name="unit"></param>
-        public virtual void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, IUnit unit)
+        public virtual void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, IUnit unit, bool fromUnit)
         {
             var canDoubleKapa = true;
             List<Vector3Int> patternToUse;
@@ -568,6 +572,12 @@ namespace GameContent.Entity.Unit.KapasGen
             else
             {
                 patternToUse = pattern;
+            }
+            
+            //Si Dot lezgo Dot
+            if (KapaFunctionType == KapaFunctionType.DOT && !fromUnit)
+            {
+                DotKapa.OnStartDot(unit, dotKapaDatas.turnNumber);
             }
             
             //Circulation sur le patterns
@@ -613,7 +623,7 @@ namespace GameContent.Entity.Unit.KapasGen
                 var delayAtk = KapaFunctionType == KapaFunctionType.DoubleDiffAttack && !canDoubleKapa || 
                                KapaFunctionType == KapaFunctionType.Dash || 
                                KapaFunctionType == KapaFunctionType.Grab
-                    ? ConstList.SecondAtkDelay
+                    ? Constants.SecondAtkDelay
                     : 0;
                 
                 //Verif d'un changement de BalanceMult
@@ -627,22 +637,9 @@ namespace GameContent.Entity.Unit.KapasGen
                         : BalanceMult;
                 
                 //Apply des degats
-                if (buffDebuffDatas.isCritGuaranted)
-                {
-                    var damage = Damage.CritDamage(unit.CurrentAtk, unitTarget.CurrentDef) / (canDoubleKapa ? firstBalance : secondBalance);
+                OnDamageConsideration(this, unit, unitTarget, canDoubleKapa ? firstBalance : secondBalance, delayAtk,
+                    DamageFeedBack);
                 
-                    //apply
-                    unitTarget.CurrentHealth -= damage;
-                    
-                    //FeedBack de degats
-                    var targetPos = unitTarget.CurrentWorldPos;
-                    OnUIFeedBack(DamageFeedBack, new Vector3(targetPos.x, targetPos.y + ConstList.DamageUIRiseOffset), damage);
-                }
-                else
-                {
-                    OnDamageConsideration(unit, unitTarget, canDoubleKapa ? firstBalance : secondBalance, delayAtk,
-                        DamageFeedBack);
-                }
 
                 //Debuff en 1st Kapa excecution
                 if (hasBuffDebuffs && canDoubleKapa)
@@ -690,6 +687,7 @@ namespace GameContent.Entity.Unit.KapasGen
                         break;
                     
                     case KapaFunctionType.DOT:
+                        
                         break;
 
                     case KapaFunctionType.FirstHitEffect when canFirstEffect:
@@ -720,7 +718,7 @@ namespace GameContent.Entity.Unit.KapasGen
         /// <param name="hexGrid"></param>
         /// <param name="unit"></param>
         /// <returns></returns>
-        public virtual List<Vector3Int> OnGenerateButton(HexGridStore hexGrid, IUnit unit) 
+        public virtual List<Vector3Int> OnGenerateButton(HexGridStore hexGrid, IUnit unit)
         {
             if (EffectType == EffectType.Hack)
             {
@@ -736,6 +734,8 @@ namespace GameContent.Entity.Unit.KapasGen
             
             if (KapaFunctionType == KapaFunctionType.ThrowLimit)
             {
+                KapaSystem _kapaSys = new();
+                
                 var tempBut =  Direction.IsPariryEven(unit.CurrentHexPos.x)
                     ? AoeLimitedThrowKapa.ConcatEvenPattern(unit.CurrentHexPos, this)
                     : AoeLimitedThrowKapa.ConcatOddPattern(unit.CurrentHexPos, this);
@@ -744,9 +744,11 @@ namespace GameContent.Entity.Unit.KapasGen
                 {
                     var hex = hexGrid.GetTile(tempTile);
                     
-                    if(hex == null)
+                    if (hex == null)
                         continue;
-                    if(hex.IsObstacle())
+                    if (hex.IsObstacle())
+                        continue;
+                    if (!_kapaSys.VerifyKapaRange(tempTile, unit, hexGrid, 100))
                         continue;
 
                     availableButton.Add(tempTile);
@@ -796,12 +798,28 @@ namespace GameContent.Entity.Unit.KapasGen
             }
         }
         
-        private static async void OnDamageConsideration(IUnit unit, IUnit unitTarget, int balance, int delay, GameObject feedBack)
+        private static async void OnDamageConsideration(AbstractKapaSO kapa, IUnit unit, IUnit unitTarget, int balance, int delay, GameObject feedBack)
         {
             await Task.Delay(delay);
 
             //balanceMult a 0 pas de degats
             if (balance <= 0) return;
+            
+            //verif perma Crit
+            if (kapa.buffDebuffDatas.isCritGuaranted)
+            {
+                var damage = Damage.CritDamage(unit.CurrentAtk, unitTarget.CurrentDef) / balance;
+                
+                //apply
+                unitTarget.CurrentHealth -= damage;
+                    
+                //FeedBack de degats
+                var targetPos = unitTarget.CurrentWorldPos;
+                OnUIFeedBack(feedBack, 
+                    new Vector3(targetPos.x, targetPos.y + Constants.DamageUIRiseOffset), damage);
+                
+                return;
+            }
             
             //verif si le coup est critique ou non
             if (Random.Range(0, 100) < unit.CurrentCritRate)
@@ -815,34 +833,39 @@ namespace GameContent.Entity.Unit.KapasGen
                 //FeedBack de degats
                 var targetPos = unitTarget.CurrentWorldPos;
                 OnUIFeedBack(feedBack, 
-                    new Vector3(targetPos.x, targetPos.y + ConstList.DamageUIRiseOffset), damage);
+                    new Vector3(targetPos.x, targetPos.y + Constants.DamageUIRiseOffset), damage);
+                
+                return;
             }
-            else 
+
+            //Verif de UnitType
+            if (unitTarget.UnitData.Type == UnitType.Hacker)
             {
-                if (unitTarget.UnitData.Type == UnitType.Hacker)
-                {
-                    var damage = Damage.HackerDamage(unit.CurrentAtk) / balance;
+                //Si l'execution est Dot
+                var newBal = kapa.KapaFunctionType == KapaFunctionType.DOT
+                    ? kapa.dotKapaDatas.balMultBuffDebuffData
+                    : balance;
+                var damage = Damage.HackerDamage(unit.CurrentAtk) / newBal;
                     
-                    //apply
-                    unitTarget.CurrentHealth -= damage;
+                //apply
+                unitTarget.CurrentHealth -= damage;
                         
-                    //FeedBack de degats
-                    var targetPos = unitTarget.CurrentWorldPos;
-                    OnUIFeedBack(feedBack, 
-                        new Vector3(targetPos.x, targetPos.y + ConstList.DamageUIRiseOffset), damage);
-                }
-                else
-                {
-                    var damage = Damage.NormalDamage(unit.CurrentAtk, unitTarget.CurrentDef) / balance;
+                //FeedBack de degats
+                var targetPos = unitTarget.CurrentWorldPos;
+                OnUIFeedBack(feedBack, 
+                    new Vector3(targetPos.x, targetPos.y + Constants.DamageUIRiseOffset), damage);
+            }
+            else
+            {
+                var damage = Damage.NormalDamage(unit.CurrentAtk, unitTarget.CurrentDef) / balance;
                     
-                    //apply
-                    unitTarget.CurrentHealth -= damage;
+                //apply
+                unitTarget.CurrentHealth -= damage;
                         
-                    //feedback de degats
-                    var targetPos = unitTarget.CurrentWorldPos;
-                    OnUIFeedBack(feedBack, 
-                        new Vector3(targetPos.x, targetPos.y + ConstList.DamageUIRiseOffset), damage);
-                }
+                //feedback de degats
+                var targetPos = unitTarget.CurrentWorldPos;
+                OnUIFeedBack(feedBack, 
+                    new Vector3(targetPos.x, targetPos.y + Constants.DamageUIRiseOffset), damage);
             }
         }
         
@@ -870,17 +893,17 @@ namespace GameContent.Entity.Unit.KapasGen
             foreach (var pos in initList)
             {
                 var tempPos = EffectType == EffectType.Hack && KapaFunctionType != KapaFunctionType.AOE
-                    || KapaFunctionType == KapaFunctionType.ThrowFreeArea
-                    || KapaFunctionType == KapaFunctionType.ThrowLimit
+                    || IsRanged()
                     ? pos
                     : unit.CurrentHexPos + pos;
                 
-                if (!hexGrid.hexTiles.ContainsKey(tempPos)) continue;
+                if (!hexGrid.hexTiles.ContainsKey(tempPos))
+                    continue;
                 
                 var tempHex = hexGrid.GetTile(tempPos);
                 
                 if (!kapaSys.VerifyKapaRange(tempHex.HexCoords, unit, hexGrid, MaxPlayerPierce) && 
-                    EffectType != EffectType.Hack) 
+                    EffectType != EffectType.Hack && !IsRanged() || tempHex.IsObstacle()) 
                     continue;
                 
                 tempHex.EnableGlowKapa();
@@ -908,6 +931,12 @@ namespace GameContent.Entity.Unit.KapasGen
             var feed = Instantiate(inst, pos, Quaternion.identity);
             feed.GetComponent<DamageFeedBack>().OnInit(dam);
         }
+        
+        #endregion
+
+        #region Checkers
+        
+        private bool IsRanged() => KapaFunctionType is KapaFunctionType.ThrowFreeArea or KapaFunctionType.ThrowLimit;
         
         #endregion
     }

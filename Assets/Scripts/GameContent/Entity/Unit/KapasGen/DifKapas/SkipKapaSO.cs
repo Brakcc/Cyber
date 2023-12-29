@@ -10,7 +10,7 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
     {
         #region inherited accessors
         public override KapaUISO KapaUI => _kapaUI;
-        [SerializeField] KapaUISO _kapaUI;
+        [SerializeField] private KapaUISO _kapaUI;
         public override GameObject DamageFeedBack => null;
         public override Vector3Int[] Patterns => null;
         #endregion
@@ -44,8 +44,8 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
         #region inherited methodes (rendues null)
         public sealed override bool OnCheckKapaPoints(IUnit unit) => true;
 
-        public sealed override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, IUnit unit) { }
-        protected sealed override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, IUnit unit, out bool isHitting)
+        public sealed override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, IUnit unit, bool fromUnit) { }
+        protected sealed override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, IUnit unit, bool fromUnit, out bool isHitting)
         {
             isHitting = false;
         }

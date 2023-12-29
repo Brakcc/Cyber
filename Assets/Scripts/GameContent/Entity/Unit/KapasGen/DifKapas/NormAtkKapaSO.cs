@@ -15,15 +15,15 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
         #region inherited accessors
         
         public override KapaUISO KapaUI => _kapaUI;
-        [SerializeField] KapaUISO _kapaUI;
+        [SerializeField] private KapaUISO _kapaUI;
         public override GameObject DamageFeedBack => _damageFeedBack;
-        [SerializeField] GameObject _damageFeedBack;
+        [SerializeField] private GameObject _damageFeedBack;
         public override Vector3Int[] Patterns => _pattern;
-        [SerializeField] Vector3Int[] _pattern;
+        [SerializeField] private Vector3Int[] _pattern;
 
-        [SerializeField] NAKapaSupFields _nAKapaSupFields;
+        [SerializeField] private NAKapaSupFields _nAKapaSupFields;
 
-        [SerializeField] CameraManager _cam;
+        [SerializeField] private CameraManager _cam;
         
         #endregion
 
@@ -78,18 +78,18 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
         #region inherited methodes
         public sealed override bool OnCheckKapaPoints(IUnit unit) => true;
 
-        public sealed override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, IUnit unit)
+        public sealed override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, IUnit unit, bool fromUnit)
         {
             //Ne fait des degats d'AOE que si la Kapa est un hack en AOE 
             if (EffectType == EffectType.Hack && KapaFunctionType == KapaFunctionType.AOE)
             {
-                base.OnExecute(hexGrid, unit.GlobalNetwork, unit, out var isHitting);
+                base.OnExecute(hexGrid, unit.GlobalNetwork, unit, fromUnit, out var isHitting);
                 DoKapa(unit, isHitting);
                 unit.OnDeselectNetworkTiles();
             }
             else
             {
-                base.OnExecute(hexGrid, pattern, unit, out var isHitting);
+                base.OnExecute(hexGrid, pattern, unit, fromUnit, out var isHitting);
                 DoKapa(unit, isHitting);
             }
             
@@ -99,7 +99,8 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
         #endregion
 
         #region cache
-        void DoKapa(IUnit unit, bool hit)
+
+        private void DoKapa(IUnit unit, bool hit)
         {
             if (hit)
             {
@@ -108,7 +109,8 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
 
             CameraFunctions.OnShake(FindObjectOfType<CinemachineVirtualCamera>(), _cam.shake);
         }
-        void EndKapa()
+
+        private void EndKapa()
         {
             //Debug.Log("End Kapa");
         }

@@ -15,7 +15,7 @@ namespace GameContent.GameManagement
         [SerializeField] private AbstractUnitSO[] currentDpsList;
 
         private IEnumerable<AbstractUnitSO> CurrentHackerList => currentHackerList;
-        [SerializeField] AbstractUnitSO[] currentHackerList;
+        [SerializeField] private AbstractUnitSO[] currentHackerList;
 
         private IEnumerable<AbstractUnitSO> FullList => ConcatLists();
 
@@ -40,9 +40,9 @@ namespace GameContent.GameManagement
             return dict;
         }
 
-        public AbstractUnitSO GetUnitData(int key)
+        public AbstractUnitSO GetUnitData(int iD)
         {
-            AllUnitsDict.TryGetValue(key, out var unitData);
+            AllUnitsDict.TryGetValue(iD, out var unitData);
             return unitData;
         }
     }

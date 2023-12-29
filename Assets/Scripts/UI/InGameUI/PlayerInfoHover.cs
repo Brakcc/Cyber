@@ -5,13 +5,14 @@ namespace UI.InGameUI
     public class PlayerInfoHover : MonoBehaviour
     {
         #region fields
-        [SerializeField] GameObject PlayerInfo;
-        float counter = 0;
-        bool isHovering;
+        [SerializeField] private GameObject PlayerInfo;
+        private float counter = 0;
+        private bool isHovering;
         #endregion
 
         #region methodes
-        void Update()
+
+        private void Update()
         {
             if (!isHovering) return;
             counter += Time.deltaTime;
@@ -40,11 +41,12 @@ namespace UI.InGameUI
             OnHide();
         }
 
-        void OnPrint()
+        private void OnPrint()
         {
             PlayerInfo.SetActive(true);
         }
-        void OnHide()
+
+        private void OnHide()
         {
             PlayerInfo.SetActive(false);
         }

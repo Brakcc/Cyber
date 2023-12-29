@@ -5,11 +5,11 @@ namespace GameContent.IA
 {
     public class IAManager: MonoBehaviour
     {
-        List<Vector3> TargetsPos = new List<Vector3>();
+        private List<Vector3> TargetsPos = new List<Vector3>();
     
 
         public static IAManager instance;
-        Dictionary<int, Vector3> posibility = new Dictionary<int, Vector3>();
+        private Dictionary<int, Vector3> posibility = new Dictionary<int, Vector3>();
 
         //PathResult result = new PathResult();
 

@@ -1,7 +1,6 @@
 using Utilities.CustomHideAttribute;
 using GameContent.Entity.Unit.KapasGen.KapaFunctions.Buff_Debuff;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace GameContent.Entity.Unit.KapasGen.KapaFunctions.DoubleDiffAtk
 {

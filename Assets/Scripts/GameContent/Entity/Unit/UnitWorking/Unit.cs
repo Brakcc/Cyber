@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Enums.UnitEnums.KapaEnums;
 using Enums.UnitEnums.UnitEnums;
 using GameContent.GridManagement;
 using Interfaces.Unit;
@@ -32,6 +33,7 @@ namespace GameContent.Entity.Unit.UnitWorking
         public abstract int PrecBDbCounter { get; set; }
         public abstract int DefBDbCounter { get; set; }
         public abstract int DeathCounter { get; set; }
+        public abstract int DotCounter { get; set; }
 
         #endregion
         
@@ -48,7 +50,7 @@ namespace GameContent.Entity.Unit.UnitWorking
         #region Entity heritage
         
         public override Vector3Int CurrentHexPos { get => _currentHexPos; set => _currentHexPos = value; }
-        Vector3Int _currentHexPos;
+        private Vector3Int _currentHexPos;
         public override bool IsNetworkEmiter { get; set; }
         public override bool IsOnNetwork { get; protected set; }
         public override int NetworkRange { get; set; }
@@ -92,7 +94,7 @@ namespace GameContent.Entity.Unit.UnitWorking
             CrBDbCounter = 0;
             PrecBDbCounter = 0;
         }
-
+        
         public virtual void Select()
         {
             
@@ -102,7 +104,7 @@ namespace GameContent.Entity.Unit.UnitWorking
 
         public void MoveInFrontOf(Vector3 currentPath)
         {
-            StartCoroutine(DashGrabPath(currentPath, UnitData.Speed * ConstList.SpeedDashMult));
+            StartCoroutine(DashGrabPath(currentPath, UnitData.Speed * Constants.SpeedDashMult));
         }
         
         public abstract void OnKapa();
@@ -117,7 +119,8 @@ namespace GameContent.Entity.Unit.UnitWorking
             DeathCounter = 3;
             GetComponentInChildren<SpriteRenderer>().color = Color.red;
         }
-        public virtual void OnRez()
+
+        protected virtual void OnRez()
         {
             CanPlay = false;
             IsDead = false;
@@ -133,7 +136,7 @@ namespace GameContent.Entity.Unit.UnitWorking
         private IEnumerator FollowPath(List<Vector3> path, float speed)
         {
             CanKapa = false;
-            float pas = speed * Time.fixedDeltaTime / 10;
+            var  pas = speed * Time.fixedDeltaTime / 10;
             foreach (var i in path)
             {
                 float z = path[0].z;
@@ -156,7 +159,7 @@ namespace GameContent.Entity.Unit.UnitWorking
             {
                 foreach (var i in GlobalNetwork) { HexGridStore.hGs.GetTile(i).DisableGlowDynaNet(); }
             }
-            OnGenerateNet(NetworkRange);
+            OnGenerateNet(NetworkRange, TeamNumber);
         }
 
         private IEnumerator DashGrabPath(Vector3 path, float speed)
@@ -177,10 +180,10 @@ namespace GameContent.Entity.Unit.UnitWorking
 
             PositionCharacterOnTile(path);
             
-            OnGenerateNet(NetworkRange);
+            OnGenerateNet(NetworkRange, TeamNumber);
         }
 
-        public void OnCheckBuffDebuffCounter(IUnit unit)
+        public void OnCheckEffectCounter(IUnit unit)
         {
             if (unit.MpBDbCounter > 0)
             {
@@ -218,6 +221,21 @@ namespace GameContent.Entity.Unit.UnitWorking
                     unit.StatUI.SetDef(unit);
                 }
             }
+
+            if (unit.DotCounter > 0)
+            {
+                unit.DotCounter--;
+                if (!IsIntersecting(CurrentHexPos, HexGridStore.hGs, UnitData.NetworkRange, out _))
+                {
+                    DotCounter = 0;
+                }
+                //Avec ca on part totallement du principe, et de facon tres rigide, que la Kapa de type Dot est 
+                //obligatoirement une competence. Donc, on appelle la Kapa 1 dans la liste de Kapa 
+                if (unit.DotCounter > 0)
+                {
+                    unit.UnitData.KapasList[(int)KapaType.Competence].OnExecute(HexGridStore.hGs, GlobalNetwork, unit, true);
+                }
+            }
         }
 
         public void OnCheckRez(IUnit unit, out bool rezed)
@@ -233,7 +251,7 @@ namespace GameContent.Entity.Unit.UnitWorking
         }
 
         private void PositionCharacterOnTile(Vector3 pos) =>
-            transform.position = new Vector3(pos.x, pos.y, pos.z - ConstList.OffsetZPos);
+            transform.position = new Vector3(pos.x, pos.y, pos.z - Constants.OffsetZPos);
         
         private static void ChangeUnitHexPos(IUnit uT, HexGridStore hexGrid)
         {
@@ -244,6 +262,17 @@ namespace GameContent.Entity.Unit.UnitWorking
             tT.HasEntityOnIt = true;
             tT.SetEntity(uT);
             uT.CurrentHexPos = tT.HexCoords;
+        }
+
+        public void OnSelectSelfTile(IEntity uRef, HexGridStore hexGrid)
+        {
+            var tile = hexGrid.GetTile(uRef.CurrentHexPos);
+            tile.EnableGlowPath();
+        }
+        public void OnDeselectSelfTile(IEntity uRef, HexGridStore hexGrid)
+        {
+            var tile = hexGrid.GetTile(uRef.CurrentHexPos);
+            tile.DisableGlowPath();
         }
         
         #endregion

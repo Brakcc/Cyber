@@ -6,19 +6,21 @@ namespace UI.InGameUI
     public class UIHideSys : MonoBehaviour
     {
         #region fields
-        [SerializeField] GameObject playerInfo;
-        [SerializeField] float offSet;
-        float originXPos;
-        float counter;
-        bool isHovering;
+        [SerializeField] private GameObject playerInfo;
+        [SerializeField] private float offSet;
+        private float originXPos;
+        private float counter;
+        private bool isHovering;
         #endregion
 
         #region methodes
-        void Start()
+
+        private void Start()
         {
             originXPos = playerInfo.transform.position.x;
         }
-        void Update()
+
+        private void Update()
         {
             if (!isHovering) return;
             counter += Time.deltaTime;
@@ -47,11 +49,12 @@ namespace UI.InGameUI
             //OnHide();
         }
 
-        void OnPrint()
+        private void OnPrint()
         {
             playerInfo.transform.DOMoveX(originXPos + offSet, 0.3f);
         }
-        void OnHide()
+
+        private void OnHide()
         {
             playerInfo.transform.DOMoveX(originXPos, 0.3f);
         }

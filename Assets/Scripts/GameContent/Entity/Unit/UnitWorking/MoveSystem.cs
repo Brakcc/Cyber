@@ -10,14 +10,19 @@ namespace GameContent.Entity.Unit.UnitWorking
     public class MoveSystem
     {
         #region fields
-        PathResult _moveRange;
-        List<Vector3Int> _currentPath = new();
+
+        private PathResult _moveRange;
+        private List<Vector3Int> _currentPath = new();
         #endregion
 
         #region methodes
         public void HideRange(HexGridStore hexGrid)
         {
-            foreach (Vector3Int hexPos in _moveRange.GetRangePositions()) { hexGrid.GetTile(hexPos).DisableGlowPath(); hexGrid.GetTile(hexPos).DisableGlow(); }
+            foreach (var hexPos in _moveRange.GetRangePositions())
+            {
+                hexGrid.GetTile(hexPos).DisableGlowPath();
+                hexGrid.GetTile(hexPos).DisableGlow();
+            }
 
             _moveRange = new PathResult();
         }
@@ -27,7 +32,7 @@ namespace GameContent.Entity.Unit.UnitWorking
             CalculateRange(selected, hexGrid);
             var unitPos = selected.CurrentHexPos;
 
-            foreach (Vector3Int hexPos in _moveRange.GetRangePositions()) 
+            foreach (var hexPos in _moveRange.GetRangePositions()) 
             {
                 if (unitPos == hexPos) continue;
                 hexGrid.GetTile(hexPos).EnableGlow(); 
@@ -38,14 +43,28 @@ namespace GameContent.Entity.Unit.UnitWorking
 
         public void ShowPath(Vector3Int selects,  HexGridStore hexGrid)
         {
-            if (_moveRange.GetRangePositions().Contains(selects))
+            if (!_moveRange.GetRangePositions().Contains(selects))
+                return;
+            
+            foreach (var hexPos in _currentPath)
             {
-                foreach (Vector3Int hexPos in _currentPath) { hexGrid.GetTile(hexPos).DisableGlowPath(); }
-                _currentPath = _moveRange.GetPathTo(selects);
-                foreach (Vector3Int hexPos in _currentPath) { hexGrid.GetTile(hexPos).EnableGlowPath(); }
+                hexGrid.GetTile(hexPos).DisableGlowPath();
+            }
+            _currentPath = _moveRange.GetPathTo(selects);
+            foreach (var hexPos in _currentPath)
+            {
+                hexGrid.GetTile(hexPos).EnableGlowPath();
             }
         }
 
+        public void HidePath(HexGridStore hexGrid)
+        {
+            foreach (var hexPos in _currentPath)
+            {
+                hexGrid.GetTile(hexPos).DisableGlowPath();
+            }
+        }
+        
         public List<Vector3Int> GetPath(Vector3Int target) => _moveRange.GetPathTo(target);
 
         public void MoveUnit(IUnit selects, HexGridStore hexGrid) => selects.MoveOnPath(_currentPath.Select(pos => hexGrid.GetTile(pos).transform.position).ToList());

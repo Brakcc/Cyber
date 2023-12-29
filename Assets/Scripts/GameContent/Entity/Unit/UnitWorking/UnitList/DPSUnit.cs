@@ -1,4 +1,4 @@
-using GameContent.GridManagement.GridGraphManagement;
+using GameContent.GridManagement.GridGraphManagement.GraphInits;
 using UI.InGameUI;
 using UnityEngine;
 
@@ -10,10 +10,10 @@ namespace GameContent.Entity.Unit.UnitWorking.UnitList
         #region inherited accessors
         
         //moves fields 
-        [SerializeField] AbstractUnitSO m_Unit;
+        [SerializeField] private AbstractUnitSO m_Unit;
         public override AbstractUnitSO UnitData { get => m_Unit; set => m_Unit = value; }
 
-        [SerializeField] PlayerStatsUI m_StatsUI;
+        [SerializeField] private PlayerStatsUI m_StatsUI;
         public override PlayerStatsUI StatUI => m_StatsUI;
 
         //Game Loop Logic BALEK LA VISIBILITE et BALEK LE SCRIPTABLE
@@ -34,6 +34,7 @@ namespace GameContent.Entity.Unit.UnitWorking.UnitList
         public override int PrecBDbCounter { get; set; }
         public override int DefBDbCounter { get; set; }
         public override int DeathCounter { get; set; }
+        public override int DotCounter { get; set; }
         
         #endregion
 
@@ -47,7 +48,7 @@ namespace GameContent.Entity.Unit.UnitWorking.UnitList
         public override bool CanKapa { get; protected set; }
         public override bool IsOnComputer { get; protected set; }
 
-        [SerializeField] GraphInitUnit graphs;
+        [SerializeField] private GraphInitUnit graphs;
         
         #endregion
 
@@ -91,6 +92,13 @@ namespace GameContent.Entity.Unit.UnitWorking.UnitList
             _rend.color = _originColor;
         }
         public override void OnKapa() => Debug.Log("Omegalul");
+
+        protected sealed override void OnRez()
+        {
+            base.OnRez();
+            GetComponentInChildren<SpriteRenderer>().color = _originColor;
+        }
+
         #endregion
     }
 }

@@ -24,6 +24,6 @@ namespace GameContent.Entity.Unit.KapasGen.KapaFunctions.Buff_Debuff
 
         public bool hasBalanceMultBDb;
         [ShowIfBoolTrue("hasBalanceMultBDb")]
-        [Range(1, 10)] public int balMultBuffDebuffData = 1;
+        [Range(0, 10)] public int balMultBuffDebuffData = 1;
     }
 }

@@ -3,7 +3,6 @@ using GameContent.Entity.Unit.UnitWorking;
 using Interfaces.Unit;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace UI.InGameUI
@@ -11,15 +10,15 @@ namespace UI.InGameUI
     public class PlayerStatsUI : MonoBehaviour
     {
         #region fields
-        [SerializeField] Unit unit;
-        [SerializeField] TMP_Text nameP;
-        [SerializeField] TMP_Text mpText;
-        [SerializeField] TMP_Text atkText;
-        [SerializeField] TMP_Text defText;
-        [SerializeField] TMP_Text critRate;
-        [SerializeField] TMP_Text hP;
-        [SerializeField] TMP_Text uPText;
-        [SerializeField] Image imageRef;
+        [SerializeField] private Unit unit;
+        [SerializeField] private TMP_Text nameP;
+        [SerializeField] private TMP_Text mpText;
+        [SerializeField] private TMP_Text atkText;
+        [SerializeField] private TMP_Text defText;
+        [SerializeField] private TMP_Text critRate;
+        [SerializeField] private TMP_Text hP;
+        [SerializeField] private TMP_Text uPText;
+        [SerializeField] private Image imageRef;
         #endregion
 
         #region methodes

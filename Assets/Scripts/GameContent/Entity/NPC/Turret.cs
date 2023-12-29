@@ -2,10 +2,10 @@
 using System.Linq;
 using Enums.GridEnums;
 using GameContent.GridManagement;
-using GameContent.GridManagement.GridGraphManagement;
+using GameContent.GridManagement.GridGraphManagement.GraphInits;
 using UnityEngine;
 
-namespace GameContent.Entity.Network
+namespace GameContent.Entity.NPC
 {
     public class Turret : Entity
     {
@@ -16,11 +16,11 @@ namespace GameContent.Entity.Network
         public override int NetworkRange { get; set; }
         public override List<Vector3Int> GlobalNetwork { get; protected set; } = new();
 
-        [SerializeField] GraphInitEntity graphInit;
+        [SerializeField] private GraphInitEntity graphInit;
         #endregion
 
         #region methodes
-        void OnEnable()
+        private void OnEnable()
         {
             OnInit();
         }
@@ -49,7 +49,7 @@ namespace GameContent.Entity.Network
         /// </summary>
         public sealed override void OnGenerateNet(int range)
         {
-            IsIntersecting(CurrentHexPos, HexGridStore.hGs, range, out List<NetworkType> net);
+            IsIntersecting(CurrentHexPos, HexGridStore.hGs, range, out var net);
             GlobalNetwork = OnIntersect(CurrentHexPos, HexGridStore.hGs, range, net);
         
 
@@ -84,7 +84,7 @@ namespace GameContent.Entity.Network
         /// <returns></returns>
         protected sealed override List<Vector3Int> OnIntersect(Vector3Int pos, HexGridStore hexGrid, int range, List<NetworkType> toMerge)
         {
-            List<Vector3Int> newRange = GetRangeList(pos, hexGrid, range).ToList();
+            var newRange = GetRangeList(pos, hexGrid, range).ToList();
 
             if (toMerge.Count == 0)
             {
@@ -96,8 +96,7 @@ namespace GameContent.Entity.Network
 
                 return newRange;
             }
-
-            else
+            
             {
                 foreach (var i in toMerge)
                 {

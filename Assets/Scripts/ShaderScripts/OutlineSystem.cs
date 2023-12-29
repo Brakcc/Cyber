@@ -11,7 +11,8 @@ namespace ShaderScripts
         #endregion
 
         #region methodes
-        PathResult GetOutlineRange(Vector3Int pos, HexGridStore hexGrid, int range) => PathFind.PathKapaVerif(hexGrid, pos, range);
+
+        private PathResult GetOutlineRange(Vector3Int pos, HexGridStore hexGrid, int range) => PathFind.PathKapaVerif(hexGrid, pos, range);
     
         /// <summary>
         /// revoit le dictionnaire contenant en clé les Pos et en value les Hex d'une range à outline. 

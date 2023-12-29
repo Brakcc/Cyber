@@ -16,15 +16,15 @@ namespace Utilities
         /// <returns></returns>
         public static Vector2 SmallestRayToHitPoint(Vector2[] rayDists, Vector2[] origin)
         {
-            float theSmallest = 8f;
-            Vector2 theSmallestRay = Vector2.zero;
-            for (int i = 0; i < rayDists.Length; i++)
+            var theSmallest = 8f;
+            var theSmallestRay = Vector2.zero;
+            for (var i = 0; i < rayDists.Length; i++)
             {
-                if (Vector2.Distance(rayDists[i], origin[i]) < theSmallest)
-                {
-                    theSmallest = Vector2.Distance(rayDists[i], origin[i]);
-                    theSmallestRay = rayDists[i];
-                }
+                if (!(Vector2.Distance(rayDists[i], origin[i]) < theSmallest))
+                    continue;
+                
+                theSmallest = Vector2.Distance(rayDists[i], origin[i]);
+                theSmallestRay = rayDists[i];
             }
             return theSmallestRay;
         }
@@ -34,14 +34,14 @@ namespace Utilities
         /// </summary>
         /// <param name="floats"></param>
         /// <returns></returns>
-        public static float SmallestElement(float[] floats)
+        public static float SmallestElement(IEnumerable<float> floats)
         {
-            float theSmallest = float.MaxValue;
-            for (int i = 0; i < floats.Length; i++)
+            var theSmallest = float.MaxValue;
+            foreach (var t in floats)
             {
-                if (floats[i] <= theSmallest)
+                if (t <= theSmallest)
                 {
-                    theSmallest = floats[i];
+                    theSmallest = t;
                 }
             }
             return theSmallest;
@@ -52,14 +52,14 @@ namespace Utilities
         /// </summary>
         /// <param name="floats"></param>
         /// <returns></returns>
-        public static float BiggestElement(float[] floats)
+        public static float BiggestElement(IEnumerable<float> floats)
         {
-            float theBiggest = float.MinValue;
-            for (int i = 0; i < floats.Length; i++)
+            var theBiggest = float.MinValue;
+            foreach (var t in floats)
             {
-                if (floats[i] >= theBiggest)
+                if (t >= theBiggest)
                 {
-                    theBiggest = floats[i];
+                    theBiggest = t;
                 }
             }
             return theBiggest;
@@ -77,10 +77,10 @@ namespace Utilities
                 stringVector = stringVector.Substring(1, stringVector.Length - 1);
             }
 
-            string[] sArray = stringVector.Split(',');
-            for (int i = 0; i < sArray.Length; i++)
+            var sArray = stringVector.Split(',');
+            for (var i = 0; i < sArray.Length; i++)
             {
-                string s = sArray[i];
+                var s = sArray[i];
                 s = s.Replace(")", "");
                 sArray[i] = s;
             }
@@ -101,13 +101,11 @@ namespace Utilities
             {
                 newStr += $"{i},";
             }
-
             newStr = newStr[..^1];
             newStr += "]";
-
             return newStr;
         }
-        
+
         public static int[] StringToInts(string str)
         {
             if (str.StartsWith("[") && str.EndsWith("]"))
@@ -139,7 +137,7 @@ namespace Utilities
         /// <returns></returns>
         public static string[] UnpackData(string dataString)
         {
-            string[] dataList = dataString.Split(';');
+            var dataList = dataString.Split(';');
             return dataList;
         }
 
@@ -151,15 +149,7 @@ namespace Utilities
         /// <returns></returns>
         public static bool IsInFront(Vector2 movingObjectPosition, Vector2 selfPosition)
         {
-            bool inFront;
-            if (selfPosition.y < movingObjectPosition.y)
-            {
-                inFront = true;
-            }
-            else
-            {
-                inFront = false;
-            }
+            var inFront = selfPosition.y < movingObjectPosition.y;
             return inFront;
         }
 
@@ -170,22 +160,17 @@ namespace Utilities
         /// <returns></returns>
         public static string FloatToHourClock(float time)
         {
-            string clockTime;
-            string hours;
-            string minutes;
-            string secondes;
             //string millisecondes;
-
-            hours = ((int)time / 3600).ToString();
-            minutes = (((int)time % 3600) / 60).ToString();
-            secondes = ((int)time % 60).ToString();
+            var hours = ((int)time / 3600).ToString();
+            var minutes = (((int)time % 3600) / 60).ToString();
+            var secondes = ((int)time % 60).ToString();
             //millisecondes = (((int)time * 1000) % 1000).ToString();
             /*if (time.ToString().Split(",")[1] != null)
         {
             millisecondes = time.ToString().Split(",")[1][..2] ?? time.ToString().Split(",")[1][..1] + "0";
         }
         else { millisecondes = "00"; }*/
-            clockTime = hours + "h " + minutes + "m " + secondes + "s " /*+ millisecondes + "ms"*/;
+            var clockTime = hours + "h " + minutes + "m " + secondes + "s " /*+ millisecondes + "ms"*/;
             return clockTime;
         }
     }

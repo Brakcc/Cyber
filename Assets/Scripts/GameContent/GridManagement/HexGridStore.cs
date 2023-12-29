@@ -2,12 +2,11 @@ using System;
 using System.Collections.Generic;
 using Enums.GridEnums;
 using Enums.UnitEnums.KapaEnums;
-using GameContent.Entity.Network;
+using GameContent.Entity.NPC;
 using GameContent.GameManagement;
 using GameContent.GridManagement.HexPathFind;
 using Interfaces.Unit;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace GameContent.GridManagement
 {
@@ -30,13 +29,12 @@ namespace GameContent.GridManagement
         
         #endregion
 
-        #region Network
+        #region NPC
         public List<Vector3Int>[] NetworkList => _networkList;
-        readonly List<Vector3Int>[] _networkList = new List<Vector3Int>[(int)NetworkType.OldNet15];
+        private readonly List<Vector3Int>[] _networkList = new List<Vector3Int>[(int)NetworkType.OldNet15];
         
         public int EmptySockets { get; set; }
-
-        [Tooltip("Only for Hackers and Turrets")]
+        
         public readonly List<IEntity> emiters = new();
         #endregion
 
@@ -45,16 +43,16 @@ namespace GameContent.GridManagement
         #endregion
 
         #region methodes
-        void Awake() => hGs = this;
+        private void Awake() => hGs = this;
 
         #region  Map Gen
         
         public void OnIntMapAndEntities()
         {
-            //Network init
-            for (int i = 0; i < _networkList.Length; i++)
+            //NPC init
+            for (var i = 0; i < _networkList.Length; i++)
             {
-                _networkList[i] = new();
+                _networkList[i] = new List<Vector3Int>();
             }
             
             //Circulation sur la Map
@@ -87,39 +85,39 @@ namespace GameContent.GridManagement
         /// </summary>
         private void EntityInit()
         {
-            foreach (var unit in GameGenManager.gGm.TeamLists.heroPlayer0)
+            foreach (var unit in UnitGenManager.gGm.TeamLists.heroPlayer0)
             {
                 var uEnt = unit.GetComponent<IEntity>();
+                uEnt.OnInit();
+                
                 var hex = GetTile(uEnt.CurrentHexPos);
-                
                 hex.HasEntityOnIt = true;
-                var unitTemp = unit.GetComponent<IUnit>();
                 
+                var unitTemp = unit.GetComponent<IUnit>();
                 hex.SetEntity(unitTemp);
                 
-                uEnt.OnInit();
-
-                if (!uEnt.IsNetworkEmiter) continue;
+                if (!uEnt.IsNetworkEmiter)
+                    continue;
                 
                 emiters.Add(uEnt);
-                uEnt.OnGenerateNet(uEnt.NetworkRange);
+                uEnt.OnGenerateNet(uEnt.NetworkRange, unitTemp.TeamNumber);
             }
-            foreach (var unit in GameGenManager.gGm.TeamLists.heroPlayer1)
+            foreach (var unit in UnitGenManager.gGm.TeamLists.heroPlayer1)
             {
                 var uEnt = unit.GetComponent<IEntity>();
-                var hex = GetTile(uEnt.CurrentHexPos);
-                
-                hex.HasEntityOnIt = true;
-                var unitTemp = unit.GetComponent<IUnit>();
-                
-                hex.SetEntity(unitTemp);
-                
                 uEnt.OnInit();
+                
+                var hex = GetTile(uEnt.CurrentHexPos);
+                hex.HasEntityOnIt = true;
+                
+                var unitTemp = unit.GetComponent<IUnit>();
+                hex.SetEntity(unitTemp);
 
-                if (!uEnt.IsNetworkEmiter) continue;
+                if (!uEnt.IsNetworkEmiter)
+                    continue;
                 
                 emiters.Add(uEnt);
-                uEnt.OnGenerateNet(uEnt.NetworkRange);
+                uEnt.OnGenerateNet(uEnt.NetworkRange, unitTemp.TeamNumber);
             }
             
             InitNpcEntity(relayList);
@@ -133,8 +131,8 @@ namespace GameContent.GridManagement
         {
             foreach (var t in list)
             {
-                var hex = GetTile(t.CurrentHexPos);
                 t.OnInit();
+                var hex = GetTile(t.CurrentHexPos);
                 hex.HasEntityOnIt = true;
             }
         }
@@ -237,6 +235,8 @@ namespace GameContent.GridManagement
             foreach (var i in GetNeighbourgs(relayList[(int)whichRelay].CurrentHexPos))
             {
                 var tile = GetTile(i);
+                if (tile.IsObstacle())
+                    continue;
                 
                 tile.CurrentType = HexType.Walkable;
                 tile.RelayTarget = RelayTarget.None;
