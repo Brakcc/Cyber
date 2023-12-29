@@ -17,7 +17,7 @@ namespace Interfaces.Unit
 
         void OnInit();
         
-        void OnGenerateNet(int range);
+        //void OnGenerateNet(int range);
         
         void OnGenerateNet(int range, int team);
 

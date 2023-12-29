@@ -55,7 +55,7 @@ namespace GameContent.Entity.NPC
             initBoard.SetRenderer(gameObject);
         }
         
-        public sealed override void OnGenerateNet(int range) { }
+        public sealed override void OnGenerateNet(int range, int team) { }
 
         #endregion
         

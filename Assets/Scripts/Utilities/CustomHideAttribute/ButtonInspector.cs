@@ -3,7 +3,7 @@ using GameContent.Entity.Unit.UnitWorking;
 using UnityEditor;
 using UnityEngine;
 
-namespace Utilities
+namespace Utilities.CustomHideAttribute
 {
     [CustomEditor(typeof(UnitManager))]
     public class SpecKapa : Editor

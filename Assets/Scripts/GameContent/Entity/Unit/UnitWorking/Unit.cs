@@ -118,6 +118,11 @@ namespace GameContent.Entity.Unit.UnitWorking
             IsDead = true;
             DeathCounter = 3;
             GetComponentInChildren<SpriteRenderer>().color = Color.red;
+            DefBDbCounter = 0;
+            CrBDbCounter = 0;
+            MpBDbCounter = 0;
+            PrecBDbCounter = 0;
+            DotCounter = 0;
         }
 
         protected virtual void OnRez()
@@ -125,6 +130,7 @@ namespace GameContent.Entity.Unit.UnitWorking
             CanPlay = false;
             IsDead = false;
             
+            StatUI.SetHP(this);
             ChangeUnitHexPos(this, HexGridStore.hGs);
             PositionCharacterOnTile(HexGridStore.hGs.GetTile(OriginPos).transform.position);
         }

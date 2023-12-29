@@ -28,8 +28,8 @@ namespace GameContent.GridManagement.HexPathFind
 
             while (nextNodes.Count > 0)
             {
-                Vector3Int currentNode = nextNodes.Dequeue();
-                foreach (Vector3Int adjPos in hexGrid.GetNeighbourgs(currentNode))
+                var currentNode = nextNodes.Dequeue();
+                foreach (var adjPos in hexGrid.GetNeighbourgs(currentNode))
                 {
                     var h = hexGrid.GetTile(adjPos);
                     if (h.IsObstacle() || h.HasEntityOnIt) continue;
@@ -40,9 +40,8 @@ namespace GameContent.GridManagement.HexPathFind
 
                     if (newCost > movePoints) continue;
                     
-                    if (!processedNodes.ContainsKey(adjPos))
+                    if (processedNodes.TryAdd(adjPos, currentNode))
                     {
-                        processedNodes[adjPos] = currentNode;
                         totalCost[adjPos] = newCost;
                         nextNodes.Enqueue(adjPos);
                     }
@@ -75,8 +74,8 @@ namespace GameContent.GridManagement.HexPathFind
 
             while (nextNodes.Count > 0)
             {
-                Vector3Int currentNode = nextNodes.Dequeue();
-                foreach (Vector3Int adjPos in hexGrid.GetNeighbourgs(currentNode))
+                var currentNode = nextNodes.Dequeue();
+                foreach (var adjPos in hexGrid.GetNeighbourgs(currentNode))
                 {
                     var h = hexGrid.GetTile(adjPos);
                     if (h.IsObstacle()) continue; //La seule dif avec la fonction d'avant est sur cette ligne ._.

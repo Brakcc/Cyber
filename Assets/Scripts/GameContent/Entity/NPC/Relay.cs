@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using Enums.GridEnums;
+using GameContent.GameManagement;
 using GameContent.GridManagement;
 using GameContent.GridManagement.GridGraphManagement.GraphInits;
+using Interfaces.Unit;
 using UnityEngine;
 
 namespace GameContent.Entity.NPC
@@ -92,7 +94,7 @@ namespace GameContent.Entity.NPC
             OnGenerateLinks();
         }
         
-        public sealed override void OnGenerateNet(int range) { }
+        public sealed override void OnGenerateNet(int range, int team) { }
 
         #endregion
         
@@ -154,6 +156,8 @@ namespace GameContent.Entity.NPC
             HandleComputerHack();
             GotHacked = true;
 
+            HexGridStore.hGs.OnAddToNetwork(NetworkType.Net1, relayRefs.networkRef);
+
             if (relayRefs.precRefList.Length == 0)
             {
                 IsTransmitting = true;
@@ -168,6 +172,17 @@ namespace GameContent.Entity.NPC
             
             OnCheckIfPrecTransmit(this, relayRefs.precRefList, _lineList);
             OnCheckIfNextGotHacked(this, relayRefs.nextRefList, _lineList);
+            
+            foreach (var unit in GameLoopManager.gLm.teamInits.heroPlayer1)
+            {
+                var uEnt = unit.GetComponent<IUnit>();
+                uEnt.OnGenerateNet(uEnt.NetworkRange, uEnt.TeamNumber);
+            }
+            foreach (var unit in GameLoopManager.gLm.teamInits.heroPlayer0)
+            {
+                var uEnt = unit.GetComponent<IUnit>();
+                uEnt.OnGenerateNet(uEnt.NetworkRange, uEnt.TeamNumber);
+            }
         }
         
         #region Hack chain

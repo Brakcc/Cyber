@@ -30,12 +30,13 @@ namespace GameContent.GridManagement
         #endregion
 
         #region NPC
-        public List<Vector3Int>[] NetworkList => _networkList;
-        private readonly List<Vector3Int>[] _networkList = new List<Vector3Int>[(int)NetworkType.OldNet15];
         
+        public List<Vector3Int>[] NetworkList { get; } = new List<Vector3Int>[(int)NetworkType.OldNet15];
+
         public int EmptySockets { get; set; }
         
         public readonly List<IEntity> emiters = new();
+        
         #endregion
 
         public static HexGridStore hGs;
@@ -43,6 +44,7 @@ namespace GameContent.GridManagement
         #endregion
 
         #region methodes
+        
         private void Awake() => hGs = this;
 
         #region  Map Gen
@@ -50,9 +52,9 @@ namespace GameContent.GridManagement
         public void OnIntMapAndEntities()
         {
             //NPC init
-            for (var i = 0; i < _networkList.Length; i++)
+            for (var i = 0; i < NetworkList.Length; i++)
             {
-                _networkList[i] = new List<Vector3Int>();
+                NetworkList[i] = new List<Vector3Int>();
             }
             
             //Circulation sur la Map
@@ -62,12 +64,12 @@ namespace GameContent.GridManagement
                 if (hex.LocalNetwork == NetworkType.None)
                     continue;
                 
-                _networkList[(int)hex.LocalNetwork].Add(hex.HexCoords);
+                NetworkList[(int)hex.LocalNetwork].Add(hex.HexCoords);
                 hex.EnableGlowBaseNet();
             }
             
             //Depose des Sockets pour les merges de network
-            foreach (var i in _networkList)
+            foreach (var i in NetworkList)
             {
                 if (i.Count == 0) { EmptySockets++; }
             }
@@ -196,29 +198,37 @@ namespace GameContent.GridManagement
             emiters.Remove(ent);
         }
 
-        public void OnAddToNetwork(NetworkType net, IEnumerable<Vector3Int> newNet) => _networkList[(int)net].AddRange(newNet);
-        public void OnAddToNetwork(NetworkType net, Vector3Int newNet) => _networkList[(int)net].Add(newNet);
+        public void OnAddToNetwork(NetworkType net, IEnumerable<Vector3Int> newNet) => NetworkList[(int)net].AddRange(newNet);
+        public void OnAddToNetwork(NetworkType net, Vector3Int newNet) => NetworkList[(int)net].Add(newNet);
+
+        public void OnAddToNetwork(NetworkType net, IEnumerable<Hex> hexs)
+        {
+            foreach (var h in hexs)
+            {
+                NetworkList[(int)net].Add(h.HexCoords);
+            }
+        }
 
         public void OnDelFromNetwork(NetworkType net, List<Vector3Int> oldNet)
         {
-            foreach (var i in oldNet) { _networkList[(int)net].Remove(i); }
+            foreach (var i in oldNet) { NetworkList[(int)net].Remove(i); }
         }
-        public void OnDelFromNetwork(NetworkType net, Vector3Int oldNet) => _networkList[(int)net].Remove(oldNet);
+        public void OnDelFromNetwork(NetworkType net, Vector3Int oldNet) => NetworkList[(int)net].Remove(oldNet);
 
         public List<Vector3Int> GetNetwork(Vector3Int pos)
         {
             List<Vector3Int> allNet = new();
-            foreach (var net in _networkList)
+            foreach (var net in NetworkList)
             {
                 if (net.Contains(pos)) { allNet.AddRange(net); }
             }
             return allNet;
         }
 
-        public bool IsOnNetwork(Vector3Int pos, NetworkType net) => _networkList[(int)net].Contains(pos);
+        public bool IsOnNetwork(Vector3Int pos, NetworkType net) => NetworkList[(int)net].Contains(pos);
         public bool IsOnNetwork(Vector3Int pos)
         {
-            foreach (var i in _networkList)
+            foreach (var i in NetworkList)
             {
                 if (i.Contains(pos)) { return true; }
             }

@@ -31,7 +31,8 @@ namespace GameContent.Entity
         /// <param name="hexGrid">Ref au HexGridStore.hGS</param>
         /// <param name="range">Range max du reseau de l'Entity</param>
         /// <returns>IEnumerable des tiles d'un NPC</returns>
-        protected static IEnumerable<Vector3Int> GetRangeList(Vector3Int hexPos, HexGridStore hexGrid, int range) => PathFind.PathKapaVerif(hexGrid, hexPos, range).GetRangePositions();
+        protected static IEnumerable<Vector3Int> GetRangeList(Vector3Int hexPos, HexGridStore hexGrid, int range) 
+            => PathFind.PathKapaVerif(hexGrid, hexPos, range).GetRangePositions();
 
         /// <summary>
         /// Verif d'intersection entre diff reseaux
@@ -106,9 +107,10 @@ namespace GameContent.Entity
                 return newRange;
             }
 
+            
             foreach (var i in toMerge)
             {
-                if (IsTeamed((int)i, teamNb))
+                if (!IsTeamed(i, teamNb))
                     continue;
                 
                 foreach (var j in hexGrid.NetworkList[(int)i])
@@ -124,13 +126,13 @@ namespace GameContent.Entity
         /// <summary>
         /// Remplace l'ancien global network par le nouveau // Fonction generale de generation de reseau /!\
         /// </summary>
-        public virtual void OnGenerateNet(int range)
-        {
-            IsIntersecting(CurrentHexPos, HexGridStore.hGs, range, out var net);
-            GlobalNetwork = OnIntersect(CurrentHexPos, HexGridStore.hGs, range, net);
-        }
+        // public virtual void OnGenerateNet(int range)
+        // {
+        //     IsIntersecting(CurrentHexPos, HexGridStore.hGs, range, out var net);
+        //     GlobalNetwork = OnIntersect(CurrentHexPos, HexGridStore.hGs, range, net);
+        // }
 
-        public void OnGenerateNet(int range, int team)
+        public virtual void OnGenerateNet(int range, int team)
         {
             IsIntersecting(CurrentHexPos, HexGridStore.hGs, range, out var net);
             GlobalNetwork = OnIntersect(CurrentHexPos, HexGridStore.hGs, range, net, team);
@@ -160,8 +162,8 @@ namespace GameContent.Entity
 
         #region Chechers
 
-        private static bool IsTeamed(int netNb, int tNb)
-            => (netNb == 1 && tNb + 1 != netNb) || (netNb == 2 && tNb + 1 != netNb);
+        private static bool IsTeamed(NetworkType net, int tNb)
+            => (net == NetworkType.Net0 && tNb == 0) || (net == NetworkType.Net1 && tNb == 1);
 
         #endregion
     }
