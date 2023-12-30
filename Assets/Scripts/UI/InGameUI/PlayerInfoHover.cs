@@ -17,7 +17,7 @@ namespace UI.InGameUI
             if (!isHovering) return;
             counter += Time.deltaTime;
 
-            if (counter >= 0.5f) { OnPrint(); }
+            if (counter >= 0.2f) { OnPrint(); }
         }
 
         public void OnPointerEnter()
