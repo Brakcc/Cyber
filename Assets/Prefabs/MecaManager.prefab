@@ -131,6 +131,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 8a6b1edb-4e13-47af-89ce-4d5c971ae505
     m_ActionName: Player/Drag
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a3009d71-106a-4529-baf3-b5ef23bd2641
+    m_ActionName: Player/Scroll[/Mouse/scroll]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -237,6 +241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapData: []
+  relayList: []
   computerList: []
 --- !u!114 &2588066164149268060
 MonoBehaviour:
@@ -257,10 +262,6 @@ MonoBehaviour:
     heroPlayer0: []
     heroPlayer1: []
     countPlayer: 0000000000000000
-  teamInventory:
-    unitList: {fileID: 11400000, guid: a4b3272c79f96364f9b4b408e765db19, type: 2}
-  objectifs:
-    maxObjectif: 1
   uiFields:
     camM: {fileID: 0}
     cPui:
@@ -291,3 +292,5 @@ MonoBehaviour:
   teamLists:
     heroPlayer0: []
     heroPlayer1: []
+  team0: 
+  team1: 

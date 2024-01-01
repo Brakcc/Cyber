@@ -197,9 +197,9 @@ namespace GameContent.GridManagement
             emiters?.Remove(ent);
         }
 
-        public void OnAddToNetwork(NetworkType net, IEnumerable<Vector3Int> newNet) => NetworkList[(int)net].AddRange(newNet);
         public void OnAddToNetwork(NetworkType net, Vector3Int newNet) => NetworkList[(int)net].Add(newNet);
-
+        public void OnAddToNetwork(NetworkType net, IEnumerable<Vector3Int> newNet) => NetworkList[(int)net].AddRange(newNet);
+        public void OnAddToNetwork(NetworkType net, Hex hex) => NetworkList[(int)net].Add(hex.HexCoords);
         public void OnAddToNetwork(NetworkType net, IEnumerable<Hex> hexs)
         {
             foreach (var h in hexs)
@@ -208,11 +208,12 @@ namespace GameContent.GridManagement
             }
         }
 
+        public void OnDelFromNetwork(NetworkType net, Vector3Int oldNet) => NetworkList[(int)net]?.Remove(oldNet);
+        public void OnDelFromNetwork(NetworkType net, Hex hex) => NetworkList[(int)net]?.Remove(hex.HexCoords);
         public void OnDelFromNetwork(NetworkType net, List<Vector3Int> oldNet)
         {
-            foreach (var i in oldNet) { NetworkList[(int)net].Remove(i); }
+            foreach (var i in oldNet) { NetworkList[(int)net]?.Remove(i); }
         }
-        public void OnDelFromNetwork(NetworkType net, Vector3Int oldNet) => NetworkList[(int)net].Remove(oldNet);
         public void OnDelFromNetwork(NetworkType net, IEnumerable<Hex> hexs)
         {
             foreach (var h in hexs)
@@ -226,7 +227,8 @@ namespace GameContent.GridManagement
             List<Vector3Int> allNet = new();
             foreach (var net in NetworkList)
             {
-                if (net.Contains(pos)) { allNet.AddRange(net); }
+                if (net.Contains(pos))
+                    allNet.AddRange(net);
             }
             return allNet;
         }
@@ -236,7 +238,8 @@ namespace GameContent.GridManagement
         {
             foreach (var i in NetworkList)
             {
-                if (i.Contains(pos)) { return true; }
+                if (i.Contains(pos))
+                    return true;
             }
             return false;
         }

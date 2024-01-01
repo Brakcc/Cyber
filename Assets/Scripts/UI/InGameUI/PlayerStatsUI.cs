@@ -10,6 +10,7 @@ namespace UI.InGameUI
     public class PlayerStatsUI : MonoBehaviour
     {
         #region fields
+        
         [SerializeField] private Unit unit;
         [SerializeField] private TMP_Text nameP;
         [SerializeField] private TMP_Text mpText;
@@ -19,6 +20,7 @@ namespace UI.InGameUI
         [SerializeField] private TMP_Text hP;
         [SerializeField] private TMP_Text uPText;
         [SerializeField] private Image imageRef;
+        
         #endregion
 
         #region methodes
@@ -36,38 +38,40 @@ namespace UI.InGameUI
         }
 
         #region recurent methodes
-        public void SetMP(IUnit unit, UIColorType uCT) { mpText.text = unit.CurrentMp.ToString(); mpText.color = SetColor(uCT); }
-        public void SetMP(IUnit unit) { mpText.text = unit.CurrentMp.ToString(); mpText.color = SetColor(UIColorType.Default); }
-
-        public void SetAtk(IUnit unit, UIColorType uCT) { atkText.text = unit.CurrentAtk.ToString(); atkText.color = SetColor(uCT); }
-        public void SetAtk(IUnit unit) { atkText.text = unit.CurrentAtk.ToString(); atkText.color = SetColor(UIColorType.Default); }
-
-        public void SetDef(IUnit unit, UIColorType uCT) { defText.text = unit.CurrentDef.ToString(); defText.color = SetColor(uCT); }
-        public void SetDef(IUnit unit) { defText.text = unit.CurrentDef.ToString(); defText.color = SetColor(UIColorType.Default); }
-
-        public void SetCritRate(IUnit unit, UIColorType uCT) { critRate.text = unit.CurrentCritRate.ToString(); critRate.color = SetColor(uCT); }
-        public void SetCritRate(IUnit unit) { critRate.text = unit.CurrentCritRate.ToString(); critRate.color = SetColor(UIColorType.Default); }
         
-        public void SetPrec(IUnit unit, UIColorType uCT) { uPText.text = unit.CurrentPrecision.ToString(); uPText.color = SetColor(uCT); }
-        public void SetPrec(IUnit unit) { uPText.text = unit.CurrentPrecision.ToString(); uPText.color = SetColor(UIColorType.Default); }
+        public void SetMP(IUnit uRef, UIColorType uCT) { mpText.text = uRef.CurrentMp.ToString(); mpText.color = SetColor(uCT); }
+        public void SetMP(IUnit uRef) { mpText.text = uRef.CurrentMp.ToString(); mpText.color = SetColor(UIColorType.Default); }
 
-        public void SetHP(IUnit unit)
+        public void SetAtk(IUnit uRef, UIColorType uCT) { atkText.text = uRef.CurrentAtk.ToString(); atkText.color = SetColor(uCT); }
+        public void SetAtk(IUnit uRef) { atkText.text = uRef.CurrentAtk.ToString(); atkText.color = SetColor(UIColorType.Default); }
+
+        public void SetDef(IUnit uRef, UIColorType uCT) { defText.text = uRef.CurrentDef.ToString(); defText.color = SetColor(uCT); }
+        public void SetDef(IUnit uRef) { defText.text = uRef.CurrentDef.ToString(); defText.color = SetColor(UIColorType.Default); }
+
+        public void SetCritRate(IUnit uRef, UIColorType uCT) { critRate.text = uRef.CurrentCritRate.ToString(); critRate.color = SetColor(uCT); }
+        public void SetCritRate(IUnit uRef) { critRate.text = uRef.CurrentCritRate.ToString(); critRate.color = SetColor(UIColorType.Default); }
+        
+        public void SetPrec(IUnit uRef, UIColorType uCT) { uPText.text = uRef.CurrentPrecision.ToString(); uPText.color = SetColor(uCT); }
+        public void SetPrec(IUnit uRef) { uPText.text = uRef.CurrentPrecision.ToString(); uPText.color = SetColor(UIColorType.Default); }
+
+        public void SetHP(IUnit uRef)
         {
-            hP.text = ((int)unit.CurrentHealth).ToString();
-            hP.color = Color.Lerp(Color.red, Color.green, unit.CurrentHealth / unit.UnitData.HealthPoint);
+            hP.text = ((int)uRef.CurrentHealth).ToString();
+            hP.color = Color.Lerp(Color.red, Color.green, uRef.CurrentHealth / uRef.UnitData.HealthPoint);
         }
 
-        public void SetUP(IUnit unit)
+        public void SetUP(IUnit uRef)
         {
-            uPText.text = unit.UltPoints.ToString();
-            uPText.color = unit.UltPoints > 0 ? Color.green : Color.red;
+            uPText.text = uRef.UltPoints.ToString();
+            uPText.color = uRef.UltPoints > 0 ? Color.green : Color.red;
         }
+        
         #endregion
 
-        private void SetSprite(IUnit unit)
+        private void SetSprite(IUnit uRef)
         {
-            imageRef.sprite = unit.UnitData.Sprite; 
-            /*imageRef.color = unit.GetComponentInChildren<SpriteRenderer>().color;*/
+            imageRef.sprite = uRef.UnitData.Sprite; 
+            /*imageRef.color = uRef.GetComponentInChildren<SpriteRenderer>().color;*/
         }
 
         private void SetName(string n) { nameP.text = n; }
@@ -79,6 +83,7 @@ namespace UI.InGameUI
             2 => Color.white,
             _ => Color.white,
         };
+        
         #endregion
     }
 }

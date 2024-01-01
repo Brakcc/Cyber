@@ -39,16 +39,7 @@ namespace UI.InGameUI
             counter = 0;
             isHovering = false;
         }
-
-        public void OnEnable()
-        {
-            //OnHide();
-        }
-        public void OnDisable()
-        {
-            //OnHide();
-        }
-
+        
         private void OnPrint()
         {
             playerInfo.transform.DOMoveX(originXPos + offSet, 0.3f);

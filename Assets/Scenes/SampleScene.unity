@@ -28265,18 +28265,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 249920660502746296, guid: 3c13ea9b3c23ebd4da98ff1da3e9631f, type: 3}
+      propertyPath: timeApparit
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 391757840319242138, guid: 3c13ea9b3c23ebd4da98ff1da3e9631f, type: 3}
       propertyPath: unit
       value: 
       objectReference: {fileID: 477960838}
+    - target: {fileID: 706559504598361900, guid: 3c13ea9b3c23ebd4da98ff1da3e9631f, type: 3}
+      propertyPath: timeApparit
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 757149024560172980, guid: 3c13ea9b3c23ebd4da98ff1da3e9631f, type: 3}
       propertyPath: unit
       value: 
       objectReference: {fileID: 506590176}
+    - target: {fileID: 1308168229157808458, guid: 3c13ea9b3c23ebd4da98ff1da3e9631f, type: 3}
+      propertyPath: timeApparit
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 1333133971679490803, guid: 3c13ea9b3c23ebd4da98ff1da3e9631f, type: 3}
       propertyPath: unit
       value: 
       objectReference: {fileID: 752244282}
+    - target: {fileID: 1359630215202217392, guid: 3c13ea9b3c23ebd4da98ff1da3e9631f, type: 3}
+      propertyPath: timeApparit
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 1391570212349019131, guid: 3c13ea9b3c23ebd4da98ff1da3e9631f, type: 3}
       propertyPath: unit
       value: 
@@ -28285,6 +28301,10 @@ PrefabInstance:
       propertyPath: unit
       value: 
       objectReference: {fileID: 1954993696}
+    - target: {fileID: 2644588452807628452, guid: 3c13ea9b3c23ebd4da98ff1da3e9631f, type: 3}
+      propertyPath: timeApparit
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 2645950772241657433, guid: 3c13ea9b3c23ebd4da98ff1da3e9631f, type: 3}
       propertyPath: unit
       value: 
@@ -28293,6 +28313,10 @@ PrefabInstance:
       propertyPath: unit
       value: 
       objectReference: {fileID: 1861157179}
+    - target: {fileID: 3196250804909583498, guid: 3c13ea9b3c23ebd4da98ff1da3e9631f, type: 3}
+      propertyPath: timeApparit
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 3645763023073030712, guid: 3c13ea9b3c23ebd4da98ff1da3e9631f, type: 3}
       propertyPath: unit
       value: 
@@ -28317,6 +28341,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: GameContent.Entity.Unit.UnitWorking.UnitManager, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 5141782862576204805, guid: 3c13ea9b3c23ebd4da98ff1da3e9631f, type: 3}
+      propertyPath: timeApparit
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 5559459711735986033, guid: 3c13ea9b3c23ebd4da98ff1da3e9631f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -28328,6 +28356,10 @@ PrefabInstance:
     - target: {fileID: 5559459711735986033, guid: 3c13ea9b3c23ebd4da98ff1da3e9631f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: GameContent.Entity.Unit.UnitWorking.UnitManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5831088143098054836, guid: 3c13ea9b3c23ebd4da98ff1da3e9631f, type: 3}
+      propertyPath: timeApparit
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 6300031957346827611, guid: 3c13ea9b3c23ebd4da98ff1da3e9631f, type: 3}
       propertyPath: unit
@@ -36153,7 +36185,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4971106662979360704, guid: 8626e43a11f102043ac52eb65b8e2a85, type: 3}
       propertyPath: orthographic size
-      value: 5
+      value: 6.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

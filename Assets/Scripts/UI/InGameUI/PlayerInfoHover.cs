@@ -5,9 +5,12 @@ namespace UI.InGameUI
     public class PlayerInfoHover : MonoBehaviour
     {
         #region fields
+        
         [SerializeField] private GameObject PlayerInfo;
-        private float counter = 0;
+        [SerializeField] private float timeApparit;
+        private float counter;
         private bool isHovering;
+        
         #endregion
 
         #region methodes
@@ -17,7 +20,7 @@ namespace UI.InGameUI
             if (!isHovering) return;
             counter += Time.deltaTime;
 
-            if (counter >= 0.2f) { OnPrint(); }
+            if (counter >= timeApparit) { OnPrint(); }
         }
 
         public void OnPointerEnter()
