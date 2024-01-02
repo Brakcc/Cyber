@@ -10,6 +10,7 @@ namespace Interfaces.Kapas
     public interface IKapa
     {
         #region fields
+        
         string KapaName { get; }
         int ID { get; }
         KapaType KapaType { get; }

@@ -13,18 +13,19 @@ MonoBehaviour:
   m_Name: Competence Kapa
   m_EditorClassIdentifier: 
   iD: 0
-  kapaNane: 
-  description: 
+  kapaNane: COMPETENCE
+  description: SEVERUS  SNIPE  TIRE  BALLE  TRANSPERCANTE  AVEC  SON  SNIPER,  RALENTISSANT 
+    LE  PREMIER  TOUCHE
   maxPlayerpierce: 4
   balanceMult: 1
   kapaType: 1
   effectType: 1
-  hasBuffDebuffs: 1
+  hasBuffDebuffs: 0
   buffDebuffDatas:
     isBuff: 0
     isCritGuaranted: 0
     buffDebuffList:
-      hasMovePointsBDb: 1
+      hasMovePointsBDb: 0
       mPBuffDebuffData:
         value: -2
         turnNumber: 1
@@ -42,7 +43,7 @@ MonoBehaviour:
         turnNumber: 0
       hasBalanceMultBDb: 0
       balMultBuffDebuffData: 1
-  kapaFunctionType: 0
+  kapaFunctionType: 2
   doubleDiffAtkDatas:
     doubleABuffDebuff:
       hasMovePointsBDb: 0
@@ -63,17 +64,15 @@ MonoBehaviour:
         turnNumber: 0
       hasBalanceMultBDb: 0
       balMultBuffDebuffData: 1
-    hasBalanceMultBDb2: 0
-    balMultBuffDebuffData2: 1
     hasDashAfterKapa: 0
     hasGrabAfterKapa: 0
     hasDiffPatterns: 0
   firstHitEffectsData:
     buffDebuffList:
-      hasMovePointsBDb: 0
+      hasMovePointsBDb: 1
       mPBuffDebuffData:
-        value: 0
-        turnNumber: 0
+        value: -2
+        turnNumber: 1
       hasDefenseBDb: 0
       defBuffDebuffData:
         value: 0
@@ -129,9 +128,23 @@ MonoBehaviour:
         turnNumber: 0
       hasBalanceMultBDb: 0
       balMultBuffDebuffData: 1
+  dotKapaDatas:
+    hasBalanceMultBDb: 0
+    balMultBuffDebuffData: 1
+    turnNumber: 0
+  pattern:
+  - {x: 0, y: -1, z: 0}
+  - {x: 0, y: -2, z: 0}
+  - {x: 0, y: -3, z: 0}
+  - {x: 0, y: -4, z: 0}
+  - {x: 0, y: -5, z: 0}
+  - {x: 0, y: -6, z: 0}
+  - {x: 0, y: -7, z: 0}
+  - {x: 0, y: -8, z: 0}
+  - {x: 0, y: -9, z: 0}
+  - {x: 0, y: -10, z: 0}
   kapaUI: {fileID: 0}
-  damageFeedBack: {fileID: 0}
-  pattern: []
+  damageFeedBack: {fileID: 8948626333531248720, guid: 8f927771530abf045b81020ae94b0299, type: 3}
   cKapaSupFields:
     neededCompPoints: 0
     ultPointsAdded: 0

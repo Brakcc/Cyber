@@ -9,10 +9,6 @@ namespace GameContent.Entity.Unit.KapasGen.KapaFunctions.DoubleDiffAtk
     {
         public BuffDebuffList doubleABuffDebuff;
         
-        public bool hasBalanceMultBDb2;
-        [ShowIfBoolTrue("hasBalanceMultBDb2")]
-        [Range(1, 10)] public int balMultBuffDebuffData2 = 1;
-        
         public bool hasDashAfterKapa;
 
         public bool hasGrabAfterKapa;

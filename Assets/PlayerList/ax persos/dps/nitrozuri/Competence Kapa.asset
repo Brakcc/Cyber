@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Competence Kapa
   m_EditorClassIdentifier: 
   iD: 0
-  kapaNane: 
-  description: 
+  kapaNane: COMPETENCE
+  description: NITROZURI  LANCE  UNE  DAGUE  SUR  UN  ENNEMI  AVANT  DE  DASH  SUR 
+    CELUI-CI  S'IL  EST  TOUJOURS  EN  VIE  ET  DE  LE  FRAPPER  A  NOUVEAU
   maxPlayerpierce: 1
   balanceMult: 2
   kapaType: 1
@@ -61,12 +62,10 @@ MonoBehaviour:
       precBuffDebuffData:
         value: 0
         turnNumber: 0
-      hasBalanceMultBDb: 0
-      balMultBuffDebuffData: 1
-    hasBalanceMultBDb2: 0
-    balMultBuffDebuffData2: 1
-    hasDashAfterKapa: 0
-    hasGrabAfterKapa: 1
+      hasBalanceMultBDb: 1
+      balMultBuffDebuffData: 2
+    hasDashAfterKapa: 1
+    hasGrabAfterKapa: 0
     hasDiffPatterns: 0
   firstHitEffectsData:
     buffDebuffList:
@@ -129,20 +128,24 @@ MonoBehaviour:
         turnNumber: 0
       hasBalanceMultBDb: 0
       balMultBuffDebuffData: 1
-  kapaUI: {fileID: 0}
-  damageFeedBack: {fileID: 0}
+  dotKapaDatas:
+    hasBalanceMultBDb: 0
+    balMultBuffDebuffData: 1
+    turnNumber: 0
   pattern:
   - {x: 0, y: -1, z: 0}
   - {x: 0, y: -2, z: 0}
   - {x: 0, y: -3, z: 0}
   - {x: 0, y: -4, z: 0}
   - {x: 0, y: -5, z: 0}
+  kapaUI: {fileID: 0}
+  damageFeedBack: {fileID: 8948626333531248720, guid: 8f927771530abf045b81020ae94b0299, type: 3}
   cKapaSupFields:
     neededCompPoints: 1
     ultPointsAdded: 0
     animation: {fileID: 0}
   cam:
-    effectType: 0
+    effectType: 5
     shake:
       last: 0
       perlinParameters:

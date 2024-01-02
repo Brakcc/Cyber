@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Competence Kapa
   m_EditorClassIdentifier: 
   iD: 0
-  kapaNane: 
-  description: 
+  kapaNane: COMPETENCE
+  description: ARTAIUR  FAIT  TOURNOYER  SON  FLEAU  AVANT  DE  L'ABATTRE  DEVANT 
+    LUI  A  PLEINE  PUISSANCE
   maxPlayerpierce: 1
   balanceMult: 1
   kapaType: 1
@@ -63,8 +64,6 @@ MonoBehaviour:
         turnNumber: 0
       hasBalanceMultBDb: 0
       balMultBuffDebuffData: 1
-    hasBalanceMultBDb2: 0
-    balMultBuffDebuffData2: 1
     hasDashAfterKapa: 0
     hasGrabAfterKapa: 0
     hasDiffPatterns: 0
@@ -129,10 +128,14 @@ MonoBehaviour:
         turnNumber: 0
       hasBalanceMultBDb: 0
       balMultBuffDebuffData: 1
-  kapaUI: {fileID: 0}
-  damageFeedBack: {fileID: 0}
+  dotKapaDatas:
+    hasBalanceMultBDb: 0
+    balMultBuffDebuffData: 1
+    turnNumber: 0
   pattern:
   - {x: 0, y: -1, z: 0}
+  kapaUI: {fileID: 0}
+  damageFeedBack: {fileID: 8948626333531248720, guid: 8f927771530abf045b81020ae94b0299, type: 3}
   cKapaSupFields:
     neededCompPoints: 1
     ultPointsAdded: 0

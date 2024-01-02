@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using GameContent.GameManagement;
-using UI.InGameUI;
 using UnityEngine;
 
 namespace UI.MenuUI
@@ -10,7 +9,7 @@ namespace UI.MenuUI
         #region  fields
         
         [SerializeField] private UnitListSo unitDatas;
-        [SerializeField] private List<PlayerStatsUI> playerStats;
+        [SerializeField] private List<PlayerStatMenuUI> playerStats;
 
         #endregion
 
@@ -18,9 +17,9 @@ namespace UI.MenuUI
 
         private void Start()
         {
-            foreach (var stat in playerStats)
+            for (var i = 0; i < unitDatas.GetUnitListSize(); i++)
             {
-                
+                playerStats[i].OnInitUI(unitDatas.GetUnitData(i));
             }
         }
 

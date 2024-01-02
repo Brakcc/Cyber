@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: Competence Kapa
   m_EditorClassIdentifier: 
   iD: 0
-  kapaNane: 
-  description: 
+  kapaNane: COMPETENCE
+  description: 'POUPOU  FRAPPE  2  FOIS  DEVANT  LUI  AVEC  SON  SABRE  LASER,  LE
+    DEUXIEME  COUP  ETANT  EN  ARC  DE  CERCLE
+
+'
   maxPlayerpierce: 3
-  balanceMult: 1
+  balanceMult: 2
   kapaType: 1
   effectType: 1
   hasBuffDebuffs: 0
@@ -61,10 +64,8 @@ MonoBehaviour:
       precBuffDebuffData:
         value: 0
         turnNumber: 0
-      hasBalanceMultBDb: 0
-      balMultBuffDebuffData: 1
-    hasBalanceMultBDb2: 0
-    balMultBuffDebuffData2: 1
+      hasBalanceMultBDb: 1
+      balMultBuffDebuffData: 2
     hasDashAfterKapa: 0
     hasGrabAfterKapa: 0
     hasDiffPatterns: 1
@@ -129,12 +130,16 @@ MonoBehaviour:
         turnNumber: 0
       hasBalanceMultBDb: 0
       balMultBuffDebuffData: 1
-  kapaUI: {fileID: 0}
-  damageFeedBack: {fileID: 0}
+  dotKapaDatas:
+    hasBalanceMultBDb: 0
+    balMultBuffDebuffData: 1
+    turnNumber: 0
   pattern:
   - {x: 0, y: -1, z: 0}
   - {x: 1, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
+  kapaUI: {fileID: 0}
+  damageFeedBack: {fileID: 8948626333531248720, guid: 8f927771530abf045b81020ae94b0299, type: 3}
   cKapaSupFields:
     neededCompPoints: 1
     ultPointsAdded: 0

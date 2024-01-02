@@ -4,7 +4,6 @@ using Enums.UnitEnums.UnitEnums;
 using GameContent;
 using GameContent.GameManagement;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
@@ -45,7 +44,8 @@ namespace UI.MenuUI
         [SerializeField] private GameObject[] unitImages;
         [SerializeField] private TMP_Text currentSelecUnitName;
         [SerializeField] private UnitListSo unitList;
-        [SerializeField] private string sceneName;
+        [SerializeField] private GameObject mapSelec;
+        [SerializeField] private GameObject teamSelec;
 
         #endregion
 
@@ -63,6 +63,7 @@ namespace UI.MenuUI
             _preselecId = 8;
             _selectionCounter = 7;
             OnShowUnitInSelec(_selectionCounter);
+            mapSelec.SetActive(false);
         }
 
         public void IdSelection(int id)
@@ -270,19 +271,19 @@ namespace UI.MenuUI
 
         #endregion
 
-        #region Scene Management
+        #region team Management
 
-        public void StartGame()
-        { 
+        public void ValidateTeams()
+        {
             if (_selectionCounter >= 0)
                 return;
             
             TeamDatasSaveAndLoad.OnSaveTeamDatas(this);
-            OnLoadScene(sceneName);
+            
+            teamSelec.SetActive(false);
+            mapSelec.SetActive(true);
         }
-                
-        private static void OnLoadScene(string sName) => SceneManager.LoadScene(sName);
-
+        
         #endregion
         
         #endregion

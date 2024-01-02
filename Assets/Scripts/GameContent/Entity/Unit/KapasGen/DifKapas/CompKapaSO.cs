@@ -13,18 +13,19 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
     {
         #region inherited accessors
         
+        public override Vector3Int[] Patterns => pattern;
+        [SerializeField] private Vector3Int[] pattern;
+        
         public override KapaUISO KapaUI => kapaUI;
         [SerializeField] private KapaUISO kapaUI;
 
         public override GameObject DamageFeedBack => damageFeedBack;
         [SerializeField] private GameObject damageFeedBack;
 
-        public override Vector3Int[] Patterns => pattern;
-        [SerializeField] private Vector3Int[] pattern;
-
         [SerializeField] private CKapaSupFields cKapaSupFields;
 
         [SerializeField] private CameraManager cam;
+        
         #endregion
 
         #region inherited paterns/accessors

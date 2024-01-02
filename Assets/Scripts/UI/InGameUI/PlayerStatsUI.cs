@@ -80,8 +80,8 @@ namespace UI.InGameUI
         {
             0 => Color.green,
             1 => Color.red,
-            2 => Color.white,
-            _ => Color.white,
+            2 => Color.black,
+            _ => Color.black
         };
         
         #endregion

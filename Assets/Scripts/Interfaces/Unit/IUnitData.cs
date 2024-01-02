@@ -10,7 +10,6 @@ namespace Interfaces.Unit
         int ID { get; }
         string Name { get; }
         UnitType Type { get; }
-        int NetworkRange { get; }
         int MovePoints { get; }
         int Attack { get; }
         int Defense { get; }

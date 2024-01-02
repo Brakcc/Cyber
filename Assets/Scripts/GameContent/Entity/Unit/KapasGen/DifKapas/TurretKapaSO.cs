@@ -10,11 +10,13 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
     public class TurretKapaSO : AbstractKapaSO
     {
         #region inherited accessors
-        public override KapaUISO KapaUI => _kapaUI;
-        [SerializeField] private KapaUISO _kapaUI;
-        public override GameObject DamageFeedBack => null;
         public override Vector3Int[] Patterns => _pattern;
         [SerializeField] private Vector3Int[] _pattern;
+        
+        public override KapaUISO KapaUI => _kapaUI;
+        [SerializeField] private KapaUISO _kapaUI;
+        
+        public override GameObject DamageFeedBack => null;
 
         [SerializeField] private GameObject _turret;
         #endregion

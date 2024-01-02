@@ -8,6 +8,8 @@ namespace GameContent.GameManagement
     [CreateAssetMenu(fileName = "Team List", menuName = "Tactical/Team/Team List")]
     public class UnitListSo : ScriptableObject
     {
+        #region fields
+        
         private IEnumerable<AbstractUnitSO> CurrentTankList => currentTankList;
         [SerializeField] private AbstractUnitSO[] currentTankList;
 
@@ -21,6 +23,10 @@ namespace GameContent.GameManagement
 
         private Dictionary<int, AbstractUnitSO> AllUnitsDict => PresetDict(FullList);
 
+        #endregion
+        
+        #region gen methodes
+        
         private IEnumerable<AbstractUnitSO> ConcatLists()
         {
             var temp = CurrentTankList.Concat(CurrentDpsList).ToArray();
@@ -45,5 +51,9 @@ namespace GameContent.GameManagement
             AllUnitsDict.TryGetValue(iD, out var unitData);
             return unitData;
         }
+
+        public int GetUnitListSize() => AllUnitsDict.Values.Count;
+        
+        #endregion
     }
 }

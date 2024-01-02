@@ -13,35 +13,36 @@ MonoBehaviour:
   m_Name: Competence Kapa
   m_EditorClassIdentifier: 
   iD: 0
-  kapaNane: 
-  description: 
+  kapaNane: COMPETENCE
+  description: DIEMAUER  ENVOIE  DES  DRONES-BOUCLIERS  POUR  PROTEGER  LES  POINTS 
+    FAIBLES  DE  SES  ALLIERS  PROCHES
   maxPlayerpierce: 0
   balanceMult: 0
-  kapaType: 0
-  effectType: 0
-  hasBuffDebuffs: 0
+  kapaType: 1
+  effectType: 1
+  hasBuffDebuffs: 1
   buffDebuffDatas:
-    isBuff: 0
+    isBuff: 1
     isCritGuaranted: 0
     buffDebuffList:
       hasMovePointsBDb: 0
       mPBuffDebuffData:
         value: 0
         turnNumber: 0
-      hasDefenseBDb: 0
+      hasDefenseBDb: 1
       defBuffDebuffData:
-        value: 0
-        turnNumber: 0
+        value: 15
+        turnNumber: 1
       hasCritRateBDb: 0
       cRBuffDebuffData:
-        value: 0
-        turnNumber: 0
+        value: 25
+        turnNumber: 1
       hasPrecisionBDb: 0
       precBuffDebuffData:
         value: 0
         turnNumber: 0
-      hasBalanceMultBDb: 0
-      balMultBuffDebuffData: 1
+      hasBalanceMultBDb: 1
+      balMultBuffDebuffData: 0
   kapaFunctionType: 0
   doubleDiffAtkDatas:
     doubleABuffDebuff:
@@ -63,8 +64,6 @@ MonoBehaviour:
         turnNumber: 0
       hasBalanceMultBDb: 0
       balMultBuffDebuffData: 1
-    hasBalanceMultBDb2: 0
-    balMultBuffDebuffData2: 1
     hasDashAfterKapa: 0
     hasGrabAfterKapa: 0
     hasDiffPatterns: 0
@@ -129,8 +128,10 @@ MonoBehaviour:
         turnNumber: 0
       hasBalanceMultBDb: 0
       balMultBuffDebuffData: 1
-  kapaUI: {fileID: 0}
-  damageFeedBack: {fileID: 0}
+  dotKapaDatas:
+    hasBalanceMultBDb: 0
+    balMultBuffDebuffData: 1
+    turnNumber: 0
   pattern:
   - {x: 0, y: -1, z: 0}
   - {x: 0, y: 1, z: 0}
@@ -138,6 +139,8 @@ MonoBehaviour:
   - {x: 1, y: 0, z: 0}
   - {x: -1, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
+  kapaUI: {fileID: 0}
+  damageFeedBack: {fileID: 8948626333531248720, guid: 8f927771530abf045b81020ae94b0299, type: 3}
   cKapaSupFields:
     neededCompPoints: 1
     ultPointsAdded: 0

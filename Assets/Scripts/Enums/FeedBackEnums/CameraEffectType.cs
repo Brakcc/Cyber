@@ -2,11 +2,11 @@
 {
     public enum CameraEffectType
     {
+        None,
         Shake,
         Impulse,
         ShockWave,
         Focus,
-        Zoom,
-        None
+        Zoom
     }
 }

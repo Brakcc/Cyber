@@ -10,13 +10,14 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
     public class UltimateKapaSO : AbstractKapaSO
     {
         #region inherited accessors
+        
+        public override Vector3Int[] Patterns => _patterns;
+        [SerializeField] private Vector3Int[] _patterns;
         public override KapaUISO KapaUI => _kapaUI;
         [SerializeField] private KapaUISO _kapaUI;
         public override GameObject DamageFeedBack => _damageFeedBack;
         [SerializeField] private GameObject _damageFeedBack;
-        public override Vector3Int[] Patterns => _patterns;
-        [SerializeField] private Vector3Int[] _patterns;
-
+        
         [SerializeField] private UKapaSupFields _uKapaSupFields;
 
         [SerializeField] private CameraManager _cam;

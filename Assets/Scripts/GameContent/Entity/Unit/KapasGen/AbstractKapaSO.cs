@@ -31,7 +31,7 @@ namespace GameContent.Entity.Unit.KapasGen
         [SerializeField] private string kapaNane;
         
         public string Description => description;
-        [SerializeField] private string description;
+        [SerializeField] [TextArea(4, 5)] private string description;
         
         public int MaxPlayerPierce => maxPlayerpierce;
         [ShowIfTrue("kapaType", new[]{(int)KapaType.NormalAttack, (int)KapaType.Competence, (int)KapaType.Ultimate})]
@@ -464,9 +464,9 @@ namespace GameContent.Entity.Unit.KapasGen
                     ? buffDebuffDatas.buffDebuffList.balMultBuffDebuffData
                     : BalanceMult; 
                 var secondBalance =
-                    KapaFunctionType == KapaFunctionType.DoubleDiffAttack && doubleDiffAtkDatas.hasBalanceMultBDb2 &&
+                    KapaFunctionType == KapaFunctionType.DoubleDiffAttack && doubleDiffAtkDatas.doubleABuffDebuff.hasBalanceMultBDb &&
                     !canDoubleKapa
-                        ? doubleDiffAtkDatas.balMultBuffDebuffData2
+                        ? doubleDiffAtkDatas.doubleABuffDebuff.balMultBuffDebuffData
                         : BalanceMult;
                 
                 //Apply des degats
@@ -631,9 +631,9 @@ namespace GameContent.Entity.Unit.KapasGen
                     ? buffDebuffDatas.buffDebuffList.balMultBuffDebuffData
                     : BalanceMult; 
                 var secondBalance =
-                    KapaFunctionType == KapaFunctionType.DoubleDiffAttack && doubleDiffAtkDatas.hasBalanceMultBDb2 &&
+                    KapaFunctionType == KapaFunctionType.DoubleDiffAttack && doubleDiffAtkDatas.doubleABuffDebuff.hasBalanceMultBDb &&
                     !canDoubleKapa
-                        ? doubleDiffAtkDatas.balMultBuffDebuffData2
+                        ? doubleDiffAtkDatas.doubleABuffDebuff.balMultBuffDebuffData
                         : BalanceMult;
                 
                 //Apply des degats
