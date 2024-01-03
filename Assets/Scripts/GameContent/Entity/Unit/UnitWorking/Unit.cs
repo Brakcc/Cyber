@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Enums.UnitEnums.KapaEnums;
 using Enums.UnitEnums.UnitEnums;
 using GameContent.GridManagement;
@@ -46,6 +47,7 @@ namespace GameContent.Entity.Unit.UnitWorking
         public abstract bool IsPersoLocked { get; set; }
         public abstract bool CanKapa { get; protected set; }
         public abstract bool IsOnComputer {  get; protected set; }
+        public Color OriginColor { get; protected set; }
         
         #region Entity heritage
         
@@ -108,6 +110,19 @@ namespace GameContent.Entity.Unit.UnitWorking
         }
         
         public abstract void OnKapa();
+
+        public virtual async void OnColorFeedback(Color originColor, int last)
+        {
+            var sprite = GetComponentInChildren<SpriteRenderer>();
+            for (var i = 0; i < last; i += 75)
+            {
+                sprite.color = i % 2 == 0 ? Color.white : Color.red;
+                await Task.Delay(100);
+            }
+
+            sprite.color = originColor;
+        }
+        
         public virtual void Deselect()
         {
             

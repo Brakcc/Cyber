@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using FeedBacks;
 using GameContent.GridManagement;
 using Interfaces.Unit;
 using UnityEngine;
@@ -9,10 +10,11 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
     public class SkipKapaSO : AbstractKapaSO
     {
         #region inherited accessors
-        public override KapaUISO KapaUI => _kapaUI;
-        [SerializeField] private KapaUISO _kapaUI;
+        
         public override GameObject DamageFeedBack => null;
         public override Vector3Int[] Patterns => null;
+        protected override VFXManager VFx => null;
+        
         #endregion
 
         #region inherited paterns/accessors

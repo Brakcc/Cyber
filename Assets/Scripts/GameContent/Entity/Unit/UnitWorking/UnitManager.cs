@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Enums.UnitEnums.KapaEnums;
+using FeedBacks;
 using GameContent.GameManagement;
 using GameContent.GridManagement;
 using GameContent.GridManagement.HexPathFind;
@@ -14,7 +15,8 @@ namespace GameContent.Entity.Unit.UnitWorking
         #region fields
         
         private MoveSystem _moveSys;
-
+        [SerializeField] private VFXManager vFx;
+        
         //Unit currently stored
         private IUnit SelectedUnit { get; set; }
         private bool _hasKapaBeenPlayed;
@@ -349,6 +351,8 @@ namespace GameContent.Entity.Unit.UnitWorking
             if (HandleHexOutOfButton(buttonPos)) 
                 return;
 
+            vFx.OnGenerateParticlesSys(HexGridStore.hGs.GetTile(buttonPos).transform.position);
+            
             //Active la Kapa avec Click sur Map
             if (IsKapaSelected  && CurrentKapaPatternPos != null)
             {

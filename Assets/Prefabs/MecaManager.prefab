@@ -228,6 +228,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2be8fb6315c54c4f9dcf3a6ddc6a65b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vFx:
+    sprites:
+    - {fileID: 877070074, guid: c75ed2cb27d73bc46bd70cc5f3efb445, type: 3}
+    - {fileID: -336544473, guid: c75ed2cb27d73bc46bd70cc5f3efb445, type: 3}
+    - {fileID: -846220433, guid: c75ed2cb27d73bc46bd70cc5f3efb445, type: 3}
+    - {fileID: 654182141, guid: c75ed2cb27d73bc46bd70cc5f3efb445, type: 3}
+    - {fileID: -533048299, guid: c75ed2cb27d73bc46bd70cc5f3efb445, type: 3}
+    - {fileID: -1382581775, guid: c75ed2cb27d73bc46bd70cc5f3efb445, type: 3}
+    partSys: {fileID: 81484107256008709, guid: 381bf1c886b5e6c4884bbc6fa6154750, type: 3}
+    lifeTime: 0.2
 --- !u!114 &489815630530185795
 MonoBehaviour:
   m_ObjectHideFlags: 0

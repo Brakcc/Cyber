@@ -12,7 +12,7 @@ namespace ShaderScripts
 
         #region methodes
 
-        private PathResult GetOutlineRange(Vector3Int pos, HexGridStore hexGrid, int range) => PathFind.PathKapaVerif(hexGrid, pos, range);
+        private static PathResult GetOutlineRange(Vector3Int pos, HexGridStore hexGrid, int range) => PathFind.PathKapaVerif(hexGrid, pos, range);
     
         /// <summary>
         /// revoit le dictionnaire contenant en clé les Pos et en value les Hex d'une range à outline. 
@@ -24,14 +24,14 @@ namespace ShaderScripts
         public Dictionary<Vector3Int, Hex> GetOutlineList(Vector3Int pos, HexGridStore hexGrid, int range)
         {
             Dictionary<Vector3Int, Hex> outlinedTiles = new();
-            PathResult outlineRange = GetOutlineRange(pos, hexGrid, range);
+            var outlineRange = GetOutlineRange(pos, hexGrid, range);
             foreach (var i in outlineRange.GetRangePositions())
             {
                 outlinedTiles[i] = hexGrid.GetTile(i);
             }
             return outlinedTiles;
         }
+        
         #endregion
-
     }
 }

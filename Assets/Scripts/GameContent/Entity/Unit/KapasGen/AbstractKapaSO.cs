@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Enums.UnitEnums.KapaEnums;
 using Enums.UnitEnums.UnitEnums;
+using FeedBacks;
 using GameContent.GridManagement;
 using Interfaces.Kapas;
 using Interfaces.Unit;
@@ -62,8 +63,9 @@ namespace GameContent.Entity.Unit.KapasGen
         [ShowIfTrue("kapaType", new[]{(int)KapaType.NormalAttack, (int)KapaType.Competence, (int)KapaType.Ultimate})]
         [SerializeField] private KapaFunctionType kapaFunctionType;
         
-        public abstract KapaUISO KapaUI { get; }
+        //public abstract KapaUISO KapaUI { get; }
         public abstract GameObject DamageFeedBack { get; }
+        protected abstract VFXManager VFx { get; } 
         public abstract Vector3Int[] Patterns { get; }
         
         #region Diff Kapas fields
@@ -473,7 +475,6 @@ namespace GameContent.Entity.Unit.KapasGen
                 OnDamageConsideration(this, unit, unitTarget, canDoubleKapa ? firstBalance : secondBalance, delayAtk,
                     DamageFeedBack);
                 
-                
                 //Buff Debuff en 1st Kapa excecution
                 if (hasBuffDebuffs && canDoubleKapa && !canFirstEffect)
                 {
@@ -490,34 +491,42 @@ namespace GameContent.Entity.Unit.KapasGen
                 switch (kapaFunctionType)
                 {
                     case KapaFunctionType.Dash:
+                        VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
                         DashKapa.OnSecondKapa(HexGridStore.hGs, unit, unitTarget);
                         break;
                     
                     case KapaFunctionType.DoubleDiffAttack when doubleDiffAtkDatas.hasDashAfterKapa && canDoubleKapa:
                         canDoubleKapa = false;
+                        VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
                         DashKapa.OnSecondKapa(HexGridStore.hGs, unit, unitTarget);
                         goto Retake;
                         
                     case KapaFunctionType.Grab:
+                        VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
                         GrabKapa.OnSecondKapa(HexGridStore.hGs, unit, unitTarget);
                         break;
                     
                     case KapaFunctionType.DoubleDiffAttack when doubleDiffAtkDatas.hasGrabAfterKapa && canDoubleKapa:
                         canDoubleKapa = false;
+                        VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
                         GrabKapa.OnSecondKapa(HexGridStore.hGs, unit, unitTarget);
                         goto Retake;
                         
                     case KapaFunctionType.DoubleDiffAttack when doubleDiffAtkDatas.hasDiffPatterns && canDoubleKapa:
+                        VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
                         canDoubleKapa = false;
                         goto ChangePatterns;
                         
-                    case KapaFunctionType.ThrowFreeArea:
+                    case KapaFunctionType.ThrowFreeArea when canFirstEffect:
                         OnBuffDebuffConsideration(unitTarget, freeThrowAreaDatas.centerDebuffList);
+                        VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
                         canFirstEffect = false;
                         break;
 
-                    case KapaFunctionType.ThrowLimit:
+                    case KapaFunctionType.ThrowLimit when canFirstEffect:
                         OnBuffDebuffConsideration(unitTarget, limitedThrowAreaDatas.centerDebuffList);
+                        VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
+                        canFirstEffect = false;
                         break;
                         
                     case KapaFunctionType.DOT:
@@ -525,13 +534,19 @@ namespace GameContent.Entity.Unit.KapasGen
                     
                     case KapaFunctionType.FirstHitEffect when canFirstEffect:
                         OnBuffDebuffConsideration(unitTarget, firstHitEffectsData.buffDebuffList);
+                        VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
                         canFirstEffect = false;
+                        break;
+                    case KapaFunctionType.FirstHitEffect when !canFirstEffect:
+                        VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
                         break;
                     
                     case KapaFunctionType.Default:
+                        VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
+                        break;
+                    
                     case KapaFunctionType.AOE:
                     default:
-                        Debug.Log("default");
                         break;
                 }
                 
@@ -542,10 +557,16 @@ namespace GameContent.Entity.Unit.KapasGen
                 unitTarget.StatUI.SetHP(unitTarget);
 
                 //Kill si Unit a plus de vie
-                if (unitTarget.CurrentHealth <= 0 ) { unitTarget.OnDie(); }
+                if (unitTarget.CurrentHealth <= 0)
+                {
+                    unitTarget.OnDie();
+                    continue;
+                }
+                unitTarget.OnColorFeedback(unitTarget.OriginColor, 300);
             }
 
-            if (n > 0) { isHitting = true; }
+            if (n > 0)
+                isHitting = true;
 
             OnDeselectTiles(hexGrid, pattern);
         }
@@ -639,10 +660,9 @@ namespace GameContent.Entity.Unit.KapasGen
                 //Apply des degats
                 OnDamageConsideration(this, unit, unitTarget, canDoubleKapa ? firstBalance : secondBalance, delayAtk,
                     DamageFeedBack);
-                
 
                 //Debuff en 1st Kapa excecution
-                if (hasBuffDebuffs && canDoubleKapa)
+                if (hasBuffDebuffs && canDoubleKapa && !canFirstEffect)
                 {
                     OnBuffDebuffConsideration(unitTarget, buffDebuffDatas.buffDebuffList);
                 }
@@ -657,48 +677,61 @@ namespace GameContent.Entity.Unit.KapasGen
                 {
                     case KapaFunctionType.Dash:
                         DashKapa.OnSecondKapa(HexGridStore.hGs, unit, unitTarget);
+                        VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
                         break;
 
                     case KapaFunctionType.DoubleDiffAttack when doubleDiffAtkDatas.hasDashAfterKapa && canDoubleKapa && unitTarget.CurrentHealth > 0:
                         canDoubleKapa = false;
+                        VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
                         DashKapa.OnSecondKapa(HexGridStore.hGs, unit, unitTarget);
                         goto Retake;
 
                     case KapaFunctionType.Grab:
                         GrabKapa.OnSecondKapa(HexGridStore.hGs, unit, unitTarget);
+                        VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
                         break;
 
                     case KapaFunctionType.DoubleDiffAttack when doubleDiffAtkDatas.hasGrabAfterKapa && canDoubleKapa && unitTarget.CurrentHealth > 0:
                         canDoubleKapa = false;
+                        VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
                         GrabKapa.OnSecondKapa(HexGridStore.hGs, unit, unitTarget);
                         goto Retake;
 
                     case KapaFunctionType.DoubleDiffAttack when doubleDiffAtkDatas.hasDiffPatterns && canDoubleKapa:
+                        VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
                         canDoubleKapa = false;
                         goto ChangePatterns;
 
-                    case KapaFunctionType.ThrowFreeArea:
+                    case KapaFunctionType.ThrowFreeArea when canFirstEffect:
                         OnBuffDebuffConsideration(unitTarget, freeThrowAreaDatas.centerDebuffList);
+                        VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
                         canFirstEffect = false;
                         break;
 
-                    case KapaFunctionType.ThrowLimit:
+                    case KapaFunctionType.ThrowLimit when canFirstEffect:
                         OnBuffDebuffConsideration(unitTarget, limitedThrowAreaDatas.centerDebuffList);
+                        VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
+                        canFirstEffect = false;
                         break;
                     
                     case KapaFunctionType.DOT:
-                        
                         break;
 
                     case KapaFunctionType.FirstHitEffect when canFirstEffect:
                         OnBuffDebuffConsideration(unitTarget, firstHitEffectsData.buffDebuffList);
+                        VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
                         canFirstEffect = false;
+                        break;
+                    case KapaFunctionType.FirstHitEffect when !canFirstEffect:
+                        VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
                         break;
 
                     case KapaFunctionType.Default:
+                        VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
+                        break;
+                        
                     case KapaFunctionType.AOE:
                     default:
-                        Debug.Log("default");
                         break;
                 }
                 
@@ -706,7 +739,12 @@ namespace GameContent.Entity.Unit.KapasGen
                 unitTarget.StatUI.SetHP(unitTarget);
 
                 //Kill si Unit a plus de vie
-                if (unitTarget.CurrentHealth <= 0) { unitTarget.OnDie(); }
+                if (unitTarget.CurrentHealth <= 0)
+                {
+                    unitTarget.OnDie();
+                    continue;
+                }
+                unitTarget.OnColorFeedback(unitTarget.OriginColor, 300);
             }
 
             OnDeselectTiles(hexGrid, pattern);
@@ -868,6 +906,12 @@ namespace GameContent.Entity.Unit.KapasGen
                     new Vector3(targetPos.x, targetPos.y + Constants.DamageUIRiseOffset), damage);
             }
         }
+
+        private static void OnUIFeedBack(GameObject inst, Vector3 pos, float dam)
+        {
+            var feed = Instantiate(inst, pos, Quaternion.identity);
+            feed.GetComponent<DamageFeedBack>().OnInit(dam);
+        }
         
         #endregion
         
@@ -885,7 +929,7 @@ namespace GameContent.Entity.Unit.KapasGen
             List<Vector3Int> toSelects = new();
             List<Vector3Int> initList = new(tilesArray);
             
-            if (KapaFunctionType is KapaFunctionType.ThrowFreeArea or KapaFunctionType.ThrowLimit)
+            if (IsRanged())
             {
                 initList.AddRange(AOEFreeAreaKapa.GetAtkArea(tilesArray[0], hexGrid));
             }
@@ -925,19 +969,13 @@ namespace GameContent.Entity.Unit.KapasGen
                 hexGrid.GetTile(pos).DisableGlowKapa();
             }
         }
-
-        private static void OnUIFeedBack(GameObject inst, Vector3 pos, float dam)
-        {
-            var feed = Instantiate(inst, pos, Quaternion.identity);
-            feed.GetComponent<DamageFeedBack>().OnInit(dam);
-        }
         
         #endregion
 
         #region Checkers
         
         private bool IsRanged() => KapaFunctionType is KapaFunctionType.ThrowFreeArea or KapaFunctionType.ThrowLimit;
-        
+
         #endregion
     }
 }

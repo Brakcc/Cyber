@@ -19,7 +19,7 @@ namespace Interfaces.Unit
         int CurrentMp { get; set;  }
         int CurrentCritRate { get; set; }
         int CurrentDef { get; set;  }
-        int CurrentAtk { get; set; }
+        int CurrentAtk { get; }
         //additional precision stat
         int CurrentPrecision { get; set; }
         Vector3 CurrentWorldPos { get; }
@@ -43,6 +43,7 @@ namespace Interfaces.Unit
         bool IsPersoLocked { get; set; }
         bool CanKapa { get; }
         bool IsOnComputer { get; }
+        Color OriginColor { get; }
         
         #endregion
 
@@ -53,6 +54,7 @@ namespace Interfaces.Unit
         void MoveInFrontOf(Vector3 currentPath);
         void OnCheckEffectCounter(IUnit unit);
         void OnKapa();
+        void OnColorFeedback(Color originC, int last);
         void Deselect();
         void OnDie();
         void OnCheckRez(IUnit unit, out bool rezed);

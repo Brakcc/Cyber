@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using CameraManagement;
 using Enums.UnitEnums.KapaEnums;
+using FeedBacks;
 using GameContent.GameManagement;
 using GameContent.GridManagement;
 using Interfaces.Unit;
@@ -16,14 +17,14 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
         public override Vector3Int[] Patterns => pattern;
         [SerializeField] private Vector3Int[] pattern;
         
-        public override KapaUISO KapaUI => kapaUI;
-        [SerializeField] private KapaUISO kapaUI;
-
+        [SerializeField] private CKapaSupFields cKapaSupFields;
+        
         public override GameObject DamageFeedBack => damageFeedBack;
         [SerializeField] private GameObject damageFeedBack;
 
-        [SerializeField] private CKapaSupFields cKapaSupFields;
-
+        protected override VFXManager VFx => vFx;
+        [SerializeField] private VFXManager vFx;
+        
         [SerializeField] private CameraManager cam;
         
         #endregion

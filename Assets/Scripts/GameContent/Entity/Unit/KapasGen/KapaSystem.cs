@@ -18,8 +18,8 @@ namespace GameContent.Entity.Unit.KapasGen
 
         #region methodes
 
-        private PathResult GetKapaRange(IUnit unit, HexGridStore hexGrid) => PathFind.PathKapaVerif(hexGrid, unit.CurrentHexPos, unit.UnitData.MovePoints + 10);
-        private PathResult GetPerfectPath(IUnit unit, HexGridStore hexGrid) => PathFind.PerfectPath(hexGrid, unit.CurrentHexPos, unit.UnitData.MovePoints + 10);
+        private static PathResult GetKapaRange(IEntity unit, HexGridStore hexGrid) => PathFind.PathKapaVerif(hexGrid, unit.CurrentHexPos, Constants.MaxReach);
+        private static PathResult GetPerfectPath(IEntity unit, HexGridStore hexGrid) => PathFind.PerfectPath(hexGrid, unit.CurrentHexPos, Constants.MaxReach);
 
         /// <summary>
         /// Verifie le chemin parfait et obstacle pour comparer et determiner si le chemin est
@@ -37,9 +37,8 @@ namespace GameContent.Entity.Unit.KapasGen
 
             _activeTiles = _kapaRange.GetKapaPathTo(kapaTile, hgs, mPp);
             _perfectTiles = _perfectRange.GetPathTo(kapaTile);
-            if (_activeTiles.Count == _perfectTiles.Count) { return true; }
-
-            return false;
+            
+            return _activeTiles.Count == _perfectTiles.Count;
         }
         #endregion
     }

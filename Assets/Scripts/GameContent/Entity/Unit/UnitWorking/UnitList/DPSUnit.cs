@@ -56,7 +56,6 @@ namespace GameContent.Entity.Unit.UnitWorking.UnitList
         
         //graph fields
         private SpriteRenderer _rend;
-        private Color _originColor;
         
         #endregion
 
@@ -66,7 +65,7 @@ namespace GameContent.Entity.Unit.UnitWorking.UnitList
         {
             graphs.SetRenderer(gameObject, m_Unit.Sprite);
             _rend = GetComponentInChildren<SpriteRenderer>();
-            _originColor = _rend.color;
+            OriginColor = _rend.color;
             
             base.OnInit();
         }
@@ -89,14 +88,14 @@ namespace GameContent.Entity.Unit.UnitWorking.UnitList
         public override void Deselect()
         {
             base.Deselect();
-            _rend.color = _originColor;
+            _rend.color = OriginColor;
         }
         public override void OnKapa() => Debug.Log("Omegalul");
 
         protected sealed override void OnRez()
         {
             base.OnRez();
-            GetComponentInChildren<SpriteRenderer>().color = _originColor;
+            GetComponentInChildren<SpriteRenderer>().color = OriginColor;
         }
 
         #endregion

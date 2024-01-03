@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using FeedBacks;
 using GameContent.GameManagement;
 using GameContent.GridManagement;
 using Interfaces.Unit;
@@ -11,9 +12,8 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
     {
         #region inherited accessors
         
-        public override KapaUISO KapaUI => kapaUI;
-        [SerializeField] private KapaUISO kapaUI;
         public override GameObject DamageFeedBack => null;
+        protected override VFXManager VFx => null;
         public override Vector3Int[] Patterns => null;
         
         #endregion
@@ -45,6 +45,7 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
         #endregion
 
         #region inherited methodes (rendues null)
+        
         public sealed override bool OnCheckKapaPoints(IUnit unit)
         {
             return HexGridStore.hGs.GetTile(unit.CurrentHexPos).IsComputer() &&
@@ -63,6 +64,7 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
         public sealed override List<Vector3Int> OnGenerateButton(HexGridStore hexGrid, IUnit unit) => null;
 
         public sealed override List<Vector3Int> OnSelectGraphTiles(IUnit unit, HexGridStore hexGrid, Vector3Int[] tilesArray) => null;
+        
         #endregion
     }
 }

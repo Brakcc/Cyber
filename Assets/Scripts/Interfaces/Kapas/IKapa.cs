@@ -19,7 +19,7 @@ namespace Interfaces.Kapas
         int BalanceMult { get; }
         EffectType EffectType { get; }
         KapaFunctionType KapaFunctionType { get; }
-        KapaUISO KapaUI { get; }
+        //KapaUISO KapaUI { get; }
         GameObject DamageFeedBack { get; }
         Vector3Int[] Patterns { get; }
         

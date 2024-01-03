@@ -138,14 +138,17 @@ MonoBehaviour:
   - {x: 0, y: -4, z: 0}
   - {x: 0, y: -5, z: 0}
   - {x: 0, y: -6, z: 0}
-  _kapaUI: {fileID: 0}
-  _damageFeedBack: {fileID: 8948626333531248720, guid: 8f927771530abf045b81020ae94b0299, type: 3}
   _nAKapaSupFields:
     compPointsAdded: 1
     ultPointsAdded: 0
     animation: {fileID: 0}
+  _damageFeedBack: {fileID: 8948626333531248720, guid: 8f927771530abf045b81020ae94b0299, type: 3}
+  vFx:
+    sprites: []
+    partSys: {fileID: 0}
+    lifeTime: 0
   _cam:
-    effectType: 5
+    effectType: 0
     shake:
       last: 0
       perlinParameters:

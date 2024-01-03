@@ -11,5 +11,6 @@
         public const float UIImageScaleUp = 0.3f;
         public const int MaxHackerAndTankNb = 1;
         public const int MaxDpsNb = 2;
+        public const int MaxReach = 16;
     }
 }

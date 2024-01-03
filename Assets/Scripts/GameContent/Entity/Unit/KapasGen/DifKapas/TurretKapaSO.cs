@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using FeedBacks;
 using GameContent.GameManagement;
 using GameContent.GridManagement;
 using Interfaces.Unit;
@@ -13,10 +14,8 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
         public override Vector3Int[] Patterns => _pattern;
         [SerializeField] private Vector3Int[] _pattern;
         
-        public override KapaUISO KapaUI => _kapaUI;
-        [SerializeField] private KapaUISO _kapaUI;
-        
         public override GameObject DamageFeedBack => null;
+        protected override VFXManager VFx => null;
 
         [SerializeField] private GameObject _turret;
         #endregion
