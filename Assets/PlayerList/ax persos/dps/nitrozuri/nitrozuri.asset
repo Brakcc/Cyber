@@ -18,9 +18,9 @@ MonoBehaviour:
   movePoints: 7
   attack: 25
   defense: 5
-  critRate: 0
+  critRate: 25
   speed: 30
-  healthPoint: 20
+  healthPoint: 100
   sprite: {fileID: 21300000, guid: 9159ffa33093a434882ba17cbd3655d1, type: 3}
   kapasList:
   - {fileID: 11400000, guid: f47203e1e994a344082e7d9d9278a58e, type: 2}
