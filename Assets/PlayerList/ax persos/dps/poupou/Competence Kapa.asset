@@ -15,7 +15,7 @@ MonoBehaviour:
   iD: 0
   kapaNane: COMPETENCE
   description: 'POUPOU  FRAPPE  2  FOIS  DEVANT  LUI  AVEC  SON  SABRE  LASER,  LE
-    DEUXIEME  COUP  ETANT  EN  ARC  DE  CERCLE
+    DEUXIEME  COUP  FORME  EN  ARC  DE  CERCLE
 
 '
   maxPlayerpierce: 3
@@ -138,12 +138,15 @@ MonoBehaviour:
   - {x: 0, y: -1, z: 0}
   - {x: 1, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
-  kapaUI: {fileID: 0}
-  damageFeedBack: {fileID: 8948626333531248720, guid: 8f927771530abf045b81020ae94b0299, type: 3}
   cKapaSupFields:
     neededCompPoints: 1
     ultPointsAdded: 0
     animation: {fileID: 0}
+  damageFeedBack: {fileID: 8948626333531248720, guid: 8f927771530abf045b81020ae94b0299, type: 3}
+  vFx:
+    sprites: []
+    partSys: {fileID: 0}
+    lifeTime: 0
   cam:
     effectType: 0
     shake:

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iD: 0
   kapaNane: COMPETENCE
-  description: SEVERUS  SNIPE  TIRE  BALLE  TRANSPERCANTE  AVEC  SON  SNIPER,  RALENTISSANT 
-    LE  PREMIER  TOUCHE
+  description: "SEVERUS  SNIPE  TIRE  UNE BALLE  TRANSPERCANTE  AVEC  SON  SNIPER, 
+    RALENTISSANT  LE  PREMIER  ENNEMI TOUCH\xC9"
   maxPlayerpierce: 4
   balanceMult: 1
   kapaType: 1
@@ -143,12 +143,15 @@ MonoBehaviour:
   - {x: 0, y: -8, z: 0}
   - {x: 0, y: -9, z: 0}
   - {x: 0, y: -10, z: 0}
-  kapaUI: {fileID: 0}
-  damageFeedBack: {fileID: 8948626333531248720, guid: 8f927771530abf045b81020ae94b0299, type: 3}
   cKapaSupFields:
     neededCompPoints: 0
     ultPointsAdded: 0
     animation: {fileID: 0}
+  damageFeedBack: {fileID: 8948626333531248720, guid: 8f927771530abf045b81020ae94b0299, type: 3}
+  vFx:
+    sprites: []
+    partSys: {fileID: 0}
+    lifeTime: 0
   cam:
     effectType: 0
     shake:
