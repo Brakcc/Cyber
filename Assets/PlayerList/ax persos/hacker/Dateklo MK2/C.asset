@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iD: 0
   kapaNane: COMPETENCE
-  description: 'DATEKLO  MK2  SATURE  LE  RESEAU  AFIN  DE  PROVOQUER  DES  DEGATS 
-    SUR  LA  DUREE  AUX  ENNEMIS  PRESENTS '
+  description: "DATEKLO  MK2  SATURE  LE  RESEAU  AFIN  DE  PROVOQUER  DES  DEGATS 
+    SUR  LA  DUR\xC9E  AUX  ENNEMIS  PR\xC9SENTS "
   maxPlayerpierce: 4
   balanceMult: 3
   kapaType: 1
@@ -134,12 +134,15 @@ MonoBehaviour:
     turnNumber: 3
   pattern:
   - {x: 0, y: 0, z: 0}
-  kapaUI: {fileID: 0}
-  damageFeedBack: {fileID: 8948626333531248720, guid: 8f927771530abf045b81020ae94b0299, type: 3}
   cKapaSupFields:
     neededCompPoints: 1
     ultPointsAdded: 0
     animation: {fileID: 0}
+  damageFeedBack: {fileID: 8948626333531248720, guid: 8f927771530abf045b81020ae94b0299, type: 3}
+  vFx:
+    sprites: []
+    partSys: {fileID: 0}
+    lifeTime: 0
   cam:
     effectType: 0
     shake:
