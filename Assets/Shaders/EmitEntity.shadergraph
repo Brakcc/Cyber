@@ -622,7 +622,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "329219d78a654b9685bed19dad5823a8",
     "m_Id": 0,
-    "m_DisplayName": "intessity",
+    "m_DisplayName": "intensity",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -1682,10 +1682,10 @@
     "m_Guid": {
         "m_GuidSerialized": "0cdf91e3-1db9-4fb7-9fb9-a6ac4b124c6d"
     },
-    "m_Name": "intessity",
+    "m_Name": "intensity",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "intessity",
-    "m_DefaultReferenceName": "_intessity",
+    "m_RefNameGeneratedByDisplayName": "intensity",
+    "m_DefaultReferenceName": "_intensity",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,

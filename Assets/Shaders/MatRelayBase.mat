@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MatComputerIdle
+  m_Name: MatRelayBase
   m_Shader: {fileID: -6465566751694194690, guid: 0892efc76e2798d41ac794904edc8349, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -28,11 +28,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Emission:
-        m_Texture: {fileID: 2800000, guid: 24f6efdcf9ca1d148b0a9d71c7b57c88, type: 3}
+        m_Texture: {fileID: 2800000, guid: cb9b19539f9652d469089afa1eda3feb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: e2ed4f8e4564966409390e6f23da16cf, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9cfe43105c55fda45ae428e9649fe528, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskTex:
@@ -58,14 +58,13 @@ Material:
     m_Ints: []
     m_Floats:
     - _EnableExternalAlpha: 0
-    - _intensity: 2.02
-    - _intessity: 2
+    - _intensity: 2.07
     m_Colors:
-    - _Color: {r: 0, g: 1, b: 0.023826122, a: 1}
+    - _Color: {r: 0.05724919, g: 1, b: 0, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &6051009809821803177
+--- !u!114 &1839104177262955115
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

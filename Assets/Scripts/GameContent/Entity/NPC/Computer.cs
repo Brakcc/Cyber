@@ -37,6 +37,7 @@ namespace GameContent.Entity.NPC
             if (!relayRef.IsTransmitting)
                 return;
             
+            //Bof :/
             GameLoopManager.gLm.OnEndGame();
         }
 

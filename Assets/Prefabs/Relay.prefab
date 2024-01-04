@@ -49,6 +49,7 @@ MonoBehaviour:
   reTarget: 1
   relayRefs:
     precRefList: []
+    precRefIDs: 
     nextRefList: []
     networkRef:
     - {fileID: 0}
@@ -67,8 +68,8 @@ MonoBehaviour:
     initBoard:
       orderInLayer: 5
       offset: {x: 0, y: 0.45}
-      switchSprite: {fileID: 21300000, guid: c5b417054850a794fb118384a8c068cb, type: 3}
-      newMat: {fileID: 2100000, guid: 27218990bd6bbba41a39149df2968837, type: 2}
+      switchSprite: {fileID: 1309889563, guid: 9cfe43105c55fda45ae428e9649fe528, type: 3}
+      newMat: {fileID: 2100000, guid: 5779a600e38c7c74f82b07d9c07d118e, type: 2}
     lineGraphInit:
       colorGrad:
         serializedVersion: 2
@@ -200,7 +201,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 929d27cafcf1d73498a3a8153fea17f8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
