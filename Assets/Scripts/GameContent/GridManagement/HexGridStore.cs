@@ -125,6 +125,8 @@ namespace GameContent.GridManagement
             InitNpcEntity(relayList);
             
             InitNpcEntity(computerList);
+            
+            HandlePCHacked(RelayTarget.R1);
         }
 
         #region NpcEntity

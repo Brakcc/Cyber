@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: balacrank
   m_EditorClassIdentifier: 
   iD: 1
-  pname: balacrank
+  pname: BALACRANK
   type: 1
   movePoints: 6
   attack: 17

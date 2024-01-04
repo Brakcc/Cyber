@@ -12,5 +12,7 @@
         public const int MaxHackerAndTankNb = 1;
         public const int MaxDpsNb = 2;
         public const int MaxReach = 16;
+        public const int StartingCompPoints = 2;
+        public const int StartingTurretNb = 2;
     }
 }

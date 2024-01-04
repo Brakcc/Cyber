@@ -81,17 +81,17 @@ namespace GameContent.GameManagement
                 i.GetComponent<IUnit>().TeamNumber = 1;
             }
             teamInits.countPlayer = new[] { teamInventory.playerList[0].Length, teamInventory.playerList[1].Length };
-            teamInventory.CompPoints = new[] { 0, 0 };
-            teamInventory.TurretNumber = new[] { 2, 2 };
+            teamInventory.CompPoints = new[] { Constants.StartingCompPoints, Constants.StartingCompPoints };
+            teamInventory.TurretNumber = new[] { Constants.StartingTurretNb, Constants.StartingTurretNb };
             teamInits.teamPlaying = teamInits.firstTeamPlaying;
             foreach (var i in uiFields.cPui)
             {
-                i.text = 0.ToString();
+                i.text = Constants.StartingCompPoints.ToString();
                 i.color = Color.red;
             }
             foreach (var i in uiFields.tNbUI)
             {
-                i.text = 2.ToString();
+                i.text = Constants.StartingTurretNb.ToString();
                 i.color = Color.green;
             }
             //foreach (var i in uiFields.computerUI) { i.color = Color.red; }

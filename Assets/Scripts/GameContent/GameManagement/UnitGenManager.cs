@@ -3,6 +3,7 @@ using GameContent.GridManagement;
 using GameContent.Entity.Unit.UnitWorking;
 using UI.InGameUI;
 using DataManagement;
+using TMPro;
 
 namespace GameContent.GameManagement
 {
@@ -73,10 +74,14 @@ namespace GameContent.GameManagement
             for (var i = 0; i < 4; i++)
             {
                 teamLists.heroPlayer0[i].GetComponent<Unit>().UnitData = unitList.GetUnitData(team0[i]);
+                teamLists.heroPlayer0[i].GetComponentInChildren<TextMeshPro>().text =
+                    unitList.GetUnitData(team0[i]).Name;
             }
             for (var i = 0; i < 4; i++)
             {
                 teamLists.heroPlayer1[i].GetComponent<Unit>().UnitData = unitList.GetUnitData(team1[i]);
+                teamLists.heroPlayer1[i].GetComponentInChildren<TextMeshPro>().text =
+                    unitList.GetUnitData(team1[i]).Name;
             }
         }
 

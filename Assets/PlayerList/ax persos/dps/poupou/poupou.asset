@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: poupou
   m_EditorClassIdentifier: 
   iD: 6
-  pname: poupou
+  pname: POUPOU
   type: 2
   movePoints: 6
   attack: 36

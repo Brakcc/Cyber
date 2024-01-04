@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: kaskhy
   m_EditorClassIdentifier: 
   iD: 9
-  pname: gasly
+  pname: KASHKY
   type: 3
   networkRange: 2
   movePoints: 6

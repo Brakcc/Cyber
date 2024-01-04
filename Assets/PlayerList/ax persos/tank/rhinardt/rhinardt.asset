@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: rhinardt
   m_EditorClassIdentifier: 
   iD: 3
-  pname: rhinardt
+  pname: RHINARDT
   type: 1
   movePoints: 5
   attack: 8

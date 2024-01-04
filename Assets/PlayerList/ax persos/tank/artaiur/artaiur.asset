@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: artaiur
   m_EditorClassIdentifier: 
   iD: 0
-  pname: artaiur
+  pname: ARTAIUR
   type: 1
   movePoints: 5
   attack: 12

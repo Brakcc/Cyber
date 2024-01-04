@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: datekIo mk2
   m_EditorClassIdentifier: 
   iD: 8
-  pname: datekIO mk2
+  pname: DATEKLO MK2
   type: 3
   networkRange: 2
   movePoints: 6

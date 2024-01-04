@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: diemauer
   m_EditorClassIdentifier: 
   iD: 2
-  pname: diemauer
+  pname: DIEMAUER
   type: 1
   movePoints: 4
   attack: 5

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Normal Attack Kapa
   m_EditorClassIdentifier: 
   iD: 0
-  kapaNane: NORMAL ATK
+  kapaNane: NORMAL  ATK
   description: "JIM  TECHUS  TIRE  AVEC  SON  FUSILS  D'ASSAUT\r"
   maxPlayerpierce: 1
   balanceMult: 1

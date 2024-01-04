@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: NA
   m_EditorClassIdentifier: 
   iD: 0
-  kapaNane: NORMAL ATK
+  kapaNane: NORMAL  ATK
   description: MOTISMHACK  ATTAQUE  TOUS  LES  ENNEMIS  PRESENTS  SUR  LE  RESEAU
   maxPlayerpierce: 4
   balanceMult: 3
@@ -133,12 +133,15 @@ MonoBehaviour:
     turnNumber: 0
   _pattern:
   - {x: 0, y: 0, z: 0}
-  _kapaUI: {fileID: 0}
-  _damageFeedBack: {fileID: 8948626333531248720, guid: 8f927771530abf045b81020ae94b0299, type: 3}
   _nAKapaSupFields:
     compPointsAdded: 1
     ultPointsAdded: 0
     animation: {fileID: 0}
+  _damageFeedBack: {fileID: 8948626333531248720, guid: 8f927771530abf045b81020ae94b0299, type: 3}
+  vFx:
+    sprites: []
+    partSys: {fileID: 0}
+    lifeTime: 0
   _cam:
     effectType: 0
     shake:

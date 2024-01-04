@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MotismHack
   m_EditorClassIdentifier: 
   iD: 10
-  pname: hacker 4
+  pname: MOTISMHACK
   type: 3
   networkRange: 2
   movePoints: 7
