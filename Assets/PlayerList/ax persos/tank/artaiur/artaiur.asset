@@ -15,9 +15,9 @@ MonoBehaviour:
   iD: 0
   pname: ARTAIUR
   type: 1
-  movePoints: 5
-  attack: 12
-  defense: 32
+  movePoints: 6
+  attack: 16
+  defense: 37
   critRate: 0
   speed: 30
   healthPoint: 100

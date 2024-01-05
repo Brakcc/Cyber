@@ -15,9 +15,9 @@ MonoBehaviour:
   iD: 3
   pname: RHINARDT
   type: 1
-  movePoints: 5
-  attack: 8
-  defense: 35
+  movePoints: 6
+  attack: 13
+  defense: 39
   critRate: 25
   speed: 30
   healthPoint: 100
