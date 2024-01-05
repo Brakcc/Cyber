@@ -14,8 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iD: 0
   kapaNane: COMPETENCE
-  description: DIEMAUER  ENVOIE  DES  DRONES-BOUCLIERS  POUR  PROTEGER  LES  POINTS 
-    FAIBLES  DE  SES  ALLIERS  PROCHES
+  description: 'ENVOIE  DES  DRONES-BOUCLIERS  POUR  PROTEGER  LES  POINTS  FAIBLES 
+    DE  SES  ALLIERS  PROCHES
+
+    PORTEE  :  1
+
+    BUFF  :  TOUS LES ENNEMIS PERDENT 
+    25%  CRIT'
   maxPlayerpierce: 0
   balanceMult: 0
   kapaType: 1

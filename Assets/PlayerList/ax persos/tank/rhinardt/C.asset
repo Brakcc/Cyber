@@ -14,7 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iD: 0
   kapaNane: COMPETENCE
-  description: 'RHINARDT  ABAT  SON  MARTEAU  QUI  PROVOQUE  UNE  EXPLOSION  ELECTROMAGNETIQUE
+  description: 'ABAT  SON  MARTEAU  QUI  PROVOQUE  UNE  EXPLOSION  ELECTROMAGNETIQUE
+
+    PORTEE 
+    :  3  AOE  :  1
+
+    DEBUFF  :  CENTRE  - 3 MP  AOE  - 1 MP
 
 '
   maxPlayerpierce: 4

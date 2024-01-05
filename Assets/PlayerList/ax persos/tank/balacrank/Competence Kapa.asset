@@ -14,8 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iD: 0
   kapaNane: COMPETENCE
-  description: 'BALACRANK  PROPULSE  SES  BRAS  POUR  ATTRAPER  LA  CIBLE  ET  LA 
-    RAMENER  DEVANT  LUI
+  description: 'PROPULSE  SES  BRAS  POUR  ATTRAPER  LA  CIBLE  ET  LA  RAMENER 
+    DEVANT  LUI
+
+    PORTEE  :  4
+
+    DEBUFF  :  GRAB  +  - 2 MP
 
 '
   maxPlayerpierce: 1

@@ -14,8 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iD: 0
   kapaNane: COMPETENCE
-  description: MAKX  SUPER  DEPLOIE  DES  DRONES  AU  SEIN  DU  RESEAU  POUR  DEFENDRE 
-    SES  ALLIES
+  description: 'DEPLOIE  DES  DRONES  AU  SEIN  DU  RESEAU  POUR  DEFENDRE  SES 
+    ALLIES
+
+    PORTEE  : RESEAU
+
+    BUFF : + 10   DEF '
   maxPlayerpierce: 4
   balanceMult: 0
   kapaType: 1

@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iD: 0
   kapaNane: NORMAL  ATK
-  description: NITROZURI  FRAPPE  2  FOIS  AVEC  SES  DAGUES-TASER
+  description: 'FRAPPE  2  FOIS  AVEC  SES  DAGUES-TASER
+
+    PORTEE  :  1'
   maxPlayerpierce: 1
   balanceMult: 2
   kapaType: 0

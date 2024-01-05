@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iD: 0
   kapaNane: COMPETENCE
-  description: "SEVERUS  SNIPE  TIRE  UNE BALLE  TRANSPERCANTE  AVEC  SON  SNIPER, 
-    RALENTISSANT  LE  PREMIER  ENNEMI TOUCH\xC9"
+  description: "TIRE  UNE BALLE  TRANSPERCANTE  AVEC  SON  SNIPER,  RALENTISSANT 
+    LE  PREMIER  ENNEMI TOUCH\xC9\nPORTEE  :  10\nDEBUFF  :  - 1 MP"
   maxPlayerpierce: 4
   balanceMult: 1
   kapaType: 1

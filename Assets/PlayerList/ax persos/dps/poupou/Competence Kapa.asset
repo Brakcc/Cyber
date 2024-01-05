@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iD: 0
   kapaNane: COMPETENCE
-  description: 'POUPOU  FRAPPE  2  FOIS  DEVANT  LUI  AVEC  SON  SABRE  LASER,  LE
-    DEUXIEME  COUP  FORME  EN  ARC  DE  CERCLE
+  description: 'FRAPPE  2  FOIS  DEVANT  LUI  AVEC  SON  SABRE  LASER
+
+    PORTEE 
+    :  1
 
 '
   maxPlayerpierce: 3

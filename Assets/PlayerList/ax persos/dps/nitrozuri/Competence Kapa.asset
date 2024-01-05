@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iD: 0
   kapaNane: COMPETENCE
-  description: "NITROZURI  LANCE  UNE  DAGUE  SUR  UN  ENNEMI  AVANT  DE  DASH  SUR 
-    CELUI-CI  S'IL  EST  TOUJOURS  EN  VIE  ET  LE FRAPPE  \xC0  NOUVEAU"
+  description: "LANCE  UNE  DAGUE  SUR  UN  ENNEMI  AVANT  DE  DASH  SUR  CELUI-CI 
+    S'IL  EST  TOUJOURS  EN  VIE  ET  LE  FRAPPE  \xC0  NOUVEAU\nPORTEE  :  5"
   maxPlayerpierce: 1
   balanceMult: 2
   kapaType: 1

@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iD: 0
   kapaNane: NORMAL  ATK
-  description: RHINARDT  FAIT  UN  ARC  DE  CERCLE  AVEC  UN  MARTEAU-PROPULSEUR
+  description: 'FAIT  UN  ARC  DE  CERCLE  AVEC  UN  MARTEAU-PROPULSEUR
+
+    PORTEE 
+    :  1'
   maxPlayerpierce: 3
   balanceMult: 2
   kapaType: 0

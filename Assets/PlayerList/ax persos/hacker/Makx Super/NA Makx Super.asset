@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iD: 0
   kapaNane: NORMAL  ATK
-  description: MAKX  SUPER  ATTAQUE  TOUS  LES  ENNEMIS  PRESENTS  SUR  LE  RESEAU
+  description: 'ATTAQUE  TOUS  LES  ENNEMIS  PRESENTS  SUR  LE  RESEAU
+
+    PORTEE 
+    :  RESEAU'
   maxPlayerpierce: 4
   balanceMult: 3
   kapaType: 0

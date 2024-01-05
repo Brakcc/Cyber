@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iD: 0
   kapaNane: NORMAL  ATK
-  description: 'DIEMAUER  FRAPPER  DEVANT  LUI  AVEC  SON  BOUCLIER
+  description: 'FRAPPE  DEVANT  LUI  AVEC  SON  BOUCLIER
+
+    PORTEE  :  1
 
 '
   maxPlayerpierce: 1

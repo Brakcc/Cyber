@@ -14,7 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iD: 0
   kapaNane: NORMAL  ATK
-  description: SEVERUS  SNIPE  TIRE  UNE  BALLE  AVEC  SON  SNIPER
+  description: 'TIRE  UNE  BALLE  AVEC  SON  SNIPER
+
+    PORTEE  :  15
+
+'
   maxPlayerpierce: 1
   balanceMult: 1
   kapaType: 0

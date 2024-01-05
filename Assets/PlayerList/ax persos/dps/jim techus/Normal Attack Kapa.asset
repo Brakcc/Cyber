@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iD: 0
   kapaNane: NORMAL  ATK
-  description: "JIM  TECHUS  TIRE  AVEC  SON  FUSIL D'ASSAUT\r"
+  description: "TIRE  AVEC  SON  FUSIL  D'ASSAUT\nPORTEE  :  6\n\n\r"
   maxPlayerpierce: 1
   balanceMult: 1
   kapaType: 0
