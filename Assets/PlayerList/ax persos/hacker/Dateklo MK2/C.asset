@@ -140,9 +140,24 @@ MonoBehaviour:
     animation: {fileID: 0}
   damageFeedBack: {fileID: 8948626333531248720, guid: 8f927771530abf045b81020ae94b0299, type: 3}
   vFx:
-    sprites: []
-    partSys: {fileID: 0}
-    lifeTime: 0
+    sprites:
+    - {fileID: -1732171263, guid: e19adc554f996024e82e5f15f8115d16, type: 3}
+    - {fileID: -293013901, guid: e19adc554f996024e82e5f15f8115d16, type: 3}
+    - {fileID: 2023550828, guid: e19adc554f996024e82e5f15f8115d16, type: 3}
+    - {fileID: -825109786, guid: e19adc554f996024e82e5f15f8115d16, type: 3}
+    - {fileID: -928867042, guid: e19adc554f996024e82e5f15f8115d16, type: 3}
+    - {fileID: 302849954, guid: e19adc554f996024e82e5f15f8115d16, type: 3}
+    - {fileID: 1348405485, guid: e19adc554f996024e82e5f15f8115d16, type: 3}
+    - {fileID: 912812814, guid: e19adc554f996024e82e5f15f8115d16, type: 3}
+    - {fileID: -722296052, guid: e19adc554f996024e82e5f15f8115d16, type: 3}
+    - {fileID: -849193431, guid: e19adc554f996024e82e5f15f8115d16, type: 3}
+    - {fileID: -2141066065, guid: e19adc554f996024e82e5f15f8115d16, type: 3}
+    - {fileID: -1867731861, guid: e19adc554f996024e82e5f15f8115d16, type: 3}
+    - {fileID: 2087263235, guid: e19adc554f996024e82e5f15f8115d16, type: 3}
+    - {fileID: 1842784522, guid: e19adc554f996024e82e5f15f8115d16, type: 3}
+    partSys: {fileID: 81484107256008709, guid: 381bf1c886b5e6c4884bbc6fa6154750, type: 3}
+    lifeTime: 0.5
+    size: 1
   cam:
     effectType: 0
     shake:

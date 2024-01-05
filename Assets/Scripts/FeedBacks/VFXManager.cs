@@ -10,6 +10,7 @@ namespace FeedBacks
         [SerializeField] private Sprite[] sprites;
         [SerializeField] private GameObject partSys;
         [SerializeField] private float lifeTime;
+        [SerializeField] private float size;
         
         #endregion
 
@@ -27,6 +28,7 @@ namespace FeedBacks
 
             var main = part.main;
             main.startLifetime = lifeTime;
+            main.startSize = size;
             
             part.Emit(1);
             
