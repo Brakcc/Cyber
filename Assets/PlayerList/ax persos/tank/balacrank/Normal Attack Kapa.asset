@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iD: 0
   kapaNane: NORMAL  ATK
-  description: BALACRANK  UTILISE  SES  BRAS  MECANIQUES  POUVANT  SE  PROPULSER 
-    POUR  FRAPPER
+  description: 'UTILISE  SES  BRAS  MECANIQUES  POUVANT  SE  PROPULSER  POUR  FRAPPER
+
+    PORTEE 
+    :  2'
   maxPlayerpierce: 1
   balanceMult: 1
   kapaType: 0

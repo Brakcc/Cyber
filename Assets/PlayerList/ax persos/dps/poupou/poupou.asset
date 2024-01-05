@@ -16,8 +16,8 @@ MonoBehaviour:
   pname: POUPOU
   type: 2
   movePoints: 6
-  attack: 36
-  defense: 6
+  attack: 33
+  defense: 18
   critRate: 0
   speed: 30
   healthPoint: 100

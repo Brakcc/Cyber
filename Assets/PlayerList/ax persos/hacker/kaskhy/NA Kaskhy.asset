@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iD: 0
   kapaNane: NORMAL  ATK
-  description: KASHKY  ATTAQUE  UNE  CIBLE  VIA  LE  RESEAU
+  description: 'ATTAQUE  UNE  CIBLE  VIA  LE  RESEAU
+
+    PORTEE  :  RESEAU'
   maxPlayerpierce: 1
   balanceMult: 1
   kapaType: 0

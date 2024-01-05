@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iD: 0
   kapaNane: NORMAL  ATK
-  description: ARTAIUR  FRAPPE  EN  ARC  DE  CERCLE  AVEC  SON  FLEAU
+  description: 'FRAPPE  EN  ARC  DE  CERCLE  AVEC  SON  FLEAU
+
+    PORTEE  :  1'
   maxPlayerpierce: 3
   balanceMult: 2
   kapaType: 0

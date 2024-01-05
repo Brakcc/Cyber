@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iD: 0
   kapaNane: NORMAL  ATK
-  description: 'POUPOU  FRAPPE  DEVANT  LUI  AVEC  SON  SABRE  LASER
+  description: 'FRAPPE  DEVANT  LUI  AVEC  SON  SABRE  LASER
+
+    PORTEE  :  1
 
 '
   maxPlayerpierce: 1

@@ -16,8 +16,8 @@ MonoBehaviour:
   pname: NITROZURI
   type: 2
   movePoints: 7
-  attack: 25
-  defense: 5
+  attack: 28
+  defense: 9
   critRate: 25
   speed: 30
   healthPoint: 100

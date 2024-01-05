@@ -14,8 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iD: 0
   kapaNane: COMPETENCE
-  description: ARTAIUR  FAIT  TOURNOYER  SON  FLEAU  AVANT  DE  L'ABATTRE  DEVANT 
-    LUI  A  PLEINE  PUISSANCE
+  description: 'FAIT  TOURNOYER  SON  FLEAU  AVANT  DE  L''ABATTRE  DEVANT  LUI 
+    A  PLEINE  PUISSANCE
+
+    PORTEE  :  1
+
+    COUP CRIT'
   maxPlayerpierce: 1
   balanceMult: 1
   kapaType: 1

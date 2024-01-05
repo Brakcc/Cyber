@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iD: 0
   kapaNane: COMPETENCE
-  description: "JIM  TECHUS  LANCE  UNE  GRENADE  ELECTROMAGNETIQUE,  RALENTISSANT
-    LES ENNEMIS TOUCH\xC9S"
+  description: "LANCE  UNE  GRENADE  ELECTROMAGNETIQUE,  RALENTISSANT LES ENNEMIS
+    TOUCH\xC9S\nPORTEE  :  5  AOE  1\nDEBUFF  :  -2 MP  CENTRE  - 1 MP  AOE"
   maxPlayerpierce: 4
   balanceMult: 5
   kapaType: 1

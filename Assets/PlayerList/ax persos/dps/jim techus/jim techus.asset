@@ -16,8 +16,8 @@ MonoBehaviour:
   pname: JIM TECHUS
   type: 2
   movePoints: 5
-  attack: 30
-  defense: 8
+  attack: 35
+  defense: 9
   critRate: 25
   speed: 30
   healthPoint: 100

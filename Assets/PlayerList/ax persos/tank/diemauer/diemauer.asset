@@ -15,9 +15,9 @@ MonoBehaviour:
   iD: 2
   pname: DIEMAUER
   type: 1
-  movePoints: 4
-  attack: 5
-  defense: 46
+  movePoints: 5
+  attack: 11
+  defense: 50
   critRate: 0
   speed: 30
   healthPoint: 100

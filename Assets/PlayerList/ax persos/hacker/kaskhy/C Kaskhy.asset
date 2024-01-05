@@ -14,8 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iD: 0
   kapaNane: COMPETENCE
-  description: KASHKY  UTILISE  LE  RESEAU  POUR  GUIDER  SES  ALLIES  A  FRAPPER 
-    LES  POINTS  FAIBLES  ADVERSES
+  description: 'UTILISE  LE  RESEAU  POUR  GUIDER  SES  ALLIES  A  FRAPPER  LES 
+    POINTS  FAIBLES  ADVERSES
+
+    PORTEE  :  RESEAU
+
+    BUFF  :  + 25% CRIT ALLIEES'
   maxPlayerpierce: 4
   balanceMult: 0
   kapaType: 1

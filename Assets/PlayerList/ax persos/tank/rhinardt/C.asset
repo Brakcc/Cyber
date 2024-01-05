@@ -14,11 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iD: 0
   kapaNane: COMPETENCE
-  description: 'RHINARDT  ABAT  SON  MARTEAU  QUI  PROVOQUE  UNE  EXPLOSION  ELECTROMAGNETIQUE
+  description: 'ABAT  SON  MARTEAU  QUI  PROVOQUE  UNE  EXPLOSION  ELECTROMAGNETIQUE
+
+    PORTEE 
+    :  3  AOE  :  1
+
+    DEBUFF  :  CENTRE  - 3 MP  AOE  - 1 MP
 
 '
   maxPlayerpierce: 4
-  balanceMult: 0
+  balanceMult: 1
   kapaType: 1
   effectType: 1
   hasBuffDebuffs: 1
@@ -28,7 +33,7 @@ MonoBehaviour:
     buffDebuffList:
       hasMovePointsBDb: 1
       mPBuffDebuffData:
-        value: 1
+        value: -1
         turnNumber: 1
       hasDefenseBDb: 0
       defBuffDebuffData:
@@ -113,7 +118,7 @@ MonoBehaviour:
     centerDebuffList:
       hasMovePointsBDb: 1
       mPBuffDebuffData:
-        value: 3
+        value: -3
         turnNumber: 1
       hasDefenseBDb: 0
       defBuffDebuffData:
