@@ -85,17 +85,17 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
             RefuseKapa(); return false;
         }
 
-        public sealed override void OnExecute(HexGridStore hexGrid, List<Vector3Int> patterns, IUnit unit, bool fromUnit)
+        public sealed override void OnExecute(HexGridStore hexGrid, List<Vector3Int> patterns, IUnit unit, bool fromUnit, out bool isHitting)
         {
             //Ne fait des degats d'AOE que si la Kapa est un hack en AOE 
             if (EffectType == EffectType.Hack && KapaFunctionType == KapaFunctionType.AOE)
             {
-                base.OnExecute(hexGrid, unit.GlobalNetwork, unit, fromUnit);
+                base.OnExecute(hexGrid, unit.GlobalNetwork, unit, fromUnit, out isHitting);
                 unit.OnDeselectNetworkTiles();
             }
             else
             {
-                base.OnExecute(hexGrid, patterns, unit, fromUnit);
+                base.OnExecute(hexGrid, patterns, unit, fromUnit, out isHitting);
             }
 
             DoKapa(unit);
@@ -112,7 +112,8 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
             unit.UltPoints += cKapaSupFields.ultPointsAdded;
             //PlaceHolder à rempir avec les anims et considérations de dégâts
 
-            unit.StatUI.SetUP(unit);
+            //UI commune avec la precision :)
+            //unit.StatUI.SetUP(unit);
         }
 
         private void RefuseKapa() { Debug.Log("nope"); }

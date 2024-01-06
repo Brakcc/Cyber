@@ -61,8 +61,9 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
         #region inherited methodes
         public sealed override bool OnCheckKapaPoints(IUnit unit) => GameLoopManager.gLm.teamInventory.TurretNumber[unit.TeamNumber] > 0;
 
-        public sealed override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, IUnit unit, bool fromUnit)
+        public sealed override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, IUnit unit, bool fromUnit, out bool isHitting)
         {
+            isHitting = true;
             if (GameLoopManager.gLm.teamInventory.TurretNumber[unit.TeamNumber] <= 0) return;
 
             Instantiate(_turret, hexGrid.GetTile(pattern[0]).transform.position, Quaternion.identity, hexGrid.transform);

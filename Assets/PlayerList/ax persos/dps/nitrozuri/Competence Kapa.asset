@@ -16,7 +16,7 @@ MonoBehaviour:
   kapaNane: COMPETENCE
   description: "LANCE  UNE  DAGUE  SUR  UN  ENNEMI  AVANT  DE  DASH  SUR  CELUI-CI 
     S'IL  EST  TOUJOURS  EN  VIE  ET  LE  FRAPPE  \xC0  NOUVEAU\nPORTEE  :  5"
-  maxPlayerpierce: 1
+  maxPlayerpierce: 0
   balanceMult: 2
   kapaType: 1
   effectType: 1

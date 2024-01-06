@@ -189,7 +189,7 @@ namespace GameContent.Entity.Unit.UnitWorking
             => kapa.OnGenerateButton(HexGridStore.hGs, unit);
 
         private static void OnExecuteKapa(IUnit unit, int i, List<Vector3Int> kapaPatternPos)
-            => unit.UnitData.KapasList[i].OnExecute(HexGridStore.hGs, kapaPatternPos, unit, false);
+            => unit.UnitData.KapasList[i].OnExecute(HexGridStore.hGs, kapaPatternPos, unit, false, out _);
 
         private static bool OnCheckKapa(IUnit unit, int i) 
             => unit.UnitData.KapasList[i].OnCheckKapaPoints(unit);

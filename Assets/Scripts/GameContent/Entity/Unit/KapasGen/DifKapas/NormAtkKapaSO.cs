@@ -81,18 +81,18 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
         #region inherited methodes
         public sealed override bool OnCheckKapaPoints(IUnit unit) => true;
 
-        public sealed override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, IUnit unit, bool fromUnit)
+        public sealed override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, IUnit unit, bool fromUnit, out bool isHitting)
         {
             //Ne fait des degats d'AOE que si la Kapa est un hack en AOE 
             if (EffectType == EffectType.Hack && KapaFunctionType == KapaFunctionType.AOE)
             {
-                base.OnExecute(hexGrid, unit.GlobalNetwork, unit, fromUnit, out var isHitting);
+                base.OnExecute(hexGrid, unit.GlobalNetwork, unit, fromUnit, out isHitting);
                 DoKapa(unit, isHitting);
                 unit.OnDeselectNetworkTiles();
             }
             else
             {
-                base.OnExecute(hexGrid, pattern, unit, fromUnit, out var isHitting);
+                base.OnExecute(hexGrid, pattern, unit, fromUnit, out isHitting);
                 DoKapa(unit, isHitting);
             }
             

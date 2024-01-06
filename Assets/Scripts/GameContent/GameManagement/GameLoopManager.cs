@@ -87,7 +87,7 @@ namespace GameContent.GameManagement
             foreach (var i in uiFields.cPui)
             {
                 i.text = Constants.StartingCompPoints.ToString();
-                i.color = Color.red;
+                i.color = Color.green;
             }
             foreach (var i in uiFields.tNbUI)
             {
@@ -152,6 +152,9 @@ namespace GameContent.GameManagement
         
         public void HandleCompPointValueChange(int teamNb, int pC)
         {
+            if (teamInventory.CompPoints[teamNb] >= 5)
+                return;
+            
             teamInventory.CompPoints[teamNb] += pC;
             uiFields.cPui[teamNb].text = teamInventory.CompPoints[teamNb].ToString();
             if (teamInventory.CompPoints[teamNb] > 0)

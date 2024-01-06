@@ -45,9 +45,8 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
 
         #region inherited methodes (rendues null)
         public sealed override bool OnCheckKapaPoints(IUnit unit) => true;
-
-        public sealed override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, IUnit unit, bool fromUnit) { }
-        protected sealed override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, IUnit unit, bool fromUnit, out bool isHitting)
+        
+        public sealed override void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, IUnit unit, bool fromUnit, out bool isHitting)
         {
             isHitting = false;
         }

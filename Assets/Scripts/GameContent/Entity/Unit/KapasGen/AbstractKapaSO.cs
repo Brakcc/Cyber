@@ -390,7 +390,7 @@ namespace GameContent.Entity.Unit.KapasGen
         /// <param name="unit"></param>
         /// <param name="fromUnit"></param>
         /// <param name="isHitting"></param>
-        protected virtual void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern , IUnit unit, bool fromUnit, out bool isHitting)
+        public virtual void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern , IUnit unit, bool fromUnit, out bool isHitting)
         {
             //Init des mutable local
             isHitting = false;
@@ -420,11 +420,7 @@ namespace GameContent.Entity.Unit.KapasGen
             {
                 //verif s'il y a joueur uniquement sur les case du pattern
                 var hex = hexGrid.GetTile(pos);
-                if (!hex.HasEntityOnIt) continue;
-                var unitTarget = hex.GetEntity<IUnit>();
-
-                //Verif de si l'Entity est une Unit
-                if (unitTarget == null)
+                if (!hex.HasEntityOnIt)
                 {
                     //Si pas de target mais Diff patterns, relance l'atk
                     if (KapaFunctionType == KapaFunctionType.DoubleDiffAttack && 
@@ -435,7 +431,12 @@ namespace GameContent.Entity.Unit.KapasGen
                     }
                     continue;
                 }
+                var unitTarget = hex.GetEntity<IUnit>();
 
+                //Verif de si l'Entity est une Unit
+                if (unitTarget == null)
+                    continue;
+                
                 //Verif si l'Unit est de meme team
                 if (unitTarget.TeamNumber == unit.TeamNumber)
                 {
@@ -448,11 +449,13 @@ namespace GameContent.Entity.Unit.KapasGen
                 }
                 
                 //Verif si Unit deja ded
-                if (unitTarget.IsDead) continue;
+                if (unitTarget.IsDead)
+                    continue;
 
                 Retake:
                 //verif de la precision
-                if (Random.Range(0, 100) > unit.CurrentPrecision) continue;
+                if (Random.Range(0, 100) > unit.CurrentPrecision + 1)
+                    continue;
 
                 //Verif du delay de la consideration d'atk
                 var delayAtk = KapaFunctionType == KapaFunctionType.DoubleDiffAttack && !canDoubleKapa || 
@@ -461,291 +464,133 @@ namespace GameContent.Entity.Unit.KapasGen
                     ? Constants.SecondAtkDelay
                     : 0;
                 
-                //Verif d'un changement de BalanceMult
-                var firstBalance = hasBuffDebuffs && buffDebuffDatas.buffDebuffList.hasBalanceMultBDb && canDoubleKapa
-                    ? buffDebuffDatas.buffDebuffList.balMultBuffDebuffData
-                    : BalanceMult; 
-                var secondBalance =
-                    KapaFunctionType == KapaFunctionType.DoubleDiffAttack && doubleDiffAtkDatas.doubleABuffDebuff.hasBalanceMultBDb &&
-                    !canDoubleKapa
-                        ? doubleDiffAtkDatas.doubleABuffDebuff.balMultBuffDebuffData
-                        : BalanceMult;
-                
-                //Apply des degats
-                OnDamageConsideration(this, unit, unitTarget, canDoubleKapa ? firstBalance : secondBalance, delayAtk,
-                    DamageFeedBack);
-                
-                //Buff Debuff en 1st Kapa excecution
-                if (hasBuffDebuffs && canDoubleKapa && !canFirstEffect)
-                {
-                    OnBuffDebuffConsideration(unitTarget, buffDebuffDatas.buffDebuffList);
-                }
-
-                //Buff Debuff en 2nd Kapa excecution
-                if (KapaFunctionType == KapaFunctionType.DoubleDiffAttack && !canDoubleKapa)
-                {
-                    OnBuffDebuffConsideration(unitTarget, doubleDiffAtkDatas.doubleABuffDebuff);
-                }
-                
-                //Verif des possibles KapaFunctions
+                //Verif des possibles KapaFunctions pour application des degats et debuffs
                 switch (kapaFunctionType)
                 {
                     case KapaFunctionType.Dash:
                         VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
+                        OnDamageConsideration(this, unit, unitTarget,
+                            buffDebuffDatas.buffDebuffList.hasBalanceMultBDb
+                                ? buffDebuffDatas.buffDebuffList.balMultBuffDebuffData
+                                : BalanceMult, delayAtk,
+                            DamageFeedBack);
+                        OnBuffDebuffConsideration(unitTarget, buffDebuffDatas.buffDebuffList);
                         DashKapa.OnSecondKapa(HexGridStore.hGs, unit, unitTarget);
                         break;
                     
                     case KapaFunctionType.DoubleDiffAttack when doubleDiffAtkDatas.hasDashAfterKapa && canDoubleKapa:
                         canDoubleKapa = false;
                         VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
+                        OnDamageConsideration(this, unit, unitTarget,
+                            doubleDiffAtkDatas.doubleABuffDebuff.balMultBuffDebuffData, delayAtk,
+                            DamageFeedBack);
+                        OnBuffDebuffConsideration(unitTarget, buffDebuffDatas.buffDebuffList);
                         DashKapa.OnSecondKapa(HexGridStore.hGs, unit, unitTarget);
                         goto Retake;
                         
                     case KapaFunctionType.Grab:
                         VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
+                        OnDamageConsideration(this, unit, unitTarget,
+                            buffDebuffDatas.buffDebuffList.hasBalanceMultBDb
+                                ? buffDebuffDatas.buffDebuffList.balMultBuffDebuffData
+                                : BalanceMult, delayAtk,
+                            DamageFeedBack);
+                        OnBuffDebuffConsideration(unitTarget, buffDebuffDatas.buffDebuffList);
                         GrabKapa.OnSecondKapa(HexGridStore.hGs, unit, unitTarget);
                         break;
                     
                     case KapaFunctionType.DoubleDiffAttack when doubleDiffAtkDatas.hasGrabAfterKapa && canDoubleKapa:
                         canDoubleKapa = false;
                         VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
+                        OnDamageConsideration(this, unit, unitTarget,
+                            doubleDiffAtkDatas.doubleABuffDebuff.balMultBuffDebuffData, delayAtk,
+                            DamageFeedBack);
                         GrabKapa.OnSecondKapa(HexGridStore.hGs, unit, unitTarget);
+                        OnBuffDebuffConsideration(unitTarget, buffDebuffDatas.buffDebuffList);
                         goto Retake;
                         
                     case KapaFunctionType.DoubleDiffAttack when doubleDiffAtkDatas.hasDiffPatterns && canDoubleKapa:
                         VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
+                        OnDamageConsideration(this, unit, unitTarget,
+                            doubleDiffAtkDatas.doubleABuffDebuff.balMultBuffDebuffData, delayAtk,
+                            DamageFeedBack);
+                        OnBuffDebuffConsideration(unitTarget, buffDebuffDatas.buffDebuffList);
                         canDoubleKapa = false;
                         goto ChangePatterns;
                         
-                    case KapaFunctionType.ThrowFreeArea when canFirstEffect:
+                    case KapaFunctionType.DoubleDiffAttack when !canDoubleKapa:
+                        VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
+                        OnDamageConsideration(this, unit, unitTarget,
+                            buffDebuffDatas.buffDebuffList.hasBalanceMultBDb
+                                ? buffDebuffDatas.buffDebuffList.balMultBuffDebuffData
+                                : BalanceMult, delayAtk,
+                            DamageFeedBack);
+                        OnBuffDebuffConsideration(unitTarget, doubleDiffAtkDatas.doubleABuffDebuff);
+                        break;
+                        
+                    case KapaFunctionType.ThrowFreeArea when canFirstEffect && unitTarget.CurrentHexPos == pattern[0]:
                         OnBuffDebuffConsideration(unitTarget, freeThrowAreaDatas.centerDebuffList);
+                        OnDamageConsideration(this, unit, unitTarget,
+                            freeThrowAreaDatas.centerDebuffList.balMultBuffDebuffData, delayAtk,
+                            DamageFeedBack);
                         VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
                         canFirstEffect = false;
                         break;
 
-                    case KapaFunctionType.ThrowLimit when canFirstEffect:
+                    case KapaFunctionType.ThrowLimit when canFirstEffect && unitTarget.CurrentHexPos == pattern[0]:
                         OnBuffDebuffConsideration(unitTarget, limitedThrowAreaDatas.centerDebuffList);
+                        OnDamageConsideration(this, unit, unitTarget,
+                            limitedThrowAreaDatas.centerDebuffList.balMultBuffDebuffData, delayAtk,
+                            DamageFeedBack);
                         VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
                         canFirstEffect = false;
                         break;
                         
                     case KapaFunctionType.DOT:
+                        OnBuffDebuffConsideration(unitTarget, buffDebuffDatas.buffDebuffList);
+                        OnDamageConsideration(this, unit, unitTarget,
+                            dotKapaDatas.balMultBuffDebuffData, delayAtk,
+                            DamageFeedBack);
+                        VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
                         break;
                     
                     case KapaFunctionType.FirstHitEffect when canFirstEffect:
                         OnBuffDebuffConsideration(unitTarget, firstHitEffectsData.buffDebuffList);
+                        OnDamageConsideration(this, unit, unitTarget,
+                            firstHitEffectsData.buffDebuffList.balMultBuffDebuffData, delayAtk,
+                            DamageFeedBack);
                         VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
                         canFirstEffect = false;
                         break;
-                    case KapaFunctionType.FirstHitEffect when !canFirstEffect:
-                        VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
-                        break;
                     
                     case KapaFunctionType.Default:
+                        OnDamageConsideration(this, unit, unitTarget,
+                            buffDebuffDatas.buffDebuffList.hasBalanceMultBDb
+                                ? buffDebuffDatas.buffDebuffList.balMultBuffDebuffData
+                                : BalanceMult, delayAtk,
+                            DamageFeedBack);
+                        OnBuffDebuffConsideration(unitTarget, buffDebuffDatas.buffDebuffList);
                         VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
                         break;
                     
                     case KapaFunctionType.AOE:
                     default:
+                        VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
+                        OnDamageConsideration(this, unit, unitTarget,
+                            buffDebuffDatas.buffDebuffList.hasBalanceMultBDb
+                                ? buffDebuffDatas.buffDebuffList.balMultBuffDebuffData
+                                : BalanceMult, delayAtk,
+                            DamageFeedBack);
+                        OnBuffDebuffConsideration(unitTarget, buffDebuffDatas.buffDebuffList);
                         break;
                 }
                 
                 //compteur de Hit
-                if (canDoubleKapa) n++;
-                
-                //set new UI des Stats des Units touchees 
-                unitTarget.StatUI.SetHP(unitTarget);
-
-                //Kill si Unit a plus de vie
-                if (unitTarget.CurrentHealth <= 0)
-                {
-                    unitTarget.OnDie();
-                    continue;
-                }
-                unitTarget.OnColorFeedback(unitTarget.OriginColor, 300);
+                n++;
             }
 
             if (n > 0)
                 isHitting = true;
-
-            OnDeselectTiles(hexGrid, pattern);
-        }
-
-        /// <summary>
-        /// Execute sans la surcharge de verif de Hit, parce que flemme de changer tt le code dépendant de Execute
-        /// </summary>
-        /// <param name="hexGrid"></param>
-        /// <param name="pattern"></param>
-        /// <param name="fromUnit"></param>
-        /// <param name="unit"></param>
-        public virtual void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, IUnit unit, bool fromUnit)
-        {
-            var canDoubleKapa = true;
-            List<Vector3Int> patternToUse;
-            var canFirstEffect = true;
-            
-            //Changement de Pattern, ne considère que le point de base au centre comme pattern 1
-            ChangePatterns:
-            if (KapaFunctionType == KapaFunctionType.DoubleDiffAttack && doubleDiffAtkDatas.hasDiffPatterns && canDoubleKapa)
-            {
-                patternToUse = new List<Vector3Int>{ pattern[0] };
-            }
-            else
-            {
-                patternToUse = pattern;
-            }
-            
-            //Si Dot lezgo Dot
-            if (KapaFunctionType == KapaFunctionType.DOT && !fromUnit)
-            {
-                DotKapa.OnStartDot(unit, dotKapaDatas.turnNumber);
-            }
-            
-            //Circulation sur le patterns
-            foreach (var pos in patternToUse)
-            {
-                //verif s'il y a joueur uniquement sur les case du pattern
-                var hex = hexGrid.GetTile(pos);
-                if (!hex.HasEntityOnIt) continue; 
-                var unitTarget = hex.GetEntity<IUnit>();
-
-                //Verif de si l'Entity est une Unit
-                if (unitTarget == null)
-                {
-                    //Si pas de target mais Diff patterns, relance l'atk
-                    if (KapaFunctionType == KapaFunctionType.DoubleDiffAttack && 
-                        doubleDiffAtkDatas.hasDiffPatterns && canDoubleKapa)
-                    {
-                        canDoubleKapa = false;
-                        goto ChangePatterns;
-                    }
-                    continue;
-                }
-
-                //Verif si l'Unit est de meme team
-                if (unitTarget.TeamNumber == unit.TeamNumber)
-                {
-                    //Buff s'il y a buff, certes :/
-                    if (hasBuffDebuffs && buffDebuffDatas.isBuff)
-                    {
-                        OnBuffDebuffConsideration(unitTarget, buffDebuffDatas.buffDebuffList);
-                    }
-                    continue;
-                }
-                
-                //Verif si Unit deja ded
-                if (unitTarget.IsDead) continue;
-
-                Retake:
-                //verif de la precision
-                if (Random.Range(0, 100) > unit.CurrentPrecision) continue;
-
-                //Verif du delay de la consideration d'atk
-                var delayAtk = KapaFunctionType == KapaFunctionType.DoubleDiffAttack && !canDoubleKapa || 
-                               KapaFunctionType == KapaFunctionType.Dash || 
-                               KapaFunctionType == KapaFunctionType.Grab
-                    ? Constants.SecondAtkDelay
-                    : 0;
-                
-                //Verif d'un changement de BalanceMult
-                var firstBalance = hasBuffDebuffs && buffDebuffDatas.buffDebuffList.hasBalanceMultBDb && canDoubleKapa
-                    ? buffDebuffDatas.buffDebuffList.balMultBuffDebuffData
-                    : BalanceMult; 
-                var secondBalance =
-                    KapaFunctionType == KapaFunctionType.DoubleDiffAttack && doubleDiffAtkDatas.doubleABuffDebuff.hasBalanceMultBDb &&
-                    !canDoubleKapa
-                        ? doubleDiffAtkDatas.doubleABuffDebuff.balMultBuffDebuffData
-                        : BalanceMult;
-                
-                //Apply des degats
-                OnDamageConsideration(this, unit, unitTarget, canDoubleKapa ? firstBalance : secondBalance, delayAtk,
-                    DamageFeedBack);
-
-                //Debuff en 1st Kapa excecution
-                if (hasBuffDebuffs && canDoubleKapa && !canFirstEffect)
-                {
-                    OnBuffDebuffConsideration(unitTarget, buffDebuffDatas.buffDebuffList);
-                }
-
-                //Debuff en 2nd Kapa excecution
-                if (KapaFunctionType == KapaFunctionType.DoubleDiffAttack && !canDoubleKapa)
-                {
-                    OnBuffDebuffConsideration(unitTarget, doubleDiffAtkDatas.doubleABuffDebuff);
-                }
-
-                switch (KapaFunctionType)
-                {
-                    case KapaFunctionType.Dash:
-                        DashKapa.OnSecondKapa(HexGridStore.hGs, unit, unitTarget);
-                        VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
-                        break;
-
-                    case KapaFunctionType.DoubleDiffAttack when doubleDiffAtkDatas.hasDashAfterKapa && canDoubleKapa && unitTarget.CurrentHealth > 0:
-                        canDoubleKapa = false;
-                        VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
-                        DashKapa.OnSecondKapa(HexGridStore.hGs, unit, unitTarget);
-                        goto Retake;
-
-                    case KapaFunctionType.Grab:
-                        GrabKapa.OnSecondKapa(HexGridStore.hGs, unit, unitTarget);
-                        VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
-                        break;
-
-                    case KapaFunctionType.DoubleDiffAttack when doubleDiffAtkDatas.hasGrabAfterKapa && canDoubleKapa && unitTarget.CurrentHealth > 0:
-                        canDoubleKapa = false;
-                        VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
-                        GrabKapa.OnSecondKapa(HexGridStore.hGs, unit, unitTarget);
-                        goto Retake;
-
-                    case KapaFunctionType.DoubleDiffAttack when doubleDiffAtkDatas.hasDiffPatterns && canDoubleKapa:
-                        VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
-                        canDoubleKapa = false;
-                        goto ChangePatterns;
-
-                    case KapaFunctionType.ThrowFreeArea when canFirstEffect:
-                        OnBuffDebuffConsideration(unitTarget, freeThrowAreaDatas.centerDebuffList);
-                        VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
-                        canFirstEffect = false;
-                        break;
-
-                    case KapaFunctionType.ThrowLimit when canFirstEffect:
-                        OnBuffDebuffConsideration(unitTarget, limitedThrowAreaDatas.centerDebuffList);
-                        VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
-                        canFirstEffect = false;
-                        break;
-                    
-                    case KapaFunctionType.DOT:
-                        break;
-
-                    case KapaFunctionType.FirstHitEffect when canFirstEffect:
-                        OnBuffDebuffConsideration(unitTarget, firstHitEffectsData.buffDebuffList);
-                        VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
-                        canFirstEffect = false;
-                        break;
-                    case KapaFunctionType.FirstHitEffect when !canFirstEffect:
-                        VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
-                        break;
-
-                    case KapaFunctionType.Default:
-                        VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
-                        break;
-                        
-                    case KapaFunctionType.AOE:
-                    default:
-                        break;
-                }
-                
-                //set new UI des Stats des Units touchees 
-                unitTarget.StatUI.SetHP(unitTarget);
-
-                //Kill si Unit a plus de vie
-                if (unitTarget.CurrentHealth <= 0)
-                {
-                    unitTarget.OnDie();
-                    continue;
-                }
-                unitTarget.OnColorFeedback(unitTarget.OriginColor, 300);
-            }
 
             OnDeselectTiles(hexGrid, pattern);
         }
@@ -841,7 +686,7 @@ namespace GameContent.Entity.Unit.KapasGen
             await Task.Delay(delay);
 
             //balanceMult a 0 pas de degats
-            if (balance <= 0) return;
+            if (balance == 0) return;
             
             //verif perma Crit
             if (kapa.buffDebuffDatas.isCritGuaranted)
@@ -856,6 +701,17 @@ namespace GameContent.Entity.Unit.KapasGen
                 OnUIFeedBack(feedBack, 
                     new Vector3(targetPos.x, targetPos.y + Constants.DamageUIRiseOffset), damage);
                 
+                //set new UI des Stats des Units touchees 
+                unitTarget.StatUI.SetHP(unitTarget);
+                
+                //Kill si Unit a plus de vie
+                if (unitTarget.CurrentHealth <= 0)
+                {
+                    unitTarget.OnDie();
+                    return;
+                }
+                
+                unitTarget.OnColorFeedback(unitTarget.OriginColor, 300);
                 return;
             }
             
@@ -873,11 +729,19 @@ namespace GameContent.Entity.Unit.KapasGen
                 OnUIFeedBack(feedBack, 
                     new Vector3(targetPos.x, targetPos.y + Constants.DamageUIRiseOffset), damage);
                 
+                //set new UI des Stats des Units touchees 
+                unitTarget.StatUI.SetHP(unitTarget);
+                
+                //Kill si Unit a plus de vie
+                if (!(unitTarget.CurrentHealth <= 0))
+                    return;
+                unitTarget.OnDie();
+                
                 return;
             }
 
             //Verif de UnitType
-            if (unitTarget.UnitData.Type == UnitType.Hacker)
+            if (unit.UnitData.Type == UnitType.Hacker)
             {
                 //Si l'execution est Dot
                 var newBal = kapa.KapaFunctionType == KapaFunctionType.DOT
@@ -904,6 +768,15 @@ namespace GameContent.Entity.Unit.KapasGen
                 var targetPos = unitTarget.CurrentWorldPos;
                 OnUIFeedBack(feedBack, 
                     new Vector3(targetPos.x, targetPos.y + Constants.DamageUIRiseOffset), damage);
+            }
+            
+            //set new UI des Stats des Units touchees 
+            unitTarget.StatUI.SetHP(unitTarget);
+                
+            //Kill si Unit a plus de vie
+            if (unitTarget.CurrentHealth <= 0)
+            {
+                unitTarget.OnDie();
             }
         }
 

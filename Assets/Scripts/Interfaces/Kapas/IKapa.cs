@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Enums.UnitEnums.KapaEnums;
-using GameContent.Entity.Unit.KapasGen;
 using GameContent.GridManagement;
 using Interfaces.Unit;
 using UnityEngine;
@@ -53,6 +52,8 @@ namespace Interfaces.Kapas
         void InitPatterns(Vector3Int[] patterns);
         bool OnCheckKapaPoints(IUnit unit);
         List<Vector3Int> OnSelectGraphTiles(IUnit unit, HexGridStore hexGrid, Vector3Int[] tilesArray);
+        public void OnExecute(HexGridStore hexGrid, List<Vector3Int> pattern, IUnit unit, bool fromUnit,
+            out bool isHitting);
         void OnDeselectTiles(HexGridStore hexGrid, List<Vector3Int> pattern);
         List<Vector3Int> OnGenerateButton(HexGridStore hexGrid, IUnit unit);
         

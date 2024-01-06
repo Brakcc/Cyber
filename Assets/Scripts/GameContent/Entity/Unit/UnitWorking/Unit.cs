@@ -131,23 +131,38 @@ namespace GameContent.Entity.Unit.UnitWorking
         {
             CanPlay = false;
             IsDead = true;
-            DeathCounter = 3;
+            DeathCounter = 1;
             GetComponentInChildren<SpriteRenderer>().color = Color.red;
             DefBDbCounter = 0;
             CrBDbCounter = 0;
             MpBDbCounter = 0;
             PrecBDbCounter = 0;
             DotCounter = 0;
+            ChangeUnitHexPos(this, HexGridStore.hGs);
+            StatUI.SetHP(0);
+            PositionCharacterOnTile(HexGridStore.hGs.GetTile(OriginPos).transform.position);
         }
 
         protected virtual void OnRez()
         {
             CanPlay = false;
             IsDead = false;
+            CurrentHealth = UnitData.HealthPoint;
+            CurrentAtk = UnitData.Attack;
+            CurrentMp = UnitData.MovePoints;
+            CurrentPrecision = 100;
+            CurrentDef = UnitData.Defense;
+            CurrentCritRate = UnitData.CritRate;
+            
+            OnCheckEffectCounter(this);
+            GetComponentInChildren<SpriteRenderer>().color = OriginColor;
             
             StatUI.SetHP(this);
-            ChangeUnitHexPos(this, HexGridStore.hGs);
-            PositionCharacterOnTile(HexGridStore.hGs.GetTile(OriginPos).transform.position);
+            StatUI.SetDef(this);
+            StatUI.SetAtk(this);
+            StatUI.SetMP(this);
+            StatUI.SetCritRate(this);
+            StatUI.SetPrec(this);
         }
         
         #endregion
@@ -254,7 +269,7 @@ namespace GameContent.Entity.Unit.UnitWorking
                 //obligatoirement une competence. Donc, on appelle la Kapa 1 dans la liste de Kapa 
                 if (unit.DotCounter > 0)
                 {
-                    unit.UnitData.KapasList[(int)KapaType.Competence].OnExecute(HexGridStore.hGs, GlobalNetwork, unit, true);
+                    unit.UnitData.KapasList[(int)KapaType.Competence].OnExecute(HexGridStore.hGs, GlobalNetwork, unit, true, out var isHitting);
                 }
             }
         }
