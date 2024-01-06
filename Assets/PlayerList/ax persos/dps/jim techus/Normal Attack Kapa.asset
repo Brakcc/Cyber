@@ -15,7 +15,7 @@ MonoBehaviour:
   iD: 0
   kapaNane: NORMAL  ATK
   description: "TIRE  AVEC  SON  FUSIL  D'ASSAUT\nPORTEE  :  6\n\n\r"
-  maxPlayerpierce: 1
+  maxPlayerpierce: 0
   balanceMult: 1
   kapaType: 0
   effectType: 1

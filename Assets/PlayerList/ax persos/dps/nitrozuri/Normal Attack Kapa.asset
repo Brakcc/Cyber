@@ -17,7 +17,7 @@ MonoBehaviour:
   description: 'FRAPPE  2  FOIS  AVEC  SES  DAGUES-TASER
 
     PORTEE  :  1'
-  maxPlayerpierce: 1
+  maxPlayerpierce: 0
   balanceMult: 2
   kapaType: 0
   effectType: 1
