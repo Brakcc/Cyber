@@ -22,18 +22,18 @@ MonoBehaviour:
   effectType: 1
   hasBuffDebuffs: 1
   buffDebuffDatas:
-    isBuff: 1
+    isBuff: 0
     isCritGuaranted: 0
     buffDebuffList:
-      hasMovePointsBDb: 0
+      hasMovePointsBDb: 1
       mPBuffDebuffData:
-        value: 0
-        turnNumber: 0
+        value: -2
+        turnNumber: 2
       hasDefenseBDb: 0
       defBuffDebuffData:
         value: 0
         turnNumber: 0
-      hasCritRateBDb: 1
+      hasCritRateBDb: 0
       cRBuffDebuffData:
         value: 25
         turnNumber: 1
