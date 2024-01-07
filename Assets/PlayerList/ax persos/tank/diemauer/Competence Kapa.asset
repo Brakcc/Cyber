@@ -36,7 +36,7 @@ MonoBehaviour:
       hasDefenseBDb: 1
       defBuffDebuffData:
         value: 10
-        turnNumber: 2
+        turnNumber: 1
       hasCritRateBDb: 0
       cRBuffDebuffData:
         value: 25
