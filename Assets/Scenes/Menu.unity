@@ -437,7 +437,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6597714242245044891, guid: 316f6604ab59f1144ac601be153e29c1, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -468
+      value: -469
       objectReference: {fileID: 0}
     - target: {fileID: 7302105730884732255, guid: 316f6604ab59f1144ac601be153e29c1, type: 3}
       propertyPath: m_IsActive
@@ -1148,7 +1148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6597714242245044891, guid: 316f6604ab59f1144ac601be153e29c1, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -468
+      value: -492
       objectReference: {fileID: 0}
     - target: {fileID: 7302105730884732255, guid: 316f6604ab59f1144ac601be153e29c1, type: 3}
       propertyPath: m_IsActive
@@ -1534,7 +1534,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: DAETEKLO MK2
+  m_text: DATEKLO MK2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab9557b347b7e2241b83bca5bcde315f, type: 2}
   m_sharedMaterial: {fileID: 8066348094211976408, guid: ab9557b347b7e2241b83bca5bcde315f, type: 2}
@@ -1701,7 +1701,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6597714242245044891, guid: 316f6604ab59f1144ac601be153e29c1, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -468
+      value: -498
       objectReference: {fileID: 0}
     - target: {fileID: 7302105730884732255, guid: 316f6604ab59f1144ac601be153e29c1, type: 3}
       propertyPath: m_IsActive
@@ -4527,7 +4527,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6597714242245044891, guid: 316f6604ab59f1144ac601be153e29c1, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -468
+      value: -489
       objectReference: {fileID: 0}
     - target: {fileID: 7302105730884732255, guid: 316f6604ab59f1144ac601be153e29c1, type: 3}
       propertyPath: m_IsActive
@@ -4660,7 +4660,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: POUPOU
+  m_text: ARLAN
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab9557b347b7e2241b83bca5bcde315f, type: 2}
   m_sharedMaterial: {fileID: 8066348094211976408, guid: ab9557b347b7e2241b83bca5bcde315f, type: 2}
@@ -5439,7 +5439,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6597714242245044891, guid: 316f6604ab59f1144ac601be153e29c1, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -468
+      value: -473
       objectReference: {fileID: 0}
     - target: {fileID: 7302105730884732255, guid: 316f6604ab59f1144ac601be153e29c1, type: 3}
       propertyPath: m_IsActive
@@ -6672,7 +6672,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SEVRERUS SNIPE
+  m_text: SEVERUS SNIPE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab9557b347b7e2241b83bca5bcde315f, type: 2}
   m_sharedMaterial: {fileID: 8066348094211976408, guid: ab9557b347b7e2241b83bca5bcde315f, type: 2}
@@ -6839,7 +6839,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6597714242245044891, guid: 316f6604ab59f1144ac601be153e29c1, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -468
+      value: -523
       objectReference: {fileID: 0}
     - target: {fileID: 7302105730884732255, guid: 316f6604ab59f1144ac601be153e29c1, type: 3}
       propertyPath: m_IsActive
@@ -7442,7 +7442,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: MOTISMHAK
+  m_text: MOTISMHACK
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab9557b347b7e2241b83bca5bcde315f, type: 2}
   m_sharedMaterial: {fileID: 8066348094211976408, guid: ab9557b347b7e2241b83bca5bcde315f, type: 2}
@@ -7469,8 +7469,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 27
-  m_fontSizeBase: 27
+  m_fontSize: 25
+  m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -9154,6 +9154,10 @@ PrefabInstance:
     - target: {fileID: 8475853321624100256, guid: 316f6604ab59f1144ac601be153e29c1, type: 3}
       propertyPath: m_Name
       value: PanelPlayerMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 8475853321624100256, guid: 316f6604ab59f1144ac601be153e29c1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

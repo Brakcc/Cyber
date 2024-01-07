@@ -107,7 +107,7 @@ MonoBehaviour:
         value: 0
         turnNumber: 0
       hasBalanceMultBDb: 1
-      balMultBuffDebuffData: 1
+      balMultBuffDebuffData: 2
   limitedThrowAreaDatas:
     centerDebuffList:
       hasMovePointsBDb: 0

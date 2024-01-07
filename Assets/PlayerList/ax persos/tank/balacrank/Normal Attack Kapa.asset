@@ -18,7 +18,7 @@ MonoBehaviour:
 
     PORTEE 
     :  2'
-  maxPlayerpierce: 1
+  maxPlayerpierce: 0
   balanceMult: 1
   kapaType: 0
   effectType: 1

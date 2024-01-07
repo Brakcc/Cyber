@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0dde4142f37cff74cbe2ab6166f660cf, type: 3}
-  m_Name: poupou
+  m_Name: arlan
   m_EditorClassIdentifier: 
   iD: 6
-  pname: POUPOU
+  pname: ARLAN
   type: 2
   movePoints: 6
   attack: 33

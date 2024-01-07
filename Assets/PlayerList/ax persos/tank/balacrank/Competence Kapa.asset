@@ -22,7 +22,7 @@ MonoBehaviour:
     DEBUFF  :  GRAB  +  - 2 MP
 
 '
-  maxPlayerpierce: 1
+  maxPlayerpierce: 0
   balanceMult: 1
   kapaType: 1
   effectType: 1

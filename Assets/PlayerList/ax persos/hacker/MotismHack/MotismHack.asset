@@ -15,7 +15,7 @@ MonoBehaviour:
   iD: 10
   pname: MOTISMHACK
   type: 3
-  networkRange: 2
+  networkRange: 1
   movePoints: 7
   attack: 29
   defense: 2

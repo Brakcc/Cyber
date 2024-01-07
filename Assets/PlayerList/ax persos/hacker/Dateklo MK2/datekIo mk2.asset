@@ -15,7 +15,7 @@ MonoBehaviour:
   iD: 8
   pname: DATEKLO MK2
   type: 3
-  networkRange: 2
+  networkRange: 1
   movePoints: 6
   attack: 35
   defense: 4

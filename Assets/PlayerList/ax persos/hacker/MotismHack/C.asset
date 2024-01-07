@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iD: 0
   kapaNane: COMPETENCE
-  description: "UTILISE  LE  RESEAU  POUR  PARALYSER  LES  ADVERSAIRES  ET  RESTREINDRE 
-    LEURS  CAPACITES\nPORTEE  :  RESEAU \nDEBUFF  :  -25%  CRIT"
+  description: "UTILISE  LE  RESEAU  POUR  PARALYSER  LES  ADVERSAIRES\nPORTEE  : 
+    RESEAU \nDEBUFF  :  -25%  CRIT"
   maxPlayerpierce: 4
   balanceMult: 0
   kapaType: 1
