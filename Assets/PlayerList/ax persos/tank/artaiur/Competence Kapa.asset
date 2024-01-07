@@ -20,7 +20,7 @@ MonoBehaviour:
     PORTEE  :  1
 
     COUP CRIT'
-  maxPlayerpierce: 1
+  maxPlayerpierce: 0
   balanceMult: 1
   kapaType: 1
   effectType: 1

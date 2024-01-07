@@ -14,14 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iD: 0
   kapaNane: COMPETENCE
-  description: 'ABAT  SON  MARTEAU  QUI  PROVOQUE  UNE  EXPLOSION  ELECTROMAGNETIQUE
-
-    PORTEE 
-    :  3  AOE  :  1
-
-    DEBUFF  :  CENTRE  - 3 MP  AOE  - 1 MP
-
-'
+  description: "ABAT  SON  MARTEAU  QUI  PROVOQUE  UNE  EXPLOSION \nPORTEE  :  3 
+    AOE  :  1\nDEBUFF  :  CENTRE  - 3 MP  AOE  - 1 MP\n"
   maxPlayerpierce: 4
   balanceMult: 0
   kapaType: 1

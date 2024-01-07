@@ -9,19 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc327a9d29d835444a0db66a632a8aec, type: 3}
-  m_Name: Normal Attack Kapa
+  m_Script: {fileID: 11500000, guid: a4d40161ec8cffd4fa4eb487d60ab8f7, type: 3}
+  m_Name: Competence Kapa
   m_EditorClassIdentifier: 
   iD: 0
-  kapaNane: NORMAL  ATK
-  description: 'FRAPPE  DEVANT  LUI  AVEC  SON  SABRE  LASER
-
-    PORTEE  :  1
-
-'
-  maxPlayerpierce: 1
+  kapaNane: COMPETENCE
+  description: "TIRE  UNE BALLE  TRANSPERCANTE,  RALENTISSANT  LE  PREMIER  ENNEMI
+    TOUCH\xC9\nPORTEE  :  10\nDEBUFF  :  - 1 MP"
+  maxPlayerpierce: 4
   balanceMult: 1
-  kapaType: 0
+  kapaType: 1
   effectType: 1
   hasBuffDebuffs: 0
   buffDebuffDatas:
@@ -30,8 +27,8 @@ MonoBehaviour:
     buffDebuffList:
       hasMovePointsBDb: 0
       mPBuffDebuffData:
-        value: 0
-        turnNumber: 0
+        value: -2
+        turnNumber: 1
       hasDefenseBDb: 0
       defBuffDebuffData:
         value: 0
@@ -46,7 +43,7 @@ MonoBehaviour:
         turnNumber: 0
       hasBalanceMultBDb: 0
       balMultBuffDebuffData: 1
-  kapaFunctionType: 0
+  kapaFunctionType: 2
   doubleDiffAtkDatas:
     doubleABuffDebuff:
       hasMovePointsBDb: 0
@@ -72,10 +69,10 @@ MonoBehaviour:
     hasDiffPatterns: 0
   firstHitEffectsData:
     buffDebuffList:
-      hasMovePointsBDb: 0
+      hasMovePointsBDb: 1
       mPBuffDebuffData:
-        value: 0
-        turnNumber: 0
+        value: -2
+        turnNumber: 1
       hasDefenseBDb: 0
       defBuffDebuffData:
         value: 0
@@ -135,13 +132,22 @@ MonoBehaviour:
     hasBalanceMultBDb: 0
     balMultBuffDebuffData: 1
     turnNumber: 0
-  _pattern:
+  pattern:
   - {x: 0, y: -1, z: 0}
-  _nAKapaSupFields:
-    compPointsAdded: 1
+  - {x: 0, y: -2, z: 0}
+  - {x: 0, y: -3, z: 0}
+  - {x: 0, y: -4, z: 0}
+  - {x: 0, y: -5, z: 0}
+  - {x: 0, y: -6, z: 0}
+  - {x: 0, y: -7, z: 0}
+  - {x: 0, y: -8, z: 0}
+  - {x: 0, y: -9, z: 0}
+  - {x: 0, y: -10, z: 0}
+  cKapaSupFields:
+    neededCompPoints: 0
     ultPointsAdded: 0
     animation: {fileID: 0}
-  _damageFeedBack: {fileID: 8948626333531248720, guid: 8f927771530abf045b81020ae94b0299, type: 3}
+  damageFeedBack: {fileID: 8948626333531248720, guid: 8f927771530abf045b81020ae94b0299, type: 3}
   vFx:
     sprites:
     - {fileID: -1732171263, guid: e19adc554f996024e82e5f15f8115d16, type: 3}
@@ -161,7 +167,7 @@ MonoBehaviour:
     partSys: {fileID: 81484107256008709, guid: 381bf1c886b5e6c4884bbc6fa6154750, type: 3}
     lifeTime: 0.5
     size: 1
-  _cam:
+  cam:
     effectType: 0
     shake:
       last: 0

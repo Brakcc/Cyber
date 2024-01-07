@@ -15,7 +15,7 @@ MonoBehaviour:
   iD: 11
   pname: MAKX SUPER
   type: 3
-  networkRange: 2
+  networkRange: 1
   movePoints: 8
   attack: 21
   defense: 0

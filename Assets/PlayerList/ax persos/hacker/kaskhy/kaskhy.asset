@@ -15,7 +15,7 @@ MonoBehaviour:
   iD: 9
   pname: KASHKY
   type: 3
-  networkRange: 2
+  networkRange: 1
   movePoints: 7
   attack: 29
   defense: 2

@@ -14,21 +14,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iD: 0
   kapaNane: COMPETENCE
-  description: "TIRE  UNE BALLE  TRANSPERCANTE  AVEC  SON  SNIPER,  RALENTISSANT 
-    LE  PREMIER  ENNEMI TOUCH\xC9\nPORTEE  :  10\nDEBUFF  :  - 1 MP"
-  maxPlayerpierce: 4
-  balanceMult: 1
+  description: 'FRAPPE  2  FOIS  DEVANT  LUI  AVEC  SON  SABRE  LASER
+
+    PORTEE 
+    :  1
+
+'
+  maxPlayerpierce: 3
+  balanceMult: 2
   kapaType: 1
   effectType: 1
-  hasBuffDebuffs: 0
+  hasBuffDebuffs: 1
   buffDebuffDatas:
     isBuff: 0
     isCritGuaranted: 0
     buffDebuffList:
       hasMovePointsBDb: 0
       mPBuffDebuffData:
-        value: -2
-        turnNumber: 1
+        value: 0
+        turnNumber: 0
       hasDefenseBDb: 0
       defBuffDebuffData:
         value: 0
@@ -43,7 +47,7 @@ MonoBehaviour:
         turnNumber: 0
       hasBalanceMultBDb: 0
       balMultBuffDebuffData: 1
-  kapaFunctionType: 2
+  kapaFunctionType: 1
   doubleDiffAtkDatas:
     doubleABuffDebuff:
       hasMovePointsBDb: 0
@@ -62,17 +66,17 @@ MonoBehaviour:
       precBuffDebuffData:
         value: 0
         turnNumber: 0
-      hasBalanceMultBDb: 0
-      balMultBuffDebuffData: 1
+      hasBalanceMultBDb: 1
+      balMultBuffDebuffData: 2
     hasDashAfterKapa: 0
     hasGrabAfterKapa: 0
-    hasDiffPatterns: 0
+    hasDiffPatterns: 1
   firstHitEffectsData:
     buffDebuffList:
-      hasMovePointsBDb: 1
+      hasMovePointsBDb: 0
       mPBuffDebuffData:
-        value: -2
-        turnNumber: 1
+        value: 0
+        turnNumber: 0
       hasDefenseBDb: 0
       defBuffDebuffData:
         value: 0
@@ -134,17 +138,10 @@ MonoBehaviour:
     turnNumber: 0
   pattern:
   - {x: 0, y: -1, z: 0}
-  - {x: 0, y: -2, z: 0}
-  - {x: 0, y: -3, z: 0}
-  - {x: 0, y: -4, z: 0}
-  - {x: 0, y: -5, z: 0}
-  - {x: 0, y: -6, z: 0}
-  - {x: 0, y: -7, z: 0}
-  - {x: 0, y: -8, z: 0}
-  - {x: 0, y: -9, z: 0}
-  - {x: 0, y: -10, z: 0}
+  - {x: 1, y: 0, z: 0}
+  - {x: 0, y: 0, z: 1}
   cKapaSupFields:
-    neededCompPoints: 0
+    neededCompPoints: 1
     ultPointsAdded: 0
     animation: {fileID: 0}
   damageFeedBack: {fileID: 8948626333531248720, guid: 8f927771530abf045b81020ae94b0299, type: 3}
