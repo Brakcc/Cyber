@@ -25,10 +25,8 @@ namespace Interfaces.Unit
         Vector3 CurrentWorldPos { get; }
 
         //Compteurs de tours sur les buffs/debuffs
-        int MpBDbCounter { get; set; }
-        int CrBDbCounter { get; set; }
-        int PrecBDbCounter { get; set; }
-        int DefBDbCounter { get; set; }
+        List<int> BDbCounters { get; set; }
+        List<BuffDatas> BuffLists { get; set; }
         int DeathCounter { get; set; }
         int DotCounter { get; set; }
         

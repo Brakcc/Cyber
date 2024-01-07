@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using GameContent.GridManagement.GridGraphManagement.GraphInits;
 using UI.InGameUI;
 using UnityEngine;
@@ -29,10 +30,7 @@ namespace GameContent.Entity.Unit.UnitWorking.UnitList
         public override int CurrentPrecision { get; set; }
         
         //BDb Counters
-        public override int MpBDbCounter { get; set; }
-        public override int CrBDbCounter { get; set; }
-        public override int PrecBDbCounter { get; set; }
-        public override int DefBDbCounter { get; set; }
+        public override List<int> BDbCounters { get; set; }
         public override int DeathCounter { get; set; }
         public override int DotCounter { get; set; }
         

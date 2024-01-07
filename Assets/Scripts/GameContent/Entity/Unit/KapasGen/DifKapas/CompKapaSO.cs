@@ -98,7 +98,7 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
                 base.OnExecute(hexGrid, patterns, unit, fromUnit, out isHitting);
             }
 
-            DoKapa(unit);
+            DoKapa(unit, fromUnit);
             //Debug.Log(Description); //PlaceHolder à remplir avec les anims et considération de dégâts
             EndKapa();
         }
@@ -106,8 +106,11 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
 
         #region cache
 
-        private void DoKapa(IUnit unit)
+        private void DoKapa(IUnit unit, bool fUnit)
         {
+            if (fUnit)
+                return;
+            
             GameLoopManager.gLm.HandleCompPointValueChange(unit.TeamNumber, -cKapaSupFields.neededCompPoints);
             unit.UltPoints += cKapaSupFields.ultPointsAdded;
             //PlaceHolder à rempir avec les anims et considérations de dégâts

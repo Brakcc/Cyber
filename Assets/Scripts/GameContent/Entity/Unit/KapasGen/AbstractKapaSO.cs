@@ -438,10 +438,10 @@ namespace GameContent.Entity.Unit.KapasGen
                     continue;
                 
                 //Verif si l'Unit est de meme team
-                if (unitTarget.TeamNumber == unit.TeamNumber)
+                if (hasBuffDebuffs && buffDebuffDatas.isBuff)
                 {
                     //Buff s'il y a buff
-                    if (hasBuffDebuffs && buffDebuffDatas.isBuff)
+                    if (unitTarget.TeamNumber == unit.TeamNumber)
                     {
                         OnBuffDebuffConsideration(unitTarget, buffDebuffDatas.buffDebuffList);
                     }
@@ -505,8 +505,8 @@ namespace GameContent.Entity.Unit.KapasGen
                         OnDamageConsideration(this, unit, unitTarget,
                             doubleDiffAtkDatas.doubleABuffDebuff.balMultBuffDebuffData, delayAtk,
                             DamageFeedBack);
-                        GrabKapa.OnSecondKapa(HexGridStore.hGs, unit, unitTarget);
                         OnBuffDebuffConsideration(unitTarget, buffDebuffDatas.buffDebuffList);
+                        GrabKapa.OnSecondKapa(HexGridStore.hGs, unit, unitTarget);
                         goto Retake;
                         
                     case KapaFunctionType.DoubleDiffAttack when doubleDiffAtkDatas.hasDiffPatterns && canDoubleKapa:
@@ -518,7 +518,7 @@ namespace GameContent.Entity.Unit.KapasGen
                         canDoubleKapa = false;
                         goto ChangePatterns;
                         
-                    case KapaFunctionType.DoubleDiffAttack when !canDoubleKapa:
+                    case KapaFunctionType.DoubleDiffAttack when !canDoubleKapa && !unitTarget.IsDead:
                         VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
                         OnDamageConsideration(this, unit, unitTarget,
                             buffDebuffDatas.buffDebuffList.hasBalanceMultBDb

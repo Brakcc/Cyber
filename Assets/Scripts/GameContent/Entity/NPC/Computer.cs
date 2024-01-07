@@ -38,7 +38,7 @@ namespace GameContent.Entity.NPC
                 return;
             
             //Bof :/
-            GameLoopManager.gLm.OnEndGame();
+            GameLoopManager.gLm.OnEndGame(1);
         }
 
         public void HandleComputerHack() => initBoard.HandleDeAct(gameObject, false);

@@ -60,7 +60,7 @@ namespace UI.MenuUI
             _t1SelecDpsLeft = Constants.MaxDpsNb;
             _t1SelecHackLeft = Constants.MaxHackerAndTankNb;
             
-            _preselecId = 8;
+            _preselecId = 18;
             _selectionCounter = 7;
             OnShowUnitInSelec(_selectionCounter);
             mapSelec.SetActive(false);
@@ -78,27 +78,35 @@ namespace UI.MenuUI
             {
                 case 7:
                     SelectionAction(team1, 0, id, unitImages, unitList);
+                    _preselecId = 18;
                     break;
                 case 6:
                     SelectionAction(team0, 0, id, unitImages, unitList);
+                    _preselecId = 18;
                     break;
                 case 5:
                     SelectionAction(team0, 1, id, unitImages, unitList);
+                    _preselecId = 18;
                     break;
                 case 4:
                     SelectionAction(team1, 1, id, unitImages, unitList);
+                    _preselecId = 18;
                     break;
                 case 3:
                     SelectionAction(team1, 2, id, unitImages, unitList);
+                    _preselecId = 18;
                     break;
                 case 2:
                     SelectionAction(team0, 2, id, unitImages, unitList);
+                    _preselecId = 18;
                     break;
                 case 1:
                     SelectionAction(team0, 3, id, unitImages, unitList);
+                    _preselecId = 18;
                     break;
                 case 0:
                     SelectionAction(team1, 3, id, unitImages, unitList);
+                    _preselecId = 18;
                     break;
             }
         }

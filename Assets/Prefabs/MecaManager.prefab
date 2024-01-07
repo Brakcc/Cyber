@@ -270,9 +270,22 @@ MonoBehaviour:
     firstTeamPlaying: 0
     deActButton: {fileID: 0}
     teamPlaying: 0
-    heroPlayer0: []
-    heroPlayer1: []
+    heroPlayer0:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    heroPlayer1:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
     countPlayer: 0000000000000000
+  objectifs:
+    maxTurnNb: 30
+    turnText: {fileID: 0}
+    endText: {fileID: 0}
+    endGameUI: {fileID: 0}
   uiFields:
     camM: {fileID: 0}
     cPui:
@@ -285,7 +298,15 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
-    playerStats: []
+    playerStats:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
 --- !u!114 &3628622637204811794
 MonoBehaviour:
   m_ObjectHideFlags: 0
