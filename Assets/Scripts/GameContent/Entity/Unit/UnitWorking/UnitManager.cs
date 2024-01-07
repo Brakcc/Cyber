@@ -18,7 +18,7 @@ namespace GameContent.Entity.Unit.UnitWorking
         [SerializeField] private VFXManager vFx;
         
         //Unit currently stored
-        private IUnit SelectedUnit { get; set; }
+        public IUnit SelectedUnit { get; set; }
         private bool _hasKapaBeenPlayed;
         
         //Hex Currently processed
@@ -35,13 +35,17 @@ namespace GameContent.Entity.Unit.UnitWorking
         private Vector3Int CurrentDirSelected { get; set; }
         private Vector3Int CurrentTargetSelected { get; set; }
 
+        public static UnitManager uM;
+
         #endregion
 
         #region Instance et Awake
 
         private void Awake()
         {
-            _moveSys = new();
+            uM = this;
+            
+            _moveSys = new MoveSystem();
             SelectedUnit = null;
             _previousSelectedHex = null;
             CurrentTypeKapaSelected = KapaType.Default;

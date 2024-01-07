@@ -16,12 +16,15 @@ namespace GameContent.Entity.Unit.KapasGen.KapaFunctions.Grab_Push
 
             await Task.Delay(Constants.DashGrabDelay);
             
+            if (target.IsDead)
+                return;
+            
             ChangeUnitHexPos(target, targetTile);
             
             target.MoveInFrontOf(targetTile.transform.position);
         }
 
-        private static void ChangeUnitHexPos(IUnit uT, Hex tT)
+        private static void ChangeUnitHexPos(IEntity uT, Hex tT)
         {
             HexGridStore.hGs.GetTile(uT.CurrentHexPos).HasEntityOnIt = false;
             HexGridStore.hGs.GetTile(uT.CurrentHexPos).ClearEntity();

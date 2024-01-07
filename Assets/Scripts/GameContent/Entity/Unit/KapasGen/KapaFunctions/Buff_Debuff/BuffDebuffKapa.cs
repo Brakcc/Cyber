@@ -1,4 +1,6 @@
 using Enums.FeedBackEnums;
+using Enums.UnitEnums.UnitEnums;
+using GameContent.Entity.Unit.UnitWorking;
 using Interfaces.Unit;
 
 namespace GameContent.Entity.Unit.KapasGen.KapaFunctions.Buff_Debuff
@@ -8,28 +10,32 @@ namespace GameContent.Entity.Unit.KapasGen.KapaFunctions.Buff_Debuff
         public static void OnBuffDebuffMP(IUnit unitTarget, int val, int turnNb)
         {
             unitTarget.CurrentMp += val;
-            unitTarget.MpBDbCounter = turnNb;
+            unitTarget.BuffLists.Add(new BuffDatas(val, turnNb, BuffType.Mp));
+            unitTarget.BDbCounters.Add(turnNb);
             unitTarget.StatUI.SetMP(unitTarget, val > 0 ? UIColorType.Buff : UIColorType.Debuff);
         }
         
         public static void OnBuffDebuffCritRate(IUnit unitTarget, int val, int turnNb)
         {
             unitTarget.CurrentCritRate += val;
-            unitTarget.CrBDbCounter = turnNb;
+            unitTarget.BuffLists.Add(new BuffDatas(val, turnNb, BuffType.CritRate));
+            unitTarget.BDbCounters.Add(turnNb);
             unitTarget.StatUI.SetCritRate(unitTarget, val > 0 ? UIColorType.Buff : UIColorType.Debuff);
         }
         
         public static void OnBuffDebuffPrecision(IUnit unitTarget, int val, int turnNb)
         {
             unitTarget.CurrentPrecision += val;
-            unitTarget.PrecBDbCounter = turnNb;
+            unitTarget.BuffLists.Add(new BuffDatas(val, turnNb, BuffType.Prec));
+            unitTarget.BDbCounters.Add(turnNb);
             unitTarget.StatUI.SetPrec(unitTarget, val > 0 ? UIColorType.Buff : UIColorType.Debuff);
         }
 
         public static void OnBuffDebuffDef(IUnit unitTarget, int val, int turnNb)
         {
             unitTarget.CurrentDef += val;
-            unitTarget.DefBDbCounter = turnNb;
+            unitTarget.BuffLists.Add(new BuffDatas(val, turnNb, BuffType.Def));
+            unitTarget.BDbCounters.Add(turnNb);
             unitTarget.StatUI.SetDef(unitTarget, val > 0 ? UIColorType.Buff : UIColorType.Debuff);
         }
     }

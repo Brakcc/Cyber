@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Enums.FeedBackEnums;
 using Enums.UnitEnums.KapaEnums;
 using Enums.UnitEnums.UnitEnums;
 using GameContent.GridManagement;
 using Interfaces.Unit;
+using TMPro;
 using UI.InGameUI;
 using UnityEngine;
+using Utilities;
 
 namespace GameContent.Entity.Unit.UnitWorking
 {
@@ -29,10 +32,8 @@ namespace GameContent.Entity.Unit.UnitWorking
         public Vector3 CurrentWorldPos => transform.position;
         
         //BDb Counters
-        public abstract int MpBDbCounter { get; set; }
-        public abstract int CrBDbCounter { get; set; }
-        public abstract int PrecBDbCounter { get; set; }
-        public abstract int DefBDbCounter { get; set; }
+        public abstract List<int> BDbCounters { get; set; }
+        public List<BuffDatas> BuffLists { get; set; }
         public abstract int DeathCounter { get; set; }
         public abstract int DotCounter { get; set; }
 
@@ -48,6 +49,15 @@ namespace GameContent.Entity.Unit.UnitWorking
         public abstract bool CanKapa { get; protected set; }
         public abstract bool IsOnComputer {  get; protected set; }
         public Color OriginColor { get; protected set; }
+
+        [SerializeField] private PlayerKapaUI kapaUI;
+        
+        [System.Serializable]
+        public class PlayerKapaUI
+        {
+            public TMP_Text NAText;
+            public TMP_Text CompText;
+        }
         
         #region Entity heritage
         
@@ -92,14 +102,20 @@ namespace GameContent.Entity.Unit.UnitWorking
             CurrentMp = UnitData.MovePoints;
             CurrentPrecision = 100;
 
-            MpBDbCounter = 0;
-            CrBDbCounter = 0;
-            PrecBDbCounter = 0;
+            BDbCounters = new List<int>
+            {
+                Capacity = 0
+            };
+            BuffLists = new List<BuffDatas>
+            {
+                Capacity = 0
+            };
         }
         
         public virtual void Select()
         {
-            
+            kapaUI.NAText.text = $"{UnitData.KapasList[0].Description}";
+            kapaUI.CompText.text = $"{UnitData.KapasList[1].Description}";
         }
         
         public virtual void MoveOnPath(List<Vector3> currentPath) => StartCoroutine(FollowPath(currentPath,UnitData.Speed));
@@ -131,12 +147,16 @@ namespace GameContent.Entity.Unit.UnitWorking
         {
             CanPlay = false;
             IsDead = true;
-            DeathCounter = 1;
+            DeathCounter = 2;
             GetComponentInChildren<SpriteRenderer>().color = Color.red;
-            DefBDbCounter = 0;
-            CrBDbCounter = 0;
-            MpBDbCounter = 0;
-            PrecBDbCounter = 0;
+            BDbCounters = new List<int>
+            {
+                Capacity = 0
+            };
+            BuffLists = new List<BuffDatas>
+            {
+                Capacity = 0
+            };
             DotCounter = 0;
             ChangeUnitHexPos(this, HexGridStore.hGs);
             StatUI.SetHP(0);
@@ -221,59 +241,82 @@ namespace GameContent.Entity.Unit.UnitWorking
 
         public void OnCheckEffectCounter(IUnit unit)
         {
-            if (unit.MpBDbCounter > 0)
+            for (var i = BuffLists.Count - 1; i > -1; i--)
             {
-                unit.MpBDbCounter--;
-                if (unit.MpBDbCounter == 0)
+                if (unit.BuffLists[i].buffType == BuffType.Mp)
                 {
-                    unit.CurrentMp = unit.UnitData.MovePoints;
-                    unit.StatUI.SetMP(unit);
+                    unit.BDbCounters[i]--;
+                    if (unit.BDbCounters[i] <= 0)
+                    {
+                        unit.CurrentMp -= unit.BuffLists[i].buffValue;
+                        unit.StatUI.SetMP(unit, GetColorType(unit.CurrentMp, unit.UnitData.MovePoints));
+                        unit.BuffLists.RemoveAt(i);
+                        unit.BDbCounters.RemoveAt(i);
+                    }
+                }
+                if (unit.BuffLists[i].buffType == BuffType.Def)
+                {
+                    unit.BDbCounters[i]--;
+                    if (unit.BDbCounters[i] <= 0)
+                    {
+                        unit.CurrentDef -= unit.BuffLists[i].buffValue;
+                        unit.StatUI.SetDef(unit, GetColorType(unit.CurrentDef, unit.UnitData.Defense));
+                        unit.BuffLists.RemoveAt(i);
+                        unit.BDbCounters.RemoveAt(i);
+                    }
+                }
+                if (unit.BuffLists[i].buffType == BuffType.CritRate)
+                {
+                    unit.BDbCounters[i]--;
+                    if (unit.BDbCounters[i] <= 0)
+                    {
+                        unit.CurrentCritRate -= unit.BuffLists[i].buffValue;
+                        unit.StatUI.SetCritRate(unit, GetColorType(unit.CurrentCritRate, unit.UnitData.CritRate));
+                        unit.BuffLists.RemoveAt(i);
+                        unit.BDbCounters.RemoveAt(i);
+                    }
+                }
+                if (unit.BuffLists[i].buffType == BuffType.Prec)
+                {
+                    unit.BDbCounters[i]--;
+                    if (unit.BDbCounters[i] <= 0)
+                    {
+                        unit.CurrentPrecision -= unit.BuffLists[i].buffValue;
+                        unit.StatUI.SetPrec(unit, GetColorType(unit.CurrentPrecision, 100));
+                        unit.BuffLists.RemoveAt(i);
+                        unit.BDbCounters.RemoveAt(i);
+                    }
                 }
             }
-            if (unit.CrBDbCounter > 0)
-            {
-                unit.CrBDbCounter--;
-                if (unit.CrBDbCounter == 0)
-                {
-                    unit.CurrentCritRate = unit.UnitData.CritRate;
-                    unit.StatUI.SetCritRate(unit);
-                }
-            }
-            if (unit.PrecBDbCounter > 0)
-            {
-                unit.PrecBDbCounter--;
-                if (unit.PrecBDbCounter == 0)
-                {
-                    unit.CurrentPrecision = 100;
-                    unit.StatUI.SetPrec(unit);
-                }
-            }
-            if (unit.DefBDbCounter > 0)
-            {
-                unit.DefBDbCounter--;
-                if (unit.DefBDbCounter == 0)
-                {
-                    unit.CurrentDef = unit.UnitData.Defense;
-                    unit.StatUI.SetDef(unit);
-                }
-            }
+            
 
             if (unit.DotCounter > 0)
             {
                 unit.DotCounter--;
                 if (!IsIntersecting(CurrentHexPos, HexGridStore.hGs, UnitData.NetworkRange, out _))
                 {
-                    DotCounter = 0;
+                    unit.DotCounter = 0;
                 }
                 //Avec ca on part totallement du principe, et de facon tres rigide, que la Kapa de type Dot est 
                 //obligatoirement une competence. Donc, on appelle la Kapa 1 dans la liste de Kapa 
                 if (unit.DotCounter > 0)
                 {
-                    unit.UnitData.KapasList[(int)KapaType.Competence].OnExecute(HexGridStore.hGs, GlobalNetwork, unit, true, out var isHitting);
+                    unit.UnitData.KapasList[(int)KapaType.Competence].OnExecute(HexGridStore.hGs, GlobalNetwork, unit, true, out _);
                 }
             }
         }
 
+        private static UIColorType GetColorType(int val, int baseRef)
+        {
+            if (val > baseRef)
+                return UIColorType.Buff;
+            if (val < baseRef)
+                return UIColorType.Debuff;
+            if (val == baseRef)
+                return UIColorType.Default;
+            throw new CustomExceptions.CustomException();
+        }
+        
         public void OnCheckRez(IUnit unit, out bool rezed)
         {
             rezed = false;

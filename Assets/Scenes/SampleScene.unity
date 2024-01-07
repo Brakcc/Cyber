@@ -140,9 +140,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 843942705}
     - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
+      propertyPath: kapaUI.NAText
+      value: 
+      objectReference: {fileID: 351289749}
+    - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: graphs.offset.y
       value: 0.65
       objectReference: {fileID: 0}
+    - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
+      propertyPath: kapaUI.CompText
+      value: 
+      objectReference: {fileID: 351289748}
     - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: kapasList.Array.size
       value: 5
@@ -1063,6 +1071,28 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
+--- !u!114 &351289748 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5303201042551323984, guid: 3c13ea9b3c23ebd4da98ff1da3e9631f, type: 3}
+  m_PrefabInstance: {fileID: 3985531609310562578}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &351289749 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 801584425588656346, guid: 3c13ea9b3c23ebd4da98ff1da3e9631f, type: 3}
+  m_PrefabInstance: {fileID: 3985531609310562578}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &394860623 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5714707210176988669, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
@@ -1452,6 +1482,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1440989062}
     - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
+      propertyPath: kapaUI.NAText
+      value: 
+      objectReference: {fileID: 351289749}
+    - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: graphs.color.b
       value: 0.019954205
       objectReference: {fileID: 0}
@@ -1467,6 +1501,10 @@ PrefabInstance:
       propertyPath: graphs.offset.y
       value: 0.65
       objectReference: {fileID: 0}
+    - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
+      propertyPath: kapaUI.CompText
+      value: 
+      objectReference: {fileID: 351289748}
     - target: {fileID: 5587667834857246865, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1664,6 +1702,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2051161054}
     - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
+      propertyPath: kapaUI.NAText
+      value: 
+      objectReference: {fileID: 351289749}
+    - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: graphs.color.b
       value: 0.019954205
       objectReference: {fileID: 0}
@@ -1679,6 +1721,10 @@ PrefabInstance:
       propertyPath: graphs.offset.y
       value: 0.65
       objectReference: {fileID: 0}
+    - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
+      propertyPath: kapaUI.CompText
+      value: 
+      objectReference: {fileID: 351289748}
     - target: {fileID: 5587667834857246865, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1787,9 +1833,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1407297235}
     - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
+      propertyPath: kapaUI.NAText
+      value: 
+      objectReference: {fileID: 351289749}
+    - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: graphs.offset.y
       value: 0.65
       objectReference: {fileID: 0}
+    - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
+      propertyPath: kapaUI.CompText
+      value: 
+      objectReference: {fileID: 351289748}
     - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: kapasList.Array.size
       value: 5
@@ -2061,6 +2115,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1680732718}
     - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
+      propertyPath: kapaUI.NAText
+      value: 
+      objectReference: {fileID: 351289749}
+    - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: graphs.color.b
       value: 0.019954205
       objectReference: {fileID: 0}
@@ -2076,6 +2134,10 @@ PrefabInstance:
       propertyPath: graphs.offset.y
       value: 0.65
       objectReference: {fileID: 0}
+    - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
+      propertyPath: kapaUI.CompText
+      value: 
+      objectReference: {fileID: 351289748}
     - target: {fileID: 5587667834857246865, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -2657,9 +2719,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2012223073}
     - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
+      propertyPath: kapaUI.NAText
+      value: 
+      objectReference: {fileID: 351289749}
+    - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: graphs.offset.y
       value: 0.65
       objectReference: {fileID: 0}
+    - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
+      propertyPath: kapaUI.CompText
+      value: 
+      objectReference: {fileID: 351289748}
     - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: kapasList.Array.size
       value: 5
@@ -4705,6 +4775,22 @@ PrefabInstance:
 --- !u!1 &1344458223 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6013605041413109649, guid: 3c13ea9b3c23ebd4da98ff1da3e9631f, type: 3}
+  m_PrefabInstance: {fileID: 3985531609310562578}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1400266318 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8377881780470135123, guid: 3c13ea9b3c23ebd4da98ff1da3e9631f, type: 3}
+  m_PrefabInstance: {fileID: 3985531609310562578}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1400266319 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3184015493985371371, guid: 3c13ea9b3c23ebd4da98ff1da3e9631f, type: 3}
   m_PrefabInstance: {fileID: 3985531609310562578}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1405534015
@@ -25616,9 +25702,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2108596891}
     - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
+      propertyPath: kapaUI.NAText
+      value: 
+      objectReference: {fileID: 351289749}
+    - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: graphs.offset.y
       value: 0.65
       objectReference: {fileID: 0}
+    - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
+      propertyPath: kapaUI.CompText
+      value: 
+      objectReference: {fileID: 351289748}
     - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: kapasList.Array.size
       value: 5
@@ -26121,6 +26215,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1905437363}
     - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
+      propertyPath: kapaUI.NAText
+      value: 
+      objectReference: {fileID: 351289749}
+    - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: graphs.color.b
       value: 0.019954205
       objectReference: {fileID: 0}
@@ -26136,6 +26234,10 @@ PrefabInstance:
       propertyPath: graphs.offset.y
       value: 0.65
       objectReference: {fileID: 0}
+    - target: {fileID: 3013032805266673759, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
+      propertyPath: kapaUI.CompText
+      value: 
+      objectReference: {fileID: 351289748}
     - target: {fileID: 5587667834857246865, guid: 5aa9e4cac84043846aaf8592899a56ce, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -28576,6 +28678,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5188276351999158816, guid: 3c13ea9b3c23ebd4da98ff1da3e9631f, type: 3}
   m_PrefabInstance: {fileID: 3985531609310562578}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3985531609310562583 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2889302609938039730, guid: 3c13ea9b3c23ebd4da98ff1da3e9631f, type: 3}
+  m_PrefabInstance: {fileID: 3985531609310562578}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6839896766878513040
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35573,6 +35686,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2588066164149268060, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: objectifs.endText
+      value: 
+      objectReference: {fileID: 1400266318}
+    - target: {fileID: 2588066164149268060, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
       propertyPath: cPUI.Array.data[0]
       value: 
       objectReference: {fileID: 3985531609310562580}
@@ -35588,6 +35705,14 @@ PrefabInstance:
       propertyPath: cPui.Array.data[1]
       value: 
       objectReference: {fileID: 3985531609310562579}
+    - target: {fileID: 2588066164149268060, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: objectifs.turnText
+      value: 
+      objectReference: {fileID: 3985531609310562583}
+    - target: {fileID: 2588066164149268060, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
+      propertyPath: objectifs.endGameUI
+      value: 
+      objectReference: {fileID: 1400266319}
     - target: {fileID: 2588066164149268060, guid: 74002d9789d4acf4494be321fe00199d, type: 3}
       propertyPath: tNbUI.Array.data[0]
       value: 

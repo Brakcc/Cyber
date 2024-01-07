@@ -16,8 +16,9 @@ namespace GameContent.GameManagement
 
         public TeamInits teamInits;
         public TeamInventory teamInventory;
-        //public Objectifs objectifs;
+        public Objectifs objectifs;
         public UIFields uiFields;
+        private int _turnNb;
         
         #region Datas Classes
 
@@ -45,8 +46,11 @@ namespace GameContent.GameManagement
         public class Objectifs
         {
             //general objectifs
-            public int ComputerNumber { get; set; }
-            public int maxObjectif;
+            //public int ComputerNumber { get; set; }
+            public int maxTurnNb;
+            public TMP_Text turnText;
+            public TMP_Text endText;
+            public GameObject endGameUI;
         }
 
         [System.Serializable]
@@ -95,6 +99,10 @@ namespace GameContent.GameManagement
                 i.color = Color.green;
             }
             //foreach (var i in uiFields.computerUI) { i.color = Color.red; }
+
+            objectifs.turnText.text = $"TURNS  LEFT  :  {objectifs.maxTurnNb.ToString()}";
+            _turnNb = objectifs.maxTurnNb;
+            objectifs.endGameUI.SetActive(false);
         }
 
         #region During Game Logic
@@ -104,7 +112,19 @@ namespace GameContent.GameManagement
         /// PLACE HOLDER POSSIBLE POUR UN MOUVEMENT DE CAM OU AUTRE FEEDBACK DE SWITCH
         /// </summary>
         /// <param name="newTeam"></param>
-        private void SwitchTeam(int newTeam) => InitTeam(newTeam);
+        private void SwitchTeam(int newTeam)
+        {
+            if (newTeam % 2 == 0)
+            {
+                _turnNb--;
+                objectifs.turnText.text = $"TURNS  LEFT  :  {_turnNb.ToString()}";
+                if (_turnNb <= 0)
+                {
+                    OnEndGame(0);
+                }
+            }
+            InitTeam(newTeam);
+        }
         
         /// <summary>
         /// appelee à la fin d'une action de kapa d'une des Units.
@@ -152,7 +172,7 @@ namespace GameContent.GameManagement
         
         public void HandleCompPointValueChange(int teamNb, int pC)
         {
-            if (teamInventory.CompPoints[teamNb] >= 5)
+            if (teamInventory.CompPoints[teamNb] >= 5 && pC > 0)
                 return;
             
             teamInventory.CompPoints[teamNb] += pC;
@@ -178,10 +198,17 @@ namespace GameContent.GameManagement
             //changer la logique de Hack des relays
         }
 
-        public void OnEndGame()
+        public void OnEndGame(int teamNb)
         {
             Time.timeScale = 0;
             GetComponent<PlayerInput>().enabled = false;
+            objectifs.endText.text = teamNb switch
+            {
+                0 => "DEFENDERS  WIN",
+                1 => "ATTACKERS  WIN",
+                _ => "BRUH"
+            };
+            objectifs.endGameUI.SetActive(true);
         }
 
         #endregion
