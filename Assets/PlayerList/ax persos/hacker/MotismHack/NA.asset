@@ -14,12 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iD: 0
   kapaNane: NORMAL  ATK
-  description: 'ATTAQUE  TOUS  LES  ENNEMIS  PRESENTS  SUR  LE  RESEAU
+  description: 'ATTAQUE  UN  ENNEMI  PRESENT  SUR  LE  RESEAU
 
-    PORTEE 
-    :  RESEAU '
+    PORTEE  :  RESEAU '
   maxPlayerpierce: 4
-  balanceMult: 3
+  balanceMult: 1
   kapaType: 0
   effectType: 2
   hasBuffDebuffs: 0
@@ -45,7 +44,7 @@ MonoBehaviour:
         turnNumber: 0
       hasBalanceMultBDb: 0
       balMultBuffDebuffData: 1
-  kapaFunctionType: 5
+  kapaFunctionType: 0
   doubleDiffAtkDatas:
     doubleABuffDebuff:
       hasMovePointsBDb: 0

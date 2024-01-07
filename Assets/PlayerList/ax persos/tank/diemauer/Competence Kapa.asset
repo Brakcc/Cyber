@@ -17,10 +17,10 @@ MonoBehaviour:
   description: 'ENVOIE  DES  DRONES-BOUCLIERS  POUR  PROTEGER SES  ALLIERS  PROCHES
 
     PORTEE 
-    :  1
+    :  2  0  DEGATS
 
-    BUFF  :  TOUS LES ENNEMIS PERDENT  25%  CRIT'
-  maxPlayerpierce: 0
+    BUFF  :  +  10  DEF  ALLIES'
+  maxPlayerpierce: 4
   balanceMult: 0
   kapaType: 1
   effectType: 1
@@ -35,7 +35,7 @@ MonoBehaviour:
         turnNumber: 0
       hasDefenseBDb: 1
       defBuffDebuffData:
-        value: 15
+        value: 10
         turnNumber: 2
       hasCritRateBDb: 0
       cRBuffDebuffData:
@@ -45,9 +45,9 @@ MonoBehaviour:
       precBuffDebuffData:
         value: 0
         turnNumber: 0
-      hasBalanceMultBDb: 1
+      hasBalanceMultBDb: 0
       balMultBuffDebuffData: 0
-  kapaFunctionType: 0
+  kapaFunctionType: 5
   doubleDiffAtkDatas:
     doubleABuffDebuff:
       hasMovePointsBDb: 0
@@ -143,6 +143,18 @@ MonoBehaviour:
   - {x: 1, y: 0, z: 0}
   - {x: -1, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
+  - {x: 0, y: -2, z: 0}
+  - {x: 1, y: -1, z: 0}
+  - {x: 2, y: 0, z: 0}
+  - {x: 1, y: 0, z: -1}
+  - {x: 0, y: 0, z: -2}
+  - {x: 0, y: 1, z: -1}
+  - {x: 0, y: 2, z: 0}
+  - {x: -1, y: 1, z: 0}
+  - {x: -2, y: 0, z: 0}
+  - {x: -1, y: 0, z: 1}
+  - {x: 0, y: 0, z: 2}
+  - {x: 0, y: -1, z: 1}
   cKapaSupFields:
     neededCompPoints: 1
     ultPointsAdded: 0

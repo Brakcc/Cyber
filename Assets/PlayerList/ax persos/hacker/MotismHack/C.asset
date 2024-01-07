@@ -14,8 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iD: 0
   kapaNane: COMPETENCE
-  description: "UTILISE  LE  RESEAU  POUR  PARALYSER  LES  ADVERSAIRES\nPORTEE  : 
-    RESEAU \nDEBUFF  :  -25%  CRIT"
+  description: 'UTILISE  LE  RESEAU  POUR  PARALYSER  LES  ADVERSAIRES
+
+    PORTEE 
+    :  RESEAU  0  DEGATS
+
+    DEBUFF  :  - 2  MP'
   maxPlayerpierce: 4
   balanceMult: 0
   kapaType: 1
@@ -25,15 +29,15 @@ MonoBehaviour:
     isBuff: 0
     isCritGuaranted: 0
     buffDebuffList:
-      hasMovePointsBDb: 0
+      hasMovePointsBDb: 1
       mPBuffDebuffData:
-        value: 0
-        turnNumber: 0
+        value: -2
+        turnNumber: 2
       hasDefenseBDb: 0
       defBuffDebuffData:
         value: 0
         turnNumber: 0
-      hasCritRateBDb: 1
+      hasCritRateBDb: 0
       cRBuffDebuffData:
         value: -20
         turnNumber: 1
