@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using DataManagement;
 using Enums.UnitEnums.UnitEnums;
 using GameContent;
@@ -6,6 +7,7 @@ using GameContent.GameManagement;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UI.InGameUI;
 
 namespace UI.MenuUI
 {
@@ -36,6 +38,7 @@ namespace UI.MenuUI
         [SerializeField] private Button[] tankButtons;
         [SerializeField] private Button[] dpsButtons;
         [SerializeField] private Button[] hackButtons;
+        private Button[] _fullbuttons;
 
         #endregion
         
@@ -64,6 +67,9 @@ namespace UI.MenuUI
             _selectionCounter = 7;
             OnShowUnitInSelec(_selectionCounter);
             mapSelec.SetActive(false);
+
+            team0 = new []{Constants.unitNb, Constants.unitNb, Constants.unitNb, Constants.unitNb};
+            team1 = new []{Constants.unitNb, Constants.unitNb, Constants.unitNb, Constants.unitNb};
         }
 
         public void IdSelection(int id)
@@ -110,7 +116,7 @@ namespace UI.MenuUI
                     break;
             }
         }
-
+        
         #region selection methodes
 
         private void SelectionAction(IList<int> whichTeam, int whichU, int iD, IReadOnlyList<GameObject> images, UnitListSo unitL)
@@ -151,6 +157,8 @@ namespace UI.MenuUI
                 
                 if (_t0SelecTankLeft == 0)
                     OnDisableTank();
+                
+                CheckDoubleUnit(0);
             }
             else
             {
@@ -162,6 +170,30 @@ namespace UI.MenuUI
                 
                 if (_t1SelecTankLeft == 0)
                     OnDisableTank();
+                
+                CheckDoubleUnit(1);
+            }
+        }
+
+        private void CheckDoubleUnit(int teamNb)
+        {
+            foreach (var but in dpsButtons)
+            {
+                switch (teamNb)
+                {
+                    case 0:
+                        if (team0.Contains(but.GetComponent<PlayerInfoHover>().iDRef))
+                        {
+                            OnDisableButton(but);
+                        }
+                        break;
+                    case 1:
+                        if (team1.Contains(but.GetComponent<PlayerInfoHover>().iDRef))
+                        {
+                            OnDisableButton(but);
+                        }
+                        break;
+                }
             }
         }
 
@@ -211,7 +243,15 @@ namespace UI.MenuUI
         private static bool IsCounterTeam0(int count) => count is 1 or 2 or 5 or 6;
         
         #region Buttons
-        
+
+        private static void OnDisableButton(Selectable but)
+        {
+            but.interactable = false;
+            var block = but.colors;
+            block.normalColor = Color.grey;
+            but.colors = block;
+        }
+
         private void OnDisableTank()
         {
             foreach (var but in tankButtons)

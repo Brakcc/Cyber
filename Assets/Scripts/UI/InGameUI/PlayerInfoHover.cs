@@ -8,6 +8,7 @@ namespace UI.InGameUI
         
         [SerializeField] private GameObject PlayerInfo;
         [SerializeField] private float timeApparit;
+        public int iDRef;
         private float counter;
         private bool isHovering;
         

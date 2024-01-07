@@ -448,11 +448,12 @@ namespace GameContent.Entity.Unit.KapasGen
                     continue;
                 }
                 
+                Retake:
+                
                 //Verif si Unit deja ded
                 if (unitTarget.IsDead)
                     continue;
-
-                Retake:
+                
                 //verif de la precision
                 if (Random.Range(0, 100) > unit.CurrentPrecision + 1)
                     continue;
