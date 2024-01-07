@@ -18,7 +18,7 @@ MonoBehaviour:
 
     PORTEE  :  RESEAU'
   maxPlayerpierce: 1
-  balanceMult: 1
+  balanceMult: 2
   kapaType: 0
   effectType: 2
   hasBuffDebuffs: 0
@@ -44,7 +44,7 @@ MonoBehaviour:
         turnNumber: 0
       hasBalanceMultBDb: 0
       balMultBuffDebuffData: 1
-  kapaFunctionType: 0
+  kapaFunctionType: 5
   doubleDiffAtkDatas:
     doubleABuffDebuff:
       hasMovePointsBDb: 0

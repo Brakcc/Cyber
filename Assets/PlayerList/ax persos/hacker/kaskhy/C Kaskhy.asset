@@ -40,7 +40,7 @@ MonoBehaviour:
       hasCritRateBDb: 1
       cRBuffDebuffData:
         value: 25
-        turnNumber: 1
+        turnNumber: 3
       hasPrecisionBDb: 0
       precBuffDebuffData:
         value: 0

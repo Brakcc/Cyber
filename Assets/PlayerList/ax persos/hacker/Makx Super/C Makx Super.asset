@@ -19,14 +19,14 @@ MonoBehaviour:
 
     PORTEE  : RESEAU
 
-    BUFF : + 10   DEF '
+    DEBUFF  : - 5   DEF '
   maxPlayerpierce: 4
-  balanceMult: 0
+  balanceMult: 2
   kapaType: 1
   effectType: 2
   hasBuffDebuffs: 1
   buffDebuffDatas:
-    isBuff: 1
+    isBuff: 0
     isCritGuaranted: 0
     buffDebuffList:
       hasMovePointsBDb: 0
@@ -35,8 +35,8 @@ MonoBehaviour:
         turnNumber: 0
       hasDefenseBDb: 1
       defBuffDebuffData:
-        value: 10
-        turnNumber: 1
+        value: -5
+        turnNumber: 2
       hasCritRateBDb: 0
       cRBuffDebuffData:
         value: 0
