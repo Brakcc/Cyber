@@ -14,6 +14,7 @@ namespace GameContent.Entity.Unit.KapasGen
         private PathResult _perfectRange;
         private List<Vector3Int> _activeTiles = new();
         private List<Vector3Int> _perfectTiles = new();
+        
         #endregion
 
         #region methodes
@@ -40,6 +41,7 @@ namespace GameContent.Entity.Unit.KapasGen
             
             return _activeTiles.Count == _perfectTiles.Count;
         }
+        
         #endregion
     }
 }

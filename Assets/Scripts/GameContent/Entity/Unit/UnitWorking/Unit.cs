@@ -195,7 +195,7 @@ namespace GameContent.Entity.Unit.UnitWorking
             var  pas = speed * Time.fixedDeltaTime / 10;
             foreach (var i in path)
             {
-                float z = path[0].z;
+                var z = path[0].z;
                 while (Vector2.Distance(transform.position, i) >= 0.001f)
                 {
                     var position = transform.position;
@@ -297,20 +297,20 @@ namespace GameContent.Entity.Unit.UnitWorking
                         throw new CustomExceptions.CustomException();
                 }
             }
+
+            if (unit.DotCounter <= 0)
+                return;
             
+            unit.DotCounter--;
+            if (!IsIntersecting(CurrentHexPos, HexGridStore.hGs, UnitData.NetworkRange, out _))
+            {
+                unit.DotCounter = 0;
+            }
+            //Avec ca on part totallement du principe, et de facon tres rigide, que la Kapa de type Dot est 
+            //obligatoirement une competence. Donc, on appelle la Kapa 1 dans la liste de Kapa 
             if (unit.DotCounter > 0)
             {
-                unit.DotCounter--;
-                if (!IsIntersecting(CurrentHexPos, HexGridStore.hGs, UnitData.NetworkRange, out _))
-                {
-                    unit.DotCounter = 0;
-                }
-                //Avec ca on part totallement du principe, et de facon tres rigide, que la Kapa de type Dot est 
-                //obligatoirement une competence. Donc, on appelle la Kapa 1 dans la liste de Kapa 
-                if (unit.DotCounter > 0)
-                {
-                    unit.UnitData.KapasList[(int)KapaType.Competence].OnExecute(HexGridStore.hGs, GlobalNetwork, unit, true, out _);
-                }
+                unit.UnitData.KapasList[(int)KapaType.Competence].OnExecute(HexGridStore.hGs, GlobalNetwork, unit, true, out _);
             }
         }
 
