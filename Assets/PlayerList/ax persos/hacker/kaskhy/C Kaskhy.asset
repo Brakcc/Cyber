@@ -17,9 +17,10 @@ MonoBehaviour:
   description: 'UTILISE  LE  RESEAU  POUR  GUIDER  SES  ALLIES  A  FRAPPER  LES 
     POINTS  FAIBLES  ADVERSES
 
-    PORTEE  :  RESEAU
+    PORTEE  :  RESEAU  -  0  DEGATS
 
-    BUFF  :  + 25% CRIT ALLIEES'
+    BUFF  : 
+    + 25% CRIT ALLIEES'
   maxPlayerpierce: 4
   balanceMult: 0
   kapaType: 1

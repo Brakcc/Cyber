@@ -17,7 +17,7 @@ MonoBehaviour:
   description: 'ENVOIE  DES  DRONES-BOUCLIERS  POUR  PROTEGER SES  ALLIERS  PROCHES
 
     PORTEE 
-    :  2  0  DEGATS
+    :  2  -  0  DEGATS
 
     BUFF  :  +  10  DEF  ALLIES'
   maxPlayerpierce: 4

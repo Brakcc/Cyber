@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iD: 0
   kapaNane: NORMAL  ATK
-  description: 'ATTAQUE  UNE  CIBLE  VIA  LE  RESEAU
+  description: 'ATTAQUE  TOUS  LES  ENNEMIS  PRESENTS  SUR  LE  RESEAU
 
-    PORTEE  :  RESEAU'
+    PORTEE 
+    :  RESEAU'
   maxPlayerpierce: 1
   balanceMult: 1
   kapaType: 0
