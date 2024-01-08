@@ -8,6 +8,7 @@ namespace CameraManagement
     public static class CameraFunctions
     {
         #region methodes
+        
         #region Shake
         /// <summary>
         /// Lance un cameraShake selon un profil choisi
@@ -71,6 +72,7 @@ namespace CameraManagement
             await Task.Delay(0);
         }
         #endregion
+        
         #endregion
     }
 }

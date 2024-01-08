@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TheHub.unity
     guid: 4057699b60bb1544eb75f4c5e497f0b6
+  - enabled: 1
+    path: Assets/Scenes/StartScene.unity
+    guid: a15b0bf01ee5b3e42a78e903e777166a
   m_configObjects: {}

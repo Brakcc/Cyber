@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UI.InGameUI;
+using Utilities;
 
 namespace UI.MenuUI
 {
@@ -45,6 +46,7 @@ namespace UI.MenuUI
         private int _selectionCounter;
         private int _preselecId;
         [SerializeField] private GameObject[] unitImages;
+        [SerializeField] private TMP_Text[] unitNames;
         [SerializeField] private TMP_Text currentSelecUnitName;
         [SerializeField] private UnitListSo unitList;
         [SerializeField] private GameObject mapSelec;
@@ -83,45 +85,53 @@ namespace UI.MenuUI
             switch (_selectionCounter)
             {
                 case 7:
-                    SelectionAction(team1, 0, id, unitImages, unitList);
-                    _preselecId = 18;
+                    SelectionAction(team1, 0, id, unitImages, unitNames, unitList);
+                    _preselecId = Constants.unitNb;
+                    currentSelecUnitName.text = "";
                     break;
                 case 6:
-                    SelectionAction(team0, 0, id, unitImages, unitList);
-                    _preselecId = 18;
+                    SelectionAction(team0, 0, id, unitImages, unitNames, unitList);
+                    _preselecId = Constants.unitNb;
+                    currentSelecUnitName.text = "";
                     break;
                 case 5:
-                    SelectionAction(team0, 1, id, unitImages, unitList);
-                    _preselecId = 18;
+                    SelectionAction(team0, 1, id, unitImages, unitNames, unitList);
+                    _preselecId = Constants.unitNb;
+                    currentSelecUnitName.text = "";
                     break;
                 case 4:
-                    SelectionAction(team1, 1, id, unitImages, unitList);
-                    _preselecId = 18;
+                    SelectionAction(team1, 1, id, unitImages, unitNames, unitList);
+                    _preselecId = Constants.unitNb;
+                    currentSelecUnitName.text = "";
                     break;
                 case 3:
-                    SelectionAction(team1, 2, id, unitImages, unitList);
-                    _preselecId = 18;
+                    SelectionAction(team1, 2, id, unitImages, unitNames, unitList);
+                    _preselecId = Constants.unitNb;
+                    currentSelecUnitName.text = "";
                     break;
                 case 2:
-                    SelectionAction(team0, 2, id, unitImages, unitList);
-                    _preselecId = 18;
+                    SelectionAction(team0, 2, id, unitImages, unitNames, unitList);
+                    _preselecId = Constants.unitNb;
+                    currentSelecUnitName.text = "";
                     break;
                 case 1:
-                    SelectionAction(team0, 3, id, unitImages, unitList);
-                    _preselecId = 18;
+                    SelectionAction(team0, 3, id, unitImages, unitNames, unitList);
+                    _preselecId = Constants.unitNb;
+                    currentSelecUnitName.text = "";
                     break;
                 case 0:
-                    SelectionAction(team1, 3, id, unitImages, unitList);
-                    _preselecId = 18;
+                    SelectionAction(team1, 3, id, unitImages, unitNames, unitList);
+                    _preselecId = Constants.unitNb;
+                    currentSelecUnitName.text = "";
                     break;
             }
         }
         
         #region selection methodes
 
-        private void SelectionAction(IList<int> whichTeam, int whichU, int iD, IReadOnlyList<GameObject> images, UnitListSo unitL)
+        private void SelectionAction(IList<int> whichTeam, int whichU, int iD, IReadOnlyList<GameObject> images, IReadOnlyList<TMP_Text> names, UnitListSo unitL)
         {
-            OnSelect(whichTeam, whichU, iD, images[_selectionCounter], unitL);
+            OnSelect(whichTeam, whichU, iD, images[_selectionCounter], names[_selectionCounter], unitL);
             OnCheckTeamComp(unitL.GetUnitData(iD).Type, _selectionCounter);
             OnValidateSelec(_selectionCounter);
             _selectionCounter--;
@@ -231,13 +241,19 @@ namespace UI.MenuUI
                 case UnitType.Hacker when !IsCounterTeam0(counter):
                     _t1SelecHackLeft--;
                     break;
+                case UnitType.Default:
+                default:
+                    throw new CustomExceptions.CustomException();
             }
         }
         
-        private static void OnSelect(IList<int> team, int whichUnit, int id, GameObject goImage, UnitListSo list)
+        private static void OnSelect(IList<int> team, int whichUnit, int id, GameObject goImage, TMP_Text name, UnitListSo list)
         {
             team[whichUnit] = id;
-            goImage.GetComponent<Image>().sprite = list.GetUnitData(id).Sprite;
+            var image = goImage.GetComponent<Image>();
+            image.sprite = list.GetUnitData(id).Sprite;
+            image.preserveAspect = true;
+            name.text = list.GetUnitData(id).Name;
         }
         
         private static bool IsCounterTeam0(int count) => count is 1 or 2 or 5 or 6;

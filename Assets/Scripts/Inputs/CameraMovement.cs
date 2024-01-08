@@ -66,13 +66,16 @@ namespace Inputs
         {
             if (!isDragging || isMoving) return;
 
-            diff = GetMousePosition() - transform.position;
-            transform.position = origingPos - diff;
+            Transform trans;
+            diff = GetMousePosition() - (trans = transform).position;
+            trans.position = origingPos - diff;
         }
 
         public void OnDrag(InputAction.CallbackContext ctx)
         {
-            if (ctx.started) { origingPos = GetMousePosition(); }
+            if (ctx.started)
+                origingPos = GetMousePosition();
+            
             isDragging = ctx.started || ctx.performed;
         }
 
