@@ -27,41 +27,43 @@ namespace GameContent.Entity.Unit.KapasGen.DifKapas
         #endregion
 
         #region inherited paterns/accessors
+        
         //North tiles
         public override Vector3Int[] OddNTiles { get => _oddNTiles; protected set => _oddNTiles = value; }
-        [SerializeField] private Vector3Int[] _oddNTiles;
+        [HideInInspector][SerializeField] private Vector3Int[] _oddNTiles;
         public override Vector3Int[] EvenNTiles { get => _evenNTiles; protected set => _evenNTiles = value; }
-        [SerializeField] private Vector3Int[] _evenNTiles;
+        [HideInInspector][SerializeField] private Vector3Int[] _evenNTiles;
 
         //EN tiles
         public override Vector3Int[] OddENTiles { get => _oddENTiles; protected set => _oddENTiles = value; }
-        [SerializeField] private Vector3Int[] _oddENTiles;
+        [HideInInspector][SerializeField] private Vector3Int[] _oddENTiles;
         public override Vector3Int[] EvenENTiles { get => _evenENTiles; protected set => _evenENTiles = value; }
-        [SerializeField] private Vector3Int[] _evenENTiles;
+        [HideInInspector][SerializeField] private Vector3Int[] _evenENTiles;
 
         //ES tiles
         public override Vector3Int[] OddESTiles { get => _oddESTiles; protected set => _oddESTiles = value; }
-        [SerializeField] private Vector3Int[] _oddESTiles;
+        [HideInInspector][SerializeField] private Vector3Int[] _oddESTiles;
         public override Vector3Int[] EvenESTiles { get => _evenESTiles; protected set => _evenESTiles = value; }
-        [SerializeField] private Vector3Int[] _evenESTiles;
+        [HideInInspector][SerializeField] private Vector3Int[] _evenESTiles;
 
         //S tiles
         public override Vector3Int[] OddSTiles { get => _oddSTiles; protected set => _oddSTiles = value; }
-        [SerializeField] private Vector3Int[] _oddSTiles;
+        [HideInInspector][SerializeField] private Vector3Int[] _oddSTiles;
         public override Vector3Int[] EvenSTiles { get => _evenSTiles; protected set => _evenSTiles = value; }
-        [SerializeField] private Vector3Int[] _evenSTiles;
+        [HideInInspector][SerializeField] private Vector3Int[] _evenSTiles;
 
         //WS tiles
         public override Vector3Int[] OddWSTiles { get => _oddWSTiles; protected set => _oddWSTiles = value; }
-        [SerializeField] private Vector3Int[] _oddWSTiles;
+        [HideInInspector][SerializeField] private Vector3Int[] _oddWSTiles;
         public override Vector3Int[] EvenWSTiles { get => _evenWSTiles; protected set => _evenWSTiles = value; }
-        [SerializeField] private Vector3Int[] _evenWSTiles;
+        [HideInInspector][SerializeField] private Vector3Int[] _evenWSTiles;
 
         //WN tiles
         public override Vector3Int[] OddWNTiles { get => _oddWNTiles; protected set => _oddWNTiles = value; }
-        [SerializeField] private Vector3Int[] _oddWNTiles;
+        [HideInInspector][SerializeField] private Vector3Int[] _oddWNTiles;
         public override Vector3Int[] EvenWNTiles { get => _evenWNTiles; protected set => _evenWNTiles = value; }
-        [SerializeField] private Vector3Int[] _evenWNTiles;
+        [HideInInspector][SerializeField] private Vector3Int[] _evenWNTiles;
+        
         #endregion
 
         #region fields

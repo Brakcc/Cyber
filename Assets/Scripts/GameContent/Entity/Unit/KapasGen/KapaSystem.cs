@@ -19,8 +19,10 @@ namespace GameContent.Entity.Unit.KapasGen
 
         #region methodes
 
-        private static PathResult GetKapaRange(IEntity unit, HexGridStore hexGrid) => PathFind.PathKapaVerif(hexGrid, unit.CurrentHexPos, Constants.MaxReach);
-        private static PathResult GetPerfectPath(IEntity unit, HexGridStore hexGrid) => PathFind.PerfectPath(hexGrid, unit.CurrentHexPos, Constants.MaxReach);
+        private static PathResult GetKapaRange(IEntity unit, HexGridStore hexGrid) =>
+            PathFind.PathKapaVerif(hexGrid, unit.CurrentHexPos, Constants.MaxReach);
+        private static PathResult GetPerfectPath(IEntity unit, HexGridStore hexGrid) =>
+            PathFind.PerfectPath(hexGrid, unit.CurrentHexPos, Constants.MaxReach);
 
         /// <summary>
         /// Verifie le chemin parfait et obstacle pour comparer et determiner si le chemin est

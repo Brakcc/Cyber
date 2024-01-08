@@ -555,7 +555,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -500, y: 0}
+  m_AnchoredPosition: {x: -500, y: 350}
   m_SizeDelta: {x: 600, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1160251135
@@ -580,7 +580,11 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'PIERRE-ANTOINE  CHALARON
 
-    <SIZE=45>VFX ARTIST</size>'
+    <SIZE=45><i>GAME  DESIGN
+
+    LEVEL  DESIGN
+
+    </i></size>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab9557b347b7e2241b83bca5bcde315f, type: 2}
   m_sharedMaterial: {fileID: 8066348094211976408, guid: ab9557b347b7e2241b83bca5bcde315f, type: 2}
@@ -691,7 +695,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 500, y: 0}
+  m_AnchoredPosition: {x: 500, y: 50}
   m_SizeDelta: {x: 600, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1267381138
@@ -716,7 +720,11 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'CLEMENT  STRAPPAZZON
 
-    <SIZE=45>QUI  ?</size>'
+    <SIZE=45><i>GAME  DESIGN
+
+    PROGRAMMATION
+
+    </i></size>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab9557b347b7e2241b83bca5bcde315f, type: 2}
   m_sharedMaterial: {fileID: 8066348094211976408, guid: ab9557b347b7e2241b83bca5bcde315f, type: 2}
@@ -958,7 +966,19 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'REMERCIEMENTS  PARTICULIERS
 
-    <size=45>PHILIPPE  BLANCHET</size>'
+    <size=45>PHILIPPE  BLANCHET
+
+    AVRIL 
+    CLEMENTZ-.LINK
+
+    THOMAS DESAUNAY
+
+    JACQUES CAVAILLAC
+
+    GEOFFREY  PINEAU
+
+    LE
+    GROUPE DES  GA <3</size>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab9557b347b7e2241b83bca5bcde315f, type: 2}
   m_sharedMaterial: {fileID: 8066348094211976408, guid: ab9557b347b7e2241b83bca5bcde315f, type: 2}
@@ -1069,7 +1089,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -500, y: 350}
+  m_AnchoredPosition: {x: -500, y: 50}
   m_SizeDelta: {x: 600, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1945780482
@@ -1094,9 +1114,11 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'AXELLE  LERCHE
 
-    <SIZE=45>PRODUCING
+    <SIZE=45><i>GAME  DESIGN
 
-    </size>'
+    EQUILIBRAGE
+
+    </i></size>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab9557b347b7e2241b83bca5bcde315f, type: 2}
   m_sharedMaterial: {fileID: 8066348094211976408, guid: ab9557b347b7e2241b83bca5bcde315f, type: 2}
@@ -1230,11 +1252,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'CHARLES  DURUY
-
-    <SIZE=45>SOUND  DESIGN
-
-    </size>'
+  m_text: "CHARLES  DURUY\n<SIZE=45><i>GAME  DESIGN\nLEVEL  DESIGN \nEQUILIBRAGE\n</i></size>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab9557b347b7e2241b83bca5bcde315f, type: 2}
   m_sharedMaterial: {fileID: 8066348094211976408, guid: ab9557b347b7e2241b83bca5bcde315f, type: 2}

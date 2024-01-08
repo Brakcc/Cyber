@@ -354,7 +354,7 @@ namespace GameContent.Entity.Unit.UnitWorking
             
             if (HandleHexOutOfButton(buttonPos)) 
                 return;
-
+            
             vFx.OnGenerateParticlesSys(HexGridStore.hGs.GetTile(buttonPos).transform.position);
             
             //Active la Kapa avec Click sur Map

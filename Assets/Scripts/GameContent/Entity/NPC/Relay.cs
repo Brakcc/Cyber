@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using Enums.GridEnums;
+using GameContent.Entity.Unit.UnitWorking;
 using GameContent.GameManagement;
 using GameContent.GridManagement;
 using GameContent.GridManagement.GridGraphManagement.GraphInits;
 using Interfaces.Unit;
 using UnityEngine;
+using Utilities.CustomHideAttribute;
 
 namespace GameContent.Entity.NPC
 {
@@ -26,6 +28,10 @@ namespace GameContent.Entity.NPC
 
         [SerializeField] private RelayTarget reTarget;
         private RelayTarget ReTarget => reTarget;
+
+        [SerializeField] private bool canSwitchSpawn;
+        [ShowIfBoolTrue("canSwitchSpawn")]
+        [SerializeField] private UnitPosManager newUnitSpawn;
         
         #region Hack checkers
         public bool GotHacked { get; private set; }
@@ -156,6 +162,9 @@ namespace GameContent.Entity.NPC
             HandleComputerHack();
             GotHacked = true;
 
+            if (canSwitchSpawn)
+                newUnitSpawn.OnChangeAttackTeamSpawn();
+            
             HexGridStore.hGs.OnAddToNetwork(NetworkType.Net1, relayRefs.networkRef);
             HexGridStore.hGs.OnDelFromNetwork(NetworkType.Net0, relayRefs.networkRef);
 

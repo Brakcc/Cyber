@@ -39,7 +39,7 @@ namespace GameContent.Entity.Unit.UnitWorking
             }
         }
 
-        public void CalculateRange(IUnit selects, HexGridStore hexGrid) => _moveRange = PathFind.PathGetRange(hexGrid, selects.CurrentHexPos, selects.CurrentMp);
+        private void CalculateRange(IUnit selects, HexGridStore hexGrid) => _moveRange = PathFind.PathGetRange(hexGrid, selects.CurrentHexPos, selects.CurrentMp);
 
         public void ShowPath(Vector3Int selects,  HexGridStore hexGrid)
         {

@@ -15,5 +15,6 @@
         public const int StartingCompPoints = 2;
         public const int StartingTurretNb = 2;
         public const int unitNb = 12;
+        public const int TeamSize = 4;
     }
 }

@@ -36,6 +36,7 @@ namespace GameContent.Entity.Unit.UnitWorking
         public List<BuffDatas> BuffLists { get; set; }
         public abstract int DeathCounter { get; set; }
         public abstract int DotCounter { get; set; }
+        public Vector3Int SpawnPos { get; set; }
 
         #endregion
         
@@ -79,6 +80,7 @@ namespace GameContent.Entity.Unit.UnitWorking
             base.OnInit();
 
             OriginPos = CurrentHexPos;
+            SpawnPos = OriginPos;
             CanPlay = false;
             IsDead = false;
             IsPersoLocked = false;
@@ -158,9 +160,9 @@ namespace GameContent.Entity.Unit.UnitWorking
                 Capacity = 0
             };
             DotCounter = 0;
-            ChangeUnitHexPos(this, HexGridStore.hGs);
+            ChangeDeathUnitHexPos(this, HexGridStore.hGs);
             StatUI.SetHP(0);
-            PositionCharacterOnTile(HexGridStore.hGs.GetTile(OriginPos).transform.position);
+            PositionCharacterOnTile(HexGridStore.hGs.GetTile(SpawnPos).transform.position);
         }
 
         protected virtual void OnRez()
@@ -339,9 +341,9 @@ namespace GameContent.Entity.Unit.UnitWorking
         private void PositionCharacterOnTile(Vector3 pos) =>
             transform.position = new Vector3(pos.x, pos.y, pos.z - Constants.OffsetZPos);
         
-        private static void ChangeUnitHexPos(IUnit uT, HexGridStore hexGrid)
+        private static void ChangeDeathUnitHexPos(IUnit uT, HexGridStore hexGrid)
         {
-            var tT = hexGrid.GetTile(uT.OriginPos);
+            var tT = hexGrid.GetTile(uT.SpawnPos);
             
             hexGrid.GetTile(uT.CurrentHexPos).HasEntityOnIt = false;
             hexGrid.GetTile(uT.CurrentHexPos).ClearEntity();

@@ -8,6 +8,7 @@ namespace GameContent.GridManagement.HexPathFind
     public static class PathFind
     {
         #region methodes
+        
         #region pathFind methodes
         /// <summary>
         /// Calcul en A* BFS pour determiner l'ensemble des tiles possibles pour une Unit à circuler dessus
@@ -86,9 +87,8 @@ namespace GameContent.GridManagement.HexPathFind
 
                     if (newCost > movePoints) continue;
                     
-                    if (!processedNodes.ContainsKey(adjPos))
+                    if (processedNodes.TryAdd(adjPos, currentNode))
                     {
-                        processedNodes[adjPos] = currentNode;
                         totalCost[adjPos] = newCost;
                         nextNodes.Enqueue(adjPos);
                     }
@@ -126,15 +126,14 @@ namespace GameContent.GridManagement.HexPathFind
                 {
                     //a plus la verif :D
                     //on utilise la valeur d'un walkable pour comparer sans considérer d'obstacle
-                    var nodeCost = (int)HexType.Walkable;
+                    const int nodeCost = (int)HexType.Walkable;
                     var currentCost = totalCost[currentNode];
                     var newCost = currentCost + nodeCost;
 
                     if (newCost > movePoints) continue;
                     
-                    if (!processedNodes.ContainsKey(adjPos))
+                    if (processedNodes.TryAdd(adjPos, currentNode))
                     {
-                        processedNodes[adjPos] = currentNode;
                         totalCost[adjPos] = newCost;
                         nextNodes.Enqueue(adjPos);
                     }
@@ -150,6 +149,7 @@ namespace GameContent.GridManagement.HexPathFind
         #endregion
 
         #region Path generation
+        
         /// <summary>
         /// Generation du chemin le plus court avec le pathFind pour ensuite l'inverser afin de placer la liste dans le bon sens
         /// </summary>
@@ -208,7 +208,9 @@ namespace GameContent.GridManagement.HexPathFind
             path.Reverse();
             return path.Skip(1).ToList();
         }
+        
         #endregion
+        
         #endregion
     }
 
@@ -217,6 +219,7 @@ namespace GameContent.GridManagement.HexPathFind
         public Dictionary<Vector3Int, Vector3Int?> calculatedNodes;
 
         #region methodes
+        
         /// <summary>
         /// Renvoit une liste de Vector3Int qui est le chemin de l'Unit vers une tile en Vector3Int
         /// </summary>
@@ -248,6 +251,7 @@ namespace GameContent.GridManagement.HexPathFind
         /// </summary>
         /// <returns></returns>
         public readonly IEnumerable<Vector3Int> GetRangePositions() => calculatedNodes.Keys;
+        
         #endregion
     }
 }

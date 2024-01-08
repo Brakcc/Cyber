@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 489815630530185795}
   - component: {fileID: 2588066164149268060}
   - component: {fileID: 3628622637204811794}
+  - component: {fileID: 8786309029265714172}
   m_Layer: 0
   m_Name: MecaManager
   m_TagString: Untagged
@@ -135,6 +136,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: a3009d71-106a-4529-baf3-b5ef23bd2641
     m_ActionName: Player/Scroll[/Mouse/scroll]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8786309029265714172}
+        m_TargetAssemblyTypeName: UI.MenuUI.PauseMenuManager, Assembly-CSharp
+        m_MethodName: OnEnableMenu
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c8fe3218-ebf7-471b-80ba-687171180035
+    m_ActionName: Player/Esc[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -326,3 +343,16 @@ MonoBehaviour:
     heroPlayer1: []
   team0: 
   team1: 
+--- !u!114 &8786309029265714172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6839896767206874217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64b5e8415b044879938bfd8b0ab159ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenuUI: {fileID: 0}

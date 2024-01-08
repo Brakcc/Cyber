@@ -30,6 +30,9 @@ namespace Interfaces.Unit
         int DeathCounter { get; set; }
         int DotCounter { get; set; }
         
+        //Pos
+        Vector3Int SpawnPos { get; set; }
+        
         #endregion
 
         Vector3Int OriginPos { get; }
