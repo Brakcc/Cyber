@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Enums.UnitEnums.KapaEnums;
 using Enums.UnitEnums.UnitEnums;
@@ -414,6 +414,7 @@ namespace GameContent.Entity.Unit.KapasGen
             if (KapaFunctionType == KapaFunctionType.DOT && !fromUnit)
             {
                 DotKapa.OnStartDot(unit, dotKapaDatas.turnNumber);
+                return;
             }
             
             foreach (var pos in patternToUse)
@@ -437,16 +438,20 @@ namespace GameContent.Entity.Unit.KapasGen
                 if (unitTarget == null)
                     continue;
                 
-                //Verif si l'Unit est de meme team
+                //Buff s'il y a buff
                 if (hasBuffDebuffs && buffDebuffDatas.isBuff)
                 {
-                    //Buff s'il y a buff
+                    //Verif si l'Unit est de meme team
                     if (unitTarget.TeamNumber == unit.TeamNumber)
                     {
                         OnBuffDebuffConsideration(unitTarget, buffDebuffDatas.buffDebuffList);
                     }
                     continue;
                 }
+                
+                //Verif si l'Unit est de meme team
+                if (unitTarget.TeamNumber == unit.TeamNumber)
+                    continue;
                 
                 Retake:
                 
