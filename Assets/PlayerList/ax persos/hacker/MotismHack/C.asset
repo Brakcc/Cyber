@@ -17,7 +17,7 @@ MonoBehaviour:
   description: 'UTILISE  LE  RESEAU  POUR  PARALYSER  LES  ADVERSAIRES
 
     PORTEE 
-    :  RESEAU  0  DEGATS
+    :  RESEAU  -  0  DEGATS
 
     DEBUFF  :  - 2  MP'
   maxPlayerpierce: 4
