@@ -161,10 +161,15 @@ namespace GameContent.GameManagement
                     continue;
                 }
         
-                u.OnCheckEffectCounter(u);
                 u.CanPlay = true;
             }
-        
+
+            foreach (var player in teamInventory.playerList[1 - i])
+            {
+                var u = player.GetComponent<IUnit>();
+                u.OnCheckEffectCounter(u);
+            }
+            
             teamInits.deActButton.SetActive(i == 1);
         
             uiFields.camM.OnFollowPlayer(teamInventory.playerList[teamInits.teamPlaying][0].GetComponent<Unit>());

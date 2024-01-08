@@ -14,5 +14,6 @@
         public const int MaxReach = 16;
         public const int StartingCompPoints = 2;
         public const int StartingTurretNb = 2;
+        public const int unitNb = 12;
     }
 }

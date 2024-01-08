@@ -622,7 +622,7 @@ GameObject:
   - component: {fileID: 162356618}
   - component: {fileID: 162356617}
   m_Layer: 5
-  m_Name: Button (5)
+  m_Name: nitro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -756,6 +756,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerInfo: {fileID: 1640908463}
   timeApparit: 0
+  iDRef: 5
 --- !u!114 &162356618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1752,7 +1753,7 @@ GameObject:
   - component: {fileID: 510726282}
   - component: {fileID: 510726281}
   m_Layer: 5
-  m_Name: Button (7)
+  m_Name: sev
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1886,6 +1887,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerInfo: {fileID: 117570534}
   timeApparit: 0
+  iDRef: 7
 --- !u!114 &510726282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3299,7 +3301,7 @@ GameObject:
   - component: {fileID: 820413270}
   - component: {fileID: 820413269}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: bala
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3433,6 +3435,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerInfo: {fileID: 1387729456}
   timeApparit: 0
+  iDRef: 1
 --- !u!114 &820413270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3804,7 +3807,7 @@ GameObject:
   - component: {fileID: 882622429}
   - component: {fileID: 882622428}
   m_Layer: 5
-  m_Name: Button (6)
+  m_Name: arla
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3938,6 +3941,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerInfo: {fileID: 1101221430}
   timeApparit: 0
+  iDRef: 6
 --- !u!114 &882622429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4258,7 +4262,7 @@ GameObject:
   - component: {fileID: 946561580}
   - component: {fileID: 946561579}
   m_Layer: 5
-  m_Name: Button (10)
+  m_Name: moti
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4392,6 +4396,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerInfo: {fileID: 951044468}
   timeApparit: 0
+  iDRef: 10
 --- !u!114 &946561580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5044,7 +5049,7 @@ GameObject:
   - component: {fileID: 1075502526}
   - component: {fileID: 1075502525}
   m_Layer: 5
-  m_Name: Button (4)
+  m_Name: jim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5178,6 +5183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerInfo: {fileID: 310439798}
   timeApparit: 0
+  iDRef: 4
 --- !u!114 &1075502526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5490,7 +5496,7 @@ GameObject:
   - component: {fileID: 1123743936}
   - component: {fileID: 1123743935}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: diemau
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5624,6 +5630,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerInfo: {fileID: 1105184671}
   timeApparit: 0
+  iDRef: 2
 --- !u!114 &1123743936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5775,7 +5782,7 @@ GameObject:
   - component: {fileID: 1153727599}
   - component: {fileID: 1153727598}
   m_Layer: 5
-  m_Name: Button (11)
+  m_Name: makx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5909,6 +5916,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerInfo: {fileID: 323392348}
   timeApparit: 0
+  iDRef: 11
 --- !u!114 &1153727599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6269,7 +6277,7 @@ GameObject:
   - component: {fileID: 1220751290}
   - component: {fileID: 1220751289}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: rhina
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6403,6 +6411,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerInfo: {fileID: 450285606}
   timeApparit: 0
+  iDRef: 3
 --- !u!114 &1220751290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7115,7 +7124,7 @@ GameObject:
   - component: {fileID: 1428212691}
   - component: {fileID: 1428212690}
   m_Layer: 5
-  m_Name: Button (9)
+  m_Name: kash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7249,6 +7258,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerInfo: {fileID: 925036025}
   timeApparit: 0
+  iDRef: 9
 --- !u!114 &1428212691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7668,7 +7678,7 @@ GameObject:
   - component: {fileID: 1559740166}
   - component: {fileID: 1559740165}
   m_Layer: 5
-  m_Name: Button
+  m_Name: arta
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7802,6 +7812,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerInfo: {fileID: 1836952875}
   timeApparit: 0
+  iDRef: 0
 --- !u!114 &1559740166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9275,7 +9286,7 @@ GameObject:
   - component: {fileID: 2038358802}
   - component: {fileID: 2038358801}
   m_Layer: 5
-  m_Name: Button (8)
+  m_Name: date
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9409,6 +9420,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerInfo: {fileID: 544897265}
   timeApparit: 0
+  iDRef: 8
 --- !u!114 &2038358802
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -174,7 +175,6 @@ namespace GameContent.Entity.Unit.UnitWorking
             CurrentDef = UnitData.Defense;
             CurrentCritRate = UnitData.CritRate;
             
-            OnCheckEffectCounter(this);
             GetComponentInChildren<SpriteRenderer>().color = OriginColor;
             
             StatUI.SetHP(this);
@@ -243,53 +243,61 @@ namespace GameContent.Entity.Unit.UnitWorking
         {
             for (var i = BuffLists.Count - 1; i > -1; i--)
             {
-                if (unit.BuffLists[i].buffType == BuffType.Mp)
+                switch (unit.BuffLists[i].buffType)
                 {
-                    unit.BDbCounters[i]--;
-                    if (unit.BDbCounters[i] <= 0)
+                    case BuffType.Mp:
                     {
-                        unit.CurrentMp -= unit.BuffLists[i].buffValue;
-                        unit.StatUI.SetMP(unit, GetColorType(unit.CurrentMp, unit.UnitData.MovePoints));
-                        unit.BuffLists.RemoveAt(i);
-                        unit.BDbCounters.RemoveAt(i);
+                        unit.BDbCounters[i]--;
+                        if (unit.BDbCounters[i] <= 0)
+                        {
+                            unit.CurrentMp -= unit.BuffLists[i].buffValue;
+                            unit.StatUI.SetMP(unit, GetColorType(unit.CurrentMp, unit.UnitData.MovePoints));
+                            unit.BuffLists.RemoveAt(i);
+                            unit.BDbCounters.RemoveAt(i);
+                        }
+                        break;
                     }
-                }
-                if (unit.BuffLists[i].buffType == BuffType.Def)
-                {
-                    unit.BDbCounters[i]--;
-                    if (unit.BDbCounters[i] <= 0)
+                    case BuffType.Def:
                     {
-                        unit.CurrentDef -= unit.BuffLists[i].buffValue;
-                        unit.StatUI.SetDef(unit, GetColorType(unit.CurrentDef, unit.UnitData.Defense));
-                        unit.BuffLists.RemoveAt(i);
-                        unit.BDbCounters.RemoveAt(i);
+                        unit.BDbCounters[i]--;
+                        if (unit.BDbCounters[i] <= 0)
+                        {
+                            unit.CurrentDef -= unit.BuffLists[i].buffValue;
+                            unit.StatUI.SetDef(unit, GetColorType(unit.CurrentDef, unit.UnitData.Defense));
+                            unit.BuffLists.RemoveAt(i);
+                            unit.BDbCounters.RemoveAt(i);
+                        }
+                        break;
                     }
-                }
-                if (unit.BuffLists[i].buffType == BuffType.CritRate)
-                {
-                    unit.BDbCounters[i]--;
-                    if (unit.BDbCounters[i] <= 0)
+                    case BuffType.CritRate:
                     {
-                        unit.CurrentCritRate -= unit.BuffLists[i].buffValue;
-                        unit.StatUI.SetCritRate(unit, GetColorType(unit.CurrentCritRate, unit.UnitData.CritRate));
-                        unit.BuffLists.RemoveAt(i);
-                        unit.BDbCounters.RemoveAt(i);
+                        unit.BDbCounters[i]--;
+                        if (unit.BDbCounters[i] <= 0)
+                        {
+                            unit.CurrentCritRate -= unit.BuffLists[i].buffValue;
+                            unit.StatUI.SetCritRate(unit, GetColorType(unit.CurrentCritRate, unit.UnitData.CritRate));
+                            unit.BuffLists.RemoveAt(i);
+                            unit.BDbCounters.RemoveAt(i);
+                        }
+                        break;
                     }
-                }
-                if (unit.BuffLists[i].buffType == BuffType.Prec)
-                {
-                    unit.BDbCounters[i]--;
-                    if (unit.BDbCounters[i] <= 0)
+                    case BuffType.Prec:
                     {
-                        unit.CurrentPrecision -= unit.BuffLists[i].buffValue;
-                        unit.StatUI.SetPrec(unit, GetColorType(unit.CurrentPrecision, 100));
-                        unit.BuffLists.RemoveAt(i);
-                        unit.BDbCounters.RemoveAt(i);
+                        unit.BDbCounters[i]--;
+                        if (unit.BDbCounters[i] <= 0)
+                        {
+                            unit.CurrentPrecision -= unit.BuffLists[i].buffValue;
+                            unit.StatUI.SetPrec(unit, GetColorType(unit.CurrentPrecision, 100));
+                            unit.BuffLists.RemoveAt(i);
+                            unit.BDbCounters.RemoveAt(i);
+                        }
+                        break;
                     }
+                    default:
+                        throw new CustomExceptions.CustomException();
                 }
             }
             
-
             if (unit.DotCounter > 0)
             {
                 unit.DotCounter--;
