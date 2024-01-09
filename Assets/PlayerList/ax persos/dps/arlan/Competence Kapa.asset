@@ -19,6 +19,8 @@ MonoBehaviour:
     PORTEE 
     :  1
 
+    DEBUFF  :  - 10  DEF
+
 '
   maxPlayerpierce: 3
   balanceMult: 2
@@ -33,10 +35,10 @@ MonoBehaviour:
       mPBuffDebuffData:
         value: 0
         turnNumber: 0
-      hasDefenseBDb: 0
+      hasDefenseBDb: 1
       defBuffDebuffData:
-        value: 0
-        turnNumber: 0
+        value: -10
+        turnNumber: 1
       hasCritRateBDb: 0
       cRBuffDebuffData:
         value: 0
@@ -190,3 +192,15 @@ MonoBehaviour:
       orthoSizeChange: 0
     back:
       orthoSizeChange: 0
+  _oddNTiles: []
+  _evenNTiles: []
+  _oddENTiles: []
+  _evenENTiles: []
+  _oddESTiles: []
+  _evenESTiles: []
+  _oddSTiles: []
+  _evenSTiles: []
+  _oddWSTiles: []
+  _evenWSTiles: []
+  _oddWNTiles: []
+  _evenWNTiles: []

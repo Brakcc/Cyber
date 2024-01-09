@@ -41,7 +41,7 @@ MonoBehaviour:
       hasCritRateBDb: 1
       cRBuffDebuffData:
         value: 25
-        turnNumber: 3
+        turnNumber: 1
       hasPrecisionBDb: 0
       precBuffDebuffData:
         value: 0
@@ -189,3 +189,15 @@ MonoBehaviour:
       orthoSizeChange: 0
     back:
       orthoSizeChange: 0
+  _oddNTiles: []
+  _evenNTiles: []
+  _oddENTiles: []
+  _evenENTiles: []
+  _oddESTiles: []
+  _evenESTiles: []
+  _oddSTiles: []
+  _evenSTiles: []
+  _oddWSTiles: []
+  _evenWSTiles: []
+  _oddWNTiles: []
+  _evenWNTiles: []

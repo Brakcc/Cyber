@@ -15,7 +15,7 @@ MonoBehaviour:
   iD: 0
   kapaNane: COMPETENCE
   description: "LANCE  UNE  GRENADE  ELECTROMAGNETIQUE,  RALENTISSANT LES ENNEMIS
-    TOUCH\xC9S\nPORTEE  :  5  AOE  1\nDEBUFF  :  -2 MP  CENTRE  - 1 MP  AOE"
+    TOUCH\xC9S\nPORTEE  :  4  AOE  1\nDEBUFF  :  -1 MP"
   maxPlayerpierce: 4
   balanceMult: 5
   kapaType: 1
@@ -88,11 +88,11 @@ MonoBehaviour:
       hasBalanceMultBDb: 0
       balMultBuffDebuffData: 1
   freeThrowAreaDatas:
-    range: 5
+    range: 4
     centerDebuffList:
       hasMovePointsBDb: 1
       mPBuffDebuffData:
-        value: -2
+        value: -1
         turnNumber: 1
       hasDefenseBDb: 0
       defBuffDebuffData:
@@ -184,3 +184,15 @@ MonoBehaviour:
       orthoSizeChange: 0
     back:
       orthoSizeChange: 0
+  _oddNTiles: []
+  _evenNTiles: []
+  _oddENTiles: []
+  _evenENTiles: []
+  _oddESTiles: []
+  _evenESTiles: []
+  _oddSTiles: []
+  _evenSTiles: []
+  _oddWSTiles: []
+  _evenWSTiles: []
+  _oddWNTiles: []
+  _evenWNTiles: []
