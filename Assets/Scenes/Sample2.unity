@@ -8416,7 +8416,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3927965128190217529, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
       propertyPath: canSwitchSpawn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3927965128190217529, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
       propertyPath: initBoard.newMat
@@ -13969,6 +13969,10 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3927965128190217529, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
+      propertyPath: canSwitchSpawn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3927965128190217529, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
       propertyPath: initBoard.newMat
       value: 
       objectReference: {fileID: 2100000, guid: 27218990bd6bbba41a39149df2968837, type: 2}
@@ -14020,6 +14024,10 @@ PrefabInstance:
       propertyPath: precRefList.Array.data[0]
       value: 
       objectReference: {fileID: 277611988}
+    - target: {fileID: 3927965128190217529, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
+      propertyPath: newUnitSpawn.newPos.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3927965128190217529, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
       propertyPath: relayRefs.networkRef.Array.size
       value: 67
@@ -14076,6 +14084,38 @@ PrefabInstance:
       propertyPath: relayRefs.networkRef.Array.data[9]
       value: 
       objectReference: {fileID: 1631425118}
+    - target: {fileID: 3927965128190217529, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
+      propertyPath: newUnitSpawn.newPos.Array.data[0].x
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3927965128190217529, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
+      propertyPath: newUnitSpawn.newPos.Array.data[0].y
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3927965128190217529, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
+      propertyPath: newUnitSpawn.newPos.Array.data[1].x
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3927965128190217529, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
+      propertyPath: newUnitSpawn.newPos.Array.data[1].y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3927965128190217529, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
+      propertyPath: newUnitSpawn.newPos.Array.data[2].x
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 3927965128190217529, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
+      propertyPath: newUnitSpawn.newPos.Array.data[2].y
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3927965128190217529, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
+      propertyPath: newUnitSpawn.newPos.Array.data[3].x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3927965128190217529, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
+      propertyPath: newUnitSpawn.newPos.Array.data[3].y
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 3927965128190217529, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
       propertyPath: relayRefs.networkRef.Array.data[10]
       value: 
@@ -14948,6 +14988,10 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3927965128190217529, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
+      propertyPath: canSwitchSpawn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3927965128190217529, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
       propertyPath: initBoard.newMat
       value: 
       objectReference: {fileID: 2100000, guid: 27218990bd6bbba41a39149df2968837, type: 2}
@@ -14999,6 +15043,10 @@ PrefabInstance:
       propertyPath: precRefList.Array.data[0]
       value: 
       objectReference: {fileID: 277611988}
+    - target: {fileID: 3927965128190217529, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
+      propertyPath: newUnitSpawn.newPos.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3927965128190217529, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
       propertyPath: relayRefs.networkRef.Array.size
       value: 47
@@ -15058,6 +15106,38 @@ PrefabInstance:
     - target: {fileID: 3927965128190217529, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
       propertyPath: relayRefs.precRefIDs.Array.data[0]
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3927965128190217529, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
+      propertyPath: newUnitSpawn.newPos.Array.data[0].x
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3927965128190217529, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
+      propertyPath: newUnitSpawn.newPos.Array.data[0].y
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3927965128190217529, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
+      propertyPath: newUnitSpawn.newPos.Array.data[1].x
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3927965128190217529, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
+      propertyPath: newUnitSpawn.newPos.Array.data[1].y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3927965128190217529, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
+      propertyPath: newUnitSpawn.newPos.Array.data[2].x
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 3927965128190217529, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
+      propertyPath: newUnitSpawn.newPos.Array.data[2].y
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3927965128190217529, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
+      propertyPath: newUnitSpawn.newPos.Array.data[3].x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3927965128190217529, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
+      propertyPath: newUnitSpawn.newPos.Array.data[3].y
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 3927965128190217529, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
       propertyPath: relayRefs.networkRef.Array.data[10]
