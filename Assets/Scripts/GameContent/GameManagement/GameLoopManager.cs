@@ -124,6 +124,7 @@ namespace GameContent.GameManagement
                         objectifs.turnText.text = "LAST  TURN";
                         break;
                     case < 0:
+                        objectifs.turnText.text = "GAME  ENDED";
                         OnEndGame(0);
                         break;
                 }
