@@ -13,13 +13,13 @@ namespace GameContent.Entity.Unit.KapasGen.KapaFunctions.Grab_Push
             var yDiff = unit.CurrentWorldPos.y - target.CurrentWorldPos.y;
 
             var targetTile = OnGetTargetTile(hexGrid, xDiff, yDiff, target, unit);
-
-            await Task.Delay(Constants.DashGrabDelay);
             
             if (target.IsDead)
                 return;
             
             ChangeUnitHexPos(target, targetTile);
+
+            await Task.Delay(Constants.DashGrabDelay);
             
             target.MoveInFrontOf(targetTile.transform.position);
         }

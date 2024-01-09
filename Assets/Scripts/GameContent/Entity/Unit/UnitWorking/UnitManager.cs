@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Enums.UnitEnums.KapaEnums;
 using FeedBacks;
 using GameContent.GameManagement;
@@ -231,8 +232,9 @@ namespace GameContent.Entity.Unit.UnitWorking
             active = false;
         }
 
-        private void ResetAfterKapa(IUnit uRef)
+        private async void ResetAfterKapa(IUnit uRef)
         {
+            await Task.Delay(50);
             switch (uRef.IsPersoLocked)
             {
                 case true:

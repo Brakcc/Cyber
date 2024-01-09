@@ -15,7 +15,7 @@ namespace UI.InGameUI
         #endregion
 
         #region methodes
-        
+
         public void OnInit(float damage, List<BuffDatas> allBuffs)
         {
             var txt = damage == 0 ? "" : $"<color=red>-{(int)damage} PV</color>";
@@ -40,7 +40,8 @@ namespace UI.InGameUI
             damageText.text = txt;
             transform.DOMoveY(transform.position.y + 0.75f, 2);
             damageText.DOColor(new Color(0, 0, 0, Time.deltaTime), 0.75f);
-            Destroy(this, 0.75f);
+            
+            Destroy(gameObject, 2.01f);
         }
         
         #endregion

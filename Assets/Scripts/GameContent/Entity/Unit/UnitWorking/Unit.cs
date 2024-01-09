@@ -120,7 +120,8 @@ namespace GameContent.Entity.Unit.UnitWorking
             kapaUI.CompText.text = $"{UnitData.KapasList[1].Description}";
         }
         
-        public virtual void MoveOnPath(List<Vector3> currentPath) => StartCoroutine(FollowPath(currentPath,UnitData.Speed));
+        public virtual void MoveOnPath(List<Vector3> currentPath) 
+            => StartCoroutine(FollowPath(currentPath,UnitData.Speed));
 
         public void MoveInFrontOf(Vector3 currentPath)
         {
