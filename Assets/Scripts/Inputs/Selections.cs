@@ -26,7 +26,7 @@ namespace Inputs
 
         public void HandleClick(Vector3 mousePos)
         {
-            if (_inputsMan.FocV2(tileSelectionMask, mainC, mousePos, out GameObject result))
+            if (InputsManager.FocV2(tileSelectionMask, mainC, mousePos, out GameObject result))
             {
                 if (UnitSelected(result)) { unit?.Invoke(result); }
                 else { selection?.Invoke(result); }

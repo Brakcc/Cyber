@@ -14,12 +14,12 @@ namespace GameContent.Entity.Unit.KapasGen.KapaFunctions.Dash
 
             var targetTile = OnGetTargetTile(hexGrid, xDiff, yDiff, unit, target);
             
-            await Task.Delay(Constants.DashGrabDelay);
-            
             if (target.IsDead)
                 return;
             
             ChangeUnitHexPos(unit, targetTile);
+            
+            await Task.Delay(Constants.DashGrabDelay);
             
             unit.MoveInFrontOf(targetTile.transform.position);
         }

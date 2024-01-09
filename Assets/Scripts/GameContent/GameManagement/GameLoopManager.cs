@@ -152,6 +152,13 @@ namespace GameContent.GameManagement
         {
             teamInits.teamPlaying = i;
             teamInits.countPlayer[i] = teamInventory.playerList[i].Length;
+            
+            foreach (var player in teamInventory.playerList[1 - i])
+            {
+                var u = player.GetComponent<IUnit>();
+                u.OnCheckEffectCounter(u);
+            }
+            
             foreach (var player in teamInventory.playerList[i])
             {
                 var u = player.GetComponent<IUnit>();
@@ -168,12 +175,6 @@ namespace GameContent.GameManagement
                 }
         
                 u.CanPlay = true;
-            }
-
-            foreach (var player in teamInventory.playerList[1 - i])
-            {
-                var u = player.GetComponent<IUnit>();
-                u.OnCheckEffectCounter(u);
             }
             
             teamInits.deActButton.SetActive(i == 1);
@@ -213,7 +214,6 @@ namespace GameContent.GameManagement
 
         public void OnEndGame(int teamNb)
         {
-            Time.timeScale = 0;
             GetComponent<PlayerInput>().enabled = false;
             objectifs.endText.text = teamNb switch
             {
