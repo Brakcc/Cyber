@@ -14,8 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iD: 0
   kapaNane: COMPETENCE
-  description: "TIRE  UNE BALLE  TRANSPERCANTE,  RALENTISSANT  LE  PREMIER  ENNEMI
-    TOUCH\xC9\nPORTEE  :  10\nDEBUFF  :  - 1 PM"
+  description: 'TIRE  UNE BALLE  TRANSPERCANTE,  RALENTISSANT  LE  PREMIER  ENNEMI
+    TOUCHE
+
+    PORTEE  :  10
+
+    DEBUFF  :  - 1 PM'
   maxPlayerpierce: 4
   balanceMult: 1
   kapaType: 1

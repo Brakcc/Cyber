@@ -14,8 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iD: 0
   kapaNane: COMPETENCE
-  description: "LANCE  UNE  GRENADE  ELECTROMAGNETIQUE,  RALENTISSANT LES ENNEMIS
-    TOUCH\xC9S\nPORTEE  :  4  AOE  1\nDEBUFF  :  -1 PM"
+  description: 'LANCE  UNE  GRENADE  ELECTROMAGNETIQUE,  RALENTISSANT LES ENNEMIS
+    TOUCHES
+
+    PORTEE  :  4  AOE  1
+
+    DEBUFF  :  -1 PM'
   maxPlayerpierce: 4
   balanceMult: 5
   kapaType: 1

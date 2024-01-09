@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iD: 0
   kapaNane: COMPETENCE
-  description: "SATURE  LE  RESEAU  AFIN  DE  PROVOQUER  DES  DEGATS  SUR  LA  DUR\xC9E 
-    AUX  ENNEMIS  PR\xC9SENTS \nPORTEE  :  RESEAU\nDUREE  :  3 TOURS"
+  description: "SATURE  LE  RESEAU  AFIN  DE  PROVOQUER  DES  DEGATS  SUR  LA  DUREE 
+    AUX  ENNEMIS  PRESENTS \nPORTEE  :  RESEAU\nDUREE  :  3 TOURS"
   maxPlayerpierce: 4
   balanceMult: 3
   kapaType: 1
@@ -184,3 +184,27 @@ MonoBehaviour:
       orthoSizeChange: 0
     back:
       orthoSizeChange: 0
+  _oddNTiles:
+  - {x: 0, y: 0, z: 0}
+  _evenNTiles:
+  - {x: 0, y: 0, z: 0}
+  _oddENTiles:
+  - {x: 0, y: 0, z: 0}
+  _evenENTiles:
+  - {x: 0, y: 0, z: 0}
+  _oddESTiles:
+  - {x: 0, y: 0, z: 0}
+  _evenESTiles:
+  - {x: 0, y: 0, z: 0}
+  _oddSTiles:
+  - {x: 0, y: 0, z: 0}
+  _evenSTiles:
+  - {x: 0, y: 0, z: 0}
+  _oddWSTiles:
+  - {x: 0, y: 0, z: 0}
+  _evenWSTiles:
+  - {x: 0, y: 0, z: 0}
+  _oddWNTiles:
+  - {x: 0, y: 0, z: 0}
+  _evenWNTiles:
+  - {x: 0, y: 0, z: 0}
