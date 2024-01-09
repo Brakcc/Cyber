@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7f1f1cedb39513c49acc40d157b5cb21
+guid: 7231f47d45231474a95f131186bd1965
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PC_v1_0
+      name: emitMapPcV2_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 13aa0aa28a961e840ab01a734cfeae8a
-      internalID: -563784455
+      spriteID: daac0fd4eed7422468fb16c99914de86
+      internalID: 177237568
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PC_v1_1
+      name: emitMapPcV2_1
       rect:
         serializedVersion: 2
         x: 24
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2bfa5e0bb556b66458da3af408ebd933
-      internalID: 889182648
+      spriteID: 2416028bc889ce54388b65c5d0c4134f
+      internalID: -849148364
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PC_v1_2
+      name: emitMapPcV2_2
       rect:
         serializedVersion: 2
         x: 48
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: beb1bba51e00fe84190a1c4a28f8aaf9
-      internalID: -997646727
+      spriteID: af4b1046acc5c0f4a86c757dbdcb21a0
+      internalID: -682022479
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PC_v1_3
+      name: emitMapPcV2_3
       rect:
         serializedVersion: 2
         x: 72
@@ -187,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e1460a3c3e16adf4abb3325296d2a181
-      internalID: -1227551562
+      spriteID: ed22d92aab9e5eb45815aabb47ecd8c9
+      internalID: -1194181823
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PC_v1_4
+      name: emitMapPcV2_4
       rect:
         serializedVersion: 2
         x: 96
@@ -208,14 +208,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d9da81ae9a21c154c9de9b89e2c8a528
-      internalID: -398258254
+      spriteID: 147077392cdd8ca4e926d3d4511e66af
+      internalID: -1218851668
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PC_v1_5
+      name: emitMapPcV2_5
       rect:
         serializedVersion: 2
         x: 120
@@ -229,8 +229,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3cfa4959855ee8b4f905348d679652f0
-      internalID: 2063907914
+      spriteID: 9b21a12fe3437274e9b923f80f0a1ae2
+      internalID: -1988995715
       vertices: []
       indices: 
       edges: []
@@ -246,12 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PC_v1_0: -563784455
-      PC_v1_1: 889182648
-      PC_v1_2: -997646727
-      PC_v1_3: -1227551562
-      PC_v1_4: -398258254
-      PC_v1_5: 2063907914
+      emitMapPcV2_0: 177237568
+      emitMapPcV2_1: -849148364
+      emitMapPcV2_2: -682022479
+      emitMapPcV2_3: -1194181823
+      emitMapPcV2_4: -1218851668
+      emitMapPcV2_5: -1988995715
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

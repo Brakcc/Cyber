@@ -36208,6 +36208,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1413261723}
     - target: {fileID: 3927965128190217529, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
+      propertyPath: relayGraphs.initBoard.newMat
+      value: 
+      objectReference: {fileID: 2100000, guid: b55a45b68d23fa74aa6f3eab8058b2a5, type: 2}
+    - target: {fileID: 3927965128190217529, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
       propertyPath: relayRefs.networkRef.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -36311,6 +36315,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4547483391256617014, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 75ffaee21754d8d4caee62f5261b31ae, type: 2}
     - target: {fileID: 5714707210176988669, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
       propertyPath: m_Icon
       value: 
@@ -36323,6 +36331,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7112099199174884347, guid: 70ea77442bfe8de4f9e49cec35f481a1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b55a45b68d23fa74aa6f3eab8058b2a5, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
