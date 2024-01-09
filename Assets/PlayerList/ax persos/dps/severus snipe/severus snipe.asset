@@ -16,8 +16,8 @@ MonoBehaviour:
   pname: SEVERUS SNIPE
   type: 2
   movePoints: 4
-  attack: 36
-  defense: 8
+  attack: 35
+  defense: 0
   critRate: 50
   speed: 30
   healthPoint: 100
