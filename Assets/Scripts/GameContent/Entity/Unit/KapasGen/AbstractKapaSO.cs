@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Enums.UnitEnums.KapaEnums;
@@ -348,6 +349,12 @@ namespace GameContent.Entity.Unit.KapasGen
         #endregion
 
         #region methodes to herit
+
+        private void OnEnable()
+        {
+            InitPatterns(Patterns);
+        }
+
         /// <summary>
         /// initialise tous les paternes de Kapas dans toutes les directions
         /// </summary>

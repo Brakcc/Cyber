@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using GameContent.Entity.Unit.UnitWorking;
@@ -16,46 +15,31 @@ namespace UI.InGameUI
         #endregion
 
         #region methodes
-
-        private void OnEnable()
-        {
-            StartCoroutine(UIEffect());
-        }
-
+        
         public void OnInit(float damage, List<BuffDatas> allBuffs)
         {
             var txt = damage == 0 ? "" : $"<color=red>-{(int)damage} HP</color>";
-            foreach (var b in allBuffs)
+            if (allBuffs.Count != 0)
             {
-                switch (b.buffValue)
+                foreach (var b in allBuffs)
                 {
-                    case 0:
-                        break;
-                    case < 0:
-                        txt += $"<color=red> {b.buffValue} {b.GetBuffTypeName()}</color>";
-                        break;
-                    case > 0:
-                        txt += $"<color=green> {b.buffValue} {b.GetBuffTypeName()}</color>";
-                        break;
+                    switch (b.buffValue)
+                    {
+                        case 0:
+                            break;
+                        case < 0:
+                            txt += $"<color=red> {b.buffValue} {b.GetBuffTypeName()}</color>";
+                            break;
+                        case > 0:
+                            txt += $"<color=green> {b.buffValue} {b.GetBuffTypeName()}</color>";
+                            break;
+                    }
                 }
             }
+            
             damageText.text = txt;
             transform.DOMoveY(transform.position.y + 0.75f, 2);
-        }
-
-        
-        
-        private IEnumerator UIEffect()
-        {
-            float t = 0;
-            yield return new WaitForSeconds(0.75f);
-            while (t < 1.5f)
-            {
-                damageText.color -= new Color(0, 0, 0, Time.deltaTime);
-                t += Time.deltaTime;
-                yield return null;
-            }
-            Destroy(gameObject);
+            damageText.DOColor(new Color(0, 0, 0, Time.deltaTime), 0.75f);
         }
         
         #endregion

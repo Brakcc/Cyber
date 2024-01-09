@@ -19,7 +19,7 @@ MonoBehaviour:
 
     PORTEE  :  4
 
-    DEBUFF  :  GRAB  +  - 2 MP
+    DEBUFF  :  GRAB  - 2 MP
 
 '
   maxPlayerpierce: 0
@@ -193,3 +193,15 @@ MonoBehaviour:
       orthoSizeChange: 0
     back:
       orthoSizeChange: 0
+  _oddNTiles: []
+  _evenNTiles: []
+  _oddENTiles: []
+  _evenENTiles: []
+  _oddESTiles: []
+  _evenESTiles: []
+  _oddSTiles: []
+  _evenSTiles: []
+  _oddWSTiles: []
+  _evenWSTiles: []
+  _oddWNTiles: []
+  _evenWNTiles: []
