@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UI.InGameUI;
+using UnityEngine.SceneManagement;
 using Utilities;
 
 namespace UI.MenuUI
@@ -344,8 +345,9 @@ namespace UI.MenuUI
             
             TeamDatasSaveAndLoad.OnSaveTeamDatas(this);
             
-            teamSelec.SetActive(false);
-            mapSelec.SetActive(true);
+            // teamSelec.SetActive(false);
+            // mapSelec.SetActive(true);
+            SceneManager.LoadScene("Sample2");
         }
         
         #endregion
