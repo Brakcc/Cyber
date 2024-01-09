@@ -16,6 +16,7 @@ using GameContent.Entity.Unit.KapasGen.KapaFunctions.Grab_Push;
 using GameContent.Entity.Unit.KapasGen.KapaFunctions.PerfoAtk;
 using GameContent.Entity.Unit.KapasGen.KapaFunctions.AOEDistAtk;
 using GameContent.Entity.Unit.KapasGen.KapaFunctions.DOTAtk;
+using GameContent.Entity.Unit.UnitWorking;
 using GameContent.GridManagement.HexPathFind;
 using Random = UnityEngine.Random;
 
@@ -444,7 +445,12 @@ namespace GameContent.Entity.Unit.KapasGen
                     //Verif si l'Unit est de meme team
                     if (unitTarget.TeamNumber == unit.TeamNumber)
                     {
-                        OnBuffDebuffConsideration(unitTarget, buffDebuffDatas.buffDebuffList);
+                        var tempB = OnBuffDebuffConsideration(unitTarget, buffDebuffDatas.buffDebuffList);
+                        OnUIFeedBack(DamageFeedBack, 
+                            new Vector3(unitTarget.CurrentWorldPos.x,
+                                unitTarget.CurrentWorldPos.y + Constants.DamageUIRiseOffset),
+                            0,
+                            tempB);
                     }
                     continue;
                 }
@@ -475,119 +481,119 @@ namespace GameContent.Entity.Unit.KapasGen
                 {
                     case KapaFunctionType.Dash:
                         VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
+                        var tempBDbD = OnBuffDebuffConsideration(unitTarget, buffDebuffDatas.buffDebuffList);
                         OnDamageConsideration(this, unit, unitTarget,
                             buffDebuffDatas.buffDebuffList.hasBalanceMultBDb
                                 ? buffDebuffDatas.buffDebuffList.balMultBuffDebuffData
                                 : BalanceMult, delayAtk,
-                            DamageFeedBack);
-                        OnBuffDebuffConsideration(unitTarget, buffDebuffDatas.buffDebuffList);
+                            DamageFeedBack, tempBDbD);
                         DashKapa.OnSecondKapa(HexGridStore.hGs, unit, unitTarget);
                         break;
                     
                     case KapaFunctionType.DoubleDiffAttack when doubleDiffAtkDatas.hasDashAfterKapa && canDoubleKapa:
                         canDoubleKapa = false;
                         VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
+                        var tempBDbDD = OnBuffDebuffConsideration(unitTarget, buffDebuffDatas.buffDebuffList);
                         OnDamageConsideration(this, unit, unitTarget,
                             doubleDiffAtkDatas.doubleABuffDebuff.balMultBuffDebuffData, delayAtk,
-                            DamageFeedBack);
-                        OnBuffDebuffConsideration(unitTarget, buffDebuffDatas.buffDebuffList);
+                            DamageFeedBack, tempBDbDD);
                         DashKapa.OnSecondKapa(HexGridStore.hGs, unit, unitTarget);
                         goto Retake;
                         
                     case KapaFunctionType.Grab:
                         VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
+                        var tempBDbG = OnBuffDebuffConsideration(unitTarget, buffDebuffDatas.buffDebuffList);
                         OnDamageConsideration(this, unit, unitTarget,
                             buffDebuffDatas.buffDebuffList.hasBalanceMultBDb
                                 ? buffDebuffDatas.buffDebuffList.balMultBuffDebuffData
                                 : BalanceMult, delayAtk,
-                            DamageFeedBack);
-                        OnBuffDebuffConsideration(unitTarget, buffDebuffDatas.buffDebuffList);
+                            DamageFeedBack, tempBDbG);
                         GrabKapa.OnSecondKapa(HexGridStore.hGs, unit, unitTarget);
                         break;
                     
                     case KapaFunctionType.DoubleDiffAttack when doubleDiffAtkDatas.hasGrabAfterKapa && canDoubleKapa:
                         canDoubleKapa = false;
                         VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
+                        var tempBDbDG = OnBuffDebuffConsideration(unitTarget, buffDebuffDatas.buffDebuffList);
                         OnDamageConsideration(this, unit, unitTarget,
                             doubleDiffAtkDatas.doubleABuffDebuff.balMultBuffDebuffData, delayAtk,
-                            DamageFeedBack);
-                        OnBuffDebuffConsideration(unitTarget, buffDebuffDatas.buffDebuffList);
+                            DamageFeedBack, tempBDbDG);
                         GrabKapa.OnSecondKapa(HexGridStore.hGs, unit, unitTarget);
                         goto Retake;
                         
                     case KapaFunctionType.DoubleDiffAttack when doubleDiffAtkDatas.hasDiffPatterns && canDoubleKapa:
                         VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
+                        var tempBDbDP = OnBuffDebuffConsideration(unitTarget, buffDebuffDatas.buffDebuffList);
                         OnDamageConsideration(this, unit, unitTarget,
                             doubleDiffAtkDatas.doubleABuffDebuff.balMultBuffDebuffData, delayAtk,
-                            DamageFeedBack);
-                        OnBuffDebuffConsideration(unitTarget, buffDebuffDatas.buffDebuffList);
+                            DamageFeedBack, tempBDbDP);
                         canDoubleKapa = false;
                         goto ChangePatterns;
                         
                     case KapaFunctionType.DoubleDiffAttack when !canDoubleKapa && !unitTarget.IsDead:
                         VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
+                        var tempBDbAD = OnBuffDebuffConsideration(unitTarget, doubleDiffAtkDatas.doubleABuffDebuff);
                         OnDamageConsideration(this, unit, unitTarget,
                             buffDebuffDatas.buffDebuffList.hasBalanceMultBDb
                                 ? buffDebuffDatas.buffDebuffList.balMultBuffDebuffData
                                 : BalanceMult, delayAtk,
-                            DamageFeedBack);
-                        OnBuffDebuffConsideration(unitTarget, doubleDiffAtkDatas.doubleABuffDebuff);
+                            DamageFeedBack, tempBDbAD);
                         break;
                         
                     case KapaFunctionType.ThrowFreeArea when canFirstEffect && unitTarget.CurrentHexPos == pattern[0]:
-                        OnBuffDebuffConsideration(unitTarget, freeThrowAreaDatas.centerDebuffList);
+                        var tempBDbTF = OnBuffDebuffConsideration(unitTarget, freeThrowAreaDatas.centerDebuffList);
                         OnDamageConsideration(this, unit, unitTarget,
                             freeThrowAreaDatas.centerDebuffList.balMultBuffDebuffData, delayAtk,
-                            DamageFeedBack);
+                            DamageFeedBack, tempBDbTF);
                         VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
                         canFirstEffect = false;
                         break;
 
                     case KapaFunctionType.ThrowLimit when canFirstEffect && unitTarget.CurrentHexPos == pattern[0]:
-                        OnBuffDebuffConsideration(unitTarget, limitedThrowAreaDatas.centerDebuffList);
+                        var tempBDbTL = OnBuffDebuffConsideration(unitTarget, limitedThrowAreaDatas.centerDebuffList);
                         OnDamageConsideration(this, unit, unitTarget,
                             limitedThrowAreaDatas.centerDebuffList.balMultBuffDebuffData, delayAtk,
-                            DamageFeedBack);
+                            DamageFeedBack, tempBDbTL);
                         VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
                         canFirstEffect = false;
                         break;
                         
                     case KapaFunctionType.DOT:
-                        OnBuffDebuffConsideration(unitTarget, buffDebuffDatas.buffDebuffList);
+                        var tempBDbDo = OnBuffDebuffConsideration(unitTarget, buffDebuffDatas.buffDebuffList);
                         OnDamageConsideration(this, unit, unitTarget,
                             dotKapaDatas.balMultBuffDebuffData, delayAtk,
-                            DamageFeedBack);
+                            DamageFeedBack, tempBDbDo);
                         VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
                         break;
                     
                     case KapaFunctionType.FirstHitEffect when canFirstEffect:
-                        OnBuffDebuffConsideration(unitTarget, firstHitEffectsData.buffDebuffList);
+                        var tempBDbFH = OnBuffDebuffConsideration(unitTarget, firstHitEffectsData.buffDebuffList);
                         OnDamageConsideration(this, unit, unitTarget,
                             firstHitEffectsData.buffDebuffList.balMultBuffDebuffData, delayAtk,
-                            DamageFeedBack);
+                            DamageFeedBack, tempBDbFH);
                         VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
                         canFirstEffect = false;
                         break;
                     
                     case KapaFunctionType.Default:
+                        var tempBDbDe = OnBuffDebuffConsideration(unitTarget, buffDebuffDatas.buffDebuffList);
                         OnDamageConsideration(this, unit, unitTarget,
                             buffDebuffDatas.buffDebuffList.hasBalanceMultBDb
                                 ? buffDebuffDatas.buffDebuffList.balMultBuffDebuffData
                                 : BalanceMult, delayAtk,
-                            DamageFeedBack);
-                        OnBuffDebuffConsideration(unitTarget, buffDebuffDatas.buffDebuffList);
+                            DamageFeedBack, tempBDbDe);
                         VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
                         break;
                     
                     case KapaFunctionType.AOE:
                     default:
                         VFx.OnGenerateParticlesSys(unitTarget.CurrentWorldPos);
+                        var tempBDbAo = OnBuffDebuffConsideration(unitTarget, buffDebuffDatas.buffDebuffList);
                         OnDamageConsideration(this, unit, unitTarget,
                             buffDebuffDatas.buffDebuffList.hasBalanceMultBDb
                                 ? buffDebuffDatas.buffDebuffList.balMultBuffDebuffData
                                 : BalanceMult, delayAtk,
-                            DamageFeedBack);
-                        OnBuffDebuffConsideration(unitTarget, buffDebuffDatas.buffDebuffList);
+                            DamageFeedBack, tempBDbAo);
                         break;
                 }
                 
@@ -656,13 +662,16 @@ namespace GameContent.Entity.Unit.KapasGen
 
         #region Static Considerations
         
-        private static void OnBuffDebuffConsideration(IUnit unitT, BuffDebuffList bDbList)
+        private static List<BuffDatas> OnBuffDebuffConsideration(IUnit unitT, BuffDebuffList bDbList)
         {
+            List <BuffDatas> buffList = new();
+            
             if (bDbList.hasMovePointsBDb)
             {
                 BuffDebuffKapa.OnBuffDebuffMP(unitT,
                     bDbList.mPBuffDebuffData.value,
                     bDbList.mPBuffDebuffData.turnNumber);
+                buffList.Add(new BuffDatas(bDbList.mPBuffDebuffData.value, 0, BuffType.Mp));
             }
 
             if (bDbList.hasCritRateBDb)
@@ -670,6 +679,7 @@ namespace GameContent.Entity.Unit.KapasGen
                 BuffDebuffKapa.OnBuffDebuffCritRate(unitT,
                     bDbList.cRBuffDebuffData.value,
                     bDbList.cRBuffDebuffData.turnNumber);
+                buffList.Add(new BuffDatas(bDbList.cRBuffDebuffData.value, 0, BuffType.CritRate));
             }
 
             if (bDbList.hasPrecisionBDb)
@@ -677,6 +687,7 @@ namespace GameContent.Entity.Unit.KapasGen
                 BuffDebuffKapa.OnBuffDebuffPrecision(unitT,
                     bDbList.precBuffDebuffData.value,
                     bDbList.precBuffDebuffData.turnNumber);
+                buffList.Add(new BuffDatas(bDbList.precBuffDebuffData.value, 0, BuffType.Prec));
             }
 
             if (bDbList.hasDefenseBDb)
@@ -684,20 +695,21 @@ namespace GameContent.Entity.Unit.KapasGen
                 BuffDebuffKapa.OnBuffDebuffDef(unitT,
                     bDbList.defBuffDebuffData.value,
                     bDbList.defBuffDebuffData.turnNumber);
+                buffList.Add(new BuffDatas(bDbList.defBuffDebuffData.value, 0, BuffType.Def));
             }
+
+            return buffList;
         }
         
-        private static async void OnDamageConsideration(AbstractKapaSO kapa, IUnit unit, IUnit unitTarget, int balance, int delay, GameObject feedBack)
+        private static async void OnDamageConsideration(AbstractKapaSO kapa, IUnit unit, IUnit unitTarget, int balance, int delay, GameObject feedBack, List<BuffDatas> buffs)
         {
             await Task.Delay(delay);
-
-            //balanceMult a 0 pas de degats
-            if (balance == 0) return;
             
             //verif perma Crit
             if (kapa.buffDebuffDatas.isCritGuaranted)
             {
-                var damage = Damage.CritDamage(unit.CurrentAtk, unitTarget.CurrentDef) / balance;
+                //balanceMult a 0 pas de degats
+                var damage = balance == 0 ? 0 : Damage.CritDamage(unit.CurrentAtk, unitTarget.CurrentDef) / balance;
                 
                 //apply
                 unitTarget.CurrentHealth -= damage;
@@ -705,7 +717,7 @@ namespace GameContent.Entity.Unit.KapasGen
                 //FeedBack de degats
                 var targetPos = unitTarget.CurrentWorldPos;
                 OnUIFeedBack(feedBack, 
-                    new Vector3(targetPos.x, targetPos.y + Constants.DamageUIRiseOffset), damage);
+                    new Vector3(targetPos.x, targetPos.y + Constants.DamageUIRiseOffset), damage, buffs);
                 
                 //set new UI des Stats des Units touchees 
                 unitTarget.StatUI.SetHP(unitTarget);
@@ -725,7 +737,8 @@ namespace GameContent.Entity.Unit.KapasGen
             if (Random.Range(0, 100) < unit.CurrentCritRate)
             {
                 //on ne prend pas en compte les Hackers qui n'ont pas de taux crit
-                var damage = Damage.CritDamage(unit.CurrentAtk, unitTarget.CurrentDef) / balance;
+                //balanceMult a 0 pas de degats
+                var damage = balance == 0 ? 0 : Damage.CritDamage(unit.CurrentAtk, unitTarget.CurrentDef) / balance;
                 
                 //apply
                 unitTarget.CurrentHealth -= damage;
@@ -733,7 +746,7 @@ namespace GameContent.Entity.Unit.KapasGen
                 //FeedBack de degats
                 var targetPos = unitTarget.CurrentWorldPos;
                 OnUIFeedBack(feedBack, 
-                    new Vector3(targetPos.x, targetPos.y + Constants.DamageUIRiseOffset), damage);
+                    new Vector3(targetPos.x, targetPos.y + Constants.DamageUIRiseOffset), damage, buffs);
                 
                 //set new UI des Stats des Units touchees 
                 unitTarget.StatUI.SetHP(unitTarget);
@@ -753,7 +766,9 @@ namespace GameContent.Entity.Unit.KapasGen
                 var newBal = kapa.KapaFunctionType == KapaFunctionType.DOT
                     ? kapa.dotKapaDatas.balMultBuffDebuffData
                     : balance;
-                var damage = Damage.HackerDamage(unit.CurrentAtk) / newBal;
+                
+                //balanceMult a 0 pas de degats
+                var damage = newBal == 0 ? 0 : Damage.HackerDamage(unit.CurrentAtk) / newBal;
                     
                 //apply
                 unitTarget.CurrentHealth -= damage;
@@ -761,11 +776,12 @@ namespace GameContent.Entity.Unit.KapasGen
                 //FeedBack de degats
                 var targetPos = unitTarget.CurrentWorldPos;
                 OnUIFeedBack(feedBack, 
-                    new Vector3(targetPos.x, targetPos.y + Constants.DamageUIRiseOffset), damage);
+                    new Vector3(targetPos.x, targetPos.y + Constants.DamageUIRiseOffset), damage, buffs);
             }
             else
             {
-                var damage = Damage.NormalDamage(unit.CurrentAtk, unitTarget.CurrentDef) / balance;
+                //balanceMult a 0 pas de degats
+                var damage = balance == 0 ? 0 : Damage.NormalDamage(unit.CurrentAtk, unitTarget.CurrentDef) / balance;
                     
                 //apply
                 unitTarget.CurrentHealth -= damage;
@@ -773,7 +789,7 @@ namespace GameContent.Entity.Unit.KapasGen
                 //feedback de degats
                 var targetPos = unitTarget.CurrentWorldPos;
                 OnUIFeedBack(feedBack, 
-                    new Vector3(targetPos.x, targetPos.y + Constants.DamageUIRiseOffset), damage);
+                    new Vector3(targetPos.x, targetPos.y + Constants.DamageUIRiseOffset), damage, buffs);
             }
             
             //set new UI des Stats des Units touchees 
@@ -786,10 +802,10 @@ namespace GameContent.Entity.Unit.KapasGen
             }
         }
 
-        private static void OnUIFeedBack(GameObject inst, Vector3 pos, float dam)
+        private static void OnUIFeedBack(GameObject inst, Vector3 pos, float dam, List<BuffDatas> buffs)
         {
             var feed = Instantiate(inst, pos, Quaternion.identity);
-            feed.GetComponent<DamageFeedBack>().OnInit(dam);
+            feed.GetComponent<DamageFeedBack>().OnInit(dam, buffs);
         }
         
         #endregion

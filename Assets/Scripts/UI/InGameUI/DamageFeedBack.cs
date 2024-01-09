@@ -1,5 +1,7 @@
 using System.Collections;
+using System.Collections.Generic;
 using DG.Tweening;
+using GameContent.Entity.Unit.UnitWorking;
 using TMPro;
 using UnityEngine;
 
@@ -8,7 +10,9 @@ namespace UI.InGameUI
     public class DamageFeedBack : MonoBehaviour
     {
         #region fields
+        
         [SerializeField] private TMP_Text damageText;
+        
         #endregion
 
         #region methodes
@@ -18,13 +22,29 @@ namespace UI.InGameUI
             StartCoroutine(UIEffect());
         }
 
-        public void OnInit(float damage)
+        public void OnInit(float damage, List<BuffDatas> allBuffs)
         {
-            damageText.text = "-" + (int)damage;
-            damageText.color = Color.red;
+            var txt = damage == 0 ? "" : $"<color=red>-{(int)damage} HP</color>";
+            foreach (var b in allBuffs)
+            {
+                switch (b.buffValue)
+                {
+                    case 0:
+                        break;
+                    case < 0:
+                        txt += $"<color=red> {b.buffValue} {b.GetBuffTypeName()}</color>";
+                        break;
+                    case > 0:
+                        txt += $"<color=green> {b.buffValue} {b.GetBuffTypeName()}</color>";
+                        break;
+                }
+            }
+            damageText.text = txt;
             transform.DOMoveY(transform.position.y + 0.75f, 2);
         }
 
+        
+        
         private IEnumerator UIEffect()
         {
             float t = 0;
@@ -37,6 +57,7 @@ namespace UI.InGameUI
             }
             Destroy(gameObject);
         }
+        
         #endregion
     }
 }

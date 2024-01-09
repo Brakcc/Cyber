@@ -118,9 +118,14 @@ namespace GameContent.GameManagement
             {
                 _turnNb--;
                 objectifs.turnText.text = $"TURNS  LEFT  :  {_turnNb.ToString()}";
-                if (_turnNb <= 0)
+                switch (_turnNb)
                 {
-                    OnEndGame(0);
+                    case 0:
+                        objectifs.turnText.text = "LAST  TURN";
+                        break;
+                    case < 0:
+                        OnEndGame(0);
+                        break;
                 }
             }
             InitTeam(newTeam);
@@ -182,10 +187,12 @@ namespace GameContent.GameManagement
             
             teamInventory.CompPoints[teamNb] += pC;
             uiFields.cPui[teamNb].text = teamInventory.CompPoints[teamNb].ToString();
-            if (teamInventory.CompPoints[teamNb] > 0)
+
+            uiFields.cPui[teamNb].color = teamInventory.CompPoints[teamNb] switch
             {
-                uiFields.cPui[teamNb].color = Color.green;
-            }
+                <= 0 => Color.red,
+                > 0 => Color.green
+            };
         }
         
         public void HandleTurretUse(int teamNb)

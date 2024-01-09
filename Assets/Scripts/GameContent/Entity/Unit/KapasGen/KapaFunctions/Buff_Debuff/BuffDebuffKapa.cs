@@ -9,34 +9,70 @@ namespace GameContent.Entity.Unit.KapasGen.KapaFunctions.Buff_Debuff
     {
         public static void OnBuffDebuffMP(IUnit unitTarget, int val, int turnNb)
         {
-            unitTarget.CurrentMp += val;
-            unitTarget.BuffLists.Add(new BuffDatas(val, turnNb, BuffType.Mp));
+            if (unitTarget.CurrentMp <= 0)
+                return;
+
+            var temp = unitTarget.CurrentMp + val;
+            var tempVal = temp < 0 ? unitTarget.CurrentMp : val;
+            
+            unitTarget.CurrentMp += tempVal;
+            unitTarget.BuffLists.Add(new BuffDatas(tempVal, turnNb, BuffType.Mp));
             unitTarget.BDbCounters.Add(turnNb);
-            unitTarget.StatUI.SetMP(unitTarget, val > 0 ? UIColorType.Buff : UIColorType.Debuff);
+            unitTarget.StatUI.SetMP(unitTarget,
+                unitTarget.CurrentMp > unitTarget.UnitData.MovePoints
+                    ? UIColorType.Buff
+                    : UIColorType.Debuff);
         }
         
         public static void OnBuffDebuffCritRate(IUnit unitTarget, int val, int turnNb)
         {
-            unitTarget.CurrentCritRate += val;
-            unitTarget.BuffLists.Add(new BuffDatas(val, turnNb, BuffType.CritRate));
+            if (unitTarget.CurrentCritRate <= 0)
+                return;
+            
+            var temp = unitTarget.CurrentCritRate + val;
+            var tempVal = temp < 0 ? unitTarget.CurrentCritRate : val;
+            
+            unitTarget.CurrentCritRate += tempVal;
+            unitTarget.BuffLists.Add(new BuffDatas(tempVal, turnNb, BuffType.CritRate));
             unitTarget.BDbCounters.Add(turnNb);
-            unitTarget.StatUI.SetCritRate(unitTarget, val > 0 ? UIColorType.Buff : UIColorType.Debuff);
+            unitTarget.StatUI.SetCritRate(unitTarget,
+                unitTarget.CurrentCritRate > unitTarget.UnitData.CritRate
+                    ? UIColorType.Buff
+                    : UIColorType.Debuff);
         }
         
         public static void OnBuffDebuffPrecision(IUnit unitTarget, int val, int turnNb)
         {
-            unitTarget.CurrentPrecision += val;
-            unitTarget.BuffLists.Add(new BuffDatas(val, turnNb, BuffType.Prec));
+            if (unitTarget.CurrentPrecision <= 0)
+                return;
+            
+            var temp = unitTarget.CurrentPrecision + val;
+            var tempVal = temp < 0 ? unitTarget.CurrentPrecision : val;
+            
+            unitTarget.CurrentPrecision += tempVal;
+            unitTarget.BuffLists.Add(new BuffDatas(tempVal, turnNb, BuffType.Prec));
             unitTarget.BDbCounters.Add(turnNb);
-            unitTarget.StatUI.SetPrec(unitTarget, val > 0 ? UIColorType.Buff : UIColorType.Debuff);
+            unitTarget.StatUI.SetPrec(unitTarget,
+                unitTarget.CurrentPrecision > Constants.BasePrec
+                    ? UIColorType.Buff
+                    : UIColorType.Debuff);
         }
 
         public static void OnBuffDebuffDef(IUnit unitTarget, int val, int turnNb)
         {
-            unitTarget.CurrentDef += val;
-            unitTarget.BuffLists.Add(new BuffDatas(val, turnNb, BuffType.Def));
+            if (unitTarget.CurrentDef <= 0)
+                return;
+            
+            var temp = unitTarget.CurrentDef + val;
+            var tempVal = temp < 0 ? unitTarget.CurrentDef : val;
+            
+            unitTarget.CurrentDef += tempVal;
+            unitTarget.BuffLists.Add(new BuffDatas(tempVal, turnNb, BuffType.Def));
             unitTarget.BDbCounters.Add(turnNb);
-            unitTarget.StatUI.SetDef(unitTarget, val > 0 ? UIColorType.Buff : UIColorType.Debuff);
+            unitTarget.StatUI.SetDef(unitTarget,
+                unitTarget.CurrentDef > unitTarget.UnitData.Defense
+                    ? UIColorType.Buff
+                    : UIColorType.Debuff);
         }
     }
 }

@@ -1,8 +1,9 @@
 using Enums.UnitEnums.UnitEnums;
+using Utilities;
 
 namespace GameContent.Entity.Unit.UnitWorking
 {
-    public struct BuffDatas
+    public readonly struct BuffDatas
     {
         public readonly int buffValue;
         public readonly int turnNb;
@@ -14,5 +15,14 @@ namespace GameContent.Entity.Unit.UnitWorking
             this.turnNb = turnNb;
             this.buffType = buffType;
         }
+
+        public string GetBuffTypeName() => buffType switch
+        {
+            BuffType.Mp => "MP",
+            BuffType.Def => "DEF",
+            BuffType.Prec => "PREC",
+            BuffType.CritRate => "CR",
+            _ => throw new CustomExceptions.CustomException()
+        };
     }
 }

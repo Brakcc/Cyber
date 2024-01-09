@@ -288,7 +288,7 @@ namespace GameContent.Entity.Unit.UnitWorking
                         if (unit.BDbCounters[i] <= 0)
                         {
                             unit.CurrentPrecision -= unit.BuffLists[i].buffValue;
-                            unit.StatUI.SetPrec(unit, GetColorType(unit.CurrentPrecision, 100));
+                            unit.StatUI.SetPrec(unit, GetColorType(unit.CurrentPrecision, Constants.BasePrec));
                             unit.BuffLists.RemoveAt(i);
                             unit.BDbCounters.RemoveAt(i);
                         }
