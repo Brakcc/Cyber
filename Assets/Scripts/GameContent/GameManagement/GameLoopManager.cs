@@ -100,7 +100,7 @@ namespace GameContent.GameManagement
             }
             //foreach (var i in uiFields.computerUI) { i.color = Color.red; }
 
-            objectifs.turnText.text = $"TURNS  LEFT  :  {objectifs.maxTurnNb.ToString()}";
+            objectifs.turnText.text = $"TOURS  RESTANTS  :  {objectifs.maxTurnNb.ToString()}";
             _turnNb = objectifs.maxTurnNb;
             objectifs.endGameUI.SetActive(false);
         }
