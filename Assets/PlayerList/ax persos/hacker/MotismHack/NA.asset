@@ -17,7 +17,7 @@ MonoBehaviour:
   description: 'ATTAQUE  UN  ENNEMI  PRESENT  SUR  LE  RESEAU
 
     PORTEE  :  RESEAU '
-  maxPlayerpierce: 4
+  maxPlayerpierce: 0
   balanceMult: 1
   kapaType: 0
   effectType: 2
@@ -185,3 +185,15 @@ MonoBehaviour:
       orthoSizeChange: 0
     back:
       orthoSizeChange: 0
+  _oddNTiles: []
+  _evenNTiles: []
+  _oddENTiles: []
+  _evenENTiles: []
+  _oddESTiles: []
+  _evenESTiles: []
+  _oddSTiles: []
+  _evenSTiles: []
+  _oddWSTiles: []
+  _evenWSTiles: []
+  _oddWNTiles: []
+  _evenWNTiles: []

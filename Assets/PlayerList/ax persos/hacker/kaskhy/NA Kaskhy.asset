@@ -135,7 +135,7 @@ MonoBehaviour:
     balMultBuffDebuffData: 1
     turnNumber: 0
   _pattern:
-  - {x: 0, y: -1, z: 0}
+  - {x: 0, y: 0, z: 0}
   _nAKapaSupFields:
     compPointsAdded: 1
     ultPointsAdded: 0
@@ -186,3 +186,15 @@ MonoBehaviour:
       orthoSizeChange: 0
     back:
       orthoSizeChange: 0
+  _oddNTiles: []
+  _evenNTiles: []
+  _oddENTiles: []
+  _evenENTiles: []
+  _oddESTiles: []
+  _evenESTiles: []
+  _oddSTiles: []
+  _evenSTiles: []
+  _oddWSTiles: []
+  _evenWSTiles: []
+  _oddWNTiles: []
+  _evenWNTiles: []

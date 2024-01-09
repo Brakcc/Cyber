@@ -17,8 +17,8 @@ MonoBehaviour:
   type: 3
   networkRange: 1
   movePoints: 7
-  attack: 29
-  defense: 2
+  attack: 28
+  defense: 4
   critRate: 0
   speed: 30
   healthPoint: 100

@@ -36,7 +36,7 @@ MonoBehaviour:
       hasDefenseBDb: 1
       defBuffDebuffData:
         value: -5
-        turnNumber: 2
+        turnNumber: 1
       hasCritRateBDb: 0
       cRBuffDebuffData:
         value: 0
@@ -188,3 +188,15 @@ MonoBehaviour:
       orthoSizeChange: 0
     back:
       orthoSizeChange: 0
+  _oddNTiles: []
+  _evenNTiles: []
+  _oddENTiles: []
+  _evenENTiles: []
+  _oddESTiles: []
+  _evenESTiles: []
+  _oddSTiles: []
+  _evenSTiles: []
+  _oddWSTiles: []
+  _evenWSTiles: []
+  _oddWNTiles: []
+  _evenWNTiles: []

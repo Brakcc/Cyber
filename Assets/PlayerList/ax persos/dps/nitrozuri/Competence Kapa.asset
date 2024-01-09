@@ -15,7 +15,8 @@ MonoBehaviour:
   iD: 0
   kapaNane: COMPETENCE
   description: "LANCE  UNE  DAGUE  SUR  UN  ENNEMI  AVANT  DE  DASH  SUR  CELUI-CI 
-    S'IL  EST  TOUJOURS  EN  VIE  ET  LE  FRAPPE  \xC0  NOUVEAU\nPORTEE  :  5"
+    S'IL  EST  TOUJOURS  EN  VIE  ET  LE  FRAPPE  \xC0  NOUVEAU\nPORTEE  :  5\nDEBUFF 
+    :  - 5  DEF"
   maxPlayerpierce: 0
   balanceMult: 2
   kapaType: 1
@@ -25,14 +26,14 @@ MonoBehaviour:
     isBuff: 0
     isCritGuaranted: 0
     buffDebuffList:
-      hasMovePointsBDb: 1
+      hasMovePointsBDb: 0
       mPBuffDebuffData:
-        value: -2
-        turnNumber: 2
-      hasDefenseBDb: 0
+        value: -1
+        turnNumber: 1
+      hasDefenseBDb: 1
       defBuffDebuffData:
-        value: 0
-        turnNumber: 0
+        value: -5
+        turnNumber: 1
       hasCritRateBDb: 0
       cRBuffDebuffData:
         value: 25
@@ -188,3 +189,15 @@ MonoBehaviour:
       orthoSizeChange: 0
     back:
       orthoSizeChange: 0
+  _oddNTiles: []
+  _evenNTiles: []
+  _oddENTiles: []
+  _evenENTiles: []
+  _oddESTiles: []
+  _evenESTiles: []
+  _oddSTiles: []
+  _evenSTiles: []
+  _oddWSTiles: []
+  _evenWSTiles: []
+  _oddWNTiles: []
+  _evenWNTiles: []

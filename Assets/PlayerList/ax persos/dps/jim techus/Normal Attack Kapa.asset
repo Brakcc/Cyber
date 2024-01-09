@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iD: 0
   kapaNane: NORMAL  ATK
-  description: "TIRE  AVEC  SON  FUSIL  D'ASSAUT\nPORTEE  :  6\n\n\r"
+  description: "TIRE  AVEC  SON  FUSIL  D'ASSAUT\nPORTEE  :  5\n\n\r"
   maxPlayerpierce: 0
   balanceMult: 1
   kapaType: 0
@@ -137,7 +137,6 @@ MonoBehaviour:
   - {x: 0, y: -3, z: 0}
   - {x: 0, y: -4, z: 0}
   - {x: 0, y: -5, z: 0}
-  - {x: 0, y: -6, z: 0}
   _nAKapaSupFields:
     compPointsAdded: 1
     ultPointsAdded: 0
@@ -188,3 +187,15 @@ MonoBehaviour:
       orthoSizeChange: 0
     back:
       orthoSizeChange: 0
+  _oddNTiles: []
+  _evenNTiles: []
+  _oddENTiles: []
+  _evenENTiles: []
+  _oddESTiles: []
+  _evenESTiles: []
+  _oddSTiles: []
+  _evenSTiles: []
+  _oddWSTiles: []
+  _evenWSTiles: []
+  _oddWNTiles: []
+  _evenWNTiles: []
