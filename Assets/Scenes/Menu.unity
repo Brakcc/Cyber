@@ -531,7 +531,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Atk Team
+  m_text: ATTAQUANTS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab9557b347b7e2241b83bca5bcde315f, type: 2}
   m_sharedMaterial: {fileID: 8066348094211976408, guid: ab9557b347b7e2241b83bca5bcde315f, type: 2}
@@ -4728,7 +4728,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Def Team
+  m_text: DEFENSEURS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab9557b347b7e2241b83bca5bcde315f, type: 2}
   m_sharedMaterial: {fileID: 8066348094211976408, guid: ab9557b347b7e2241b83bca5bcde315f, type: 2}
@@ -9537,9 +9537,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Unit
-
-'
+  m_text: UNITES
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab9557b347b7e2241b83bca5bcde315f, type: 2}
   m_sharedMaterial: {fileID: 8066348094211976408, guid: ab9557b347b7e2241b83bca5bcde315f, type: 2}
@@ -9673,7 +9671,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: VALIDATE TEAMS
+  m_text: DEMARRER
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab9557b347b7e2241b83bca5bcde315f, type: 2}
   m_sharedMaterial: {fileID: 8066348094211976408, guid: ab9557b347b7e2241b83bca5bcde315f, type: 2}

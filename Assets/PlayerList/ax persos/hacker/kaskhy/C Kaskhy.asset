@@ -20,7 +20,7 @@ MonoBehaviour:
     PORTEE  :  RESEAU  -  0  DEGATS
 
     BUFF  : 
-    + 25% CRIT ALLIEES'
+    + 25% TC ALLIEES'
   maxPlayerpierce: 4
   balanceMult: 0
   kapaType: 1
@@ -189,15 +189,27 @@ MonoBehaviour:
       orthoSizeChange: 0
     back:
       orthoSizeChange: 0
-  _oddNTiles: []
-  _evenNTiles: []
-  _oddENTiles: []
-  _evenENTiles: []
-  _oddESTiles: []
-  _evenESTiles: []
-  _oddSTiles: []
-  _evenSTiles: []
-  _oddWSTiles: []
-  _evenWSTiles: []
-  _oddWNTiles: []
-  _evenWNTiles: []
+  _oddNTiles:
+  - {x: 0, y: 0, z: 0}
+  _evenNTiles:
+  - {x: 0, y: 0, z: 0}
+  _oddENTiles:
+  - {x: 0, y: 0, z: 0}
+  _evenENTiles:
+  - {x: 0, y: 0, z: 0}
+  _oddESTiles:
+  - {x: 0, y: 0, z: 0}
+  _evenESTiles:
+  - {x: 0, y: 0, z: 0}
+  _oddSTiles:
+  - {x: 0, y: 0, z: 0}
+  _evenSTiles:
+  - {x: 0, y: 0, z: 0}
+  _oddWSTiles:
+  - {x: 0, y: 0, z: 0}
+  _evenWSTiles:
+  - {x: 0, y: 0, z: 0}
+  _oddWNTiles:
+  - {x: 0, y: 0, z: 0}
+  _evenWNTiles:
+  - {x: 0, y: 0, z: 0}

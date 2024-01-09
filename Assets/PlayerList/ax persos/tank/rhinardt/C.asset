@@ -15,7 +15,7 @@ MonoBehaviour:
   iD: 0
   kapaNane: COMPETENCE
   description: "ABAT  SON  MARTEAU  QUI  PROVOQUE  UNE  EXPLOSION \nPORTEE  :  3 
-    AOE  :  1\nDEBUFF  :  CENTRE  - 3 MP  AOE  - 1 MP\n"
+    AOE  :  1\nDEBUFF  :  CENTRE  - 3 PM  AOE  - 1 PM"
   maxPlayerpierce: 4
   balanceMult: 0
   kapaType: 1
@@ -186,3 +186,51 @@ MonoBehaviour:
       orthoSizeChange: 0
     back:
       orthoSizeChange: 0
+  _oddNTiles:
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 2, z: 0}
+  - {x: 0, y: 3, z: 0}
+  _evenNTiles:
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 2, z: 0}
+  - {x: 0, y: 3, z: 0}
+  _oddENTiles:
+  - {x: 1, y: 0, z: 0}
+  - {x: 2, y: 1, z: 0}
+  - {x: 3, y: 1, z: 0}
+  _evenENTiles:
+  - {x: 1, y: 1, z: 0}
+  - {x: 2, y: 1, z: 0}
+  - {x: 3, y: 2, z: 0}
+  _oddESTiles:
+  - {x: 1, y: -1, z: 0}
+  - {x: 2, y: -1, z: 0}
+  - {x: 3, y: -2, z: 0}
+  _evenESTiles:
+  - {x: 1, y: 0, z: 0}
+  - {x: 2, y: -1, z: 0}
+  - {x: 3, y: -1, z: 0}
+  _oddSTiles:
+  - {x: 0, y: -1, z: 0}
+  - {x: 0, y: -2, z: 0}
+  - {x: 0, y: -3, z: 0}
+  _evenSTiles:
+  - {x: 0, y: -1, z: 0}
+  - {x: 0, y: -2, z: 0}
+  - {x: 0, y: -3, z: 0}
+  _oddWSTiles:
+  - {x: -1, y: -1, z: 0}
+  - {x: -2, y: -1, z: 0}
+  - {x: -3, y: -2, z: 0}
+  _evenWSTiles:
+  - {x: -1, y: 0, z: 0}
+  - {x: -2, y: -1, z: 0}
+  - {x: -3, y: -1, z: 0}
+  _oddWNTiles:
+  - {x: -1, y: 0, z: 0}
+  - {x: -2, y: 1, z: 0}
+  - {x: -3, y: 1, z: 0}
+  _evenWNTiles:
+  - {x: -1, y: 1, z: 0}
+  - {x: -2, y: 1, z: 0}
+  - {x: -3, y: 2, z: 0}

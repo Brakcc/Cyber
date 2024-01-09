@@ -15,7 +15,7 @@ MonoBehaviour:
   iD: 0
   kapaNane: COMPETENCE
   description: "LANCE  UNE  GRENADE  ELECTROMAGNETIQUE,  RALENTISSANT LES ENNEMIS
-    TOUCH\xC9S\nPORTEE  :  4  AOE  1\nDEBUFF  :  -1 MP"
+    TOUCH\xC9S\nPORTEE  :  4  AOE  1\nDEBUFF  :  -1 PM"
   maxPlayerpierce: 4
   balanceMult: 5
   kapaType: 1
@@ -184,15 +184,27 @@ MonoBehaviour:
       orthoSizeChange: 0
     back:
       orthoSizeChange: 0
-  _oddNTiles: []
-  _evenNTiles: []
-  _oddENTiles: []
-  _evenENTiles: []
-  _oddESTiles: []
-  _evenESTiles: []
-  _oddSTiles: []
-  _evenSTiles: []
-  _oddWSTiles: []
-  _evenWSTiles: []
-  _oddWNTiles: []
-  _evenWNTiles: []
+  _oddNTiles:
+  - {x: 0, y: 0, z: 0}
+  _evenNTiles:
+  - {x: 0, y: 0, z: 0}
+  _oddENTiles:
+  - {x: 0, y: 0, z: 0}
+  _evenENTiles:
+  - {x: 0, y: 0, z: 0}
+  _oddESTiles:
+  - {x: 0, y: 0, z: 0}
+  _evenESTiles:
+  - {x: 0, y: 0, z: 0}
+  _oddSTiles:
+  - {x: 0, y: 0, z: 0}
+  _evenSTiles:
+  - {x: 0, y: 0, z: 0}
+  _oddWSTiles:
+  - {x: 0, y: 0, z: 0}
+  _evenWSTiles:
+  - {x: 0, y: 0, z: 0}
+  _oddWNTiles:
+  - {x: 0, y: 0, z: 0}
+  _evenWNTiles:
+  - {x: 0, y: 0, z: 0}

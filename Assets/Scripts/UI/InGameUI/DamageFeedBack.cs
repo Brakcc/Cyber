@@ -18,7 +18,7 @@ namespace UI.InGameUI
         
         public void OnInit(float damage, List<BuffDatas> allBuffs)
         {
-            var txt = damage == 0 ? "" : $"<color=red>-{(int)damage} HP</color>";
+            var txt = damage == 0 ? "" : $"<color=red>-{(int)damage} PV</color>";
             if (allBuffs.Count != 0)
             {
                 foreach (var b in allBuffs)

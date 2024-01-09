@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'CRIT RATE : '
+  m_text: 'TAUX  CRIT  : '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab9557b347b7e2241b83bca5bcde315f, type: 2}
   m_sharedMaterial: {fileID: 8066348094211976408, guid: ab9557b347b7e2241b83bca5bcde315f, type: 2}
@@ -735,7 +735,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'MP : '
+  m_text: 'PM : '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab9557b347b7e2241b83bca5bcde315f, type: 2}
   m_sharedMaterial: {fileID: 8066348094211976408, guid: ab9557b347b7e2241b83bca5bcde315f, type: 2}
@@ -1405,7 +1405,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'HP : '
+  m_text: 'PV : '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab9557b347b7e2241b83bca5bcde315f, type: 2}
   m_sharedMaterial: {fileID: 8066348094211976408, guid: ab9557b347b7e2241b83bca5bcde315f, type: 2}
