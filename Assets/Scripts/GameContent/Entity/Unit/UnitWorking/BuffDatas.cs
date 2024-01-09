@@ -18,10 +18,10 @@ namespace GameContent.Entity.Unit.UnitWorking
 
         public string GetBuffTypeName() => buffType switch
         {
-            BuffType.Mp => "MP",
+            BuffType.Mp => "PM",
             BuffType.Def => "DEF",
             BuffType.Prec => "PREC",
-            BuffType.CritRate => "CR",
+            BuffType.CritRate => "TC",
             _ => throw new CustomExceptions.CustomException()
         };
     }

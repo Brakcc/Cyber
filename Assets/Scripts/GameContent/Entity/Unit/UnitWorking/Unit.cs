@@ -196,6 +196,9 @@ namespace GameContent.Entity.Unit.UnitWorking
             var  pas = speed * Time.fixedDeltaTime / 10;
             foreach (var i in path)
             {
+                if (IsDead)
+                    break;
+                
                 var z = path[0].z;
                 while (Vector2.Distance(transform.position, i) >= 0.001f)
                 {
@@ -225,7 +228,7 @@ namespace GameContent.Entity.Unit.UnitWorking
             var pas = speed * Time.fixedDeltaTime / 10;
             
             const float z = -0.1f;
-            while (Vector2.Distance(transform.position, path) >= 0.001f)
+            while (Vector2.Distance(transform.position, path) >= 0.001f && !IsDead)
             {
                 var position = transform.position;
 

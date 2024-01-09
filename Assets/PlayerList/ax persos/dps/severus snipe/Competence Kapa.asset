@@ -14,8 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iD: 0
   kapaNane: COMPETENCE
-  description: "TIRE  UNE BALLE  TRANSPERCANTE,  RALENTISSANT  LE  PREMIER  ENNEMI
-    TOUCH\xC9\nPORTEE  :  10\nDEBUFF  :  - 1 MP"
+  description: 'TIRE  UNE BALLE  TRANSPERCANTE,  RALENTISSANT  LE  PREMIER  ENNEMI
+    TOUCHE
+
+    PORTEE  :  10
+
+    DEBUFF  :  - 1 PM'
   maxPlayerpierce: 4
   balanceMult: 1
   kapaType: 1
@@ -193,15 +197,135 @@ MonoBehaviour:
       orthoSizeChange: 0
     back:
       orthoSizeChange: 0
-  _oddNTiles: []
-  _evenNTiles: []
-  _oddENTiles: []
-  _evenENTiles: []
-  _oddESTiles: []
-  _evenESTiles: []
-  _oddSTiles: []
-  _evenSTiles: []
-  _oddWSTiles: []
-  _evenWSTiles: []
-  _oddWNTiles: []
-  _evenWNTiles: []
+  _oddNTiles:
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 2, z: 0}
+  - {x: 0, y: 3, z: 0}
+  - {x: 0, y: 4, z: 0}
+  - {x: 0, y: 5, z: 0}
+  - {x: 0, y: 6, z: 0}
+  - {x: 0, y: 7, z: 0}
+  - {x: 0, y: 8, z: 0}
+  - {x: 0, y: 9, z: 0}
+  - {x: 0, y: 10, z: 0}
+  _evenNTiles:
+  - {x: 0, y: 1, z: 0}
+  - {x: 0, y: 2, z: 0}
+  - {x: 0, y: 3, z: 0}
+  - {x: 0, y: 4, z: 0}
+  - {x: 0, y: 5, z: 0}
+  - {x: 0, y: 6, z: 0}
+  - {x: 0, y: 7, z: 0}
+  - {x: 0, y: 8, z: 0}
+  - {x: 0, y: 9, z: 0}
+  - {x: 0, y: 10, z: 0}
+  _oddENTiles:
+  - {x: 1, y: 0, z: 0}
+  - {x: 2, y: 1, z: 0}
+  - {x: 3, y: 1, z: 0}
+  - {x: 4, y: 2, z: 0}
+  - {x: 5, y: 2, z: 0}
+  - {x: 6, y: 3, z: 0}
+  - {x: 7, y: 3, z: 0}
+  - {x: 8, y: 4, z: 0}
+  - {x: 9, y: 4, z: 0}
+  - {x: 10, y: 5, z: 0}
+  _evenENTiles:
+  - {x: 1, y: 1, z: 0}
+  - {x: 2, y: 1, z: 0}
+  - {x: 3, y: 2, z: 0}
+  - {x: 4, y: 2, z: 0}
+  - {x: 5, y: 3, z: 0}
+  - {x: 6, y: 3, z: 0}
+  - {x: 7, y: 4, z: 0}
+  - {x: 8, y: 4, z: 0}
+  - {x: 9, y: 5, z: 0}
+  - {x: 10, y: 5, z: 0}
+  _oddESTiles:
+  - {x: 1, y: -1, z: 0}
+  - {x: 2, y: -1, z: 0}
+  - {x: 3, y: -2, z: 0}
+  - {x: 4, y: -2, z: 0}
+  - {x: 5, y: -3, z: 0}
+  - {x: 6, y: -3, z: 0}
+  - {x: 7, y: -4, z: 0}
+  - {x: 8, y: -4, z: 0}
+  - {x: 9, y: -5, z: 0}
+  - {x: 10, y: -5, z: 0}
+  _evenESTiles:
+  - {x: 1, y: 0, z: 0}
+  - {x: 2, y: -1, z: 0}
+  - {x: 3, y: -1, z: 0}
+  - {x: 4, y: -2, z: 0}
+  - {x: 5, y: -2, z: 0}
+  - {x: 6, y: -3, z: 0}
+  - {x: 7, y: -3, z: 0}
+  - {x: 8, y: -4, z: 0}
+  - {x: 9, y: -4, z: 0}
+  - {x: 10, y: -5, z: 0}
+  _oddSTiles:
+  - {x: 0, y: -1, z: 0}
+  - {x: 0, y: -2, z: 0}
+  - {x: 0, y: -3, z: 0}
+  - {x: 0, y: -4, z: 0}
+  - {x: 0, y: -5, z: 0}
+  - {x: 0, y: -6, z: 0}
+  - {x: 0, y: -7, z: 0}
+  - {x: 0, y: -8, z: 0}
+  - {x: 0, y: -9, z: 0}
+  - {x: 0, y: -10, z: 0}
+  _evenSTiles:
+  - {x: 0, y: -1, z: 0}
+  - {x: 0, y: -2, z: 0}
+  - {x: 0, y: -3, z: 0}
+  - {x: 0, y: -4, z: 0}
+  - {x: 0, y: -5, z: 0}
+  - {x: 0, y: -6, z: 0}
+  - {x: 0, y: -7, z: 0}
+  - {x: 0, y: -8, z: 0}
+  - {x: 0, y: -9, z: 0}
+  - {x: 0, y: -10, z: 0}
+  _oddWSTiles:
+  - {x: -1, y: -1, z: 0}
+  - {x: -2, y: -1, z: 0}
+  - {x: -3, y: -2, z: 0}
+  - {x: -4, y: -2, z: 0}
+  - {x: -5, y: -3, z: 0}
+  - {x: -6, y: -3, z: 0}
+  - {x: -7, y: -4, z: 0}
+  - {x: -8, y: -4, z: 0}
+  - {x: -9, y: -5, z: 0}
+  - {x: -10, y: -5, z: 0}
+  _evenWSTiles:
+  - {x: -1, y: 0, z: 0}
+  - {x: -2, y: -1, z: 0}
+  - {x: -3, y: -1, z: 0}
+  - {x: -4, y: -2, z: 0}
+  - {x: -5, y: -2, z: 0}
+  - {x: -6, y: -3, z: 0}
+  - {x: -7, y: -3, z: 0}
+  - {x: -8, y: -4, z: 0}
+  - {x: -9, y: -4, z: 0}
+  - {x: -10, y: -5, z: 0}
+  _oddWNTiles:
+  - {x: -1, y: 0, z: 0}
+  - {x: -2, y: 1, z: 0}
+  - {x: -3, y: 1, z: 0}
+  - {x: -4, y: 2, z: 0}
+  - {x: -5, y: 2, z: 0}
+  - {x: -6, y: 3, z: 0}
+  - {x: -7, y: 3, z: 0}
+  - {x: -8, y: 4, z: 0}
+  - {x: -9, y: 4, z: 0}
+  - {x: -10, y: 5, z: 0}
+  _evenWNTiles:
+  - {x: -1, y: 1, z: 0}
+  - {x: -2, y: 1, z: 0}
+  - {x: -3, y: 2, z: 0}
+  - {x: -4, y: 2, z: 0}
+  - {x: -5, y: 3, z: 0}
+  - {x: -6, y: 3, z: 0}
+  - {x: -7, y: 4, z: 0}
+  - {x: -8, y: 4, z: 0}
+  - {x: -9, y: 5, z: 0}
+  - {x: -10, y: 5, z: 0}

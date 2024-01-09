@@ -19,7 +19,7 @@ MonoBehaviour:
     PORTEE 
     :  RESEAU  -  0  DEGATS
 
-    DEBUFF  :  - 1  MP'
+    DEBUFF  :  - 1  PM'
   maxPlayerpierce: 4
   balanceMult: 0
   kapaType: 1

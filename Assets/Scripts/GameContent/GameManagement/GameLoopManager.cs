@@ -100,7 +100,7 @@ namespace GameContent.GameManagement
             }
             //foreach (var i in uiFields.computerUI) { i.color = Color.red; }
 
-            objectifs.turnText.text = $"TURNS  LEFT  :  {objectifs.maxTurnNb.ToString()}";
+            objectifs.turnText.text = $"TOURS  RESTANTS  :  {objectifs.maxTurnNb.ToString()}";
             _turnNb = objectifs.maxTurnNb;
             objectifs.endGameUI.SetActive(false);
         }
@@ -117,14 +117,14 @@ namespace GameContent.GameManagement
             if (newTeam % 2 == 0)
             {
                 _turnNb--;
-                objectifs.turnText.text = $"TURNS  LEFT  :  {_turnNb.ToString()}";
+                objectifs.turnText.text = $"TOURS  RESTANTS  :  {_turnNb.ToString()}";
                 switch (_turnNb)
                 {
                     case 0:
-                        objectifs.turnText.text = "LAST  TURN";
+                        objectifs.turnText.text = "DERNIER  TOUR";
                         break;
                     case < 0:
-                        objectifs.turnText.text = "GAME  ENDED";
+                        objectifs.turnText.text = "PARTIE  TERMINEE";
                         OnEndGame(0);
                         break;
                 }
