@@ -87,7 +87,9 @@ namespace GameContent.Entity.Unit.UnitWorking
         {
             if (SelectedUnit == null) 
                 return;
-            var selHex = selectedHex.GetComponent<Hex>();
+            
+            if (!selectedHex.TryGetComponent<Hex>(out var selHex))
+                return;
 
             if (IsKapaSelected)
             {
