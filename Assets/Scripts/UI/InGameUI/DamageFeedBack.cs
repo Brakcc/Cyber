@@ -40,6 +40,7 @@ namespace UI.InGameUI
             damageText.text = txt;
             transform.DOMoveY(transform.position.y + 0.75f, 2);
             damageText.DOColor(new Color(0, 0, 0, Time.deltaTime), 0.75f);
+            Destroy(this, 0.75f);
         }
         
         #endregion

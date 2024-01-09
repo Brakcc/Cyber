@@ -172,7 +172,7 @@ MonoBehaviour:
   mainC: {fileID: 0}
   tileSelectionMask:
     serializedVersion: 2
-    m_Bits: 72
+    m_Bits: 16456
   selection:
     m_PersistentCalls:
       m_Calls:
